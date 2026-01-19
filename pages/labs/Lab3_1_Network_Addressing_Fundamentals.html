@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 3.1 - Network Addressing Fundamentals</title>
+  </head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 3.1 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab3_1_Header.svg" alt="Lab 3.1 - Network Addressing Fundamentals" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 3: Networks, Cloud &amp; Defense</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation — the foundational math that makes packet capture meaningful. You'll calculate subnets by hand using a visual "count out" method, then verify your work with industry tools. These skills pay off next week when you start filtering traffic in Wireshark.</p>
+    
+    <!-- Mentor Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Derek Mitchell</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"CIDR isn't just math — it's how you define your attack surface. When I'm hunting threats in a network, the first thing I need to know is what address space I'm protecting. <strong style="color: #ffffff;">Every capture filter, every firewall rule, every ACL — they all start with understanding addresses.</strong> Get this right, and Wireshark becomes a precision instrument."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 9 — Network Fundamentals | Chapter 18 — Cloud Computing (introduction)</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Convert between decimal, binary, and hexadecimal number systems</li>
+      <li>Use the visual "count out" method to analyze CIDR notation</li>
+      <li>Calculate network addresses, broadcast addresses, and usable host ranges</li>
+      <li>Subnet a network and enumerate all resulting subnets</li>
+      <li>Document your local and VM network configurations</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Client Context</h3>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Gulf Coast Healthcare Partners continues their engagement with NEXUS. After the cryptographic assessment in Module 2, Jennifer Walsh (CISO) has requested a network traffic analysis of their Azure-hosted patient portal. Before we can analyze their traffic, you need to master network fundamentals. This week is internal training; next week you'll dive into Wireshark; Week 3 you'll capture live Azure traffic.</p>
+    
+    <!-- Save For Lab 3.3 callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 3.3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 1 of a 3-week module</strong>. Create a folder called <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet in Week 3.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: Number Systems (dec/bin/hex conversions)</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Flat Network Analysis (CIDR count-out)</td>
+          <td style="padding: 12px 15px; text-align: center;">25-35 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: Subnet the Network (borrowing bits)</td>
+          <td style="padding: 12px 15px; text-align: center;">30-40 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 4: Verify with MX Toolbox</td>
+          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 5: Document Your Networks</td>
+          <td style="padding: 12px 15px; text-align: center;">15-20 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 6: Network Topology Diagram</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">120-170 min</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: Number Systems -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_1.svg" alt="Checkpoint 1 - Number Systems" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Building fluency converting between decimal, binary, and hexadecimal number systems — the foundation for understanding network addresses.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations — with it, they become precise tools.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">The Conversion Cheat Sheet</h4>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Memorize these 16 values (0-15) and you can convert anything:</p>
+    
+    <!-- Conversion tables -->
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
+      <table style="border-collapse: collapse; background: #0d1117; flex: 1; min-width: 200px;">
+        <thead>
+          <tr>
+            <th style="padding: 8px 12px; text-align: center; color: #4169E1; font-weight: 600; border-bottom: 2px solid #4169E1;">Dec</th>
+            <th style="padding: 8px 12px; text-align: center; color: #00D26A; font-weight: 600; border-bottom: 2px solid #00D26A;">Hex</th>
+            <th style="padding: 8px 12px; text-align: center; color: #FF9F1C; font-weight: 600; border-bottom: 2px solid #FF9F1C;">Binary</th>
+          </tr>
+        </thead>
+        <tbody style="font-family: Consolas, Monaco, monospace; font-size: 14px;">
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">0</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">0</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0000</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">1</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">1</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0001</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">2</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">2</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0010</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">3</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">3</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0011</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">4</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">4</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0100</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">5</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">5</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0101</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">6</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">6</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">0110</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1;">7</td><td style="padding: 6px 12px; text-align: center; color: #00D26A;">7</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C;">0111</td></tr>
+        </tbody>
+      </table>
+      
+      <table style="border-collapse: collapse; background: #0d1117; flex: 1; min-width: 200px;">
+        <thead>
+          <tr>
+            <th style="padding: 8px 12px; text-align: center; color: #4169E1; font-weight: 600; border-bottom: 2px solid #4169E1;">Dec</th>
+            <th style="padding: 8px 12px; text-align: center; color: #00D26A; font-weight: 600; border-bottom: 2px solid #00D26A;">Hex</th>
+            <th style="padding: 8px 12px; text-align: center; color: #FF9F1C; font-weight: 600; border-bottom: 2px solid #FF9F1C;">Binary</th>
+          </tr>
+        </thead>
+        <tbody style="font-family: Consolas, Monaco, monospace; font-size: 14px;">
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">8</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">8</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1000</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">9</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">9</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1001</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">10</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">A</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1010</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">11</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">B</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1011</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">12</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">C</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1100</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">13</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">D</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1101</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1; border-bottom: 1px solid #1a1f2e;">14</td><td style="padding: 6px 12px; text-align: center; color: #00D26A; border-bottom: 1px solid #1a1f2e;">E</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C; border-bottom: 1px solid #1a1f2e;">1110</td></tr>
+          <tr><td style="padding: 6px 12px; text-align: center; color: #4169E1;">15</td><td style="padding: 6px 12px; text-align: center; color: #00D26A;">F</td><td style="padding: 6px 12px; text-align: center; color: #FF9F1C;">1111</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Pro Tip -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">How to Use This Table</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">To convert <strong style="color: #ffffff;">168</strong> to hex: 168 = 160 + 8 = A0 + 08 = <strong style="color: #ffffff;">A8</strong>. To convert <strong style="color: #ffffff;">252</strong>: 252 = 240 + 12 = F0 + 0C = <strong style="color: #ffffff;">FC</strong>.</p>
+      </div>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">Practice Problems</h4>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Using the cheat sheet above, complete these conversions on paper:</p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Decimal → Binary:</strong> Convert 192, 168, 255, 252</li>
+      <li><strong style="color: #ffffff;">Binary → Decimal:</strong> Convert 11000000, 10101000, 11111100, 00000000</li>
+      <li><strong style="color: #ffffff;">Decimal → Hex:</strong> Convert 192, 168, 252, 0</li>
+      <li><strong style="color: #ffffff;">MAC Address:</strong> Given <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">00:1A:2B:3C:4D:5E</code>, what is <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">2B</code> in decimal?</li>
+    </ol>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #01</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your completed conversions (can be handwritten on paper). Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">01-number-conversions.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Calculator shortcuts:</strong> Using online converters without understanding the math — you need this skill for quizzes</li>
+          <li><strong style="color: #ffffff;">Place value errors:</strong> Forgetting that binary positions are powers of 2 (128, 64, 32, 16, 8, 4, 2, 1)</li>
+          <li><strong style="color: #ffffff;">Skipping verification:</strong> Always convert back to check your work — decimal to binary to decimal</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete conversion reference with all problems worked out. You'll use these exact values in the next checkpoint.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 explains IP addressing and the TCP/IP protocol stack. Understanding binary representation is fundamental to network addressing.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Why do network addresses use binary and hexadecimal instead of just decimal? Review Chapter 9's coverage of IP addressing and the TCP/IP protocol stack.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just read Chapter 9. Add it to your references:<br><code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">Conklin, W. A., &amp; White, G. (2021). Principles of Computer Security (6th ed.). McGraw-Hill. Chapter 9.</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: Flat Network Analysis -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_2.svg" alt="Checkpoint 2 - Flat Network Analysis" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Analyzing CIDR notation to determine network size, usable hosts, and address boundaries without subnetting.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">CIDR notation is the universal language for describing network size. When you see <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.1.0/24</code>, you need to instantly know how many hosts that includes, where it starts, and where it ends. This is essential for firewall rules, capture filters, and vulnerability scans.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">The Visual Count-Out Method</h4>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">For <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.0.0/22</code>:</p>
+    
+    <!-- Binary visualization -->
+    <div style="background: #0d1117; border-radius: 8px; padding: 20px; margin: 20px 0;">
+      <div style="text-align: center; margin-bottom: 15px;">
+        <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(255, 107, 107, 0.2); color: #FF6B6B; border: 1px solid #FF6B6B;">Network: 22 bits</span>
+        <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(78, 205, 196, 0.2); color: #4ECDC4; border: 1px solid #4ECDC4;">Host: 10 bits</span>
+      </div>
+      
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 0; padding: 15px 10px; background: #0d1117; border-radius: 8px; margin: 15px 0;">
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+      </div>
+      
+      <div style="text-align: center; margin-top: 10px; font-family: Consolas, Monaco, monospace; font-size: 13px; color: #B0B8C4;">
+        Subnet Mask: 255.255.252.0 (FF.FF.FC.00)
+      </div>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">Analysis Exercise</h4>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">For <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.0.0/22</code>, calculate:</p>
+    <ol style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
+      <li>Total addresses: 2<sup>10</sup> = ?</li>
+      <li>Usable hosts: Total - 2 = ?</li>
+      <li>Network address (first): 192.168.0.0</li>
+      <li>Broadcast address (last): ?</li>
+      <li>First usable host: ?</li>
+      <li>Last usable host: ?</li>
+    </ol>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Then repeat for <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10.0.0.0/8</code> — a much larger network.</p>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #02</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your flat network analysis calculations. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">02-flat-network-analysis.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting to subtract 2:</strong> Network and broadcast addresses aren't usable for hosts</li>
+          <li><strong style="color: #ffffff;">CIDR confusion:</strong> /24 = 256 addresses, /25 = 128, /26 = 64 (each bit doubles/halves)</li>
+          <li><strong style="color: #ffffff;">Boundary errors:</strong> Broadcast is ALL host bits = 1, not the next network address</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your 192.168.0.0/22 analysis should show: 10 host bits, 1,022 usable hosts, broadcast 192.168.3.255. Your 10.0.0.0/8 analysis should show: 24 host bits, 16,777,214 usable hosts.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 explains network addressing and CIDR notation. The /24 notation you analyze represents subnet masks — understanding these calculations is fundamental to network segmentation.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How does subnetting divide a network into smaller segments? Research CIDR notation and calculate the number of hosts in a /24 versus a /28 network.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">RFC 4632 - Classless Inter-Domain Routing (CIDR): <code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">https://tools.ietf.org/html/rfc4632</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: Subnet the Network -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_3.svg" alt="Checkpoint 3 - Subnet the Network" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Creating a complete subnet table showing every possible subnet when you divide a larger network into smaller ones.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Network segmentation is a core security control. By dividing networks into subnets, you can isolate sensitive systems, limit blast radius during incidents, and apply different security policies to different zones. This is why firewalls, VLANs, and access controls all depend on understanding subnet boundaries.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">The Scenario</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Starting with <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.0.0/22</code>, you decide to use <strong style="color: #FFE66D;">2 of the host bits</strong> to define subnets within the network.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Borrowing Bits</h4>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">When you borrow bits, they move from <span style="color: #4ECDC4;">host</span> to <span style="color: #FFE66D;">subnet</span>:</p>
+    
+    <!-- Binary visualization with subnet bits -->
+    <div style="background: #0d1117; border-radius: 8px; padding: 20px; margin: 20px 0;">
+      <div style="text-align: center; margin-bottom: 15px;">
+        <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(255, 107, 107, 0.2); color: #FF6B6B; border: 1px solid #FF6B6B;">Network: 22</span>
+        <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(255, 230, 109, 0.2); color: #FFE66D; border: 1px solid #FFE66D;">Subnet: +2</span>
+        <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(78, 205, 196, 0.2); color: #4ECDC4; border: 1px solid #4ECDC4;">Host: 8</span>
+      </div>
+      
+      <div style="display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 0; padding: 15px 10px; background: #0d1117; border-radius: 8px; margin: 15px 0;">
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FF6B6B;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FFE66D;">1</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #FFE66D;">1</span>
+        <span style="color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px;">.</span>
+        <span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span><span style="font-family: Consolas, Monaco, monospace; font-size: 13px; font-weight: 600; padding: 2px 3px; margin: 0; display: inline-block; min-width: 16px; text-align: center; color: #4ECDC4;">0</span>
+      </div>
+      
+      <div style="text-align: center; margin-top: 10px; font-family: Consolas, Monaco, monospace; font-size: 13px; color: #B0B8C4;">
+        New CIDR: /24 (22 original + 2 borrowed = 24)
+      </div>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">Calculate the Results</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 10px 0;"><strong style="color: #ffffff;">How many subnets can be defined?</strong></p>
+    <div style="background: #0d1117; padding: 15px 20px; border-radius: 6px; margin: 10px 0 20px 0;">
+      <p style="margin: 0; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #B0B8C4;">
+        Subnet bits borrowed = <span style="color: #FFE66D;">2</span><br>
+        2<sup style="color: #FFE66D;">2</sup> = <strong style="color: #00D26A; font-size: 18px;">4 subnets</strong>
+      </p>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 0 0 10px 0;"><strong style="color: #ffffff;">What is the new subnet mask?</strong></p>
+    <div style="background: #0d1117; padding: 15px 20px; border-radius: 6px; margin: 10px 0 20px 0;">
+      <p style="margin: 0; font-family: Consolas, Monaco, monospace; font-size: 14px;">
+        <span style="color: #FF9F1C;">Binary:</span> <span style="color: #ffffff;">11111111.11111111.11111111.00000000</span><br>
+        <span style="color: #00D26A;">Decimal:</span> <span style="color: #ffffff;">255.255.255.0</span>
+      </p>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 0 0 10px 0;"><strong style="color: #ffffff;">How many hosts per subnet?</strong></p>
+    <div style="background: #0d1117; padding: 15px 20px; border-radius: 6px; margin: 10px 0 20px 0;">
+      <p style="margin: 0; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #B0B8C4;">
+        Host bits remaining = <span style="color: #4ECDC4;">8</span><br>
+        2<sup style="color: #4ECDC4;">8</sup> = 256 - 2 = <strong style="color: #00D26A; font-size: 18px;">254 usable hosts per subnet</strong>
+      </p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">The Complete Subnet Table</h4>
+    
+    <table style="width: 100%; border-collapse: collapse; background: #0d1117; margin: 15px 0;">
+      <thead>
+        <tr>
+          <th style="padding: 12px 16px; text-align: left; color: #4169E1; font-weight: 600; border-bottom: 2px solid #4169E1;">Subnet Address</th>
+          <th style="padding: 12px 16px; text-align: left; color: #00D26A; font-weight: 600; border-bottom: 2px solid #00D26A;">Usable Host Range</th>
+          <th style="padding: 12px 16px; text-align: left; color: #FF3B3B; font-weight: 600; border-bottom: 2px solid #FF3B3B;">Broadcast</th>
+        </tr>
+      </thead>
+      <tbody style="font-family: Consolas, Monaco, monospace; font-size: 14px; color: #B0B8C4;">
+        <tr style="border-bottom: 1px solid #1a1f2e;">
+          <td style="padding: 10px 16px;">192.168.0.0/24</td>
+          <td style="padding: 10px 16px;">192.168.0.1 - 192.168.0.254</td>
+          <td style="padding: 10px 16px;">192.168.0.255</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #1a1f2e;">
+          <td style="padding: 10px 16px;">192.168.1.0/24</td>
+          <td style="padding: 10px 16px;">192.168.1.1 - 192.168.1.254</td>
+          <td style="padding: 10px 16px;">192.168.1.255</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #1a1f2e;">
+          <td style="padding: 10px 16px;">192.168.2.0/24</td>
+          <td style="padding: 10px 16px;">192.168.2.1 - 192.168.2.254</td>
+          <td style="padding: 10px 16px;">192.168.2.255</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 16px;">192.168.3.0/24</td>
+          <td style="padding: 10px 16px;">192.168.3.1 - 192.168.3.254</td>
+          <td style="padding: 10px 16px;">192.168.3.255</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">Your Turn</h4>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Starting with <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">172.16.0.0/16</code>, borrow <strong style="color: #FFE66D;">4 bits</strong> for subnetting:</p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>What is the new CIDR prefix? (16 + 4 = ?)</li>
+      <li>How many subnets can be created?</li>
+      <li>How many hosts per subnet?</li>
+      <li>Create a table showing the <strong style="color: #ffffff;">first 4 subnets</strong></li>
+    </ol>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #03</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your 172.16.0.0/16 subnet analysis with the table. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">03-subnet-table.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting the formula:</strong> 2^n subnets when borrowing n bits — borrow 2 bits = 4 subnets, not 2</li>
+          <li><strong style="color: #ffffff;">Host count confusion:</strong> Usable hosts = 2^h - 2 (subtract network and broadcast addresses)</li>
+          <li><strong style="color: #ffffff;">Subnet boundary errors:</strong> Each subnet starts where the previous one ends — watch the increment pattern</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">New CIDR: /20. Subnets: 16. Hosts per subnet: 4094. First four subnets: 172.16.0.0/20, 172.16.16.0/20, 172.16.32.0/20, 172.16.48.0/20.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries — the same technique you use here enables network architects to separate sensitive systems.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Notice we've been using 10.x.x.x, 172.16.x.x, and 192.168.x.x — why these specific ranges? Look up RFC 1918 to understand private address space and why these ranges are special.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">RFC 1918 defines private addresses:<br><code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">Rekhter, Y., et al. (1996). RFC 1918: Address Allocation for Private Internets. IETF. https://www.rfc-editor.org/rfc/rfc1918</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 4: Verify with MX Toolbox -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_4.svg" alt="Checkpoint 4 - Verify with MX Toolbox" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verifying that your hand calculations are correct using an industry-standard tool.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">In production environments, network configuration errors can cause outages or security gaps. Professionals always verify their calculations with trusted tools before implementing changes. MX Toolbox is one of many free tools that security analysts use to double-check their work before it impacts live systems.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Navigate to <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://mxtoolbox.com/subnetcalculator.aspx</code></li>
+      <li>Enter <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.0.0/22</code> and verify your Checkpoint 2 answers</li>
+      <li>Enter <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">172.16.0.0/20</code> and verify your Checkpoint 3 answers</li>
+      <li>If any calculations were wrong, go back and identify where you made the error</li>
+    </ol>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #04</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture MX Toolbox results for one of your CIDR blocks. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">04-mxtoolbox-verification.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Skipping verification:</strong> Don't assume your math is right — always check</li>
+          <li><strong style="color: #ffffff;">Not correcting errors:</strong> If the tool shows different results, trace back to find your mistake</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">MX Toolbox results confirming your hand calculations match the tool output for both /22 and /20 networks. If they don't match, you've identified and corrected your errors.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work — MX Toolbox represents the kind of external verification used in production environments.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">MX Toolbox offers more than just subnet calculations — explore their other network diagnostic tools. What else can you check about a domain or IP address?</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just used an industry-standard tool:<br><code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">MX Toolbox. (n.d.). Subnet Calculator. Retrieved from https://mxtoolbox.com/subnetcalculator.aspx</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 5: Document Your Networks -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_5.svg" alt="Checkpoint 5 - Document Your Networks" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Documentation of your actual network configuration — both your host machine and your Kali VM.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what "normal" looks like for your environment. This baseline documentation is exactly what you'd create at the start of any client engagement or incident response.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">On Your Host Machine</h4>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0;"><strong style="color: #ffffff;">Windows:</strong></p>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0;">ipconfig /all</div>
+    
+    <p style="color: #B0B8C4; margin: 15px 0 10px 0;"><strong style="color: #ffffff;">macOS:</strong></p>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0;">ifconfig<br>netstat -rn</div>
+    
+    <p style="color: #B0B8C4; margin: 20px 0 10px 0;"><strong style="color: #ffffff;">Document these values:</strong></p>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 1.8;">
+      <li>IP Address</li>
+      <li>Subnet Mask (and convert to CIDR notation)</li>
+      <li>Default Gateway</li>
+      <li>DNS Server(s)</li>
+      <li>Connection Type (WiFi or Ethernet)</li>
+    </ul>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">In Your Kali VM</h4>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0;">ip addr<br>ip route<br>cat /etc/resolv.conf<br>ping -c 3 8.8.8.8</div>
+    
+    <p style="color: #B0B8C4; margin: 20px 0 10px 0;"><strong style="color: #ffffff;">Document these values:</strong></p>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Interface name (eth0 or similar)</li>
+      <li>IP Address (likely 10.0.2.x if NAT)</li>
+      <li>Subnet Mask/CIDR</li>
+      <li>Default Gateway</li>
+      <li>VirtualBox Network Mode (NAT, Bridged, etc.)</li>
+    </ul>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #05</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <strong style="color: #ffffff;">both</strong> your host network config and Kali's <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip addr</code> output (VM name must be visible). Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">05-host-kali-config.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Wrong adapter:</strong> Look for your active network adapter, not VirtualBox's virtual adapters</li>
+          <li><strong style="color: #ffffff;">VPN active:</strong> If using a VPN, your IP might show the VPN's address</li>
+          <li><strong style="color: #ffffff;">VM not running:</strong> Make sure Kali is actually booted and has network connectivity</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks (in CIDR notation), default gateways, DNS servers, and VirtualBox network mode.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 emphasizes the importance of network documentation. Security teams can't protect what they don't know exists — your documentation creates the asset inventory that informs security controls.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip</code> command replaced the older <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ifconfig</code> command. Run <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">man ip</code> to explore what else it can show you about your network configuration.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You used Linux networking commands:<br><code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">ip(8) - Linux manual page. Retrieved from man ip</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 6: Network Topology Diagram -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_6.svg" alt="Checkpoint 6 - Network Topology Diagram" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Creating a visual diagram showing the network path from your Kali VM all the way to Gulf Coast's Azure infrastructure.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Network topology diagrams are essential for security assessments and incident response. They help teams understand traffic flows, identify chokepoints, and plan defensive controls. The diagram you create here is exactly what you'd include in a professional security report to help stakeholders understand the environment.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Include These Elements</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Kali VM</strong> (with your IP from Checkpoint 5)</li>
+      <li><strong style="color: #ffffff;">VirtualBox NAT</strong> (label the network mode)</li>
+      <li><strong style="color: #ffffff;">Host Machine</strong> (with your IP from Checkpoint 5)</li>
+      <li><strong style="color: #ffffff;">Home Router/Gateway</strong> (with gateway IP)</li>
+      <li><strong style="color: #ffffff;">Internet</strong> (cloud symbol)</li>
+      <li><strong style="color: #ffffff;">Azure South Central US Region</strong></li>
+      <li><strong style="color: #ffffff;">Gulf Coast Patient Portal</strong> (10.0.1.x subnet)</li>
+    </ul>
+    
+    <!-- Pro Tip -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Recommended Tools</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><a href="https://app.diagrams.net/" style="color: #00BCD4;">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too — we care about the content, not the polish.</p>
+      </div>
+    </div>
+    
+    <!-- Screenshot callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #06</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Export your completed topology diagram. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">06-topology-diagram.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Missing labels:</strong> Every device and connection needs an IP address or network range labeled</li>
+          <li><strong style="color: #ffffff;">Incomplete path:</strong> Show the entire chain from Kali VM through NAT, host, router, internet, to target</li>
+          <li><strong style="color: #ffffff;">Low resolution export:</strong> Export as PNG at high resolution — blurry diagrams are unprofessional</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A diagram showing the complete network path with IP addresses labeled at each hop. This diagram will appear in your Lab 3.3 Engagement Packet.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders — a skill you'll use in Lab 3.3's client deliverable.</p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is the difference between IPv4 and IPv6 addressing? Research the security improvements built into IPv6 (IPsec) and current adoption challenges.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">RFC 8200 - Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines:<br><code style="background: #1a1f2e; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #B0B8C4; display: inline-block; margin-top: 8px;">https://csrc.nist.gov/publications/detail/sp/800-119/final</code></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PURPLE TEAM PERSPECTIVES -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspectives" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Network addressing fundamentals serve both offensive and defensive operations:</p>
+    
+    <!-- Red Team -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 59, 59, 0.12); border-left: 4px solid #FF3B3B; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF3B3B; margin-bottom: 12px;">Red Team Perspective</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">During reconnaissance, attackers identify network boundaries to understand scope. CIDR notation tells them how many hosts to scan, where subnets begin and end, and which ranges to target. Misconfigured subnet masks can expose more hosts than intended.</p>
+      </div>
+    </div>
+    
+    <!-- Blue Team -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Blue Team Perspective</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans. Proper subnetting creates security boundaries — an attacker who compromises one subnet shouldn't automatically access others. Understanding addressing lets you spot anomalous traffic crossing boundaries.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST CARD -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Exercises Completed</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
+      <li>☐ Number conversions (decimal, binary, hex)</li>
+      <li>☐ Flat network analysis (192.168.0.0/22 and 10.0.0.0/8)</li>
+      <li>☐ Subnet table for 192.168.0.0/22 → /24</li>
+      <li>☐ All calculations verified against MX Toolbox</li>
+      <li>☐ Host and Kali network configurations documented</li>
+      <li>☐ Network topology diagram completed</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Screenshots Saved</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-number-conversions.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-flat-network-analysis.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-subnet-table.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-mxtoolbox-verification.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">05-host-kali-config.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">06-topology-diagram.png</code></li>
+    </ul>
+    
+    <!-- Canvas Quiz callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy — you may be asked to perform CIDR calculations or reference your network configuration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP CARD -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Getting Help</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in #lab-help for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h3>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational network skills you'll need for Wireshark.</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h3>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may use AI tools (ChatGPT, Claude, etc.) to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Explain command syntax and tool functionality</li>
+      <li>Troubleshoot errors and technical issues</li>
+      <li>Understand concepts from the readings</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may <strong style="color: #FF3B3B;">NOT</strong> use AI tools to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete the hands-on work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Think of AI like a tutor, not a ghostwriter.</strong> It can help you understand and improve, but the work itself must be yours.</p>
+    
+    <!-- Next Steps callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What's Next</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 3.2: Protocol Analysis Tools</strong> — Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using CIDR!), display filters, and traffic visualization. The network fundamentals you learned today make all of that possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

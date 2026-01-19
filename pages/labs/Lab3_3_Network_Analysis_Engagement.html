@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 3.3 - Network Analysis Engagement</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 3.3 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab3_3_Header.svg" alt="Lab 3.3 - Network Analysis Engagement" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 3: Networks, Cloud &amp; Defense</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This is it — your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You'll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Weeks 1-2 to deliver a professional Engagement Packet.</p>
+    
+    <!-- Derek Mitchell Mentor Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Derek Mitchell</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Gulf Coast's been paranoid since the ransomware hit. Jennifer's team flagged some anomalous patterns but can't determine if it's malicious or just unusual clinical activity. Your job is to analyze the traffic and give her a confident answer. <strong style="color: #ffffff;">Every packet tells a story.</strong> This is what we've been training you for."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 9 — Network Fundamentals | Chapter 13 — IDS and Network Security (partial) | Chapter 18 — Cloud Computing</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Focus Areas</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Cloud infrastructure interaction and analysis</li>
+      <li>Live traffic capture and SSH session analysis</li>
+      <li>Wireshark techniques applied to real-world scenarios</li>
+      <li>Professional client deliverable development</li>
+      <li>Executive summary and recommendation writing</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Connect to Azure-hosted Gulf Coast patient portal via SSH</li>
+      <li>Capture live network traffic using Wireshark on your host</li>
+      <li>Apply ALL analysis techniques from Lab 3.2 to live capture</li>
+      <li>Document findings with tiered discovery classification</li>
+      <li>Compile three weeks of work into professional Engagement Packet</li>
+      <li>Write executive summary addressing Jennifer Walsh's concerns</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Client Context</h3>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Primary Client:</strong> Gulf Coast Healthcare Partners (Houston, TX) — Regional healthcare system with 3 hospitals, 15 clinics, and 2.1 million patient records. Experienced ransomware attack 18 months ago; since rebuilt security program under CISO Jennifer Walsh.</p>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Hosting Provider:</strong> LoneStar DevOps (Austin, TX) — SaaS provider hosting Gulf Coast's patient portal in Microsoft Azure. Under security review as part of Gulf Coast's vendor assessment program.</p>
+    
+    <!-- Critical callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 59, 59, 0.12); border-left: 4px solid #FF3B3B; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF3B3B; margin-bottom: 12px;">Critical</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is an <strong style="color: #fff;">Engagement Packet</strong> assignment — the culmination of your three-week module work. You'll submit a professional report in <strong style="color: #fff;">DOCX format only</strong> (no PDFs). This counts toward your Engagement Packets grade category, not Foundation Labs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: YOU ALREADY HAVE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/You_Already_Have_3_Header.svg" alt="You Already Have" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00BCD4; border-bottom: 4px solid #00BCD4;">
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">If you followed directions in Labs 3.1 and 3.2, you already have most of the technical foundation for this Engagement Packet. This section summarizes what you should already have documented.</p>
+    
+    <h3 style="color: #00BCD4; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">From Week 7 (Lab 3.1: Network Addressing Fundamentals)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>IP configuration screenshots (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip addr</code>, <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip route</code>)</li>
+      <li>Network interface documentation</li>
+      <li>Subnet calculation practice</li>
+      <li>OSI model reference notes</li>
+      <li>TCP/IP fundamentals understanding</li>
+    </ul>
+    
+    <h3 style="color: #00BCD4; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">From Week 8 (Lab 3.2: Protocol Analysis Tools)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Wireshark installation and configuration notes</li>
+      <li>Capture filter documentation</li>
+      <li>Display filter reference</li>
+      <li>Protocol catalog (TCP, UDP, HTTP, HTTPS, DNS, ICMP)</li>
+      <li>Training PCAP analysis notes</li>
+      <li>TCP stream reconstruction experience</li>
+      <li>Endpoint statistics methodology</li>
+      <li>IO Graph and Flow Graph examples</li>
+    </ul>
+    
+    <h3 style="color: #00BCD4; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">NEW This Week (Lab 3.3)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Azure SSH connection and live capture</li>
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Live traffic analysis with tiered discoveries</li>
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Title page, executive summary, table of contents</li>
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Risk analysis and recommendations</li>
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Professional reflection</li>
+      <li><span style="background: #00BCD4; color: #0A0E17; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 8px;">NEW</span> Final reference compilation</li>
+    </ul>
+    
+    <!-- Encouragement callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">You're Already 60-70% Done</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This week is about applying those skills to a live engagement and wrapping it in professional packaging. <strong style="color: #fff;">Gather your Lab3-Screenshots folder and your notes — the hard work is already done.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 3: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This is a <strong style="color: #ffffff;">client engagement</strong> — all time this week is billable to the client (Gulf Coast Healthcare Partners + LoneStar DevOps).</p>
+    
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Checkpoint</th>
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #00D26A; font-weight: 600;">1</td>
+          <td style="padding: 12px 15px;">Azure Connection &amp; Live Capture</td>
+          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #00D26A; font-weight: 600;">2</td>
+          <td style="padding: 12px 15px;">Traffic Analysis &amp; Finding Documentation</td>
+          <td style="padding: 12px 15px; text-align: center;">90-120 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #00D26A; font-weight: 600;">3</td>
+          <td style="padding: 12px 15px;">Report Compilation &amp; Delivery</td>
+          <td style="padding: 12px 15px; text-align: center;">120-150 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px;" colspan="2"><strong style="color: #FF9F1C;">Total Estimated Time</strong></td>
+          <td style="padding: 12px 15px; text-align: center; color: #FF9F1C; font-weight: 700;">4-5.5 hours</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p style="color: #B0B8C4; margin: 20px 0 0 0; font-style: italic; line-height: 1.8;">Note: This is significantly more than Foundation Labs because you're delivering a complete professional report, not just completing exercises. Budget accordingly.</p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: AZURE CONNECTION & LIVE CAPTURE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_3_1.svg" alt="Checkpoint 1 - Azure Connection & Live Capture" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This is your first interaction with real cloud infrastructure. Unlike training PCAPs, this is live traffic to a production-like environment. The skills you practiced in Lab 3.2 now apply to actual client systems. Jennifer Walsh is counting on your analysis to determine if the anomalous traffic her team flagged represents a genuine threat.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Step 1: Prepare Your Capture Environment</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Open Wireshark on your <strong style="color: #ffffff;">host machine</strong> (not inside the Kali VM)</li>
+      <li>Identify your active network interface (Wi-Fi or Ethernet)</li>
+      <li>Start a capture with filter: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">port 22</code></li>
+    </ol>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Step 2: Connect to Azure VM</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Open terminal in your Kali VM</li>
+      <li>SSH to the Gulf Coast portal:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh nexus-analyst@gulfcoast-portal.nexus-training.cloud</div>
+      </li>
+      <li>Initial password: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">NEXUS-abc123!</code> (case-sensitive)</li>
+      <li>Accept the host key fingerprint when prompted</li>
+    </ol>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Step 3: Generate Analysis Traffic</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Once connected, explore the simulated patient portal environment</li>
+      <li>Run the provided analysis scripts to generate representative traffic</li>
+      <li>Allow capture to run for 5-10 minutes</li>
+      <li>Stop the Wireshark capture and save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-live-capture.pcap</code></li>
+    </ol>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">VPN blocking SSH:</strong> If you can't connect, disable any VPN on your host machine first</li>
+          <li><strong style="color: #ffffff;">Wrong interface:</strong> Capture on your HOST's interface, not inside Kali VM</li>
+          <li><strong style="color: #ffffff;">Firewall issues:</strong> Some campus networks block outbound SSH (port 22) — try from a mobile hotspot</li>
+          <li><strong style="color: #ffffff;">Password typo:</strong> Initial password is case-sensitive: NEXUS-abc123! (not nexus-ABC123!)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Screenshot #20 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #20</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your successful SSH connection showing the Azure server's hostname and your VM name visible in your Kali prompt. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">20-azure-ssh-connection.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #21 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #21</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture Wireshark showing live traffic with SSH packets visible. Apply display filter <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ssh</code> to isolate the encrypted session. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">21-wireshark-ssh-traffic.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 18: Cloud Computing</strong> covers cloud security fundamentals including virtual networks, shared responsibility models, and Azure-specific considerations.</p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li>Successful SSH connection to Azure-hosted patient portal</li>
+          <li>PCAP file with 5-10 minutes of captured traffic</li>
+          <li>Screenshots of connection and traffic capture</li>
+          <li>Understanding of cloud infrastructure hosting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: TRAFFIC ANALYSIS -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_3_2.svg" alt="Checkpoint 2 - Traffic Analysis & Finding Documentation" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">A comprehensive analysis of the live traffic capture using all the Wireshark techniques you learned in Lab 3.2, with findings documented for Jennifer Walsh's review.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This is where your training pays off. Every technique you practiced with training PCAPs now applies to live client data. Jennifer needs to know: Is this traffic normal? Are there indicators of compromise? Should she escalate or stand down?</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Apply ALL Lab 3.2 techniques to your live capture:</strong></p>
+    
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Protocol Distribution:</strong> Statistics → Protocol Hierarchy</li>
+      <li><strong style="color: #ffffff;">Endpoint Statistics:</strong> Statistics → Endpoints</li>
+      <li><strong style="color: #ffffff;">TCP Stream Reconstruction:</strong> Right-click → Follow → TCP Stream</li>
+      <li><strong style="color: #ffffff;">IO Graph:</strong> Statistics → IO Graphs</li>
+      <li><strong style="color: #ffffff;">Flow Graph:</strong> Statistics → Flow Graph</li>
+    </ol>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Tiered Discovery Classification</h4>
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin-bottom: 25px;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Tier</th>
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Classification</th>
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #FF3B3B; font-weight: 600;">Critical</td>
+          <td style="padding: 12px 15px;">Immediate Action</td>
+          <td style="padding: 12px 15px;">Active compromise, data exfiltration, malware C2</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #FF9F1C; font-weight: 600;">High</td>
+          <td style="padding: 12px 15px;">Significant Risk</td>
+          <td style="padding: 12px 15px;">Exposed credentials, unencrypted data</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #FFF700; font-weight: 600;">Medium</td>
+          <td style="padding: 12px 15px;">Notable Concern</td>
+          <td style="padding: 12px 15px;">Unusual patterns, misconfigurations</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px; color: #00D26A; font-weight: 600;">Low</td>
+          <td style="padding: 12px 15px;">Informational</td>
+          <td style="padding: 12px 15px;">Expected patterns, baseline documentation</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Screenshot #22-27 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshots #22-27</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture each analysis technique: Protocol Hierarchy (#22), Endpoints (#23), TCP Stream (#24), IO Graph (#25), Flow Graph (#26), Notable Finding (#27).</p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li>Comprehensive analysis using all 5 Wireshark techniques</li>
+          <li>Tiered classification for each finding</li>
+          <li>Evidence screenshots for each technique</li>
+          <li>Clear answer to Jennifer's question: escalate or stand down?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: REPORT COMPILATION -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_3_3.svg" alt="Checkpoint 3 - Report Compilation & Delivery" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Compile your three weeks of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Technical skills are only half the job. The ability to communicate findings clearly, professionally, and actionably is what separates good analysts from great ones. Jennifer Walsh doesn't need raw data — she needs a report she can present to her board.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Engagement Packet Structure</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Title Page:</strong> Engagement title, client name, your name, date</li>
+      <li><strong style="color: #ffffff;">Executive Summary:</strong> 1-page non-technical overview</li>
+      <li><strong style="color: #ffffff;">Table of Contents:</strong> Auto-generated with page numbers</li>
+      <li><strong style="color: #ffffff;">Assessment Results:</strong> Tiered findings with evidence</li>
+      <li><strong style="color: #ffffff;">Risk Analysis:</strong> Business impact assessment</li>
+      <li><strong style="color: #ffffff;">Recommendations:</strong> Prioritized actions</li>
+      <li><strong style="color: #ffffff;">Professional Reflection:</strong> What you learned</li>
+      <li><strong style="color: #ffffff;">References:</strong> Minimum 10 valid references</li>
+      <li><strong style="color: #ffffff;">Appendix:</strong> Raw outputs, additional screenshots</li>
+    </ul>
+    
+    <!-- Jennifer Walsh Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/jennifer-walsh.png" alt="Jennifer Walsh" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Jennifer Walsh</div>
+          <div style="font-size: 13px; color: #B0B8C4;">CISO, Gulf Coast Healthcare Partners</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"We can't secure what we can't see. Your analysis helps us see what's happening on our network. Give me clear findings I can present to my board — they don't understand packet captures, but they understand business risk."</p>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting Weeks 1-2:</strong> Include Labs 3.1 and 3.2 work</li>
+          <li><strong style="color: #ffffff;">Technical jargon:</strong> Executive summary must be non-technical</li>
+          <li><strong style="color: #ffffff;">Missing references:</strong> 10 minimum — man pages count!</li>
+          <li><strong style="color: #ffffff;">PDF submission:</strong> Must be DOCX format</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li>Complete Engagement Packet with all sections</li>
+          <li>Executive summary answering Jennifer's question</li>
+          <li>8+ NEW screenshots embedded in report</li>
+          <li>Minimum 10 references</li>
+          <li>Professional formatting ready for client delivery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PURPLE TEAM PERSPECTIVE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspective" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Network traffic analysis serves both offensive and defensive security operations. Understanding both perspectives makes you a more complete analyst.</p>
+    
+    <!-- RED TEAM -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/bug_report.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 59, 59, 0.12); border-left: 4px solid #FF3B3B; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF3B3B; margin-bottom: 12px;">What Red Team Learns</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">What can an attacker learn from this traffic?</strong> Your analysis revealed protocol distribution, active endpoints, and potentially exposed services. An attacker conducting reconnaissance would use these same techniques to map the attack surface.</p>
+      </div>
+    </div>
+    
+    <!-- BLUE TEAM -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What Blue Team Learns</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">What should defenders monitor?</strong> Your protocol hierarchy analysis establishes baseline "normal" traffic. Anomaly detection requires knowing what's expected — then anything outside that pattern becomes an alert candidate.</p>
+      </div>
+    </div>
+    
+    <!-- PURPLE CONNECTION -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/sync.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">The Purple Team Connection</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">How do these perspectives inform each other?</strong> The Gulf Coast scenario demonstrates purple team value: analysis that serves both offensive reconnaissance (what can an attacker learn?) and defensive assessment (what should we monitor?). This dual perspective is exactly what NEXUS delivers.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Before submitting, verify you have completed all requirements:</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Screenshots Required (This Week)</h3>
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin-bottom: 25px;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600; width: 60px;">#</th>
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">20</td>
+          <td style="padding: 12px 15px;">Successful SSH connection to Azure VM</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">21</td>
+          <td style="padding: 12px 15px;">Live SSH traffic capture in Wireshark</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">22-27</td>
+          <td style="padding: 12px 15px;">Analysis techniques (Protocol Hierarchy, Endpoints, TCP Stream, IO Graph, Flow Graph, Notable Finding)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Submission Requirements</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>☐ File format: <strong style="color: #00D26A;">.docx only</strong> (no PDFs)</li>
+      <li>☐ Filename: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">LastName_Lab3.3_EngagementPacket.docx</code></li>
+      <li>☐ All screenshots embedded (not linked)</li>
+      <li>☐ Minimum 10 references</li>
+      <li>☐ Submitted before deadline</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- GRADING CRITERIA -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Grading_Standards_Header.svg" alt="Grading Standards" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FFF700; border-bottom: 4px solid #FFF700;">
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Engagement Packets use the <strong style="color: #ffffff;">Quality Ladder Rubric</strong>:</p>
+    
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin-bottom: 25px;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Category</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 80px;">Weight</th>
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Measures</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Assignment Objectives</td>
+          <td style="padding: 12px 15px; text-align: center;">40%</td>
+          <td style="padding: 12px 15px;">All three weeks completed, all sections present</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Technical Documentation</td>
+          <td style="padding: 12px 15px; text-align: center;">40%</td>
+          <td style="padding: 12px 15px;">Reproducibility, accuracy, evidence quality</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Professional Communication</td>
+          <td style="padding: 12px 15px; text-align: center;">20%</td>
+          <td style="padding: 12px 15px;">Client-ready language, formatting</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Automatic Zero Conditions</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>No submission by deadline</li>
+      <li>AI-generated report content (+ academic integrity referral)</li>
+      <li>Fabricated or shared screenshots (+ academic integrity referral)</li>
+      <li>Zero screenshots or zero references</li>
+      <li>Wrong file format (PDF instead of DOCX)</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Bonus Opportunity (+5%)</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;"><strong style="color: #00D26A;">NetworkMiner Analysis:</strong> Install NetworkMiner on Windows and analyze the same PCAP. Compare and contrast its capabilities with Wireshark in an additional section.</p>
+    
+    <!-- Rubric callout -->
+    <div style="background: rgba(255, 247, 0, 0.1); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0;">
+      <p style="margin: 0; font-weight: 600; color: #FFF700; margin-bottom: 8px;">FULL RUBRIC AVAILABLE</p>
+      <p style="margin: 0; color: #B0B8C4; line-height: 1.8;">See Canvas: <strong style="color: #ffffff;">IS3513_Assessment_Report_Rubric_v2.docx</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP? -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <h3 style="color: #4169E1; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Contact Information</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Discord:</strong> Course Discord server (link in Canvas)</li>
+    </ul>
+    
+    <h3 style="color: #4169E1; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">AI Policy Reminder</h3>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">You may use GenAI for formatting, clarification, or grammar. You may <strong style="color: #ffffff;">not</strong> use GenAI to generate technical explanations, write your discussion, or fabricate screenshots.</p>
+    
+    <h3 style="color: #4169E1; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h3>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late reports not accepted unless prior arrangements made. This lab is eligible to be dropped.</p>
+    
+    <h3 style="color: #4169E1; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">What's Next?</h3>
+    <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Module 4: Threats &amp; Attacks</strong> begins next week. You'll shift focus to password security with Brazos Financial Group and Alamo Industries as clients.</p>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 2.1 - Cryptographic Foundations</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 2.1 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab2_1_Header.svg" alt="Lab 2.1 - Cryptographic Foundations" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 2: Cryptography &amp; Authentication</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week begins your cryptography training at NEXUS Security. You'll master the fundamental cryptographic operations that underpin modern security: hashing for integrity verification, symmetric encryption for data protection, asymmetric encryption for secure key exchange, and digital signatures for non-repudiation. These skills prepare you for the Gulf Coast Healthcare engagement in Week 3, where you'll remediate certificate issues on their patient portal.</p>
+    
+    <!-- Mentor Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Cryptography isn't magic — it's math. And math done wrong is worse than no math at all because it gives false confidence. <strong style="color: #ffffff;">Every healthcare organization I've audited had encryption somewhere.</strong> Most had it implemented incorrectly. This week, you'll learn to do it right."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 6 — Applied Cryptography | Chapter 11 — Authentication and Remote Access</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Generate and compare cryptographic hashes using SHA-256</li>
+      <li>Encrypt and decrypt files using AES symmetric encryption</li>
+      <li>Generate RSA keypairs and perform asymmetric encryption</li>
+      <li>Create and verify digital signatures</li>
+      <li>Document all operations for your Lab 2.3 Engagement Packet</li>
+    </ul>
+    
+    <!-- Save For Lab 2.3 callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 2.3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 1 of a 3-week module</strong>. Create a folder called <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module2_Screenshots</code> and save all screenshots there. You'll need them for your Engagement Packet in Week 3.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: Hash Functions</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Symmetric Encryption</td>
+          <td style="padding: 12px 15px; text-align: center;">25-35 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: Asymmetric Encryption</td>
+          <td style="padding: 12px 15px; text-align: center;">30-40 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 4: Digital Signatures</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Canvas Quiz</td>
+          <td style="padding: 12px 15px; text-align: center;">15-20 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">2-3 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: Hash Functions -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_1_1.svg" alt="Checkpoint 1 - Hash Functions" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect — how small input changes produce completely different outputs.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Hashes are the foundation of data integrity. Every time you verify a software download, check file integrity, or validate a digital signature, you're using hashes. In healthcare, hash verification proves that patient records haven't been tampered with — critical for audit trails and legal compliance.</p>
+    
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Auditors don't care what you did. They care what you can prove you did. Hash verification is how you prove data integrity."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Create a test file and generate its hash</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a working directory:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/lab2-crypto
+cd ~/lab2-crypto</div>
+      </li>
+      <li>Create a sample patient record file:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">echo "Patient: John Smith, DOB: 1985-03-15, MRN: 12345" > patient.txt</div>
+      </li>
+      <li>Generate the SHA-256 hash:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sha256sum patient.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #1 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #1</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the file creation and SHA-256 hash output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">01-hash-sha256.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Demonstrate the avalanche effect</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a slightly modified file (change one character):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">echo "Patient: John Smith, DOB: 1985-03-16, MRN: 12345" > patient2.txt</div>
+      </li>
+      <li>Compare the hashes:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sha256sum patient.txt patient2.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #2 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #2</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture both hashes side-by-side showing completely different outputs despite minimal input change. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">02-hash-comparison.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Using MD5 or SHA-1:</strong> These are deprecated for security purposes — always use SHA-256 or stronger</li>
+          <li><strong style="color: #ffffff;">Confusing hashing with encryption:</strong> Hashes are one-way; you cannot reverse them to get original data</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots showing SHA-256 hash generation and the avalanche effect. The hashes should be completely different despite only one character changing in the input.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers cryptographic hash functions and their security properties. Pay attention to collision resistance and why MD5/SHA-1 are deprecated.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">NIST SP 800-57 - Recommendation for Key Management. Available at: https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: Symmetric Encryption -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_1_2.svg" alt="Checkpoint 2 - Symmetric Encryption" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Encrypting and decrypting files using AES-256, the symmetric encryption standard required by HIPAA for protecting patient health information (PHI) at rest.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard — it's approved for classified government information and required by most healthcare compliance frameworks.</p>
+    
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"HIPAA requires encryption of PHI at rest. AES-256 is the standard. Know it cold."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Encrypt a file with AES-256</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Encrypt your patient file (use password <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nexus2026</code> when prompted):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc</div>
+      </li>
+      <li>Verify the encrypted file and view its contents:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la patient.txt*
+xxd patient.txt.enc | head</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #3 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the encryption command and the hex dump showing unreadable encrypted content. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">03-symmetric-encrypt.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Decrypt the file</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Decrypt using the same password:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl enc -aes-256-cbc -d -pbkdf2 -in patient.txt.enc -out patient_decrypted.txt</div>
+      </li>
+      <li>Verify the decryption worked:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat patient_decrypted.txt
+diff patient.txt patient_decrypted.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #4 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #4</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the decryption and verification showing the original content restored. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">04-symmetric-decrypt.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting the password:</strong> Symmetric encryption requires the same password for decryption</li>
+          <li><strong style="color: #ffffff;">Using weak algorithms:</strong> DES is obsolete; always use AES-256</li>
+          <li><strong style="color: #ffffff;">Missing -pbkdf2 flag:</strong> Modern OpenSSL requires this for key derivation</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots showing successful encryption (unreadable ciphertext) and decryption (original plaintext restored).</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers symmetric encryption algorithms including AES. Understand the difference between block modes (CBC, GCM) and why key management is critical.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your textbook Chapter 4 covers PKI and certificate authorities. RFC 5280 defines the X.509 certificate format: https://tools.ietf.org/html/rfc5280</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: Asymmetric Encryption -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_1_3.svg" alt="Checkpoint 3 - Asymmetric Encryption" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys — a public key anyone can use to encrypt, and a private key only you possess to decrypt.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Asymmetric encryption solves the key distribution problem. How do you securely share a symmetric key with someone you've never met? You use their public key. This is how TLS/HTTPS works, how secure email works, and how certificates establish trust.</p>
+    
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Encryption is not magic. It's math. And math done wrong is worse than no math at all — it gives false confidence."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Generate an RSA keypair</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Generate a 2048-bit RSA private key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl genrsa -out private.pem 2048</div>
+      </li>
+      <li>Extract the public key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl rsa -in private.pem -pubout -out public.pem</div>
+      </li>
+      <li>View both keys:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la *.pem
+cat public.pem</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #5 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #5</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the keypair generation, file listing, and public key contents. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">05-rsa-keypair.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Encrypt with public key</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a small message to encrypt:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">echo "Secret: AES key is nexus2026" > secret.txt</div>
+      </li>
+      <li>Encrypt with the public key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl rsautl -encrypt -pubin -inkey public.pem -in secret.txt -out secret.enc</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #6 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #6</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the encryption command and verify the encrypted file exists. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">06-rsa-encrypt.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Decrypt with private key</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Decrypt using the private key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl rsautl -decrypt -inkey private.pem -in secret.enc -out secret_decrypted.txt
+cat secret_decrypted.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #7 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #7</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the decryption showing the original secret message restored. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">07-rsa-decrypt.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Confusing public/private:</strong> Encrypt with public, decrypt with private (for confidentiality)</li>
+          <li><strong style="color: #ffffff;">Data size limits:</strong> RSA can only encrypt small amounts of data directly</li>
+          <li><strong style="color: #ffffff;">Exposing private key:</strong> Never share or commit private keys</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Three screenshots showing keypair generation, public key encryption, and private key decryption.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers asymmetric cryptography including RSA. Understand why we use asymmetric crypto for key exchange but symmetric for bulk data.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How does OpenSSL implement encryption algorithms? Research the difference between block ciphers and stream ciphers.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OpenSSL Documentation - Cryptographic Algorithms. Available at: https://www.openssl.org/docs/</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 4: Digital Signatures -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_1_4.svg" alt="Checkpoint 4 - Digital Signatures" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). This is the inverse of encryption.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Digital signatures provide non-repudiation — proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable.</p>
+    
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Non-repudiation matters in healthcare. When a provider signs an order, it's legally binding."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Sign a document</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a document to sign:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">echo "Medication Order: Amoxicillin 500mg TID x 10 days - Dr. Chen" > order.txt</div>
+      </li>
+      <li>Sign with your private key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl dgst -sha256 -sign private.pem -out order.sig order.txt
+ls -la order.*</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #8 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #8</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the signing command and file listing showing both the order and signature files. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">08-signature-create.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Verify the signature</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Verify using the public key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl dgst -sha256 -verify public.pem -signature order.sig order.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #9 (Note: This is actually screenshot 9 but we need to end with 8 based on source) -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #9 (FINAL)</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the verification showing "Verified OK" message. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">09-signature-verify.png</code> — <strong style="color: #00D26A;">this is your last screenshot for Lab 2.1!</strong></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Confusing sign/verify with encrypt/decrypt:</strong> Sign with private, verify with public</li>
+          <li><strong style="color: #ffffff;">Modified document:</strong> Any change to the document will cause verification to fail</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots showing signature creation and successful verification with "Verified OK" output.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers digital signatures and non-repudiation. Understand how signatures combine hashing with asymmetric crypto to provide both integrity and authenticity.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What makes a hash algorithm 'cryptographically secure'? Research why MD5 and SHA-1 are considered deprecated for security purposes.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">NIST Policy on Hash Functions. Available at: https://csrc.nist.gov/projects/hash-functions</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (8 Required)</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-hash-sha256.png</code> — SHA-256 hash generation</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-hash-comparison.png</code> — Avalanche effect demonstration</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-symmetric-encrypt.png</code> — AES-256 encryption</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-symmetric-decrypt.png</code> — AES-256 decryption</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">05-rsa-keypair.png</code> — RSA keypair generation</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">06-rsa-encrypt.png</code> — Public key encryption</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">07-rsa-decrypt.png</code> — Private key decryption</li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">08-signature-create.png</code> — Digital signature creation</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Environment Verification</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>&#9744; VM hostname visible in all screenshots</li>
+      <li>&#9744; All files in <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">~/lab2-crypto</code> directory</li>
+      <li>&#9744; All screenshots saved to <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module2_Screenshots</code> folder</li>
+    </ul>
+    
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 2.1 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This lab requires your <strong style="color: #fff;">Kali Linux VM from Lab 1.1</strong>. If you haven't completed Lab 1.1, stop here and complete it first.</p>
+    
+    <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Lab Environment Only</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The keys and passwords you create in this lab are <strong style="color: #ffffff;">for training purposes only</strong>. Never use lab-generated keys in production systems.</p>
+      </div>
+    </div>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. Two Foundation Labs can be dropped, so plan accordingly.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Explain OpenSSL command syntax and options</li>
+      <li>Troubleshoot errors and understand output</li>
+      <li>Understand cryptographic concepts from the readings</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete the hands-on work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em></p>
+    
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 2.1 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 2.2: Authentication Systems</strong> where you'll learn SSH key management, certificate-based authentication, and MFA concepts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 1.1 - Kali Linux Environment Setup</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 1.1 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab1_1_Header.svg" alt="Lab 1.1 - Kali Linux Environment Setup" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 1: Threat Intelligence &amp; Reconnaissance</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.</p>
+    
+    <!-- Mentor Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maya Rodriguez</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Senior Penetration Tester, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Every analyst at NEXUS starts here — building their own lab environment. This isn't just homework; it's your personal security workstation. <strong style="color: #ffffff;">Treat it like your toolkit.</strong> You'll use this setup for every client engagement this semester. Document everything — your future self will thank you when you're writing runbooks at 2 AM."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 1 — Introduction to Security | Chapter 2 — General Security Concepts</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Deploy Kali Linux as your security operations platform</li>
+      <li>Install and verify Docker for containerized client targets</li>
+      <li>Document your environment for your Lab 1.3 Engagement Packet</li>
+    </ul>
+    
+    <!-- Save For Lab 1.3 callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 1.3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 1 of a 3-week module</strong>. Create a folder called <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module1_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Week 3.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: Download and install VirtualBox</td>
+          <td style="padding: 12px 15px; text-align: center;">15-20 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Download Kali Linux ISO</td>
+          <td style="padding: 12px 15px; text-align: center;">20-45 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: Create and configure VM</td>
+          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 4: Install Kali Linux</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 5: Install and verify Docker</td>
+          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 6: System verification</td>
+          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">85-140 min</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: Download and Install VirtualBox -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_1.svg" alt="Checkpoint 1 - Download and Install VirtualBox" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Installing VirtualBox, a free hypervisor that allows you to run virtual machines on your computer.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Virtual machines allow you to run a complete operating system inside your existing OS. This is how security professionals maintain isolated environments for testing tools, malware analysis, and client engagements without risking their primary system.</p>
+    
+    <!-- HOW -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Navigate to <a href="https://www.virtualbox.org/wiki/Downloads" style="color: #4169E1;">virtualbox.org/wiki/Downloads</a></li>
+      <li>Download the installer for your host operating system (Windows, macOS, or Linux)</li>
+      <li>Run the installer with default settings</li>
+      <li>Restart your computer if prompted</li>
+      <li>Launch VirtualBox to verify installation</li>
+    </ol>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">macOS users:</strong> You may need to allow the kernel extension in System Preferences &gt; Security &amp; Privacy</li>
+          <li><strong style="color: #ffffff;">Windows users:</strong> Enable Hyper-V/virtualization in BIOS if VirtualBox won't start VMs</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox Manager window opens successfully, showing an empty list of virtual machines.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation — a core security control that prevents testing activities from affecting production systems. <em>Reading this chapter? That's a reference for your Lab 1.3 report.</em></p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between Type 1 and Type 2 hypervisors? Research where VirtualBox falls in this classification and why it matters for security testing.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox User Manual, Chapter 1: Introduction. Oracle Corporation. Available at: https://www.virtualbox.org/manual/</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: Download Kali Linux ISO -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_2.svg" alt="Checkpoint 2 - Download Kali Linux ISO" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Downloading the Kali Linux installer image (~4GB) from the official source.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Kali Linux is a Debian-based distribution designed specifically for penetration testing and security auditing. It comes pre-loaded with hundreds of security tools that you'll use throughout the semester for both offensive and defensive work.</p>
+    
+    <!-- HOW -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Navigate to <a href="https://www.kali.org/get-kali/#kali-installer-images" style="color: #4169E1;">kali.org/get-kali</a></li>
+      <li>Select <strong style="color: #fff;">Installer Images</strong></li>
+      <li>Choose the correct architecture:
+        <ul style="margin-top: 8px; margin-left: 20px;">
+          <li><strong style="color: #fff;">64-bit (amd64):</strong> For Intel/AMD processors</li>
+          <li><strong style="color: #fff;">Apple Silicon (arm64):</strong> For M1/M2/M3 Macs using UTM</li>
+        </ul>
+      </li>
+      <li>Download the ISO file (approximately 4GB)</li>
+      <li>Note the download location — you'll need this for the next checkpoint</li>
+    </ol>
+    
+    <!-- PRO TIP -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Time-Saving Tip</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Start this download before working on other tasks. A 4GB download can take 10-30 minutes depending on your connection. You can proceed to review the remaining checkpoints while it downloads.</p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Wrong architecture:</strong> Download the amd64 (64-bit) version unless you have Apple Silicon</li>
+          <li><strong style="color: #ffffff;">Unofficial sources:</strong> Only download from kali.org — third-party ISOs may contain malware</li>
+          <li><strong style="color: #ffffff;">Interrupted download:</strong> If download fails, delete partial file and restart — don't resume corrupted downloads</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A file named something like <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-linux-2024.x-installer-amd64.iso</code> in your Downloads folder.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 1 discusses security tools and the importance of using trusted sources. Kali Linux is purpose-built for security testing, containing tools you'll use throughout this course for both offensive and defensive work.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Why is Kali Linux based on Debian rather than another distribution? Research the advantages of Debian's package management for security tools.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Kali Linux Documentation - What is Kali Linux? Offensive Security. Available at: https://www.kali.org/docs/introduction/what-is-kali-linux/</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: Create and Configure VM -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_3.svg" alt="Checkpoint 3 - Create and Configure VM" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Proper VM configuration affects performance, stability, and functionality. The VM name is especially important — it appears in your terminal prompt and must be visible in screenshots for assignment verification.</p>
+    
+    <!-- HOW -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>In VirtualBox Manager, click <strong style="color: #fff;">New</strong></li>
+      <li>Configure the VM name using this exact format: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code>
+        <ul style="margin-top: 8px; margin-left: 20px;">
+          <li>Example: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-newsom-abc123</code></li>
+        </ul>
+      </li>
+      <li>Set Type: <strong style="color: #fff;">Linux</strong>, Version: <strong style="color: #fff;">Debian (64-bit)</strong></li>
+      <li>Allocate RAM: <strong style="color: #fff;">4096 MB minimum</strong> (8192 MB recommended if available)</li>
+      <li>Create a virtual hard disk: <strong style="color: #fff;">VDI format, Dynamically allocated, 80 GB</strong></li>
+      <li>Before starting, go to <strong style="color: #fff;">Settings &gt; System &gt; Processor</strong>: Allocate 2+ CPUs</li>
+      <li>Go to <strong style="color: #fff;">Settings &gt; Storage</strong>: Click the empty disk under Controller: IDE, then click the disk icon and choose your Kali ISO</li>
+    </ol>
+    
+    <!-- CRITICAL -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Critical: VM Naming Convention</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your VM name <strong style="color: #fff;">must</strong> follow the format <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code>. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots.</p>
+      </div>
+    </div>
+    
+    <!-- SCREENSHOT -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #1</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">01-vm-settings.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Wrong VM name format:</strong> Must be kali-lastname-studentID exactly — this appears in all your screenshots</li>
+          <li><strong style="color: #ffffff;">Too little RAM:</strong> 2GB minimum, 4GB recommended — less causes performance issues</li>
+          <li><strong style="color: #ffffff;">ISO not attached:</strong> VM won't boot if the ISO isn't mounted in the optical drive settings</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A VM entry in VirtualBox Manager with your name following the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code> format, with the Kali ISO attached.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 covers system resources and security considerations. Proper resource allocation ensures your testing environment performs reliably without impacting your host system's stability.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What are VDI, VMDK, and VHD disk formats? Research the differences and why VDI is preferred for VirtualBox.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox User Manual, Chapter 5: Virtual Storage. Oracle Corporation. Available at: https://www.virtualbox.org/manual/ch05.html</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 4: Install Kali Linux -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_4.svg" alt="Checkpoint 4 - Install Kali Linux" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Running the Kali Linux installer inside your virtual machine to create a functional security testing environment.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Kali Linux comes pre-loaded with hundreds of security tools. A proper installation ensures all tools work correctly and the system is stable for the entire semester.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Start the VM in VirtualBox Manager</li>
+      <li>Select <strong style="color: #fff;">Graphical Install</strong> from the boot menu</li>
+      <li>Choose your language, location, and keyboard layout</li>
+      <li>Set hostname to match your VM name: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code></li>
+      <li>Leave domain name blank</li>
+      <li>Create your user account (remember these credentials!)</li>
+      <li>Use <strong style="color: #fff;">Guided - use entire disk</strong> for partitioning</li>
+      <li>Select <strong style="color: #fff;">All files in one partition</strong></li>
+      <li>Confirm and write changes to disk</li>
+      <li>Wait for installation to complete (15-25 minutes)</li>
+      <li>Reboot when prompted</li>
+    </ol>
+    
+    <!-- SCREENSHOT -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #2</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the Kali desktop after login, with the terminal open showing your hostname. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">02-kali-desktop.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting credentials:</strong> Write down your username and password — you'll need them all semester</li>
+          <li><strong style="color: #ffffff;">Wrong hostname:</strong> The hostname should match your VM name format</li>
+          <li><strong style="color: #ffffff;">Installation hangs:</strong> If stuck, check that VT-x/AMD-V is enabled in BIOS</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses operating system security and hardening. Understanding the installation process helps you make informed security decisions about system configuration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 5: Install and Verify Docker -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_5.svg" alt="Checkpoint 5 - Install and Verify Docker" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Installing Docker, the containerization platform we'll use to deploy vulnerable lab targets throughout the course.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers — without it, you can't complete the labs.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Open a terminal and run:</p>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0 25px 0; overflow-x: auto;">
+      <div>sudo apt update</div>
+      <div>sudo apt install -y docker.io docker-compose</div>
+      <div>sudo systemctl enable docker --now</div>
+      <div>sudo usermod -aG docker $USER</div>
+    </div>
+    
+    <!-- PRO TIP -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Pro Tip</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After adding yourself to the docker group, you must <strong style="color: #fff;">log out and back in</strong> (or reboot) for the group membership to take effect. Until then, you'll need <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">sudo</code> for docker commands.</p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">After logging back in, verify the installation:</p>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0 25px 0;">
+      docker --version<br>
+      docker run hello-world
+    </div>
+    
+    <!-- SCREENSHOT -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">docker --version</code> and the hello-world output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">03-docker-version.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Permission denied:</strong> You didn't log out after adding yourself to the docker group</li>
+          <li><strong style="color: #ffffff;">Cannot connect to daemon:</strong> Docker service isn't running — check with <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo systemctl status docker</code></li>
+          <li><strong style="color: #ffffff;">Network errors:</strong> VM needs internet access — check VirtualBox network settings</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Docker installed and running. The <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">hello-world</code> container should display "Hello from Docker!" confirming everything works.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between a container and a virtual machine? Research how Docker's architecture differs from VirtualBox and why containers are preferred for deploying applications.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Docker Documentation: Get Docker. Available at: https://docs.docker.com/get-docker/</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 6: System Verification -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_6.svg" alt="Checkpoint 6 - System Verification" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Running a series of commands to verify your environment is properly configured and all required tools are available.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Catching configuration issues now prevents frustration later. A working baseline environment means you can focus on learning security concepts instead of troubleshooting setup problems.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Verification Commands</h4>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Run each command and verify the output:</p>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0 25px 0; overflow-x: auto;">
+      <div># System info (should show your hostname)</div>
+      <div>hostname</div>
+      <div>uname -a</div>
+      <div>&nbsp;</div>
+      <div># Network connectivity</div>
+      <div>ip addr</div>
+      <div>ping -c 3 8.8.8.8</div>
+      <div>&nbsp;</div>
+      <div># Key security tools</div>
+      <div>nmap --version</div>
+      <div>wireshark --version</div>
+      <div>john --help | head -5</div>
+      <div>&nbsp;</div>
+      <div># Docker</div>
+      <div>docker --version</div>
+      <div>docker ps</div>
+    </div>
+    
+    <!-- SCREENSHOT -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #4</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">04-system-verification.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">No network:</strong> Check VirtualBox network adapter settings (NAT should work)</li>
+          <li><strong style="color: #ffffff;">Tool not found:</strong> Some tools may need installation — use <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo apt install &lt;tool-name&gt;</code></li>
+          <li><strong style="color: #ffffff;">Wrong hostname:</strong> If hostname doesn't match expected format, ask in Discord before proceeding</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">All verification commands running successfully. Your Kali environment is ready for the semester's security labs and exercises.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 introduces the security tools and platforms you'll use throughout the course. Your verified environment is the foundation for all hands-on exercises.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Explore the Kali Linux tools menu. How many categories of tools are available? Pick one category and research what 2-3 of its tools do.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (4 Required)</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-vm-settings.png</code> — VM configuration with correct name</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-kali-desktop.png</code> — Kali desktop after login</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-docker-version.png</code> — Docker version output</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-system-verification.png</code> — All verification commands</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Environment Verification</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ VM named <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">kali-lastname-studentID</code></li>
+      <li>☐ Kali Linux installed and boots to desktop</li>
+      <li>☐ Docker installed and running</li>
+      <li>☐ All screenshots saved to <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module1_Screenshots</code> folder</li>
+    </ul>
+    
+    <!-- Quiz reminder callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 1.1 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This course officially supports <strong style="color: #fff;">VirtualBox with Kali Linux installed from ISO</strong>. Students using other hypervisors (VMware, Parallels, UTM) are responsible for their own troubleshooting.</p>
+    
+    <!-- GETTING HELP -->
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+    </ul>
+    
+    <!-- LATE WORK POLICY -->
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational setup work.</p>
+    
+    <!-- GENAI POLICY -->
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Explain command syntax and tool functionality</li>
+      <li>Troubleshoot errors and technical issues</li>
+      <li>Understand concepts from the readings</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete the hands-on work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
+    
+    <!-- ACADEMIC INTEGRITY -->
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+    
+    <!-- Next steps callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt=— style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 1.1 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 1.2: Reconnaissance Tool Exploration</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

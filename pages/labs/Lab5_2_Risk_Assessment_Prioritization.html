@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 5.2 - Risk Assessment &amp; Prioritization</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 5.2 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab5_2_Header.svg" alt="Lab 5.2 - Risk Assessment &amp; Prioritization" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 5: Infrastructure, Risk &amp; Resilience</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Last week you identified 28 vulnerabilities in LoneStar DevOps infrastructure. This week, you'll transform that raw data into actionable intelligence. Not all vulnerabilities are equal &mdash; a CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets.</p>
+    
+    <!-- Marcus Chen Mentor Quote -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/marcus-chen.png" alt="Marcus Chen" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; color: #7B68EE; margin-bottom: 4px;">Marcus Chen</div>
+        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">Founder &amp; Principal Consultant, NEXUS Security</div>
+        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Anyone can run a scanner and produce a list of CVEs. What separates a consultant from a technician is <strong style="color: #ffffff;">context</strong>. A vulnerability report that says 'fix everything' is worthless. A report that says 'fix these three things first because they expose customer data and the enterprise deal depends on it' &mdash; that's worth the invoice."</p>
+      </div>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 20 &mdash; Risk Management | Chapter 21 &mdash; Change Management</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Focus Areas</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>CVSS 3.1 scoring methodology and interpretation</li>
+      <li>Business impact assessment techniques</li>
+      <li>Risk matrix construction and visualization</li>
+      <li>Constraint-aware prioritization frameworks</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Score all Lab 5.1 vulnerabilities using CVSS 3.1</li>
+      <li>Map vulnerabilities to business assets and assess impact</li>
+      <li>Construct a risk matrix that communicates to executives</li>
+      <li>Create a prioritized remediation roadmap for LoneStar DevOps</li>
+    </ul>
+    
+    <!-- Save For Lab 5.3 callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 5.3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Save all work to your <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Lab5-Screenshots</code> folder. You'll compile these into your Lab 5.3 Risk &amp; Vulnerability Assessment Report next week.</p>
+      </div>
+    </div>
+    
+    <!-- Warning callout -->
+    <div style="position: relative; margin-top: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Analysis-Focused Lab</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #fff;">Lab 5.1 completion is required.</strong> You need your vulnerability findings from last week &mdash; the 28 vulnerabilities you identified. This lab is analysis-focused rather than tool-focused. You won't be running terminal commands &mdash; you'll be working with CVSS calculators in your browser and building tables and matrices. <strong style="color: #fff;">Your rationale matters more than your ranking.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: CVSS Scoring Workshop</td>
+          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Business Impact Assessment</td>
+          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: Risk Matrix Construction</td>
+          <td style="padding: 12px 15px; text-align: center;">30-45 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 4: Prioritization Framework</td>
+          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
+        </tr>
+        <tr style="background: rgba(255, 159, 28, 0.15);">
+          <td style="padding: 12px 15px; font-weight: 600; color: #ffffff;">Total Estimated Time</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">3-4 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 3: CHECKPOINT 1 - CVSS SCORING WORKSHOP -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_1.svg" alt="Checkpoint 1: CVSS Scoring Workshop" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Scoring each vulnerability from Lab 5.1 using the CVSS 3.1 calculator.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">CVSS provides a standardized way to communicate vulnerability severity. It's the common language between security teams, vendors, and clients.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Access the CVSS Calculator:</strong> NVD calculator at <a href="https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator" style="color: #4169E1;">nvd.nist.gov</a> or FIRST calculator at <a href="https://www.first.org/cvss/calculator/3.1" style="color: #4169E1;">first.org</a></li>
+      <li><strong style="color: #ffffff;">For Each Vulnerability:</strong> Look up the CVE (if available) or calculate based on characteristics</li>
+      <li><strong style="color: #ffffff;">Document Components:</strong> Attack Vector, Attack Complexity, Privileges Required, User Interaction, Scope, C/I/A Impact</li>
+      <li><strong style="color: #ffffff;">Create a Comprehensive Table:</strong> CVE ID (if applicable), Vulnerability Name, Base Score, Severity Rating</li>
+    </ol>
+    
+    <!-- Screenshot #11 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture CVSS calculator with one vulnerability scored. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-cvss-calculator.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #12 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your complete vulnerability scores table. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-vulnerability-scores.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between CVSS Base, Temporal, and Environmental scores? Research how different organizations use each type.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched CVSS scoring. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">FIRST. Common Vulnerability Scoring System v3.1: Specification Document. https://www.first.org/cvss/specification-document</code></p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete table with CVSS scores for all vulnerabilities identified in Lab 5.1.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Vulnerability Assessment" section.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 4: CHECKPOINT 2 - BUSINESS IMPACT ASSESSMENT -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_2.svg" alt="Checkpoint 2: Business Impact Assessment" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Creating a vulnerability-to-asset mapping that shows how each finding affects LoneStar's business.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">A CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets. Business context determines actual risk.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Identify Critical Assets:</strong> webapp-prod (customer portal), db-primary (MySQL with customer data), dev-api (Node.js), mgmt-ssh (management access)</li>
+      <li><strong style="color: #ffffff;">Create Vulnerability-to-Asset Mapping:</strong> Which asset(s) does each vulnerability affect?</li>
+      <li><strong style="color: #ffffff;">Assess Impact Categories:</strong> Financial, Reputational, Operational, Compliance</li>
+      <li><strong style="color: #ffffff;">Document Business Context:</strong> $12M ARR, 200+ customers, Series B preparation</li>
+    </ol>
+    
+    <!-- Amanda Nguyen Client Quote -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/amanda-nguyen.png" alt="Amanda Nguyen" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; color: #00BCD4; margin-bottom: 4px;">Amanda Nguyen</div>
+        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">CEO &amp; Co-Founder, LoneStar DevOps</div>
+        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"I need to present to Longhorn Ventures in three weeks. <strong style="color: #ffffff;">I need to know: what could actually hurt us, and what's the plan to fix it?</strong>"</p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #13 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #13</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture vulnerability-to-asset mapping. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-asset-mapping.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #14 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture business impact assessment. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-business-impact.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Warning: Don't Forget jdavis -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Don't Forget jdavis</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Former employee with sudo access is a critical business risk &mdash; left 6 months ago, works for competitor.</p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Technical-only focus:</strong> A "medium" vuln on a critical asset may need higher priority</li>
+          <li><strong style="color: #ffffff;">Missing context:</strong> Document WHY each asset matters to the business</li>
+          <li><strong style="color: #ffffff;">Forgetting dependencies:</strong> A compromised build server affects everything it deploys</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How do you calculate the business impact of a potential breach? Research qualitative vs. quantitative risk assessment methods.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched business impact. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">FAIR: Factor Analysis of Information Risk. The Open Group, https://www.opengroup.org/certifications/openfair</code></p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A mapping of vulnerabilities to business assets with documented business impact.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Business Impact Analysis" section.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 5: CHECKPOINT 3 - RISK MATRIX CONSTRUCTION -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_3.svg" alt="Checkpoint 3: Risk Matrix Construction" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Building a 5×5 risk matrix plotting vulnerabilities by likelihood and impact.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Executives understand "red quadrant" better than "CVSS 9.8." A risk matrix translates technical assessments into business language.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Define Likelihood Levels (1-5):</strong> Rare → Unlikely → Possible → Likely → Almost Certain</li>
+      <li><strong style="color: #ffffff;">Define Impact Levels (1-5):</strong> Negligible → Minor → Moderate → Major → Catastrophic</li>
+      <li><strong style="color: #ffffff;">Calculate Risk Scores:</strong> Risk = Likelihood × Impact. Critical (15-25), High (10-14), Medium (5-9), Low (1-4)</li>
+      <li><strong style="color: #ffffff;">Create Visual Matrix:</strong> 5×5 grid, color-coded by risk level</li>
+    </ol>
+    
+    <!-- Screenshot #15 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #15</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture completed 5×5 risk matrix. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-risk-matrix.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #16 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #16</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture risk score calculations table. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-risk-scores.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Inconsistent scales:</strong> Use the same 1-5 scale for both likelihood and impact</li>
+          <li><strong style="color: #ffffff;">Missing color coding:</strong> Visual distinction makes the matrix actionable</li>
+          <li><strong style="color: #ffffff;">No thresholds defined:</strong> Document what score ranges mean (critical, high, medium, low)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is defense in depth and how does it relate to vulnerability management? Research layered security controls and compensating controls.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched defense strategies. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">CIS Controls v8. Center for Internet Security, https://www.cisecurity.org/controls</code></p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete risk matrix with all vulnerabilities categorized.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Risk Assessment Frameworks" section.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 6: CHECKPOINT 4 - PRIORITIZATION FRAMEWORK -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_4.svg" alt="Checkpoint 4: Prioritization Framework" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Creating a prioritized remediation roadmap that considers real-world constraints.</p>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">A report that says "fix everything immediately" is useless. LoneStar has a 2-person DevOps team, no staging environment, and can't take the portal offline during business hours.</p>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What factors beyond CVSS scores should influence vulnerability prioritization? Research how business context affects remediation urgency.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">FIRST Stakeholder-Specific Vulnerability Categorization (SSVC): <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://www.first.org/cvss/</code>. Your textbook Chapter 10 covers business impact analysis.</p>
+      </div>
+    </div>
+    
+    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Document Constraints:</strong> 2 DevOps engineers (Sarah + Miguel), no staging, no business-hours downtime, 4-week timeline</li>
+      <li><strong style="color: #ffffff;">Assess Remediation Complexity:</strong> Effort, downtime, skill level, testing requirements</li>
+      <li><strong style="color: #ffffff;">Create Prioritization Matrix:</strong> Risk Score vs. Remediation Complexity</li>
+      <li><strong style="color: #ffffff;">Build Prioritized Roadmap:</strong> Sequenced list with rationale for each position</li>
+    </ol>
+    
+    <!-- Sarah Martinez Client Quote -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/sarah-martinez.png" alt="Sarah Martinez" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; color: #00BCD4; margin-bottom: 4px;">Sarah Martinez</div>
+        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">Senior DevOps Engineer, LoneStar DevOps</div>
+        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"<strong style="color: #ffffff;">It's just me and Miguel, and we can't flip a switch and fix everything overnight.</strong> Give me quick wins I can show Amanda next week, and a realistic plan for the harder stuff."</p>
+      </div>
+    </div>
+    
+    <!-- Pro Tip: Key Insight -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Key Insight: CVSS vs. Business Priority</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">WordPress SQLi (CVSS 9.8)</strong> = High priority (marketing site)<br><strong style="color: #ffffff;">MySQL default creds (~CVSS 7.5)</strong> = HIGHEST priority (exposes ALL customer data)</p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #17 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #17</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture prioritization framework. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-prioritization-framework.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Screenshot #18 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #18</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture final remediation roadmap with rationale. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">18-remediation-roadmap.png</code></p>
+      </div>
+    </div>
+    
+    <!-- Common Pitfalls -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Unrealistic timelines:</strong> A 2-person team can't fix 28 vulns in one sprint</li>
+          <li><strong style="color: #ffffff;">No quick wins:</strong> Include some easy fixes to show early progress</li>
+          <li><strong style="color: #ffffff;">Missing rationale:</strong> Explain WHY you prioritized each item</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Dig Deeper -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to translate technical findings into business language.</p>
+      </div>
+    </div>
+    
+    <!-- That's a Reference -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched risk communication. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ISACA Risk IT Framework. ISACA, https://www.isaca.org/resources/risk-it</code></p>
+      </div>
+    </div>
+    
+    <!-- What You Should Have -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A prioritized remediation roadmap that accounts for LoneStar's constraints with clear rationale.</p>
+      </div>
+    </div>
+    
+    <!-- Textbook Reference -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Risk Treatment" section.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 7: PURPLE TEAM -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspectives" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
+    
+    <!-- Red Team -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/bug_report.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 59, 59, 0.12); border-left: 4px solid #FF3B3B; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF3B3B; margin-bottom: 12px;">What Red Team Learns</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Attackers don't prioritize by CVSS &mdash; they prioritize by <strong style="color: #ffffff;">attack path</strong>. MySQL default creds → customer database → API keys → cascade to 200+ customer environments.</p>
+      </div>
+    </div>
+    
+    <!-- Blue Team -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What Blue Team Learns</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Defenders need to communicate risk to stakeholders who don't understand CVEs. <strong style="color: #ffffff;">Your deliverables need to serve both technical and business audiences.</strong></p>
+      </div>
+    </div>
+    
+    <!-- Purple Team Connection -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/sync_alt.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">The Purple Team Connection</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Effective risk assessment combines both perspectives: technically sound + practically implementable.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 8: FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Checkpoint Verification</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 25px; line-height: 2; list-style: none;">
+      <li>☐ All Lab 5.1 vulnerabilities have CVSS scores</li>
+      <li>☐ Vulnerability-to-asset mapping is complete</li>
+      <li>☐ 5×5 risk matrix is complete and color-coded</li>
+      <li>☐ Prioritized remediation roadmap created with rationale</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Documentation (8 Screenshots)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 25px; line-height: 2; list-style: none;">
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-cvss-calculator.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-vulnerability-scores.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-asset-mapping.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-business-impact.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-risk-matrix.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-risk-scores.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-prioritization-framework.png</code></li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">18-remediation-roadmap.png</code></li>
+    </ul>
+    
+    <!-- Canvas Submission -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 5.2 Quiz</strong> in Canvas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 9: NEED HELP? -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Getting Help</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in #lab-help for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+    </ul>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h3>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &mdash; use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational work.</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h3>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may use AI tools (ChatGPT, Claude, etc.) to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Explain command syntax and tool functionality</li>
+      <li>Troubleshoot errors and technical issues</li>
+      <li>Understand concepts from the readings</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may <strong style="color: #FF3B3B;">NOT</strong> use AI tools to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete the hands-on work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Think of AI like a tutor, not a ghostwriter.</strong> It can help you understand and improve, but the work itself must be yours.</p>
+    
+    <!-- What's Next -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What's Next</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 5.3: Risk &amp; Vulnerability Assessment Report</strong> &mdash; Compile everything from Weeks 1 and 2 into a professional assessment report for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

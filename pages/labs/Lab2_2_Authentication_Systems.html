@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 2.2 - Authentication Systems</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 2.2 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab2_2_Header.svg" alt="Lab 2.2 - Authentication Systems" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 2: Cryptography &amp; Authentication</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week continues your security training at NEXUS with a deep dive into authentication systems. You'll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next week — their infrastructure relies on certificate-based authentication.</p>
+    
+    <!-- Mentor Quote -->
+    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Attackers have to be right once. Defenders have to be right every time. That's why we layer defenses — and authentication is your first layer. <strong style="color: #ffffff;">Passwords are the weakest link.</strong> This week, you'll learn what replaces them."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 6 — Applied Cryptography | Chapter 11 — Authentication and Remote Access</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Generate SSH keypairs using both RSA and ED25519 algorithms</li>
+      <li>Configure proper file permissions for SSH keys</li>
+      <li>Set up authorized_keys and SSH config files</li>
+      <li>Test SSH key-based authentication</li>
+      <li>Demonstrate understanding of MFA concepts</li>
+    </ul>
+    
+    <!-- Save For Lab 2.3 callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 2.3</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Add this week's screenshots to your existing <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module2_Screenshots</code> folder. You should have 8 screenshots from Lab 2.1. This week adds 7 more.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: SSH Key Generation</td>
+          <td style="padding: 12px 15px; text-align: center;">25-35 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Key Permissions</td>
+          <td style="padding: 12px 15px; text-align: center;">20-25 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: SSH Configuration</td>
+          <td style="padding: 12px 15px; text-align: center;">35-45 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 4: MFA Concepts</td>
+          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Canvas Quiz</td>
+          <td style="padding: 12px 15px; text-align: center;">15-20 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">2-3 hours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: SSH Key Generation -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_1.svg" alt="Checkpoint 1 - SSH Key Generation" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Generating SSH keypairs using both RSA and ED25519 algorithms. You'll compare the two key types and understand when to use each.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">SSH key authentication is the industry standard for secure remote access. Unlike passwords, keys are cryptographically strong, can't be guessed through brute force, and provide non-repudiation. Every server you'll manage in your career will use key-based authentication.</p>
+    
+    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"ED25519 is the modern choice — smaller keys, faster operations, same security. But you'll still see RSA everywhere. Know both."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Generate an RSA keypair</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a working directory for this lab:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/lab2-auth
+cd ~/lab2-auth</div>
+      </li>
+      <li>Generate a 4096-bit RSA key (press Enter for defaults, use passphrase <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nexus2026</code>):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh-keygen -t rsa -b 4096 -f ./id_rsa_lab -C "lab-rsa-key"</div>
+      </li>
+      <li>View the generated files:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la id_rsa*
+cat id_rsa_lab.pub</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #9 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #9</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the RSA key generation showing the randomart and file listing. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">09-keygen-rsa.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Generate an ED25519 keypair</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Generate an ED25519 key (modern, faster, smaller):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
+      </li>
+      <li>Compare the two key types:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la id_*
+wc -c id_rsa_lab.pub id_ed25519_lab.pub</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #10 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #10</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the ED25519 generation and comparison showing both key types with their sizes. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10-keygen-ed25519.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Weak passphrase:</strong> Empty passphrases leave keys unprotected if stolen</li>
+          <li><strong style="color: #ffffff;">Overwriting existing keys:</strong> Check for existing keys before generating new ones</li>
+          <li><strong style="color: #ffffff;">Wrong key type:</strong> Some older systems don't support ED25519 — know your target</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots showing both RSA and ED25519 key generation. The ED25519 public key is about 100 bytes while RSA is about 750 bytes — same security, smaller footprint.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers asymmetric cryptography fundamentals. Chapter 11 explains how public key authentication replaces passwords — the ED25519 keys you generate here implement "something you have" authentication.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Why is ED25519 considered more secure than RSA of equivalent key length? Research the mathematical differences between elliptic curve and integer factorization cryptography.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OpenSSH Manual - ssh-keygen. Available at: https://man.openbsd.org/ssh-keygen</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: Key Permissions -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_2.svg" alt="Checkpoint 2 - Key Permissions" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding and configuring proper file permissions for SSH keys. You'll see why SSH refuses to use keys with incorrect permissions and how to fix common permission problems.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">A private key with world-readable permissions is a security disaster. SSH clients will refuse to use improperly secured keys, and attackers specifically look for misconfigured key files. Proper permissions are the difference between security and breach.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Examine default permissions</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Check the current permissions on your keys:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la ~/lab2-auth/id_*</div>
+      </li>
+      <li>Note the difference between private key (600) and public key (644) permissions</li>
+    </ol>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Demonstrate permission failure</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Make the private key world-readable (INSECURE — for demonstration only):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 644 ~/lab2-auth/id_ed25519_lab
+ls -la ~/lab2-auth/id_ed25519_lab</div>
+      </li>
+      <li>Attempt to use the key (SSH will refuse):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh -i ~/lab2-auth/id_ed25519_lab localhost</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #11 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the "UNPROTECTED PRIVATE KEY FILE" error message from SSH. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-permission-error.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Fix the permissions</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Restore correct permissions:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 600 ~/lab2-auth/id_ed25519_lab
+ls -la ~/lab2-auth/id_ed25519_lab</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #12 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the corrected permissions showing 600 on the private key. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-permission-fixed.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Forgetting to fix permissions:</strong> After demonstrating the error, always restore 600</li>
+          <li><strong style="color: #ffffff;">Wrong directory permissions:</strong> ~/.ssh directory itself must be 700</li>
+          <li><strong style="color: #ffffff;">Public vs private:</strong> Public keys can be 644, private keys MUST be 600</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots: one showing the permission error, one showing the corrected permissions. This demonstrates why SSH is strict about key file security.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers access control and file permissions. The principle of least privilege applies directly to SSH keys — they should only be readable by their owner.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How do biometric authentication systems work? Research the concepts of FAR (False Acceptance Rate) and FRR (False Rejection Rate).</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OpenSSH Cookbook - Key Management. Available at: https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Public_Key_Authentication</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: SSH Configuration -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_3.svg" alt="Checkpoint 3 - SSH Configuration" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Setting up SSH infrastructure: the authorized_keys file that controls who can connect, the SSH config file that simplifies connections, and testing key-based authentication to localhost.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding SSH configuration is essential for any security professional. The authorized_keys file is your access control list — every public key there can authenticate. The config file lets you manage connections to dozens of servers efficiently. Gulf Coast uses this exact setup for their infrastructure.</p>
+    
+    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Never rely on a single control. Layer your defenses so one failure doesn't mean total compromise. SSH config files let you enforce security policies across all your connections."</p>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Set up authorized_keys</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create the .ssh directory if it doesn't exist:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/.ssh
+chmod 700 ~/.ssh</div>
+      </li>
+      <li>Add your public key to authorized_keys:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/lab2-auth/id_ed25519_lab.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys</div>
+      </li>
+      <li>Verify the setup:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la ~/.ssh/
+cat ~/.ssh/authorized_keys</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #13 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #13</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the .ssh directory listing and authorized_keys content. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-authorized-keys.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Test key-based authentication</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Start the SSH service if not running:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl start ssh
+sudo systemctl status ssh</div>
+      </li>
+      <li>Connect to localhost using your key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh -i ~/lab2-auth/id_ed25519_lab localhost whoami</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #14 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the successful SSH connection using key-based authentication. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-ssh-keyauth.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Create an SSH config file</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create the config file:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat > ~/.ssh/config << 'EOF'
+Host labserver
+    HostName localhost
+    User $USER
+    IdentityFile ~/lab2-auth/id_ed25519_lab
+    IdentitiesOnly yes
+EOF
+chmod 600 ~/.ssh/config</div>
+      </li>
+      <li>Test the config file:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/.ssh/config
+ssh labserver whoami</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #15 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #15</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the SSH config file contents and successful connection using the alias. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-ssh-config.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Wrong key in authorized_keys:</strong> Make sure you're adding the .pub file, not the private key</li>
+          <li><strong style="color: #ffffff;">Line breaks in key:</strong> The public key must be all on one line</li>
+          <li><strong style="color: #ffffff;">Config indentation:</strong> Use spaces, not tabs; indent options under Host</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers remote access security and authentication configuration. The authorized_keys mechanism implements trust relationships — only approved public keys can authenticate.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What are common authentication vulnerabilities? Research credential stuffing, brute force attacks, and session hijacking.</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OWASP Authentication Cheat Sheet. Available at: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 4: MFA Concepts -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_4.svg" alt="Checkpoint 4 - MFA Concepts" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding multi-factor authentication (MFA) concepts and the three authentication factor categories. You'll document why single-factor authentication is insufficient and how MFA provides defense in depth.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Single-factor authentication is the root cause of countless breaches. MFA isn't just "nice to have" anymore — it's required by most compliance frameworks including HIPAA. Understanding the factor categories helps you design and evaluate authentication systems.</p>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Document the three authentication factors</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create an MFA documentation file:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat > ~/lab2-auth/mfa-factors.txt << 'EOF'
+AUTHENTICATION FACTORS
+======================
+
+SOMETHING YOU KNOW (Knowledge Factor)
+- Passwords
+- PINs
+- Security questions
+- Passphrases
+
+SOMETHING YOU HAVE (Possession Factor)
+- SSH private keys
+- Smart cards
+- Hardware tokens (YubiKey)
+- Mobile authenticator apps (TOTP)
+
+SOMETHING YOU ARE (Inherence Factor)
+- Fingerprint
+- Facial recognition
+- Iris scan
+- Voice recognition
+
+MFA = Using 2+ factors from DIFFERENT categories
+Examples:
+- Password + SSH key = MFA (know + have)
+- Password + security question = NOT MFA (both knowledge)
+- Fingerprint + facial = NOT MFA (both inherence)
+EOF</div>
+      </li>
+      <li>View the documentation:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/lab2-auth/mfa-factors.txt</div>
+      </li>
+    </ol>
+    
+    <!-- Screenshot #16 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #16</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your MFA factors documentation showing all three categories. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-mfa-factors.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Confusing 2-step with 2-factor:</strong> Two passwords is 2-step but NOT MFA</li>
+          <li><strong style="color: #ffffff;">SMS as "something you have":</strong> Debatable — SIM swapping makes SMS weak</li>
+          <li><strong style="color: #ffffff;">Ignoring usability:</strong> MFA that users bypass defeats the purpose</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">One screenshot showing your MFA factors documentation. This demonstrates understanding of the three categories and what constitutes true MFA.</p>
+      </div>
+    </div>
+    
+    <!-- TEXTBOOK REFERENCE -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers authentication factors in detail. The distinction between "something you know/have/are" is fundamental to understanding defense in depth for identity verification.</p>
+      </div>
+    </div>
+    
+    <!-- DIG DEEPER -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
+      </div>
+      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Research passwordless authentication. How do FIDO2/WebAuthn standards work, and why are they considered more secure than traditional MFA?</p>
+      </div>
+    </div>
+    
+    <!-- THAT'S A REFERENCE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">NIST SP 800-63B - Digital Identity Guidelines. Available at: https://pages.nist.gov/800-63-3/sp800-63b.html</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (8 Required)</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">09-keygen-rsa.png</code> — RSA key generation</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">10-keygen-ed25519.png</code> — ED25519 key generation and comparison</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">11-permission-error.png</code> — SSH permission error message</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">12-permission-fixed.png</code> — Corrected permissions</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">13-authorized-keys.png</code> — authorized_keys setup</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">14-ssh-keyauth.png</code> — Successful key-based SSH</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">15-ssh-config.png</code> — SSH config file usage</li>
+      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">16-mfa-factors.png</code> — MFA factors documentation</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Environment Verification</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ VM hostname visible in all screenshots</li>
+      <li>☐ All files in <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">~/lab2-auth</code> directory</li>
+      <li>☐ All screenshots added to <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module2_Screenshots</code> folder</li>
+      <li>☐ Total screenshots for module: 16 (8 from Lab 2.1 + 8 from Lab 2.2)</li>
+    </ul>
+    
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 2.2 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This lab requires your <strong style="color: #fff;">Kali Linux VM from Lab 1.1</strong>. You should also have completed <strong style="color: #fff;">Lab 2.1: Cryptographic Foundations</strong> before starting this lab.</p>
+    
+    <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Training Keys Only</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The SSH keys you generate in this lab are <strong style="color: #ffffff;">for training purposes only</strong>. Never use lab-generated keys for production systems. In real environments, keys are generated with proper entropy, protected with passphrases, and managed through key lifecycle policies.</p>
+      </div>
+    </div>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. Two Foundation Labs can be dropped, so plan accordingly.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Explain SSH command syntax and options</li>
+      <li>Troubleshoot connection errors</li>
+      <li>Understand authentication concepts from the readings</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete the hands-on work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+    
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 2.2 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 2.3: Gulf Coast Certificate Remediation</strong> where you'll apply everything from Labs 2.1 and 2.2 to diagnose and fix certificate issues on Gulf Coast Healthcare's patient portal.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

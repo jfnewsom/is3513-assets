@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 1.3 - Brazos Financial Reconnaissance Engagement</title>
+</head>
+<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+
+<div style="max-width: 900px; margin: 0 auto;">
+
+<!-- ============================================ -->
+<!-- CARD 1: LAB 1.3 HEADER -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab1_3_Header.svg" alt="Lab 1.3 - Brazos Financial Reconnaissance Engagement" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 1: Threat Intelligence &amp; Reconnaissance</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Congratulations — you've completed NEXUS reconnaissance training and you're cleared for client work. Brazos Financial Group needs an external attack surface assessment. This week you'll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: timesheet showing all three weeks, your internal runbook documenting your methodology, and a professional client report for Ray Jimenez.</p>
+    
+    <!-- Mentor Quote -->
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maya Rodriguez</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Senior Penetration Tester, NEXUS Security</div>
+        </div>
+      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"This is your first real engagement. Everything you practiced in training applies here. <strong style="color: #ffffff;">Document everything like your professional reputation depends on it — because it does.</strong> Ray Jimenez is expecting a report he can take to the board. Show him exactly what an attacker would see when they look at Brazos Financial from the outside."</p>
+    </div>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 1 — Introduction to Security | Chapter 2 — General Security Concepts</p>
+    
+    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Deploy the Brazos Financial Docker container</li>
+      <li>Conduct full reconnaissance using all six tools from training</li>
+      <li>Document findings with CVE research and risk analysis</li>
+      <li>Compile complete Engagement Packet (Sections A, B, C)</li>
+      <li>Deliver professional client report suitable for executive audience</li>
+    </ul>
+    
+    <!-- Submission Format callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Required: DOCX Format</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Submit as <strong style="color: #fff;">.docx (Microsoft Word)</strong> only. PDF submissions will not be accepted. Use Word's built-in features for Table of Contents, page numbers, and citations.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 2: YOU ALREADY HAVE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/You_Already_Have_1_Header.svg" alt="You Already Have" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00BCD4; border-bottom: 4px solid #00BCD4;">
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;"><strong style="color: #ffffff;">This is NOT starting from scratch.</strong> You've been building this report for 3 weeks. If you followed the Week 1-2 instructions, most of your report is already written.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">From Week 1 (Lab 1.1 — Kali Environment Setup)</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 2;">
+      <li><span style="color: #00D26A;">✓</span> Screenshots 01-06: Environment setup documentation</li>
+      <li><span style="color: #00D26A;">✓</span> VM configuration, Docker installation verification</li>
+      <li><span style="color: #00D26A;">✓</span> Timesheet hours: Internal training (environment setup)</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">From Week 2 (Lab 1.2 — Reconnaissance Tool Exploration)</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 2;">
+      <li><span style="color: #00D26A;">✓</span> Screenshots 07-13: Tool exploration documentation</li>
+      <li><span style="color: #00D26A;">✓</span> nmap, netcat, dirb, nikto, enum4linux, searchsploit methodology</li>
+      <li><span style="color: #00D26A;">✓</span> Research notes on tool capabilities and flags</li>
+      <li><span style="color: #00D26A;">✓</span> Timesheet hours: Internal training (tool certification)</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">NEW This Week</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 2;">
+      <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Title Page, Table of Contents, Executive Summary</li>
+      <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Docker container deployment (Brazos Financial)</li>
+      <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Full reconnaissance against client infrastructure</li>
+      <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> CVE research for discovered versions</li>
+      <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Professional Reflection, References, Appendix</li>
+    </ul>
+    
+    <!-- Pro tip -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">You're Already 60-70% Done</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This week is about <strong style="color: #ffffff;">compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CARD 3: TIME GUIDE -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
+    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
+      <thead>
+        <tr style="background: #1a1f2e;">
+          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
+          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Read instructions and review Week 1-2 materials</td>
+          <td style="padding: 12px 15px; text-align: center;">15 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 1: Deploy Brazos container</td>
+          <td style="padding: 12px 15px; text-align: center;">15 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 2: Full reconnaissance workflow</td>
+          <td style="padding: 12px 15px; text-align: center;">90 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Checkpoint 3: Compile Engagement Packet</td>
+          <td style="padding: 12px 15px; text-align: center;">120 min</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2f3e;">
+          <td style="padding: 12px 15px;">Final review and submission</td>
+          <td style="padding: 12px 15px; text-align: center;">30 min</td>
+        </tr>
+        <tr style="background: #1a1f2e;">
+          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
+          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">4-5 hours</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color: #B0B8C4; margin: 20px 0 0 0; line-height: 1.8;"><strong style="color: #ffffff;">Note:</strong> Report compilation takes the most time. Don't rush the Executive Summary — Ray Jimenez will read it first, and it sets the tone for your entire report.</p>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 1: Deploy Brazos Container -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_3_1.svg" alt="Checkpoint 1 - Deploy Brazos Container" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Real penetration tests begin with scope definition and authorized target deployment. The Brazos container represents their actual exposed services — the same ports and configurations an external attacker would see.</p>
+    
+    <!-- HOW -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Pull the Brazos container image:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker pull jfnewsom/brazos-financial:latest</div>
+      </li>
+      <li>Run the container with all required ports:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest</div>
+      </li>
+      <li>Verify the container is running:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker ps</div>
+      </li>
+      <li>Note the container IP (usually <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">localhost</code> or <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">127.0.0.1</code>)</li>
+    </ol>
+    
+    <!-- SCREENSHOT #14 -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">docker ps</code> showing Brazos container running. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-brazos-container.png</code></p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Port conflicts:</strong> If ports are in use, stop other containers first with <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">docker stop</code></li>
+          <li><strong style="color: #ffffff;">Docker not running:</strong> Start Docker daemon with <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo systemctl start docker</code></li>
+          <li><strong style="color: #ffffff;">Pull fails:</strong> Check network connectivity and Docker Hub status</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Running Brazos container with all ports accessible at localhost. Test by visiting <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http://localhost</code> in a browser.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 2: Full Reconnaissance Workflow -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_3_2.svg" alt="Checkpoint 2 - Full Reconnaissance Workflow" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This is the core of your engagement. A thorough reconnaissance reveals everything an attacker would discover about Brazos Financial's external attack surface. Your findings drive the entire client report.</p>
+    
+    <!-- HOW -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Run comprehensive nmap scan:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sV -sC -A localhost</div>
+      </li>
+      <li>Perform banner grabbing with netcat on discovered ports</li>
+      <li>Run dirb against the web services:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">dirb http://localhost</div>
+      </li>
+      <li>Execute nikto vulnerability scan:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nikto -h http://localhost</div>
+      </li>
+      <li>Enumerate SMB with enum4linux:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">enum4linux -a localhost</div>
+      </li>
+      <li>Research vulnerabilities for discovered versions using searchsploit</li>
+      <li>Document ALL findings with screenshots</li>
+    </ol>
+    
+    <!-- Go Beyond callout -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Go Beyond the Basics</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. <strong style="color: #ffffff;">The more you find, the more impressive your report.</strong></p>
+      </div>
+    </div>
+    
+    <!-- SCREENSHOTS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshots #15-22</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.</p>
+      </div>
+    </div>
+    
+    <!-- COMMON PITFALLS -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li><strong style="color: #ffffff;">Incomplete coverage:</strong> Run ALL six tools — missing a tool means missing findings</li>
+          <li><strong style="color: #ffffff;">Stopping too early:</strong> Some scans take 5-10 minutes. Let them complete</li>
+          <li><strong style="color: #ffffff;">Only documenting vulnerabilities:</strong> Services and versions matter too — document everything</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CHECKPOINT 3: Compile Engagement Packet -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_3_3.svg" alt="Checkpoint 3 - Compile Engagement Packet" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    
+    <!-- WHAT -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Assembling your complete Engagement Packet: combining Week 1-2 documentation with this week's findings into a professional deliverable with three sections.</p>
+    
+    <!-- WHY -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations.</p>
+    
+    <!-- REQUIRED SECTIONS -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Required Report Sections</h4>
+    
+    <h5 style="color: #ffffff; font-size: 15px; margin: 20px 0 10px 0; font-weight: 600;">Section A: NEXUS Timesheet</h5>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Justify hours across all three weeks: internal training (Weeks 1-2) and client billable (Week 3).</p>
+    
+    <h5 style="color: #ffffff; font-size: 15px; margin: 20px 0 10px 0; font-weight: 600;">Section B: Internal Runbook</h5>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">"Here's how to do reconnaissance for the next analyst" — tool documentation, methodology, commands used.</p>
+    
+    <h5 style="color: #ffffff; font-size: 15px; margin: 20px 0 10px 0; font-weight: 600;">Section C: Client Report</h5>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Professional deliverable for Ray Jimenez including: Executive Summary, Assessment Results, Risk Analysis, and Recommendations.</p>
+    
+    <!-- Report Structure -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Full Report Structure</div>
+        <ol style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
+          <li>Title Page</li>
+          <li>Executive Summary (1 page)</li>
+          <li>Table of Contents</li>
+          <li>Environment Specifications (from Week 1)</li>
+          <li>Tool Documentation (from Week 2)</li>
+          <li>Assessment Results (Week 3 findings)</li>
+          <li>Vulnerability Research (CVE lookups)</li>
+          <li>Risk Analysis</li>
+          <li>Recommendations</li>
+          <li>Professional Reflection</li>
+          <li>References (minimum 10)</li>
+          <li>Appendix (raw outputs, additional screenshots)</li>
+        </ol>
+      </div>
+    </div>
+    
+    <!-- Reference Requirement -->
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Minimum 10 References</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Man pages count! Your textbook, tool documentation, CVE entries, and NIST guidelines are all valid references. Use APA format.</p>
+      </div>
+    </div>
+    
+    <!-- WHAT YOU SHOULD HAVE -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Complete .docx file with all sections, auto-generated Table of Contents, embedded screenshots, and APA-formatted references. Professional enough to present to a client.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FINAL CHECKLIST -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before submission:</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Document Requirements</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ Submitted as <strong style="color: #fff;">.docx</strong> (not PDF)</li>
+      <li>☐ Title page with your name and date</li>
+      <li>☐ Auto-generated Table of Contents</li>
+      <li>☐ Executive Summary (1 page max)</li>
+      <li>☐ All three sections (A, B, C) present</li>
+      <li>☐ Minimum 10 references in APA format</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ All Week 1-2 screenshots included (01-13)</li>
+      <li>☐ Week 3 screenshots (14-22 minimum)</li>
+      <li>☐ Screenshots are clear and readable</li>
+      <li>☐ VM hostname visible in terminal screenshots</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Quality Check</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
+      <li>☐ Executive Summary readable by non-technical audience</li>
+      <li>☐ Recommendations are actionable and prioritized</li>
+      <li>☐ Professional tone throughout</li>
+      <li>☐ Proofread for grammar and spelling</li>
+    </ul>
+    
+    <!-- Submission callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Upload your <strong style="color: #fff;">.docx file</strong> to the Lab 1.3 assignment in Canvas. No quiz for this lab — your report is the deliverable.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEED HELP -->
+<!-- ============================================ -->
+<div style="margin-bottom: 50px;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
+  
+  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
+    
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This course officially supports <strong style="color: #fff;">VirtualBox with Kali Linux installed from ISO</strong>. Students using other hypervisors are responsible for their own troubleshooting.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
+    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
+      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
+      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
+      <li><strong style="color: #ffffff;">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="355f5a5d5b1b5b5042465a5875404146541b505140">[email&#160;protected]</a> (for private matters only)</li>
+    </ul>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. Engagement Packets have 1 lowest dropped (out of 5). Use drop policies wisely for emergencies.</p>
+    
+    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Proofread and improve writing clarity</li>
+      <li>Suggest report structure improvements</li>
+      <li>Understand concepts and tool functionality</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+      <li>Write entire sections of your report</li>
+      <li>Generate fake screenshots or findings</li>
+      <li>Complete the reconnaissance work for you</li>
+    </ul>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em></p>
+    
+    <!-- Next steps callout -->
+    <div style="position: relative; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After submitting this engagement, you'll begin <strong style="color: #fff;">Module 2: Cryptography &amp; Authentication</strong> with <strong style="color: #fff;">Lab 2.1 — Cryptographic Foundations</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
