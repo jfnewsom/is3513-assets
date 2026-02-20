@@ -7,19 +7,15 @@
 </head>
 <body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
 
-<div style="max-width: 900px; margin: 0 auto;">
-
-<!-- CARD 1: LAB 2.3 HEADER -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab2_3_Header.svg" alt="Lab 2.3 - Gulf Coast Certificate Remediation" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
-    <p style="color: #7B68EE; font-weight: 600; font-size: 14px; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px;">Module 2: Cryptographic Foundations &amp; Secure Communications</p>
+    <p style="color: #7B68EE; font-weight: 600; font-size: 14px; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px;">Module 2: Cryptography &amp; Authentication</p>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 0 0 12px 0;">Overview</h3>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 25px 0;">Gulf Coast Healthcare Partners has a critical problem: their patient portal's SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six weeks. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 25px 0;">Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six weeks. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.</p>
     
-    <!-- Mentor Quote -->
     <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
         <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
@@ -28,18 +24,18 @@
           <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Before you touch anything, document the current state. Auditors want before-and-after evidence. <strong style="color: #ffffff;">Every screenshot tells a story</strong> — the story of due diligence, proper procedures, and professional remediation."</p>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">&#8220;Before you touch anything, document the current state. Auditors want before-and-after evidence. <strong style="color: #ffffff;">Every screenshot tells a story</strong> &#8212; the story of due diligence, proper procedures, and professional remediation.&#8221;</p>
     </div>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 25px 0;">Chapter 5 — Cryptography | Chapter 6 — Public Key Infrastructure</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 25px 0;">Chapter 6 &#8212; Applied Cryptography | Chapter 7 &#8212; Public Key Infrastructure</p>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Client Context</h3>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 15px 0;"><strong style="color: #ffffff;">Gulf Coast Healthcare Partners</strong> is a regional healthcare network headquartered in Houston, Texas. Two years ago, they suffered a ransomware attack that forced a complete infrastructure rebuild.</p>
     <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Jennifer Walsh, CISO:</strong> "The OCR audit is in 6 weeks. I need this portal working and documented before they arrive."</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Thomas Kowalski, VP Infrastructure:</strong> "I set this up five years ago when we were half this size. I know it needs updating."</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Angela Washington, Privacy Officer:</strong> "If PHI travels over that portal unencrypted, we have a reportable breach."</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Jennifer Walsh, CISO:</strong> &#8220;The OCR audit is in 6 weeks. I need this portal working and documented before they arrive.&#8221;</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Thomas Kowalski, VP Infrastructure:</strong> &#8220;I set this up five years ago when we were half this size. I know it needs updating.&#8221;</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #00BCD4;">Angela Washington, Privacy Officer:</strong> &#8220;If PHI travels over that portal unencrypted, we have a reportable breach.&#8221;</li>
     </ul>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Assignment Objectives</h3>
@@ -58,65 +54,62 @@
       <li style="margin-bottom: 8px;">HIPAA Security Rule requirements for encryption</li>
     </ul>
     
-    <!-- DOCX Required Callout -->
     <div style="position: relative; margin-left: 20px; margin-top: 25px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Required: DOCX Format</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Submit as <strong style="color: #fff;">.docx (Microsoft Word)</strong> only. PDF submissions will not be accepted. Use Word's built-in features for Table of Contents, page numbers, and citations.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Submit as <strong style="color: #fff;">.docx (Microsoft Word)</strong> only. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 2: YOU ALREADY HAVE -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/You_Already_Have_2_Header.svg" alt="You Already Have - Three-Week Engagement Model" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00BCD4; border-bottom: 4px solid #00BCD4;">
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;"><strong style="color: #ffffff;">This is NOT starting from scratch.</strong> You've been building this report for 3 weeks.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;"><strong style="color: #ffffff;">This is NOT starting from scratch.</strong> You&#8217;ve been building this report for 3 weeks.</p>
     
-    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">From Week 1 (Lab 2.1 — Cryptographic Foundations)</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> Hash function demonstrations (MD5, SHA-256, SHA-512)</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> Symmetric encryption with AES-256-CBC</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> Asymmetric encryption with RSA key pairs</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> Digital signature creation and verification</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> 9 screenshots (crypto-01 through crypto-09)</li>
+    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">From Week 1 (Lab 2.1 &#8212; Cryptographic Foundations)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8; list-style: none;">
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> Hash function demonstrations (SHA-256 comparison)</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> Symmetric encryption with AES-256-CBC</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> Asymmetric encryption with RSA key pairs</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> Digital signature creation and verification</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> 9 screenshots (01-hash-sha256.png through 09-signature-verify.png)</li>
     </ul>
     
-    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">From Week 2 (Lab 2.2 — Authentication Systems)</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> SSH key generation (RSA and ED25519)</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> Key permissions and security configuration</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> SSH config and authorized_keys setup</li>
-      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">✓</span> 7 screenshots (auth-01 through auth-07)</li>
+    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">From Week 2 (Lab 2.2 &#8212; Authentication Systems)</h3>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8; list-style: none;">
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> SSH key generation (RSA and ED25519)</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> Key permissions and security configuration</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> SSH config and authorized_keys setup</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> MFA authentication factors documentation</li>
+      <li style="margin-bottom: 8px;"><span style="color: #00D26A;">&#10004;</span> 8 screenshots (10-keygen-rsa.png through 17-mfa-login.png)</li>
     </ul>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">NEW This Week</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
+    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8; list-style: none;">
       <li style="margin-bottom: 8px;"><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Title Page, Table of Contents, Executive Summary</li>
       <li style="margin-bottom: 8px;"><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Certificate diagnosis and remediation documentation</li>
       <li style="margin-bottom: 8px;"><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Risk analysis and HIPAA compliance recommendations</li>
       <li style="margin-bottom: 8px;"><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Professional Reflection, References, Appendix</li>
     </ul>
     
-    <!-- Pro Tip Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">You're Already 60-70% Done</div>
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">You&#8217;re Already 60-70% Done</div>
         <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">If you followed the Week 1-2 instructions, most of your report is already written. This week is about <strong style="color: #ffffff;">compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 3: TIME GUIDE -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide - Estimated 4-5 Hours" style="display: block; max-width: 100%; height: auto;">
   
@@ -138,7 +131,7 @@
           <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: Verification and Testing</td>
+          <td style="padding: 12px 15px;">Checkpoint 3: Verification and Bonus Findings</td>
           <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2f3e;">
@@ -154,18 +147,16 @@
   </div>
 </div>
 
-<!-- CARD 4: CHECKPOINT 1 -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_3_1.svg" alt="Checkpoint 1 - Deploy Container and Diagnose" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You&#8217;re Doing</h4>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Deploying the Gulf Coast patient portal container and documenting the broken state before making changes.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">HIPAA requires documentation of security incidents and remediation. "Before" evidence proves due diligence for auditors.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">HIPAA requires documentation of security incidents and remediation. &#8220;Before&#8221; evidence proves due diligence for auditors.</p>
     
-    <!-- Dig Deeper Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -176,38 +167,77 @@
       </div>
     </div>
     
-    <!-- That's a Reference Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
       <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your textbook Chapter 4 discusses certificate types. Let's Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/</p>
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That&#8217;s a Reference!</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your textbook Chapter 7 discusses certificate types and PKI hierarchy. Let&#8217;s Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/</p>
       </div>
     </div>
     
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 10px;">Create working directory: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">mkdir -p ~/lab2-gulfcoast && cd ~/lab2-gulfcoast</code></li>
-      <li style="margin-bottom: 10px;">Pull and run container: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal nexus-training/gulfcoast-portal</code></li>
-      <li style="margin-bottom: 10px;">Access portal in Firefox: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://localhost:443</code> (expect certificate warning)</li>
-      <li style="margin-bottom: 10px;">Diagnose from CLI: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates</code></li>
-      <li style="margin-bottom: 10px;">SSH into container: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ssh -p 2222 student@localhost</code> (password: nexus2026)</li>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Deploy the Gulf Coast portal container</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Create a working directory for this engagement:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/lab2-gulfcoast</div>
+      </li>
+      <li>Change into your working directory:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cd ~/lab2-gulfcoast</div>
+      </li>
+      <li>Pull and start the Gulf Coast patient portal container:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal jfnewsom/gulfcoast-portal</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> This downloads and starts a Docker container that simulates Gulf Coast&#8217;s patient portal server &#8212; an Apache web server with a deliberately expired SSL certificate.</p>
+            <p style="margin: 0;"><strong style="color: #7B68EE;">Flags:</strong> <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-d</code> runs in background, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-p 443:443</code> maps HTTPS port, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-p 2222:22</code> maps SSH to port 2222 so it doesn&#8217;t conflict with your Kali SSH, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">--name</code> gives it a friendly name for later commands.</p>
+          </div>
+        </details>
+      </li>
     </ol>
     
-    <!-- Screenshot Callout -->
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Document the broken state</strong></p>
+    <ol start="4" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Open Firefox and navigate to <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.</li>
+    </ol>
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshots #17-18</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture browser error (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-01-initial-error.png</code>) and openssl dates output (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-02-cert-expired.png</code>)</p>
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #18</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the browser certificate error. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-01-initial-error.png</code></p>
       </div>
     </div>
     
-    <!-- Common Pitfalls Callout -->
+    <ol start="5" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Back in your terminal, check the certificate dates from Kali:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl s_client -connect localhost:443 2&gt;/dev/null | openssl x509 -noout -dates</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> This connects to the HTTPS server like a browser would, grabs the certificate, and displays its validity dates. The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">notBefore</code> and <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">notAfter</code> dates tell you when the certificate was issued and when it expired.</p>
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Flags:</strong> <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">2&gt;/dev/null</code> suppresses noisy connection info, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-noout</code> prevents printing the raw certificate, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-dates</code> shows only the validity period.</p>
+            <p style="margin: 0;"><strong style="color: #7B68EE;">Expected output:</strong> The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">notAfter</code> date should be in the past, confirming the certificate has expired.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #19</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the openssl output showing the expired certificate dates. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-02-cert-expired.png</code></p>
+      </div>
+    </div>
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -216,83 +246,146 @@
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
           <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Port conflict:</strong> Stop other containers using ports 443 or 2222</li>
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">SSH password:</strong> It's <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nexus2026</code> exactly</li>
-          <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Take screenshots NOW:</strong> You can't recreate "before" evidence after fixing</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Docker not running:</strong> If you get a &#8220;permission denied&#8221; error, make sure Docker is running and try adding <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 3px; font-size: 12px; color: #00D26A;">sudo</code> before the docker command</li>
+          <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Take screenshots NOW:</strong> You can&#8217;t recreate &#8220;before&#8221; evidence after fixing the certificate</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Gulf Coast portal container running and accessible via SSH. Screenshots documenting the initial broken state: browser warning, expired certificate dates from openssl. These "before" screenshots are critical audit evidence.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Gulf Coast portal container running and accessible via SSH. Screenshots documenting the initial broken state: browser warning, expired certificate dates from openssl. These &#8220;before&#8221; screenshots are critical audit evidence.</p>
       </div>
     </div>
     
-    <!-- Textbook Reference Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers certificate lifecycles and expiration. The browser warning you document represents a real compliance failure — HIPAA requires valid certificates for protected health information.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 7 covers certificate lifecycles and expiration. The browser warning you document represents a real compliance failure &#8212; HIPAA requires valid certificates for protected health information.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 5: CHECKPOINT 2 -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_3_2.svg" alt="Checkpoint 2 - Certificate Remediation" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You&#8217;re Doing</h4>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Certificate renewal is one of the most common PKI operations you'll perform. Understanding the CSR workflow — using the existing private key to generate a new request, then signing with the CA — ensures continuity without regenerating keys.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow &#8212; using the existing private key to generate a new request, then signing with the CA &#8212; ensures continuity without regenerating keys.</p>
     
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 10px;">Explore PKI directory: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ls -la /opt/gulfcoast-pki/</code></li>
-      <li style="margin-bottom: 10px;">Generate new CSR (see example commands below)</li>
-    </ol>
-    
-    <!-- Terminal/Command Callout -->
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maria Delgado, PhD</div>
+          <div style="font-size: 13px; color: #B0B8C4;">Security Compliance Specialist, NEXUS Security</div>
+        </div>
       </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Example Commands</div>
-        <pre style="background: #1a1f2e; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 0;"><code style="font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A;">cd /opt/gulfcoast-pki
-openssl req -new -key private/portal.key -out certs/portal-new.csr \
-  -subj "/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local"
-
-openssl x509 -req -in certs/portal-new.csr -CA certs/ca.crt -CAkey private/ca.key \
-  -CAcreateserial -out certs/portal-new.crt -days 365 -sha256
-
-sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code></pre>
-      </div>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">&#8220;The README in the PKI directory is your roadmap. Real infrastructure always has documentation &#8212; sometimes outdated, sometimes incomplete &#8212; but always your starting point. <strong style="color: #ffffff;">Read it before you touch anything.</strong>&#8221;</p>
     </div>
     
-    <!-- Screenshot Callout -->
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: SSH into the container and explore the PKI structure</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>SSH into the Gulf Coast portal container (password: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nexus2026</code>):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh -p 2222 student@localhost</div>
+      </li>
+      <li>Navigate to the PKI directory and read the documentation:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cd /opt/gulfcoast-pki</div>
+      </li>
+      <li>Read the README left by the previous administrator:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat README.txt</div>
+      </li>
+      <li>Explore the directory structure:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la CA/ certs/ csr/</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> You&#8217;re mapping the PKI infrastructure before making changes. The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">CA/</code> directory holds the root Certificate Authority (ca.crt and ca.key). The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">certs/</code> directory holds the server certificates including the expired portal.crt. The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">csr/</code> directory is your working space for new certificate signing requests.</p>
+            <p style="margin: 0;"><strong style="color: #7B68EE;">Expected output:</strong> Note the file permissions &#8212; the CA key (ca.key) is root-owned for security, while the certs directory is student-owned so you can write new files there.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Generate a new Certificate Signing Request (CSR)</strong></p>
+    <ol start="5" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Generate a new CSR using the existing private key:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl req -new -key certs/portal.key -out csr/portal-new.csr -subj "/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local"</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> A Certificate Signing Request (CSR) is like a formal application for a new certificate. It contains your public key and identity information, signed with your private key to prove ownership. The CA uses this to issue a new certificate without ever needing your private key.</p>
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Flags:</strong> <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">req -new</code> creates a new CSR, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-key</code> specifies the existing private key to use, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-out</code> is the output file, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-subj</code> provides the identity fields inline instead of prompting interactively.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshots #19-21</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture CSR generation (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-03-csr-generation.png</code>), signing (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-04-cert-signing.png</code>), and installation (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-05-cert-installation.png</code>)</p>
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #20</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the CSR generation command and output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-03-csr-generation.png</code></p>
       </div>
     </div>
     
-    <!-- Common Pitfalls Callout -->
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Sign the CSR with the Certificate Authority</strong></p>
+    <ol start="6" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Sign the CSR using the CA certificate and key (requires <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">sudo</code> because the CA key is root-owned):
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo openssl x509 -req -in csr/portal-new.csr -CA CA/ca.crt -CAkey CA/ca.key -CAcreateserial -out certs/portal-new.crt -days 365 -sha256</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> The CA &#8220;signs&#8221; your CSR by combining your identity and public key with the CA&#8217;s digital signature. Anyone who trusts the CA can now verify your certificate is legitimate. This is the chain of trust in action.</p>
+            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Flags:</strong> <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">x509 -req</code> processes a CSR into a certificate, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-CA</code> and <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-CAkey</code> specify the signing authority, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-CAcreateserial</code> generates a serial number, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-days 365</code> sets one-year validity, <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-sha256</code> uses modern hashing.</p>
+            <p style="margin: 0;"><strong style="color: #7B68EE;">Expected output:</strong> You&#8217;ll see &#8220;Certificate request self-signature ok&#8221; followed by the subject line. The sudo password is <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">nexus2026</code>.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #21</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-04-cert-signing.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part D: Install the new certificate</strong></p>
+    <ol start="7" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Copy the new certificate into Apache&#8217;s SSL directory:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</div>
+      </li>
+    </ol>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #22</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the certificate installation command. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-05-cert-installation.png</code></p>
+      </div>
+    </div>
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -300,14 +393,13 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Wrong key for CSR:</strong> The CSR must use the EXISTING portal.key, not generate a new one</li>
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Subject mismatch:</strong> CN (Common Name) must exactly match the server hostname</li>
-          <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Permission errors:</strong> Certificate files need proper ownership and permissions for Apache</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Wrong key path:</strong> The portal key is at <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">certs/portal.key</code> &#8212; check the README and <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">ls -la</code> output to confirm paths</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Permission denied on CA key:</strong> The CA private key is root-owned for security. You need <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo</code> for the signing step</li>
+          <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -318,100 +410,174 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       </div>
     </div>
     
-    <!-- Textbook Reference Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 explains the certificate signing process and chain of trust. The CSR-to-certificate workflow you perform mirrors real-world PKI operations.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 7 explains the certificate signing process and chain of trust. The CSR-to-certificate workflow you perform mirrors real-world PKI operations.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 6: CHECKPOINT 3 -->
 <div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_3_3.svg" alt="Checkpoint 3 - Verification and Testing" style="display: block; max-width: 100%; height: auto;">
+  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_3_3.svg" alt="Checkpoint 3 - Verification and Bonus Findings" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Restarting Apache, verifying the new certificate is active, and documenting the remediated state.</p>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You&#8217;re Doing</h4>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Verification proves the fix worked. Combined with your "before" screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Verification proves the fix worked. Combined with your &#8220;before&#8221; screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success.</p>
     
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 10px;">Restart Apache: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">sudo systemctl restart apache2</code></li>
-      <li style="margin-bottom: 10px;">Verify new dates: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates</code></li>
-      <li style="margin-bottom: 10px;">Test in browser: Refresh https://localhost:443 — should no longer show expired warning</li>
-      <li style="margin-bottom: 10px;">Exit container: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">exit</code></li>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+    
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Restart Apache and verify the fix</strong></p>
+    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Restart Apache to load the new certificate:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo service apache2 restart</div>
+      </li>
     </ol>
     
-    <!-- Screenshot Callout -->
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshots #22-24</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture Apache restart (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-06-apache-restart.png</code>), new certificate dates (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-07-cert-valid.png</code>), and browser success (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-08-browser-success.png</code>)</p>
-      </div>
-    </div>
-    
-    <!-- Common Pitfalls Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Expected: SSH Session Will Disconnect</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Restarting Apache inside the Docker container will close your SSH connection. You&#8217;ll see &#8220;Connection to localhost closed by remote host.&#8221; <strong style="color: #ffffff;">This is normal.</strong> The container may also stop. From your Kali terminal, restart it and then verify:</p>
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo docker start gulfcoast-portal</div>
+      </div>
+    </div>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #23</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the Apache restart and container restart. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-06-apache-restart.png</code></p>
+      </div>
+    </div>
+    
+    <ol start="2" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>From your Kali terminal (not inside the container), verify the new certificate dates:
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">openssl s_client -connect localhost:443 2&gt;/dev/null | openssl x509 -noout -dates</div>
+        <details style="margin: 8px 0 4px 0;">
+          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+            <p style="margin: 0;"><strong style="color: #7B68EE;">Expected output:</strong> The <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">notAfter</code> date should now be approximately one year in the future, confirming your new certificate is active. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #24</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the new certificate dates showing future expiration. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-07-cert-valid.png</code></p>
+      </div>
+    </div>
+    
+    <ol start="3" style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      <li>Refresh <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://localhost</code> in Firefox &#8212; the expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration)</li>
+    </ol>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #25</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the browser showing the portal without an expired certificate warning. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">gulfcoast-08-browser-success.png</code></p>
+      </div>
+    </div>
+    
+    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Bonus &#8212; Hunt for additional findings</strong></p>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">The expired certificate was the critical finding, but a thorough security consultant looks deeper. SSH back into the container and investigate. These bonus findings strengthen your report and demonstrate thoroughness to the client.</p>
+    
+    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Bonus Discovery Hints</div>
+        <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">SSH back in and investigate these areas. Document anything concerning in your report:</p>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Forgot to restart:</strong> Apache won't pick up the new certificate until restarted</li>
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Browser cache:</strong> Clear cache or use incognito if old certificate still shows</li>
-          <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Still showing warning:</strong> May be self-signed trust issue, not expiration — that's expected</li>
+          <li style="margin-bottom: 6px;">What permissions does the portal private key have? Are they appropriate?</li>
+          <li style="margin-bottom: 6px;">What signature algorithm does the CA certificate use? Is it still considered secure?</li>
+          <li style="margin-bottom: 6px;">When does the CA certificate itself expire?</li>
+          <li style="margin-bottom: 0;">What TLS protocol versions does the Apache configuration allow?</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The "after" evidence combined with your "before" screenshots creates a complete remediation audit trail.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The &#8220;after&#8221; evidence combined with your &#8220;before&#8221; screenshots creates a complete remediation audit trail.</p>
       </div>
     </div>
     
-    <!-- Textbook Reference Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 discusses chain of trust verification. The browser warning about self-signed certificates is different from expiration — your openssl verification shows the fix worked.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 7 discusses chain of trust verification. The browser warning about self-signed certificates is different from expiration &#8212; your openssl verification shows the fix worked even though the browser still flags the self-signed CA.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 7: CHECKPOINT 4 -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_3_4.svg" alt="Checkpoint 4 - Compile Engagement Packet" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You&#8217;re Doing</h4>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">Compiling all three weeks of Module 2 work into a professional Engagement Packet.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">This isn't just an academic assignment — it's a professional deliverable. In six weeks, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence.</p>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six weeks, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence.</p>
     
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Required Report Sections</h4>
+    <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
+      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+      </div>
+      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
+        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">One Document, Three Sections</div>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your Engagement Packet is <strong style="color: #fff;">one .docx file</strong> containing all three sections in this order. Do not submit separate files.</p>
+      </div>
+    </div>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Section A: NEXUS Timesheet</h4>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 8px 0;">A table showing your hours across all 3 weeks:</p>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
+      <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Weeks 1&#8211;2:</strong> Internal training (not client billable) &#8212; Lab 2.1 and Lab 2.2 work</li>
+      <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Week 3:</strong> Client billable hours &#8212; Gulf Coast certificate remediation</li>
+      <li style="margin-bottom: 6px;">Include dates, activities, and hours per task</li>
+    </ul>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Section B: Internal Runbook</h4>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 8px 0;"><em>&#8220;Here&#8217;s how to do this for the next analyst.&#8221;</em></p>
+    <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
+      <li style="margin-bottom: 6px;">Cryptographic operations documentation (from Lab 2.1)</li>
+      <li style="margin-bottom: 6px;">Authentication systems and SSH configuration (from Lab 2.2)</li>
+      <li style="margin-bottom: 6px;">Certificate remediation workflow (from Lab 2.3)</li>
+      <li style="margin-bottom: 6px;">Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work</li>
+    </ul>
+    
+    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Section C: Client Report</h4>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 8px 0;">The professional deliverable for Jennifer Walsh. This report uses the following structure:</p>
     <ol style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
       <li style="margin-bottom: 8px;">Title Page</li>
       <li style="margin-bottom: 8px;">Executive Summary (1 page max, non-technical)</li>
@@ -427,7 +593,6 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       <li style="margin-bottom: 8px;">Appendix</li>
     </ol>
     
-    <!-- Pro Tip Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -438,7 +603,6 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       </div>
     </div>
     
-    <!-- Common Pitfalls Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -446,44 +610,40 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">PDF submission:</strong> Must be .docx — PDF submissions receive automatic zero</li>
+          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero</li>
           <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Missing VM name:</strong> Every screenshot must show your hostname (kali-lastname-studentID)</li>
           <li style="margin-bottom: 0;"><strong style="color: #ffffff;">Fewer than 10 references:</strong> Man pages, RFCs, and textbook chapters all count</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete Engagement Packet in .docx format containing all 12 required sections with 24+ screenshots and minimum 10 references.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete Engagement Packet in .docx format containing all 12 required sections with 25+ screenshots and minimum 10 references.</p>
       </div>
     </div>
     
-    <!-- Textbook Reference Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence — exactly what HIPAA auditors expect.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 9: PURPLE TEAM -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team - Both Sides of the Shield" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
     
-    <!-- Red Team Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -494,7 +654,6 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       </div>
     </div>
     
-    <!-- Blue Team Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -505,34 +664,31 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
       </div>
     </div>
     
-    <!-- Purple Team Connection Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/sync_alt.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">The Purple Team Connection</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You're fixing an expired cert (blue) while hunting for findings (red). Jennifer Walsh hired NEXUS for someone who sees the whole picture.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You&#8217;re fixing an expired cert (blue) while hunting for additional findings (red). Jennifer Walsh hired NEXUS for someone who sees the whole picture.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CARD 10: FINAL CHECKLIST -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist - Before You Submit" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8; list-style: none;">
       <li style="margin-bottom: 8px;">&#9744; All 12 required sections in correct order</li>
-      <li style="margin-bottom: 8px;">&#9744; 24+ screenshots (9 from 2.1, 7 from 2.2, 8+ from 2.3)</li>
+      <li style="margin-bottom: 8px;">&#9744; 25+ screenshots (9 from 2.1, 8 from 2.2, 8+ from 2.3)</li>
       <li style="margin-bottom: 8px;">&#9744; VM name visible in every screenshot</li>
       <li style="margin-bottom: 8px;">&#9744; Minimum 10 references (man pages count!)</li>
       <li style="margin-bottom: 8px;">&#9744; File saved as .docx (NOT PDF)</li>
       <li style="margin-bottom: 8px;">&#9744; Spell-checked and proofread</li>
     </ul>
     
-    <!-- Critical Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -545,7 +701,6 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
   </div>
 </div>
 
-<!-- CARD 11: GRADING STANDARDS -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Grading_Standards_Header.svg" alt="Grading Standards - How This Assignment Is Graded" style="display: block; max-width: 100%; height: auto;">
   
@@ -557,14 +712,13 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
     
     <h3 style="color: #FFF700; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Penalties</h3>
     <ul style="color: #B0B8C4; margin: 0 0 20px 20px; line-height: 1.8;">
-      <li style="margin-bottom: 8px;"><strong style="color: #FF2641;">−5</strong> per missing or unverifiable screenshot</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #FF2641;">−10</strong> per missing reference below minimum of 10</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #FF2641;">&#8722;5%</strong> per missing or unverifiable screenshot</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #FF2641;">&#8722;10%</strong> per missing reference below minimum of 10</li>
     </ul>
     
     <h3 style="color: #FFF700; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Automatic Zero</h3>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;">No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.</p>
     
-    <!-- Info Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/description.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -577,7 +731,6 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
   </div>
 </div>
 
-<!-- CARD 12: NEED HELP -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help - Support &amp; Resources" style="display: block; max-width: 100%; height: auto;">
   
@@ -585,8 +738,8 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 0 0 12px 0;">Contact</h3>
     <ul style="color: #B0B8C4; margin: 0 0 25px 20px; line-height: 1.8;">
       <li style="margin-bottom: 8px;"><strong style="color: #4169E1;">Discord:</strong> #technical-support, #lab-help, #course-questions</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #4169E1;">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e6461666020606b797d61634e7b7a7d6f206b6a7b">[email&#160;protected]</a> (private issues only)</li>
-      <li style="margin-bottom: 8px;"><strong style="color: #4169E1;">Office Hours:</strong> calendly.com/john-newsom-utsa/student-meeting</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #4169E1;">Email:</strong> <a href="/cdn-cgi/l/email-protection#5c363334327232392b2f33311c29282f3d72393829" style="color: #4169E1; text-decoration: none;"><span class="__cf_email__" data-cfemail="63090c0b0d4d0d0614100c0e23161710024d060716">[email&#160;protected]</span></a> (private issues only)</li>
+      <li style="margin-bottom: 8px;"><strong style="color: #4169E1;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1; text-decoration: none;">calendly.com/john-newsom-utsa/student-meeting</a></li>
     </ul>
     
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">AI Policy</h3>
@@ -595,22 +748,22 @@ sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</code>
     <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">Late Work</h3>
     <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 25px 0;">Not accepted. This lab is eligible to be dropped.</p>
     
-    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">What's Next</h3>
-    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;"><strong style="color: #ffffff;">Module 3: Network Traffic Analysis</strong> — You'll work with Gulf Coast again, analyzing network captures for anomalies.</p>
+    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0;">What&#8217;s Next</h3>
+    <p style="color: #B0B8C4; line-height: 1.8; margin: 0 0 20px 0;"><strong style="color: #ffffff;">Module 3: Network Traffic Analysis</strong> &#8212; You&#8217;ll work with Gulf Coast again, analyzing network captures for anomalies.</p>
     
-    <!-- Cleanup Callout -->
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/cleaning_services.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Cleanup</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After submitting: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">docker stop gulfcoast-portal && docker rm gulfcoast-portal</code></p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After submitting, clean up the Docker container:</p>
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo docker stop gulfcoast-portal</div>
+        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo docker rm gulfcoast-portal&nbsp;</div>
       </div>
     </div>
   </div>
 </div>
 
-</div>
 </body>
 </html>

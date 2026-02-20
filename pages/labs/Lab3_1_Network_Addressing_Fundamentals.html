@@ -7,11 +7,6 @@
   </head>
 <body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
 
-<div style="max-width: 900px; margin: 0 auto;">
-
-<!-- ============================================ -->
-<!-- CARD 1: LAB 3.1 HEADER -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab3_1_Header.svg" alt="Lab 3.1 - Network Addressing Fundamentals" style="display: block; max-width: 100%; height: auto;">
   
@@ -19,9 +14,9 @@
     <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 3: Networks, Cloud &amp; Defense</p>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation — the foundational math that makes packet capture meaningful. You'll calculate subnets by hand using a visual "count out" method, then verify your work with industry tools. These skills pay off next week when you start filtering traffic in Wireshark.</p>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation &#8212; the foundational math that makes packet capture meaningful. You'll calculate subnets by hand using a visual "count out" method, then verify your work with industry tools. These skills pay off next week when you start filtering traffic in Wireshark.</p>
     
-    <!-- Mentor Quote -->
+    
     <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
         <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
@@ -30,11 +25,11 @@
           <div style="font-size: 13px; color: #B0B8C4;">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"CIDR isn't just math — it's how you define your attack surface. When I'm hunting threats in a network, the first thing I need to know is what address space I'm protecting. <strong style="color: #ffffff;">Every capture filter, every firewall rule, every ACL — they all start with understanding addresses.</strong> Get this right, and Wireshark becomes a precision instrument."</p>
+      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"CIDR isn't just math &#8212; it's how you define your attack surface. When I'm hunting threats in a network, the first thing I need to know is what address space I'm protecting. <strong style="color: #ffffff;">Every capture filter, every firewall rule, every ACL &#8212; they all start with understanding addresses.</strong> Get this right, and Wireshark becomes a precision instrument."</p>
     </div>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 9 — Network Fundamentals | Chapter 18 — Cloud Computing (introduction)</p>
+    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 9 &#8212; Network Fundamentals | Chapter 18 &#8212; Cloud Computing (introduction)</p>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
     <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
@@ -48,7 +43,7 @@
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Client Context</h3>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Gulf Coast Healthcare Partners continues their engagement with NEXUS. After the cryptographic assessment in Module 2, Jennifer Walsh (CISO) has requested a network traffic analysis of their Azure-hosted patient portal. Before we can analyze their traffic, you need to master network fundamentals. This week is internal training; next week you'll dive into Wireshark; Week 3 you'll capture live Azure traffic.</p>
     
-    <!-- Save For Lab 3.3 callout -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -61,9 +56,6 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CARD 2: TIME GUIDE -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
   
@@ -109,24 +101,21 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 1: Number Systems -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_1.svg" alt="Checkpoint 1 - Number Systems" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Building fluency converting between decimal, binary, and hexadecimal number systems — the foundation for understanding network addresses.</p>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Building fluency converting between decimal, binary, and hexadecimal number systems &#8212; the foundation for understanding network addresses.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations — with it, they become precise tools.</p>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">The Conversion Cheat Sheet</h4>
     <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Memorize these 16 values (0-15) and you can convert anything:</p>
     
-    <!-- Conversion tables -->
+    
     <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
       <table style="border-collapse: collapse; background: #0d1117; flex: 1; min-width: 200px;">
         <thead>
@@ -169,7 +158,7 @@
       </table>
     </div>
     
-    <!-- Pro Tip -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -183,13 +172,13 @@
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 25px 0 8px 0; font-weight: 600;">Practice Problems</h4>
     <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Using the cheat sheet above, complete these conversions on paper:</p>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Decimal → Binary:</strong> Convert 192, 168, 255, 252</li>
-      <li><strong style="color: #ffffff;">Binary → Decimal:</strong> Convert 11000000, 10101000, 11111100, 00000000</li>
-      <li><strong style="color: #ffffff;">Decimal → Hex:</strong> Convert 192, 168, 252, 0</li>
+      <li><strong style="color: #ffffff;">Decimal &#8594; Binary:</strong> Convert 192, 168, 255, 252</li>
+      <li><strong style="color: #ffffff;">Binary &#8594; Decimal:</strong> Convert 11000000, 10101000, 11111100, 00000000</li>
+      <li><strong style="color: #ffffff;">Decimal &#8594; Hex:</strong> Convert 192, 168, 252, 0</li>
       <li><strong style="color: #ffffff;">MAC Address:</strong> Given <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">00:1A:2B:3C:4D:5E</code>, what is <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">2B</code> in decimal?</li>
     </ol>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -200,7 +189,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -208,14 +197,14 @@
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Calculator shortcuts:</strong> Using online converters without understanding the math — you need this skill for quizzes</li>
+          <li><strong style="color: #ffffff;">Calculator shortcuts:</strong> Using online converters without understanding the math &#8212; you need this skill for quizzes</li>
           <li><strong style="color: #ffffff;">Place value errors:</strong> Forgetting that binary positions are powers of 2 (128, 64, 32, 16, 8, 4, 2, 1)</li>
-          <li><strong style="color: #ffffff;">Skipping verification:</strong> Always convert back to check your work — decimal to binary to decimal</li>
+          <li><strong style="color: #ffffff;">Skipping verification:</strong> Always convert back to check your work &#8212; decimal to binary to decimal</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -226,7 +215,7 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -237,7 +226,7 @@
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -248,7 +237,7 @@
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -261,9 +250,6 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 2: Flat Network Analysis -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_2.svg" alt="Checkpoint 2 - Flat Network Analysis" style="display: block; max-width: 100%; height: auto;">
   
@@ -278,7 +264,7 @@
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">The Visual Count-Out Method</h4>
     <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">For <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">192.168.0.0/22</code>:</p>
     
-    <!-- Binary visualization -->
+    
     <div style="background: #0d1117; border-radius: 8px; padding: 20px; margin: 20px 0;">
       <div style="text-align: center; margin-bottom: 15px;">
         <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(255, 107, 107, 0.2); color: #FF6B6B; border: 1px solid #FF6B6B;">Network: 22 bits</span>
@@ -339,9 +325,9 @@
       <li>Last usable host: ?</li>
     </ol>
     
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Then repeat for <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10.0.0.0/8</code> — a much larger network.</p>
+    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Then repeat for <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10.0.0.0/8</code> &#8212; a much larger network.</p>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -352,7 +338,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -367,7 +353,7 @@
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -378,18 +364,18 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 explains network addressing and CIDR notation. The /24 notation you analyze represents subnet masks — understanding these calculations is fundamental to network segmentation.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 explains network addressing and CIDR notation. The /24 notation you analyze represents subnet masks &#8212; understanding these calculations is fundamental to network segmentation.</p>
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -400,7 +386,7 @@
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -413,9 +399,6 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 3: Subnet the Network -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_3.svg" alt="Checkpoint 3 - Subnet the Network" style="display: block; max-width: 100%; height: auto;">
   
@@ -433,7 +416,7 @@
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Borrowing Bits</h4>
     <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">When you borrow bits, they move from <span style="color: #4ECDC4;">host</span> to <span style="color: #FFE66D;">subnet</span>:</p>
     
-    <!-- Binary visualization with subnet bits -->
+    
     <div style="background: #0d1117; border-radius: 8px; padding: 20px; margin: 20px 0;">
       <div style="text-align: center; margin-bottom: 15px;">
         <span style="font-family: Segoe UI, Tahoma, sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border-radius: 4px; margin: 5px; background: rgba(255, 107, 107, 0.2); color: #FF6B6B; border: 1px solid #FF6B6B;">Network: 22</span>
@@ -525,7 +508,7 @@
       <li>Create a table showing the <strong style="color: #ffffff;">first 4 subnets</strong></li>
     </ol>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -536,7 +519,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -544,14 +527,14 @@
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Forgetting the formula:</strong> 2^n subnets when borrowing n bits — borrow 2 bits = 4 subnets, not 2</li>
+          <li><strong style="color: #ffffff;">Forgetting the formula:</strong> 2^n subnets when borrowing n bits &#8212; borrow 2 bits = 4 subnets, not 2</li>
           <li><strong style="color: #ffffff;">Host count confusion:</strong> Usable hosts = 2^h - 2 (subtract network and broadcast addresses)</li>
-          <li><strong style="color: #ffffff;">Subnet boundary errors:</strong> Each subnet starts where the previous one ends — watch the increment pattern</li>
+          <li><strong style="color: #ffffff;">Subnet boundary errors:</strong> Each subnet starts where the previous one ends &#8212; watch the increment pattern</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -562,29 +545,29 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries — the same technique you use here enables network architects to separate sensitive systems.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries &#8212; the same technique you use here enables network architects to separate sensitive systems.</p>
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
       <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Notice we've been using 10.x.x.x, 172.16.x.x, and 192.168.x.x — why these specific ranges? Look up RFC 1918 to understand private address space and why these ranges are special.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Notice we've been using 10.x.x.x, 172.16.x.x, and 192.168.x.x &#8212; why these specific ranges? Look up RFC 1918 to understand private address space and why these ranges are special.</p>
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -597,9 +580,6 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 4: Verify with MX Toolbox -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_4.svg" alt="Checkpoint 4 - Verify with MX Toolbox" style="display: block; max-width: 100%; height: auto;">
   
@@ -619,7 +599,7 @@
       <li>If any calculations were wrong, go back and identify where you made the error</li>
     </ol>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -630,7 +610,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -638,13 +618,13 @@
       <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
         <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Skipping verification:</strong> Don't assume your math is right — always check</li>
+          <li><strong style="color: #ffffff;">Skipping verification:</strong> Don't assume your math is right &#8212; always check</li>
           <li><strong style="color: #ffffff;">Not correcting errors:</strong> If the tool shows different results, trace back to find your mistake</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -655,29 +635,29 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work — MX Toolbox represents the kind of external verification used in production environments.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work &#8212; MX Toolbox represents the kind of external verification used in production environments.</p>
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
       <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">MX Toolbox offers more than just subnet calculations — explore their other network diagnostic tools. What else can you check about a domain or IP address?</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">MX Toolbox offers more than just subnet calculations &#8212; explore their other network diagnostic tools. What else can you check about a domain or IP address?</p>
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -690,16 +670,13 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 5: Document Your Networks -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_5.svg" alt="Checkpoint 5 - Document Your Networks" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Documentation of your actual network configuration — both your host machine and your Kali VM.</p>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Documentation of your actual network configuration &#8212; both your host machine and your Kali VM.</p>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what "normal" looks like for your environment. This baseline documentation is exactly what you'd create at the start of any client engagement or incident response.</p>
@@ -721,7 +698,7 @@
     </ul>
     
     <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">In Your Kali VM</h4>
-    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0;">ip addr<br>ip route<br>cat /etc/resolv.conf<br>ping -c 3 8.8.8.8</div>
+    <div style="background: #1A1F2E; padding: 15px 20px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A; margin: 10px 0;">ip addr<br>ip route<br>arp -a<br>cat /etc/resolv.conf<br>ping -c 3 8.8.8.8</div>
     
     <p style="color: #B0B8C4; margin: 20px 0 10px 0;"><strong style="color: #ffffff;">Document these values:</strong></p>
     <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 1.8;">
@@ -729,10 +706,11 @@
       <li>IP Address (likely 10.0.2.x if NAT)</li>
       <li>Subnet Mask/CIDR</li>
       <li>Default Gateway</li>
+      <li>ARP Cache entries (IP to MAC address mappings)</li>
       <li>VirtualBox Network Mode (NAT, Bridged, etc.)</li>
     </ul>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -743,7 +721,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -758,7 +736,7 @@
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -769,18 +747,18 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 emphasizes the importance of network documentation. Security teams can't protect what they don't know exists — your documentation creates the asset inventory that informs security controls.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 emphasizes the importance of network documentation. Security teams can't protect what they don't know exists &#8212; your documentation creates the asset inventory that informs security controls.</p>
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -791,7 +769,7 @@
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -804,9 +782,6 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- CHECKPOINT 6: Network Topology Diagram -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_1_6.svg" alt="Checkpoint 6 - Network Topology Diagram" style="display: block; max-width: 100%; height: auto;">
   
@@ -829,18 +804,18 @@
       <li><strong style="color: #ffffff;">Gulf Coast Patient Portal</strong> (10.0.1.x subnet)</li>
     </ul>
     
-    <!-- Pro Tip -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Recommended Tools</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><a href="https://app.diagrams.net/" style="color: #00BCD4;">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too — we care about the content, not the polish.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><a href="https://app.diagrams.net/" style="color: #00BCD4;">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too &#8212; we care about the content, not the polish.</p>
       </div>
     </div>
     
-    <!-- Screenshot callout -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -851,7 +826,7 @@
       </div>
     </div>
     
-    <!-- Common Pitfalls -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -861,12 +836,12 @@
         <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
           <li><strong style="color: #ffffff;">Missing labels:</strong> Every device and connection needs an IP address or network range labeled</li>
           <li><strong style="color: #ffffff;">Incomplete path:</strong> Show the entire chain from Kali VM through NAT, host, router, internet, to target</li>
-          <li><strong style="color: #ffffff;">Low resolution export:</strong> Export as PNG at high resolution — blurry diagrams are unprofessional</li>
+          <li><strong style="color: #ffffff;">Low resolution export:</strong> Export as PNG at high resolution &#8212; blurry diagrams are unprofessional</li>
         </ul>
       </div>
     </div>
     
-    <!-- What You Should Have -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -877,18 +852,18 @@
       </div>
     </div>
     
-    <!-- Textbook Reference -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders — a skill you'll use in Lab 3.3's client deliverable.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders &#8212; a skill you'll use in Lab 3.3's client deliverable.</p>
       </div>
     </div>
     
-    <!-- Dig Deeper -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -899,7 +874,7 @@
       </div>
     </div>
     
-    <!-- That's a Reference -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
@@ -912,16 +887,13 @@
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- PURPLE TEAM PERSPECTIVES -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspectives" style="display: block; max-width: 100%; height: auto;">
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Network addressing fundamentals serve both offensive and defensive operations:</p>
     
-    <!-- Red Team -->
+    
     <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
@@ -932,22 +904,19 @@
       </div>
     </div>
     
-    <!-- Blue Team -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Blue Team Perspective</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans. Proper subnetting creates security boundaries — an attacker who compromises one subnet shouldn't automatically access others. Understanding addressing lets you spot anomalous traffic crossing boundaries.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans. Proper subnetting creates security boundaries &#8212; an attacker who compromises one subnet shouldn't automatically access others. Understanding addressing lets you spot anomalous traffic crossing boundaries.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- FINAL CHECKLIST CARD -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
   
@@ -955,40 +924,37 @@
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Exercises Completed</h3>
     <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
-      <li>☐ Number conversions (decimal, binary, hex)</li>
-      <li>☐ Flat network analysis (192.168.0.0/22 and 10.0.0.0/8)</li>
-      <li>☐ Subnet table for 192.168.0.0/22 → /24</li>
-      <li>☐ All calculations verified against MX Toolbox</li>
-      <li>☐ Host and Kali network configurations documented</li>
-      <li>☐ Network topology diagram completed</li>
+      <li>&#9744; Number conversions (decimal, binary, hex)</li>
+      <li>&#9744; Flat network analysis (192.168.0.0/22 and 10.0.0.0/8)</li>
+      <li>&#9744; Subnet table for 192.168.0.0/22 &#8594; /24</li>
+      <li>&#9744; All calculations verified against MX Toolbox</li>
+      <li>&#9744; Host and Kali network configurations documented</li>
+      <li>&#9744; Network topology diagram completed</li>
     </ul>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Screenshots Saved</h3>
     <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-number-conversions.png</code></li>
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-flat-network-analysis.png</code></li>
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-subnet-table.png</code></li>
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-mxtoolbox-verification.png</code></li>
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">05-host-kali-config.png</code></li>
-      <li>☐ <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">06-topology-diagram.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-number-conversions.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-flat-network-analysis.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-subnet-table.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-mxtoolbox-verification.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">05-host-kali-config.png</code></li>
+      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">06-topology-diagram.png</code></li>
     </ul>
     
-    <!-- Canvas Quiz callout -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy — you may be asked to perform CIDR calculations or reference your network configuration.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============================================ -->
-<!-- NEED HELP CARD -->
-<!-- ============================================ -->
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
   
@@ -1002,7 +968,7 @@
     </ul>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h3>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational network skills you'll need for Wireshark.</p>
+    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational network skills you'll need for Wireshark.</p>
     
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h3>
     <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may use AI tools (ChatGPT, Claude, etc.) to:</p>
@@ -1019,19 +985,18 @@
     </ul>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Think of AI like a tutor, not a ghostwriter.</strong> It can help you understand and improve, but the work itself must be yours.</p>
     
-    <!-- Next Steps callout -->
+    
     <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
       <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
         <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What's Next</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 3.2: Protocol Analysis Tools</strong> — Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using CIDR!), display filters, and traffic visualization. The network fundamentals you learned today make all of that possible.</p>
+        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 3.2: Protocol Analysis Tools</strong> &#8212; Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using CIDR!), display filters, and traffic visualization. The network fundamentals you learned today make all of that possible.</p>
       </div>
     </div>
   </div>
 </div>
 
-</div>
 </body>
 </html>
