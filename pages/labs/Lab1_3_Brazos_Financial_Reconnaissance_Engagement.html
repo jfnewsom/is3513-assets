@@ -16,8 +16,7 @@
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
     <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Congratulations &#8212; you've completed NEXUS reconnaissance training and you're cleared for client work. Brazos Financial Group needs an external attack surface assessment. This week you'll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: timesheet showing all three weeks, your internal runbook documenting your methodology, and a professional client report for Ray Jimenez.</p>
     
-    
-    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
         <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
         <div>
@@ -40,8 +39,7 @@
       <li>Deliver professional client report suitable for executive audience</li>
     </ul>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -83,8 +81,7 @@
       <li><span style="background: #7B68EE; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NEW</span> Professional Reflection, References, Appendix</li>
     </ul>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -143,31 +140,45 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Real penetration tests begin with scope definition and authorized target deployment. The Brazos container represents their actual exposed services &#8212; the same ports and configurations an external attacker would see.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Pull the Brazos container image:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker pull jfnewsom/brazos-financial:latest</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker pull</code> downloads a container image from Docker Hub. This image contains Brazos Financial&#8217;s simulated environment &#8212; a pre-configured system with intentional vulnerabilities for you to discover. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">:latest</code> tag ensures you get the current version.</p>
+        </div>
+      </details>
       </li>
       <li>Run the container with all required ports:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker run</code> creates and starts a container. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-d</code> flag runs it in the background (detached). Each <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-p</code> flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 445 (SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan &#8212; Brazos Financial&#8217;s exposed attack surface.</p>
+        </div>
+      </details>
       </li>
       <li>Verify the container is running:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">docker ps</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see a table with the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">brazos</code> container listed as &#8220;Up.&#8221; Verify all five port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed &#8212; check the Common Pitfalls below.</p>
+        </div>
+      </details>
       </li>
       <li>Note the container IP (usually <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">localhost</code> or <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">127.0.0.1</code>)</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -177,8 +188,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -192,8 +202,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -210,36 +219,56 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This is the core of your engagement. A thorough reconnaissance reveals everything an attacker would discover about Brazos Financial's external attack surface. Your findings drive the entire client report.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Run comprehensive nmap scan:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sV -sC -A localhost</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Engagement context:</strong> This combines all three Nmap techniques from Lab 1.2: version detection (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sV</code>), default scripts (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sC</code>), and aggressive mode (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-A</code> adds OS detection and traceroute). This is your primary reconnaissance scan &#8212; document every open port, service, and version in your report.</p>
+        </div>
+      </details>
       </li>
       <li>Perform banner grabbing with netcat on discovered ports</li>
       <li>Run dirb against the web services:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">dirb http://localhost</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Engagement context:</strong> Brute-forces directory names on Brazos Financial&#8217;s web server. Look for admin panels, backup files, or configuration directories that shouldn&#8217;t be publicly accessible. Each finding is a potential vulnerability for your report.</p>
+        </div>
+      </details>
       </li>
       <li>Execute nikto vulnerability scan:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nikto -h http://localhost</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Engagement context:</strong> Scans Brazos Financial&#8217;s web server for known misconfigurations, outdated software, and dangerous files. The findings from nikto complement your dirb results &#8212; nikto checks for specific vulnerabilities while dirb discovers hidden paths.</p>
+        </div>
+      </details>
       </li>
       <li>Enumerate SMB with enum4linux:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">enum4linux -a localhost</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Engagement context:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-a</code> flag runs all enumeration checks: users, shares, groups, password policies, OS info. In Lab 1.2 you reviewed the help &#8212; now you&#8217;re running it for real against Brazos Financial&#8217;s SMB service on port 445. Document any discovered usernames, file shares, or policy weaknesses.</p>
+        </div>
+      </details>
       </li>
       <li>Research vulnerabilities for discovered versions using searchsploit</li>
       <li>Document ALL findings with screenshots</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -249,8 +278,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -260,8 +288,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -275,8 +302,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -293,16 +319,13 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Assembling your complete Engagement Packet: combining Week 1-2 documentation with this week's findings into a professional deliverable with three sections.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Required Report Sections</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Required Report Sections</h4>
     
     <h5 style="color: #ffffff; font-size: 15px; margin: 20px 0 10px 0; font-weight: 600;">Section A: NEXUS Timesheet</h5>
     <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Justify hours across all three weeks: internal training (Weeks 1-2) and client billable (Week 3).</p>
@@ -313,8 +336,7 @@
     <h5 style="color: #ffffff; font-size: 15px; margin: 20px 0 10px 0; font-weight: 600;">Section C: Client Report</h5>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Professional deliverable for Ray Jimenez including: Executive Summary, Assessment Results, Risk Analysis, and Recommendations.</p>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -337,8 +359,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -348,8 +369,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -393,8 +413,7 @@
       <li>&#9744; Proofread for grammar and spelling</li>
     </ul>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -405,6 +424,7 @@
     </div>
   </div>
 </div>
+
 
 <div style="margin-bottom: 50px;">
   <img src="https://jfnewsom.github.io/is3513-assets/headers/Grading_Standards_Header.svg" alt="Grading Standards" style="display: block; max-width: 100%; height: auto;">
@@ -471,8 +491,7 @@
     </ul>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em></p>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -484,6 +503,6 @@
   </div>
 </div>
 
-</div>
+
 </body>
 </html>

@@ -16,8 +16,7 @@
     <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
     <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next week, you'll apply these skills against a real client engagement.</p>
     
-    
-    <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
         <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
         <div>
@@ -41,8 +40,7 @@
       <li>Research vulnerabilities using <strong style="color: #ffffff;">searchsploit</strong></li>
     </ul>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -108,30 +106,40 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Demonstrating network scanning fundamentals using nmap against authorized targets. You'll perform version detection and script scanning to identify services and potential vulnerabilities.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Nmap is the industry-standard network scanner. Understanding its capabilities helps both attackers (who use it to map target networks) and defenders (who need to understand what attackers see). Version detection reveals exactly what software is running, which directly informs vulnerability research.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Open a terminal in your Kali VM</li>
       <li>Run a version detection scan:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sV scanme.nmap.org</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sV</code> flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn <em>what software</em> is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible.</p>
+        </div>
+      </details>
       </li>
       <li>Note the open ports and service versions detected</li>
       <li>Run a default script scan:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sC scanme.nmap.org</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sC</code> flag runs Nmap&#8217;s default set of scripts against discovered services. These scripts perform safe enumeration tasks like grabbing SSH host keys, checking HTTP headers, and detecting common misconfigurations.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Compare this to the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sV</code> output. You should see additional details like SSH host keys and HTTP page titles that weren&#8217;t in the version scan. Scripts extend Nmap from a port scanner into an information-gathering platform.</p>
+        </div>
+      </details>
       </li>
       <li>Compare the output &#8212; what additional information did scripts reveal?</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -145,8 +153,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -156,8 +163,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -167,8 +173,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -182,8 +187,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -193,8 +197,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -204,8 +207,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -215,8 +217,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -233,30 +234,47 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using netcat to manually connect to network services and capture their identification banners &#8212; the text services display when you connect.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Service banners reveal software versions, hostnames, and configuration details. This low-level technique helps verify nmap results and often reveals information automated scanners miss. Netcat is the "Swiss Army knife" of networking.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Connect to SSH port on scanme.nmap.org:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nc -v scanme.nmap.org 22</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nc</code> (netcat) opens a raw TCP connection to a host and port. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-v</code> flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see a connection message followed by the SSH banner (something like <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">SSH-2.0-OpenSSH_6.6.1p1</code>). This banner reveals the exact software version &#8212; valuable intel for an attacker.</p>
+        </div>
+      </details>
       </li>
       <li>Observe the banner that appears (SSH version string)</li>
       <li>Press <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Ctrl+C</code> to disconnect</li>
       <li>Try connecting to port 80:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nc -v scanme.nmap.org 80</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response.</p>
+        </div>
+      </details>
       </li>
-      <li>Type <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">HEAD / HTTP/1.0</code> and press Enter twice to get HTTP headers</li>
+      <li>Type <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">HEAD / HTTP/1.0</code> and press Enter twice to get HTTP headers
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">HEAD / HTTP/1.0</code> is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.</p>
+        </div>
+      </details>
+      </li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -266,8 +284,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -277,8 +294,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -292,8 +308,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -303,8 +318,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -314,8 +328,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -325,8 +338,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -343,27 +355,30 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn't linked from the main site.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Run dirb against the test target:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">dirb http://testphp.vulnweb.com</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">dirb</code> sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Watch for lines showing <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:200</code> (the page exists) versus <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:403</code> (forbidden but exists) and <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:301</code> (redirect). Each discovered path is a potential attack surface.</p>
+        </div>
+      </details>
       </li>
       <li>Watch it test common directory names</li>
       <li>Note which return <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">CODE:200</code> (found)</li>
       <li>Let it run or press <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Ctrl+C</code> after several results</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -373,8 +388,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -384,8 +398,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -399,8 +412,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -410,8 +422,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -421,8 +432,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -432,8 +442,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -450,27 +459,30 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using nikto to scan web servers for known vulnerabilities, misconfigurations, and dangerous files.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Nikto checks for 6,700+ dangerous files and 1,250+ outdated server versions. It quickly identifies low-hanging fruit that attackers commonly exploit.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Run nikto against the test target:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nikto -h http://testphp.vulnweb.com</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nikto</code> is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-h</code> flag specifies the target host.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Each line prefixed with <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">+</code> is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report.</p>
+        </div>
+      </details>
       </li>
       <li>Watch the output &#8212; nikto reports findings as it scans</li>
       <li>Note types of findings: server info, outdated software, dangerous files</li>
       <li>Let it run for a few minutes</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -480,8 +492,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -495,8 +506,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -506,8 +516,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -517,8 +526,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -528,8 +536,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -546,26 +553,29 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Exploring enum4linux capabilities for SMB/Windows enumeration. Since we don't have a live SMB target, you'll review the tool's help output and understand its purpose.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies &#8212; critical information for both attackers and security assessments. You'll use this tool against the Brazos Financial container next week.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Review enum4linux help:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">enum4linux -h</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">enum4linux</code> is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-h</code> flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships.</p>
+        </div>
+      </details>
       </li>
       <li>Note the different enumeration options (-U for users, -S for shares, etc.)</li>
       <li>Understand what each flag discovers</li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -580,8 +590,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -591,8 +600,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -605,8 +613,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -616,8 +623,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -627,8 +633,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -638,8 +643,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -656,31 +660,46 @@
   
   <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using searchsploit to search the Exploit Database for known vulnerabilities and exploits based on software versions discovered during reconnaissance.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Once you know what software a target runs, you need to research whether known exploits exist. Searchsploit provides offline access to Exploit-DB, the largest public archive of exploits and vulnerable software.</p>
     
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
+        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
     <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
       <li>Update the database:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">sudo searchsploit -u</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-u</code> flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
+        </div>
+      </details>
       </li>
       <li>Search for Apache vulnerabilities:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">searchsploit apache 2.4</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.</p>
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it.</p>
+        </div>
+      </details>
       </li>
       <li>Note the exploit titles, types, and paths</li>
       <li>Try searching for OpenSSH:
         <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">searchsploit openssh</div>
+      <details style="margin: 8px 0 4px 0;">
+        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
+        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
+          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Compare the results to your Apache search. Notice the different exploit types and how the version numbers in the titles help you narrow down which exploits apply to a specific target. In practice, you&#8217;d cross-reference these results with the exact version string from your Nmap scan.</p>
+        </div>
+      </details>
       </li>
     </ol>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -690,8 +709,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -705,8 +723,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -716,8 +733,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -727,8 +743,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -738,8 +753,7 @@
       </div>
     </div>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
       </div>
@@ -775,8 +789,7 @@
       <li>&#9744; All screenshots saved in <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module1_Screenshots</code> folder</li>
     </ul>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -795,8 +808,7 @@
     
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This course officially supports <strong style="color: #fff;">VirtualBox with Kali Linux installed from ISO</strong>. Students using other hypervisors (VMware, Parallels, UTM) are responsible for their own troubleshooting.</p>
     
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Authorized Targets</h4>
+        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Authorized Targets</h4>
     <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #ffffff;">Only scan targets you have explicit permission to test.</strong> Unauthorized scanning is illegal and can result in criminal charges, academic discipline, and termination from this program.</p>
     <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
       <li><strong style="color: #00D26A;">scanme.nmap.org</strong> &#8212; Official nmap test server (network scanning)</li>
@@ -804,8 +816,7 @@
       <li><strong style="color: #00D26A;">Your own Kali VM</strong> &#8212; localhost (all tools)</li>
     </ul>
     
-    
-    <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
+        <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -815,20 +826,17 @@
       </div>
     </div>
     
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
+        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
     <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
       <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
       <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
       <li><strong style="color: #ffffff;">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="23494c4b4d0d4d4654504c4e63565750420d464756">[email&#160;protected]</a> (for private matters only)</li>
     </ul>
     
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
+        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped.</p>
     
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
+        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
     <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
     <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
       <li>Explain command syntax and tool functionality</li>
@@ -843,12 +851,10 @@
     </ul>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
     
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
+        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
     <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
     
-    
-    <div style="position: relative; margin-left: 20px;">
+        <div style="position: relative; margin-left: 20px;">
       <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
         <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
       </div>
@@ -860,6 +866,6 @@
   </div>
 </div>
 
-</div>
+
 </body>
 </html>
