@@ -337,9 +337,17 @@
   }
 
   /* ── Mount nav ──────────────────────────────────────────────── */
-  const nav = document.createElement('nav');
-  nav.id = 'nexus-nav';
-  nav.innerHTML = html;
-  document.body.insertBefore(nav, document.body.firstChild);
+  function mount() {
+    const nav = document.createElement('nav');
+    nav.id = 'nexus-nav';
+    nav.innerHTML = html;
+    document.body.insertBefore(nav, document.body.firstChild);
+  }
+
+  if (document.body) {
+    mount();
+  } else {
+    document.addEventListener('DOMContentLoaded', mount);
+  }
 
 })();
