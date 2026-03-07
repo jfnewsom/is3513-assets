@@ -1,0 +1,315 @@
+/* ============================================================
+   IS3513 Labs — Shared Stylesheet
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Slab:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  padding: 40px;
+  margin: 0;
+  color: #B0B8C4;
+  line-height: 1.8;
+}
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.nx-section { margin-bottom: 50px; }
+
+/* ============================================================
+   SECTION HEADERS
+   <div class="nx-header" style="--accent: #4169E1;">
+     <div class="nx-header-top">
+       <div class="nx-kw">lab 1.1</div>
+       <div class="nx-sec">Kali Linux Environment Setup</div>
+     </div>
+     <div class="nx-sub">Module 1: Threat Intelligence</div>
+   </div>
+   ============================================================ */
+
+.nx-header {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid var(--accent, #4169E1);
+  overflow: hidden;
+}
+.nx-header-top {
+  display: flex;
+  min-height: 70px;
+}
+.nx-kw {
+  background: var(--accent, #4169E1);
+  color: #ffffff;
+  font-family: 'Roboto Slab', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 16px 20px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.nx-sec {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Roboto Slab', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+/* When there is no nx-sec the keyword block fills full width */
+.nx-header-top:not(:has(.nx-sec)) .nx-kw {
+  width: 100%;
+}
+.nx-sub {
+  background: #FEC618;
+  color: #000000;
+  font-family: 'Roboto Slab', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 12px 20px;
+}
+
+/* Checkpoint headers — same size as lab headers, keyword lowercase */
+.nx-header.nx-checkpoint .nx-kw {
+  text-transform: lowercase;
+}
+
+/* ── Card body ────────────────────────────────────────────── */
+.nx-card {
+  background: #0A0E17;
+  padding: 30px 30px 30px 50px;
+  border-radius: 0 0 8px 0;
+  border-left: 4px solid var(--accent, #4169E1);
+  border-bottom: 4px solid var(--accent, #4169E1);
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+.nx-card h1 { color: #ffffff; font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 700; margin: 0 0 16px 0; }
+.nx-card h2 { color: #ffffff; font-size: 18px; font-weight: 600; margin: 25px 0 12px 0; }
+.nx-card h3 { color: var(--accent, #4169E1); text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600; }
+.nx-card p  { color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8; }
+.nx-card ul,
+.nx-card ol { color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; }
+.nx-card li { margin-bottom: 4px; }
+.nx-card a  { color: #4169E1; }
+.nx-card a:hover { color: #7B68EE; }
+.nx-card strong { color: #ffffff; }
+.nx-card em { color: #B0B8C4; }
+.nx-card code {
+  background: #1a1f2e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #00D26A;
+}
+
+/* ── Module label ─────────────────────────────────────────── */
+.nx-module-label {
+  color: #7B68EE;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Command blocks ───────────────────────────────────────── */
+.nx-cmd {
+  background: #1a1f2e;
+  padding: 15px 48px 15px 20px;
+  border-radius: 6px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #00D26A;
+  overflow-x: auto;
+  margin: 10px 0;
+  position: relative;
+}
+.nx-copy-btn {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a5568;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1;
+}
+.nx-copy-btn:hover {
+  color: #00D26A;
+  background: rgba(0, 210, 106, 0.1);
+}
+.nx-copy-btn.copied {
+  color: #00D26A;
+}
+.nx-copy-btn .material-icons {
+  font-size: 16px;
+}
+
+/* ── Collapsible "What this does" ─────────────────────────── */
+details { margin: 8px 0 4px 0; }
+summary {
+  color: #7B68EE;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 0;
+  font-family: 'Roboto', sans-serif;
+}
+.nx-details-body {
+  background: rgba(123, 104, 238, 0.08);
+  border-left: 3px solid #7B68EE;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 6px 0;
+  font-size: 13px;
+  color: #B0B8C4;
+  line-height: 1.7;
+}
+.nx-details-body p { margin: 0; }
+
+/* ── Callout cards ────────────────────────────────────────── */
+.nx-callout {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.nx-callout:last-child { margin-bottom: 0; }
+
+.nx-callout-icon {
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--callout-color, #4169E1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.nx-callout-icon .material-icons {
+  font-size: 24px;
+  color: #ffffff;
+}
+.nx-callout.nx-yellow .nx-callout-icon .material-icons {
+  color: #000000;
+}
+
+.nx-callout-body {
+  background: rgba(var(--callout-rgb, 65, 105, 225), 0.12);
+  border-left: 4px solid var(--callout-color, #4169E1);
+  padding: 20px 25px;
+  border-radius: 0 8px 8px 0;
+  margin-left: -12px;
+}
+.nx-callout-title {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--callout-color, #4169E1);
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+.nx-callout-body p  { color: #B0B8C4; margin: 0; line-height: 1.8; }
+.nx-callout-body ul { color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8; }
+
+/* ── Callout color variants ───────────────────────────────── */
+.nx-green  { --callout-color: #00D26A; --callout-rgb: 0, 210, 106; }
+.nx-yellow { --callout-color: #FFF700; --callout-rgb: 255, 247, 0; }
+.nx-cyan   { --callout-color: #00BCD4; --callout-rgb: 0, 188, 212; }
+.nx-orange { --callout-color: #FF9F1C; --callout-rgb: 255, 159, 28; }
+.nx-red    { --callout-color: #FF2641; --callout-rgb: 255, 38, 65; }
+.nx-blue   { --callout-color: #4169E1; --callout-rgb: 65, 105, 225; }
+.nx-purple { --callout-color: #7B68EE; --callout-rgb: 123, 104, 238; }
+
+/* ── Character quote card ─────────────────────────────────── */
+.nx-quote {
+  background: rgba(123, 104, 238, 0.08);
+  border-left: 4px solid #7B68EE;
+  padding: 20px 25px;
+  border-radius: 0 8px 8px 0;
+  margin: 25px 0;
+}
+.nx-quote-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.nx-quote-header img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.nx-quote-name  { font-family: 'Roboto Slab', serif; font-weight: 600; font-size: 15px; color: #7B68EE; }
+.nx-quote-title { font-size: 13px; color: #B0B8C4; }
+.nx-quote p { font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0; }
+
+/* ── Time guide table ─────────────────────────────────────── */
+.nx-time-table { width: 100%; border-collapse: collapse; color: #B0B8C4; }
+.nx-time-table thead tr { background: #1a1f2e; }
+.nx-time-table th { padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600; }
+.nx-time-table th:last-child { text-align: center; width: 120px; }
+.nx-time-table td { padding: 12px 15px; border-bottom: 1px solid #2a2f3e; }
+.nx-time-table td:last-child { text-align: center; }
+.nx-time-table .nx-total td { background: #1a1f2e; font-weight: 600; color: #FF9F1C; border-bottom: none; }
+
+/* ── Checklist ────────────────────────────────────────────── */
+.nx-checklist { list-style: none; padding-left: 0; margin: 0 0 25px 0; line-height: 2.2; }
+.nx-checklist li { color: #B0B8C4; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  body { padding: 20px; }
+  .nx-kw, .nx-sec { font-size: 26px; padding: 12px 14px; }
+  .nx-sub { font-size: 15px; }
+  .nx-card { padding: 20px 20px 20px 36px; }
+  .nx-callout { margin-left: 16px; }
+  .nx-callout-icon { left: -28px; top: 16px; width: 36px; height: 36px; }
+  .nx-callout-icon .material-icons { font-size: 18px; }
+}
+
+/* ── Accent headings (Grading Standards etc.) ────────────── */
+.nx-card h2.nx-accent { color: var(--accent, #4169E1); }
+
+/* ── "NEW" badge pill ─────────────────────────────────────── */
+.nx-badge-new {
+  display: inline-block;
+  background: #7B68EE;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+/* ── Green check list items (You Already Have) ────────────── */
+.nx-check { color: #00D26A; margin-right: 4px; }
+
+/* ── Accessibility utilities ──────────────────────────────── */
+.nx-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

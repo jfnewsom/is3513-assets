@@ -12,6 +12,11 @@
   fontLink.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Slab:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap';
   document.head.appendChild(fontLink);
 
+  const iconsLink = document.createElement('link');
+  iconsLink.rel = 'stylesheet';
+  iconsLink.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
+  document.head.appendChild(iconsLink);
+
   /* ── Shared styles ─────────────────────────────────────────── */
   const css = `
     #nexus-nav {
@@ -312,6 +317,34 @@
     mount();
   } else {
     document.addEventListener('DOMContentLoaded', mount);
+  }
+
+  /* ── Copy buttons for .nx-cmd blocks ───────────────────────── */
+  function initCopyButtons() {
+    document.querySelectorAll('.nx-cmd').forEach(function(block) {
+      const btn = document.createElement('button');
+      btn.className = 'nx-copy-btn';
+      btn.setAttribute('aria-label', 'Copy command');
+      btn.innerHTML = '<span class="material-icons" aria-hidden="true">content_copy</span>';
+      btn.addEventListener('click', function() {
+        const text = block.innerText.replace(/\n$/, '').trim();
+        navigator.clipboard.writeText(text).then(function() {
+          btn.innerHTML = '<span class="material-icons" aria-hidden="true">check</span>';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.innerHTML = '<span class="material-icons" aria-hidden="true">content_copy</span>';
+            btn.classList.remove('copied');
+          }, 1500);
+        });
+      });
+      block.appendChild(btn);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCopyButtons);
+  } else {
+    initCopyButtons();
   }
 
 })();
