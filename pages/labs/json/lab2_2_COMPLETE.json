@@ -1,0 +1,939 @@
+{
+  "meta": {
+    "labId": "2_2",
+    "title": "Authentication Systems",
+    "labType": "foundation",
+    "module": "Module 2: Cryptography &amp; Authentication",
+    "client": null,
+    "chapters": [
+      "Chapter 6 &#8212; Applied Cryptography",
+      "Chapter 11 &#8212; Authentication and Remote Access"
+    ],
+    "headerSvg": "Lab2_2_Header.svg",
+    "screenshotStart": 10
+  },
+  "intro": {
+    "overview": "This week continues your security training at NEXUS with a deep dive into authentication systems. You&#8217;ll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next week &#8212; their infrastructure relies on certificate-based authentication.",
+    "mentorQuote": {
+      "character": "Derek Mitchell",
+      "title": "Blue Team Lead, NEXUS Security",
+      "headshot": "derek-mitchell.png",
+      "quote": "Attackers have to be right once. Defenders have to be right every time. That&#8217;s why we layer defenses &#8212; and authentication is your first layer. Passwords are the weakest link. This week, you&#8217;ll learn what replaces them."
+    },
+    "focusAreas": [
+      {
+        "title": "SSH Keypair Generation",
+        "description": "Generating RSA and ED25519 keypairs — comparing the two algorithms and understanding when each is appropriate in modern infrastructure."
+      },
+      {
+        "title": "File Permission Security",
+        "description": "Linux permission octal notation (600, 644, 700) and why SSH refuses to use keys with incorrect permissions — a live demonstration of least privilege."
+      },
+      {
+        "title": "authorized_keys and SSH Config",
+        "description": "Setting up server-side key authorization and client-side config aliases — how professional analysts manage connections to dozens of servers efficiently."
+      },
+      {
+        "title": "Multi-Factor Authentication",
+        "description": "Configuring SSH to require both a private key and a password — implementing real two-factor authentication with factors from different categories."
+      },
+      {
+        "title": "Defense in Depth",
+        "description": "Directory permissions (700) combined with file permissions (600) provide two independent layers of access control — neither layer alone is sufficient."
+      },
+      {
+        "title": "Authentication Factor Categories",
+        "description": "Something you know, something you have, something you are — why a password and a security question are NOT two factors, but a key and a password are."
+      }
+    ],
+    "objectives": [
+      "Generate SSH keypairs using both RSA and ED25519 algorithms",
+      "Configure proper file permissions for SSH keys",
+      "Set up authorized_keys and SSH config files",
+      "Test SSH key-based authentication",
+      "Demonstrate understanding of MFA concepts"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 2.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module2_Screenshots</code> folder. You should have 9 screenshots from Lab 2.1. This week adds 8 more."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: SSH Key Generation",
+        "time": "25-35 min"
+      },
+      {
+        "task": "Checkpoint 2: Key Permissions",
+        "time": "20-25 min"
+      },
+      {
+        "task": "Checkpoint 3: SSH Configuration",
+        "time": "35-45 min"
+      },
+      {
+        "task": "Checkpoint 4: MFA Concepts",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Canvas Quiz",
+        "time": "16-20 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "2-3 hours"
+    },
+    "timesheetNote": "This is Week 2 of a 3-week module. Time here is still internal NEXUS training — not yet billable to Gulf Coast Healthcare. Add this week's 8 screenshots to your existing Module2_Screenshots folder. You should now have 17 total (9 from Lab 2.1 plus 8 from this lab). You will use all of them in your Lab 2.3 Engagement Packet."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "SSH Key Generation",
+      "altText": "Checkpoint_2_2_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Generating SSH keypairs using both RSA and ED25519 algorithms. You&#8217;ll compare the two key types and understand when to use each.",
+          "whyItMatters": "SSH key authentication is the industry standard for secure remote access. Unlike passwords, keys are cryptographically strong, can&#8217;t be guessed through brute force, and provide non-repudiation. Every server you&#8217;ll manage in your career will use key-based authentication."
+        },
+        {
+          "character": "Derek Mitchell",
+          "headshot": "derek-mitchell.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Blue Team Lead, NEXUS Security",
+          "quote": "ED25519 is the modern choice &#8212; smaller keys, faster operations, same security. But you&#8217;ll still see RSA everywhere. Know both."
+        },
+        {
+          "part": "Part A: Generate an RSA keypair",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create a working directory for this lab:",
+              "command": "mkdir -p ~/lab2-auth",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Change into your working directory:",
+              "command": "cd ~/lab2-auth",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Generate a 4096-bit RSA key (press Enter for defaults, use passphrase <code>nexus2026</code>):",
+              "command": "ssh-keygen -t rsa -b 4096 -f ./id_rsa_lab -C \"lab-rsa-key\"",
+              "whatThisDoes": {
+                "concept": "<code>ssh-keygen</code> generates SSH keypairs for passwordless authentication. Like the RSA keys from Lab 2.1, SSH keys use asymmetric cryptography &#8212; but formatted for the SSH protocol. The private key stays on your machine; the public key goes on any server you want to access.",
+                "output": "You&#8217;ll see a randomart image &#8212; a visual fingerprint of your key. Two files are created: <code>id_rsa_lab</code> (private, keep secret) and <code>id_rsa_lab.pub</code> (public, safe to share).",
+                "flags": [
+                  {
+                    "flag": "-t rsa",
+                    "description": "Key type: RSA (the classic, widely compatible algorithm)"
+                  },
+                  {
+                    "flag": "-b 4096",
+                    "description": "Key size: 4096 bits (double the NIST minimum for stronger security)"
+                  },
+                  {
+                    "flag": "-f ./id_rsa_lab",
+                    "description": "Output file path (avoids overwriting your real SSH keys)"
+                  },
+                  {
+                    "flag": "-C \"lab-rsa-key\"",
+                    "description": "Comment embedded in the key &#8212; helps identify which key is which on servers with many authorized keys"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "List the generated files:",
+              "command": "ls -la id_rsa*",
+              "whatThisDoes": null
+            },
+            {
+              "text": "View the public key contents:",
+              "command": "cat id_rsa_lab.pub",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the RSA key generation showing the randomart and file listing. Save as <code>10-keygen-rsa.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Generate an ED25519 keypair",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Generate an ED25519 key (modern, faster, smaller):",
+              "command": "ssh-keygen -t ed25519 -f ./id_ed25519_lab -C \"lab-ed25519-key\"",
+              "whatThisDoes": {
+                "concept": "ED25519 is a modern elliptic curve algorithm that provides equivalent security to RSA-4096 with much smaller keys and faster operations. Most security professionals now recommend ED25519 for new deployments &#8212; shorter keys, faster math, no known weaknesses. You&#8217;ll still encounter RSA on legacy systems, which is why you learned both.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "List all key files:",
+              "command": "ls -la id_*",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Compare the key sizes:",
+              "command": "wc -c id_rsa_lab.pub id_ed25519_lab.pub",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "<code>wc -c</code> counts bytes in each file. The RSA public key will be roughly 750 bytes while ED25519 is about 100 bytes &#8212; yet they provide comparable security. Smaller is better when security is equal.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes. Save as <code>11-keygen-ed25519.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Weak passphrase:</strong> Empty passphrases leave keys unprotected if stolen",
+            "<strong>Overwriting existing keys:</strong> Check for existing keys before generating new ones",
+            "<strong>Wrong key type:</strong> Some older systems don&#8217;t support ED25519 &#8212; know your target"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Two screenshots showing both RSA and ED25519 key generation. The ED25519 public key is about 100 bytes while RSA is about 750 bytes &#8212; same security, smaller footprint.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 6 covers asymmetric cryptography fundamentals. Chapter 11 explains how public key authentication replaces passwords &#8212; the keys you generate here implement &#8220;something you have&#8221; authentication.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "Why is ED25519 considered more secure than RSA of equivalent key length? Research the mathematical differences between elliptic curve and integer factorization cryptography.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "OpenSSH Manual &#8212; ssh-keygen. Available at: https://man.openbsd.org/ssh-keygen",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Key Permissions",
+      "altText": "Checkpoint_2_2_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Understanding and configuring proper file permissions for SSH keys. You&#8217;ll see why SSH refuses to use keys with incorrect permissions and how to fix common permission problems.",
+          "whyItMatters": "A private key with world-readable permissions is a security disaster. SSH clients will refuse to use improperly secured keys, and attackers specifically look for misconfigured key files. Proper permissions are the difference between security and breach."
+        },
+        {
+          "part": "Part A: Examine default permissions",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Check the current permissions on your keys:",
+              "command": "ls -la ~/lab2-auth/id_*",
+              "whatThisDoes": {
+                "concept": "In Linux, every file has three permission groups: Owner, Group, and Others. Each group gets three bits: <strong>r</strong> (read=4), <strong>w</strong> (write=2), <strong>x</strong> (execute=1). Add them up per group to get octal notation. Private keys should be <code>600</code> (<code>-rw-------</code>), public keys <code>644</code> (<code>-rw-r--r--</code>), and the <code>~/.ssh</code> directory <code>700</code> (<code>drwx------</code>).",
+                "output": "You should see <code>-rw-------</code> for private keys and <code>-rw-r--r--</code> for public keys. The first column is the permission string.",
+                "flags": null
+              }
+            },
+            {
+              "text": "View the same permissions in octal notation:",
+              "command": "stat -c '%a %n' ~/lab2-auth/id_*",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Private keys should show <code>600</code> and public keys <code>644</code> &#8212; confirming what <code>ls -la</code> showed. These are the correct, SSH-enforced permission levels.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "part": "Part B: Demonstrate the risk of weak permissions",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Copy the private key to a shared directory for this demonstration:",
+              "command": "cp ~/lab2-auth/id_ed25519_lab /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": "Your home directory (<code>/home/kali</code>) has permissions <code>700</code> &#8212; other users can&#8217;t enter it. <code>/tmp</code> is world-readable and world-writable, which is realistic: in enterprise environments, files often end up in shared directories like <code>/tmp</code> or <code>/var/www</code>. In those locations, <strong>file permissions are your only line of defense</strong>.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Make the copy world-readable (INSECURE &#8212; for demonstration only):",
+              "command": "chmod 644 /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": "You&#8217;re changing this key from <code>600</code> (owner read/write only) to <code>644</code> (owner read/write, group can read, others can read). The permissions change from <code>-rw-------</code> to <code>-rw-r--r--</code>. That <code>r--</code> at the end means every user on this machine can now read this file &#8212; fine for public keys, a disaster for private keys.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Prove it &#8212; read the key as a completely different user:",
+              "command": "sudo -u nobody cat /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": "<code>sudo -u nobody</code> runs the following command as the <code>nobody</code> account &#8212; a minimal, unprivileged account with no special access to your files. Think of it as a stand-in for any random user or compromised process on this machine.",
+                "output": "You should see the entire private key printed to your terminal, starting with <code>-----BEGIN OPENSSH PRIVATE KEY-----</code>. This is the actual cryptographic secret. Anyone who has this data can impersonate you on any system where this key is authorized.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the output showing the <code>nobody</code> user successfully reading your private key. The <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> header should be visible. Save as <code>12-permission-error.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part C: Fix the permissions and verify",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Restrict the file back to owner-only:",
+              "command": "chmod 600 /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": "<code>chmod 600</code> sets permissions to <code>-rw-------</code>: 6 = read+write for owner, 0 = nothing for group, 0 = nothing for others. The change takes effect immediately &#8212; the kernel enforces it on the very next access attempt.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Try reading the key as <code>nobody</code> again:",
+              "command": "sudo -u nobody cat /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "You should now see: <code>cat: /tmp/demo_key: Permission denied</code>. Same command, same user, same file &#8212; only three digits changed (644 &#8594; 600). This is the principle of least privilege in action.",
+                "flags": null
+              }
+            },
+            {
+              "text": "Clean up the demo file:",
+              "command": "rm /tmp/demo_key",
+              "whatThisDoes": {
+                "concept": "Good security hygiene: don&#8217;t leave copies of sensitive material in shared directories, even in a lab.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Confirm your original keys still have correct permissions:",
+              "command": "stat -c '%a %n' ~/lab2-auth/id_*",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Private keys should show <code>600</code> and public keys <code>644</code>. The demonstration only affected the copy in <code>/tmp</code>, not your originals.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the <code>Permission denied</code> output from the <code>nobody</code> user, along with the <code>stat</code> output confirming your original keys are still secure. Save as <code>13-permission-fixed.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Leaving copies in /tmp:</strong> Always clean up after demonstrations",
+            "<strong>Wrong directory permissions:</strong> The <code>~/.ssh</code> directory itself must be <code>700</code> (<code>drwx------</code>)",
+            "<strong>Public vs private:</strong> Public keys are designed to be shared (644). Private keys must always be 600",
+            "<strong>Defense in depth:</strong> Set both directory and file permissions correctly &#8212; don&#8217;t rely on a single layer"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Two screenshots demonstrating the complete break/fix cycle. Screenshot 12 shows the vulnerability (another user reading your private key). Screenshot 13 shows the fix (<code>Permission denied</code> after restoring 600), plus <code>stat</code> confirmation your originals are secure.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 11 covers access control and the principle of least privilege. What you just demonstrated is the foundation of all access control on Linux systems &#8212; the kernel checks file permissions on every read, write, and execute operation.",
+          "calloutType": "textbookReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "SSH Configuration",
+      "altText": "Checkpoint_2_2_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Setting up SSH infrastructure: the <code>authorized_keys</code> file that controls who can connect, the SSH config file that simplifies connections, and testing key-based authentication to localhost.",
+          "whyItMatters": "Understanding SSH configuration is essential for any security professional. The <code>authorized_keys</code> file is your access control list &#8212; every public key there can authenticate. The config file lets you manage connections to dozens of servers efficiently. Gulf Coast uses this exact setup for their infrastructure."
+        },
+        {
+          "character": "Derek Mitchell",
+          "headshot": "derek-mitchell.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Blue Team Lead, NEXUS Security",
+          "quote": "Never rely on a single control. Layer your defenses so one failure doesn&#8217;t mean total compromise. SSH config files let you enforce security policies across all your connections."
+        },
+        {
+          "part": "Part A: Set up authorized_keys",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create the <code>.ssh</code> directory if it doesn&#8217;t exist:",
+              "command": "mkdir -p ~/.ssh",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Set secure directory permissions:",
+              "command": "chmod 700 ~/.ssh",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Add your public key to <code>authorized_keys</code>:",
+              "command": "cat ~/lab2-auth/id_ed25519_lab.pub >> ~/.ssh/authorized_keys",
+              "whatThisDoes": {
+                "concept": "The <code>authorized_keys</code> file is an access control list &#8212; every public key listed there can authenticate as this user. The <code>&gt;&gt;</code> operator appends rather than overwrites, preserving existing keys. This is how SSH key-based auth works: your client offers a private key, the server checks if the matching public key is in <code>authorized_keys</code>, and if so, grants access without a password.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Set secure file permissions:",
+              "command": "chmod 600 ~/.ssh/authorized_keys",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify the directory contents:",
+              "command": "ls -la ~/.ssh/",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Confirm the authorized key:",
+              "command": "cat ~/.ssh/authorized_keys",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the <code>.ssh</code> directory listing and <code>authorized_keys</code> content. Save as <code>14-authorized-keys.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Test key-based authentication",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Start the SSH service if not running:",
+              "command": "sudo systemctl start ssh",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify SSH is running:",
+              "command": "sudo systemctl status ssh",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Connect to localhost using your key:",
+              "command": "ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami",
+              "whatThisDoes": {
+                "concept": "Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.",
+                "output": null,
+                "flags": [
+                  {
+                    "flag": "-o PasswordAuthentication=no",
+                    "description": "Disables password fallback so the connection only succeeds with the key"
+                  },
+                  {
+                    "flag": "-i",
+                    "description": "Specifies which private key to use (identity file)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the successful SSH connection using key-based authentication. Save as <code>15-ssh-keyauth.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part C: Create an SSH config file",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open a new config file in nano:",
+              "command": "nano ~/.ssh/config",
+              "whatThisDoes": {
+                "concept": "<code>nano</code> is a simple terminal-based text editor. The commands at the bottom use <code>^</code> to mean the Ctrl key &#8212; so <code>^O</code> means <kbd>Ctrl+O</kbd>. Since the file doesn&#8217;t exist yet, nano will create it when you save.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Type or paste the following contents exactly (use spaces, not tabs for indentation):",
+              "command": "Host labserver\n    HostName localhost\n    User kali\n    IdentityFile ~/lab2-auth/id_ed25519_lab\n    IdentitiesOnly yes",
+              "whatThisDoes": {
+                "concept": "<strong>Host labserver</strong> &#8212; the alias you&#8217;ll type. <strong>HostName localhost</strong> &#8212; the actual server address. <strong>User kali</strong> &#8212; the username. <strong>IdentityFile</strong> &#8212; which private key to use. <strong>IdentitiesOnly yes</strong> &#8212; only try the specified key, preventing SSH from cycling through all keys in <code>~/.ssh/</code>.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Save and exit nano: press <kbd>Ctrl+O</kbd>, then <kbd>Enter</kbd> to confirm the filename, then <kbd>Ctrl+X</kbd> to exit.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Lock down config file permissions:",
+              "command": "chmod 600 ~/.ssh/config",
+              "whatThisDoes": {
+                "concept": "Your SSH config contains key paths and server details. Setting <code>600</code> ensures only you can read or modify it &#8212; the same protection level as your private keys.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Verify the config file contents:",
+              "command": "cat ~/.ssh/config",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Test the connection using your alias:",
+              "command": "ssh labserver whoami",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. You should see your username with no password prompt.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the SSH config file contents and successful connection using the alias. Save as <code>16-ssh-config.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Wrong key in authorized_keys:</strong> Make sure you&#8217;re adding the <code>.pub</code> file, not the private key",
+            "<strong>Line breaks in key:</strong> The public key must be all on one line",
+            "<strong>Config indentation:</strong> Use spaces, not tabs; indent options under <code>Host</code>"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 11 covers remote access security and authentication configuration. The <code>authorized_keys</code> mechanism implements trust relationships &#8212; only approved public keys can authenticate.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What are common authentication vulnerabilities? Research credential stuffing, brute force attacks, and session hijacking.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "OWASP Authentication Cheat Sheet. Available at: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Multi-Factor Authentication",
+      "altText": "Checkpoint_2_2_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Configuring your SSH server to require multi-factor authentication &#8212; both your private key and your account password before granting access. Right now, your server accepts key-only login. By the end of this checkpoint, a stolen key alone won&#8217;t be enough to get in.",
+          "whyItMatters": "Single-factor authentication is the root cause of countless breaches. MFA isn&#8217;t optional anymore &#8212; it&#8217;s required by HIPAA, PCI-DSS, and most compliance frameworks. Authentication factors: something you know (passwords, PINs), something you have (private keys, hardware tokens), and something you are (fingerprints, facial recognition). True MFA requires factors from different categories."
+        },
+        {
+          "character": "Derek Mitchell",
+          "headshot": "derek-mitchell.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Blue Team Lead, NEXUS Security",
+          "quote": "A password and a security question are both things you know &#8212; that&#8217;s two steps, not two factors. A private key and a password? That&#8217;s real MFA. One factor gets stolen, you still have a wall between the attacker and your system."
+        },
+        {
+          "part": "Part A: Examine the current authentication policy",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Check what authentication methods your SSH server currently accepts:",
+              "command": "sudo sshd -T | grep -i authenticationmethods",
+              "whatThisDoes": {
+                "concept": "<code>sshd -T</code> dumps the SSH server&#8217;s effective configuration (all settings, including defaults). Piping through <code>grep -i authenticationmethods</code> filters for the line that controls which authentication methods are required.",
+                "output": "If the output shows <code>authenticationmethods any</code>, the server accepts whatever works first &#8212; key or password. That&#8217;s single-factor.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "part": "Part B: Require both key and password",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Add the MFA directive to your SSH server configuration:",
+              "command": "echo \"AuthenticationMethods publickey,password\" | sudo tee -a /etc/ssh/sshd_config",
+              "whatThisDoes": {
+                "concept": "This appends an MFA directive to the SSH server config. <strong>The syntax matters:</strong> a comma between methods means &#8220;AND&#8221; &#8212; the client must pass both. A space between methods means &#8220;OR&#8221; &#8212; the client can use either one. <code>publickey,password</code> = both required (MFA). <code>publickey password</code> = either one works (not MFA).",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Verify the line was added:",
+              "command": "tail -3 /etc/ssh/sshd_config",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Restart the SSH service to apply the change:",
+              "command": "sudo systemctl restart ssh",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "part": "Part C: Test multi-factor login",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Connect using your SSH config alias:",
+              "command": "ssh labserver whoami",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "You should see two prompts in sequence: (1) <code>Enter passphrase for key '...id_ed25519_lab':</code> &#8212; unlocks your key file locally; (2) <code>kali@localhost's password:</code> &#8212; the server verifies your identity. Enter your key passphrase (<code>nexus2026</code>) at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username from <code>whoami</code>.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "isFinal": true,
+          "title": "Screenshot",
+          "text": "Capture your successful MFA login showing both prompts and the <code>whoami</code> output. Save as <code>17-mfa-login.png</code> &#8212; this is your last screenshot for Lab 2.2!",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part D: Revert to single-factor",
+          "start": 1,
+          "role": "cleanup",
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Remove the MFA directive so later labs aren&#8217;t affected:",
+              "command": "sudo sed -i '/^AuthenticationMethods/d' /etc/ssh/sshd_config",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Restart SSH to apply changes:",
+              "command": "sudo systemctl restart ssh",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify single-factor is restored:",
+              "command": "sudo sshd -T | grep -i authenticationmethods",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Comma vs. space:</strong> <code>publickey,password</code> = both required (MFA). <code>publickey password</code> = either one works (not MFA)",
+            "<strong>Forgot to restart SSH:</strong> Config changes don&#8217;t take effect until you restart the service",
+            "<strong>Key passphrase &#8800; account password:</strong> Your passphrase (<code>nexus2026</code>) unlocks the key file locally. The account password is the separate factor the server verifies"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "One screenshot showing a successful SSH login that required both your private key and your account password. That&#8217;s real two-factor authentication: something you have (the key file) plus something you know (the password).",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 11 covers the three authentication factor categories and why MFA requires factors from different categories. The SSH MFA you just configured implements the same principle that HIPAA mandates for healthcare systems.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "Research passwordless authentication. How do FIDO2/WebAuthn standards work, and why are they considered more secure than traditional password-based MFA?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "NIST SP 800-63B &#8212; Digital Identity Guidelines: Authentication and Lifecycle Management. Available at: https://pages.nist.gov/800-63-3/sp800-63b.html",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        {
+          "label": "SSH Key Theft",
+          "text": "A stolen private key with no passphrase grants permanent access to every server that trusts it — no password to crack, no alert triggered."
+        },
+        {
+          "label": "Permission Reconnaissance",
+          "text": "Misconfigured file permissions (644 on private keys, world-readable ~/.ssh) signal careless infrastructure and are a high-value target for lateral movement."
+        },
+        {
+          "label": "Single-Factor Exploitation",
+          "text": "One compromised key with no MFA equals total access — attackers who obtain a key file from a misconfigured backup or shared directory own the system immediately."
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        {
+          "label": "Permission Hardening",
+          "text": "Enforce key permissions as part of hardening checklists — audit scripts should flag any private key file not at 600 or ~/.ssh directory not at 700."
+        },
+        {
+          "label": "Passphrase Requirements",
+          "text": "Require passphrases on all SSH keys used for privileged access; key-only login without a passphrase removes the 'something you know' factor entirely."
+        },
+        {
+          "label": "authorized_keys Inventory",
+          "text": "Maintain authorized_keys inventory and audit for unknown entries — unrecognized keys in authorized_keys files are a persistence mechanism for attackers."
+        }
+      ]
+    },
+    "connection": "The permission demonstration in Checkpoint 2 shows exactly what attackers look for: private keys accessible to unprivileged processes. In Module 3 you will analyze network captures where the attacker's first post-compromise action is harvesting SSH keys from world-readable files — the same misconfiguration you fixed today.",
+    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "10-keygen-rsa.png",
+        "description": "RSA key generation"
+      },
+      {
+        "file": "11-keygen-ed25519.png",
+        "description": "ED25519 key generation and comparison"
+      },
+      {
+        "file": "12-permission-error.png",
+        "description": "SSH permission error message"
+      },
+      {
+        "file": "13-permission-fixed.png",
+        "description": "Corrected permissions"
+      },
+      {
+        "file": "14-authorized-keys.png",
+        "description": "authorized_keys setup"
+      },
+      {
+        "file": "15-ssh-keyauth.png",
+        "description": "Successful key-based SSH"
+      },
+      {
+        "file": "16-ssh-config.png",
+        "description": "SSH config file usage"
+      },
+      {
+        "file": "17-mfa-login.png",
+        "description": "MFA login verification"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Screenshots (8 Required)",
+        "items": [
+          {
+            "filename": "10-keygen-rsa.png",
+            "description": "RSA key generation showing randomart and file listing"
+          },
+          {
+            "filename": "11-keygen-ed25519.png",
+            "description": "ED25519 generation and wc -c size comparison between key types"
+          },
+          {
+            "filename": "12-permission-error.png",
+            "description": "nobody user successfully reading the private key (vulnerability demonstration)"
+          },
+          {
+            "filename": "13-permission-fixed.png",
+            "description": "Permission denied output after chmod 600, plus stat confirming originals are secure"
+          },
+          {
+            "filename": "14-authorized-keys.png",
+            "description": "~/.ssh directory listing and authorized_keys content"
+          },
+          {
+            "filename": "15-ssh-keyauth.png",
+            "description": "Successful key-based SSH connection to localhost showing whoami output"
+          },
+          {
+            "filename": "16-ssh-config.png",
+            "description": "SSH config file contents and successful connection using the labserver alias"
+          },
+          {
+            "filename": "17-mfa-login.png",
+            "description": "MFA login showing both key passphrase and password prompts, plus whoami confirmation"
+          }
+        ]
+      },
+      {
+        "title": "Environment Verification",
+        "items": [
+          {
+            "check": "VM hostname (kali-lastname-studentID) visible in all screenshots"
+          },
+          {
+            "check": "All key files created inside ~/lab2-auth directory"
+          },
+          {
+            "check": "All 8 screenshots added to Module2_Screenshots folder"
+          },
+          {
+            "check": "Total module screenshots: 17 (9 from Lab 2.1 + 8 from Lab 2.2)"
+          }
+        ]
+      }
+    ],
+    "items": [
+      "VM hostname visible in all screenshots",
+      "All files in <code>~/lab2-auth</code> directory",
+      "All screenshots added to <code>Module2_Screenshots</code> folder",
+      "Total screenshots for module: 17 (9 from Lab 2.1 + 8 from Lab 2.2)"
+    ],
+    "canvasQuiz": "Take the <strong>Lab 2.2 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong>Keep your VM running while taking the quiz.</strong>"
+  },
+  "needHelp": {
+    "nextModule": "After completing this lab, take the <strong>Lab 2.2 Quiz</strong> in Canvas, then proceed to <strong>Lab 2.3: Gulf Coast Certificate Remediation</strong> &#8212; the Week 3 engagement where you&#8217;ll apply your cryptography and authentication skills in a real client scenario.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three weeks into a complete Engagement Packet for the Gulf Coast Healthcare client."
+    }
+  }
+}

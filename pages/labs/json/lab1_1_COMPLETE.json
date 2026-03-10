@@ -1,0 +1,860 @@
+{
+  "meta": {
+    "labId": "1_1",
+    "title": "Kali Linux Environment Setup",
+    "labType": "foundation",
+    "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
+    "client": null,
+    "chapters": [
+      "Chapter 1 — Introduction to Security",
+      "Chapter 2 — General Security Concepts"
+    ],
+    "headerSvg": "Lab1_1_Header.svg",
+    "screenshotStart": 1
+  },
+  "intro": {
+    "overview": "Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.",
+    "mentorQuote": {
+      "character": "Maya Rodriguez",
+      "title": "Senior Penetration Tester, NEXUS Security",
+      "headshot": "maya-rodriguez.png",
+      "quote": "Every analyst at NEXUS starts here — building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything — your future self will thank you when you're writing runbooks at 2 AM."
+    },
+    "focusAreas": [
+      "Virtualization fundamentals and hypervisor architecture",
+      "Kali Linux as a purpose-built security testing platform",
+      "Docker container fundamentals and container vs. VM differences",
+      "Environment verification and baseline documentation"
+    ],
+    "objectives": [
+      "Deploy Kali Linux as your security operations platform",
+      "Install and verify Docker for containerized client targets",
+      "Document your environment for your Lab 1.3 Engagement Packet"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 1.3",
+        "icon": "folder",
+        "text": "This is Week 1 of a 3-week module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Week 3."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Download and install VirtualBox",
+        "time": "15-20 min"
+      },
+      {
+        "task": "Checkpoint 2: Download Kali Linux ISO",
+        "time": "20-45 min"
+      },
+      {
+        "task": "Checkpoint 3: Create and configure VM",
+        "time": "10-15 min"
+      },
+      {
+        "task": "Checkpoint 4: Install Kali Linux",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Checkpoint 5: Install and verify Docker",
+        "time": "10-15 min"
+      },
+      {
+        "task": "Checkpoint 6: System verification",
+        "time": "10-15 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "85-140 min"
+    },
+    "timesheetNote": "This is Week 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder &#8212; you&#8217;ll need them all in Week 3."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Download and Install VirtualBox",
+      "altText": "Checkpoint_1_1_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Installing VirtualBox, a free hypervisor that allows you to run virtual machines on your computer.",
+          "whyItMatters": "Virtual machines allow you to run a complete operating system inside your existing OS. This is how security professionals maintain isolated environments for testing tools, malware analysis, and client engagements without risking their primary system."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Navigate to virtualbox.org/wiki/Downloads",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Download the installer for your host operating system (Windows, macOS, or Linux)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Run the installer with default settings",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Restart your computer if prompted",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Launch VirtualBox to verify installation",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "macOS users: You may need to allow the kernel extension in System Preferences > Security & Privacy",
+            "Windows users: Enable Hyper-V/virtualization in BIOS if VirtualBox won't start VMs"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "VirtualBox Manager window opens successfully, showing an empty list of virtual machines."
+        },
+        {
+          "title": "Textbook Reference",
+          "items": null,
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "body": "Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation — a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your Lab 1.3 report."
+        },
+        {
+          "title": "Dig Deeper",
+          "items": null,
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "body": "What's the difference between Type 1 and Type 2 hypervisors? Research where VirtualBox falls in this classification and why it matters for security testing."
+        },
+        {
+          "title": "That's a Reference!",
+          "items": null,
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "body": "VirtualBox User Manual, Chapter 1: Introduction. Oracle Corporation. Available at: https://www.virtualbox.org/manual/"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Download Kali Linux ISO",
+      "altText": "Checkpoint_1_1_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Downloading the Kali Linux installer image (~4GB) from the official source.",
+          "whyItMatters": "Kali Linux is a Debian-based distribution designed specifically for penetration testing and security auditing. It comes pre-loaded with hundreds of security tools that you'll use throughout the semester for both offensive and defensive work."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Navigate to kali.org/get-kali",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Select Installer Images",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Choose the correct architecture: 64-bit (amd64): For Intel/AMD processors Apple Silicon (arm64): For M1/M2/M3 Macs using UTM",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Download the ISO file (approximately 4GB)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Note the download location — you'll need this for the next checkpoint",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "title": "Time-Saving Tip",
+          "items": null,
+          "type": "callout",
+          "calloutType": "tip",
+          "body": "Start this download before working on other tasks. A 4GB download can take 10-30 minutes depending on your connection. You can proceed to review the remaining checkpoints while it downloads."
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "Wrong architecture: Download the amd64 (64-bit) version unless you have Apple Silicon",
+            "Unofficial sources: Only download from kali.org — third-party ISOs may contain malware",
+            "Interrupted download: If download fails, delete partial file and restart — don't resume corrupted downloads"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "A file named something like kali-linux-2024.x-installer-amd64.iso in your Downloads folder."
+        },
+        {
+          "title": "Textbook Reference",
+          "items": null,
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "body": "Chapter 1 discusses security tools and the importance of using trusted sources. Kali Linux is purpose-built for security testing, containing tools you'll use throughout this course for both offensive and defensive work."
+        },
+        {
+          "title": "Dig Deeper",
+          "items": null,
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "body": "Why is Kali Linux based on Debian rather than another distribution? Research the advantages of Debian's package management for security tools."
+        },
+        {
+          "title": "That's a Reference!",
+          "items": null,
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "body": "Kali Linux Documentation - What is Kali Linux? Offensive Security. Available at: https://www.kali.org/docs/introduction/what-is-kali-linux/"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Create and Configure VM",
+      "altText": "Checkpoint_1_1_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.",
+          "whyItMatters": "Proper VM configuration affects performance, stability, and functionality. The VM name is especially important — it appears in your terminal prompt and must be visible in screenshots for assignment verification."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "In VirtualBox Manager, click New",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Configure the VM name using this exact format: kali-lastname-studentID Example: kali-newsom-abc123",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Set Type: Linux, Version: Debian (64-bit)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Allocate RAM: 4096 MB minimum (8192 MB recommended if available)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Create a virtual hard disk: VDI format, Dynamically allocated, 80 GB",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Before starting, go to Settings > System > Processor: Allocate 2+ CPUs",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Go to Settings > Storage: Click the empty disk under Controller: IDE, then click the disk icon and choose your Kali ISO",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "title": "Critical: VM Naming Convention",
+          "items": null,
+          "type": "callout",
+          "calloutType": "required",
+          "body": "Your VM name must follow the format kali-lastname-studentID. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots."
+        },
+        {
+          "title": "Screenshot",
+          "items": null,
+          "type": "callout",
+          "calloutType": "screenshot",
+          "body": "Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as 01-vm-settings.png"
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "Wrong VM name format: Must be kali-lastname-studentID exactly — this appears in all your screenshots",
+            "Too little RAM: 2GB minimum, 4GB recommended — less causes performance issues",
+            "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "A VM entry in VirtualBox Manager with your name following the kali-lastname-studentID format, with the Kali ISO attached."
+        },
+        {
+          "title": "Textbook Reference",
+          "items": null,
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "body": "Chapter 2 covers system resources and security considerations. Proper resource allocation ensures your testing environment performs reliably without impacting your host system's stability."
+        },
+        {
+          "title": "Dig Deeper",
+          "items": null,
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "body": "What are VDI, VMDK, and VHD disk formats? Research the differences and why VDI is preferred for VirtualBox."
+        },
+        {
+          "title": "That's a Reference!",
+          "items": null,
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "body": "VirtualBox User Manual, Chapter 5: Virtual Storage. Oracle Corporation. Available at: https://www.virtualbox.org/manual/ch05.html"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Install Kali Linux",
+      "altText": "Checkpoint_1_1_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Running the Kali Linux installer inside your virtual machine to create a functional security testing environment.",
+          "whyItMatters": "Kali Linux comes pre-loaded with hundreds of security tools. A proper installation ensures all tools work correctly and the system is stable for the entire semester."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Start the VM in VirtualBox Manager",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Select Graphical Install from the boot menu",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Choose your language, location, and keyboard layout",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Set hostname to match your VM name: kali-lastname-studentID",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Leave domain name blank",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Create your user account (remember these credentials!)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Use Guided - use entire disk for partitioning",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Select All files in one partition",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Confirm and write changes to disk",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Wait for installation to complete (15-25 minutes)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Reboot when prompted",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "title": "Screenshot",
+          "items": null,
+          "type": "callout",
+          "calloutType": "screenshot",
+          "body": "Capture the Kali desktop after login, with the terminal open showing your hostname. Save as 02-kali-desktop.png"
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "Forgetting credentials: Write down your username and password — you'll need them all semester",
+            "Wrong hostname: The hostname should match your VM name format",
+            "Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password."
+        },
+        {
+          "title": "Textbook Reference",
+          "items": null,
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "body": "Chapter 2 discusses operating system security and hardening. Understanding the installation process helps you make informed security decisions about system configuration."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Install and Verify Docker",
+      "altText": "Checkpoint_1_1_5.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Installing Docker, the containerization platform we'll use to deploy vulnerable lab targets throughout the course.",
+          "whyItMatters": "Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers — without it, you can't complete the labs."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Update your package lists: sudo apt update ▶ What this does Concept: apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what’s available. Always run this before installing new software so you get the latest versions.",
+              "command": "sudo apt update",
+              "whatThisDoes": {
+                "concept": "apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what's available. Always run this before installing new software so you get the latest versions."
+              }
+            },
+            {
+              "text": "Install Docker and Docker Compose: sudo apt install -y docker.io docker-compose ▶ What this does Concept: apt install downloads and installs packages. The -y flag automatically answers “yes” to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file. We’ll use both throughout the course.",
+              "command": "sudo apt install -y docker.io docker-compose",
+              "whatThisDoes": {
+                "concept": "apt install downloads and installs packages. The -y flag automatically answers \"yes\" to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file."
+              }
+            },
+            {
+              "text": "Enable Docker to start automatically and start it now: sudo systemctl enable docker --now ▶ What this does Concept: systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don’t have to reboot first.",
+              "command": "sudo systemctl enable docker --now",
+              "whatThisDoes": {
+                "concept": "systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don't have to reboot first."
+              }
+            },
+            {
+              "text": "Add your user to the Docker group: sudo usermod -aG docker $USER ▶ What this does Concept: usermod -aG appends (-a) your user to a group (-G). By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time.",
+              "command": "sudo usermod -aG docker $USER",
+              "whatThisDoes": {
+                "concept": "usermod -aG appends your user to a group. By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time."
+              }
+            }
+          ]
+        },
+        {
+          "title": "Pro Tip",
+          "items": null,
+          "type": "callout",
+          "calloutType": "tip",
+          "body": "After adding yourself to the docker group, you must log out and back in (or reboot) for the group membership to take effect. Until then, you'll need sudo for docker commands."
+        },
+        {
+          "start": 5,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Check the Docker version: docker --version ▶ What this does In your output: You should see the installed Docker version number. If you get “command not found” or a permission error, the installation didn’t complete correctly or you haven’t logged out and back in yet.",
+              "command": "docker --version",
+              "whatThisDoes": {
+                "output": "You should see the installed Docker version number. If you get \"command not found\" or a permission error, the installation didn't complete correctly or you haven't logged out and back in yet."
+              }
+            },
+            {
+              "text": "Run the Docker test container: docker run hello-world ▶ What this does Concept: docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see “Hello from Docker!” — Docker is fully working.",
+              "command": "docker run hello-world",
+              "whatThisDoes": {
+                "concept": "docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see \"Hello from Docker!\" — Docker is fully working."
+              }
+            }
+          ]
+        },
+        {
+          "title": "Screenshot",
+          "items": null,
+          "type": "callout",
+          "calloutType": "screenshot",
+          "body": "Capture docker --version and the hello-world output. Save as 03-docker-version.png"
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "Permission denied: You didn't log out after adding yourself to the docker group",
+            "Cannot connect to daemon: Docker service isn't running — check with sudo systemctl status docker",
+            "Network errors: VM needs internet access — check VirtualBox network settings"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "Docker installed and running. The hello-world container should display \"Hello from Docker!\" confirming everything works."
+        },
+        {
+          "title": "Dig Deeper",
+          "items": null,
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "body": "What's the difference between a container and a virtual machine? Research how Docker's architecture differs from VirtualBox and why containers are preferred for deploying applications."
+        },
+        {
+          "title": "That's a Reference!",
+          "items": null,
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "body": "Docker Documentation: Get Docker. Available at: https://docs.docker.com/get-docker/"
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "body": "Chapter 2 covers defense in depth and isolation as a security control. Docker uses Linux kernel features &#8212; namespaces and cgroups &#8212; to create lightweight isolation without a full hypervisor. Containers and VMs represent two different points on the isolation spectrum that security professionals choose between based on their threat model."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "System Verification",
+      "altText": "Checkpoint_1_1_6.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Running a series of commands to verify your environment is properly configured and all required tools are available.",
+          "whyItMatters": "Catching configuration issues now prevents frustration later. A working baseline environment means you can focus on learning security concepts instead of troubleshooting setup problems."
+        },
+        {
+          "text": "Part A: System Information",
+          "type": "heading"
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Display your hostname: hostname ▶ What this does In your output: This should show kali-lastname-studentID (the hostname you set in Checkpoint 4). If it shows something else, you need to fix it before proceeding.",
+              "command": "hostname",
+              "whatThisDoes": {
+                "output": "This should show kali-lastname-studentID. If it shows something else, you need to fix it before proceeding."
+              }
+            },
+            {
+              "text": "Display kernel and OS information: uname -a ▶ What this does Concept: uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means “all.” This is a standard first step when documenting an engagement environment.",
+              "command": "uname -a",
+              "whatThisDoes": {
+                "concept": "uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means \"all.\" This is a standard first step when documenting an engagement environment."
+              }
+            }
+          ]
+        },
+        {
+          "text": "Part B: Network Connectivity",
+          "type": "heading"
+        },
+        {
+          "start": 3,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Display your network interfaces and IP addresses: ip addr ▶ What this does Concept: ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox’s NAT adapter (typically 10.0.2.x). No IP means no network connectivity.",
+              "command": "ip addr",
+              "whatThisDoes": {
+                "concept": "ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x)."
+              }
+            },
+            {
+              "text": "Test internet connectivity: ping -c 3 8.8.8.8 ▶ What this does Concept: ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets (otherwise it runs forever). 8.8.8.8 is Google’s public DNS. If all 3 packets come back, you have internet connectivity.",
+              "command": "ping -c 3 8.8.8.8",
+              "whatThisDoes": {
+                "concept": "ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets. 8.8.8.8 is Google's public DNS. If all 3 packets come back, you have internet connectivity."
+              }
+            }
+          ]
+        },
+        {
+          "text": "Part C: Security Tools",
+          "type": "heading"
+        },
+        {
+          "start": 5,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Verify Nmap is installed: nmap --version ▶ What this does Concept: Nmap is the industry-standard network scanner. You’ll use it heavily starting in Module 1 Lab 2. The --version flag confirms it’s installed and shows the version number.",
+              "command": "nmap --version",
+              "whatThisDoes": {
+                "concept": "Nmap is the industry-standard network scanner. You'll use it heavily starting in Module 1 Lab 2. The --version flag confirms it's installed and shows the version number."
+              }
+            },
+            {
+              "text": "Verify Wireshark is installed: wireshark --version ▶ What this does Concept: Wireshark is a packet capture and analysis tool. You’ll use it in Module 3 to inspect network traffic. Confirming the version now ensures it’s ready when you need it.",
+              "command": "wireshark --version",
+              "whatThisDoes": {
+                "concept": "Wireshark is a packet capture and analysis tool. You'll use it in Module 3 to inspect network traffic."
+              }
+            },
+            {
+              "text": "Verify John the Ripper is installed: john --help | head -5 ▶ What this does Concept: John the Ripper is a password cracking tool you’ll use in Module 4. The | head -5 pipe takes the first 5 lines of output, which is enough to confirm it’s installed without flooding your terminal.",
+              "command": "john --help | head -5",
+              "whatThisDoes": {
+                "concept": "John the Ripper is a password cracking tool you'll use in Module 4. The | head -5 pipe takes the first 5 lines of output — enough to confirm it's installed without flooding your terminal."
+              }
+            }
+          ]
+        },
+        {
+          "text": "Part D: Docker",
+          "type": "heading"
+        },
+        {
+          "start": 8,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Confirm Docker version: docker --version",
+              "command": "docker --version",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify no containers are running yet: docker ps ▶ What this does Concept: docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you’ll confirm your lab target containers are running before you start scanning.",
+              "command": "docker ps",
+              "whatThisDoes": {
+                "concept": "docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you'll confirm your lab target containers are running before you start scanning."
+              }
+            }
+          ]
+        },
+        {
+          "title": "Screenshot",
+          "items": null,
+          "type": "callout",
+          "calloutType": "screenshot",
+          "body": "Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as 04-system-verification.png"
+        },
+        {
+          "title": "Common Pitfalls",
+          "text": null,
+          "items": [
+            "No network: Check VirtualBox network adapter settings (NAT should work)",
+            "Tool not found: Some tools may need installation — use sudo apt install <tool-name>",
+            "Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding"
+          ],
+          "type": "callout",
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "title": "What You Should Have",
+          "items": null,
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "body": "All verification commands running successfully. Your Kali environment is ready for the semester's security labs and exercises."
+        },
+        {
+          "title": "Textbook Reference",
+          "items": null,
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "body": "Chapter 2 introduces the security tools and platforms you'll use throughout the course. Your verified environment is the foundation for all hands-on exercises."
+        },
+        {
+          "title": "Dig Deeper",
+          "items": null,
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "body": "Explore the Kali Linux tools menu. How many categories of tools are available? Pick one category and research what 2-3 of its tools do."
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        {
+          "label": "Isolated Attack Platforms",
+          "text": "Virtual machines let attackers operate from a clean, disposable environment. After an engagement, the VM can be rolled back or deleted &#8212; leaving no artifacts on the analyst&#8217;s host."
+        },
+        {
+          "label": "Container Recon Targets",
+          "text": "Docker containers are everywhere in modern infrastructure. Understanding how they run and expose ports is essential for finding attack surface in containerized environments."
+        },
+        {
+          "label": "Tool Availability",
+          "text": "Kali Linux pre-loads every tool you&#8217;ll use this semester. Attackers maintain their own customized distributions &#8212; having a ready toolkit is a force multiplier."
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        {
+          "label": "Environment Hygiene",
+          "text": "Defenders use virtualization the same way &#8212; isolated sandboxes for malware analysis, forensics, and safe tool testing. Understanding the tech from both sides makes you a better analyst."
+        },
+        {
+          "label": "Container Security Posture",
+          "text": "Every port mapped in <code>docker run</code> is a potential attack surface. Defenders must understand container networking to audit what&#8217;s actually exposed."
+        },
+        {
+          "label": "Documentation Discipline",
+          "text": "Blue teamers live and die by documentation. Building the habit of capturing and naming screenshots in Week 1 reflects how real SOC analysts maintain evidence chains."
+        }
+      ]
+    },
+    "connection": "Your lab environment is both your attack platform and your first blue team lesson. Every security professional &#8212; red or blue &#8212; maintains an isolated, documented, reproducible workspace. This setup is that workspace."
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "01-vm-settings.png",
+        "description": "VM configuration with correct name"
+      },
+      {
+        "file": "02-kali-desktop.png",
+        "description": "Kali desktop after login"
+      },
+      {
+        "file": "03-docker-version.png",
+        "description": "Docker version output"
+      },
+      {
+        "file": "04-system-verification.png",
+        "description": "All verification commands"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Screenshots (4 Required)",
+        "items": [
+          "01-vm-settings.png &#8212; VM configuration window showing name, RAM, and CPU count",
+          "02-kali-desktop.png &#8212; Kali desktop after first login",
+          "03-docker-version.png &#8212; docker --version and hello-world output",
+          "04-system-verification.png &#8212; hostname visible in verification commands output"
+        ]
+      },
+      {
+        "title": "Environment Verification",
+        "items": [
+          "VM named exactly kali-lastname-studentID",
+          "Kali Linux boots to desktop",
+          "Docker installed, running, and hello-world container executes",
+          "All four screenshots saved to Module1_Screenshots folder"
+        ]
+      },
+      {
+        "title": "Canvas Quiz",
+        "items": [
+          "Take the Lab 1.1 Quiz in Canvas",
+          "Keep your VM running while taking the quiz &#8212; questions reference specific outputs"
+        ]
+      }
+    ],
+    "items": [
+      "VM named kali-lastname-studentID",
+      "Kali Linux installed and boots to desktop",
+      "Docker installed and running",
+      "All screenshots saved to Module1_Screenshots folder"
+    ],
+    "canvasQuiz": "Take the Lab 1.1 Quiz in Canvas. Questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
+  },
+  "needHelp": {
+    "nextModule": "Lab 1.2: Reconnaissance Tool Exploration — You'll use your new Kali environment to run your first security scans against the Brazos Financial training targets.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "type": "nextLab",
+      "text": "Take the Lab 1.1 Quiz in Canvas, then proceed to Lab 1.2: Reconnaissance Tool Exploration."
+    }
+  }
+}

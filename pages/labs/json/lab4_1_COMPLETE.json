@@ -1,0 +1,789 @@
+{
+  "meta": {
+    "labId": "4_1",
+    "title": "Windows Password Cracking",
+    "labType": "foundation",
+    "module": "Module 4: Threats &#38; Attacks",
+    "client": null,
+    "chapters": [
+      "Chapter 15 &#8212; Types of Attacks",
+      "Chapter 16 &#8212; Security Tools"
+    ],
+    "headerSvg": "Lab4_1_Header.svg",
+    "screenshotStart": 1
+  },
+  "intro": {
+    "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This week you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Week 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper.",
+    "mentorQuote": {
+      "character": "Carmen Vega",
+      "title": "Junior Analyst (OSINT), NEXUS Security",
+      "headshot": "carmen-vega.png",
+      "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others &#8212; executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
+    },
+    "focusAreas": [
+      "Password attack methodologies (dictionary, brute force, hybrid)",
+      "NTLM hash format and Windows credential storage weaknesses",
+      "John the Ripper configuration and wordlist attacks",
+      "Hashcat GPU-accelerated password recovery",
+      "OSINT-informed wordlist generation"
+    ],
+    "objectives": [
+      "Identify and analyze NTLM hash format characteristics",
+      "Execute wordlist attacks using John the Ripper",
+      "Execute GPU-accelerated attacks using Hashcat",
+      "Document your methodology and results for Lab 4.3"
+    ],
+    "callouts": []
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Hash file setup and format identification",
+        "time": "30&#8211;45 min"
+      },
+      {
+        "task": "Checkpoint 2: John the Ripper attack",
+        "time": "45&#8211;60 min"
+      },
+      {
+        "task": "Checkpoint 3: Hashcat attack",
+        "time": "45&#8211;60 min"
+      },
+      {
+        "task": "Checkpoint 4: Results analysis and documentation",
+        "time": "30&#8211;45 min"
+      },
+      {
+        "task": "Quiz preparation and completion",
+        "time": "15&#8211;20 min"
+      }
+    ],
+    "totalRow": {
+      "label": "TOTAL",
+      "time": "2.5&#8211;4 hours"
+    },
+    "timesheetNote": "Cracking time varies based on your hardware. NTLM hashes crack quickly even without a GPU, but Hashcat will demonstrate the speed difference when GPU acceleration is available. If rockyou.txt is still compressed, you&#8217;ll need to extract it first."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Hash File Setup &#38; Format Identification",
+      "altText": "Checkpoint_4_1_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Downloading the Brazos Financial hash file and understanding the NTLM format &#8212; why it&#8217;s weak and why attackers love finding Windows credential stores.",
+          "whyItMatters": "Understanding hash formats is fundamental to password security assessment. NTLM is a legacy Windows authentication protocol that stores passwords as unsalted MD4 hashes. &#8220;Unsalted&#8221; means identical passwords produce identical hashes &#8212; making rainbow table attacks trivially effective. This is why penetration testers celebrate when they find NTLM in an environment."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Download <code>brazos-hashes.txt</code> from the Lab 4.1 assignment in Canvas",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 2,
+              "text": "Create a working directory:",
+              "command": "mkdir ~/lab4 && cd ~/lab4",
+              "whatThisDoes": null
+            },
+            {
+              "step": 3,
+              "text": "Move the hash file to your working directory",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 4,
+              "text": "Examine the file contents:",
+              "command": "cat brazos-hashes.txt",
+              "whatThisDoes": {
+                "concept": "<code>cat</code> displays the full contents of a file. Here you&#8217;re examining the hash file to understand its format before attacking it.",
+                "output": "You should see 8 lines in <code>username:hash</code> format. Each hash is a 32-character hexadecimal string &#8212; this is the NTLM hash format that Windows uses to store passwords. No salt, no algorithm identifier &#8212; just the raw hash.",
+                "flags": null
+              }
+            },
+            {
+              "step": 5,
+              "text": "Count the total hashes:",
+              "command": "wc -l brazos-hashes.txt",
+              "whatThisDoes": {
+                "concept": "<code>wc -l</code> counts the number of lines in a file. In a real engagement, you&#8217;d use this to scope the attack &#8212; knowing how many accounts you&#8217;re targeting helps estimate the time and resources needed to crack them all.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 1,
+          "text": "Capture your terminal showing <code>cat brazos-hashes.txt</code> output with all 8 hashes visible. Save as <code>01-hash-file-contents.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 6,
+              "text": "Verify the rockyou.txt wordlist is available and check its size:",
+              "command": "wc -l /usr/share/wordlists/rockyou.txt",
+              "whatThisDoes": {
+                "concept": "<code>wc -l</code> counts lines in a file. The rockyou.txt wordlist contains over 14 million leaked passwords from a real 2009 data breach &#8212; it&#8217;s the most commonly used wordlist in password auditing because it represents actual human password choices.",
+                "output": "You should see approximately 14,344,391 lines. If you get a &#8220;No such file&#8221; error, the wordlist is still compressed. Run <code>sudo gunzip /usr/share/wordlists/rockyou.txt.gz</code> first.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 2,
+          "text": "Capture your terminal showing the <code>wc -l</code> output with the rockyou.txt line count visible. Save as <code>02-rockyou-wordlist-count.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "text": "Why is NTLM considered weak? Research the differences between MD4, MD5, SHA-1, and SHA-256. What does &#8220;salting&#8221; do to protect hashes?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 15 covers password attacks in detail. Add to your references: <em>Conklin, W.A. &#38; White, G. (2021). Principles of Computer Security (6th ed.), Chapter 15: Types of Attacks.</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "rockyou.txt still compressed",
+              "text": "Run <code>sudo gunzip /usr/share/wordlists/rockyou.txt.gz</code> first"
+            },
+            {
+              "label": "Wrong working directory",
+              "text": "Make sure you&#8217;re in ~/lab4 before running commands"
+            },
+            {
+              "label": "Hash file format",
+              "text": "Verify the format is username:hash (no extra characters)"
+            }
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "text": "Hash file in ~/lab4 with 8 entries in username:hash format. rockyou.txt extracted and ready at <code>/usr/share/wordlists/rockyou.txt</code>.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness &#8212; understanding format differences helps you assess password storage security. <em>This chapter is essential reading &#8212; add it to your Lab 4.3 references.</em>",
+          "calloutType": "textbookReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "John the Ripper Attack",
+      "altText": "Checkpoint_4_1_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using John the Ripper to crack NTLM hashes with the rockyou.txt wordlist. John is a versatile, CPU-based password cracker that automatically detects hash formats.",
+          "whyItMatters": "John the Ripper has been the industry standard for password auditing since 1996. It&#8217;s preinstalled on every security distribution and supports hundreds of hash formats. Understanding John&#8217;s workflow &#8212; format detection, wordlist selection, and result retrieval &#8212; is fundamental pentesting knowledge."
+        },
+        {
+          "type": "callout",
+          "character": "Maya Rodriguez",
+          "headshot": "maya-rodriguez.png",
+          "calloutType": "characterQuote",
+          "title": "Senior Penetration Tester, NEXUS Security",
+          "quote": "Start with the wordlist. If that fails, OSINT is your friend. Don&#8217;t brute force &#8212; think like the user. People are predictable. Sports teams, kids&#8217; names, graduation years. The password is usually simpler than you expect."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Navigate to your working directory:",
+              "command": "cd ~/lab4",
+              "whatThisDoes": null
+            },
+            {
+              "step": 2,
+              "text": "Run John the Ripper with the rockyou wordlist against the NTLM hashes:",
+              "command": "john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT brazos-hashes.txt",
+              "whatThisDoes": {
+                "concept": "<code>john</code> is John the Ripper, one of the most widely used password cracking tools. The <code>--wordlist</code> flag tells it to try every password in the rockyou.txt dictionary (14 million+ real leaked passwords). The <code>--format=NT</code> flag specifies that these are NTLM hashes.",
+                "output": "Watch for lines showing cracked passwords as they&#8217;re found. John will display the username and plaintext password for each successful crack. Note the speed &#8212; NTLM hashes crack extremely fast because the algorithm was never designed to resist offline attacks.",
+                "flags": null
+              }
+            },
+            {
+              "step": 3,
+              "text": "Check status if John is still running:",
+              "command": "john --status",
+              "whatThisDoes": {
+                "concept": "The <code>--status</code> flag queries a running John session and reports progress &#8212; how many passwords have been tested, the current speed (candidates per second), and estimated time remaining. This is useful when an attack takes longer than expected.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 3,
+          "text": "Capture John the Ripper running and cracking passwords (showing the wordlist attack in progress or completed). Save as <code>03-john-attack.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 4,
+              "text": "Display all cracked passwords:",
+              "command": "john --show --format=NT brazos-hashes.txt",
+              "whatThisDoes": {
+                "concept": "The <code>--show</code> flag tells John to display all previously cracked passwords from its potfile (<code>~/.john/john.pot</code>). John stores results persistently so you can retrieve them later without re-running the attack.",
+                "output": "You should see each cracked account listed as <code>username:password</code> followed by a summary line showing how many were cracked out of the total. Record these &#8212; you&#8217;ll need them for your results table.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 4,
+          "text": "Capture <code>john --show</code> output showing all cracked passwords. Save as <code>04-john-results.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 5,
+              "text": "Examine John&#8217;s potfile to see how cracked passwords are stored:",
+              "command": "cat ~/.john/john.pot",
+              "whatThisDoes": {
+                "concept": "John stores every cracked password in a plain-text potfile at <code>~/.john/john.pot</code>. This is why <code>--show</code> works after an attack completes &#8212; it reads from this file. On a real engagement, the potfile is a sensitive artifact that must be secured.",
+                "output": "You should see lines in <code>hash:password</code> format. Compare this to the <code>--show</code> output &#8212; <code>--show</code> maps hashes back to usernames, while the potfile stores raw hash-to-password pairs.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 5,
+          "text": "Capture the contents of John&#8217;s potfile showing stored <code>hash:password</code> pairs. Save as <code>05-john-potfile.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "text": "What do the different John the Ripper modes do? Research the difference between <code>--wordlist</code>, <code>--rules</code>, and <code>--incremental</code> modes.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "You just used a man page! Run <code>man john</code> and add to your references: <em>john(8) &#8212; John the Ripper password cracker. Linux manual page.</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "Wrong format flag",
+              "text": "NTLM uses <code>--format=NT</code>, not NTLM or NT-MD4"
+            },
+            {
+              "label": "Previous pot file",
+              "text": "If you&#8217;ve run John before, it may skip already-cracked hashes. Delete <code>~/.john/john.pot</code> to start fresh"
+            },
+            {
+              "label": "Not all passwords crack",
+              "text": "This is expected! Some passwords are designed to be uncrackable with rockyou.txt"
+            }
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "text": "At least 2 passwords cracked from the Brazos hash file. Record the usernames, cracked passwords, and approximate time to crack. Not all 8 will crack &#8212; that&#8217;s by design.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 16 covers security tools and penetration testing techniques. John the Ripper represents decades of password cracking evolution &#8212; its attack modes mirror how real adversaries approach credential theft.",
+          "calloutType": "textbookReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Hashcat Attack",
+      "altText": "Checkpoint_4_1_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using Hashcat to crack the same NTLM hashes with GPU acceleration (or CPU fallback). Hashcat is the modern standard for high-speed password recovery.",
+          "whyItMatters": "Hashcat leverages GPU parallel processing for dramatically faster cracking speeds. On modern hardware, Hashcat can test billions of NTLM hashes per second &#8212; compared to millions with CPU-only tools. Understanding both John and Hashcat gives you flexibility for different assessment scenarios."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Extract raw hashes for Hashcat (it needs raw hashes, not username:hash format):",
+              "command": "cut -d':' -f2 brazos-hashes.txt > brazos-hashes-only.txt",
+              "whatThisDoes": {
+                "concept": "<code>cut</code> splits each line on a delimiter and extracts specific fields. Here, <code>-d':'</code> sets the colon as the delimiter and <code>-f2</code> grabs the second field (the hash). Unlike John, Hashcat expects raw hashes without the <code>username:</code> prefix.",
+                "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat brazos-hashes-only.txt</code> &#8212; you should see only 32-character hex strings, one per line, with no usernames.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 6,
+          "text": "Capture <code>cat brazos-hashes-only.txt</code> showing the extracted hash-only format (no usernames). This proves you understand the input format difference between John and Hashcat. Save as <code>06-hashes-only-format.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 2,
+              "text": "Run Hashcat with a dictionary attack against the NTLM hashes:",
+              "command": "hashcat -m 1000 -a 0 brazos-hashes-only.txt /usr/share/wordlists/rockyou.txt -D 1",
+              "whatThisDoes": {
+                "concept": "Hashcat is a GPU-accelerated password cracker. <code>-m 1000</code> sets the hash mode to NTLM. <code>-a 0</code> selects a straight dictionary attack (try each word as-is). <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough.",
+                "output": "Watch for the <code>Speed.#1</code> line showing hashes per second (H/s). Even in CPU mode, NTLM speeds are remarkably high. Compare this number to John&#8217;s speed from Checkpoint 2 &#8212; this comparison is critical for your engagement report.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 7,
+          "text": "Capture Hashcat running showing cracking speed (look for &#8220;Speed&#8221; or &#8220;H/s&#8221; in output). Save as <code>07-hashcat-attack.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 3,
+              "text": "Display all cracked results:",
+              "command": "hashcat -m 1000 brazos-hashes-only.txt --show",
+              "whatThisDoes": {
+                "concept": "Like John, Hashcat stores cracked results in a potfile (<code>~/.local/share/hashcat/hashcat.potfile</code>). The <code>--show</code> flag displays all previously cracked hashes matched against your input file. The output format is <code>hash:password</code> &#8212; note this is reversed from John&#8217;s <code>username:password</code> format. Record these results for your comparison table.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 8,
+          "text": "Capture <code>hashcat --show</code> output displaying cracked hashes. Save as <code>08-hashcat-results.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 4,
+              "text": "Examine Hashcat&#8217;s potfile to compare storage format with John:",
+              "command": "cat ~/.local/share/hashcat/hashcat.potfile",
+              "whatThisDoes": {
+                "concept": "Hashcat stores cracked passwords in its own potfile at <code>~/.local/share/hashcat/hashcat.potfile</code>. Both John and Hashcat use potfiles, but they store them in different locations with slightly different formats. Knowing where each tool keeps its results is essential for engagement documentation.",
+                "output": "You should see <code>hash:password</code> pairs. Compare this to John&#8217;s potfile &#8212; both store the same data but in different directory locations. This is why deleting potfiles is sometimes necessary when re-running attacks.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 9,
+          "text": "Capture the contents of Hashcat&#8217;s potfile. Compare the storage location and format to John&#8217;s potfile from Screenshot #5. Save as <code>09-hashcat-potfile.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "text": "What hash modes does Hashcat support? Run <code>hashcat --help | grep -i \"hash modes\"</code> and explore the supported formats. How would you crack SHA-512 hashes?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "The Hashcat wiki documents all attack modes and hash types. Add to your references: <em>Hashcat Wiki. (n.d.). Example hashes. https://hashcat.net/wiki/doku.php?id=example_hashes</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "text": "Why is GPU-accelerated cracking so much faster than CPU? Research how parallelization works for password cracking and why modern GPUs can test billions of hashes per second.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "The Hashcat documentation explains GPU performance. Add to your references: <em>Hashcat. (n.d.). Hashcat FAQ &#8212; Performance. https://hashcat.net/wiki/doku.php?id=frequently_asked_questions</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "No GPU in VM",
+              "text": "That&#8217;s fine! Use <code>-D 1</code> to force CPU mode. Speed will be lower but still works."
+            },
+            {
+              "label": "Wrong input format",
+              "text": "Hashcat wants raw hashes only. Use <code>cut -d':' -f2</code> to extract hashes from username:hash format."
+            },
+            {
+              "label": "Potfile already has results",
+              "text": "Hashcat skips already-cracked hashes. Use <code>--potfile-disable</code> to ignore the potfile."
+            }
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "text": "Same passwords cracked as John (they should match). Documented speed comparison (H/s) between the two tools. Understanding of why GPU acceleration matters for password cracking.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 16 discusses tool selection and performance considerations. Hashcat&#8217;s GPU acceleration demonstrates why password complexity matters &#8212; weak passwords fall in seconds regardless of the algorithm.",
+          "calloutType": "textbookReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Results Analysis &#38; Documentation",
+      "altText": "Checkpoint_4_1_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Compiling your cracking results into a structured format for your Week 3 engagement report. Documenting which passwords cracked, which survived, and why.",
+          "whyItMatters": "Professional security assessments require clear, reproducible documentation. Clients need to know which accounts are vulnerable, why they&#8217;re vulnerable, and what to do about it. The analysis you document now becomes the foundation of your Lab 4.3 engagement packet."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Create a results table documenting all 8 accounts (cracked or not)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 2,
+              "text": "For cracked passwords, note the plaintext and how long it took",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 3,
+              "text": "For uncracked passwords, mark as &#8220;survived rockyou.txt&#8221;",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 4,
+              "text": "Analyze patterns: What made the cracked passwords weak?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 5,
+              "text": "Document your tool comparison (John vs. Hashcat speeds)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 6,
+              "text": "Save all notes &#8212; you&#8217;ll need them for Lab 4.3",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "title": "Results Table Template",
+          "subtitle": "Copy this structure into your notes and fill it in as you complete the lab:",
+          "columns": [
+            "Username",
+            "Role",
+            "Status",
+            "Password",
+            "Analysis"
+          ],
+          "rows": [
+            [
+              "vcaldwell",
+              "CCO",
+              "CRACKED / Not Cracked",
+              "________",
+              "Why weak/strong?"
+            ],
+            [
+              "rjimenez",
+              "CTO",
+              "CRACKED / Not Cracked",
+              "________",
+              "Why weak/strong?"
+            ],
+            [
+              "&#8230;",
+              "&#8230;",
+              "&#8230;",
+              "&#8230;",
+              "&#8230; continue for all 8 accounts&#8230;"
+            ]
+          ],
+          "note": null,
+          "type": "table"
+        },
+        {
+          "type": "callout",
+          "text": "Why did some passwords survive? Look at the ones that didn&#8217;t crack. What makes them resistant to dictionary attacks? Research password entropy and passphrase security.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 16 covers security tools and best practices. Add to your references: <em>Conklin, W.A. &#38; White, G. (2021). Principles of Computer Security (6th ed.), Chapter 16: Security Tools.</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "number": 10,
+          "text": "Capture your filled-in results table (can be terminal notes, text file, or spreadsheet). Save as <code>10-results-table.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "title": "Optional Bonus: OSINT Wordlists",
+          "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are linked in Canvas. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
+          "calloutType": "goBeyond"
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "Incomplete documentation",
+              "text": "Record ALL accounts, not just the ones that cracked &#8212; survived passwords matter too"
+            },
+            {
+              "label": "Missing analysis",
+              "text": "&#8220;Password cracked&#8221; isn&#8217;t enough &#8212; explain WHY it was weak (dictionary word, short, predictable)"
+            },
+            {
+              "label": "No tool comparison",
+              "text": "Document speed differences between John and Hashcat &#8212; this is valuable real-world knowledge"
+            }
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "text": "Complete results table for all 8 accounts. Tool speed comparison documented. Analysis notes explaining why certain passwords cracked and others didn&#8217;t. All 10 screenshots saved to Module4_Screenshots folder.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact &#8212; the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for Lab 4.3.</em>",
+          "calloutType": "textbookReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "items": [
+        {
+          "label": "Credential Access",
+          "text": "NTLM hashes are a penetration tester&#8217;s goldmine &#8212; fast to crack and often lead to lateral movement"
+        },
+        {
+          "label": "OSINT Enhancement",
+          "text": "Dictionary attacks are step one. OSINT-informed wordlists dramatically improve success rates against targeted accounts"
+        },
+        {
+          "label": "Tool Efficiency",
+          "text": "Knowing when to use John vs. Hashcat depends on the scenario &#8212; both belong in your toolkit"
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "items": [
+        {
+          "label": "Defense in Depth",
+          "text": "NTLM is architecturally weak. Defenders must compensate with MFA, monitoring, and credential hygiene programs"
+        },
+        {
+          "label": "Password Policy Design",
+          "text": "Complexity requirements alone don&#8217;t stop OSINT-informed attacks. Passphrases and blocklists matter more"
+        },
+        {
+          "label": "Credential Monitoring",
+          "text": "If attackers can extract hashes, you&#8217;ve already lost. Focus on preventing initial access and detecting extraction"
+        }
+      ]
+    },
+    "connection": "Password cracking bridges offense and defense perfectly. Attackers use these tools to exploit weak credentials &#8212; the same tools defenders use to audit password strength proactively. Understanding cracking speeds informs both attack timelines and defensive response windows. A password that cracks in seconds requires different defensive controls than one that takes hours. This is why both red and blue teams need hands-on cracking experience."
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "01-hash-file-contents.png",
+        "description": "Hash file showing all 8 NTLM entries (username:hash format)"
+      },
+      {
+        "file": "02-rockyou-wordlist-count.png",
+        "description": "wc -l confirming rockyou.txt line count"
+      },
+      {
+        "file": "03-john-attack.png",
+        "description": "John the Ripper wordlist attack running or completed"
+      },
+      {
+        "file": "04-john-results.png",
+        "description": "john --show output with all cracked passwords"
+      },
+      {
+        "file": "05-john-potfile.png",
+        "description": "Contents of John's potfile (~/.john/john.pot)"
+      },
+      {
+        "file": "06-hashes-only-format.png",
+        "description": "Extracted hash-only file for Hashcat (no usernames)"
+      },
+      {
+        "file": "07-hashcat-attack.png",
+        "description": "Hashcat running with cracking speed (H/s) visible"
+      },
+      {
+        "file": "08-hashcat-results.png",
+        "description": "hashcat --show output with cracked hashes"
+      },
+      {
+        "file": "09-hashcat-potfile.png",
+        "description": "Contents of Hashcat's potfile"
+      },
+      {
+        "file": "10-results-table.png",
+        "description": "Completed results table for all 8 Brazos accounts"
+      }
+    ],
+    "sections": [
+      {
+        "type": "checklist",
+        "items": [
+          "Hash file prepared: 8 NTLM hashes in correct format",
+          "John the Ripper: Ran wordlist attack, documented results",
+          "Hashcat: Ran dictionary attack, noted cracking speed",
+          "Results table: All 8 accounts documented (cracked or not)",
+          "Tool comparison: Speed difference between John and Hashcat noted"
+        ],
+        "title": "Verify Your Work"
+      },
+      {
+        "type": "screenshotTable",
+        "items": [
+          {
+            "number": "01",
+            "description": "Hash file with all 8 entries"
+          },
+          {
+            "number": "02",
+            "description": "Wordlist line count verification"
+          },
+          {
+            "number": "03",
+            "description": "John the Ripper running"
+          },
+          {
+            "number": "04",
+            "description": "John --show output"
+          },
+          {
+            "number": "05",
+            "description": "John potfile contents"
+          },
+          {
+            "number": "06",
+            "description": "Extracted hash-only file for Hashcat"
+          },
+          {
+            "number": "07",
+            "description": "Hashcat with speed displayed"
+          },
+          {
+            "number": "08",
+            "description": "Hashcat --show output"
+          },
+          {
+            "number": "09",
+            "description": "Hashcat potfile contents"
+          },
+          {
+            "number": "10",
+            "description": "Your completed results table"
+          }
+        ],
+        "title": "Screenshot Verification"
+      }
+    ],
+    "takeTheQuiz": {
+      "quizName": "Lab 4.1 Quiz",
+      "text": "The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. Keep your VM running so you can reference your results."
+    }
+  },
+  "needHelp": {
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "Next week in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format &#8212; and a dramatically different experience. Document everything from both weeks for your Lab 4.3 Password Security Assessment engagement packet."
+    }
+  }
+}

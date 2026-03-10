@@ -1,0 +1,917 @@
+{
+  "meta": {
+    "labId": "3_1",
+    "title": "Network Addressing Fundamentals",
+    "labType": "foundation",
+    "module": "Module 3: Networks, Cloud &amp; Defense",
+    "client": null,
+    "chapters": [
+      "Chapter 9 &#8212; Network Fundamentals",
+      "Chapter 18 &#8212; Cloud Computing (introduction)"
+    ],
+    "headerSvg": "Lab3_1_Header.svg",
+    "screenshotStart": 1
+  },
+  "intro": {
+    "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation &#8212; the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next week when you start filtering traffic in Wireshark.",
+    "mentorQuote": {
+      "character": "Derek Mitchell",
+      "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
+      "headshot": "derek-mitchell.png",
+      "quote": "CIDR isn&#8217;t just math &#8212; it&#8217;s how you define your attack surface. When I&#8217;m hunting threats in a network, the first thing I need to know is what address space I&#8217;m protecting. Every capture filter, every firewall rule, every ACL &#8212; they all start with understanding addresses. Get this right, and Wireshark becomes a precision instrument."
+    },
+    "focusAreas": [
+      "Binary, decimal, and hexadecimal number system conversions",
+      "CIDR notation and the visual count-out method",
+      "Calculating network addresses, broadcast addresses, and usable host ranges",
+      "Subnetting — borrowing bits and enumerating all resulting subnets",
+      "Documenting host and Kali VM network configurations",
+      "Creating a network topology diagram for the Gulf Coast engagement"
+    ],
+    "objectives": [
+      "Convert between decimal, binary, and hexadecimal number systems",
+      "Use the visual &#8220;count out&#8221; method to analyze CIDR notation",
+      "Calculate network addresses, broadcast addresses, and usable host ranges",
+      "Subnet a network and enumerate all resulting subnets",
+      "Document your local and VM network configurations"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 3.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 1 of a 3-week module</strong>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 3.3 Engagement Packet in Week 3."
+      }
+    ],
+    "clientContext": {
+      "client": "Gulf Coast Healthcare Partners",
+      "description": "Continuing their engagement with NEXUS after the cryptographic assessment in Module 2. Jennifer Walsh (CISO) has requested a network traffic analysis of their Azure-hosted patient portal. This week is internal training; next week you&#8217;ll dive into Wireshark; Week 3 you&#8217;ll capture live Azure traffic.",
+      "contacts": []
+    }
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Number Systems (dec/bin/hex conversions)",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Checkpoint 2: Flat Network Analysis (CIDR count-out)",
+        "time": "25-35 min"
+      },
+      {
+        "task": "Checkpoint 3: Subnet the Network (borrowing bits)",
+        "time": "30-40 min"
+      },
+      {
+        "task": "Checkpoint 4: Verify with MX Toolbox",
+        "time": "10-15 min"
+      },
+      {
+        "task": "Checkpoint 5: Document Your Networks",
+        "time": "15-20 min"
+      },
+      {
+        "task": "Checkpoint 6: Network Topology Diagram",
+        "time": "20-30 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "120-170 min"
+    },
+    "timesheetNote": "This is Week 1 of a 3-week module. Log as <em>Internal Training: 2–3 hours — Network addressing fundamentals</em>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Number Systems",
+      "altText": "Checkpoint_3_1_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Building fluency converting between decimal, binary, and hexadecimal number systems &#8212; the foundation for understanding network addresses.",
+          "whyItMatters": "IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools."
+        },
+        {
+          "title": "The Conversion Cheat Sheet",
+          "subtitle": "Memorize these 16 values (0&#8211;15) and you can convert anything:",
+          "columns": [
+            "Dec",
+            "Hex",
+            "Binary"
+          ],
+          "rows": [
+            [
+              "0",
+              "0",
+              "0000"
+            ],
+            [
+              "1",
+              "1",
+              "0001"
+            ],
+            [
+              "2",
+              "2",
+              "0010"
+            ],
+            [
+              "3",
+              "3",
+              "0011"
+            ],
+            [
+              "4",
+              "4",
+              "0100"
+            ],
+            [
+              "5",
+              "5",
+              "0101"
+            ],
+            [
+              "6",
+              "6",
+              "0110"
+            ],
+            [
+              "7",
+              "7",
+              "0111"
+            ],
+            [
+              "8",
+              "8",
+              "1000"
+            ],
+            [
+              "9",
+              "9",
+              "1001"
+            ],
+            [
+              "10",
+              "A",
+              "1010"
+            ],
+            [
+              "11",
+              "B",
+              "1011"
+            ],
+            [
+              "12",
+              "C",
+              "1100"
+            ],
+            [
+              "13",
+              "D",
+              "1101"
+            ],
+            [
+              "14",
+              "E",
+              "1110"
+            ],
+            [
+              "15",
+              "F",
+              "1111"
+            ]
+          ],
+          "note": "To convert 168 to hex: 168 = 160 + 8 = A0 + 08 = <strong>A8</strong>. To convert 252: 252 = 240 + 12 = F0 + 0C = <strong>FC</strong>.",
+          "type": "table"
+        },
+        {
+          "part": "Practice Problems",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Decimal &#8594; Binary: Convert 192, 168, 255, 252",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Binary &#8594; Decimal: Convert 11000000, 10101000, 11111100, 00000000",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Decimal &#8594; Hex: Convert 192, 168, 252, 0",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "MAC Address: Given <code>00:1A:2B:3C:4D:5E</code>, what is <code>2B</code> in decimal?",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture your completed conversions (can be handwritten on paper). Save as <code>01-number-conversions.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Calculator shortcuts:</strong> Using online converters without understanding the math &#8212; you need this skill for quizzes",
+            "<strong>Place value errors:</strong> Forgetting that binary positions are powers of 2 (128, 64, 32, 16, 8, 4, 2, 1)",
+            "<strong>Skipping verification:</strong> Always convert back to check your work"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "A complete conversion reference with all problems worked out. You&#8217;ll use these exact values in the next checkpoint.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 explains IP addressing and the TCP/IP protocol stack. Understanding binary representation is fundamental to network addressing.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "Why do network addresses use binary and hexadecimal instead of just decimal? Review Chapter 9&#8217;s coverage of IP addressing and the TCP/IP protocol stack.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "You just read Chapter 9. Add it to your references: Conklin, W. A., &amp; White, G. (2021). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Flat Network Analysis",
+      "altText": "Checkpoint_3_1_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Analyzing CIDR notation to determine network size, usable hosts, and address boundaries without subnetting.",
+          "whyItMatters": "CIDR notation is the universal language for describing network size. When you see <code>192.168.1.0/24</code>, you need to instantly know how many hosts that includes, where it starts, and where it ends. This is essential for firewall rules, capture filters, and vulnerability scans."
+        },
+        {
+          "type": "callout",
+          "icon": "calculate",
+          "title": "The Visual Count-Out Method",
+          "text": "For <code>192.168.0.0/22</code>: Network: 22 bits | Host: 10 bits<br><code>11111111.11111111.11111100.00000000</code><br>Subnet Mask: <strong>255.255.252.0</strong> (FF.FF.FC.00)",
+          "calloutType": "conceptBox"
+        },
+        {
+          "part": "Analysis Exercise",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "For <code>192.168.0.0/22</code>, calculate:",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Total addresses: 2<sup>10</sup> = ?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Usable hosts: Total &#8722; 2 = ?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Network address (first): 192.168.0.0",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Broadcast address (last): ?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "First usable host: ? &nbsp; Last usable host: ?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Then repeat for <code>10.0.0.0/8</code> &#8212; a much larger network.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture your flat network analysis calculations. Save as <code>02-flat-network-analysis.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Forgetting to subtract 2:</strong> Network and broadcast addresses aren&#8217;t usable for hosts",
+            "<strong>CIDR confusion:</strong> /24 = 256 addresses, /25 = 128, /26 = 64 (each bit doubles/halves)",
+            "<strong>Boundary errors:</strong> Broadcast is ALL host bits = 1, not the next network address"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Your 192.168.0.0/22 analysis should show: 10 host bits, 1,022 usable hosts, broadcast 192.168.3.255. Your 10.0.0.0/8 should show: 24 host bits, 16,777,214 usable hosts.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 explains network addressing and CIDR notation. Understanding these calculations is fundamental to network segmentation.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "How does subnetting divide a network into smaller segments? Calculate the number of hosts in a /24 versus a /28 network.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "RFC 4632 &#8212; Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Subnet the Network",
+      "altText": "Checkpoint_3_1_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Creating a complete subnet table showing every possible subnet when you divide a larger network into smaller ones.",
+          "whyItMatters": "Network segmentation is a core security control. By dividing networks into subnets, you can isolate sensitive systems, limit blast radius during incidents, and apply different security policies to different zones. This is why firewalls, VLANs, and access controls all depend on understanding subnet boundaries."
+        },
+        {
+          "type": "callout",
+          "icon": "calculate",
+          "title": "Borrowing Bits",
+          "text": "Starting with <code>192.168.0.0/22</code>, borrow 2 host bits for subnets:<br>Network: 22 | Subnet: +2 | Host: 8<br><code>11111111.11111111.11111111.00000000</code><br>New CIDR: <strong>/24</strong> &#8212; 4 subnets, 254 hosts each",
+          "calloutType": "conceptBox"
+        },
+        {
+          "title": "The Complete Subnet Table (192.168.0.0/22 &#8594; /24)",
+          "subtitle": null,
+          "columns": [
+            "Subnet Address",
+            "Usable Host Range",
+            "Broadcast"
+          ],
+          "rows": [
+            [
+              "192.168.0.0/24",
+              "192.168.0.1 &#8212; 192.168.0.254",
+              "192.168.0.255"
+            ],
+            [
+              "192.168.1.0/24",
+              "192.168.1.1 &#8212; 192.168.1.254",
+              "192.168.1.255"
+            ],
+            [
+              "192.168.2.0/24",
+              "192.168.2.1 &#8212; 192.168.2.254",
+              "192.168.2.255"
+            ],
+            [
+              "192.168.3.0/24",
+              "192.168.3.1 &#8212; 192.168.3.254",
+              "192.168.3.255"
+            ]
+          ],
+          "note": null,
+          "type": "table"
+        },
+        {
+          "part": "Your Turn",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Starting with <code>172.16.0.0/16</code>, borrow 4 bits for subnetting:",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "What is the new CIDR prefix? (16 + 4 = ?)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "How many subnets can be created?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "How many hosts per subnet?",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Create a table showing the first 4 subnets.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture your 172.16.0.0/16 subnet analysis with the table. Save as <code>03-subnet-table.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "New CIDR: /20. Subnets: 16. Hosts per subnet: 4094. First four subnets: 172.16.0.0/20, 172.16.16.0/20, 172.16.32.0/20, 172.16.48.0/20.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Forgetting the formula:</strong> 2<sup>n</sup> subnets when borrowing n bits",
+            "<strong>Host count confusion:</strong> Usable hosts = 2<sup>h</sup> &#8722; 2 (subtract network and broadcast)",
+            "<strong>Subnet boundary errors:</strong> Each subnet starts where the previous one ends &#8212; watch the increment pattern"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries &#8212; the same technique you use here enables network architects to separate sensitive systems.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x &#8212; why these specific ranges? Look up RFC 1918 to understand private address space.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "RFC 1918 defines private addresses: Rekhter, Y., et al. (1996). RFC 1918: Address Allocation for Private Internets. IETF. https://www.rfc-editor.org/rfc/rfc1918",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Verify with MX Toolbox",
+      "altText": "Checkpoint_3_1_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Verifying that your hand calculations are correct using an industry-standard tool.",
+          "whyItMatters": "In production environments, network configuration errors can cause outages or security gaps. Professionals always verify their calculations with trusted tools before implementing changes."
+        },
+        {
+          "part": null,
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Navigate to <a href=\"https://mxtoolbox.com/subnetcalculator.aspx\">https://mxtoolbox.com/subnetcalculator.aspx</a>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Enter <code>192.168.0.0/22</code> and verify your Checkpoint 2 answers.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Enter <code>172.16.0.0/20</code> and verify your Checkpoint 3 answers.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "If any calculations were wrong, go back and identify where you made the error.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture MX Toolbox results for one of your CIDR blocks. Save as <code>04-mxtoolbox-verification.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Skipping verification:</strong> Don&#8217;t assume your math is right &#8212; always check",
+            "<strong>Not correcting errors:</strong> If the tool shows different results, trace back to find your mistake"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "MX Toolbox results confirming your hand calculations for both /22 and /20 networks. If they don&#8217;t match, you&#8217;ve identified and corrected your errors.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work &#8212; MX Toolbox represents the external verification used in production environments.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "MX Toolbox offers more than just subnet calculations &#8212; explore their other network diagnostic tools. What else can you check about a domain or IP address?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "MX Toolbox. (n.d.). Subnet Calculator. Retrieved from https://mxtoolbox.com/subnetcalculator.aspx",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Document Your Networks",
+      "altText": "Checkpoint_3_1_5.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Documenting your actual network configuration &#8212; both your host machine and your Kali VM.",
+          "whyItMatters": "Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what &#8220;normal&#8221; looks like for your environment. This baseline documentation is exactly what you&#8217;d create at the start of any client engagement or incident response."
+        },
+        {
+          "part": "On Your Host Machine",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Windows: <code>ipconfig /all</code> &nbsp;|&nbsp; macOS: <code>ifconfig</code> and <code>netstat -rn</code>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Document: IP Address, Subnet Mask (convert to CIDR), Default Gateway, DNS Server(s), Connection Type (WiFi or Ethernet).",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "part": "In Your Kali VM",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Show interfaces and addresses:",
+              "command": "ip addr",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show routing table:",
+              "command": "ip route",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show ARP cache (IP to MAC mappings):",
+              "command": "arp -a",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show DNS configuration:",
+              "command": "cat /etc/resolv.conf",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Test internet connectivity:",
+              "command": "ping -c 3 8.8.8.8",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, VirtualBox Network Mode (NAT, Bridged, etc.).",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture both your host network config and Kali&#8217;s <code>ip addr</code> output (VM name must be visible). Save as <code>05-host-kali-config.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Wrong adapter:</strong> Look for your active network adapter, not VirtualBox&#8217;s virtual adapters",
+            "<strong>VPN active:</strong> If using a VPN, your IP might show the VPN&#8217;s address",
+            "<strong>VM not running:</strong> Make sure Kali is booted and has network connectivity"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and VirtualBox network mode.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 emphasizes the importance of network documentation. Security teams can&#8217;t protect what they don&#8217;t know exists &#8212; your documentation creates the asset inventory that informs security controls.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "The <code>ip</code> command replaced the older <code>ifconfig</code> command. Run <code>man ip</code> to explore what else it can show you about your network configuration.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "You used Linux networking commands: ip(8) &#8212; Linux manual page. Retrieved from <code>man ip</code>",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Network Topology Diagram",
+      "altText": "Checkpoint_3_1_6.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Creating a visual diagram showing the network path from your Kali VM all the way to Gulf Coast&#8217;s Azure infrastructure.",
+          "whyItMatters": "Network topology diagrams are essential for security assessments and incident response. They help teams understand traffic flows, identify chokepoints, and plan defensive controls. The diagram you create here is exactly what you&#8217;d include in a professional security report."
+        },
+        {
+          "part": "Include These Elements",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Kali VM (with your IP from Checkpoint 5)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "VirtualBox NAT (label the network mode)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Host Machine (with your IP from Checkpoint 5)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Home Router/Gateway (with gateway IP)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Internet (cloud symbol)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Azure South Central US Region",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Gulf Coast Patient Portal (10.0.1.x subnet)",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "lightbulb",
+          "title": "Recommended Tools",
+          "text": "<a href=\"https://app.diagrams.net\">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too &#8212; we care about the content, not the polish.",
+          "calloutType": "tip"
+        },
+        {
+          "type": "callout",
+          "isFinal": true,
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Export your completed topology diagram. Save as <code>06-topology-diagram.png</code> &#8212; this is your last screenshot for Lab 3.1!",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Missing labels:</strong> Every device and connection needs an IP address or network range labeled",
+            "<strong>Incomplete path:</strong> Show the entire chain from Kali VM through NAT, host, router, internet, to target",
+            "<strong>Low resolution export:</strong> Export as PNG at high resolution &#8212; blurry diagrams are unprofessional"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "A diagram showing the complete network path with IP addresses labeled at each hop. This diagram will appear in your Lab 3.3 Engagement Packet.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders &#8212; a skill you&#8217;ll use in Lab 3.3&#8217;s client deliverable.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is the difference between IPv4 and IPv6 addressing? Research the security improvements built into IPv6 (IPsec) and current adoption challenges.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "RFC 8200 &#8212; Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "Red Team Perspective",
+      "items": [
+        "During reconnaissance, attackers identify network boundaries to understand scope",
+        "CIDR notation tells them how many hosts to scan, where subnets begin and end, and which ranges to target",
+        "Misconfigured subnet masks can expose more hosts than intended"
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "Blue Team Perspective",
+      "items": [
+        "Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans",
+        "Proper subnetting creates security boundaries &#8212; an attacker who compromises one subnet shouldn&#8217;t automatically access others",
+        "Understanding addressing lets you spot anomalous traffic crossing boundaries"
+      ]
+    },
+    "connection": "CIDR notation is the shared language between attackers and defenders. A red-team analyst uses subnet boundaries to scope a scan — knowing exactly which hosts to target and which to exclude. A blue-team analyst uses the same boundaries to write firewall rules, segment sensitive systems, and detect traffic crossing zone boundaries. When you calculate a subnet by hand, you're internalizing the same mental model both sides use."
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "01-number-conversions.png",
+        "description": "Completed decimal/binary/hex conversion practice"
+      },
+      {
+        "file": "02-flat-network-analysis.png",
+        "description": "CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8"
+      },
+      {
+        "file": "03-subnet-table.png",
+        "description": "Complete subnet table for 172.16.0.0/16 with 4 bits borrowed"
+      },
+      {
+        "file": "04-mxtoolbox-verification.png",
+        "description": "MX Toolbox results confirming hand calculations"
+      },
+      {
+        "file": "05-host-kali-config.png",
+        "description": "Host and Kali VM network configurations (VM name visible)"
+      },
+      {
+        "file": "06-topology-diagram.png",
+        "description": "Network topology diagram from Kali VM to Azure"
+      }
+    ],
+    "sections": [
+      {
+        "items": [
+          "Number conversions (decimal, binary, hex)",
+          "Flat network analysis (192.168.0.0/22 and 10.0.0.0/8)",
+          "Subnet table for 192.168.0.0/22 &#8594; /24",
+          "All calculations verified against MX Toolbox",
+          "Host and Kali network configurations documented",
+          "Network topology diagram completed"
+        ],
+        "title": "Exercises Completed"
+      },
+      {
+        "items": [
+          "01-number-conversions.png",
+          "02-flat-network-analysis.png",
+          "03-subnet-table.png",
+          "04-mxtoolbox-verification.png",
+          "05-host-kali-config.png",
+          "06-topology-diagram.png"
+        ],
+        "title": "Screenshots Saved"
+      }
+    ],
+    "canvasQuiz": "Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration."
+  },
+  "needHelp": {
+    "nextModule": "Lab 3.2: Protocol Analysis Tools &#8212; Next week you&#8217;ll install Wireshark and dive into packet capture using training PCAPs. The network fundamentals you learned today &#8212; CIDR, subnets, address boundaries &#8212; make capture filters and display filters precise tools instead of guesswork.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "Lab 3.2: Protocol Analysis Tools — Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible."
+    }
+  }
+}

@@ -1,0 +1,873 @@
+{
+  "meta": {
+    "labId": "2_1",
+    "title": "Cryptographic Foundations",
+    "labType": "foundation",
+    "module": "Module 2: Cryptography &amp; Authentication",
+    "client": null,
+    "chapters": [
+      "Chapter 6 &#8212; Applied Cryptography",
+      "Chapter 11 &#8212; Authentication and Remote Access"
+    ],
+    "headerSvg": "Lab2_1_Header.svg",
+    "screenshotStart": 1
+  },
+  "intro": {
+    "overview": "This week begins your cryptography training at NEXUS Security. You&#8217;ll master the fundamental cryptographic operations that underpin modern security: hashing for integrity verification, symmetric encryption for data protection, asymmetric encryption for secure key exchange, and digital signatures for non-repudiation. These skills prepare you for the Gulf Coast Healthcare engagement in Week 3, where you&#8217;ll remediate certificate issues on their patient portal.",
+    "mentorQuote": {
+      "character": "Maria Delgado, PhD",
+      "title": "Security Compliance Specialist, NEXUS Security",
+      "headshot": "maria-delgado.png",
+      "quote": "Cryptography isn&#8217;t magic &#8212; it&#8217;s math. And math done wrong is worse than no math at all because it gives false confidence. <strong>Every healthcare organization I&#8217;ve audited had encryption somewhere.</strong> Most had it implemented incorrectly. This week, you&#8217;ll learn to do it right."
+    },
+    "focusAreas": [
+      {
+        "title": "Cryptographic Hashing",
+        "description": "SHA-256 and the avalanche effect — how small input changes produce completely different outputs, forming the foundation of data integrity verification."
+      },
+      {
+        "title": "Symmetric Encryption",
+        "description": "AES-256-CBC encryption and decryption — the HIPAA-required standard for protecting PHI at rest."
+      },
+      {
+        "title": "Asymmetric Encryption",
+        "description": "RSA keypair generation and public-key encryption — solving the key distribution problem that symmetric encryption cannot."
+      },
+      {
+        "title": "Digital Signatures",
+        "description": "Creating and verifying signatures using RSA — providing non-repudiation, the cryptographic proof that a specific party signed a specific document."
+      },
+      {
+        "title": "Algorithm Deprecation",
+        "description": "Why MD5 and SHA-1 are no longer acceptable — understanding collision resistance and NIST recommendations for current practice."
+      },
+      {
+        "title": "Documentation for Auditors",
+        "description": "Every screenshot and command output is evidence. Building the habit of capturing before-and-after proof prepares you for real compliance engagements."
+      }
+    ],
+    "objectives": [
+      "Generate and compare cryptographic hashes using SHA-256",
+      "Encrypt and decrypt files using AES symmetric encryption",
+      "Generate RSA keypairs and perform asymmetric encryption",
+      "Create and verify digital signatures",
+      "Document all operations for your Lab 2.3 Engagement Packet"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 2.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 1 of a 3-week module</strong>. Create a folder called <code>Module2_Screenshots</code> and save all screenshots there. You&#8217;ll need them for your Engagement Packet in Week 3."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Hash Functions",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Checkpoint 2: Symmetric Encryption",
+        "time": "25-35 min"
+      },
+      {
+        "task": "Checkpoint 3: Asymmetric Encryption",
+        "time": "30-40 min"
+      },
+      {
+        "task": "Checkpoint 4: Digital Signatures",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Canvas Quiz",
+        "time": "15-20 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "2-3 hours"
+    },
+    "timesheetNote": "This is Week 1 of a 3-week module. Time here is internal NEXUS training — not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save all 9 screenshots there. You will compile everything into a single Engagement Packet in Lab 2.3."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Hash Functions",
+      "altText": "Checkpoint_2_1_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect &#8212; how small input changes produce completely different outputs.",
+          "whyItMatters": "Hashes are the foundation of data integrity. Every time you verify a software download, check file integrity, or validate a digital signature, you&#8217;re using hashes. In healthcare, hash verification proves that patient records haven&#8217;t been tampered with &#8212; critical for audit trails and legal compliance."
+        },
+        {
+          "character": "Maria Delgado, PhD",
+          "headshot": "maria-delgado.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Security Compliance Specialist, NEXUS Security",
+          "quote": "Auditors don&#8217;t care what you did. They care what you can prove you did. Hash verification is how you prove data integrity."
+        },
+        {
+          "part": "Part A: Create a test file and generate its hash",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create a working directory:",
+              "command": "mkdir -p ~/lab2-crypto",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Change into your working directory:",
+              "command": "cd ~/lab2-crypto",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Create a sample patient record file:",
+              "command": "echo \"Patient: John Smith, DOB: 1985-03-15, MRN: 12345\" > patient.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Generate the SHA-256 hash:",
+              "command": "sha256sum patient.txt",
+              "whatThisDoes": {
+                "concept": "<code>sha256sum</code> computes a SHA-256 cryptographic hash &#8212; a fixed-length, 64-character hexadecimal fingerprint of a file. The same input always produces the same hash, but even a one-bit change produces a completely different output. This is how you prove a file has not been tampered with.",
+                "output": "You should see a 64-character hex string followed by the filename. This hash is unique to your file&#8217;s exact contents. Copy it somewhere &#8212; you&#8217;ll compare it in the next step.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the file creation and SHA-256 hash output. Save as <code>01-hash-sha256.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Demonstrate the avalanche effect",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create a slightly modified file (change one character):",
+              "command": "echo \"Patient: John Smith, DOB: 1985-03-16, MRN: 12345\" > patient2.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Compare the hashes:",
+              "command": "sha256sum patient.txt patient2.txt",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Compare the two hashes carefully. Despite changing only one character, the hashes are completely different. This is the <strong>avalanche effect</strong> &#8212; a critical property of cryptographic hash functions. If small changes produced similar hashes, attackers could predict modifications. The avalanche effect makes that impossible.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture both hashes side-by-side showing completely different outputs despite minimal input change. Save as <code>02-hash-comparison.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Using MD5 or SHA-1:</strong> These are deprecated for security purposes &#8212; always use SHA-256 or stronger",
+            "<strong>Confusing hashing with encryption:</strong> Hashes are one-way; you cannot reverse them to get original data"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Two screenshots showing SHA-256 hash generation and the avalanche effect. The hashes should be completely different despite only one character changing in the input.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 6 covers cryptographic hash functions and their security properties. Pay attention to collision resistance and why MD5/SHA-1 are deprecated.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "NIST SP 800-57 - Recommendation for Key Management. Available at: https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Symmetric Encryption",
+      "altText": "Checkpoint_2_1_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Encrypting and decrypting files using AES-256, the symmetric encryption standard required by HIPAA for protecting patient health information (PHI) at rest.",
+          "whyItMatters": "Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard &#8212; it&#8217;s approved for classified government information and required by most healthcare compliance frameworks."
+        },
+        {
+          "character": "Maria Delgado, PhD",
+          "headshot": "maria-delgado.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Security Compliance Specialist, NEXUS Security",
+          "quote": "HIPAA requires encryption of PHI at rest. AES-256 is the standard. Know it cold."
+        },
+        {
+          "part": "Part A: Encrypt a file with AES-256",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Encrypt your patient file (use password <code>nexus2026</code> when prompted):",
+              "command": "openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc",
+              "whatThisDoes": {
+                "concept": "This encrypts a file using AES-256 in CBC mode &#8212; the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.",
+                "output": "OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success &#8212; OpenSSL is silent on success.",
+                "flags": [
+                  {
+                    "flag": "enc",
+                    "description": "Tells OpenSSL to perform encryption/decryption"
+                  },
+                  {
+                    "flag": "-aes-256-cbc",
+                    "description": "Algorithm: AES with 256-bit key in Cipher Block Chaining mode"
+                  },
+                  {
+                    "flag": "-salt",
+                    "description": "Adds random data so the same password + file produces different ciphertext each time"
+                  },
+                  {
+                    "flag": "-pbkdf2",
+                    "description": "Uses PBKDF2 key derivation &#8212; makes brute-force password attacks much slower"
+                  },
+                  {
+                    "flag": "-in / -out",
+                    "description": "Input plaintext file and output encrypted file"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Verify the encrypted file exists:",
+              "command": "ls -la patient.txt*",
+              "whatThisDoes": null
+            },
+            {
+              "text": "View the encrypted contents as a hex dump:",
+              "command": "xxd patient.txt.enc | head",
+              "whatThisDoes": {
+                "concept": "<code>xxd</code> is a hex dump utility that shows raw file bytes in hexadecimal format. Piping to <code>head</code> limits output to the first 10 lines. This lets you visually confirm the file is encrypted &#8212; you should see random-looking hex values, not readable text.",
+                "output": "The hex dump should show no recognizable text &#8212; just seemingly random bytes. The first 16 bytes contain the <code>Salted__</code> header followed by the salt value. If you can read any of the original patient data, encryption failed.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the encryption command and the hex dump showing unreadable encrypted content. Save as <code>03-symmetric-encrypt.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Decrypt the file",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Decrypt using the same password:",
+              "command": "openssl enc -aes-256-cbc -d -pbkdf2 -in patient.txt.enc -out patient_decrypted.txt",
+              "whatThisDoes": {
+                "concept": "The <code>-d</code> flag switches OpenSSL to decrypt mode &#8212; this single flag reverses the encryption operation. Everything else stays the same: same algorithm, same key derivation. This demonstrates that symmetric encryption is reversible with the correct password.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "View the decrypted file:",
+              "command": "cat patient_decrypted.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Confirm it matches the original:",
+              "command": "diff patient.txt patient_decrypted.txt && echo 'Files match!' || echo 'Files differ!'",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the decryption and verification showing the original content restored. Save as <code>04-symmetric-decrypt.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Forgetting the password:</strong> Symmetric encryption requires the same password for decryption",
+            "<strong>Using weak algorithms:</strong> DES is obsolete; always use AES-256",
+            "<strong>Missing -pbkdf2 flag:</strong> Modern OpenSSL requires this for key derivation"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Two screenshots showing successful encryption (unreadable ciphertext) and decryption (original plaintext restored).",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 6 covers symmetric encryption algorithms including AES. Understand the difference between block modes (CBC, GCM) and why key management is critical.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Your textbook Chapter 4 covers PKI and certificate authorities. RFC 5280 defines the X.509 certificate format: https://tools.ietf.org/html/rfc5280",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Asymmetric Encryption",
+      "altText": "Checkpoint_2_1_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys &#8212; a public key anyone can use to encrypt, and a private key only you possess to decrypt.",
+          "whyItMatters": "Asymmetric encryption solves the key distribution problem. How do you securely share a symmetric key with someone you&#8217;ve never met? You use their public key. This is how TLS/HTTPS works, how secure email works, and how certificates establish trust."
+        },
+        {
+          "character": "Maria Delgado, PhD",
+          "headshot": "maria-delgado.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Security Compliance Specialist, NEXUS Security",
+          "quote": "Encryption is not magic. It&#8217;s math. And math done wrong is worse than no math at all &#8212; it gives false confidence."
+        },
+        {
+          "part": "Part A: Generate an RSA keypair",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Generate a 2048-bit RSA private key:",
+              "command": "openssl genrsa -out private.pem 2048",
+              "whatThisDoes": {
+                "concept": "This generates an RSA private key &#8212; the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.",
+                "output": null,
+                "flags": [
+                  {
+                    "flag": "genrsa",
+                    "description": "Generate an RSA private key"
+                  },
+                  {
+                    "flag": "-out private.pem",
+                    "description": "Save to PEM format (Base64-encoded, human-readable headers)"
+                  },
+                  {
+                    "flag": "2048",
+                    "description": "Key size in bits &#8212; NIST minimum for RSA. 4096 is more future-proof but slower."
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Extract the public key:",
+              "command": "openssl rsa -in private.pem -pubout -out public.pem",
+              "whatThisDoes": {
+                "concept": "The public key is mathematically derived from the private key &#8212; but the reverse is computationally infeasible. This one-way relationship is what makes asymmetric crypto work: you can freely distribute your public key without exposing your private key. Anyone with your public key can encrypt messages that only your private key can decrypt.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "List both key files:",
+              "command": "ls -la *.pem",
+              "whatThisDoes": null
+            },
+            {
+              "text": "View the public key contents:",
+              "command": "cat public.pem",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the keypair generation, file listing, and public key contents. Save as <code>05-rsa-keypair.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Encrypt with public key",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create a small message to encrypt:",
+              "command": "echo \"Secret: AES key is nexus2026\" > secret.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Encrypt with the public key:",
+              "command": "openssl pkeyutl -encrypt -pubin -inkey public.pem -in secret.txt -out secret.enc",
+              "whatThisDoes": {
+                "concept": "Public key encryption &#8212; anyone with your public key can encrypt a message, but only the private key holder can decrypt it. This solves the key distribution problem: you never need to share a secret password over an insecure channel.",
+                "output": null,
+                "flags": [
+                  {
+                    "flag": "pkeyutl",
+                    "description": "Public key utility for encrypt/decrypt/sign/verify operations"
+                  },
+                  {
+                    "flag": "-encrypt",
+                    "description": "Perform encryption (use -decrypt to reverse)"
+                  },
+                  {
+                    "flag": "-pubin",
+                    "description": "Input key is a public key (not a private key)"
+                  },
+                  {
+                    "flag": "-inkey",
+                    "description": "Path to the key file to use"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the encryption command and verify the encrypted file exists. Save as <code>06-rsa-encrypt.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part C: Decrypt with private key",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Decrypt using the private key:",
+              "command": "openssl pkeyutl -decrypt -inkey private.pem -in secret.enc -out secret_decrypted.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify the decrypted contents:",
+              "command": "cat secret_decrypted.txt",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the decryption showing the original secret message restored. Save as <code>07-rsa-decrypt.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Confusing public/private:</strong> Encrypt with public, decrypt with private (for confidentiality)",
+            "<strong>Data size limits:</strong> RSA can only encrypt small amounts of data directly",
+            "<strong>Exposing private key:</strong> Never share or commit private keys"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Three screenshots showing keypair generation, public key encryption, and private key decryption.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 6 covers asymmetric cryptography including RSA. Understand why we use asymmetric crypto for key exchange but symmetric for bulk data.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "How does OpenSSL implement encryption algorithms? Research the difference between block ciphers and stream ciphers.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "OpenSSL Documentation - Cryptographic Algorithms. Available at: https://www.openssl.org/docs/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Digital Signatures",
+      "altText": "Checkpoint_2_1_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). This is the inverse of encryption.",
+          "whyItMatters": "Digital signatures provide non-repudiation &#8212; proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable."
+        },
+        {
+          "character": "Maria Delgado, PhD",
+          "headshot": "maria-delgado.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Security Compliance Specialist, NEXUS Security",
+          "quote": "Non-repudiation matters in healthcare. When a provider signs an order, it&#8217;s legally binding."
+        },
+        {
+          "part": "Part A: Sign a document",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Create a document to sign:",
+              "command": "echo \"Medication Order: Amoxicillin 500mg TID x 10 days - Dr. Chen\" > order.txt",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Sign with your private key:",
+              "command": "openssl dgst -sha256 -sign private.pem -out order.sig order.txt",
+              "whatThisDoes": {
+                "concept": "Digital signing is encryption in reverse &#8212; you sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.",
+                "output": null,
+                "flags": [
+                  {
+                    "flag": "dgst",
+                    "description": "Message digest (hash) operations"
+                  },
+                  {
+                    "flag": "-sha256",
+                    "description": "Hash the document with SHA-256 before signing"
+                  },
+                  {
+                    "flag": "-sign private.pem",
+                    "description": "Sign using your private key &#8212; only you can create this signature"
+                  },
+                  {
+                    "flag": "-out order.sig",
+                    "description": "Save the binary signature to a separate file"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Verify the signature file was created:",
+              "command": "ls -la order.*",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the signing command and file listing showing both the order and signature files. Save as <code>08-signature-create.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Part B: Verify the signature",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Verify using the public key:",
+              "command": "openssl dgst -sha256 -verify public.pem -signature order.sig order.txt",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "You should see <code>Verified OK</code> &#8212; this confirms three things simultaneously: (1) the document has not been modified since signing, (2) the signature was created by the holder of the matching private key, and (3) the signer cannot deny having signed it (non-repudiation). If even one byte of order.txt changed, verification would fail.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "isFinal": true,
+          "text": "Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code> &#8212; this is your last screenshot for Lab 2.1!",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Confusing sign/verify with encrypt/decrypt:</strong> Sign with private, verify with public",
+            "<strong>Modified document:</strong> Any change to the document will cause verification to fail"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Two screenshots showing signature creation and successful verification with &#8220;Verified OK&#8221; output.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 6 covers digital signatures and non-repudiation. Understand how signatures combine hashing with asymmetric crypto to provide both integrity and authenticity.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What makes a hash algorithm &#8216;cryptographically secure&#8217;? Research why MD5 and SHA-1 are considered deprecated for security purposes.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "NIST Policy on Hash Functions. Available at: https://csrc.nist.gov/projects/hash-functions",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        {
+          "label": "Hash Collision Exploitation",
+          "text": "Hash collisions expose weak integrity checks — attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use."
+        },
+        {
+          "label": "Symmetric Key Theft",
+          "text": "Intercepting or stealing AES keys gives full decryption capability; key management failures are more common than algorithm breaks."
+        },
+        {
+          "label": "RSA Key Misuse",
+          "text": "Confusing public and private key roles, or using undersized keys, allows attackers to break encryption or forge signatures on affected systems."
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        {
+          "label": "Hash Algorithm Policy",
+          "text": "Use SHA-256 or stronger for all integrity checks; flag any system still using MD5 or SHA-1 as a compliance finding."
+        },
+        {
+          "label": "Key Management Controls",
+          "text": "Enforce key management policies — keys stored at rest must be encrypted, and private keys must never leave the system that generated them."
+        },
+        {
+          "label": "Signature Verification",
+          "text": "Verify digital signatures as part of software deployment pipelines — unsigned or unverified binaries are a malware delivery vector."
+        }
+      ]
+    },
+    "connection": "You generated keys and signed documents as a builder this week. In Module 4 you will reverse that perspective — analyzing how attackers exploit weak key management and deprecated algorithms to compromise the same systems you are securing here.",
+    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "01-hash-sha256.png",
+        "description": "SHA-256 hash generation"
+      },
+      {
+        "file": "02-hash-comparison.png",
+        "description": "Avalanche effect demonstration"
+      },
+      {
+        "file": "03-symmetric-encrypt.png",
+        "description": "AES-256 encryption"
+      },
+      {
+        "file": "04-symmetric-decrypt.png",
+        "description": "AES-256 decryption"
+      },
+      {
+        "file": "05-rsa-keypair.png",
+        "description": "RSA keypair generation"
+      },
+      {
+        "file": "06-rsa-encrypt.png",
+        "description": "Public key encryption"
+      },
+      {
+        "file": "07-rsa-decrypt.png",
+        "description": "Private key decryption"
+      },
+      {
+        "file": "08-signature-create.png",
+        "description": "Digital signature creation"
+      },
+      {
+        "file": "09-signature-verify.png",
+        "description": "Signature verification"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Screenshots (9 Required)",
+        "items": [
+          {
+            "filename": "01-hash-sha256.png",
+            "description": "SHA-256 hash generation showing patient.txt hash value"
+          },
+          {
+            "filename": "02-hash-comparison.png",
+            "description": "Side-by-side hash comparison demonstrating the avalanche effect"
+          },
+          {
+            "filename": "03-symmetric-encrypt.png",
+            "description": "AES-256-CBC encryption command and encrypted file listing"
+          },
+          {
+            "filename": "04-symmetric-decrypt.png",
+            "description": "AES-256-CBC decryption with plaintext confirmation"
+          },
+          {
+            "filename": "05-rsa-keypair.png",
+            "description": "RSA keypair generation showing both key files"
+          },
+          {
+            "filename": "06-rsa-encrypt.png",
+            "description": "RSA public-key encryption of test data"
+          },
+          {
+            "filename": "07-rsa-decrypt.png",
+            "description": "RSA private-key decryption confirming original plaintext"
+          },
+          {
+            "filename": "08-signature-create.png",
+            "description": "Digital signature creation showing signature file"
+          },
+          {
+            "filename": "09-signature-verify.png",
+            "description": "Signature verification showing 'Verified OK' output"
+          }
+        ]
+      },
+      {
+        "title": "Environment Verification",
+        "items": [
+          {
+            "check": "VM hostname (kali-lastname-studentID) visible in all screenshots"
+          },
+          {
+            "check": "All files created inside ~/lab2-crypto directory"
+          },
+          {
+            "check": "All 9 screenshots saved to Module2_Screenshots folder"
+          }
+        ]
+      }
+    ],
+    "items": [
+      "VM hostname visible in all screenshots",
+      "All files in <code>~/lab2-crypto</code> directory",
+      "All screenshots saved to <code>Module2_Screenshots</code> folder"
+    ],
+    "canvasQuiz": "Take the <strong>Lab 2.1 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong>Keep your VM running while taking the quiz.</strong>"
+  },
+  "needHelp": {
+    "customCallouts": [
+      {
+        "type": "warning",
+        "icon": "warning",
+        "title": "Lab Environment Only",
+        "text": "The keys and passwords you create in this lab are <strong>for training purposes only</strong>. Never use lab-generated keys in production systems."
+      }
+    ],
+    "nextModule": "After completing this lab, take the <strong>Lab 2.1 Quiz</strong> in Canvas, then proceed to <strong>Lab 2.2: Authentication Systems</strong> where you&#8217;ll learn SSH key management, certificate-based authentication, and MFA concepts.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this week's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication — skills you'll apply directly when you SSH into the Gulf Coast portal container in Lab 2.3."
+    }
+  }
+}

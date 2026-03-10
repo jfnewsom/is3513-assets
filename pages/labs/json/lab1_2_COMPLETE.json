@@ -1,0 +1,830 @@
+{
+  "meta": {
+    "labId": "1_2",
+    "title": "Reconnaissance Tool Exploration",
+    "labType": "foundation",
+    "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
+    "client": null,
+    "chapters": [
+      "Chapter 1 &#8212; Introduction to Security",
+      "Chapter 2 &#8212; General Security Concepts"
+    ],
+    "headerSvg": "Lab1_2_Header.svg",
+    "screenshotStart": 7
+  },
+  "intro": {
+    "overview": "This week you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next week, you'll apply these skills against a real client engagement.",
+    "mentorQuote": {
+      "character": "Maya Rodriguez",
+      "title": "Senior Penetration Tester, NEXUS Security",
+      "headshot": "maya-rodriguez.png",
+      "quote": "Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next week. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology."
+    },
+    "focusAreas": [
+      "Network scanning and service enumeration with nmap",
+      "Manual banner grabbing with netcat",
+      "Web directory discovery with dirb",
+      "Web vulnerability scanning with nikto",
+      "SMB enumeration methodology with enum4linux",
+      "Vulnerability research using searchsploit and Exploit-DB"
+    ],
+    "objectives": [
+      "Demonstrate network scanning with nmap (version and script scans)",
+      "Perform banner grabbing with netcat",
+      "Conduct web directory discovery with dirb",
+      "Execute web vulnerability scanning with nikto",
+      "Explore SMB enumeration capabilities with enum4linux",
+      "Research vulnerabilities using searchsploit"
+    ],
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 1.3",
+        "icon": "folder",
+        "text": "This is Week 2 of a 3-week module. Continue saving screenshots to your Module1_Screenshots folder. You'll compile these into your Lab 1.3 Engagement Packet next week."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Read instructions and review authorized targets",
+        "time": "10 min"
+      },
+      {
+        "task": "Checkpoint 1: nmap network scanning",
+        "time": "20 min"
+      },
+      {
+        "task": "Checkpoint 2: netcat banner grabbing",
+        "time": "10 min"
+      },
+      {
+        "task": "Checkpoint 3: dirb directory discovery",
+        "time": "15 min"
+      },
+      {
+        "task": "Checkpoint 4: nikto vulnerability scanning",
+        "time": "15 min"
+      },
+      {
+        "task": "Checkpoint 5: enum4linux SMB enumeration",
+        "time": "10 min"
+      },
+      {
+        "task": "Checkpoint 6: searchsploit vulnerability research",
+        "time": "10 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "90-120 min"
+    },
+    "timesheetNote": "This is Week 2 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Continue saving screenshots to your Module1_Screenshots folder &#8212; screenshots 07&#8211;13 go directly into your Engagement Packet next week."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "nmap Network Scanning",
+      "altText": "Checkpoint_1_2_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Demonstrating network scanning fundamentals using nmap against authorized targets. You'll perform version detection and script scanning to identify services and potential vulnerabilities.",
+          "whyItMatters": "Nmap is the industry-standard network scanner. Understanding its capabilities helps both attackers (who use it to map target networks) and defenders (who need to understand what attackers see). Version detection reveals exactly what software is running, which directly informs vulnerability research."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open a terminal in your Kali VM",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Run a version detection scan:",
+              "command": "nmap -sV scanme.nmap.org",
+              "whatThisDoes": {
+                "concept": "The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).",
+                "output": "Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible."
+              }
+            },
+            {
+              "text": "Note the open ports and service versions detected",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Run a default script scan:",
+              "command": "nmap -sC scanme.nmap.org",
+              "whatThisDoes": {
+                "concept": "The -sC flag runs Nmap&#8217;s default set of scripts against discovered services. These scripts perform safe enumeration tasks like grabbing SSH host keys, checking HTTP headers, and detecting common misconfigurations.",
+                "output": "Compare this to the -sV output. You should see additional details like SSH host keys and HTTP page titles that weren&#8217;t in the version scan. Scripts extend Nmap from a port scanner into an information-gathering platform."
+              }
+            },
+            {
+              "text": "Compare the output &#8212; what additional information did scripts reveal?",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "terminal",
+          "title": "Key Flags",
+          "items": [
+            "-sV &#8212; Version detection",
+            "-sC &#8212; Default scripts",
+            "-A &#8212; Aggressive (combines -sV, -sC, OS detection, traceroute)"
+          ],
+          "calloutType": "keyFlags"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture nmap -sV results. Save as 07-nmap-version.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture nmap -sC results. Save as 08-nmap-scripts.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "Scan takes forever: Use -T4 for faster timing",
+            "Permission denied: Use sudo if needed",
+            "No results: Test connectivity with ping scanme.nmap.org"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Scan results showing open ports (typically 22/SSH, 80/HTTP) with service version information like OpenSSH 6.6.1p1 or Apache httpd 2.4.7.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 discusses threat intelligence gathering and reconnaissance techniques. Port scanning is a fundamental reconnaissance activity that provides the foundation for vulnerability assessment.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What&#8217;s the difference between a TCP connect scan (-sT) and a SYN scan (-sS)? Why might an attacker prefer one over the other?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Nmap Reference Guide. Gordon Lyon. Available at: https://nmap.org/book/man.html",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "netcat Banner Grabbing",
+      "altText": "Checkpoint_1_2_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using netcat to manually connect to network services and capture their identification banners &#8212; the text services display when you connect.",
+          "whyItMatters": "Service banners reveal software versions, hostnames, and configuration details. This low-level technique helps verify nmap results and often reveals information automated scanners miss. Netcat is the &#8220;Swiss Army knife&#8221; of networking."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Connect to SSH port on scanme.nmap.org:",
+              "command": "nc -v scanme.nmap.org 22",
+              "whatThisDoes": {
+                "concept": "nc (netcat) opens a raw TCP connection to a host and port. The -v flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.",
+                "output": "You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version &#8212; valuable intel for an attacker."
+              }
+            },
+            {
+              "text": "Observe the banner that appears (SSH version string)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Press Ctrl+C to disconnect",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Try connecting to port 80:",
+              "command": "nc -v scanme.nmap.org 80",
+              "whatThisDoes": {
+                "concept": "Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.",
+                "output": "You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response."
+              }
+            },
+            {
+              "text": "Type HEAD / HTTP/1.0 and press Enter twice to get HTTP headers",
+              "command": null,
+              "whatThisDoes": {
+                "concept": "HEAD / HTTP/1.0 is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.",
+                "output": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "lightbulb",
+          "title": "Pro Tip",
+          "text": "On Kali Linux, nc may be aliased to ncat. Both work the same for banner grabbing.",
+          "calloutType": "proTip"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture netcat connection showing SSH banner. Save as 09-netcat-banner.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "Connection refused: Port may be filtered or service down &#8212; try a different port",
+            "Timeout: Add -w 5 for 5-second timeout",
+            "No banner: Some services don&#8217;t display banners until you send data"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Screenshot showing connection and banner text like SSH-2.0-OpenSSH_...",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 discusses information disclosure as a security concern. Banner grabbing demonstrates how services can inadvertently reveal version information that aids attackers.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "How can administrators hide or modify service banners? Research banner hardening techniques for SSH and HTTP.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Ncat Users&#8217; Guide. Nmap Project. Available at: https://nmap.org/ncat/guide/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "dirb Directory Discovery",
+      "altText": "Checkpoint_1_2_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn&#8217;t linked from the main site.",
+          "whyItMatters": "Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Run dirb against the test target:",
+              "command": "dirb http://testphp.vulnweb.com",
+              "whatThisDoes": {
+                "concept": "dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.",
+                "output": "Watch for lines showing CODE:200 (the page exists) versus CODE:403 (forbidden but exists) and CODE:301 (redirect). Each discovered path is a potential attack surface."
+              }
+            },
+            {
+              "text": "Watch it test common directory names",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Note which return CODE:200 (found)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Let it run or press Ctrl+C after several results",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "terminal",
+          "title": "Wordlist Location",
+          "text": "Default wordlists: /usr/share/dirb/wordlists/",
+          "calloutType": "keyFlags"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture dirb output showing discovered directories. Save as 10-dirb-results.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "Forgetting http://: URL must include the protocol &#8212; dirb http://target not just dirb target",
+            "Slow scan: Dirb tests thousands of paths &#8212; use Ctrl+C after seeing results for training purposes",
+            "Connection errors: Target site must be reachable &#8212; test with curl first if dirb fails"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Output showing discovered directories like /admin/, /images/, /cgi-bin/ with HTTP response codes.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 covers web application security concepts. Directory enumeration is a fundamental web reconnaissance technique that reveals application structure and potentially sensitive endpoints.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is CVE and how are vulnerabilities assigned identifiers? Research the lifecycle of a vulnerability from discovery to patch.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "CVE - Common Vulnerabilities and Exposures. MITRE Corporation. Available at: https://cve.mitre.org/about/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "nikto Vulnerability Scanning",
+      "altText": "Checkpoint_1_2_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using nikto to scan web servers for known vulnerabilities, misconfigurations, and dangerous files.",
+          "whyItMatters": "Nikto checks for 6,700+ dangerous files and 1,250+ outdated server versions. It quickly identifies low-hanging fruit that attackers commonly exploit."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Run nikto against the test target:",
+              "command": "nikto -h http://testphp.vulnweb.com",
+              "whatThisDoes": {
+                "concept": "nikto is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The -h flag specifies the target host.",
+                "output": "Each line prefixed with + is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report."
+              }
+            },
+            {
+              "text": "Watch the output &#8212; nikto reports findings as it scans",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Note types of findings: server info, outdated software, dangerous files",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Let it run for a few minutes",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture nikto output showing findings. Save as 11-nikto-results.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "Wrong port: Use -p 443 for HTTPS targets &#8212; nikto defaults to port 80",
+            "Loud scanning: Nikto is NOT stealthy &#8212; every request is logged and easily detected",
+            "False positives: Verify findings manually &#8212; nikto reports potential issues, not confirmed vulnerabilities"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Output showing server information, potential vulnerabilities, and interesting files discovered.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 discusses vulnerability scanning as part of the security assessment process. Understanding automated scanners helps both offensive and defensive security work.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "How does Nikto identify vulnerabilities? Research the difference between vulnerability scanning and penetration testing.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Nikto Documentation. CIRT, Inc. Available at: https://cirt.net/Nikto2",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "enum4linux SMB Enumeration",
+      "altText": "Checkpoint_1_2_5.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Exploring enum4linux capabilities for SMB/Windows enumeration. Since we don&#8217;t have a live SMB target, you&#8217;ll review the tool&#8217;s help output and understand its purpose.",
+          "whyItMatters": "SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies &#8212; critical information for both attackers and security assessments. You&#8217;ll use this tool against the Brazos Financial container next week."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Review enum4linux help:",
+              "command": "enum4linux -h",
+              "whatThisDoes": {
+                "concept": "enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.",
+                "output": "Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships."
+              }
+            },
+            {
+              "text": "Note the different enumeration options (-U for users, -S for shares, etc.)",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Understand what each flag discovers",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "terminal",
+          "title": "Key Flags",
+          "items": [
+            "-U &#8212; Get user list",
+            "-S &#8212; Get share list",
+            "-P &#8212; Get password policy",
+            "-a &#8212; Do all simple enumeration"
+          ],
+          "calloutType": "keyFlags"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture enum4linux help output. Save as 12-enum4linux-help.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "No SMB target: This checkpoint is documentation only &#8212; you&#8217;ll use enum4linux against real targets in Lab 1.3",
+            "Requires SMB access: Target must have ports 139/445 open for enum4linux to work"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Understanding of enum4linux capabilities and screenshot of help output for your runbook.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 discusses network protocols and their security implications. SMB has been the source of numerous critical vulnerabilities including WannaCry and EternalBlue.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is &#8220;null session&#8221; authentication in SMB? Why is it dangerous and how do modern Windows systems mitigate it?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Enum4linux Manual. Portcullis Labs. Available at: https://github.com/CiscoCXSecurity/enum4linux",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "searchsploit Vulnerability Research",
+      "altText": "Checkpoint_1_2_6.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Using searchsploit to search the Exploit Database for known vulnerabilities and exploits based on software versions discovered during reconnaissance.",
+          "whyItMatters": "Once you know what software a target runs, you need to research whether known exploits exist. Searchsploit provides offline access to Exploit-DB, the largest public archive of exploits and vulnerable software."
+        },
+        {
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Update the database:",
+              "command": "sudo searchsploit -u",
+              "whatThisDoes": {
+                "concept": "The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.",
+                "output": null
+              }
+            },
+            {
+              "text": "Search for Apache vulnerabilities:",
+              "command": "searchsploit apache 2.4",
+              "whatThisDoes": {
+                "concept": "This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.",
+                "output": "You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it."
+              }
+            },
+            {
+              "text": "Note the exploit titles, types, and paths",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Try searching for OpenSSH:",
+              "command": "searchsploit openssh",
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Compare the results to your Apache search. Notice the different exploit types and how the version numbers in the titles help you narrow down which exploits apply to a specific target. In practice, you&#8217;d cross-reference these results with the exact version string from your Nmap scan."
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture searchsploit results for Apache. Save as 13-searchsploit-apache.png",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "Too broad: &#8220;apache&#8221; returns thousands &#8212; add version numbers to narrow results",
+            "Outdated database: Run searchsploit -u periodically to update",
+            "Not all exploits work: Many require specific conditions &#8212; read the exploit code before attempting"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Search results showing exploit titles, paths, and platforms for Apache and OpenSSH.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 2 discusses vulnerability research and the importance of staying current with security advisories. Exploit databases are essential tools for both attackers and defenders.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What&#8217;s the difference between a CVE and an exploit? Research how vulnerabilities are disclosed and how long it typically takes for exploits to appear.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Exploit Database. Offensive Security. Available at: https://www.exploit-db.com/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        {
+          "label": "Reconnaissance is the Foundation",
+          "text": "Every engagement starts with information gathering. nmap gives you open ports and versions; netcat confirms banners manually; dirb finds hidden paths; nikto flags known misconfigurations. Together, these six tools build a complete picture of a target&#8217;s attack surface."
+        },
+        {
+          "label": "Version Intelligence Drives Exploitation",
+          "text": "A version string from nmap or netcat banner grabbing feeds directly into searchsploit. &#8220;Apache 2.4.7&#8221; becomes a CVE list. This chain &#8212; discover, identify, research &#8212; is the core offensive workflow."
+        },
+        {
+          "label": "SMB Is a Username Factory",
+          "text": "enum4linux null session enumeration extracts usernames, shares, and password policies without authenticating. That user list becomes your credential attack target."
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        {
+          "label": "Your Logs Record This Reconnaissance",
+          "text": "Every nmap scan, dirb request, and nikto probe leaves traces in access logs. Defenders who run these tools against their own infrastructure know exactly what a scan looks like &#8212; and can build detection rules accordingly."
+        },
+        {
+          "label": "Version Banners Are Information Leaks",
+          "text": "Service banners reveal software versions to anyone who connects. Suppressing banners and obscuring version strings reduces the reconnaissance value an attacker gains from a scan."
+        },
+        {
+          "label": "Authorized Scanning Is Blue Team Work",
+          "text": "Running these tools on your own infrastructure before an attacker does is called attack surface management. Everything you discover today, a defender should already know about their own environment."
+        }
+      ]
+    },
+    "connection": "The six tools in this lab are used identically by both sides. Red team runs them offensively to map targets. Blue team runs them defensively to audit their own exposure. The difference is authorization and intent &#8212; not the tools themselves."
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "07-nmap-version.png",
+        "description": "nmap -sV results"
+      },
+      {
+        "file": "08-nmap-scripts.png",
+        "description": "nmap -sC results"
+      },
+      {
+        "file": "09-netcat-banner.png",
+        "description": "netcat SSH banner"
+      },
+      {
+        "file": "10-dirb-results.png",
+        "description": "dirb discovered directories"
+      },
+      {
+        "file": "11-nikto-results.png",
+        "description": "nikto scan output"
+      },
+      {
+        "file": "12-enum4linux-help.png",
+        "description": "enum4linux help"
+      },
+      {
+        "file": "13-searchsploit-apache.png",
+        "description": "searchsploit results"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Screenshots (7 Required)",
+        "items": [
+          "07-nmap-version.png &#8212; nmap -sV scan results",
+          "08-nmap-scripts.png &#8212; nmap -sC scan results",
+          "09-netcat-banner.png &#8212; SSH banner capture via netcat",
+          "10-dirb-results.png &#8212; dirb discovered directories",
+          "11-nikto-results.png &#8212; nikto vulnerability scan output",
+          "12-enum4linux-help.png &#8212; enum4linux help output",
+          "13-searchsploit-apache.png &#8212; searchsploit Apache results"
+        ]
+      },
+      {
+        "title": "Screenshot Verification",
+        "items": [
+          "Hostname (kali-lastname-studentID) visible in terminal screenshots",
+          "All screenshots clear and readable",
+          "All screenshots saved to Module1_Screenshots folder"
+        ]
+      },
+      {
+        "title": "Canvas Quiz",
+        "items": [
+          "Take the Lab 1.2 Quiz in Canvas",
+          "Keep your VM running while taking the quiz &#8212; questions reference specific tool outputs"
+        ]
+      }
+    ],
+    "items": [
+      "Your hostname (kali-lastname-studentID) is visible in terminal screenshots",
+      "Screenshots are clear and readable",
+      "All screenshots saved in Module1_Screenshots folder"
+    ],
+    "canvasQuiz": "Take the Lab 1.2 Quiz in Canvas. Questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
+  },
+  "needHelp": {
+    "authorizedTargets": [
+      {
+        "host": "scanme.nmap.org",
+        "purpose": "Official nmap test server (network scanning)"
+      },
+      {
+        "host": "testphp.vulnweb.com",
+        "purpose": "Acunetix test site (web scanning)"
+      },
+      {
+        "host": "Your own Kali VM",
+        "purpose": "localhost (all tools)"
+      }
+    ],
+    "nextModule": "After completing this lab, take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3 &#8212; Brazos Financial Reconnaissance Engagement where you&#8217;ll apply these skills against a real client target.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "type": "nextLab",
+      "text": "Take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3: Brazos Financial Reconnaissance Engagement &#8212; where you apply all six tools against a real client target."
+    }
+  }
+}

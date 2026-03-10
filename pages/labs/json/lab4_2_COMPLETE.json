@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "labId": "4_2",
+    "title": "Linux Password Cracking",
+    "labType": "foundation",
+    "module": "Module 4: Authentication &#38; Access Control",
+    "client": null,
+    "chapters": [
+      "Chapter 15 &#8212; Types of Attacks",
+      "Chapter 16 &#8212; Security Tools"
+    ],
+    "headerSvg": "Lab4_2_Header.svg",
+    "screenshotStart": 11
+  },
+  "intro": {
+    "overview": "After cracking Brazos Financial&#8217;s Windows passwords last week, NEXUS Security now turns to Alamo Industries&#8217; Linux infrastructure. You&#8217;ll use the same tools &#8212; John the Ripper and Hashcat &#8212; but experience dramatically different results. Linux&#8217;s SHA-512 algorithm with salting creates significantly higher computational barriers. This lab demonstrates how defensive architecture choices directly impact attacker timelines.",
+    "mentorQuote": {
+      "character": "Carmen Vega",
+      "title": "Principal Security Consultant, NEXUS Security",
+      "headshot": "carmen-vega.png",
+      "quote": "Manufacturing environments are different. Shared accounts, legacy systems, production priorities &#8212; it all adds up to interesting password challenges. Alamo&#8217;s been running some of these accounts for a decade. Notice how much longer these take to crack. That&#8217;s not your computer being slow &#8212; that&#8217;s SHA-512 doing its job."
+    },
+    "focusAreas": [
+      "SHA-512 crypt hash format analysis and salt identification",
+      "Platform comparison: NTLM vs SHA-512 computational cost",
+      "Shared account and service account security risks",
+      "OT/manufacturing environment security challenges",
+      "Defensive architecture impact on attacker timelines"
+    ],
+    "objectives": [
+      "Analyze Linux SHA-512 crypt hash format and identify salt components",
+      "Execute dictionary attacks using John the Ripper and Hashcat",
+      "Document speed differences compared to Lab 4.1 NTLM attacks",
+      "Identify shared account and service account security risks"
+    ],
+    "callouts": [
+      {
+        "type": "characterQuote",
+        "character": "Elena Vasquez",
+        "role": "IT Manager, Alamo Industries",
+        "headshot": "elena-vasquez.png",
+        "text": "I&#8217;ve been trying to fix our password situation for three years. Show Frank how fast &#8216;shift1&#8217; cracks, and maybe he&#8217;ll finally let me change it. Some of these accounts have passwords that are &#8216;common knowledge&#8217; on the floor."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Hash File Setup &#38; Format Analysis",
+        "time": "30&#8211;45 min"
+      },
+      {
+        "task": "Checkpoint 2: John the Ripper Attack",
+        "time": "45&#8211;60 min"
+      },
+      {
+        "task": "Checkpoint 3: Hashcat Attack",
+        "time": "45&#8211;60 min"
+      },
+      {
+        "task": "Checkpoint 4: Results Analysis &#38; Platform Comparison",
+        "time": "30&#8211;45 min"
+      },
+      {
+        "task": "Canvas Quiz",
+        "time": "15&#8211;20 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "3&#8211;4 hours"
+    },
+    "timesheetNote": "This is Week 2 of a 3-week module. Log as <em>Internal Training: 3&#8211;4 hours &#8212; Linux SHA-512 password cracking</em>. Save all screenshots (#11&#8211;20) to your existing <code>Module4_Screenshots</code> folder. You already have 10 screenshots from Lab 4.1; this week adds 10 more.",
+    "warningCallout": {
+      "title": "Expect Slower Results",
+      "text": "SHA-512 is deliberately designed to be slow. Where Lab 4.1&#8217;s NTLM attacks showed millions or billions of H/s, expect only thousands of H/s this week. This is not a problem with your setup &#8212; it&#8217;s the algorithm working as intended."
+    }
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Hash File Setup &#38; Format Analysis",
+      "altText": "Checkpoint_4_2_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Downloading and analyzing Alamo Industries&#8217; Linux password hashes, identifying the SHA-512 crypt format and understanding how salting differs from NTLM.",
+          "whyItMatters": "Understanding hash formats is essential before attacking them. SHA-512 crypt includes visible salt values that NTLM lacks entirely. This structural difference has major security implications."
+        },
+        {
+          "type": "callout",
+          "text": "What makes a password policy effective? Research NIST&#8217;s current password guidelines and how they differ from traditional complexity requirements.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "NIST SP 800-63B &#8212; Digital Identity Guidelines: Authentication. Specifically section 5.1.1 on Memorized Secrets: https://pages.nist.gov/800-63-3/sp800-63b.html",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Download <code>alamo-hashes.txt</code> from Canvas to your <code>~/lab4</code> directory",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "step": 2,
+              "text": "Examine the hash file contents:",
+              "command": "cat ~/lab4/alamo-hashes.txt",
+              "whatThisDoes": {
+                "concept": "<code>cat</code> displays the full contents of the Alamo Industries hash file. Compare what you see here to the Brazos Financial hashes from Lab 4.1 &#8212; the format is dramatically different.",
+                "output": "You should see entries in <code>username:$6$SALT$HASH</code> format. The <code>$6$</code> prefix identifies SHA-512 crypt. Notice each entry includes a unique salt between the second and third <code>$</code> characters &#8212; this is the key architectural difference from NTLM.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 11,
+          "text": "Display the hash file showing the <code>$6$</code> format with visible salt. Save as <code>11-alamo-hash-format.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 3,
+              "text": "Isolate a single entry to analyze the format structure:",
+              "command": "head -1 ~/lab4/alamo-hashes.txt",
+              "whatThisDoes": {
+                "concept": "<code>head -1</code> displays only the first line of a file. Isolating one entry makes it easier to break down the format structure without visual clutter.",
+                "output": "Identify three components: the algorithm identifier (<code>$6$</code> = SHA-512), the per-user salt (random characters between the second and third <code>$</code>), and the hash itself. This embedded metadata means the system knows exactly how to verify each password &#8212; and each user&#8217;s hash is unique even if two users share the same password.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 12,
+          "text": "Capture the <code>head -1</code> output showing a single SHA-512 hash entry. Annotate or note the three components: algorithm identifier (<code>$6$</code>), salt, and hash. Save as <code>12-sha512-format-closeup.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "text": "Why does salting defeat rainbow table attacks? Research how pre-computed hash tables work and why unique salts per password render them useless.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 15 covers password attack types including rainbow tables. Add to your references: <em>Conklin &#38; White, Chapter 15 &#8212; Types of Attacks</em>",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "Confusing shadow format fields",
+              "text": "The hash is the second field after username"
+            },
+            {
+              "label": "Missing the salt component",
+              "text": "Look between the $ signs &#8212; the salt is the string between the second and third $"
+            },
+            {
+              "label": "Not noting the structural difference from NTLM",
+              "text": "NTLM has no salt, no structure identifier &#8212; document this contrast explicitly"
+            }
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "text": "Hash file downloaded and examined, SHA-512 format identified ($6$ prefix), salt component located, and clear understanding of how this differs from Lab 4.1&#8217;s NTLM hashes.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 15 explains password storage mechanisms across platforms. Linux&#8217;s SHA-512 with per-user salts represents modern password hashing &#8212; compare this to NTLM&#8217;s weaknesses from Lab 4.1. <em>Same chapter, different platform &#8212; still counts as a reference.</em>",
+          "calloutType": "textbookReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "John the Ripper Attack",
+      "altText": "Checkpoint_4_2_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Executing a dictionary attack against Alamo Industries&#8217; SHA-512 hashes using John the Ripper, documenting the dramatically slower crack speed.",
+          "whyItMatters": "The speed difference you&#8217;re about to witness is the entire point of modern password hashing. SHA-512 with salting and rounds is designed to be computationally expensive &#8212; what took seconds against NTLM may take hours here. This is defensive design in action, and understanding it helps you explain to clients why algorithm choice matters for their security posture."
+        },
+        {
+          "type": "callout",
+          "character": "Maya Rodriguez",
+          "headshot": "maya-rodriguez.png",
+          "calloutType": "characterQuote",
+          "title": "Senior Penetration Tester, NEXUS Security",
+          "quote": "Patience. SHA-512 won&#8217;t fall as fast as NTLM. Go get coffee. On a real engagement, we&#8217;d let this run overnight. The speed difference isn&#8217;t a bug &#8212; it&#8217;s the whole point of modern password hashing."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Run John the Ripper against the SHA-512 hashes:",
+              "command": "john --wordlist=/usr/share/wordlists/rockyou.txt ~/lab4/alamo-hashes.txt",
+              "whatThisDoes": {
+                "concept": "Same tool, same wordlist as Lab 4.1 &#8212; but a completely different experience. John auto-detects the <code>$6$</code> prefix as sha512crypt format. No <code>--format</code> flag needed because the hash format is self-identifying (unlike NTLM&#8217;s raw hex).",
+                "output": "The speed difference will be dramatic. Where NTLM showed millions or billions of H/s, expect only thousands of H/s here. This is SHA-512 working as designed &#8212; the algorithm is deliberately slow to make brute-force attacks computationally expensive. Record the H/s rate carefully for your Lab 4.1 vs 4.2 comparison.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 13,
+          "text": "Capture John&#8217;s initial load message showing <code>Loaded N password hashes with N different salts (sha512crypt)</code>. This proves auto-detection worked and shows the salt count. Save as <code>13-john-linux-autodetect.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 2,
+              "text": "Check progress while John is running:",
+              "command": "john --status",
+              "whatThisDoes": {
+                "concept": "SHA-512 attacks take much longer than NTLM. The <code>--status</code> flag shows progress: candidates tested, current speed, and estimated time remaining. You can also press any key during a running session to get a live status update. If it&#8217;s taking too long, you may need to let it run for a few minutes &#8212; this is the defensive value of strong hash algorithms in action.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 14,
+          "text": "Capture John running showing the H/s speed rate. Save as <code>14-john-linux-attack.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 3,
+              "text": "Display all cracked passwords:",
+              "command": "john --show ~/lab4/alamo-hashes.txt",
+              "whatThisDoes": {
+                "concept": "The <code>--show</code> flag retrieves cracked passwords from John&#8217;s potfile. You may find that fewer accounts were cracked than in Lab 4.1, even with the same wordlist. This is because the slower hash speed means John couldn&#8217;t test as many candidates in the same time window.",
+                "output": "Document which accounts cracked and which resisted &#8212; this difference is the core of your engagement report analysis.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 15,
+          "text": "Capture <code>john --show</code> output with cracked passwords. Save as <code>15-john-linux-results.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "title": "Common Pitfalls",
+          "icon": "warning",
+          "items": [
+            {
+              "label": "Adding --format flag",
+              "text": "Unlike Lab 4.1, John auto-detects <code>sha512crypt</code> from the <code>$6$</code> prefix. No <code>--format</code> flag needed — adding one incorrectly may cause errors."
+            },
+            {
+              "label": "Expecting NTLM-speed results",
+              "text": "SHA-512 is deliberately slow. Thousands of H/s instead of millions is the algorithm working as designed, not a problem with your setup. Record the exact H/s for your comparison table."
+            },
+            {
+              "label": "Stopping too early",
+              "text": "Let John run for several minutes before checking results. SHA-512's computational cost means some passwords need time to appear — check <code>john --status</code> for progress."
+            },
+            {
+              "label": "Not recording the H/s rate",
+              "text": "The speed comparison between Lab 4.1 and Lab 4.2 is the core insight of your engagement report. Capture or note the exact H/s value from John's output — you'll need it in Checkpoint 4."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "title": "What You Should Have",
+          "icon": "check",
+          "text": "John attack completed against Alamo SHA-512 hashes. You've noted the H/s speed — dramatically lower than Lab 4.1's NTLM attack. You have your <code>john --show</code> results, and you've documented which accounts cracked and which resisted. The difference in crack rates compared to Lab 4.1 is the core of your platform comparison."
+        },
+        {
+          "type": "callout",
+          "text": "Chapter 16 covers attack methodology and tool capabilities. The same John commands produce different results against salted hashes &#8212; tool output helps you understand algorithmic strength.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "text": "How does Linux store password hashes in /etc/shadow? Research the format of shadow file entries and what each field represents.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "The shadow(5) man page explains the file format. Run <code>man 5 shadow</code> in your Kali terminal.",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "number": 16,
+          "text": "Capture your terminal showing the <code>man 5 shadow</code> output. Scroll to show the format description section. Save as <code>16-man-shadow-format.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Hashcat Attack",
+      "altText": "Checkpoint_4_2_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Executing the same dictionary attack using Hashcat with mode 1800 (sha512crypt), comparing speed and results to John.",
+          "whyItMatters": "Hashcat can leverage GPU acceleration, but even with GPU power, SHA-512 crypt remains dramatically slower than NTLM. This demonstrates that algorithm choice matters more than hardware."
+        },
+        {
+          "type": "callout",
+          "text": "How do modern Linux systems protect password hashes? Research the yescrypt algorithm used in current distributions.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "The crypt(5) man page describes supported hash algorithms. Run <code>man 5 crypt</code> in your terminal.",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "number": 17,
+          "text": "Capture your terminal showing the <code>man 5 crypt</code> output. Show the section listing supported hash algorithm identifiers (<code>$1$</code>, <code>$5$</code>, <code>$6$</code>, etc.). Save as <code>17-man-crypt-algorithms.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Run Hashcat against the SHA-512 hashes:",
+              "command": "hashcat -m 1800 -a 0 -D 1 ~/lab4/alamo-hashes.txt /usr/share/wordlists/rockyou.txt",
+              "whatThisDoes": {
+                "concept": "<code>-m 1800</code> sets Hashcat to sha512crypt mode (compare to <code>-m 1000</code> for NTLM in Lab 4.1). <code>-a 0</code> runs a straight dictionary attack. <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough. Unlike Lab 4.1, Hashcat accepts the full shadow-format hashes &#8212; no need to extract hashes with <code>cut</code> first.",
+                "output": "Watch the <code>Speed.#1</code> line. Compare it to Lab 4.1&#8217;s NTLM speed &#8212; the difference will be orders of magnitude. GPU acceleration provides minimal benefit for SHA-512 because the algorithm is designed to be memory-hard, not just compute-hard.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 18,
+          "text": "Capture Hashcat running showing the H/s speed. Save as <code>18-hashcat-linux-attack.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 2,
+              "text": "Display cracked results:",
+              "command": "hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
+              "whatThisDoes": {
+                "concept": "The <code>--show</code> flag displays cracked hashes from Hashcat&#8217;s potfile. Compare the number of cracked accounts to John&#8217;s results &#8212; they should be similar since both used the same wordlist against the same hashes. Any differences indicate where one tool continued running longer or used different cracking strategies.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 19,
+          "text": "Capture <code>hashcat --show</code> output with cracked passwords. Save as <code>19-hashcat-linux-results.png</code>.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "title": "Common Pitfalls",
+          "icon": "warning",
+          "items": [
+            {
+              "label": "Wrong hash mode number",
+              "text": "SHA-512 crypt uses <code>-m 1800</code> in Hashcat, not <code>-m 1000</code> (NTLM). Confirm with <code>hashcat --help | grep sha512</code> if unsure."
+            },
+            {
+              "label": "Trying to strip usernames",
+              "text": "Unlike Lab 4.1, Hashcat accepts full shadow-format hashes directly — no need to use <code>cut</code> to remove usernames. Provide the full <code>alamo-hashes.txt</code>."
+            },
+            {
+              "label": "Not comparing speed to Lab 4.1",
+              "text": "The H/s comparison between NTLM (Lab 4.1) and SHA-512 (this lab) is required for your engagement report. Capture the Speed.#1 line from Hashcat's output and note the difference."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "title": "What You Should Have",
+          "icon": "check",
+          "text": "Hashcat attack completed against Alamo SHA-512 hashes with speed (H/s) captured. Results from <code>hashcat --show</code> documented and compared to John's output — both tools should show similar cracked accounts since they used the same wordlist. You now have cracking speed data for both NTLM and SHA-512 from both tools: four data points that form your platform comparison table."
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 16 covers security tool selection and assessment methodology. The speed difference you observed between Hashcat's NTLM and SHA-512 modes illustrates why algorithm choice is a security control — not just an implementation detail. Add both Chapters 15 and 16 to your Lab 4.3 reference list."
+        },
+        {
+          "type": "callout",
+          "items": [
+            {
+              "label": "Defensive Architecture",
+              "text": "Hash algorithm choice has massive security impact &#8212; SHA-512 is roughly 100,000x slower to crack than NTLM."
+            },
+            {
+              "label": "Shared Account Risk",
+              "text": "Cannot enforce individual accountability with shared credentials."
+            },
+            {
+              "label": "Legacy Debt",
+              "text": "Old accounts accumulate risk over time. Regular password audits prevent &#8220;common knowledge&#8221; passwords."
+            }
+          ],
+          "calloutType": "blueTeamLearns"
+        },
+        {
+          "type": "callout",
+          "text": "Comparing Windows and Linux password cracking reveals how defensive architecture choices affect attacker timelines. The same weak password pattern cracks instantly on NTLM but takes noticeable time on SHA-512. Architecture matters &#8212; but so does password policy. Frank Morrison&#8217;s argument that &#8220;the password has worked fine for ten years&#8221; misses the point. Security isn&#8217;t about whether something has failed yet &#8212; it&#8217;s about whether it&#8217;s resistant to attack.",
+          "calloutType": "purpleTeamConnection"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": null,
+    "blueTeam": null,
+    "connection": "Comparing Windows NTLM and Linux SHA-512 cracking reveals how defensive architecture choices affect attacker timelines. A red-team analyst targeting an NTLM environment can crack credentials in seconds — the same weak password takes orders of magnitude longer on SHA-512. This doesn't mean Linux is invulnerable: weak passwords and shared accounts erode the protection that salting and key-stretching provide. The takeaway for defenders is that algorithm choice buys time, but only password quality and access controls close the gap entirely.",
+    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "11-alamo-hash-format.png",
+        "description": "Hash file showing $6$ SHA-512 format with salt visible"
+      },
+      {
+        "file": "12-sha512-format-closeup.png",
+        "description": "Single hash entry with algorithm ID, salt, and hash labeled"
+      },
+      {
+        "file": "13-john-linux-autodetect.png",
+        "description": "John load message: 'Loaded N hashes with N different salts (sha512crypt)'"
+      },
+      {
+        "file": "14-john-linux-attack.png",
+        "description": "John attack running with H/s speed visible"
+      },
+      {
+        "file": "15-john-linux-results.png",
+        "description": "john --show output with cracked Alamo passwords"
+      },
+      {
+        "file": "16-man-shadow-format.png",
+        "description": "man 5 shadow output showing format description"
+      },
+      {
+        "file": "17-man-crypt-algorithms.png",
+        "description": "man 5 crypt output listing supported hash algorithm identifiers"
+      },
+      {
+        "file": "18-hashcat-linux-attack.png",
+        "description": "Hashcat running against SHA-512 with H/s speed displayed"
+      },
+      {
+        "file": "19-hashcat-linux-results.png",
+        "description": "hashcat --show output with cracked Alamo hashes"
+      },
+      {
+        "file": "20-alamo-results-table.png",
+        "description": "Completed results table for all 8 Alamo accounts"
+      }
+    ],
+    "sections": [
+      {
+        "type": "checklist",
+        "items": [
+          "Downloaded and examined alamo-hashes.txt",
+          "Identified SHA-512 format ($6$) and salt component",
+          "Ran John the Ripper attack with rockyou.txt",
+          "Ran Hashcat attack (mode 1800 for sha512crypt)",
+          "Documented H/s speed differences from Lab 4.1",
+          "Created results table with all 8 Alamo accounts",
+          "Noted shared account and service account findings"
+        ],
+        "title": "Lab Completion"
+      },
+      {
+        "type": "checklist",
+        "items": [
+          "10 new screenshots (#11-#20) in Module4_Screenshots folder",
+          "All follow naming convention: ##-description.png",
+          "VM name visible in screenshots (kali-lastname-studentID)",
+          "Speed/H/s rates visible in attack screenshots (#14, #18)"
+        ],
+        "title": "Screenshot Verification"
+      },
+      {
+        "type": "screenshotTable",
+        "items": [
+          {
+            "number": "11",
+            "description": "Hash file showing $6$ format with salt visible"
+          },
+          {
+            "number": "12",
+            "description": "Single hash entry with algorithm, salt, and hash labeled"
+          },
+          {
+            "number": "13",
+            "description": "John load message with auto-detected format and salt count"
+          },
+          {
+            "number": "14",
+            "description": "John attack in progress showing H/s speed"
+          },
+          {
+            "number": "15",
+            "description": "john --show output with cracked passwords"
+          },
+          {
+            "number": "16",
+            "description": "man 5 shadow output showing format description"
+          },
+          {
+            "number": "17",
+            "description": "man 5 crypt output with hash algorithm identifiers"
+          },
+          {
+            "number": "18",
+            "description": "Hashcat attack showing H/s speed"
+          },
+          {
+            "number": "19",
+            "description": "hashcat --show output with cracked passwords"
+          },
+          {
+            "number": "20",
+            "description": "Completed results table for all 8 accounts"
+          }
+        ],
+        "title": "Screenshots Required"
+      }
+    ],
+    "takeTheQuiz": {
+      "quizName": "Lab 4.2 Quiz",
+      "text": "The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. Keep your VM running so you can reference your results."
+    }
+  },
+  "needHelp": {
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "Lab 4.3: Password Security Assessment Report &#8212; Next week you&#8217;ll combine your Brazos Financial (Windows/NTLM) and Alamo Industries (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both clients."
+    }
+  }
+}

@@ -1,0 +1,939 @@
+{
+  "meta": {
+    "labId": "3_2",
+    "title": "Protocol Analysis Tools",
+    "labType": "foundation",
+    "module": "Module 3: Networks, Cloud &amp; Defense",
+    "client": null,
+    "chapters": [
+      "Chapter 9 &#8212; Network Fundamentals",
+      "Chapter 13 &#8212; IDS and Network Security (partial)",
+      "Chapter 18 &#8212; Cloud Computing"
+    ],
+    "headerSvg": "Lab3_2_Header.svg",
+    "screenshotStart": 7
+  },
+  "intro": {
+    "overview": "This week is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.",
+    "mentorQuote": {
+      "character": "Derek Mitchell",
+      "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
+      "headshot": "derek-mitchell.png",
+      "quote": "Every packet tells a story. Learn to read them, and the network will tell you exactly what&#8217;s happening &#8212; good and bad. Endpoint statistics, IO graphs, flow graphs &#8212; these aren&#8217;t optional. When you&#8217;re hunting an attacker at 2am, you need every tool in your arsenal."
+    },
+    "focusAreas": [
+      "Wireshark installation on host OS and network interface selection",
+      "Capture filters (BPF syntax) vs. display filters (Wireshark syntax)",
+      "Protocol cataloging — TCP, UDP, HTTP, TLS, DNS, ICMP",
+      "TCP stream reconstruction and credential exposure analysis",
+      "Statistical analysis: Endpoint Statistics, IO Graphs, Flow Graphs",
+      "Training PCAP analysis — identifying and documenting security findings"
+    ],
+    "objectives": [
+      "Install Wireshark on your host operating system",
+      "Master capture and display filter syntax",
+      "Analyze training PCAPs to identify security-relevant findings",
+      "Document your analysis methodology for Lab 3.3"
+    ],
+    "callouts": [
+      {
+        "type": "warning",
+        "icon": "warning",
+        "title": "Critical: Install on Host OS",
+        "text": "Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized &#8212; capturing from the host gives you the complete picture."
+      },
+      {
+        "type": "characterQuote",
+        "character": "Carmen Vega",
+        "role": "Junior Security Analyst, NEXUS Security",
+        "headshot": "carmen-vega.png",
+        "text": "I once captured on the wrong interface for 30 minutes. Check your interface BEFORE you start. Look for the interface showing packet activity &#8212; the little graphs next to each interface name will show you which one is live."
+      },
+      {
+        "type": "tip",
+        "title": "Save For Lab 3.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 2 of a 3-week module</strong>. Continue saving screenshots to your <code>Module3_Screenshots</code> folder. Your Wireshark analysis screenshots will form the &#8220;Tool Documentation&#8221; section of your Week 3 Engagement Packet."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Install Wireshark and identify interfaces",
+        "time": "20-30 min"
+      },
+      {
+        "task": "Checkpoint 2: Learn capture and display filters",
+        "time": "30-40 min"
+      },
+      {
+        "task": "Checkpoint 3: Protocol cataloging exercise",
+        "time": "45-60 min"
+      },
+      {
+        "task": "Checkpoint 4: Advanced analysis techniques",
+        "time": "45-60 min"
+      },
+      {
+        "task": "Checkpoint 5: Training PCAP analysis",
+        "time": "30-45 min"
+      }
+    ],
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "170-235 min"
+    },
+    "timesheetNote": "Log this as <em>Internal Training: 3&#8211;4 hours &#8212; Protocol analysis fundamentals</em>. This is billable to NEXUS internal training, not client work."
+  },
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Install Wireshark and Identify Interfaces",
+      "altText": "Checkpoint_3_2_1.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Installing Wireshark on your host operating system and identifying which network interface to use for captures.",
+          "whyItMatters": "Wireshark is the industry-standard network protocol analyzer. SOC analysts, incident responders, and penetration testers all rely on it daily. Understanding interface selection is critical &#8212; capturing on the wrong interface is the #1 beginner mistake."
+        },
+        {
+          "part": null,
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Download Wireshark from <a href=\"https://wireshark.org/download.html\">wireshark.org/download.html</a>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Install using default options (Windows: allow Npcap installation; macOS: grant permissions when prompted).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Launch Wireshark and observe the interface list on the welcome screen.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Identify your active interface by looking for the one with traffic (the sparkline graph shows activity).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Note your interface name &#8212; you&#8217;ll need this for all future captures.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "part": "Verify Active Interface (Optional CLI Method)",
+          "role": "optional",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Windows (PowerShell):",
+              "command": "Get-NetAdapter | Where-Object Status -eq \"Up\"",
+              "whatThisDoes": null
+            },
+            {
+              "text": "macOS/Linux:",
+              "command": "ifconfig | grep -E \"^[a-z]\"",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture Wireshark&#8217;s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface. Save as <code>07-wireshark-interfaces.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>No interfaces visible:</strong> On Windows, run Wireshark as Administrator. On macOS, ensure you granted capture permissions during install.",
+            "<strong>VirtualBox interfaces showing:</strong> You&#8217;ll see &#8220;VirtualBox Host-Only&#8221; adapters &#8212; ignore these. Use your Wi-Fi or Ethernet interface.",
+            "<strong>Multiple active interfaces:</strong> If you have both Wi-Fi and Ethernet connected, pick whichever you use for internet access."
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Wireshark installed and running on your host OS. You know which interface to use for captures (likely Wi-Fi or Ethernet).",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 covers TCP/IP fundamentals and network architecture. Understanding how packets traverse network interfaces is foundational to protocol analysis.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is Npcap and why does Wireshark need it for packet capture? How does promiscuous mode work at the kernel level?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Wireshark Foundation. (n.d.). <em>Wireshark User&#8217;s Guide</em>. Retrieved from https://www.wireshark.org/docs/wsug_html/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Learn Capture and Display Filters",
+      "altText": "Checkpoint_3_2_2.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Understanding the difference between capture filters and display filters, and practicing filter syntax.",
+          "whyItMatters": "Large captures can contain millions of packets. Without filtering, finding relevant traffic is like searching for a needle in a haystack. Mastering filters is what separates efficient analysts from those who drown in data."
+        },
+        {
+          "title": "Filter Comparison",
+          "subtitle": null,
+          "columns": [
+            "Aspect",
+            "Capture Filter",
+            "Display Filter"
+          ],
+          "rows": [
+            [
+              "When applied",
+              "During capture",
+              "After capture"
+            ],
+            [
+              "Syntax",
+              "BPF (Berkeley Packet Filter)",
+              "Wireshark-specific"
+            ],
+            [
+              "Example: Port 80",
+              "<code>port 80</code>",
+              "<code>tcp.port == 80</code>"
+            ],
+            [
+              "Example: Specific host",
+              "<code>host 10.0.0.1</code>",
+              "<code>ip.addr == 10.0.0.1</code>"
+            ]
+          ],
+          "note": null,
+          "type": "table"
+        },
+        {
+          "part": "Practice Exercise",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Start a capture on your active interface (no filter).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Let it run for 30 seconds while browsing a website.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Stop the capture.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Apply each of these display filters and observe the results:",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show only DNS queries:",
+              "command": "dns",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show only HTTP traffic:",
+              "command": "http",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show HTTPS traffic:",
+              "command": "tcp.port == 443",
+              "whatThisDoes": null
+            },
+            {
+              "text": "Show only your traffic (replace with your IP):",
+              "command": "ip.addr == YOUR_IP",
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "lightbulb",
+          "title": "Filter Syntax Helper",
+          "text": "Display filters turn <strong>green</strong> when valid and <strong>red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.",
+          "calloutType": "tip"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture Wireshark with a <code>dns</code> display filter applied, showing filtered results. Save as <code>08-dns-filter.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Mixing syntax:</strong> Don&#8217;t use display filter syntax in the capture filter box (or vice versa) &#8212; they&#8217;re different languages",
+            "<strong>Forgetting == vs =:</strong> Display filters use <code>==</code> for equality, not single <code>=</code>",
+            "<strong>Case sensitivity:</strong> Protocol names in display filters are lowercase (<code>http</code> not <code>HTTP</code>)"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Understanding of when to use capture vs. display filters. Ability to apply basic display filters to isolate traffic by protocol, port, or IP address.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 covers TCP/IP fundamentals and protocol behavior. Chapter 13 discusses network monitoring and IDS concepts &#8212; the same principles apply to manual traffic analysis.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is BPF (Berkeley Packet Filter) and why do capture filters use different syntax than display filters? Check the Wireshark Wiki&#8217;s page on capture filters.",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Wireshark Wiki. (n.d.). CaptureFilters. Retrieved from https://wiki.wireshark.org/CaptureFilters &#8212; Wireshark Foundation. (n.d.). Display Filter Reference. Retrieved from https://www.wireshark.org/docs/dfref/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Protocol Cataloging Exercise",
+      "altText": "Checkpoint_3_2_3.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Systematically documenting common network protocols by filtering and analyzing traffic for each one.",
+          "whyItMatters": "Security analysts must recognize normal protocol behavior to identify anomalies. This exercise builds your baseline understanding of common protocols &#8212; you&#8217;ll reference this knowledge during incident investigations and threat hunting."
+        },
+        {
+          "title": "Required Protocols",
+          "subtitle": "For each protocol: document its purpose, security assessment, and ports. Capture a screenshot of filtered traffic.",
+          "columns": [
+            "Protocol",
+            "Display Filter",
+            "Port(s)"
+          ],
+          "rows": [
+            [
+              "TCP",
+              "<code>tcp</code>",
+              "Various"
+            ],
+            [
+              "UDP",
+              "<code>udp</code>",
+              "Various"
+            ],
+            [
+              "HTTP",
+              "<code>http</code>",
+              "80"
+            ],
+            [
+              "HTTPS/TLS",
+              "<code>tls</code>",
+              "443"
+            ],
+            [
+              "DNS",
+              "<code>dns</code>",
+              "53"
+            ],
+            [
+              "ICMP",
+              "<code>icmp</code>",
+              "N/A (Layer 3)"
+            ]
+          ],
+          "note": "ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.",
+          "type": "table"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>tcp</code> filter and capture the filtered traffic. Save as <code>09-tcp.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>udp</code> filter and capture the filtered traffic. Save as <code>10-udp.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>http</code> filter and capture the filtered traffic. Save as <code>11-http.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>tls</code> filter and capture the filtered traffic. Save as <code>12-tls.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>dns</code> filter and capture the filtered traffic. Save as <code>13-dns.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Apply the <code>icmp</code> filter and capture the filtered traffic. Save as <code>14-icmp.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "title": "Common Pitfalls",
+          "icon": "warning",
+          "items": [
+            {
+              "label": "Mixing filter syntax",
+              "text": "BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently."
+            },
+            {
+              "label": "No ICMP traffic",
+              "text": "ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing."
+            },
+            {
+              "label": "Missing protocol documentation",
+              "text": "Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section."
+            },
+            {
+              "label": "Case sensitivity in display filters",
+              "text": "Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Documentation for 6 protocols including purpose, security assessment, ports, and filtered traffic screenshots. This becomes the core of your &#8220;Tool Documentation&#8221; section in Lab 3.3.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 9 covers the TCP/IP protocol stack and common protocols. Understanding protocol layering (OSI model) helps you interpret what you see in Wireshark&#8217;s packet dissection.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "Where do protocols get their official definitions? Look up RFC 793 (TCP) or RFC 1035 (DNS) at rfc-editor.org. What organization publishes RFCs?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "RFC Editor. (n.d.). RFC 793: Transmission Control Protocol. IETF. https://www.rfc-editor.org/rfc/rfc793 &#8212; RFC Editor. (n.d.). RFC 1122: Requirements for Internet Hosts. IETF. https://tools.ietf.org/html/rfc1122",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Advanced Analysis Techniques",
+      "altText": "Checkpoint_3_2_4.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Learning advanced Wireshark features: Follow TCP Stream, Endpoint Statistics, IO Graphs, and Flow Graphs.",
+          "whyItMatters": "Basic filtering shows individual packets. Advanced techniques reveal patterns, relationships, and behaviors. These are the tools that separate packet-by-packet analysis from true network investigation."
+        },
+        {
+          "part": "Technique 1: Follow TCP Stream",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Find an HTTP or TCP packet in your capture.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Right-click &#8594; Follow &#8594; TCP Stream.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Observe the full conversation (requests in red, responses in blue).",
+              "command": null,
+              "whatThisDoes": {
+                "concept": "Reconstructs the complete conversation between two endpoints. Client requests appear in red, server responses in blue.",
+                "output": "This is how analysts read cleartext credentials in HTTP traffic.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue. Save as <code>15-tcp-stream.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Technique 2: Endpoint Statistics",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Go to Statistics &#8594; Endpoints.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Click the IPv4 tab.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Sort by &#8220;Packets&#8221; or &#8220;Bytes&#8221; to see top talkers.",
+              "command": null,
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Use case: Identify suspicious high-volume hosts during incident response.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers. Save as <code>16-endpoints.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Technique 3: IO Graphs",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Go to Statistics &#8594; I/O Graphs.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Observe the default &#8220;All Packets&#8221; graph.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Add a new line: Click <strong>+</strong>, enter filter <code>dns</code>, change color.",
+              "command": null,
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Use case: Spot traffic spikes, beaconing patterns, data exfiltration.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the IO Graph showing at least two lines &#8212; the default &#8220;All Packets&#8221; and your custom DNS filter. Save as <code>17-io-graph.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Technique 4: Flow Graphs",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Go to Statistics &#8594; Flow Graph.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Select &#8220;Displayed packets&#8221; to use your current filter.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Choose &#8220;TCP Flows&#8221; for flow type.",
+              "command": null,
+              "whatThisDoes": {
+                "concept": null,
+                "output": "Use case: Understand handshakes, retransmissions, connection sequences.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the Flow Graph showing TCP packet sequences between hosts. Use &#8220;Displayed packets&#8221; with a filter applied to keep it readable. Save as <code>18-flow-graph.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Following encrypted streams:</strong> TCP stream on HTTPS shows gibberish &#8212; that&#8217;s encryption working. Try HTTP instead for readable content.",
+            "<strong>Empty IO Graphs:</strong> Make sure you have enough captured data. A 10-second capture won&#8217;t show meaningful patterns.",
+            "<strong>Overwhelming flow graphs:</strong> Apply a filter first to reduce the number of flows shown."
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Hands-on experience with all four advanced techniques. Understanding of when to use each one during an investigation.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 13 covers IDS/IPS concepts including signature-based and anomaly-based detection. IO Graphs and endpoint statistics support anomaly detection by visualizing baseline deviations.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "What is TCP stream reassembly and why is it useful? What is the TCP three-way handshake and how does it appear in a flow graph?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "Wireshark Documentation. (n.d.). Following Protocol Streams. https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html &#8212; Wireshark Wiki. (n.d.). TCP Analysis. https://wiki.wireshark.org/TCP_Analyze_Sequence_Numbers",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Training PCAP Analysis",
+      "altText": "Checkpoint_3_2_5.svg",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Analyzing a training PCAP file provided by NEXUS to practice identifying security-relevant findings.",
+          "whyItMatters": "Next week you&#8217;ll analyze live traffic from the Gulf Coast Healthcare patient portal. This training exercise prepares you by having you practice finding real issues in a controlled capture."
+        },
+        {
+          "character": "Derek Mitchell",
+          "headshot": "derek-mitchell.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
+          "quote": "I hand-picked these training captures to teach you what matters. The credential leak PCAP shows exactly why we push clients to use HTTPS everywhere. When you find the issue, you&#8217;ll understand viscerally why encryption matters."
+        },
+        {
+          "type": "callout",
+          "icon": "download",
+          "title": "Training PCAP",
+          "text": "Download the training PCAP to your host machine: <strong>credential-leak.pcap</strong>",
+          "calloutType": "tip"
+        },
+        {
+          "part": null,
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open <code>credential-leak.pcap</code> in Wireshark.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Apply filters to identify HTTP traffic.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Use Follow TCP Stream to examine conversations.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Find the security issue (hint: look for form submissions).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Document what you found and why it&#8217;s a problem.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "isFinal": true,
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the security issue you discovered (TCP stream or packet details showing the problem). Save as <code>19-credential-finding.png</code> &#8212; this is your last screenshot for Lab 3.2!",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper",
+            "<strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code>",
+            "<strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "A screenshot of the security finding in the training PCAP. Notes documenting: what the issue is, why it&#8217;s a security problem, and what remediation you would recommend.",
+          "calloutType": "whatYouShouldHave"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 4 covers cryptography fundamentals including why encryption matters for data in transit. The issue you found in this PCAP directly illustrates a cryptographic failure.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "search",
+          "title": "Dig Deeper",
+          "text": "The credential exposure you found is a real vulnerability class. Look up OWASP&#8217;s guidance on &#8220;Sensitive Data Exposure&#8221; or &#8220;Cryptographic Failures&#8221; &#8212; what does OWASP recommend to prevent this?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "That&#8217;s a Reference!",
+          "text": "OWASP. (2021). A02:2021 &#8212; Cryptographic Failures. OWASP Top 10. Retrieved from https://owasp.org/Top10/A02_2021-Cryptographic_Failures/",
+          "calloutType": "thatsAReference"
+        }
+      ]
+    }
+  ],
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        "Wireshark is an attacker&#8217;s reconnaissance tool",
+        "On a compromised network segment, attackers use packet capture to harvest credentials from unencrypted traffic",
+        "Packet analysis maps internal services, identifies vulnerable protocols, and reveals network architecture"
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        "For defenders, Wireshark is essential for incident response and threat hunting",
+        "When a security alert fires, packet captures provide ground truth",
+        "You can verify what happened, reconstruct attacker actions, identify compromised systems, and gather evidence"
+      ]
+    },
+    "connection": "Wireshark is the great equalizer &#8212; both attackers and defenders use identical analysis techniques. When you found the cleartext credentials in the training PCAP, you experienced both sides simultaneously. This dual perspective is the essence of purple team operations."
+  },
+  "finalChecklist": {
+    "screenshotTable": [
+      {
+        "file": "07-wireshark-interfaces.png",
+        "description": "Wireshark welcome screen with active interface identified"
+      },
+      {
+        "file": "08-dns-filter.png",
+        "description": "DNS display filter applied and filtered results visible"
+      },
+      {
+        "file": "09-tcp.png",
+        "description": "TCP display filter applied"
+      },
+      {
+        "file": "10-udp.png",
+        "description": "UDP display filter applied"
+      },
+      {
+        "file": "11-http.png",
+        "description": "HTTP display filter applied"
+      },
+      {
+        "file": "12-tls.png",
+        "description": "TLS display filter applied"
+      },
+      {
+        "file": "13-dns.png",
+        "description": "DNS display filter applied (full protocol catalog screenshot)"
+      },
+      {
+        "file": "14-icmp.png",
+        "description": "ICMP display filter (generated via ping)"
+      },
+      {
+        "file": "15-tcp-stream.png",
+        "description": "Follow TCP Stream window with color-coded conversation"
+      },
+      {
+        "file": "16-endpoints.png",
+        "description": "Endpoint Statistics — IPv4 tab sorted by packet count"
+      },
+      {
+        "file": "17-io-graph.png",
+        "description": "IO Graph with default + custom DNS filter lines"
+      },
+      {
+        "file": "18-flow-graph.png",
+        "description": "Flow Graph showing TCP packet sequences"
+      },
+      {
+        "file": "19-credential-finding.png",
+        "description": "Security finding in training PCAP (credential exposure)"
+      }
+    ],
+    "sections": [
+      {
+        "items": [
+          "Wireshark installed on host OS and working",
+          "Can identify and select the correct capture interface",
+          "Understand difference between capture and display filters",
+          "Can apply display filters for TCP, UDP, HTTP, TLS, DNS, ICMP",
+          "Can use Follow TCP Stream to reconstruct conversations",
+          "Can generate Endpoint Statistics",
+          "Can create IO Graphs with custom filters",
+          "Can generate Flow Graphs for TCP flows"
+        ],
+        "title": "Technical Skills"
+      },
+      {
+        "items": [
+          "07-wireshark-interfaces.png &#8212; Interface selection screen",
+          "08-dns-filter.png &#8212; DNS display filter applied",
+          "09-tcp.png &#8212; TCP filtered traffic",
+          "10-udp.png &#8212; UDP filtered traffic",
+          "11-http.png &#8212; HTTP filtered traffic",
+          "12-tls.png &#8212; TLS filtered traffic",
+          "13-dns.png &#8212; DNS filtered traffic",
+          "14-icmp.png &#8212; ICMP filtered traffic",
+          "15-tcp-stream.png &#8212; Follow TCP Stream example",
+          "16-endpoints.png &#8212; Endpoint Statistics",
+          "17-io-graph.png &#8212; IO Graph with custom filter",
+          "18-flow-graph.png &#8212; Flow Graph",
+          "19-credential-finding.png &#8212; Training PCAP security finding"
+        ],
+        "title": "Documentation (13 Screenshots)"
+      },
+      {
+        "items": [
+          "Documented purpose for each of 6 protocols",
+          "Assessed security of each protocol",
+          "Identified ports for each protocol",
+          "Notes saved for Lab 3.3 Engagement Packet"
+        ],
+        "title": "Protocol Documentation"
+      }
+    ],
+    "canvasQuiz": "Take the <strong>Lab 3.2 Quiz</strong> in Canvas. The quiz verifies you completed the hands-on work &#8212; questions will ask about specific outputs and findings from your Wireshark analysis. <strong>Keep Wireshark open while taking the quiz.</strong>"
+  },
+  "needHelp": {
+    "nextModule": "Lab 3.3: Network Analysis Engagement &#8212; Next week you&#8217;ll connect to Gulf Coast Healthcare&#8217;s Azure-hosted patient portal, capture live traffic, and apply everything you learned here. The skills from this lab are non-negotiable for that assessment.",
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "Lab 3.3: Network Analysis Engagement — Next week you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Weeks 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."
+    }
+  }
+}
