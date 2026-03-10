@@ -759,8 +759,9 @@
           "type": "callout",
           "icon": "menu_book",
           "title": "Textbook Reference",
-          "text": "Chapter 4 covers cryptography fundamentals including why encryption matters for data in transit. The issue you found in this PCAP directly illustrates a cryptographic failure.",
-          "calloutType": "textbookReference"
+          "text": null,
+          "calloutType": "textbookReference",
+          "body": "Chapter 9 covers the TCP/IP protocol stack and packet delivery &#8212; the same protocols appearing in every Wireshark frame you analyze. Chapter 13&#8217;s coverage of IDS detection models provides the analytical frame: the patterns you identify manually in Wireshark are what signature-based and anomaly-based detection systems do automatically at scale."
         },
         {
           "type": "callout",

@@ -277,7 +277,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 16: Security Assessment Tools",
-          "text": "Review the sections on password cracking tools and security assessment methodology. This provides context for your tool documentation sections."
+          "text": null,
+          "body": "Chapter 16 covers security assessment methodology, including how penetration test findings are structured for reporting. Your Engagement Packet follows the same workflow Chapter 16 describes: document the tools used, record the methodology applied, and organize findings in a format the client can act on."
         },
         {
           "type": "callout",
@@ -357,7 +358,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 15: Types of Attacks",
-          "text": "Review the sections on password attacks, dictionary attacks, and rainbow tables. This provides conceptual grounding for your analysis."
+          "text": null,
+          "body": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section covers brute force, dictionary attacks, and rainbow tables &#8212; the techniques you applied hands-on in Labs 4.1 and 4.2. Your platform comparison analysis translates Chapter 15&#8217;s theory into observed results: why NTLM without salting falls to rainbow tables while SHA-512 with per-user salts demands targeted, slower attacks."
         },
         {
           "type": "callout",

@@ -293,8 +293,9 @@
           "type": "callout",
           "icon": "menu_book",
           "title": "Textbook Reference",
-          "text": "Chapter 7 covers certificate lifecycles and expiration. The browser warning you document represents a real compliance failure &#8212; HIPAA requires valid certificates for protected health information.",
-          "calloutType": "textbookReference"
+          "text": null,
+          "calloutType": "textbookReference",
+          "body": "Chapter 6 covers Secure Protocols and cipher suites, including how TLS certificates authenticate servers and establish encrypted connections. The expired certificate warning you&#8217;re documenting is what happens when certificate management fails &#8212; a gap between cryptographic intent and operational reality that Chapter 6&#8217;s coverage of secure protocol use cases makes concrete."
         },
         {
           "type": "callout",
@@ -487,8 +488,9 @@
           "type": "callout",
           "icon": "menu_book",
           "title": "Textbook Reference",
-          "text": "Chapter 7 explains the certificate signing process and chain of trust. The CSR-to-certificate workflow you perform mirrors real-world PKI operations.",
-          "calloutType": "textbookReference"
+          "text": null,
+          "calloutType": "textbookReference",
+          "body": "Chapter 6 covers applied cryptography in practice, including asymmetric key pairs and how they underpin the certificate signing workflow. The CSR you generate reuses the existing private key while the public component travels through the signing process &#8212; exactly the asymmetric key management pattern Chapter 6 describes."
         }
       ]
     },
@@ -635,8 +637,9 @@
           "type": "callout",
           "icon": "menu_book",
           "title": "Textbook Reference",
-          "text": "Chapter 7 discusses chain of trust verification. The browser warning about self-signed certificates is different from expiration &#8212; your openssl verification shows the fix worked even though the browser still flags the self-signed CA.",
-          "calloutType": "textbookReference"
+          "text": null,
+          "calloutType": "textbookReference",
+          "body": "Chapter 6 covers cryptographic attacks and cipher suite weaknesses, including how obsolete algorithms remain negotiable on misconfigured servers. Beyond the expired certificate, any weak cipher findings represent the attack surface Chapter 6&#8217;s &#8220;Cryptographic Attacks&#8221; section describes &#8212; exploitable not through the algorithm itself but through how it&#8217;s deployed."
         }
       ]
     },
@@ -725,7 +728,8 @@
           "icon": "menu_book",
           "title": "Textbook Reference",
           "text": "Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.",
-          "calloutType": "textbookReference"
+          "calloutType": "textbookReference",
+          "body": "Chapter 11&#8217;s &#8220;Cloud vs. On-premises Requirements&#8221; section is directly relevant here: Gulf Coast&#8217;s patient portal runs in a container now, but the authentication and compliance controls you&#8217;re documenting must account for where systems will live. Chapter 11 explains how authentication requirements shift between on-premises and cloud environments &#8212; a distinction that belongs in your professional recommendations for a healthcare client with a cloud migration ahead."
         }
       ]
     }

@@ -158,7 +158,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 20: Risk Management",
-          "text": "See “Vulnerability Assessment” section."
+          "text": null,
+          "body": "Chapter 20 covers quantitative risk assessment and introduces the vocabulary of risk scoring. CVSS is the industry implementation of the quantitative approach Chapter 20 describes &#8212; translating vulnerability characteristics into a numeric score that enables objective comparison and prioritization across a mixed finding set."
         }
       ]
     },
@@ -263,7 +264,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 20: Risk Management",
-          "text": "See “Business Impact Analysis” section."
+          "text": null,
+          "body": "Chapter 20&#8217;s Business Risks and Business Impact Analysis sections explain how technical vulnerabilities connect to organizational consequences. The vulnerability-to-asset mapping you&#8217;re building is a direct application of Chapter 20&#8217;s framework: identify which assets are exposed, then assess the business impact if those assets are compromised."
         }
       ]
     },
@@ -354,7 +356,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 20: Risk Management",
-          "text": "See “Risk Assessment Frameworks” section."
+          "text": null,
+          "body": "Chapter 20 covers qualitative risk assessment, including likelihood-impact matrices as a tool for communicating risk to stakeholders. The 5&#215;5 matrix you&#8217;re constructing is a direct implementation of Chapter 20&#8217;s qualitative methodology &#8212; translating technical severity into a visual format executives and board members can interpret without a security background."
         }
       ]
     },
@@ -469,7 +472,8 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 20: Risk Management",
-          "text": "See “Risk Treatment” section."
+          "text": null,
+          "body": "Chapter 20 covers risk treatment strategies &#8212; mitigate, accept, transfer, and avoid &#8212; and the factors that determine which strategy applies in a given context. Your prioritization framework applies Chapter 20&#8217;s risk treatment logic under real-world constraints: not just ranking by CVSS score, but accounting for remediation complexity, resource availability, and LoneStar&#8217;s zero-downtime requirement."
         }
       ]
     }

@@ -115,14 +115,16 @@
           "calloutType": "screenshot",
           "number": 1,
           "description": "Capture docker ps output showing all four containers running.",
-          "filename": "01-docker-containers.png"
+          "filename": "01-docker-containers.png",
+          "body": "Take Screenshot 01. Capture the output of <code>docker ps</code> showing all four LoneStar containers running (webapp-prod, db-primary, dev-api, mgmt-ssh). Your VM hostname must be visible in the terminal prompt."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
           "number": 2,
           "description": "Capture WordPress landing page at http://localhost:8080.",
-          "filename": "02-wordpress-landing.png"
+          "filename": "02-wordpress-landing.png",
+          "body": "Take Screenshot 02. Capture your terminal showing a successful connectivity test to each service — for example, curl output for localhost:8080 (WordPress) and localhost:3000 (API). If using a browser, capture the WordPress login page at localhost:8080 with your VM hostname visible in an adjacent terminal."
         },
         {
           "type": "callout",
@@ -234,7 +236,8 @@
               "description": "Service version detection results.",
               "filename": "04-service-versions.png"
             }
-          ]
+          ],
+          "body": "Take Screenshot 03. Capture the full nmap -sV output from your service version detection scan. The output must show at least one host IP, open ports, and version strings (e.g., Apache 2.4.x, MySQL 5.7.x, OpenSSH). Your VM hostname must be visible in the prompt."
         },
         {
           "type": "callout",
@@ -338,7 +341,8 @@
               "description": "MySQL vulnerability/credential scan.",
               "filename": "06-mysql-scan.png"
             }
-          ]
+          ],
+          "body": "Take Screenshot 04. Capture the NSE vulnerability scan results showing identified findings. The output must include at least one CVE identifier or vulnerability label. If results are long, scroll to show the most significant findings — capture multiple screenshots if needed, labeled 04a, 04b."
         },
         {
           "type": "callout",
@@ -460,7 +464,8 @@
               "description": "SSH finding.",
               "filename": "10-ssh-finding.png"
             }
-          ]
+          ],
+          "body": "Take Screenshot 05. Capture WPScan output showing WordPress vulnerabilities and plugin findings, OR your npm audit output showing Node.js dependency vulnerabilities. The output must show version information and at least one identified vulnerability or finding. Your VM hostname must be visible in the prompt."
         },
         {
           "type": "callout",
