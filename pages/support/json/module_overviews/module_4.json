@@ -51,5 +51,11 @@
       "Executive findings reporting"
     ]
   },
-  "footer": "Start with Lab 4.1 in the Assignments section."
+  "footer": "Start with Lab 4.1 in the Assignments section.",
+  "notice": {
+    "color": "#E63946",
+    "colorRgb": "230, 57, 70",
+    "label": "\u26a0\ufe0f Offensive Techniques Module:",
+    "body": "These skills are for authorized security assessments only. Never use password cracking tools without explicit written permission. Everything here is on NEXUS-authorized client systems."
+  }
 }

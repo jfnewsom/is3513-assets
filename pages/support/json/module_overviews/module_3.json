@@ -51,5 +51,11 @@
       "Incident documentation"
     ]
   },
-  "footer": "Start with Lab 3.1 in the Assignments section."
+  "footer": "Start with Lab 3.1 in the Assignments section.",
+  "notice": {
+    "color": "#FF9F1C",
+    "colorRgb": "255, 159, 28",
+    "label": "\u26a0\ufe0f Spring Break follows this module (March 9\u201314).",
+    "body": "Plan accordingly\u2014don't leave Week 9 work until the last minute."
+  }
 }

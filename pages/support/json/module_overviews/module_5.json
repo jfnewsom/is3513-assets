@@ -51,5 +51,11 @@
       "Executive risk communication"
     ]
   },
-  "footer": "Start with Lab 5.1 in the Assignments section."
+  "footer": "Start with Lab 5.1 in the Assignments section.",
+  "notice": {
+    "color": "#7B68EE",
+    "colorRgb": "123, 104, 238",
+    "label": "\ud83c\udfaf Capstone Module:",
+    "body": "This engagement is your most complex deliverable. You'll use skills from every previous module: reconnaissance, cryptography analysis, network understanding, and now vulnerability assessment. Show us what you've learned."
+  }
 }

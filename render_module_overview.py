@@ -32,6 +32,7 @@ def shell(module_num, title, accent, body):
   <link rel="stylesheet" href="{CSS_PATH}">
 </head>
 <body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 
 <div class="nx-page">
 
@@ -86,6 +87,15 @@ def render(data):
     # Overview
     overview = f"    <p>{data['overview']}</p>"
 
+    # Notice (optional)
+    notice_html = ""
+    if data.get("notice"):
+        notice = data["notice"]
+        notice_html = f"""    <div class="nx-client-ctx" style="--client-color: {notice['color']}; --client-rgb: {notice['colorRgb']};">
+      <span class="nx-client-ctx__label">{notice['label']}</span>
+      <span class="nx-client-ctx__body"> {notice['body']}</span>
+    </div>"""
+
     # Week breakdown
     week_rows = []
     for week in data["weeks_breakdown"]:
@@ -132,7 +142,7 @@ def render(data):
     # Footer
     footer = f'    <div class="nx-page-footer">{data["footer"]}</div>'
 
-    body = "\n\n".join([info_bar, overview, week_section, client_ctx, skills_section, footer])
+    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, skills_section, footer]))
     return shell(n, title, accent, body)
 
 
