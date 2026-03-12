@@ -1,0 +1,91 @@
+{
+  "type": "support_page",
+  "title": "How To Get Help \u2013 IS3513",
+  "htmlTitle": "How To Get Help \u2013 IS3513",
+  "accentColor": "#7B68EE",
+  "headerSvg": "How_To_Get_Help_Header.svg",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Stuck on a lab? Confused about a concept? Here\u2019s how to get help. <strong style=\"color:#ffffff;\">Try them in order</strong>\u2014most questions get answered quickly through Discord."
+    },
+    {
+      "type": "stat_blocks",
+      "blocks": [
+        {
+          "label": "Fastest",
+          "labelColor": "#5865F2",
+          "value": "Discord"
+        },
+        {
+          "label": "1-on-1",
+          "labelColor": "#00D26A",
+          "value": "Calendly"
+        },
+        {
+          "label": "Private",
+          "labelColor": "#FF9F1C",
+          "value": "Email"
+        }
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#5865F2",
+      "label": "1. Ask on Discord (Fastest Response)",
+      "paragraphs": [
+        "The class Discord is the fastest way to get help. Post your question in <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#5865F2;\">#lab-help</code> or <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#5865F2;\">#course-questions</code> and classmates or the instructor will respond\u2014often within minutes."
+      ],
+      "subheading": "When asking questions:",
+      "items": [
+        "Describe what you\u2019re trying to do",
+        "Share the error message (use code blocks!)",
+        "Include a screenshot if relevant",
+        "Be specific\u2014\u201cit doesn\u2019t work\u201d doesn\u2019t help us help you"
+      ],
+      "button": {
+        "label": "View Discord Info \u2192",
+        "href": "https://utsa.instructure.com/courses/69678/pages/discord-server",
+        "color": "#5865F2"
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "2. Book an Appointment (One-on-One Help)",
+      "paragraphs": [
+        "Need dedicated one-on-one time? Book a 15-minute appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.",
+        "<strong style=\"color:#ffffff;\">Options:</strong> Zoom or in-person (NPB 470D)"
+      ],
+      "button": {
+        "label": "Book Appointment \u2192",
+        "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+        "color": "#00D26A",
+        "textColor": "#0A0E17"
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "3. Email the Instructor (Private Matters Only)",
+      "paragraphs": [
+        "Email is best for private matters: grade questions, accommodations, personal circumstances, or anything you don\u2019t want to discuss publicly."
+      ],
+      "email_card": {
+        "address": "john.newsom@utsa.edu",
+        "note": "Response time: Usually within 24\u201348 hours"
+      },
+      "tip": "<strong style=\"color:#ffffff;\">Pro tip:</strong> Include \u201cIS3513\u201d in the subject line so I can find your email quickly."
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "label": "Please Don\u2019t:",
+      "html": " DM the instructor on Discord for questions that should be public (others probably have the same question). Don\u2019t wait until the night before a deadline to ask for help. Don\u2019t email technical questions\u2014Discord gets faster responses."
+    },
+    {
+      "type": "footer",
+      "html": "No weekly Zoom \u2014 this is an asynchronous course. Discord and Calendly cover 99% of what you need."
+    }
+  ]
+}

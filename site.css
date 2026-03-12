@@ -593,3 +593,217 @@ summary {
   .nx-two-col { flex-direction: column; }
   .nx-info-stat__value--lg { font-size: 24px; }
 }
+
+/* ============================================================
+   SUPPORT PAGE COMPONENTS
+   ============================================================ */
+
+/* ── Intro paragraph ──────────────────────────────────────── */
+.nx-support-intro {
+  color: #B0B8C4;
+  margin: 0 0 25px 0;
+  line-height: 1.7;
+}
+
+/* ── Two-column list items ────────────────────────────────── */
+.nx-two-col__list {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.nx-two-col__item {
+  margin-bottom: 6px;
+}
+.nx-two-col__item:last-child { margin-bottom: 0; }
+.nx-two-col__item-title { color: #ffffff; font-weight: 600; }
+.nx-two-col__item-desc  { color: #B0B8C4; }
+
+/* ── Info box (dark card) ─────────────────────────────────── */
+.nx-info-box {
+  background: #1a1f2e;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.nx-info-box__label {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+.nx-info-box__body p {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 12px 0;
+}
+.nx-info-box__body p:last-child { margin-bottom: 0; }
+
+/* ── Named section wrapper ────────────────────────────────── */
+.nx-named-section {
+  margin-bottom: 25px;
+}
+.nx-named-section:last-child { margin-bottom: 0; }
+.nx-named-subheading {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 12px 0 8px 0;
+}
+.nx-named-tip {
+  color: #B0B8C4;
+  font-size: 14px;
+  margin: 8px 0 0 0;
+  line-height: 1.7;
+}
+
+/* ── Email card ───────────────────────────────────────────── */
+.nx-email-card {
+  background: #1a1f2e;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  display: inline-block;
+}
+.nx-email-card__addr {
+  color: #4169E1;
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  text-decoration: none;
+}
+.nx-email-card__note {
+  color: #888;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* ── Button ───────────────────────────────────────────────── */
+.nx-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 12px;
+  font-family: 'Roboto', sans-serif;
+  transition: opacity 0.15s;
+}
+.nx-btn:hover { opacity: 0.85; }
+
+/* ── Button row (inside info box) ────────────────────────── */
+.nx-btn-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.nx-btn-row .nx-btn { margin-top: 0; }
+
+/* ── Platform cards grid ──────────────────────────────────── */
+.nx-platform-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin-top: 12px;
+}
+.nx-platform-card {
+  background: #1a1f2e;
+  border-radius: 8px;
+  padding: 15px;
+}
+.nx-platform-card__title {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.nx-platform-card__line {
+  color: #B0B8C4;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.nx-platform-card__status {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* ── Spec list (two-col key:value) ───────────────────────── */
+.nx-spec-list { margin-top: 12px; }
+.nx-spec-row {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #2a2f3e;
+  font-size: 14px;
+}
+.nx-spec-row:last-child { border-bottom: none; }
+.nx-spec-key   { color: #888; min-width: 80px; }
+.nx-spec-value { color: #ffffff; font-weight: 600; }
+
+/* ── Rules list ───────────────────────────────────────────── */
+.nx-rules-list { margin-top: 12px; }
+.nx-rule {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.nx-rule:last-child { margin-bottom: 0; }
+.nx-rule__body strong { color: #ffffff; }
+.nx-rules-subitems {
+  margin: 8px 0 0 20px;
+  padding: 0;
+  line-height: 1.7;
+}
+.nx-rules-warning {
+  color: #E63946;
+  margin-top: 6px;
+}
+
+/* ── Acknowledgment box ───────────────────────────────────── */
+.nx-ack-box {
+  background: linear-gradient(135deg,
+    rgba(var(--ack-color-rgb, 88, 101, 242), 0.15) 0%,
+    rgba(var(--ack-color-rgb, 88, 101, 242), 0.05) 100%);
+  border: 2px solid var(--ack-color, #5865F2);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.nx-ack-box__heading {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.nx-ack-box__items {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nx-ack-warning { color: #E63946; }
+
+/* ── Callout bar label heading variant ────────────────────── */
+.nx-client-ctx__label--heading {
+  display: block;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .nx-platform-cards { grid-template-columns: 1fr 1fr; }
+  .nx-btn-row { flex-direction: column; }
+}
