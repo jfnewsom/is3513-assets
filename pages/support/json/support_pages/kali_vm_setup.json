@@ -130,5 +130,8 @@
       "type": "footer",
       "html": "Full setup instructions are in <strong style=\"color:#00D26A;\">Lab 1.1: Kali Environment Setup</strong>"
     }
-  ]
+  ],
+  "headerKeyword": "kali",
+  "headerSecondary": "vm setup",
+  "headerSubtitle": "Virtual Machine Configuration"
 }

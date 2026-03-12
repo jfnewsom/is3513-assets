@@ -109,5 +109,8 @@
       "type": "footer",
       "html": "After joining, introduce yourself in <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#5865F2;\">#introductions</code> \u2014 we\u2019re glad to have you!"
     }
-  ]
+  ],
+  "headerKeyword": "discord",
+  "headerSecondary": "server",
+  "headerSubtitle": "Community Support & Engagement"
 }

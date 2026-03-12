@@ -87,5 +87,8 @@
       "type": "footer",
       "html": "No weekly Zoom \u2014 this is an asynchronous course. Discord and Calendly cover 99% of what you need."
     }
-  ]
+  ],
+  "headerKeyword": "how to",
+  "headerSecondary": "get help",
+  "headerSubtitle": "Support Resources & Channels"
 }

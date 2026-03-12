@@ -116,5 +116,8 @@
       "type": "footer",
       "html": "Questions about what\u2019s allowed? Ask in Discord or email."
     }
-  ]
+  ],
+  "headerKeyword": "genai",
+  "headerSecondary": "policy",
+  "headerSubtitle": "Academic Integrity & AI Use"
 }

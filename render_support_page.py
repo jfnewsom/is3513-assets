@@ -351,7 +351,7 @@ def render_sections(sections):
 
 # ── Shell ──────────────────────────────────────────────────────────────────────
 
-def shell(html_title, accent, keyword, body):
+def shell(html_title, accent, keyword, secondary, subtitle, body):
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -371,7 +371,9 @@ def shell(html_title, accent, keyword, body):
   <div class="nx-header" style="--accent: {accent};">
     <div class="nx-header-top">
       <div class="nx-kw">{keyword}</div>
+      <div class="nx-sec">{secondary}</div>
     </div>
+    <div class="nx-sub">{subtitle}</div>
   </div>
 
   <!-- Main card -->
@@ -389,11 +391,12 @@ def shell(html_title, accent, keyword, body):
 
 
 def render(data):
-    accent  = data["accentColor"]
-    title   = data["title"]
-    keyword = title.split("–")[0].split("—")[0].strip().lower()
-    body    = render_sections(data["sections"])
-    return shell(data["htmlTitle"], accent, keyword, body)
+    accent    = data["accentColor"]
+    keyword   = data.get("headerKeyword",   data["title"].split("–")[0].split("—")[0].strip().lower())
+    secondary = data.get("headerSecondary", "")
+    subtitle  = data.get("headerSubtitle",  "")
+    body      = render_sections(data["sections"])
+    return shell(data["htmlTitle"], accent, keyword, secondary, subtitle, body)
 
 
 # ── Entry point ────────────────────────────────────────────────────────────────
