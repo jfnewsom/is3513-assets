@@ -3,106 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 4: Threats &amp; Attacks – IS3513</title>
+  <title>Module 4: Exploitation & Vulnerability Assessment &#8211; IS3513</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
 
-<div style="max-width: 900px; margin: 0 auto;">
+<div class="nx-page">
 
-<!-- HEADER IMAGE -->
-<div><img src="https://jfnewsom.github.io/is3513-assets/headers/Module_4_Header.svg" alt="Module 4: Threats &amp; Attacks" style="display: block; max-width: 100%; height: auto;"></div>
+<div class="nx-section">
 
-<!-- MAIN CARD -->
-<div style="background: #0A0E17; padding: 30px; border-radius: 0 0 8px 0; border-left: 4px solid #E63946; border-bottom: 4px solid #E63946;">
-  
-  <!-- Module Info Bar -->
-  <div style="display: flex; gap: 15px; margin-bottom: 25px;">
-    <div style="flex: 1; background: #1a1f2e; border-radius: 6px; padding: 12px; text-align: center;">
-      <div style="color: #888; font-size: 11px; text-transform: uppercase;">Weeks</div>
-      <div style="color: #fff; font-size: 18px; font-weight: 600;">10-12</div>
+  <!-- Header — generated from JSON, no external SVG -->
+  <div class="nx-header" style="--accent: #E63946;">
+    <div class="nx-header-top">
+      <div class="nx-kw">module</div>
+      <div class="nx-sec">4</div>
     </div>
-    <div style="flex: 1; background: #1a1f2e; border-radius: 6px; padding: 12px; text-align: center;">
-      <div style="color: #888; font-size: 11px; text-transform: uppercase;">Chapters</div>
-      <div style="color: #fff; font-size: 18px; font-weight: 600;">15 &amp; 16</div>
-    </div>
-    <div style="flex: 1; background: #1a1f2e; border-radius: 6px; padding: 12px; text-align: center;">
-      <div style="color: #888; font-size: 11px; text-transform: uppercase;">Clients</div>
-      <div style="color: #FF9F1C; font-size: 16px; font-weight: 600;">Brazos + Alamo</div>
-    </div>
+    <div class="nx-sub">Exploitation & Vulnerability Assessment</div>
   </div>
-  
-  <!-- Overview -->
-  <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.7;">Module 4 goes offensive. You'll learn password cracking techniques—not to become an attacker, but to understand how attackers think and why strong credential policies matter. Then you'll assess password hygiene for two very different clients.</p>
-  
-  <!-- Offensive Warning -->
-  <div style="background: rgba(230, 57, 70, 0.15); border-left: 3px solid #E63946; padding: 12px 15px; border-radius: 0 6px 6px 0; margin-bottom: 25px;">
-    <span style="color: #E63946; font-weight: 600;">⚠️ Offensive Techniques Module:</span>
-    <span style="color: #B0B8C4;"> These skills are for authorized security assessments only. Never use password cracking tools without explicit written permission. Everything here is on NEXUS-authorized client systems.</span>
-  </div>
-  
-  <!-- Three-Week Breakdown -->
-  <div style="margin-bottom: 25px;">
-    <div style="color: #E63946; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-bottom: 2px solid #E63946; padding-bottom: 6px;">This Module</div>
-    
-    <!-- Week 10 -->
-    <div style="background: #1a1f2e; border-radius: 8px; padding: 15px 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;">
-      <div style="background: #00D26A; color: #0A0E17; padding: 8px 12px; border-radius: 6px; font-weight: 700; font-size: 12px;">WEEK 10</div>
-      <div style="flex: 1;">
-        <div style="color: #ffffff; font-weight: 600;">Lab 4.1: Windows Password Cracking</div>
-        <div style="color: #888; font-size: 13px;">NTLM hashes, John the Ripper, Hashcat. Why Windows credentials are vulnerable.</div>
+
+  <!-- Main card -->
+  <div class="nx-card nx-card--sym" style="--accent: #E63946;">
+
+    <div class="nx-info-bar">
+      <div class="nx-info-stat">
+        <div class="nx-info-stat__label">Weeks</div>
+        <div class="nx-info-stat__value">10-12</div>
       </div>
-      <div style="color: #00D26A; font-size: 12px;">Internal Training</div>
-    </div>
-    
-    <!-- Week 11 -->
-    <div style="background: #1a1f2e; border-radius: 8px; padding: 15px 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;">
-      <div style="background: #00D26A; color: #0A0E17; padding: 8px 12px; border-radius: 6px; font-weight: 700; font-size: 12px;">WEEK 11</div>
-      <div style="flex: 1;">
-        <div style="color: #ffffff; font-weight: 600;">Lab 4.2: Linux Password Cracking</div>
-        <div style="color: #888; font-size: 13px;">SHA-512 with salting. Compare attack speeds. Understand defensive architecture.</div>
+      <div class="nx-info-stat">
+        <div class="nx-info-stat__label">Chapters</div>
+        <div class="nx-info-stat__value">3 & 7</div>
       </div>
-      <div style="color: #00D26A; font-size: 12px;">Internal Training</div>
-    </div>
-    
-    <!-- Week 12 -->
-    <div style="background: #1a1f2e; border-radius: 8px; padding: 15px 20px; display: flex; align-items: center; gap: 15px;">
-      <div style="background: #7B68EE; color: #ffffff; padding: 8px 12px; border-radius: 6px; font-weight: 700; font-size: 12px;">WEEK 12</div>
-      <div style="flex: 1;">
-        <div style="color: #ffffff; font-weight: 600;">Lab 4.3: Password Security Assessment</div>
-        <div style="color: #888; font-size: 13px;">Two-client comparison. Assess credential hygiene, recommend policy improvements.</div>
-      </div>
-      <div style="color: #FF9F1C; font-size: 12px;">Client Billable</div>
-    </div>
-  </div>
-  
-  <!-- Client Context -->
-  <div style="background: rgba(255, 159, 28, 0.1); border-left: 3px solid #FF9F1C; padding: 15px 20px; border-radius: 0 6px 6px 0; margin-bottom: 25px;">
-    <div style="color: #FF9F1C; font-weight: 600; margin-bottom: 8px;">Client Context: Brazos Financial + Alamo Industries</div>
-    <div style="color: #B0B8C4; font-size: 14px; line-height: 1.7;">Brazos had a phishing incident—Ray needs data to justify stricter policies to the board. Alamo is preparing for CMMC certification—Bobby Alamo III suspects some passwords haven't changed "since the Reagan administration." Two platforms, two hash types, one comparison report.</div>
-  </div>
-  
-  <!-- Skills You'll Build -->
-  <div style="margin-bottom: 20px;">
-    <div style="color: #00D26A; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-bottom: 2px solid #00D26A; padding-bottom: 6px;">Skills You'll Build</div>
-    <div style="color: #B0B8C4; font-size: 14px; line-height: 1.8; display: flex; gap: 30px;">
-      <div style="flex: 1;">
-        • Hash identification<br>
-        • John the Ripper and Hashcat<br>
-        • Wordlist-based attacks
-      </div>
-      <div style="flex: 1;">
-        • OSINT-informed attacks<br>
-        • Platform security comparison<br>
-        • Policy recommendations
+      <div class="nx-info-stat" style="--client-color: #FF9F1C;">
+        <div class="nx-info-stat__label">Client</div>
+        <div class="nx-info-stat__value nx-info-stat__value--client">Alamo Industries</div>
       </div>
     </div>
+
+    <p>Module 4 is where you go on offense. You'll learn how vulnerabilities are discovered and exploited, practice controlled attacks in a safe lab environment, and then conduct a structured penetration test for a manufacturing client.</p>
+
+    <div class="nx-week-list">
+      <div class="nx-section-label">This Module</div>
+      <div class="nx-week-row" style="--badge-color: #00D26A; --badge-text: #0A0E17;">
+        <div class="nx-week-badge">WEEK 10</div>
+        <div class="nx-week-info">
+          <div class="nx-week-title">Lab 4.1: Vulnerability Scanning</div>
+          <div class="nx-week-desc">Nessus/OpenVAS fundamentals. CVE scoring, CVSS, vulnerability prioritization.</div>
+        </div>
+        <div class="nx-week-type">Internal Training</div>
+      </div>
+      <div class="nx-week-row" style="--badge-color: #00D26A; --badge-text: #0A0E17;">
+        <div class="nx-week-badge">WEEK 11</div>
+        <div class="nx-week-info">
+          <div class="nx-week-title">Lab 4.2: Exploitation Fundamentals</div>
+          <div class="nx-week-desc">Metasploit basics. Controlled exploitation in isolated lab environment.</div>
+        </div>
+        <div class="nx-week-type">Internal Training</div>
+      </div>
+      <div class="nx-week-row" style="--badge-color: #FF9F1C; --badge-text: #ffffff;">
+        <div class="nx-week-badge">WEEK 12</div>
+        <div class="nx-week-info">
+          <div class="nx-week-title">Lab 4.3: Alamo Industries Penetration Test</div>
+          <div class="nx-week-desc">Client engagement. Scoped pen test + executive findings report.</div>
+        </div>
+        <div class="nx-week-type">Client Billable</div>
+      </div>
+    </div>
+
+    <div class="nx-client-ctx" style="--client-color: #FF9F1C; --client-rgb: 255, 159, 28;">
+      <div class="nx-client-ctx__label">Client Context: Alamo Industries</div>
+      <div class="nx-client-ctx__body">Rodrigo Vega (VP Operations) is preparing for a mandatory industrial compliance audit. The OT/IT boundary on the manufacturing floor is poorly segmented. David Kim needs a vulnerability assessment before the auditors arrive.</div>
+    </div>
+
+    <div>
+      <div class="nx-section-label nx-section-label--green">Skills You&#8217;ll Build</div>
+      <div class="nx-skills">
+        <div class="nx-skills-col">
+          &bull; Vulnerability scanning and scoring<br>
+          &bull; CVE research and analysis<br>
+          &bull; Metasploit framework basics<br>
+        </div>
+        <div class="nx-skills-col">
+          &bull; Exploit development concepts<br>
+          &bull; Penetration test methodology<br>
+          &bull; Executive findings reporting<br>
+        </div>
+      </div>
+    </div>
+
+    <div class="nx-page-footer">Start with Lab 4.1 in the Assignments section.</div>
+
   </div>
-  
-  <!-- FOOTER -->
-  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #2a2f3e;">
-    <span style="color: #B0B8C4;">Start with Lab 4.1 in the Assignments section.</span>
-  </div>
-  
+
 </div>
 
 </div>

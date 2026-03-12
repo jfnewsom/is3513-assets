@@ -619,7 +619,7 @@ def render(data):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab {lab_num} &#8212; {title}</title>
-  <link rel="stylesheet" href="labs.css">
+  <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
 <script src="{nav_src}"></script>
