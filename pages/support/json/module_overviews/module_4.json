@@ -1,0 +1,55 @@
+{
+  "type": "module_overview",
+  "module": 4,
+  "title": "Exploitation & Vulnerability Assessment",
+  "accentColor": "#7B68EE",
+  "weeks": "10-12",
+  "chapters": "3 & 7",
+  "client": "Alamo Industries",
+  "clientColor": "#FF9F1C",
+  "headerSvg": "Module_4_Header.svg",
+  "overview": "Module 4 is where you go on offense. You'll learn how vulnerabilities are discovered and exploited, practice controlled attacks in a safe lab environment, and then conduct a structured penetration test for a manufacturing client.",
+  "weeks_breakdown": [
+    {
+      "weekLabel": "WEEK 10",
+      "type": "foundation",
+      "labTitle": "Lab 4.1: Vulnerability Scanning",
+      "labDesc": "Nessus/OpenVAS fundamentals. CVE scoring, CVSS, vulnerability prioritization.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 11",
+      "type": "foundation",
+      "labTitle": "Lab 4.2: Exploitation Fundamentals",
+      "labDesc": "Metasploit basics. Controlled exploitation in isolated lab environment.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 12",
+      "type": "engagement",
+      "labTitle": "Lab 4.3: Alamo Industries Penetration Test",
+      "labDesc": "Client engagement. Scoped pen test + executive findings report.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#FF9F1C"
+    }
+  ],
+  "clientContext": {
+    "label": "Client Context: Alamo Industries",
+    "body": "Rodrigo Vega (VP Operations) is preparing for a mandatory industrial compliance audit. The OT/IT boundary on the manufacturing floor is poorly segmented. David Kim needs a vulnerability assessment before the auditors arrive."
+  },
+  "skills": {
+    "left": [
+      "Vulnerability scanning and scoring",
+      "CVE research and analysis",
+      "Metasploit framework basics"
+    ],
+    "right": [
+      "Exploit development concepts",
+      "Penetration test methodology",
+      "Executive findings reporting"
+    ]
+  },
+  "footer": "Start with Lab 4.1 in the Assignments section."
+}

@@ -1,0 +1,55 @@
+{
+  "type": "module_overview",
+  "module": 3,
+  "title": "Network Security & Traffic Analysis",
+  "accentColor": "#7B68EE",
+  "weeks": "7-9",
+  "chapters": "4 & 9",
+  "client": "LoneStar DevOps",
+  "clientColor": "#00D26A",
+  "headerSvg": "Module_3_Header.svg",
+  "overview": "Module 3 puts you inside the wire. You'll capture and analyze live network traffic, identify suspicious patterns, and understand how attackers move through networks\u2014then investigate a real incident on a DevOps client's infrastructure.",
+  "weeks_breakdown": [
+    {
+      "weekLabel": "WEEK 7",
+      "type": "foundation",
+      "labTitle": "Lab 3.1: Network Protocols & Packet Analysis",
+      "labDesc": "TCP/IP deep dive. Wireshark capture and analysis fundamentals.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 8",
+      "type": "foundation",
+      "labTitle": "Lab 3.2: Intrusion Detection & Log Analysis",
+      "labDesc": "IDS/IPS concepts. Snort rules, log correlation, anomaly detection.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 9",
+      "type": "engagement",
+      "labTitle": "Lab 3.3: LoneStar DevOps Network Investigation",
+      "labDesc": "Client engagement. Analyze suspicious traffic + incident report.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#00D26A"
+    }
+  ],
+  "clientContext": {
+    "label": "Client Context: LoneStar DevOps",
+    "body": "Marcus Webb (CEO) reports anomalous traffic patterns during overnight deployments. The dev team noticed unexpected outbound connections from the CI/CD pipeline. Santiago Reyes needs a network traffic analysis to determine if there's been a breach."
+  },
+  "skills": {
+    "left": [
+      "Packet capture with Wireshark",
+      "TCP/IP protocol analysis",
+      "Network traffic interpretation"
+    ],
+    "right": [
+      "IDS rule writing",
+      "Log analysis and correlation",
+      "Incident documentation"
+    ]
+  },
+  "footer": "Start with Lab 3.1 in the Assignments section."
+}

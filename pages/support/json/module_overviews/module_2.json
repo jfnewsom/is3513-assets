@@ -1,0 +1,55 @@
+{
+  "type": "module_overview",
+  "module": 2,
+  "title": "Cryptography & Authentication",
+  "accentColor": "#7B68EE",
+  "weeks": "4-6",
+  "chapters": "6 & 11",
+  "client": "Gulf Coast Healthcare",
+  "clientColor": "#00BCD4",
+  "headerSvg": "Module_2_Header.svg",
+  "overview": "Module 2 builds your cryptographic foundations. You'll understand how encryption protects data, how certificates establish trust, and how authentication systems verify identity\u2014then fix a real certificate problem on a healthcare client's patient portal.",
+  "weeks_breakdown": [
+    {
+      "weekLabel": "WEEK 4",
+      "type": "foundation",
+      "labTitle": "Lab 2.1: Cryptographic Foundations",
+      "labDesc": "Symmetric vs asymmetric, hashing, key exchange. Hands-on with OpenSSL.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 5",
+      "type": "foundation",
+      "labTitle": "Lab 2.2: Authentication Systems",
+      "labDesc": "Certificates, PKI, MFA concepts. Certificate validation and chain of trust.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 6",
+      "type": "engagement",
+      "labTitle": "Lab 2.3: Gulf Coast Certificate Remediation",
+      "labDesc": "Client engagement. Fix expired certificate on patient portal + document.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#00BCD4"
+    }
+  ],
+  "clientContext": {
+    "label": "Client Context: Gulf Coast Healthcare Partners",
+    "body": "Patients are seeing browser security warnings when accessing the portal. Dr. Okonkwo is concerned about patient trust. Jennifer Walsh (CISO) needs the certificate issue diagnosed and fixed\u2014with documentation for HIPAA compliance records."
+  },
+  "skills": {
+    "left": [
+      "Encryption concepts (symmetric/asymmetric)",
+      "Hashing and integrity verification",
+      "OpenSSL command line usage"
+    ],
+    "right": [
+      "Certificate analysis and validation",
+      "PKI and chain of trust",
+      "Certificate remediation"
+    ]
+  },
+  "footer": "Start with Lab 2.1 in the Assignments section."
+}

@@ -1,0 +1,55 @@
+{
+  "type": "module_overview",
+  "module": 5,
+  "title": "Risk Management & Security Policy",
+  "accentColor": "#7B68EE",
+  "weeks": "13-15",
+  "chapters": "5 & 10",
+  "client": "Brazos Financial",
+  "clientColor": "#FF9F1C",
+  "headerSvg": "Module_5_Header.svg",
+  "overview": "Module 5 zooms out from technical execution to organizational risk. You'll learn how security decisions are framed in business terms, how policies and frameworks govern security programs, and deliver a final risk assessment that ties your semester together.",
+  "weeks_breakdown": [
+    {
+      "weekLabel": "WEEK 13",
+      "type": "foundation",
+      "labTitle": "Lab 5.1: Risk Assessment Methodology",
+      "labDesc": "NIST RMF, risk registers, likelihood/impact matrices. Qualitative vs quantitative.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 14",
+      "type": "foundation",
+      "labTitle": "Lab 5.2: Security Policy & Compliance Frameworks",
+      "labDesc": "Policy writing, NIST CSF, ISO 27001 overview, compliance mapping.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 15",
+      "type": "engagement",
+      "labTitle": "Lab 5.3: Brazos Financial Risk Assessment",
+      "labDesc": "Capstone engagement. Full risk assessment + remediation roadmap.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#FF9F1C"
+    }
+  ],
+  "clientContext": {
+    "label": "Client Context: Brazos Financial Group",
+    "body": "You're back at Brazos for the capstone. Ray Jimenez now has your recon findings from Module 1. He needs a complete risk assessment that quantifies the threats you identified, prioritizes remediation, and gives the board a security investment roadmap."
+  },
+  "skills": {
+    "left": [
+      "Risk identification and scoring",
+      "NIST RMF application",
+      "Security policy writing"
+    ],
+    "right": [
+      "Compliance framework mapping",
+      "Remediation planning",
+      "Executive risk communication"
+    ]
+  },
+  "footer": "Start with Lab 5.1 in the Assignments section."
+}

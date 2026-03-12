@@ -1,0 +1,55 @@
+{
+  "type": "module_overview",
+  "module": 1,
+  "title": "Threat Intelligence & Reconnaissance",
+  "accentColor": "#7B68EE",
+  "weeks": "1-3",
+  "chapters": "1 & 2",
+  "client": "Brazos Financial",
+  "clientColor": "#FF9F1C",
+  "headerSvg": "Module_1_Header.svg",
+  "overview": "Your first module at NEXUS establishes your security workstation and teaches reconnaissance methodology. You'll learn what attackers can discover about an organization without ever touching their systems\u2014then apply those skills to a real client assessment.",
+  "weeks_breakdown": [
+    {
+      "weekLabel": "WEEK 1",
+      "type": "foundation",
+      "labTitle": "Lab 1.1: Kali Environment Setup",
+      "labDesc": "Build your security workstation. Install VirtualBox, Kali Linux, verify tools.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 2",
+      "type": "foundation",
+      "labTitle": "Lab 1.2: Reconnaissance Tool Exploration",
+      "labDesc": "Master Nmap, Netcat, OSINT tools. Practice on training targets.",
+      "badgeLabel": "Internal Training",
+      "badgeColor": "#00D26A"
+    },
+    {
+      "weekLabel": "WEEK 3",
+      "type": "engagement",
+      "labTitle": "Lab 1.3: Brazos Financial Reconnaissance Engagement",
+      "labDesc": "Client engagement. External reconnaissance assessment + professional report.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#FF9F1C"
+    }
+  ],
+  "clientContext": {
+    "label": "Client Context: Brazos Financial Group",
+    "body": "Ray Jimenez (CTO) wants to understand what an attacker could discover about Brazos without insider access. The SEC examination is in 6 months\u2014he needs ammunition for his security budget presentation to the board."
+  },
+  "skills": {
+    "left": [
+      "VM installation and configuration",
+      "Port scanning with Nmap",
+      "Service enumeration"
+    ],
+    "right": [
+      "OSINT methodology",
+      "Professional documentation",
+      "Executive report writing"
+    ]
+  },
+  "footer": "Start with Lab 1.1 in the Assignments section."
+}
