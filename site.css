@@ -505,3 +505,91 @@ summary {
   color: #B0B8C4;
   font-size: 14px;
 }
+
+/* ============================================================
+   EXAM INSTRUCTION PAGE COMPONENTS
+   ============================================================ */
+
+/* ── Large stat bar (exam) ────────────────────────────────── */
+.nx-info-bar--lg .nx-info-stat {
+  padding: 20px;
+}
+.nx-info-stat__label--purple { color: #7B68EE; }
+.nx-info-stat__label--orange { color: #FF9F1C; }
+.nx-info-stat__label--red    { color: #E63946; }
+
+.nx-info-stat__value--lg {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ── Section label color variants ────────────────────────── */
+.nx-section-label--red {
+  color: #E63946;
+  border-bottom-color: #E63946;
+}
+.nx-section-label--cyan {
+  color: #00BCD4;
+  border-bottom-color: #00BCD4;
+}
+.nx-section-label--orange {
+  color: #FF9F1C;
+  border-bottom-color: #FF9F1C;
+}
+
+/* ── Two-column layout ────────────────────────────────────── */
+.nx-two-col {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+.nx-two-col__col {
+  flex: 1;
+}
+
+/* ── Exam section block ───────────────────────────────────── */
+.nx-exam-section {
+  margin-bottom: 20px;
+}
+.nx-exam-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Exam chapter list ────────────────────────────────────── */
+.nx-exam-list {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.nx-exam-chapter {
+  color: #B0B8C4;
+  margin-bottom: 6px;
+}
+.nx-exam-chapter strong {
+  color: #ffffff;
+}
+
+/* ── Exam body text ───────────────────────────────────────── */
+.nx-exam-body {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Exam tips list ───────────────────────────────────────── */
+.nx-exam-tips {
+  color: #B0B8C4;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 18px;
+}
+.nx-exam-tips li {
+  margin-bottom: 6px;
+}
+
+/* ── Responsive: stack two-col on small screens ───────────── */
+@media (max-width: 600px) {
+  .nx-two-col { flex-direction: column; }
+  .nx-info-stat__value--lg { font-size: 24px; }
+}
