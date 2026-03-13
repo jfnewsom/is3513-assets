@@ -194,11 +194,52 @@
     <p>Analyzing CIDR notation to determine network size, usable hosts, and address boundaries without subnetting.</p>
     <h3>Why It Matters</h3>
     <p>CIDR notation is the universal language for describing network size. When you see <code>192.168.1.0/24</code>, you need to instantly know how many hosts that includes, where it starts, and where it ends. This is essential for firewall rules, capture filters, and vulnerability scans.</p>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">calculate</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">The Visual Count-Out Method</div>
-        <p>For <code>192.168.0.0/22</code>: Network: 22 bits | Host: 10 bits<br><code>11111111.11111111.11111100.00000000</code><br>Subnet Mask: <strong>255.255.252.0</strong> (FF.FF.FC.00)</p>
+    <div class="nx-cidr-vis">
+    <h4 class="nx-cidr-vis-title">The Visual Count-Out Method</h4>
+    <p class="nx-cidr-vis-intro">For <code>192.168.0.0/22</code>:</p>
+      <div class="nx-cidr-box">
+        <div class="nx-cidr-badges">
+        <span class="nx-cidr-badge nx-cidr-badge-net">Network: 22 bits</span>
+        <span class="nx-cidr-badge nx-cidr-badge-host">Host: 10 bits</span>
+        </div>
+        <div class="nx-cidr-bits">
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        </div>
+        <div class="nx-cidr-caption">Subnet Mask: 255.255.252.0 (FF.FF.FC.00)</div>
       </div>
     </div>
     <p><strong>Analysis Exercise</strong></p>
@@ -281,11 +322,53 @@
     <p>Creating a complete subnet table showing every possible subnet when you divide a larger network into smaller ones.</p>
     <h3>Why It Matters</h3>
     <p>Network segmentation is a core security control. By dividing networks into subnets, you can isolate sensitive systems, limit blast radius during incidents, and apply different security policies to different zones. This is why firewalls, VLANs, and access controls all depend on understanding subnet boundaries.</p>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">calculate</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Borrowing Bits</div>
-        <p>Starting with <code>192.168.0.0/22</code>, borrow 2 host bits for subnets:<br>Network: 22 | Subnet: +2 | Host: 8<br><code>11111111.11111111.11111111.00000000</code><br>New CIDR: <strong>/24</strong> &#8212; 4 subnets, 254 hosts each</p>
+    <div class="nx-cidr-vis">
+    <h4 class="nx-cidr-vis-title">Borrowing Bits</h4>
+    <p class="nx-cidr-vis-intro">Starting with <code>192.168.0.0/22</code>, borrow <strong>2 host bits</strong> for subnets. Bits move from <span class="nx-bit-host">host</span> to <span class="nx-bit-sub">subnet</span>:</p>
+      <div class="nx-cidr-box">
+        <div class="nx-cidr-badges">
+        <span class="nx-cidr-badge nx-cidr-badge-net">Network: 22 bits</span>
+        <span class="nx-cidr-badge nx-cidr-badge-sub">Subnet: +2 bits</span>
+        <span class="nx-cidr-badge nx-cidr-badge-host">Host: 8 bits</span>
+        </div>
+        <div class="nx-cidr-bits">
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-net">1</span>
+        <span class="nx-bit-sub">1</span>
+        <span class="nx-bit-sub">1</span>
+        <span class="nx-bit-dot">.</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        <span class="nx-bit-host">0</span>
+        </div>
+        <div class="nx-cidr-caption">New CIDR: /24 (22 original + 2 borrowed = 24)</div>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -739,7 +822,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>{'text': "Lab 3.2: Protocol Analysis Tools — Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible."}</p>
+        <p>Lab 3.2: Protocol Analysis Tools — Next week you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible.</p>
       </div>
     </div>
   </div>
