@@ -27,14 +27,18 @@
     <p>This week continues your security training at NEXUS with a deep dive into authentication systems. You&#8217;ll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next week &#8212; their infrastructure relies on certificate-based authentication.</p>
 
     <div class="nx-quote">
-      <div class="nx-quote-header">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
-        <div>
-          <div class="nx-quote-name">Derek Mitchell</div>
-          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      <div class="nx-quote-main">
+        <div class="nx-quote-avatar">
+          <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
+        </div>
+        <div class="nx-quote-bubble">
+          <p>&#8220;Attackers have to be right once. Defenders have to be right every time. That&#8217;s why we layer defenses &#8212; and authentication is your first layer. Passwords are the weakest link. This week, you&#8217;ll learn what replaces them.&#8221;</p>
         </div>
       </div>
-      <p>&#8220;Attackers have to be right once. Defenders have to be right every time. That&#8217;s why we layer defenses &#8212; and authentication is your first layer. Passwords are the weakest link. This week, you&#8217;ll learn what replaces them.&#8221;</p>
+      <div class="nx-quote-attribution">
+        <div class="nx-quote-name">Derek Mitchell</div>
+        <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      </div>
     </div>
     <h2>Chapters Covered</h2>
     <p>Chapter 6 &#8212; Applied Cryptography | Chapter 11 &#8212; Authentication and Remote Access</p>
@@ -111,14 +115,18 @@
     <h3>Why It Matters</h3>
     <p>SSH key authentication is the industry standard for secure remote access. Unlike passwords, keys are cryptographically strong, can&#8217;t be guessed through brute force, and provide non-repudiation. Every server you&#8217;ll manage in your career will use key-based authentication.</p>
     <div class="nx-quote">
-      <div class="nx-quote-header">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
-        <div>
-          <div class="nx-quote-name">Derek Mitchell</div>
-          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      <div class="nx-quote-main">
+        <div class="nx-quote-avatar">
+          <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
+        </div>
+        <div class="nx-quote-bubble">
+          <p>&#8220;ED25519 is the modern choice &#8212; smaller keys, faster operations, same security. But you&#8217;ll still see RSA everywhere. Know both.&#8221;</p>
         </div>
       </div>
-      <p>&#8220;ED25519 is the modern choice &#8212; smaller keys, faster operations, same security. But you&#8217;ll still see RSA everywhere. Know both.&#8221;</p>
+      <div class="nx-quote-attribution">
+        <div class="nx-quote-name">Derek Mitchell</div>
+        <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      </div>
     </div>
     <p><strong>Part A: Generate an RSA keypair</strong></p>
     <ol>
@@ -396,14 +404,18 @@
     <h3>Why It Matters</h3>
     <p>Understanding SSH configuration is essential for any security professional. The <code>authorized_keys</code> file is your access control list &#8212; every public key there can authenticate. The config file lets you manage connections to dozens of servers efficiently. Gulf Coast uses this exact setup for their infrastructure.</p>
     <div class="nx-quote">
-      <div class="nx-quote-header">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
-        <div>
-          <div class="nx-quote-name">Derek Mitchell</div>
-          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      <div class="nx-quote-main">
+        <div class="nx-quote-avatar">
+          <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
+        </div>
+        <div class="nx-quote-bubble">
+          <p>&#8220;Never rely on a single control. Layer your defenses so one failure doesn&#8217;t mean total compromise. SSH config files let you enforce security policies across all your connections.&#8221;</p>
         </div>
       </div>
-      <p>&#8220;Never rely on a single control. Layer your defenses so one failure doesn&#8217;t mean total compromise. SSH config files let you enforce security policies across all your connections.&#8221;</p>
+      <div class="nx-quote-attribution">
+        <div class="nx-quote-name">Derek Mitchell</div>
+        <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      </div>
     </div>
     <p><strong>Part A: Set up authorized_keys</strong></p>
     <ol>
@@ -581,14 +593,18 @@
     <h3>Why It Matters</h3>
     <p>Single-factor authentication is the root cause of countless breaches. MFA isn&#8217;t optional anymore &#8212; it&#8217;s required by HIPAA, PCI-DSS, and most compliance frameworks. Authentication factors: something you know (passwords, PINs), something you have (private keys, hardware tokens), and something you are (fingerprints, facial recognition). True MFA requires factors from different categories.</p>
     <div class="nx-quote">
-      <div class="nx-quote-header">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
-        <div>
-          <div class="nx-quote-name">Derek Mitchell</div>
-          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      <div class="nx-quote-main">
+        <div class="nx-quote-avatar">
+          <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
+        </div>
+        <div class="nx-quote-bubble">
+          <p>&#8220;A password and a security question are both things you know &#8212; that&#8217;s two steps, not two factors. A private key and a password? That&#8217;s real MFA. One factor gets stolen, you still have a wall between the attacker and your system.&#8221;</p>
         </div>
       </div>
-      <p>&#8220;A password and a security question are both things you know &#8212; that&#8217;s two steps, not two factors. A private key and a password? That&#8217;s real MFA. One factor gets stolen, you still have a wall between the attacker and your system.&#8221;</p>
+      <div class="nx-quote-attribution">
+        <div class="nx-quote-name">Derek Mitchell</div>
+        <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
+      </div>
     </div>
     <p><strong>Part A: Examine the current authentication policy</strong></p>
     <ol>
@@ -829,7 +845,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>{'text': 'After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three weeks into a complete Engagement Packet for the Gulf Coast Healthcare client.'}</p>
+        <p>After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three weeks into a complete Engagement Packet for the Gulf Coast Healthcare client.</p>
       </div>
     </div>
   </div>

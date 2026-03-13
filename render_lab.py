@@ -83,7 +83,7 @@ def callout(css_class, icon, title, body_html):
 
 
 def callout_p(css_class, icon, title, text):
-    body = f'        <p>{h(text)}</p>\n'
+    body = f'        <p>{h(text)}</p>\n' if text else ""
     return callout(css_class, icon, title, body)
 
 
@@ -584,7 +584,8 @@ def render_final_checklist(data):
     # Canvas submission callout
     canvas = fc.get("canvasSubmission")
     if canvas:
-        inner += callout_p("nx-cyan", "quiz", "Canvas Submission", canvas)
+        canvas_text = canvas.get("text", canvas) if isinstance(canvas, dict) else canvas
+        inner += callout_p("nx-cyan", "quiz", "Canvas Submission", canvas_text)
 
     # Final warning callout
     warn = fc.get("finalWarning")
