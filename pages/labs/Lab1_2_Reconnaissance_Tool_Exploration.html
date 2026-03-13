@@ -123,7 +123,7 @@
       <li>Run a version detection scan:
         <div class="nx-cmd">nmap -sV scanme.nmap.org</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
             <p><strong>In your output:</strong> Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible.</p>
@@ -135,7 +135,7 @@
       <li>Run a default script scan:
         <div class="nx-cmd">nmap -sC scanme.nmap.org</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The -sC flag runs Nmap&#8217;s default set of scripts against discovered services. These scripts perform safe enumeration tasks like grabbing SSH host keys, checking HTTP headers, and detecting common misconfigurations.</p>
             <p><strong>In your output:</strong> Compare this to the -sV output. You should see additional details like SSH host keys and HTTP page titles that weren&#8217;t in the version scan. Scripts extend Nmap from a port scanner into an information-gathering platform.</p>
@@ -230,7 +230,7 @@
       <li>Connect to SSH port on scanme.nmap.org:
         <div class="nx-cmd">nc -v scanme.nmap.org 22</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> nc (netcat) opens a raw TCP connection to a host and port. The -v flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.</p>
             <p><strong>In your output:</strong> You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version &#8212; valuable intel for an attacker.</p>
@@ -244,7 +244,7 @@
       <li>Try connecting to port 80:
         <div class="nx-cmd">nc -v scanme.nmap.org 80</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
             <p><strong>In your output:</strong> You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response.</p>
@@ -253,7 +253,7 @@
       </li>
       <li>Type HEAD / HTTP/1.0 and press Enter twice to get HTTP headers
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> HEAD / HTTP/1.0 is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.</p>
           </div>
@@ -334,7 +334,7 @@
       <li>Run dirb against the test target:
         <div class="nx-cmd">dirb http://testphp.vulnweb.com</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.</p>
             <p><strong>In your output:</strong> Watch for lines showing CODE:200 (the page exists) versus CODE:403 (forbidden but exists) and CODE:301 (redirect). Each discovered path is a potential attack surface.</p>
@@ -422,7 +422,7 @@
       <li>Run nikto against the test target:
         <div class="nx-cmd">nikto -h http://testphp.vulnweb.com</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> nikto is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The -h flag specifies the target host.</p>
             <p><strong>In your output:</strong> Each line prefixed with + is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report.</p>
@@ -503,7 +503,7 @@
       <li>Review enum4linux help:
         <div class="nx-cmd">enum4linux -h</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.</p>
             <p><strong>In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships.</p>
@@ -593,7 +593,7 @@
       <li>Update the database:
         <div class="nx-cmd">sudo searchsploit -u</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
           </div>
@@ -602,7 +602,7 @@
       <li>Search for Apache vulnerabilities:
         <div class="nx-cmd">searchsploit apache 2.4</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.</p>
             <p><strong>In your output:</strong> You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it.</p>
@@ -614,7 +614,7 @@
       <li>Try searching for OpenSSH:
         <div class="nx-cmd">searchsploit openssh</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Compare the results to your Apache search. Notice the different exploit types and how the version numbers in the titles help you narrow down which exploits apply to a specific target. In practice, you&#8217;d cross-reference these results with the exact version string from your Nmap scan.</p>
           </div>

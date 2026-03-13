@@ -192,7 +192,7 @@
       <li>Pull and start the Gulf Coast patient portal container:
         <div class="nx-cmd">sudo docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal jfnewsom/gulfcoast-portal</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal &#8212; an Apache web server with a deliberately expired SSL certificate.</p>
             <p><strong>Flags:</strong></p>
@@ -223,7 +223,7 @@
       <li>Check the certificate dates from your Kali terminal:
         <div class="nx-cmd">openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This connects to the HTTPS server like a browser would, grabs the certificate, and displays its validity dates. The <code>notBefore</code> and <code>notAfter</code> dates tell you when the certificate was issued and when it expired.</p>
             <p><strong>In your output:</strong> The <code>notAfter</code> date should be in the past, confirming the certificate has expired.</p>
@@ -327,7 +327,7 @@
       <li>Explore the directory structure:
         <div class="nx-cmd">ls -la CA/ certs/ csr/</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> You&#8217;re mapping the PKI infrastructure before making changes. The <code>CA/</code> directory holds the root Certificate Authority (<code>ca.crt</code> and <code>ca.key</code>). The <code>certs/</code> directory holds the server certificates including the expired <code>portal.crt</code>. The <code>csr/</code> directory is your working space for new certificate signing requests.</p>
             <p><strong>In your output:</strong> Note the file permissions &#8212; the CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.</p>
@@ -340,7 +340,7 @@
       <li>Generate a new CSR using the existing private key:
         <div class="nx-cmd">openssl req -new -key certs/portal.key -out csr/portal-new.csr -subj "/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local"</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> A Certificate Signing Request (CSR) is a formal application for a new certificate. It contains your public key and identity information, signed with your private key to prove ownership. The CA uses this to issue a new certificate without ever needing your private key.</p>
             <p><strong>Flags:</strong></p>
@@ -366,7 +366,7 @@
       <li>Sign the CSR using the CA certificate and key (requires sudo because the CA key is root-owned):
         <div class="nx-cmd">sudo openssl x509 -req -in csr/portal-new.csr -CA CA/ca.crt -CAkey CA/ca.key -CAcreateserial -out certs/portal-new.crt -days 365 -sha256</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The CA &#8220;signs&#8221; your CSR by combining your identity and public key with the CA&#8217;s digital signature. Anyone who trusts the CA can now verify your certificate is legitimate. This is the chain of trust in action.</p>
             <p><strong>In your output:</strong> You&#8217;ll see &#8220;Certificate request self-signature ok&#8221; followed by the subject line. The sudo password is <code>nexus2026</code>.</p>
@@ -448,7 +448,7 @@
       <li>Restart Apache to load the new certificate:
         <div class="nx-cmd">sudo service apache2 restart</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Restarting Apache inside the Docker container will close your SSH connection. You&#8217;ll see &#8220;Connection to localhost closed by remote host.&#8221; This is normal. The container may also stop.</p>
           </div>
@@ -469,7 +469,7 @@
       <li>From your Kali terminal (not inside the container), verify the new certificate dates:
         <div class="nx-cmd">openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.</p>
           </div>

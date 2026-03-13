@@ -184,7 +184,7 @@ def render_what_this_does(wtd):
         return ""
     return (
         f'        <details>\n'
-        f'          <summary>&#9654; What this does</summary>\n'
+        f'          <summary>What this does</summary>\n'
         f'          <div class="nx-details-body">\n'
         f'{inner}'
         f'          </div>\n'
@@ -237,6 +237,12 @@ def render_steps_block(block):
         command   = step.get("command")
         wtd       = step.get("whatThisDoes")
         sub_items = step.get("subItems", [])
+        # If step has no visible content at all, render wtd outside the ol entirely
+        if not text and not command and not sub_items and wtd:
+            out += f'    </ol>\n'
+            out += render_what_this_does(wtd)
+            out += f'    <ol start="{steps.index(step) + start + 1}">\n'
+            continue
         out += f'      <li>{text}\n'
         if command:
             out += f'        <div class="nx-cmd">{command}</div>\n'

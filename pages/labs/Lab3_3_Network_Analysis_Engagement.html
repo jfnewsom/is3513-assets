@@ -188,7 +188,7 @@
       <li>Resolve the server&#8217;s IP address from a terminal on your host:
         <div class="nx-cmd">nslookup gulfcoast-portal.southcentralus.azurecontainer.io</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> nslookup queries the Domain Name System (DNS) to translate a hostname into an IP address &#8212; the same process your browser performs behind the scenes every time you visit a website.</p>
             <p><strong>In your output:</strong> Look for a line showing <code>Address:</code> followed by an IP (e.g., 52.248.39.180). This is the IP you&#8217;ll use in your Wireshark capture filter.</p>
@@ -197,14 +197,14 @@
       </li>
       <li>Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 52.248.39.180</code><br><em>(replace with the IP nslookup returned)</em>
       </li>
-      <li>
+    </ol>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Wireshark&#8217;s capture filters (BPF filters) resolve hostnames once at capture start and can silently fail. Using the IP directly is more reliable and is standard professional practice. You&#8217;ll still use the FQDN for SSH and browser connections &#8212; only the capture filter needs the IP.</p>
           </div>
         </details>
-      </li>
+    <ol start="6">
     </ol>
     <h3>Step 2: Connect to Azure VM</h3>
     <ol>
@@ -213,7 +213,7 @@
       <li>SSH to the Gulf Coast portal:
         <div class="nx-cmd">ssh student@gulfcoast-portal.southcentralus.azurecontainer.io</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> SSH (Secure Shell) creates an encrypted tunnel between your Kali VM and the remote server. All traffic within the tunnel is encrypted, which is why Wireshark will show SSH packets but cannot read their contents.</p>
             <p><strong>In your output:</strong> You&#8217;ll be asked to accept the host key fingerprint (type <code>yes</code>), then prompted for a password. After successful login, you&#8217;ll see a welcome banner identifying the Gulf Coast Healthcare Partners portal server.</p>
@@ -264,7 +264,7 @@
       <li>In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:
         <div class="nx-cmd">curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> curl is a command-line tool for making HTTP requests. In security assessments, it&#8217;s preferred over a browser because it shows the raw server response without client-side rendering or caching. Examining response headers is one of the first steps in web application reconnaissance.</p>
             <p><strong>In your output:</strong> You&#8217;ll see headers like <code>Server:</code>, <code>Content-Type:</code>, and others. Pay close attention &#8212; what information is the server revealing about itself that an attacker could use?</p>
@@ -278,7 +278,7 @@
       <li>Now request the HTTPS headers for comparison:
         <div class="nx-cmd">curl -k -I https://gulfcoast-portal.southcentralus.azurecontainer.io</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The same request but over HTTPS (encrypted). Comparing HTTP and HTTPS responses side-by-side can reveal configuration differences &#8212; servers sometimes expose different headers depending on the protocol.</p>
             <p><strong>In your output:</strong> Compare this response carefully to the HTTP version. Do you see any headers here that were not present in the HTTP response? Any differences are potential security findings.</p>
@@ -303,7 +303,7 @@
       <li>In your SSH session, list the web server&#8217;s document root:
         <div class="nx-cmd">ls /var/www/</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>/var/www/</code> is the default web root on Linux servers. Listing its contents shows what web applications and directories the server hosts.</p>
             <p><strong>In your output:</strong> You should see one or more directories. Note the names &#8212; do any suggest older or legacy systems that might have weaker security controls?</p>
@@ -313,7 +313,7 @@
       <li>Check for Gulf Coast application files:
         <div class="nx-cmd">ls /opt/gulfcoast-*</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>/opt/</code> is where third-party and custom applications are typically installed. The wildcard (<code>*</code>) matches any file or directory starting with <code>gulfcoast-</code>.</p>
             <p><strong>In your output:</strong> Any files or directories here represent installed Gulf Coast applications. Explore their contents for configuration files, logs, or other artifacts.</p>
@@ -323,7 +323,7 @@
       <li>Examine the web server configuration:
         <div class="nx-cmd">cat /etc/nginx/sites-enabled/*</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>/etc/nginx/sites-enabled/</code> contains active site configurations for the nginx web server. Reading these files reveals how the server is configured: ports, SSL/TLS settings, served locations, and security headers (or lack thereof).</p>
             <p><strong>In your output:</strong> This is a goldmine for your assessment. Read carefully &#8212; look for SSL protocol versions, enabled locations, header settings, and misconfigurations. Many findings you&#8217;ll document in your report can be confirmed right here.</p>

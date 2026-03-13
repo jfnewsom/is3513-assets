@@ -416,7 +416,7 @@
       <li>Update your package lists: sudo apt update ▶ What this does Concept: apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what’s available. Always run this before installing new software so you get the latest versions.
         <div class="nx-cmd">sudo apt update</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what's available. Always run this before installing new software so you get the latest versions.</p>
           </div>
@@ -425,7 +425,7 @@
       <li>Install Docker and Docker Compose: sudo apt install -y docker.io docker-compose ▶ What this does Concept: apt install downloads and installs packages. The -y flag automatically answers “yes” to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file. We’ll use both throughout the course.
         <div class="nx-cmd">sudo apt install -y docker.io docker-compose</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> apt install downloads and installs packages. The -y flag automatically answers "yes" to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file.</p>
           </div>
@@ -434,7 +434,7 @@
       <li>Enable Docker to start automatically and start it now: sudo systemctl enable docker --now ▶ What this does Concept: systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don’t have to reboot first.
         <div class="nx-cmd">sudo systemctl enable docker --now</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don't have to reboot first.</p>
           </div>
@@ -443,7 +443,7 @@
       <li>Add your user to the Docker group: sudo usermod -aG docker $USER ▶ What this does Concept: usermod -aG appends (-a) your user to a group (-G). By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time.
         <div class="nx-cmd">sudo usermod -aG docker $USER</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> usermod -aG appends your user to a group. By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time.</p>
           </div>
@@ -461,7 +461,7 @@
       <li>Check the Docker version: docker --version ▶ What this does In your output: You should see the installed Docker version number. If you get “command not found” or a permission error, the installation didn’t complete correctly or you haven’t logged out and back in yet.
         <div class="nx-cmd">docker --version</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> You should see the installed Docker version number. If you get "command not found" or a permission error, the installation didn't complete correctly or you haven't logged out and back in yet.</p>
           </div>
@@ -470,7 +470,7 @@
       <li>Run the Docker test container: docker run hello-world ▶ What this does Concept: docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see “Hello from Docker!” — Docker is fully working.
         <div class="nx-cmd">docker run hello-world</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see "Hello from Docker!" — Docker is fully working.</p>
           </div>
@@ -551,7 +551,7 @@
       <li>Display your hostname: hostname ▶ What this does In your output: This should show kali-lastname-studentID (the hostname you set in Checkpoint 4). If it shows something else, you need to fix it before proceeding.
         <div class="nx-cmd">hostname</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> This should show kali-lastname-studentID. If it shows something else, you need to fix it before proceeding.</p>
           </div>
@@ -560,7 +560,7 @@
       <li>Display kernel and OS information: uname -a ▶ What this does Concept: uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means “all.” This is a standard first step when documenting an engagement environment.
         <div class="nx-cmd">uname -a</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means "all." This is a standard first step when documenting an engagement environment.</p>
           </div>
@@ -578,7 +578,7 @@
       <li>Display your network interfaces and IP addresses: ip addr ▶ What this does Concept: ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox’s NAT adapter (typically 10.0.2.x). No IP means no network connectivity.
         <div class="nx-cmd">ip addr</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x).</p>
           </div>
@@ -587,7 +587,7 @@
       <li>Test internet connectivity: ping -c 3 8.8.8.8 ▶ What this does Concept: ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets (otherwise it runs forever). 8.8.8.8 is Google’s public DNS. If all 3 packets come back, you have internet connectivity.
         <div class="nx-cmd">ping -c 3 8.8.8.8</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets. 8.8.8.8 is Google's public DNS. If all 3 packets come back, you have internet connectivity.</p>
           </div>
@@ -605,7 +605,7 @@
       <li>Verify Nmap is installed: nmap --version ▶ What this does Concept: Nmap is the industry-standard network scanner. You’ll use it heavily starting in Module 1 Lab 2. The --version flag confirms it’s installed and shows the version number.
         <div class="nx-cmd">nmap --version</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Nmap is the industry-standard network scanner. You'll use it heavily starting in Module 1 Lab 2. The --version flag confirms it's installed and shows the version number.</p>
           </div>
@@ -614,7 +614,7 @@
       <li>Verify Wireshark is installed: wireshark --version ▶ What this does Concept: Wireshark is a packet capture and analysis tool. You’ll use it in Module 3 to inspect network traffic. Confirming the version now ensures it’s ready when you need it.
         <div class="nx-cmd">wireshark --version</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Wireshark is a packet capture and analysis tool. You'll use it in Module 3 to inspect network traffic.</p>
           </div>
@@ -623,7 +623,7 @@
       <li>Verify John the Ripper is installed: john --help | head -5 ▶ What this does Concept: John the Ripper is a password cracking tool you’ll use in Module 4. The | head -5 pipe takes the first 5 lines of output, which is enough to confirm it’s installed without flooding your terminal.
         <div class="nx-cmd">john --help | head -5</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> John the Ripper is a password cracking tool you'll use in Module 4. The | head -5 pipe takes the first 5 lines of output — enough to confirm it's installed without flooding your terminal.</p>
           </div>
@@ -644,7 +644,7 @@
       <li>Verify no containers are running yet: docker ps ▶ What this does Concept: docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you’ll confirm your lab target containers are running before you start scanning.
         <div class="nx-cmd">docker ps</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you'll confirm your lab target containers are running before you start scanning.</p>
           </div>

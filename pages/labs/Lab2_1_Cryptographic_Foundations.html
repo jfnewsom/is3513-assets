@@ -142,7 +142,7 @@
       <li>Generate the SHA-256 hash:
         <div class="nx-cmd">sha256sum patient.txt</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>sha256sum</code> computes a SHA-256 cryptographic hash &#8212; a fixed-length, 64-character hexadecimal fingerprint of a file. The same input always produces the same hash, but even a one-bit change produces a completely different output. This is how you prove a file has not been tampered with.</p>
             <p><strong>In your output:</strong> You should see a 64-character hex string followed by the filename. This hash is unique to your file&#8217;s exact contents. Copy it somewhere &#8212; you&#8217;ll compare it in the next step.</p>
@@ -165,7 +165,7 @@
       <li>Compare the hashes:
         <div class="nx-cmd">sha256sum patient.txt patient2.txt</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Compare the two hashes carefully. Despite changing only one character, the hashes are completely different. This is the <strong>avalanche effect</strong> &#8212; a critical property of cryptographic hash functions. If small changes produced similar hashes, attackers could predict modifications. The avalanche effect makes that impossible.</p>
           </div>
@@ -253,7 +253,7 @@
       <li>Encrypt your patient file (use password <code>nexus2026</code> when prompted):
         <div class="nx-cmd">openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This encrypts a file using AES-256 in CBC mode &#8212; the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.</p>
             <p><strong>In your output:</strong> OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success &#8212; OpenSSL is silent on success.</p>
@@ -274,7 +274,7 @@
       <li>View the encrypted contents as a hex dump:
         <div class="nx-cmd">xxd patient.txt.enc | head</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>xxd</code> is a hex dump utility that shows raw file bytes in hexadecimal format. Piping to <code>head</code> limits output to the first 10 lines. This lets you visually confirm the file is encrypted &#8212; you should see random-looking hex values, not readable text.</p>
             <p><strong>In your output:</strong> The hex dump should show no recognizable text &#8212; just seemingly random bytes. The first 16 bytes contain the <code>Salted__</code> header followed by the salt value. If you can read any of the original patient data, encryption failed.</p>
@@ -294,7 +294,7 @@
       <li>Decrypt using the same password:
         <div class="nx-cmd">openssl enc -aes-256-cbc -d -pbkdf2 -in patient.txt.enc -out patient_decrypted.txt</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The <code>-d</code> flag switches OpenSSL to decrypt mode &#8212; this single flag reverses the encryption operation. Everything else stays the same: same algorithm, same key derivation. This demonstrates that symmetric encryption is reversible with the correct password.</p>
           </div>
@@ -389,7 +389,7 @@
       <li>Generate a 2048-bit RSA private key:
         <div class="nx-cmd">openssl genrsa -out private.pem 2048</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This generates an RSA private key &#8212; the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.</p>
             <p><strong>Flags:</strong></p>
@@ -404,7 +404,7 @@
       <li>Extract the public key:
         <div class="nx-cmd">openssl rsa -in private.pem -pubout -out public.pem</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The public key is mathematically derived from the private key &#8212; but the reverse is computationally infeasible. This one-way relationship is what makes asymmetric crypto work: you can freely distribute your public key without exposing your private key. Anyone with your public key can encrypt messages that only your private key can decrypt.</p>
           </div>
@@ -432,7 +432,7 @@
       <li>Encrypt with the public key:
         <div class="nx-cmd">openssl pkeyutl -encrypt -pubin -inkey public.pem -in secret.txt -out secret.enc</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Public key encryption &#8212; anyone with your public key can encrypt a message, but only the private key holder can decrypt it. This solves the key distribution problem: you never need to share a secret password over an insecure channel.</p>
             <p><strong>Flags:</strong></p>
@@ -547,7 +547,7 @@
       <li>Sign with your private key:
         <div class="nx-cmd">openssl dgst -sha256 -sign private.pem -out order.sig order.txt</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Digital signing is encryption in reverse &#8212; you sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.</p>
             <p><strong>Flags:</strong></p>
@@ -576,7 +576,7 @@
       <li>Verify using the public key:
         <div class="nx-cmd">openssl dgst -sha256 -verify public.pem -signature order.sig order.txt</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> You should see <code>Verified OK</code> &#8212; this confirms three things simultaneously: (1) the document has not been modified since signing, (2) the signature was created by the holder of the matching private key, and (3) the signer cannot deny having signed it (non-repudiation). If even one byte of order.txt changed, verification would fail.</p>
           </div>

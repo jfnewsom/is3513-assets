@@ -175,7 +175,7 @@
       <li>Pull the Brazos container image:
         <div class="nx-cmd">docker pull jfnewsom/brazos-financial:latest</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> docker pull downloads a container image from Docker Hub. This image contains Brazos Financial&#8217;s simulated environment &#8212; a pre-configured system with intentional vulnerabilities for you to discover. The :latest tag ensures you get the current version.</p>
           </div>
@@ -184,7 +184,7 @@
       <li>Run the container with all required ports:
         <div class="nx-cmd">docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> docker run creates and starts a container. The -d flag runs it in the background (detached). Each -p flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 445 (SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan &#8212; Brazos Financial&#8217;s exposed attack surface.</p>
           </div>
@@ -193,7 +193,7 @@
       <li>Verify the container is running:
         <div class="nx-cmd">docker ps</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> You should see a table with the brazos container listed as &#8220;Up.&#8221; Verify all five port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed &#8212; check the Common Pitfalls below.</p>
           </div>
@@ -255,7 +255,7 @@
       <li>Run comprehensive nmap scan:
         <div class="nx-cmd">nmap -sV -sC -A localhost</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This combines all three Nmap techniques from Lab 1.2: version detection (-sV), default scripts (-sC), and aggressive mode (-A adds OS detection and traceroute). This is your primary reconnaissance scan &#8212; document every open port, service, and version in your report.</p>
           </div>
@@ -266,7 +266,7 @@
       <li>Run dirb against the web services:
         <div class="nx-cmd">dirb http://localhost</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Brute-forces directory names on Brazos Financial&#8217;s web server. Look for admin panels, backup files, or configuration directories that shouldn&#8217;t be publicly accessible. Each finding is a potential vulnerability for your report.</p>
           </div>
@@ -275,7 +275,7 @@
       <li>Execute nikto vulnerability scan:
         <div class="nx-cmd">nikto -h http://localhost</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Scans Brazos Financial&#8217;s web server for known misconfigurations, outdated software, and dangerous files. The findings from nikto complement your dirb results &#8212; nikto checks for specific vulnerabilities while dirb discovers hidden paths.</p>
           </div>
@@ -284,7 +284,7 @@
       <li>Enumerate SMB with enum4linux:
         <div class="nx-cmd">enum4linux -a localhost</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The -a flag runs all enumeration checks: users, shares, groups, password policies, OS info. In Lab 1.2 you reviewed the help &#8212; now you&#8217;re running it for real against Brazos Financial&#8217;s SMB service on port 445. Document any discovered usernames, file shares, or policy weaknesses.</p>
           </div>

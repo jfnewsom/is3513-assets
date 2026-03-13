@@ -139,7 +139,7 @@
       <li>Generate a 4096-bit RSA key (press Enter for defaults, use passphrase <code>nexus2026</code>):
         <div class="nx-cmd">ssh-keygen -t rsa -b 4096 -f ./id_rsa_lab -C "lab-rsa-key"</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>ssh-keygen</code> generates SSH keypairs for passwordless authentication. Like the RSA keys from Lab 2.1, SSH keys use asymmetric cryptography &#8212; but formatted for the SSH protocol. The private key stays on your machine; the public key goes on any server you want to access.</p>
             <p><strong>In your output:</strong> You&#8217;ll see a randomart image &#8212; a visual fingerprint of your key. Two files are created: <code>id_rsa_lab</code> (private, keep secret) and <code>id_rsa_lab.pub</code> (public, safe to share).</p>
@@ -172,7 +172,7 @@
       <li>Generate an ED25519 key (modern, faster, smaller):
         <div class="nx-cmd">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> ED25519 is a modern elliptic curve algorithm that provides equivalent security to RSA-4096 with much smaller keys and faster operations. Most security professionals now recommend ED25519 for new deployments &#8212; shorter keys, faster math, no known weaknesses. You&#8217;ll still encounter RSA on legacy systems, which is why you learned both.</p>
           </div>
@@ -184,7 +184,7 @@
       <li>Compare the key sizes:
         <div class="nx-cmd">wc -c id_rsa_lab.pub id_ed25519_lab.pub</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> <code>wc -c</code> counts bytes in each file. The RSA public key will be roughly 750 bytes while ED25519 is about 100 bytes &#8212; yet they provide comparable security. Smaller is better when security is equal.</p>
           </div>
@@ -259,7 +259,7 @@
       <li>Check the current permissions on your keys:
         <div class="nx-cmd">ls -la ~/lab2-auth/id_*</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> In Linux, every file has three permission groups: Owner, Group, and Others. Each group gets three bits: <strong>r</strong> (read=4), <strong>w</strong> (write=2), <strong>x</strong> (execute=1). Add them up per group to get octal notation. Private keys should be <code>600</code> (<code>-rw-------</code>), public keys <code>644</code> (<code>-rw-r--r--</code>), and the <code>~/.ssh</code> directory <code>700</code> (<code>drwx------</code>).</p>
             <p><strong>In your output:</strong> You should see <code>-rw-------</code> for private keys and <code>-rw-r--r--</code> for public keys. The first column is the permission string.</p>
@@ -269,7 +269,7 @@
       <li>View the same permissions in octal notation:
         <div class="nx-cmd">stat -c '%a %n' ~/lab2-auth/id_*</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Private keys should show <code>600</code> and public keys <code>644</code> &#8212; confirming what <code>ls -la</code> showed. These are the correct, SSH-enforced permission levels.</p>
           </div>
@@ -281,7 +281,7 @@
       <li>Copy the private key to a shared directory for this demonstration:
         <div class="nx-cmd">cp ~/lab2-auth/id_ed25519_lab /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Your home directory (<code>/home/kali</code>) has permissions <code>700</code> &#8212; other users can&#8217;t enter it. <code>/tmp</code> is world-readable and world-writable, which is realistic: in enterprise environments, files often end up in shared directories like <code>/tmp</code> or <code>/var/www</code>. In those locations, <strong>file permissions are your only line of defense</strong>.</p>
           </div>
@@ -290,7 +290,7 @@
       <li>Make the copy world-readable (INSECURE &#8212; for demonstration only):
         <div class="nx-cmd">chmod 644 /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> You&#8217;re changing this key from <code>600</code> (owner read/write only) to <code>644</code> (owner read/write, group can read, others can read). The permissions change from <code>-rw-------</code> to <code>-rw-r--r--</code>. That <code>r--</code> at the end means every user on this machine can now read this file &#8212; fine for public keys, a disaster for private keys.</p>
           </div>
@@ -299,7 +299,7 @@
       <li>Prove it &#8212; read the key as a completely different user:
         <div class="nx-cmd">sudo -u nobody cat /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>sudo -u nobody</code> runs the following command as the <code>nobody</code> account &#8212; a minimal, unprivileged account with no special access to your files. Think of it as a stand-in for any random user or compromised process on this machine.</p>
             <p><strong>In your output:</strong> You should see the entire private key printed to your terminal, starting with <code>-----BEGIN OPENSSH PRIVATE KEY-----</code>. This is the actual cryptographic secret. Anyone who has this data can impersonate you on any system where this key is authorized.</p>
@@ -319,7 +319,7 @@
       <li>Restrict the file back to owner-only:
         <div class="nx-cmd">chmod 600 /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>chmod 600</code> sets permissions to <code>-rw-------</code>: 6 = read+write for owner, 0 = nothing for group, 0 = nothing for others. The change takes effect immediately &#8212; the kernel enforces it on the very next access attempt.</p>
           </div>
@@ -328,7 +328,7 @@
       <li>Try reading the key as <code>nobody</code> again:
         <div class="nx-cmd">sudo -u nobody cat /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> You should now see: <code>cat: /tmp/demo_key: Permission denied</code>. Same command, same user, same file &#8212; only three digits changed (644 &#8594; 600). This is the principle of least privilege in action.</p>
           </div>
@@ -337,7 +337,7 @@
       <li>Clean up the demo file:
         <div class="nx-cmd">rm /tmp/demo_key</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Good security hygiene: don&#8217;t leave copies of sensitive material in shared directories, even in a lab.</p>
           </div>
@@ -346,7 +346,7 @@
       <li>Confirm your original keys still have correct permissions:
         <div class="nx-cmd">stat -c '%a %n' ~/lab2-auth/id_*</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Private keys should show <code>600</code> and public keys <code>644</code>. The demonstration only affected the copy in <code>/tmp</code>, not your originals.</p>
           </div>
@@ -428,7 +428,7 @@
       <li>Add your public key to <code>authorized_keys</code>:
         <div class="nx-cmd">cat ~/lab2-auth/id_ed25519_lab.pub >> ~/.ssh/authorized_keys</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> The <code>authorized_keys</code> file is an access control list &#8212; every public key listed there can authenticate as this user. The <code>&gt;&gt;</code> operator appends rather than overwrites, preserving existing keys. This is how SSH key-based auth works: your client offers a private key, the server checks if the matching public key is in <code>authorized_keys</code>, and if so, grants access without a password.</p>
           </div>
@@ -462,7 +462,7 @@
       <li>Connect to localhost using your key:
         <div class="nx-cmd">ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.</p>
             <p><strong>Flags:</strong></p>
@@ -486,7 +486,7 @@
       <li>Open a new config file in nano:
         <div class="nx-cmd">nano ~/.ssh/config</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>nano</code> is a simple terminal-based text editor. The commands at the bottom use <code>^</code> to mean the Ctrl key &#8212; so <code>^O</code> means <kbd>Ctrl+O</kbd>. Since the file doesn&#8217;t exist yet, nano will create it when you save.</p>
           </div>
@@ -499,7 +499,7 @@
     IdentityFile ~/lab2-auth/id_ed25519_lab
     IdentitiesOnly yes</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <strong>Host labserver</strong> &#8212; the alias you&#8217;ll type. <strong>HostName localhost</strong> &#8212; the actual server address. <strong>User kali</strong> &#8212; the username. <strong>IdentityFile</strong> &#8212; which private key to use. <strong>IdentitiesOnly yes</strong> &#8212; only try the specified key, preventing SSH from cycling through all keys in <code>~/.ssh/</code>.</p>
           </div>
@@ -510,7 +510,7 @@
       <li>Lock down config file permissions:
         <div class="nx-cmd">chmod 600 ~/.ssh/config</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Your SSH config contains key paths and server details. Setting <code>600</code> ensures only you can read or modify it &#8212; the same protection level as your private keys.</p>
           </div>
@@ -522,7 +522,7 @@
       <li>Test the connection using your alias:
         <div class="nx-cmd">ssh labserver whoami</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. You should see your username with no password prompt.</p>
           </div>
@@ -611,7 +611,7 @@
       <li>Check what authentication methods your SSH server currently accepts:
         <div class="nx-cmd">sudo sshd -T | grep -i authenticationmethods</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> <code>sshd -T</code> dumps the SSH server&#8217;s effective configuration (all settings, including defaults). Piping through <code>grep -i authenticationmethods</code> filters for the line that controls which authentication methods are required.</p>
             <p><strong>In your output:</strong> If the output shows <code>authenticationmethods any</code>, the server accepts whatever works first &#8212; key or password. That&#8217;s single-factor.</p>
@@ -624,7 +624,7 @@
       <li>Add the MFA directive to your SSH server configuration:
         <div class="nx-cmd">echo "AuthenticationMethods publickey,password" | sudo tee -a /etc/ssh/sshd_config</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> This appends an MFA directive to the SSH server config. <strong>The syntax matters:</strong> a comma between methods means &#8220;AND&#8221; &#8212; the client must pass both. A space between methods means &#8220;OR&#8221; &#8212; the client can use either one. <code>publickey,password</code> = both required (MFA). <code>publickey password</code> = either one works (not MFA).</p>
           </div>
@@ -642,7 +642,7 @@
       <li>Connect using your SSH config alias:
         <div class="nx-cmd">ssh labserver whoami</div>
         <details>
-          <summary>&#9654; What this does</summary>
+          <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>In your output:</strong> You should see two prompts in sequence: (1) <code>Enter passphrase for key '...id_ed25519_lab':</code> &#8212; unlocks your key file locally; (2) <code>kali@localhost's password:</code> &#8212; the server verifies your identity. Enter your key passphrase (<code>nexus2026</code>) at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username from <code>whoami</code>.</p>
           </div>
