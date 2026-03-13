@@ -3,869 +3,812 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 1.2 - Reconnaissance Tool Exploration</title>
+  <title>Lab 1.2 &#8212; Reconnaissance Tool Exploration</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+<h1 class="nx-sr-only">Lab 1.2 &#8212; Reconnaissance Tool Exploration</h1>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab1_2_Header.svg" alt="Lab 1.2 - Reconnaissance Tool Exploration" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 1: Threat Intelligence &amp; Reconnaissance</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next week, you'll apply these skills against a real client engagement.</p>
-    
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">1.2</div>
+    </div>
+    <div class="nx-sub">Reconnaissance Tool Exploration</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 1: Threat Intelligence &amp; Reconnaissance</p>
+
+    <h2>Overview</h2>
+    <p>This week you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next week, you'll apply these skills against a real client engagement.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maya Rodriguez</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Senior Penetration Tester, NEXUS Security</div>
+          <div class="nx-quote-name">Maya Rodriguez</div>
+          <div class="nx-quote-title">Senior Penetration Tester, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. <strong style="color: #ffffff;">These six tools are your foundation.</strong> Master them here on authorized targets so you're confident when you face a real client network next week. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology."</p>
+      <p>&#8220;Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next week. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology.&#8221;</p>
     </div>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 1 &#8212; Introduction to Security | Chapter 2 &#8212; General Security Concepts</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Demonstrate network scanning with <strong style="color: #ffffff;">nmap</strong> (version and script scans)</li>
-      <li>Perform banner grabbing with <strong style="color: #ffffff;">netcat</strong></li>
-      <li>Conduct web directory discovery with <strong style="color: #ffffff;">dirb</strong></li>
-      <li>Execute web vulnerability scanning with <strong style="color: #ffffff;">nikto</strong></li>
-      <li>Explore SMB enumeration capabilities with <strong style="color: #ffffff;">enum4linux</strong></li>
-      <li>Research vulnerabilities using <strong style="color: #ffffff;">searchsploit</strong></li>
+    <h2>Chapters Covered</h2>
+    <p>Chapter 1 &#8212; Introduction to Security | Chapter 2 &#8212; General Security Concepts</p>
+
+
+    <h2>Assignment Objectives</h2>
+    <ul>
+      <li>Demonstrate network scanning with nmap (version and script scans)</li>
+      <li>Perform banner grabbing with netcat</li>
+      <li>Conduct web directory discovery with dirb</li>
+      <li>Execute web vulnerability scanning with nikto</li>
+      <li>Explore SMB enumeration capabilities with enum4linux</li>
+      <li>Research vulnerabilities using searchsploit</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 1.3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Continue saving screenshots to your <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module1_Screenshots</code> folder. You'll compile these into your Lab 1.3 Engagement Packet next week.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li>Network scanning and service enumeration with nmap</li>
+      <li>Manual banner grabbing with netcat</li>
+      <li>Web directory discovery with dirb</li>
+      <li>Web vulnerability scanning with nikto</li>
+      <li>SMB enumeration methodology with enum4linux</li>
+      <li>Vulnerability research using searchsploit and Exploit-DB</li>
+    </ul>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">folder</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Save For Lab 1.3</div>
+        <p>This is Week 2 of a 3-week module. Continue saving screenshots to your Module1_Screenshots folder. You'll compile these into your Lab 1.3 Engagement Packet next week.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
-          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
-        </tr>
-      </thead>
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Read instructions and review authorized targets</td>
-          <td style="padding: 12px 15px; text-align: center;">10 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 1: nmap network scanning</td>
-          <td style="padding: 12px 15px; text-align: center;">20 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 2: netcat banner grabbing</td>
-          <td style="padding: 12px 15px; text-align: center;">10 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: dirb directory discovery</td>
-          <td style="padding: 12px 15px; text-align: center;">15 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 4: nikto vulnerability scanning</td>
-          <td style="padding: 12px 15px; text-align: center;">15 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 5: enum4linux SMB enumeration</td>
-          <td style="padding: 12px 15px; text-align: center;">10 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 6: searchsploit vulnerability research</td>
-          <td style="padding: 12px 15px; text-align: center;">10 min</td>
-        </tr>
-        <tr style="background: #1a1f2e;">
-          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">90-120 min</td>
-        </tr>
+        <tr><td>Read instructions and review authorized targets</td><td>10 min</td></tr>
+        <tr><td>Checkpoint 1: nmap network scanning</td><td>20 min</td></tr>
+        <tr><td>Checkpoint 2: netcat banner grabbing</td><td>10 min</td></tr>
+        <tr><td>Checkpoint 3: dirb directory discovery</td><td>15 min</td></tr>
+        <tr><td>Checkpoint 4: nikto vulnerability scanning</td><td>15 min</td></tr>
+        <tr><td>Checkpoint 5: enum4linux SMB enumeration</td><td>10 min</td></tr>
+        <tr><td>Checkpoint 6: searchsploit vulnerability research</td><td>10 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>90-120 min</td></tr>
       </tbody>
     </table>
+
+    <p>This is Week 2 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Continue saving screenshots to your Module1_Screenshots folder &#8212; screenshots 07&#8211;13 go directly into your Engagement Packet next week.</p>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_1.svg" alt="Checkpoint 1 - nmap Network Scanning" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Demonstrating network scanning fundamentals using nmap against authorized targets. You'll perform version detection and script scanning to identify services and potential vulnerabilities.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Nmap is the industry-standard network scanner. Understanding its capabilities helps both attackers (who use it to map target networks) and defenders (who need to understand what attackers see). Version detection reveals exactly what software is running, which directly informs vulnerability research.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Open a terminal in your Kali VM</li>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">nmap Network Scanning</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Demonstrating network scanning fundamentals using nmap against authorized targets. You'll perform version detection and script scanning to identify services and potential vulnerabilities.</p>
+    <h3>Why It Matters</h3>
+    <p>Nmap is the industry-standard network scanner. Understanding its capabilities helps both attackers (who use it to map target networks) and defenders (who need to understand what attackers see). Version detection reveals exactly what software is running, which directly informs vulnerability research.</p>
+    <ol>
+      <li>Open a terminal in your Kali VM
+      </li>
       <li>Run a version detection scan:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sV scanme.nmap.org</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sV</code> flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn <em>what software</em> is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">nmap -sV scanme.nmap.org</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
+            <p><strong>In your output:</strong> Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible.</p>
+          </div>
+        </details>
       </li>
-      <li>Note the open ports and service versions detected</li>
+      <li>Note the open ports and service versions detected
+      </li>
       <li>Run a default script scan:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nmap -sC scanme.nmap.org</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sC</code> flag runs Nmap&#8217;s default set of scripts against discovered services. These scripts perform safe enumeration tasks like grabbing SSH host keys, checking HTTP headers, and detecting common misconfigurations.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Compare this to the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-sV</code> output. You should see additional details like SSH host keys and HTTP page titles that weren&#8217;t in the version scan. Scripts extend Nmap from a port scanner into an information-gathering platform.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">nmap -sC scanme.nmap.org</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> The -sC flag runs Nmap&#8217;s default set of scripts against discovered services. These scripts perform safe enumeration tasks like grabbing SSH host keys, checking HTTP headers, and detecting common misconfigurations.</p>
+            <p><strong>In your output:</strong> Compare this to the -sV output. You should see additional details like SSH host keys and HTTP page titles that weren&#8217;t in the version scan. Scripts extend Nmap from a port scanner into an information-gathering platform.</p>
+          </div>
+        </details>
       </li>
-      <li>Compare the output &#8212; what additional information did scripts reveal?</li>
+      <li>Compare the output &#8212; what additional information did scripts reveal?
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Key Flags</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-sV</code> &#8212; Version detection</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-sC</code> &#8212; Default scripts</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-A</code> &#8212; Aggressive (combines -sV, -sC, OS detection, traceroute)</li>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">terminal</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Key Flags</div>
+        <ul>
+          <li>-sV &#8212; Version detection</li>
+          <li>-sC &#8212; Default scripts</li>
+          <li>-A &#8212; Aggressive (combines -sV, -sC, OS detection, traceroute)</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #7</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nmap -sV</code> results. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">07-nmap-version.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture nmap -sV results. Save as 07-nmap-version.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #8</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nmap -sC</code> results. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">08-nmap-scripts.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture nmap -sC results. Save as 08-nmap-scripts.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Scan takes forever:</strong> Use <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-T4</code> for faster timing</li>
-          <li><strong style="color: #ffffff;">Permission denied:</strong> Use <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">sudo</code> if needed</li>
-          <li><strong style="color: #ffffff;">No results:</strong> Test connectivity with <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ping scanme.nmap.org</code></li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Scan takes forever: Use -T4 for faster timing</li>
+          <li>Permission denied: Use sudo if needed</li>
+          <li>No results: Test connectivity with ping scanme.nmap.org</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Scan results showing open ports (typically 22/SSH, 80/HTTP) with service version information like <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">OpenSSH 6.6.1p1</code> or <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Apache httpd 2.4.7</code>.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Scan results showing open ports (typically 22/SSH, 80/HTTP) with service version information like OpenSSH 6.6.1p1 or Apache httpd 2.4.7.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses threat intelligence gathering and reconnaissance techniques. Port scanning is a fundamental reconnaissance activity that provides the foundation for vulnerability assessment.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses threat intelligence gathering and reconnaissance techniques. Port scanning is a fundamental reconnaissance activity that provides the foundation for vulnerability assessment.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between a TCP connect scan (-sT) and a SYN scan (-sS)? Why might an attacker prefer one over the other?</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What&#8217;s the difference between a TCP connect scan (-sT) and a SYN scan (-sS)? Why might an attacker prefer one over the other?</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Nmap Reference Guide. Gordon Lyon. Available at: https://nmap.org/book/man.html</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Nmap Reference Guide. Gordon Lyon. Available at: https://nmap.org/book/man.html</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_2.svg" alt="Checkpoint 2 - netcat Banner Grabbing" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using netcat to manually connect to network services and capture their identification banners &#8212; the text services display when you connect.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Service banners reveal software versions, hostnames, and configuration details. This low-level technique helps verify nmap results and often reveals information automated scanners miss. Netcat is the "Swiss Army knife" of networking.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">netcat Banner Grabbing</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Using netcat to manually connect to network services and capture their identification banners &#8212; the text services display when you connect.</p>
+    <h3>Why It Matters</h3>
+    <p>Service banners reveal software versions, hostnames, and configuration details. This low-level technique helps verify nmap results and often reveals information automated scanners miss. Netcat is the &#8220;Swiss Army knife&#8221; of networking.</p>
+    <ol>
       <li>Connect to SSH port on scanme.nmap.org:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nc -v scanme.nmap.org 22</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nc</code> (netcat) opens a raw TCP connection to a host and port. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-v</code> flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see a connection message followed by the SSH banner (something like <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">SSH-2.0-OpenSSH_6.6.1p1</code>). This banner reveals the exact software version &#8212; valuable intel for an attacker.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">nc -v scanme.nmap.org 22</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> nc (netcat) opens a raw TCP connection to a host and port. The -v flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.</p>
+            <p><strong>In your output:</strong> You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version &#8212; valuable intel for an attacker.</p>
+          </div>
+        </details>
       </li>
-      <li>Observe the banner that appears (SSH version string)</li>
-      <li>Press <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Ctrl+C</code> to disconnect</li>
+      <li>Observe the banner that appears (SSH version string)
+      </li>
+      <li>Press Ctrl+C to disconnect
+      </li>
       <li>Try connecting to port 80:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nc -v scanme.nmap.org 80</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">nc -v scanme.nmap.org 80</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
+            <p><strong>In your output:</strong> You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response.</p>
+          </div>
+        </details>
       </li>
-      <li>Type <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">HEAD / HTTP/1.0</code> and press Enter twice to get HTTP headers
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">HEAD / HTTP/1.0</code> is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.</p>
-        </div>
-      </details>
+      <li>Type HEAD / HTTP/1.0 and press Enter twice to get HTTP headers
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> HEAD / HTTP/1.0 is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Pro Tip</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">On Kali Linux, <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nc</code> may be aliased to <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ncat</code>. Both work the same for banner grabbing.</p>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Pro Tip</div>
+        <p>On Kali Linux, nc may be aliased to ncat. Both work the same for banner grabbing.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #9</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture netcat connection showing SSH banner. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">09-netcat-banner.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture netcat connection showing SSH banner. Save as 09-netcat-banner.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Connection refused:</strong> Port may be filtered or service down &#8212; try a different port</li>
-          <li><strong style="color: #ffffff;">Timeout:</strong> Add <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-w 5</code> for 5-second timeout</li>
-          <li><strong style="color: #ffffff;">No banner:</strong> Some services don't display banners until you send data</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Connection refused: Port may be filtered or service down &#8212; try a different port</li>
+          <li>Timeout: Add -w 5 for 5-second timeout</li>
+          <li>No banner: Some services don&#8217;t display banners until you send data</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Screenshot showing connection and banner text like <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">SSH-2.0-OpenSSH_...</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Screenshot showing connection and banner text like SSH-2.0-OpenSSH_...</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses information disclosure as a security concern. Banner grabbing demonstrates how services can inadvertently reveal version information that aids attackers.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses information disclosure as a security concern. Banner grabbing demonstrates how services can inadvertently reveal version information that aids attackers.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How can administrators hide or modify service banners? Research banner hardening techniques for SSH and HTTP.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>How can administrators hide or modify service banners? Research banner hardening techniques for SSH and HTTP.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Ncat Users' Guide. Nmap Project. Available at: https://nmap.org/ncat/guide/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Ncat Users&#8217; Guide. Nmap Project. Available at: https://nmap.org/ncat/guide/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_3.svg" alt="Checkpoint 3 - dirb Directory Discovery" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn't linked from the main site.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">dirb Directory Discovery</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn&#8217;t linked from the main site.</p>
+    <h3>Why It Matters</h3>
+    <p>Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit.</p>
+    <ol>
       <li>Run dirb against the test target:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">dirb http://testphp.vulnweb.com</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">dirb</code> sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Watch for lines showing <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:200</code> (the page exists) versus <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:403</code> (forbidden but exists) and <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">CODE:301</code> (redirect). Each discovered path is a potential attack surface.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">dirb http://testphp.vulnweb.com</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.</p>
+            <p><strong>In your output:</strong> Watch for lines showing CODE:200 (the page exists) versus CODE:403 (forbidden but exists) and CODE:301 (redirect). Each discovered path is a potential attack surface.</p>
+          </div>
+        </details>
       </li>
-      <li>Watch it test common directory names</li>
-      <li>Note which return <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">CODE:200</code> (found)</li>
-      <li>Let it run or press <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Ctrl+C</code> after several results</li>
+      <li>Watch it test common directory names
+      </li>
+      <li>Note which return CODE:200 (found)
+      </li>
+      <li>Let it run or press Ctrl+C after several results
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Wordlist Location</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Default wordlists: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">/usr/share/dirb/wordlists/</code></p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">terminal</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Wordlist Location</div>
+        <p>Default wordlists: /usr/share/dirb/wordlists/</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #10</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture dirb output showing discovered directories. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10-dirb-results.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture dirb output showing discovered directories. Save as 10-dirb-results.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Forgetting http://:</strong> URL must include the protocol &#8212; <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">dirb http://target</code> not just <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">dirb target</code></li>
-          <li><strong style="color: #ffffff;">Slow scan:</strong> Dirb tests thousands of paths &#8212; use Ctrl+C after seeing results for training purposes</li>
-          <li><strong style="color: #ffffff;">Connection errors:</strong> Target site must be reachable &#8212; test with curl first if dirb fails</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Forgetting http://: URL must include the protocol &#8212; dirb http://target not just dirb target</li>
+          <li>Slow scan: Dirb tests thousands of paths &#8212; use Ctrl+C after seeing results for training purposes</li>
+          <li>Connection errors: Target site must be reachable &#8212; test with curl first if dirb fails</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Output showing discovered directories like /admin/, /images/, /cgi-bin/ with HTTP response codes.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Output showing discovered directories like /admin/, /images/, /cgi-bin/ with HTTP response codes.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 covers web application security concepts. Directory enumeration is a fundamental web reconnaissance technique that reveals application structure and potentially sensitive endpoints.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 covers web application security concepts. Directory enumeration is a fundamental web reconnaissance technique that reveals application structure and potentially sensitive endpoints.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is CVE and how are vulnerabilities assigned identifiers? Research the lifecycle of a vulnerability from discovery to patch.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is CVE and how are vulnerabilities assigned identifiers? Research the lifecycle of a vulnerability from discovery to patch.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">CVE - Common Vulnerabilities and Exposures. MITRE Corporation. Available at: https://cve.mitre.org/about/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>CVE - Common Vulnerabilities and Exposures. MITRE Corporation. Available at: https://cve.mitre.org/about/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_4.svg" alt="Checkpoint 4 - nikto Vulnerability Scanning" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using nikto to scan web servers for known vulnerabilities, misconfigurations, and dangerous files.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Nikto checks for 6,700+ dangerous files and 1,250+ outdated server versions. It quickly identifies low-hanging fruit that attackers commonly exploit.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">nikto Vulnerability Scanning</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Using nikto to scan web servers for known vulnerabilities, misconfigurations, and dangerous files.</p>
+    <h3>Why It Matters</h3>
+    <p>Nikto checks for 6,700+ dangerous files and 1,250+ outdated server versions. It quickly identifies low-hanging fruit that attackers commonly exploit.</p>
+    <ol>
       <li>Run nikto against the test target:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">nikto -h http://testphp.vulnweb.com</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nikto</code> is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-h</code> flag specifies the target host.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Each line prefixed with <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">+</code> is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">nikto -h http://testphp.vulnweb.com</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> nikto is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The -h flag specifies the target host.</p>
+            <p><strong>In your output:</strong> Each line prefixed with + is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report.</p>
+          </div>
+        </details>
       </li>
-      <li>Watch the output &#8212; nikto reports findings as it scans</li>
-      <li>Note types of findings: server info, outdated software, dangerous files</li>
-      <li>Let it run for a few minutes</li>
+      <li>Watch the output &#8212; nikto reports findings as it scans
+      </li>
+      <li>Note types of findings: server info, outdated software, dangerous files
+      </li>
+      <li>Let it run for a few minutes
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture nikto output showing findings. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-nikto-results.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture nikto output showing findings. Save as 11-nikto-results.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Wrong port:</strong> Use <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">-p 443</code> for HTTPS targets &#8212; nikto defaults to port 80</li>
-          <li><strong style="color: #ffffff;">Loud scanning:</strong> Nikto is NOT stealthy &#8212; every request is logged and easily detected</li>
-          <li><strong style="color: #ffffff;">False positives:</strong> Verify findings manually &#8212; nikto reports potential issues, not confirmed vulnerabilities</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Wrong port: Use -p 443 for HTTPS targets &#8212; nikto defaults to port 80</li>
+          <li>Loud scanning: Nikto is NOT stealthy &#8212; every request is logged and easily detected</li>
+          <li>False positives: Verify findings manually &#8212; nikto reports potential issues, not confirmed vulnerabilities</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Output showing server information, potential vulnerabilities, and interesting files discovered.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Output showing server information, potential vulnerabilities, and interesting files discovered.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses vulnerability scanning as part of the security assessment process. Understanding automated scanners helps both offensive and defensive security work.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses vulnerability scanning as part of the security assessment process. Understanding automated scanners helps both offensive and defensive security work.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How does Nikto identify vulnerabilities? Research the difference between vulnerability scanning and penetration testing.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>How does Nikto identify vulnerabilities? Research the difference between vulnerability scanning and penetration testing.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Nikto Documentation. CIRT, Inc. Available at: https://cirt.net/Nikto2</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Nikto Documentation. CIRT, Inc. Available at: https://cirt.net/Nikto2</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_5.svg" alt="Checkpoint 5 - enum4linux SMB Enumeration" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Exploring enum4linux capabilities for SMB/Windows enumeration. Since we don't have a live SMB target, you'll review the tool's help output and understand its purpose.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies &#8212; critical information for both attackers and security assessments. You'll use this tool against the Brazos Financial container next week.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">5</div>
+    </div>
+    <div class="nx-sub">enum4linux SMB Enumeration</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Exploring enum4linux capabilities for SMB/Windows enumeration. Since we don&#8217;t have a live SMB target, you&#8217;ll review the tool&#8217;s help output and understand its purpose.</p>
+    <h3>Why It Matters</h3>
+    <p>SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies &#8212; critical information for both attackers and security assessments. You&#8217;ll use this tool against the Brazos Financial container next week.</p>
+    <ol>
       <li>Review enum4linux help:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">enum4linux -h</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">enum4linux</code> is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-h</code> flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">enum4linux -h</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.</p>
+            <p><strong>In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships.</p>
+          </div>
+        </details>
       </li>
-      <li>Note the different enumeration options (-U for users, -S for shares, etc.)</li>
-      <li>Understand what each flag discovers</li>
+      <li>Note the different enumeration options (-U for users, -S for shares, etc.)
+      </li>
+      <li>Understand what each flag discovers
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Key Flags</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-U</code> &#8212; Get user list</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-S</code> &#8212; Get share list</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-P</code> &#8212; Get password policy</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-a</code> &#8212; Do all simple enumeration</li>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">terminal</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Key Flags</div>
+        <ul>
+          <li>-U &#8212; Get user list</li>
+          <li>-S &#8212; Get share list</li>
+          <li>-P &#8212; Get password policy</li>
+          <li>-a &#8212; Do all simple enumeration</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture enum4linux help output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-enum4linux-help.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture enum4linux help output. Save as 12-enum4linux-help.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">No SMB target:</strong> This checkpoint is documentation only &#8212; you'll use enum4linux against real targets in Lab 1.3</li>
-          <li><strong style="color: #ffffff;">Requires SMB access:</strong> Target must have ports 139/445 open for enum4linux to work</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>No SMB target: This checkpoint is documentation only &#8212; you&#8217;ll use enum4linux against real targets in Lab 1.3</li>
+          <li>Requires SMB access: Target must have ports 139/445 open for enum4linux to work</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Understanding of enum4linux capabilities and screenshot of help output for your runbook.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Understanding of enum4linux capabilities and screenshot of help output for your runbook.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses network protocols and their security implications. SMB has been the source of numerous critical vulnerabilities including WannaCry and EternalBlue.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses network protocols and their security implications. SMB has been the source of numerous critical vulnerabilities including WannaCry and EternalBlue.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is "null session" authentication in SMB? Why is it dangerous and how do modern Windows systems mitigate it?</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is &#8220;null session&#8221; authentication in SMB? Why is it dangerous and how do modern Windows systems mitigate it?</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Enum4linux Manual. Portcullis Labs. Available at: https://github.com/CiscoCXSecurity/enum4linux</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Enum4linux Manual. Portcullis Labs. Available at: https://github.com/CiscoCXSecurity/enum4linux</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_2_6.svg" alt="Checkpoint 6 - searchsploit Vulnerability Research" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Using searchsploit to search the Exploit Database for known vulnerabilities and exploits based on software versions discovered during reconnaissance.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Once you know what software a target runs, you need to research whether known exploits exist. Searchsploit provides offline access to Exploit-DB, the largest public archive of exploits and vulnerable software.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 6 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">6</div>
+    </div>
+    <div class="nx-sub">searchsploit Vulnerability Research</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Using searchsploit to search the Exploit Database for known vulnerabilities and exploits based on software versions discovered during reconnaissance.</p>
+    <h3>Why It Matters</h3>
+    <p>Once you know what software a target runs, you need to research whether known exploits exist. Searchsploit provides offline access to Exploit-DB, the largest public archive of exploits and vulnerable software.</p>
+    <ol>
       <li>Update the database:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">sudo searchsploit -u</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-u</code> flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">sudo searchsploit -u</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
+          </div>
+        </details>
       </li>
       <li>Search for Apache vulnerabilities:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">searchsploit apache 2.4</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">searchsploit apache 2.4</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.</p>
+            <p><strong>In your output:</strong> You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it.</p>
+          </div>
+        </details>
       </li>
-      <li>Note the exploit titles, types, and paths</li>
+      <li>Note the exploit titles, types, and paths
+      </li>
       <li>Try searching for OpenSSH:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; margin: 10px 0; overflow-x: auto;">searchsploit openssh</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Compare the results to your Apache search. Notice the different exploit types and how the version numbers in the titles help you narrow down which exploits apply to a specific target. In practice, you&#8217;d cross-reference these results with the exact version string from your Nmap scan.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">searchsploit openssh</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Compare the results to your Apache search. Notice the different exploit types and how the version numbers in the titles help you narrow down which exploits apply to a specific target. In practice, you&#8217;d cross-reference these results with the exact version string from your Nmap scan.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #13</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture searchsploit results for Apache. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-searchsploit-apache.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture searchsploit results for Apache. Save as 13-searchsploit-apache.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Too broad:</strong> "apache" returns thousands &#8212; add version numbers to narrow results</li>
-          <li><strong style="color: #ffffff;">Outdated database:</strong> Run <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">searchsploit -u</code> periodically to update</li>
-          <li><strong style="color: #ffffff;">Not all exploits work:</strong> Many require specific conditions &#8212; read the exploit code before attempting</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Too broad: &#8220;apache&#8221; returns thousands &#8212; add version numbers to narrow results</li>
+          <li>Outdated database: Run searchsploit -u periodically to update</li>
+          <li>Not all exploits work: Many require specific conditions &#8212; read the exploit code before attempting</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Search results showing exploit titles, paths, and platforms for Apache and OpenSSH.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Search results showing exploit titles, paths, and platforms for Apache and OpenSSH.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses vulnerability research and the importance of staying current with security advisories. Exploit databases are essential tools for both attackers and defenders.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses vulnerability research and the importance of staying current with security advisories. Exploit databases are essential tools for both attackers and defenders.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between a CVE and an exploit? Research how vulnerabilities are disclosed and how long it typically takes for exploits to appear.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What&#8217;s the difference between a CVE and an exploit? Research how vulnerabilities are disclosed and how long it typically takes for exploits to appear.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Exploit Database. Offensive Security. Available at: https://www.exploit-db.com/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Exploit Database. Offensive Security. Available at: https://www.exploit-db.com/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (7 Required)</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">07-nmap-version.png</code> &#8212; nmap -sV results</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">08-nmap-scripts.png</code> &#8212; nmap -sC results</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">09-netcat-banner.png</code> &#8212; netcat SSH banner</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">10-dirb-results.png</code> &#8212; dirb discovered directories</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">11-nikto-results.png</code> &#8212; nikto scan output</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">12-enum4linux-help.png</code> &#8212; enum4linux help</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">13-searchsploit-apache.png</code> &#8212; searchsploit results</li>
-    </ul>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshot Verification</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; Your hostname (<code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">kali-lastname-studentID</code>) is visible in terminal screenshots</li>
-      <li>&#9744; Screenshots are clear and readable</li>
-      <li>&#9744; All screenshots saved in <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module1_Screenshots</code> folder</li>
-    </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li>{'label': 'Reconnaissance is the Foundation', 'text': 'Every engagement starts with information gathering. nmap gives you open ports and versions; netcat confirms banners manually; dirb finds hidden paths; nikto flags known misconfigurations. Together, these six tools build a complete picture of a target&#8217;s attack surface.'}</li>
+          <li>{'label': 'Version Intelligence Drives Exploitation', 'text': 'A version string from nmap or netcat banner grabbing feeds directly into searchsploit. &#8220;Apache 2.4.7&#8221; becomes a CVE list. This chain &#8212; discover, identify, research &#8212; is the core offensive workflow.'}</li>
+          <li>{'label': 'SMB Is a Username Factory', 'text': 'enum4linux null session enumeration extracts usernames, shares, and password policies without authenticating. That user list becomes your credential attack target.'}</li>
+        </ul>
       </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 1.2 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li>{'label': 'Your Logs Record This Reconnaissance', 'text': 'Every nmap scan, dirb request, and nikto probe leaves traces in access logs. Defenders who run these tools against their own infrastructure know exactly what a scan looks like &#8212; and can build detection rules accordingly.'}</li>
+          <li>{'label': 'Version Banners Are Information Leaks', 'text': 'Service banners reveal software versions to anyone who connects. Suppressing banners and obscuring version strings reduces the reconnaissance value an attacker gains from a scan.'}</li>
+          <li>{'label': 'Authorized Scanning Is Blue Team Work', 'text': 'Running these tools on your own infrastructure before an attacker does is called attack surface management. Everything you discover today, a defender should already know about their own environment.'}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>The six tools in this lab are used identically by both sides. Red team runs them offensively to map targets. Blue team runs them defensively to audit their own exposure. The difference is authorization and intent &#8212; not the tools themselves.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This course officially supports <strong style="color: #fff;">VirtualBox with Kali Linux installed from ISO</strong>. Students using other hypervisors (VMware, Parallels, UTM) are responsible for their own troubleshooting.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Authorized Targets</h4>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #ffffff;">Only scan targets you have explicit permission to test.</strong> Unauthorized scanning is illegal and can result in criminal charges, academic discipline, and termination from this program.</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #00D26A;">scanme.nmap.org</strong> &#8212; Official nmap test server (network scanning)</li>
-      <li><strong style="color: #00D26A;">testphp.vulnweb.com</strong> &#8212; Acunetix test site (web scanning)</li>
-      <li><strong style="color: #00D26A;">Your own Kali VM</strong> &#8212; localhost (all tools)</li>
-    </ul>
-    
-        <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Critical Warning</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Scanning any target not listed above is <strong style="color: #fff;">unauthorized</strong>. This includes university networks, personal devices of others, or random internet targets. Violations will be reported to the Office of Student Conduct.</p>
-      </div>
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
     </div>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
-      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
-      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-      <li><strong style="color: #ffffff;">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="23494c4b4d0d4d4654504c4e63565750420d464756">[email&#160;protected]</a> (for private matters only)</li>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>07-nmap-version.png</code> &#8212; nmap -sV results</li>
+      <li>&#9744; <code>08-nmap-scripts.png</code> &#8212; nmap -sC results</li>
+      <li>&#9744; <code>09-netcat-banner.png</code> &#8212; netcat SSH banner</li>
+      <li>&#9744; <code>10-dirb-results.png</code> &#8212; dirb discovered directories</li>
+      <li>&#9744; <code>11-nikto-results.png</code> &#8212; nikto scan output</li>
+      <li>&#9744; <code>12-enum4linux-help.png</code> &#8212; enum4linux help</li>
+      <li>&#9744; <code>13-searchsploit-apache.png</code> &#8212; searchsploit results</li>
     </ul>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+
+    <h2>Screenshots (7 Required)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; 07-nmap-version.png &#8212; nmap -sV scan results</li>
+      <li>&#9744; 08-nmap-scripts.png &#8212; nmap -sC scan results</li>
+      <li>&#9744; 09-netcat-banner.png &#8212; SSH banner capture via netcat</li>
+      <li>&#9744; 10-dirb-results.png &#8212; dirb discovered directories</li>
+      <li>&#9744; 11-nikto-results.png &#8212; nikto vulnerability scan output</li>
+      <li>&#9744; 12-enum4linux-help.png &#8212; enum4linux help output</li>
+      <li>&#9744; 13-searchsploit-apache.png &#8212; searchsploit Apache results</li>
+    </ul>
+
+    <h2>Screenshot Verification</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Hostname (kali-lastname-studentID) visible in terminal screenshots</li>
+      <li>&#9744; All screenshots clear and readable</li>
+      <li>&#9744; All screenshots saved to Module1_Screenshots folder</li>
+    </ul>
+
+    <h2>Canvas Quiz</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Take the Lab 1.2 Quiz in Canvas</li>
+      <li>&#9744; Keep your VM running while taking the quiz &#8212; questions reference specific tool outputs</li>
+    </ul>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> #lab-help</li>
+      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
+    </ul>
+
+    <h2>Late Work Policy</h2>
+    <p>Late work is not accepted. Drop policies exist for emergencies.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
       <li>Explain command syntax and tool functionality</li>
       <li>Troubleshoot errors and technical issues</li>
-      <li>Understand concepts from the readings</li>
+      <li>Understand concepts from assigned readings</li>
+      <li>Proofread and grammar check</li>
+      <li>Suggest report structure improvements</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
+      <li>Write entire sections of reports</li>
       <li>Answer quiz questions directly</li>
       <li>Generate fake screenshots or outputs</li>
-      <li>Complete the hands-on work for you</li>
+      <li>Complete hands-on exercises on your behalf</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 1.2 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 1.3 &#8212; Brazos Financial Reconnaissance Engagement</strong> where you'll apply these skills against a real client target.</p>
+    <p><em>AI is a tutor, not a ghostwriter.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>{'type': 'nextLab', 'text': 'Take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3: Brazos Financial Reconnaissance Engagement &#8212; where you apply all six tools against a real client target.'}</p>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>

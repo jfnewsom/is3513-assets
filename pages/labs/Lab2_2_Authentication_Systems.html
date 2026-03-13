@@ -3,946 +3,833 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 2.2 - Authentication Systems</title>
+  <title>Lab 2.2 &#8212; Authentication Systems</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+<h1 class="nx-sr-only">Lab 2.2 &#8212; Authentication Systems</h1>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab2_2_Header.svg" alt="Lab 2.2 - Authentication Systems" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 2: Cryptography &amp; Authentication</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week continues your security training at NEXUS with a deep dive into authentication systems. You'll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next week &#8212; their infrastructure relies on certificate-based authentication.</p>
-    
-    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">2.2</div>
+    </div>
+    <div class="nx-sub">Authentication Systems</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 2: Cryptography &amp; Authentication</p>
+
+    <h2>Overview</h2>
+    <p>This week continues your security training at NEXUS with a deep dive into authentication systems. You&#8217;ll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next week &#8212; their infrastructure relies on certificate-based authentication.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Attackers have to be right once. Defenders have to be right every time. That's why we layer defenses &#8212; and authentication is your first layer. <strong style="color: #ffffff;">Passwords are the weakest link.</strong> This week, you'll learn what replaces them."</p>
+      <p>&#8220;Attackers have to be right once. Defenders have to be right every time. That&#8217;s why we layer defenses &#8212; and authentication is your first layer. Passwords are the weakest link. This week, you&#8217;ll learn what replaces them.&#8221;</p>
     </div>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 6 &#8212; Applied Cryptography | Chapter 11 &#8212; Authentication and Remote Access</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <h2>Chapters Covered</h2>
+    <p>Chapter 6 &#8212; Applied Cryptography | Chapter 11 &#8212; Authentication and Remote Access</p>
+
+
+    <h2>Assignment Objectives</h2>
+    <ul>
       <li>Generate SSH keypairs using both RSA and ED25519 algorithms</li>
       <li>Configure proper file permissions for SSH keys</li>
       <li>Set up authorized_keys and SSH config files</li>
       <li>Test SSH key-based authentication</li>
       <li>Demonstrate understanding of MFA concepts</li>
     </ul>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 2.3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Add this week's screenshots to your existing <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module2_Screenshots</code> folder. You should have 9 screenshots from Lab 2.1. This week adds 8 more.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li><strong>SSH Keypair Generation:</strong> Generating RSA and ED25519 keypairs — comparing the two algorithms and understanding when each is appropriate in modern infrastructure.</li>
+      <li><strong>File Permission Security:</strong> Linux permission octal notation (600, 644, 700) and why SSH refuses to use keys with incorrect permissions — a live demonstration of least privilege.</li>
+      <li><strong>authorized_keys and SSH Config:</strong> Setting up server-side key authorization and client-side config aliases — how professional analysts manage connections to dozens of servers efficiently.</li>
+      <li><strong>Multi-Factor Authentication:</strong> Configuring SSH to require both a private key and a password — implementing real two-factor authentication with factors from different categories.</li>
+      <li><strong>Defense in Depth:</strong> Directory permissions (700) combined with file permissions (600) provide two independent layers of access control — neither layer alone is sufficient.</li>
+      <li><strong>Authentication Factor Categories:</strong> Something you know, something you have, something you are — why a password and a security question are NOT two factors, but a key and a password are.</li>
+    </ul>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">folder</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Save For Lab 2.3</div>
+        <p>This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module2_Screenshots</code> folder. You should have 9 screenshots from Lab 2.1. This week adds 8 more.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
-          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
-        </tr>
-      </thead>
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 1: SSH Key Generation</td>
-          <td style="padding: 12px 15px; text-align: center;">25-35 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 2: Key Permissions</td>
-          <td style="padding: 12px 15px; text-align: center;">20-25 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: SSH Configuration</td>
-          <td style="padding: 12px 15px; text-align: center;">35-45 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 4: MFA Concepts</td>
-          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Canvas Quiz</td>
-          <td style="padding: 12px 15px; text-align: center;">16-20 min</td>
-        </tr>
-        <tr style="background: #1a1f2e;">
-          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">2-3 hours</td>
-        </tr>
+        <tr><td>Checkpoint 1: SSH Key Generation</td><td>25-35 min</td></tr>
+        <tr><td>Checkpoint 2: Key Permissions</td><td>20-25 min</td></tr>
+        <tr><td>Checkpoint 3: SSH Configuration</td><td>35-45 min</td></tr>
+        <tr><td>Checkpoint 4: MFA Concepts</td><td>20-30 min</td></tr>
+        <tr><td>Canvas Quiz</td><td>16-20 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>2-3 hours</td></tr>
       </tbody>
     </table>
+
+    <p>This is Week 2 of a 3-week module. Time here is still internal NEXUS training — not yet billable to Gulf Coast Healthcare. Add this week's 8 screenshots to your existing Module2_Screenshots folder. You should now have 17 total (9 from Lab 2.1 plus 8 from this lab). You will use all of them in your Lab 2.3 Engagement Packet.</p>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_1.svg" alt="Checkpoint 1 - SSH Key Generation" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Generating SSH keypairs using both RSA and ED25519 algorithms. You'll compare the two key types and understand when to use each.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">SSH key authentication is the industry standard for secure remote access. Unlike passwords, keys are cryptographically strong, can't be guessed through brute force, and provide non-repudiation. Every server you'll manage in your career will use key-based authentication.</p>
-    
-    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">SSH Key Generation</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Generating SSH keypairs using both RSA and ED25519 algorithms. You&#8217;ll compare the two key types and understand when to use each.</p>
+    <h3>Why It Matters</h3>
+    <p>SSH key authentication is the industry standard for secure remote access. Unlike passwords, keys are cryptographically strong, can&#8217;t be guessed through brute force, and provide non-repudiation. Every server you&#8217;ll manage in your career will use key-based authentication.</p>
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"ED25519 is the modern choice &#8212; smaller keys, faster operations, same security. But you'll still see RSA everywhere. Know both."</p>
+      <p>&#8220;ED25519 is the modern choice &#8212; smaller keys, faster operations, same security. But you&#8217;ll still see RSA everywhere. Know both.&#8221;</p>
     </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Generate an RSA keypair</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <p><strong>Part A: Generate an RSA keypair</strong></p>
+    <ol>
       <li>Create a working directory for this lab:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/lab2-auth</div>
+        <div class="nx-cmd">mkdir -p ~/lab2-auth</div>
       </li>
       <li>Change into your working directory:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cd ~/lab2-auth</div>
+        <div class="nx-cmd">cd ~/lab2-auth</div>
       </li>
-      <li>Generate a 4096-bit RSA key (press Enter for defaults, use passphrase <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nexus2026</code>):
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh-keygen -t rsa -b 4096 -f ./id_rsa_lab -C "lab-rsa-key"</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ssh-keygen</code> generates SSH keypairs for passwordless authentication. Like the RSA keys you made in Lab 2.1, SSH keys use asymmetric cryptography &#8212; but formatted specifically for the SSH protocol. The private key stays on your machine; the public key goes on any server you want to access.</p>
-          <p style="margin: 0 0 4px 0;"><strong style="color: #7B68EE;">Flag breakdown:</strong></p>
-          <ul style="margin: 0 0 8px 0; padding-left: 18px;">
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-t rsa</code> &#8212; Key type: RSA (the classic, widely compatible algorithm)</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-b 4096</code> &#8212; Key size: 4096 bits (double the NIST minimum for stronger security)</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-f ./id_rsa_lab</code> &#8212; Output file path (avoids overwriting your real SSH keys)</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-C "lab-rsa-key"</code> &#8212; Comment embedded in the key &#8212; helps identify which key is which on servers with many authorized keys</li>
-          </ul>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You&#8217;ll see a randomart image &#8212; a visual fingerprint of your key. Two files are created: <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">id_rsa_lab</code> (private, keep secret) and <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">id_rsa_lab.pub</code> (public, safe to share).</p>
-        </div>
-      </details>
+      <li>Generate a 4096-bit RSA key (press Enter for defaults, use passphrase <code>nexus2026</code>):
+        <div class="nx-cmd">ssh-keygen -t rsa -b 4096 -f ./id_rsa_lab -C "lab-rsa-key"</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>ssh-keygen</code> generates SSH keypairs for passwordless authentication. Like the RSA keys from Lab 2.1, SSH keys use asymmetric cryptography &#8212; but formatted for the SSH protocol. The private key stays on your machine; the public key goes on any server you want to access.</p>
+            <p><strong>In your output:</strong> You&#8217;ll see a randomart image &#8212; a visual fingerprint of your key. Two files are created: <code>id_rsa_lab</code> (private, keep secret) and <code>id_rsa_lab.pub</code> (public, safe to share).</p>
+            <p><strong>Flags:</strong></p>
+            <ul>
+              <li><code>-t rsa</code> &#8212; Key type: RSA (the classic, widely compatible algorithm)</li>
+              <li><code>-b 4096</code> &#8212; Key size: 4096 bits (double the NIST minimum for stronger security)</li>
+              <li><code>-f ./id_rsa_lab</code> &#8212; Output file path (avoids overwriting your real SSH keys)</li>
+              <li><code>-C "lab-rsa-key"</code> &#8212; Comment embedded in the key &#8212; helps identify which key is which on servers with many authorized keys</li>
+            </ul>
+          </div>
+        </details>
       </li>
       <li>List the generated files:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la id_rsa*</div>
+        <div class="nx-cmd">ls -la id_rsa*</div>
       </li>
       <li>View the public key contents:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat id_rsa_lab.pub</div>
+        <div class="nx-cmd">cat id_rsa_lab.pub</div>
       </li>
     </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #10</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the RSA key generation showing the randomart and file listing. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10-keygen-rsa.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the RSA key generation showing the randomart and file listing. Save as <code>10-keygen-rsa.png</code></p>
       </div>
     </div>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Generate an ED25519 keypair</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <p><strong>Part B: Generate an ED25519 keypair</strong></p>
+    <ol>
       <li>Generate an ED25519 key (modern, faster, smaller):
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> ED25519 is a modern elliptic curve algorithm that provides equivalent security to RSA-4096 with much smaller keys and faster operations. Most security professionals now recommend ED25519 over RSA for new deployments &#8212; shorter keys, faster math, no known weaknesses. You&#8217;ll still encounter RSA on legacy systems, which is why you learned both.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> ED25519 is a modern elliptic curve algorithm that provides equivalent security to RSA-4096 with much smaller keys and faster operations. Most security professionals now recommend ED25519 for new deployments &#8212; shorter keys, faster math, no known weaknesses. You&#8217;ll still encounter RSA on legacy systems, which is why you learned both.</p>
+          </div>
+        </details>
       </li>
       <li>List all key files:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la id_*</div>
+        <div class="nx-cmd">ls -la id_*</div>
       </li>
       <li>Compare the key sizes:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">wc -c id_rsa_lab.pub id_ed25519_lab.pub</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">wc -c</code> counts bytes in each file. The RSA public key will be roughly 750 bytes while ED25519 is about 100 bytes &#8212; yet they provide comparable security. This size difference matters at scale: when a server stores thousands of authorized keys, or when keys are exchanged over slow connections. Smaller is better when security is equal.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">wc -c id_rsa_lab.pub id_ed25519_lab.pub</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> <code>wc -c</code> counts bytes in each file. The RSA public key will be roughly 750 bytes while ED25519 is about 100 bytes &#8212; yet they provide comparable security. Smaller is better when security is equal.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the ED25519 generation and comparison showing both key types with their sizes. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-keygen-ed25519.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes. Save as <code>11-keygen-ed25519.png</code></p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Weak passphrase:</strong> Empty passphrases leave keys unprotected if stolen</li>
-          <li><strong style="color: #ffffff;">Overwriting existing keys:</strong> Check for existing keys before generating new ones</li>
-          <li><strong style="color: #ffffff;">Wrong key type:</strong> Some older systems don't support ED25519 &#8212; know your target</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Weak passphrase:</strong> Empty passphrases leave keys unprotected if stolen</li>
+          <li><strong>Overwriting existing keys:</strong> Check for existing keys before generating new ones</li>
+          <li><strong>Wrong key type:</strong> Some older systems don&#8217;t support ED25519 &#8212; know your target</li>
         </ul>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots showing both RSA and ED25519 key generation. The ED25519 public key is about 100 bytes while RSA is about 750 bytes &#8212; same security, smaller footprint.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Two screenshots showing both RSA and ED25519 key generation. The ED25519 public key is about 100 bytes while RSA is about 750 bytes &#8212; same security, smaller footprint.</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 6 covers asymmetric cryptography fundamentals. Chapter 11 explains how public key authentication replaces passwords &#8212; the ED25519 keys you generate here implement "something you have" authentication.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 6 covers asymmetric cryptography fundamentals. Chapter 11 explains how public key authentication replaces passwords &#8212; the keys you generate here implement &#8220;something you have&#8221; authentication.</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Why is ED25519 considered more secure than RSA of equivalent key length? Research the mathematical differences between elliptic curve and integer factorization cryptography.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Why is ED25519 considered more secure than RSA of equivalent key length? Research the mathematical differences between elliptic curve and integer factorization cryptography.</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OpenSSH Manual - ssh-keygen. Available at: https://man.openbsd.org/ssh-keygen</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>OpenSSH Manual &#8212; ssh-keygen. Available at: https://man.openbsd.org/ssh-keygen</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_2.svg" alt="Checkpoint 2 - Key Permissions" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding and configuring proper file permissions for SSH keys. You'll see why SSH refuses to use keys with incorrect permissions and how to fix common permission problems.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">A private key with world-readable permissions is a security disaster. SSH clients will refuse to use improperly secured keys, and attackers specifically look for misconfigured key files. Proper permissions are the difference between security and breach.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Examine default permissions</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">Key Permissions</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Understanding and configuring proper file permissions for SSH keys. You&#8217;ll see why SSH refuses to use keys with incorrect permissions and how to fix common permission problems.</p>
+    <h3>Why It Matters</h3>
+    <p>A private key with world-readable permissions is a security disaster. SSH clients will refuse to use improperly secured keys, and attackers specifically look for misconfigured key files. Proper permissions are the difference between security and breach.</p>
+    <p><strong>Part A: Examine default permissions</strong></p>
+    <ol>
       <li>Check the current permissions on your keys:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la ~/lab2-auth/id_*</div>
+        <div class="nx-cmd">ls -la ~/lab2-auth/id_*</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> In Linux, every file has three permission groups: Owner, Group, and Others. Each group gets three bits: <strong>r</strong> (read=4), <strong>w</strong> (write=2), <strong>x</strong> (execute=1). Add them up per group to get octal notation. Private keys should be <code>600</code> (<code>-rw-------</code>), public keys <code>644</code> (<code>-rw-r--r--</code>), and the <code>~/.ssh</code> directory <code>700</code> (<code>drwx------</code>).</p>
+            <p><strong>In your output:</strong> You should see <code>-rw-------</code> for private keys and <code>-rw-r--r--</code> for public keys. The first column is the permission string.</p>
+          </div>
+        </details>
+      </li>
+      <li>View the same permissions in octal notation:
+        <div class="nx-cmd">stat -c '%a %n' ~/lab2-auth/id_*</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Private keys should show <code>600</code> and public keys <code>644</code> &#8212; confirming what <code>ls -la</code> showed. These are the correct, SSH-enforced permission levels.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You should see output similar to this:</p>
-    <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #B0B8C4; overflow-x: auto; margin: 0 0 15px 0;">-rw------- 1 kali kal&nbsp; &nbsp;464&nbsp; Feb  5 19:05 id_ed25519_lab <br>
-      -rw-r--r-- 1 kali kali&nbsp; &nbsp;97&nbsp; Feb  5 19:05 id_ed25519_lab.pub<br>
-        -rw------- 1 kali kali 3414&nbsp; Feb  5 18:57 id_rsa_lab<br>
-        -rw-r--r-- 1 kali kali&nbsp; 737&nbsp; Feb  5 18:57 id_rsa_lab.pub</div>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Notice the first column &#8212; that&#8217;s the <strong style="color: #ffffff;">permission string</strong>. In Linux, every file has three permission groups:</p>
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin: 0 0 15px 0;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Position</th>
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Who</th>
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">rwx------</td>
-          <td style="padding: 10px 15px;"><strong style="color: #ffffff;">Owner</strong> (you)</td>
-          <td style="padding: 10px 15px;">Read, write, execute</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">---rwx---</td>
-          <td style="padding: 10px 15px;"><strong style="color: #ffffff;">Group</strong> (your user group)</td>
-          <td style="padding: 10px 15px;">Read, write, execute</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">------rwx</td>
-          <td style="padding: 10px 15px;"><strong style="color: #ffffff;">Others</strong> (everyone else)</td>
-          <td style="padding: 10px 15px;">Read, write, execute</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Each permission has a numeric value: <strong style="color: #ffffff;">r=4, w=2, x=1</strong>. Add them up per group to get the <strong style="color: #ffffff;">octal notation</strong> you&#8217;ll use with <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">chmod</code>:</p>
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin: 0 0 15px 0;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Symbolic</th>
-          <th style="padding: 10px 15px; text-align: center; color: #ffffff; font-weight: 600;">Octal</th>
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Meaning</th>
-          <th style="padding: 10px 15px; text-align: left; color: #ffffff; font-weight: 600;">Used For</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">-rw-------</td>
-          <td style="padding: 10px 15px; text-align: center; font-family: Consolas, monospace; color: #00D26A;">600</td>
-          <td style="padding: 10px 15px;">Owner can read/write. Nobody else can touch it.</td>
-          <td style="padding: 10px 15px;"><strong style="color: #FF2641;">Private keys</strong></td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">-rw-r--r--</td>
-          <td style="padding: 10px 15px; text-align: center; font-family: Consolas, monospace; color: #00D26A;">644</td>
-          <td style="padding: 10px 15px;">Owner can read/write. Everyone else can only read.</td>
-          <td style="padding: 10px 15px;"><strong style="color: #00D26A;">Public keys</strong></td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 10px 15px; font-family: Consolas, monospace; color: #00D26A;">drwx------</td>
-          <td style="padding: 10px 15px; text-align: center; font-family: Consolas, monospace; color: #00D26A;">700</td>
-          <td style="padding: 10px 15px;">Owner has full access. Nobody else can enter.</td>
-          <td style="padding: 10px 15px;"><strong style="color: #4169E1;">~/.ssh directory</strong></td>
-        </tr>
-      </tbody>
-    </table>
-    <ol start="2" style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
-      <li>Now view the same permissions in octal notation:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">stat -c '%a %n' ~/lab2-auth/id_*</div>
-      </li>
-    </ol>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This confirms what <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ls -la</code> showed you &#8212; private keys are <strong style="color: #ffffff;">600</strong> (owner-only) and public keys are <strong style="color: #ffffff;">644</strong> (world-readable).</p>
-    
-
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Demonstrate the risk of weak permissions</strong></p>
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">In Part A you learned that your private keys are set to <strong style="color: #ffffff;">600</strong> (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-rw-------</code>) &#8212; meaning <em>only you</em> can read or write them. Now you&#8217;re going to intentionally weaken those permissions and see exactly what happens when other users on the system can access your private key.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
+    <p><strong>Part B: Demonstrate the risk of weak permissions</strong></p>
+    <ol>
       <li>Copy the private key to a shared directory for this demonstration:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cp ~/lab2-auth/id_ed25519_lab /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; Why /tmp?</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> Your home directory (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/home/kali</code>) has permissions <strong style="color: #ffffff;">700</strong> (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">drwx------</code>). Remember from the permissions table in Part A: 700 means only the owner can read, write, or <em>enter</em> the directory. Other users can&#8217;t even list its contents, let alone read files inside it. This is <strong style="color: #ffffff;">defense in depth</strong> &#8212; even if a file inside has weak permissions, the directory permissions block access first.</p>
-          <p style="margin: 0;">The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/tmp</code> directory, on the other hand, is world-readable and world-writable &#8212; every user and process on the system can access it. This is realistic: in enterprise environments, files often end up in shared directories like <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/tmp</code>, <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/var/www</code>, shared project folders, or cloud storage mounts. In those locations, <strong style="color: #ffffff;">file permissions are your only line of defense</strong>.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">cp ~/lab2-auth/id_ed25519_lab /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Your home directory (<code>/home/kali</code>) has permissions <code>700</code> &#8212; other users can&#8217;t enter it. <code>/tmp</code> is world-readable and world-writable, which is realistic: in enterprise environments, files often end up in shared directories like <code>/tmp</code> or <code>/var/www</code>. In those locations, <strong>file permissions are your only line of defense</strong>.</p>
+          </div>
+        </details>
       </li>
       <li>Make the copy world-readable (INSECURE &#8212; for demonstration only):
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 644 /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> Remember the octal table from Part A? You&#8217;re changing this key from <strong style="color: #ffffff;">600</strong> (owner read/write, nobody else gets anything) to <strong style="color: #ffffff;">644</strong> (owner read/write, <em>group</em> can read, <em>others</em> can read). In the symbolic notation you saw with <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ls -la</code>, the permissions change from <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-rw-------</code> to <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-rw-r--r--</code>. That <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">r--</code> in the last three positions means <em>every user on this machine</em> can now read this file. This is the same permission level your <em>public</em> keys have &#8212; which is fine for public keys (they&#8217;re meant to be shared). But a private key with 644 permissions is like leaving your house key under the doormat and posting about it on social media.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">chmod 644 /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> You&#8217;re changing this key from <code>600</code> (owner read/write only) to <code>644</code> (owner read/write, group can read, others can read). The permissions change from <code>-rw-------</code> to <code>-rw-r--r--</code>. That <code>r--</code> at the end means every user on this machine can now read this file &#8212; fine for public keys, a disaster for private keys.</p>
+          </div>
+        </details>
       </li>
-      <li>Now prove it &#8212; read the key as a completely different user:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo -u nobody cat /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> Let&#8217;s break this command down piece by piece:</p>
-          <ul style="margin: 0 0 8px 0; padding-left: 18px;">
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">sudo</code> &#8212; Run this command with elevated privileges (you&#8217;ll enter your password)</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-u nobody</code> &#8212; &#8220;Run it <em>as</em> the user called <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nobody</code>.&#8221; The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nobody</code> account exists on every Linux system &#8212; it&#8217;s a minimal, unprivileged account often used by background services. It has no special access to your files. Think of it as a stand-in for &#8220;any random user or compromised process on this machine.&#8221;</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">cat /tmp/demo_key</code> &#8212; Print the contents of the file to the terminal</li>
-          </ul>
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see the <strong style="color: #FF2641;">entire private key</strong> dumped to your terminal, starting with <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-----BEGIN OPENSSH PRIVATE KEY-----</code> followed by lines of Base64-encoded data. This is the actual cryptographic secret. Anyone who has this data can impersonate you on any system where this key is authorized.</p>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Real-world impact:</strong> On a shared server (which is common in enterprise environments), a compromised web server process, a rogue contractor&#8217;s account, or even a misconfigured backup script could silently copy your private key. They wouldn&#8217;t need your password. They wouldn&#8217;t need root access. They just need <em>read</em> access &#8212; which 644 gives to everyone.</p>
-        </div>
-      </details>
+      <li>Prove it &#8212; read the key as a completely different user:
+        <div class="nx-cmd">sudo -u nobody cat /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>sudo -u nobody</code> runs the following command as the <code>nobody</code> account &#8212; a minimal, unprivileged account with no special access to your files. Think of it as a stand-in for any random user or compromised process on this machine.</p>
+            <p><strong>In your output:</strong> You should see the entire private key printed to your terminal, starting with <code>-----BEGIN OPENSSH PRIVATE KEY-----</code>. This is the actual cryptographic secret. Anyone who has this data can impersonate you on any system where this key is authorized.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the output showing the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nobody</code> user successfully reading your private key. The <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">-----BEGIN OPENSSH PRIVATE KEY-----</code> header should be visible in the output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-permission-error.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the output showing the <code>nobody</code> user successfully reading your private key. The <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> header should be visible. Save as <code>12-permission-error.png</code></p>
       </div>
     </div>
-
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Fix the permissions and verify</strong></p>
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">You just watched another user read your most sensitive credential. The entire private key &#8212; the one thing that proves you are <em>you</em> to every server that trusts it &#8212; was printed to the screen for anyone to copy. Now fix it and prove the fix actually works.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 2;">
+    <p><strong>Part C: Fix the permissions and verify</strong></p>
+    <ol>
       <li>Restrict the file back to owner-only:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 600 /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">chmod 600</code> sets the permissions back to <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-rw-------</code>. Breaking down the octal digit by digit: <strong style="color: #ffffff;">6</strong> = read (4) + write (2) for the owner, <strong style="color: #ffffff;">0</strong> = nothing for the group, <strong style="color: #ffffff;">0</strong> = nothing for others. You&#8217;re revoking the read access you granted in Part B and locking the file back down to owner-only. The change takes effect immediately &#8212; no restart, no reload. The kernel enforces it on the very next access attempt.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">chmod 600 /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>chmod 600</code> sets permissions to <code>-rw-------</code>: 6 = read+write for owner, 0 = nothing for group, 0 = nothing for others. The change takes effect immediately &#8212; the kernel enforces it on the very next access attempt.</p>
+          </div>
+        </details>
       </li>
-      <li>Try reading the key as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nobody</code> again:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo -u nobody cat /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">In your output:</strong> This time you should see:</p>
-          <div style="background: #1a1f2e; padding: 10px 15px; border-radius: 4px; font-family: Consolas, monospace; font-size: 12px; color: #B0B8C4; margin: 0 0 8px 0;">cat: /tmp/demo_key: Permission denied</div>
-          <p style="margin: 0;"><strong style="color: #7B68EE;">What changed:</strong> Same command, same user, same file &#8212; the only difference is three digits (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">644</code> &#8594; <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">600</code>). The Linux kernel checks permissions on <em>every single file operation</em>. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nobody</code> user falls into the &#8220;others&#8221; permission group, and with 600, others get <strong style="color: #ffffff;">zero access</strong> &#8212; no read, no write, no execute. No application, script, or process running as another user can bypass this without root privileges. This is the principle of <strong style="color: #ffffff;">least privilege</strong> in action: give access only to who needs it, and nothing more.</p>
-        </div>
-      </details>
+      <li>Try reading the key as <code>nobody</code> again:
+        <div class="nx-cmd">sudo -u nobody cat /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> You should now see: <code>cat: /tmp/demo_key: Permission denied</code>. Same command, same user, same file &#8212; only three digits changed (644 &#8594; 600). This is the principle of least privilege in action.</p>
+          </div>
+        </details>
       </li>
       <li>Clean up the demo file:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">rm /tmp/demo_key</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; Why clean up?</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> Good security hygiene means not leaving copies of sensitive material lying around, even in a lab. Your original key is still safe in <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">~/lab2-auth/</code> with proper 600 permissions, protected by both the file permissions <em>and</em> your home directory&#8217;s 700 permissions. That&#8217;s two layers of access control &#8212; defense in depth.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">rm /tmp/demo_key</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Good security hygiene: don&#8217;t leave copies of sensitive material in shared directories, even in a lab.</p>
+          </div>
+        </details>
       </li>
       <li>Confirm your original keys still have correct permissions:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">stat -c '%a %n' ~/lab2-auth/id_*</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What to look for</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Private keys should show <strong style="color: #ffffff;">600</strong> and public keys should show <strong style="color: #ffffff;">644</strong> &#8212; exactly what you saw in Part A. The demonstration only affected the copy in <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/tmp</code>, not your originals. This is another good habit: when testing something destructive, work on a copy so you can&#8217;t accidentally damage the real thing.</p>
-        </div>
-      </details>
+        <div class="nx-cmd">stat -c '%a %n' ~/lab2-auth/id_*</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Private keys should show <code>600</code> and public keys <code>644</code>. The demonstration only affected the copy in <code>/tmp</code>, not your originals.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Permission denied</code> output from the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">nobody</code> user, along with the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">stat</code> output confirming your original keys are still secure. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-permission-fixed.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the <code>Permission denied</code> output from the <code>nobody</code> user, along with the <code>stat</code> output confirming your original keys are still secure. Save as <code>13-permission-fixed.png</code></p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Leaving copies in /tmp:</strong> Always clean up after demonstrations. Copies of private keys in shared directories are exactly the vulnerability you just demonstrated</li>
-          <li><strong style="color: #ffffff;">Wrong directory permissions:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">~/.ssh</code> directory itself must be <strong style="color: #ffffff;">700</strong> (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">drwx------</code>). If the directory is readable, attackers can list what&#8217;s inside even if individual files are locked down</li>
-          <li><strong style="color: #ffffff;">Public vs private:</strong> Public keys are <em>designed</em> to be shared, so 644 is correct for them. Private keys must <em>always</em> be 600. If you mix these up, you either lock people out (public key too restrictive) or expose secrets (private key too permissive)</li>
-          <li><strong style="color: #ffffff;">Defense in depth:</strong> Notice that your home directory&#8217;s 700 permissions would have blocked the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nobody</code> user even if the key was 644. That&#8217;s why we used <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">/tmp</code> for this demo &#8212; but don&#8217;t rely on a single layer of protection. Set <em>both</em> directory and file permissions correctly</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Leaving copies in /tmp:</strong> Always clean up after demonstrations</li>
+          <li><strong>Wrong directory permissions:</strong> The <code>~/.ssh</code> directory itself must be <code>700</code> (<code>drwx------</code>)</li>
+          <li><strong>Public vs private:</strong> Public keys are designed to be shared (644). Private keys must always be 600</li>
+          <li><strong>Defense in depth:</strong> Set both directory and file permissions correctly &#8212; don&#8217;t rely on a single layer</li>
         </ul>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Two screenshots demonstrating the complete break/fix cycle. Screenshot #11 shows the vulnerability: another user reading your entire private key because the permissions were too open. Screenshot #12 shows the fix: that same user getting <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Permission denied</code> after you restored 600, plus <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">stat</code> confirmation that your original keys are secure. Together, these prove that file permissions are not just a best practice &#8212; they are the <em>only thing</em> preventing unauthorized access to your credentials in a shared directory.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Two screenshots demonstrating the complete break/fix cycle. Screenshot 12 shows the vulnerability (another user reading your private key). Screenshot 13 shows the fix (<code>Permission denied</code> after restoring 600), plus <code>stat</code> confirmation your originals are secure.</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers access control and the principle of least privilege. What you just demonstrated is the foundation of all access control on Linux systems &#8212; the kernel checks file permissions on every read, write, and execute operation. A private key at 644 is a textbook example of excessive privilege: granting read access to users who have no legitimate need for it. The fix (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">chmod 600</code>) enforces the minimum permissions necessary for the key to function. The <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">/tmp</code> demonstration also illustrated defense in depth &#8212; your home directory permissions provided a second protective layer that would have stopped this attack even without correct file permissions. In production, you want <em>both</em> layers in place.</p>
-      </div>
-    </div>
-
-
-	</div>
-	</div>
-
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_3.svg" alt="Checkpoint 3 - SSH Configuration" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Setting up SSH infrastructure: the authorized_keys file that controls who can connect, the SSH config file that simplifies connections, and testing key-based authentication to localhost.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding SSH configuration is essential for any security professional. The authorized_keys file is your access control list &#8212; every public key there can authenticate. The config file lets you manage connections to dozens of servers efficiently. Gulf Coast uses this exact setup for their infrastructure.</p>
-    
-    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
-        <div>
-          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
-        </div>
-      </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Never rely on a single control. Layer your defenses so one failure doesn't mean total compromise. SSH config files let you enforce security policies across all your connections."</p>
-    </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Set up authorized_keys</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Create the .ssh directory if it doesn't exist:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">mkdir -p ~/.ssh</div>
-      </li>
-      <li>Set secure directory permissions:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 700 ~/.ssh</div>
-      </li>
-      <li>Add your public key to authorized_keys:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/lab2-auth/id_ed25519_lab.pub &gt;&gt; ~/.ssh/authorized_keys</div>
-      </li>
-      <li>Set secure file permissions:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 600 ~/.ssh/authorized_keys</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">authorized_keys</code> file is an access control list &#8212; every public key listed there can authenticate as this user. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">&gt;&gt;</code> operator appends rather than overwrites, so existing keys are preserved. This is how SSH key-based authentication works: your client offers a private key, the server checks if the matching public key is in authorized_keys, and if so, grants access without a password.</p>
-        </div>
-      </details>
-      </li>
-      <li>Verify the directory contents:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ls -la ~/.ssh/</div>
-      </li>
-      <li>Confirm the authorized key:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/.ssh/authorized_keys</div>
-      </li>
-    </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the .ssh directory listing and authorized_keys content. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-authorized-keys.png</code></p>
-      </div>
-    </div>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Test key-based authentication</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Start the SSH service if not running:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl start ssh</div>
-      </li>
-      <li>Verify SSH is running:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl status ssh</div>
-      </li>
-      <li>Connect to localhost using your key:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> Adding a command after the hostname (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.</p>
-          <p style="margin: 0 0 4px 0;"><strong style="color: #7B68EE;">Flag breakdown:</strong></p>
-          <ul style="margin: 0 0 0px 0; padding-left: 18px;">
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-o PasswordAuthentication=no</code> &#8212; Disables password fallback so the connection only succeeds with the key</li>             <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-i</code> &#8212; Specifies which private key to use (identity file). Without this flag, SSH tries default key locations like <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">~/.ssh/id_ed25519</code></li>
-          </ul>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #15</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the successful SSH connection using key-based authentication. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-ssh-keyauth.png</code></p>
-      </div>
-    </div>
-
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Create an SSH config file</strong></p>
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Instead of typing long SSH commands every time you connect, you can create a config file that stores all the connection details under a simple alias. This is how professional security analysts manage connections to dozens of servers.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Open a new config file in nano:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">nano ~/.ssh/config</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nano</code> is a simple terminal-based text editor. It opens directly in your terminal &#8212; no separate window, no mouse needed. The commands at the bottom of the screen (like <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">^O</code> for &#8220;Write Out&#8221; and <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">^X</code> for &#8220;Exit&#8221;) use the caret symbol <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">^</code> to mean the <strong style="color: #ffffff;">Ctrl</strong> key. So <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">^O</code> means press <strong style="color: #ffffff;">Ctrl+O</strong>. Since the file doesn&#8217;t exist yet, nano will create it when you save.</p>
-        </div>
-      </details>
-      </li>
-      <li>Type or paste the following contents exactly:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #B0B8C4; overflow-x: auto; margin: 10px 0; line-height: 1.8;">Host labserver<br>&nbsp;&nbsp;&nbsp;&nbsp;HostName localhost<br>&nbsp;&nbsp;&nbsp;&nbsp;User kali<br>&nbsp;&nbsp;&nbsp;&nbsp;IdentityFile ~/lab2-auth/id_ed25519_lab<br>&nbsp;&nbsp;&nbsp;&nbsp;IdentitiesOnly yes</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What each line means</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <ul style="margin: 0; padding-left: 18px;">
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">Host labserver</code> &#8212; The alias you&#8217;ll type instead of a full command. You can name this anything you want</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">HostName localhost</code> &#8212; The actual server address to connect to (in this lab, you&#8217;re connecting to your own machine)</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">User kali</code> &#8212; The username to log in as</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">IdentityFile ~/lab2-auth/id_ed25519_lab</code> &#8212; Which private key to use for this connection</li>
-            <li><code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">IdentitiesOnly yes</code> &#8212; Only try the specified key, don&#8217;t cycle through others. This prevents SSH from trying every key in <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">~/.ssh/</code> and potentially locking you out after too many failed attempts</li>
-          </ul>
-          <p style="margin: 8px 0 0 0;"><strong style="color: #7B68EE;">Indentation matters:</strong> The four spaces before each option tell SSH that those settings belong to the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">Host labserver</code> block. Use spaces, not tabs.</p>
-        </div>
-      </details>
-      </li>
-      <li>Save and exit nano:
-        <p style="color: #B0B8C4; margin: 10px 0; line-height: 1.8;">Press <strong style="color: #ffffff;">Ctrl+O</strong> (Write Out), then <strong style="color: #ffffff;">Enter</strong> to confirm the filename, then <strong style="color: #ffffff;">Ctrl+X</strong> to exit.</p>
-      </li>
-      <li>Lock down config file permissions:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">chmod 600 ~/.ssh/config</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> Your SSH config file contains the paths to your private keys and your connection details. If another user could read it, they&#8217;d know exactly which keys to steal and which servers they grant access to. Setting 600 (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-rw-------</code>) ensures only you can read or modify this file &#8212; the same permission level as your private keys.</p>
-        </div>
-      </details>
-      </li>
-      <li>Verify the config file contents:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">cat ~/.ssh/config</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What to look for</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see the five lines you typed in nano, exactly as shown above. If anything looks off (missing indentation, wrong key path, typos), run <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">nano ~/.ssh/config</code> again to fix it.</p>
-        </div>
-      </details>
-      </li>
-      <li>Test the shortcut:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh labserver whoami</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> Compare this to the full command you used in Part B. Instead of typing <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost</code>, you just typed <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ssh labserver whoami</code>. The SSH config resolved <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">labserver</code> to all the connection details automatically. You should see your username printed with no password prompt. This is how professional environments work &#8212; consistent, repeatable, secure connections without memorizing complex command-line options.</p>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #16</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the SSH config file contents and successful connection using the alias. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-ssh-config.png</code></p>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Wrong key in authorized_keys:</strong> Make sure you're adding the .pub file, not the private key</li>
-          <li><strong style="color: #ffffff;">Line breaks in key:</strong> The public key must be all on one line</li>
-          <li><strong style="color: #ffffff;">Config indentation:</strong> Use spaces, not tabs; indent options under Host</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.</p>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers remote access security and authentication configuration. The authorized_keys mechanism implements trust relationships &#8212; only approved public keys can authenticate.</p>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What are common authentication vulnerabilities? Research credential stuffing, brute force attacks, and session hijacking.</p>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OWASP Authentication Cheat Sheet. Available at: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 11 covers access control and the principle of least privilege. What you just demonstrated is the foundation of all access control on Linux systems &#8212; the kernel checks file permissions on every read, write, and execute operation.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_2_2_4.svg" alt="Checkpoint 4 - Multi-Factor Authentication" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You&#8217;re Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Configuring your SSH server to require multi-factor authentication &#8212; both your private key <em>and</em> your account password before granting access. Right now, your server accepts key-only login. By the end of this checkpoint, a stolen key alone won&#8217;t be enough to get in.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Single-factor authentication is the root cause of countless breaches. MFA isn&#8217;t optional anymore &#8212; it&#8217;s required by HIPAA, PCI-DSS, and most compliance frameworks. Authentication factors fall into three categories: <strong style="color: #ffffff;">something you know</strong> (passwords, PINs), <strong style="color: #ffffff;">something you have</strong> (private keys, hardware tokens), and <strong style="color: #ffffff;">something you are</strong> (fingerprints, facial recognition). True MFA requires factors from <em>different</em> categories. You&#8217;re about to implement one.</p>
-    
-    <div style="background: rgba(65, 105, 225, 0.08); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 0 0 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">SSH Configuration</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Setting up SSH infrastructure: the <code>authorized_keys</code> file that controls who can connect, the SSH config file that simplifies connections, and testing key-based authentication to localhost.</p>
+    <h3>Why It Matters</h3>
+    <p>Understanding SSH configuration is essential for any security professional. The <code>authorized_keys</code> file is your access control list &#8212; every public key there can authenticate. The config file lets you manage connections to dozens of servers efficiently. Gulf Coast uses this exact setup for their infrastructure.</p>
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #4169E1;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Blue Team Lead, NEXUS Security</div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">&#8220;A password and a security question are both things you <em>know</em> &#8212; that&#8217;s two steps, not two factors. A private key and a password? <strong style="color: #ffffff;">That&#8217;s real MFA.</strong> One factor gets stolen, you still have a wall between the attacker and your system.&#8221;</p>
+      <p>&#8220;Never rely on a single control. Layer your defenses so one failure doesn&#8217;t mean total compromise. SSH config files let you enforce security policies across all your connections.&#8221;</p>
     </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: Examine the current authentication policy</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Check what authentication methods your SSH server currently accepts:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo sshd -T | grep -i authenticationmethods</div>
+    <p><strong>Part A: Set up authorized_keys</strong></p>
+    <ol>
+      <li>Create the <code>.ssh</code> directory if it doesn&#8217;t exist:
+        <div class="nx-cmd">mkdir -p ~/.ssh</div>
       </li>
-      <li>If the output shows <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">authenticationmethods any</code>, the server accepts whatever works first &#8212; key <em>or</em> password. That&#8217;s single-factor.</li>
+      <li>Set secure directory permissions:
+        <div class="nx-cmd">chmod 700 ~/.ssh</div>
+      </li>
+      <li>Add your public key to <code>authorized_keys</code>:
+        <div class="nx-cmd">cat ~/lab2-auth/id_ed25519_lab.pub >> ~/.ssh/authorized_keys</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> The <code>authorized_keys</code> file is an access control list &#8212; every public key listed there can authenticate as this user. The <code>&gt;&gt;</code> operator appends rather than overwrites, preserving existing keys. This is how SSH key-based auth works: your client offers a private key, the server checks if the matching public key is in <code>authorized_keys</code>, and if so, grants access without a password.</p>
+          </div>
+        </details>
+      </li>
+      <li>Set secure file permissions:
+        <div class="nx-cmd">chmod 600 ~/.ssh/authorized_keys</div>
+      </li>
+      <li>Verify the directory contents:
+        <div class="nx-cmd">ls -la ~/.ssh/</div>
+      </li>
+      <li>Confirm the authorized key:
+        <div class="nx-cmd">cat ~/.ssh/authorized_keys</div>
+      </li>
     </ol>
-    
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">sshd -T</code> dumps the SSH server&#8217;s effective configuration (all settings, including defaults). Piping through <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">grep -i authenticationmethods</code> filters for the line that controls which authentication methods are required. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-i</code> flag makes the search case-insensitive.</p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the <code>.ssh</code> directory listing and <code>authorized_keys</code> content. Save as <code>14-authorized-keys.png</code></p>
+      </div>
+    </div>
+    <p><strong>Part B: Test key-based authentication</strong></p>
+    <ol>
+      <li>Start the SSH service if not running:
+        <div class="nx-cmd">sudo systemctl start ssh</div>
+      </li>
+      <li>Verify SSH is running:
+        <div class="nx-cmd">sudo systemctl status ssh</div>
+      </li>
+      <li>Connect to localhost using your key:
+        <div class="nx-cmd">ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.</p>
+            <p><strong>Flags:</strong></p>
+            <ul>
+              <li><code>-o PasswordAuthentication=no</code> &#8212; Disables password fallback so the connection only succeeds with the key</li>
+              <li><code>-i</code> &#8212; Specifies which private key to use (identity file)</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the successful SSH connection using key-based authentication. Save as <code>15-ssh-keyauth.png</code></p>
+      </div>
+    </div>
+    <p><strong>Part C: Create an SSH config file</strong></p>
+    <ol>
+      <li>Open a new config file in nano:
+        <div class="nx-cmd">nano ~/.ssh/config</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>nano</code> is a simple terminal-based text editor. The commands at the bottom use <code>^</code> to mean the Ctrl key &#8212; so <code>^O</code> means <kbd>Ctrl+O</kbd>. Since the file doesn&#8217;t exist yet, nano will create it when you save.</p>
+          </div>
+        </details>
+      </li>
+      <li>Type or paste the following contents exactly (use spaces, not tabs for indentation):
+        <div class="nx-cmd">Host labserver
+    HostName localhost
+    User kali
+    IdentityFile ~/lab2-auth/id_ed25519_lab
+    IdentitiesOnly yes</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <strong>Host labserver</strong> &#8212; the alias you&#8217;ll type. <strong>HostName localhost</strong> &#8212; the actual server address. <strong>User kali</strong> &#8212; the username. <strong>IdentityFile</strong> &#8212; which private key to use. <strong>IdentitiesOnly yes</strong> &#8212; only try the specified key, preventing SSH from cycling through all keys in <code>~/.ssh/</code>.</p>
+          </div>
+        </details>
+      </li>
+      <li>Save and exit nano: press <kbd>Ctrl+O</kbd>, then <kbd>Enter</kbd> to confirm the filename, then <kbd>Ctrl+X</kbd> to exit.
+      </li>
+      <li>Lock down config file permissions:
+        <div class="nx-cmd">chmod 600 ~/.ssh/config</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Your SSH config contains key paths and server details. Setting <code>600</code> ensures only you can read or modify it &#8212; the same protection level as your private keys.</p>
+          </div>
+        </details>
+      </li>
+      <li>Verify the config file contents:
+        <div class="nx-cmd">cat ~/.ssh/config</div>
+      </li>
+      <li>Test the connection using your alias:
+        <div class="nx-cmd">ssh labserver whoami</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. You should see your username with no password prompt.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the SSH config file contents and successful connection using the alias. Save as <code>16-ssh-config.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Wrong key in authorized_keys:</strong> Make sure you&#8217;re adding the <code>.pub</code> file, not the private key</li>
+          <li><strong>Line breaks in key:</strong> The public key must be all on one line</li>
+          <li><strong>Config indentation:</strong> Use spaces, not tabs; indent options under <code>Host</code></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 11 covers remote access security and authentication configuration. The <code>authorized_keys</code> mechanism implements trust relationships &#8212; only approved public keys can authenticate.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What are common authentication vulnerabilities? Research credential stuffing, brute force attacks, and session hijacking.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>OWASP Authentication Cheat Sheet. Available at: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">Multi-Factor Authentication</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Configuring your SSH server to require multi-factor authentication &#8212; both your private key and your account password before granting access. Right now, your server accepts key-only login. By the end of this checkpoint, a stolen key alone won&#8217;t be enough to get in.</p>
+    <h3>Why It Matters</h3>
+    <p>Single-factor authentication is the root cause of countless breaches. MFA isn&#8217;t optional anymore &#8212; it&#8217;s required by HIPAA, PCI-DSS, and most compliance frameworks. Authentication factors: something you know (passwords, PINs), something you have (private keys, hardware tokens), and something you are (fingerprints, facial recognition). True MFA requires factors from different categories.</p>
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
+        <div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
         </div>
-      </details>
-    
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Require both key and password</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+      </div>
+      <p>&#8220;A password and a security question are both things you know &#8212; that&#8217;s two steps, not two factors. A private key and a password? That&#8217;s real MFA. One factor gets stolen, you still have a wall between the attacker and your system.&#8221;</p>
+    </div>
+    <p><strong>Part A: Examine the current authentication policy</strong></p>
+    <ol>
+      <li>Check what authentication methods your SSH server currently accepts:
+        <div class="nx-cmd">sudo sshd -T | grep -i authenticationmethods</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>sshd -T</code> dumps the SSH server&#8217;s effective configuration (all settings, including defaults). Piping through <code>grep -i authenticationmethods</code> filters for the line that controls which authentication methods are required.</p>
+            <p><strong>In your output:</strong> If the output shows <code>authenticationmethods any</code>, the server accepts whatever works first &#8212; key or password. That&#8217;s single-factor.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <p><strong>Part B: Require both key and password</strong></p>
+    <ol>
       <li>Add the MFA directive to your SSH server configuration:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">echo "AuthenticationMethods publickey,password" | sudo tee -a /etc/ssh/sshd_config</div>
-        <details style="margin: 8px 0 4px 0;">
-          <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-          <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-            <p style="margin: 0 0 8px 0;"><strong style="color: #7B68EE;">Concept:</strong> This appends an MFA directive to the SSH server config. The syntax matters: a <strong style="color: #ffffff;">comma</strong> between methods means &#8220;AND&#8221; &#8212; the client must pass <em>both</em> in sequence. A <strong style="color: #ffffff;">space</strong> between methods means &#8220;OR&#8221; &#8212; the client can use <em>either one</em>.</p>
-            <p style="margin: 0;"><strong style="color: #7B68EE;">In practice:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">publickey,password</code> requires both factors (MFA), while <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">publickey password</code> would accept either factor alone (not MFA).</p>
+        <div class="nx-cmd">echo "AuthenticationMethods publickey,password" | sudo tee -a /etc/ssh/sshd_config</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> This appends an MFA directive to the SSH server config. <strong>The syntax matters:</strong> a comma between methods means &#8220;AND&#8221; &#8212; the client must pass both. A space between methods means &#8220;OR&#8221; &#8212; the client can use either one. <code>publickey,password</code> = both required (MFA). <code>publickey password</code> = either one works (not MFA).</p>
           </div>
         </details>
       </li>
       <li>Verify the line was added:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">tail -3 /etc/ssh/sshd_config</div>
+        <div class="nx-cmd">tail -3 /etc/ssh/sshd_config</div>
       </li>
       <li>Restart the SSH service to apply the change:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl restart ssh</div>
+        <div class="nx-cmd">sudo systemctl restart ssh</div>
       </li>
     </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+    <p><strong>Part C: Test multi-factor login</strong></p>
+    <ol>
+      <li>Connect using your SSH config alias:
+        <div class="nx-cmd">ssh labserver whoami</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> You should see two prompts in sequence: (1) <code>Enter passphrase for key '...id_ed25519_lab':</code> &#8212; unlocks your key file locally; (2) <code>kali@localhost's password:</code> &#8212; the server verifies your identity. Enter your key passphrase (<code>nexus2026</code>) at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username from <code>whoami</code>.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your successful MFA login showing both prompts and the <code>whoami</code> output. Save as <code>17-mfa-login.png</code> &#8212; this is your last screenshot for Lab 2.2!</p>
       </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Comma vs. space:</strong> <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">publickey,password</code> = both required (MFA). <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">publickey password</code> = either one works (not MFA)</li>
-          <li><strong style="color: #ffffff;">Forgot to restart SSH:</strong> Config changes don&#8217;t take effect until you restart the service</li>
-          <li><strong style="color: #ffffff;">Key passphrase &#8800; account password:</strong> Your key passphrase (<code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">nexus2026</code>) unlocks the key file locally. The server never sees it. The account password is the separate factor the server verifies</li>
+    </div>
+    <p><strong>Part D: Revert to single-factor</strong></p>
+    <ol>
+      <li>Remove the MFA directive so later labs aren&#8217;t affected:
+        <div class="nx-cmd">sudo sed -i '/^AuthenticationMethods/d' /etc/ssh/sshd_config</div>
+      </li>
+      <li>Restart SSH to apply changes:
+        <div class="nx-cmd">sudo systemctl restart ssh</div>
+      </li>
+      <li>Verify single-factor is restored:
+        <div class="nx-cmd">sudo sshd -T | grep -i authenticationmethods</div>
+      </li>
+    </ol>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Comma vs. space:</strong> <code>publickey,password</code> = both required (MFA). <code>publickey password</code> = either one works (not MFA)</li>
+          <li><strong>Forgot to restart SSH:</strong> Config changes don&#8217;t take effect until you restart the service</li>
+          <li><strong>Key passphrase &#8800; account password:</strong> Your passphrase (<code>nexus2026</code>) unlocks the key file locally. The account password is the separate factor the server verifies</li>
         </ul>
       </div>
     </div>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Test multi-factor login</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Connect using your SSH config alias:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ssh labserver whoami</div>
-      </li>
-      <li>You should now see <strong style="color: #ffffff;">two</strong> prompts in sequence:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #B0B8C4; overflow-x: auto; margin: 10px 0;">Enter passphrase for key '/home/&#60;user&#62;/lab2-auth/id_ed25519_lab': <span style="color: #FF9F1C;">&#8592; unlocks your key file (local)</span>
-<span style="color: #ffffff;">&#60;user&#62;</span>@localhost's password: <span style="color: #FF9F1C;">&#8592; server verifies your identity (remote)</span></div>
-      </li>
-      <li>Enter your key passphrase at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username printed by <code style="color: #00D26A;">whoami</code>.</li>
-    </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #17</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your successful MFA login showing both prompts and the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">whoami</code> output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-mfa-login.png</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>One screenshot showing a successful SSH login that required both your private key and your account password. That&#8217;s real two-factor authentication: something you have (the key file) plus something you know (the password).</p>
       </div>
     </div>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part D: Revert to single-factor</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Remove the MFA directive so later labs aren&#8217;t affected:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo sed -i '/^AuthenticationMethods/d' /etc/ssh/sshd_config</div>
-      </li>
-      <li>Restart SSH to apply changes:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl restart ssh</div>
-      </li>
-      <li>Verify single-factor is restored:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo sshd -T | grep -i authenticationmethods</div>
-      </li>
-    </ol>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">One screenshot showing a successful SSH login that required both your private key and your account password. That&#8217;s real two-factor authentication: something you <em>have</em> (the key file) plus something you <em>know</em> (the password).</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 11 covers the three authentication factor categories and why MFA requires factors from different categories. The SSH MFA you just configured implements the same principle that HIPAA mandates for healthcare systems.</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 11 covers the three authentication factor categories and why MFA requires factors from <em>different</em> categories. The SSH MFA you just configured implements the same principle that compliance frameworks like HIPAA mandate for healthcare systems.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Research passwordless authentication. How do FIDO2/WebAuthn standards work, and why are they considered more secure than traditional password-based MFA?</p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Research passwordless authentication. How do FIDO2/WebAuthn standards work, and why are they considered more secure than traditional password-based MFA?</p>
-      </div>
-    </div>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That&#8217;s a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">NIST SP 800-63B &#8212; Digital Identity Guidelines: Authentication and Lifecycle Management. Available at: https://pages.nist.gov/800-63-3/sp800-63b.html</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>NIST SP 800-63B &#8212; Digital Identity Guidelines: Authentication and Lifecycle Management. Available at: https://pages.nist.gov/800-63-3/sp800-63b.html</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (8 Required)</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">10-keygen-rsa.png</code> &#8212; RSA key generation</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">11-keygen-ed25519.png</code> &#8212; ED25519 key generation and comparison</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">12-permission-error.png</code> &#8212; SSH permission error message</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">13-permission-fixed.png</code> &#8212; Corrected permissions</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">14-authorized-keys.png</code> &#8212; authorized_keys setup</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">15-ssh-keyauth.png</code> &#8212; Successful key-based SSH</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">16-ssh-config.png</code> &#8212; SSH config file usage</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">17-mfa-login.png</code> &#8212; MFA login verification</li>
-    </ul>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Environment Verification</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; VM hostname visible in all screenshots</li>
-      <li>&#9744; All files in <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">~/lab2-auth</code> directory</li>
-      <li>&#9744; All screenshots added to <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module2_Screenshots</code> folder</li>
-      <li>&#9744; Total screenshots for module: 16 (8 from Lab 2.1 + 8 from Lab 2.2)</li>
-    </ul>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li>{'label': 'SSH Key Theft', 'text': 'A stolen private key with no passphrase grants permanent access to every server that trusts it — no password to crack, no alert triggered.'}</li>
+          <li>{'label': 'Permission Reconnaissance', 'text': 'Misconfigured file permissions (644 on private keys, world-readable ~/.ssh) signal careless infrastructure and are a high-value target for lateral movement.'}</li>
+          <li>{'label': 'Single-Factor Exploitation', 'text': 'One compromised key with no MFA equals total access — attackers who obtain a key file from a misconfigured backup or shared directory own the system immediately.'}</li>
+        </ul>
       </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 2.2 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li>{'label': 'Permission Hardening', 'text': 'Enforce key permissions as part of hardening checklists — audit scripts should flag any private key file not at 600 or ~/.ssh directory not at 700.'}</li>
+          <li>{'label': 'Passphrase Requirements', 'text': "Require passphrases on all SSH keys used for privileged access; key-only login without a passphrase removes the 'something you know' factor entirely."}</li>
+          <li>{'label': 'authorized_keys Inventory', 'text': 'Maintain authorized_keys inventory and audit for unknown entries — unrecognized keys in authorized_keys files are a persistence mechanism for attackers.'}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>The permission demonstration in Checkpoint 2 shows exactly what attackers look for: private keys accessible to unprivileged processes. In Module 3 you will analyze network captures where the attacker's first post-compromise action is harvesting SSH keys from world-readable files — the same misconfiguration you fixed today.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This lab requires your <strong style="color: #fff;">Kali Linux VM from Lab 1.1</strong>. You should also have completed <strong style="color: #fff;">Lab 2.1: Cryptographic Foundations</strong> before starting this lab.</p>
-    
-    <div style="position: relative; margin-bottom: 25px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Training Keys Only</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The SSH keys you generate in this lab are <strong style="color: #ffffff;">for training purposes only</strong>. Never use lab-generated keys for production systems. In real environments, keys are generated with proper entropy, protected with passphrases, and managed through key lifecycle policies.</p>
-      </div>
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
     </div>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
-      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
-      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-      <li><strong style="color: #ffffff;">Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85efeaedebabebe0f2f6eae8c5f0f1f6e4abe0e1f0">[email&#160;protected]</a> (for private matters only)</li>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>10-keygen-rsa.png</code> &#8212; RSA key generation</li>
+      <li>&#9744; <code>11-keygen-ed25519.png</code> &#8212; ED25519 key generation and comparison</li>
+      <li>&#9744; <code>12-permission-error.png</code> &#8212; SSH permission error message</li>
+      <li>&#9744; <code>13-permission-fixed.png</code> &#8212; Corrected permissions</li>
+      <li>&#9744; <code>14-authorized-keys.png</code> &#8212; authorized_keys setup</li>
+      <li>&#9744; <code>15-ssh-keyauth.png</code> &#8212; Successful key-based SSH</li>
+      <li>&#9744; <code>16-ssh-config.png</code> &#8212; SSH config file usage</li>
+      <li>&#9744; <code>17-mfa-login.png</code> &#8212; MFA login verification</li>
     </ul>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. Two Foundation Labs can be dropped, so plan accordingly.</p>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
-      <li>Explain SSH command syntax and options</li>
-      <li>Troubleshoot connection errors</li>
-      <li>Understand authentication concepts from the readings</li>
+
+    <h2>Screenshots (8 Required)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; {'filename': '10-keygen-rsa.png', 'description': 'RSA key generation showing randomart and file listing'}</li>
+      <li>&#9744; {'filename': '11-keygen-ed25519.png', 'description': 'ED25519 generation and wc -c size comparison between key types'}</li>
+      <li>&#9744; {'filename': '12-permission-error.png', 'description': 'nobody user successfully reading the private key (vulnerability demonstration)'}</li>
+      <li>&#9744; {'filename': '13-permission-fixed.png', 'description': 'Permission denied output after chmod 600, plus stat confirming originals are secure'}</li>
+      <li>&#9744; {'filename': '14-authorized-keys.png', 'description': '~/.ssh directory listing and authorized_keys content'}</li>
+      <li>&#9744; {'filename': '15-ssh-keyauth.png', 'description': 'Successful key-based SSH connection to localhost showing whoami output'}</li>
+      <li>&#9744; {'filename': '16-ssh-config.png', 'description': 'SSH config file contents and successful connection using the labserver alias'}</li>
+      <li>&#9744; {'filename': '17-mfa-login.png', 'description': 'MFA login showing both key passphrase and password prompts, plus whoami confirmation'}</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+
+    <h2>Environment Verification</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; {'check': 'VM hostname (kali-lastname-studentID) visible in all screenshots'}</li>
+      <li>&#9744; {'check': 'All key files created inside ~/lab2-auth directory'}</li>
+      <li>&#9744; {'check': 'All 8 screenshots added to Module2_Screenshots folder'}</li>
+      <li>&#9744; {'check': 'Total module screenshots: 17 (9 from Lab 2.1 + 8 from Lab 2.2)'}</li>
+    </ul>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> #lab-help</li>
+      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
+    </ul>
+
+    <h2>Late Work Policy</h2>
+    <p>Late work is not accepted. Drop policies exist for emergencies.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
+      <li>Explain command syntax and tool functionality</li>
+      <li>Troubleshoot errors and technical issues</li>
+      <li>Understand concepts from assigned readings</li>
+      <li>Proofread and grammar check</li>
+      <li>Suggest report structure improvements</li>
+    </ul>
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
+      <li>Write entire sections of reports</li>
       <li>Answer quiz questions directly</li>
       <li>Generate fake screenshots or outputs</li>
-      <li>Complete the hands-on work for you</li>
+      <li>Complete hands-on exercises on your behalf</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
-    
-    <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 2.2 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 2.3: Gulf Coast Certificate Remediation</strong> where you'll apply everything from Labs 2.1 and 2.2 to diagnose and fix certificate issues on Gulf Coast Healthcare's patient portal.</p>
+    <p><em>AI is a tutor, not a ghostwriter.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>{'text': 'After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three weeks into a complete Engagement Packet for the Gulf Coast Healthcare client.'}</p>
       </div>
     </div>
   </div>

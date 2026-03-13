@@ -3,835 +3,712 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 3.2 - Protocol Analysis Tools</title>
+  <title>Lab 3.2 &#8212; Protocol Analysis Tools</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+<h1 class="nx-sr-only">Lab 3.2 &#8212; Protocol Analysis Tools</h1>
 
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab3_2_Header.svg" alt="Lab 3.2 - Protocol Analysis Tools" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 3: Networks, Cloud &amp; Defense</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">This week is your Wireshark deep dive. You'll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you'll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.</p>
-    
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">3.2</div>
+    </div>
+    <div class="nx-sub">Protocol Analysis Tools</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 3: Networks, Cloud &amp; Defense</p>
+
+    <h2>Overview</h2>
+    <p>This week is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Every packet tells a story. Learn to read them, and the network will tell you exactly what's happening &#8212; good and bad. <strong style="color: #ffffff;">Endpoint statistics, IO graphs, flow graphs &#8212; these aren't optional.</strong> When you're hunting an attacker at 2am, you need every tool in your arsenal."</p>
+      <p>&#8220;Every packet tells a story. Learn to read them, and the network will tell you exactly what&#8217;s happening &#8212; good and bad. Endpoint statistics, IO graphs, flow graphs &#8212; these aren&#8217;t optional. When you&#8217;re hunting an attacker at 2am, you need every tool in your arsenal.&#8221;</p>
     </div>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 9 &#8212; Network Fundamentals | Chapter 13 &#8212; IDS and Network Security (partial) | Chapter 18 &#8212; Cloud Computing</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Focus Areas</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Wireshark installation and interface configuration</li>
-      <li>Capture filters vs. display filters</li>
-      <li>Protocol cataloging and analysis</li>
-      <li>TCP stream reconstruction</li>
-      <li>Statistical analysis (endpoints, IO graphs, flow graphs)</li>
-    </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <h2>Chapters Covered</h2>
+    <p>Chapter 9 &#8212; Network Fundamentals | Chapter 13 &#8212; IDS and Network Security (partial) | Chapter 18 &#8212; Cloud Computing</p>
+
+
+    <h2>Assignment Objectives</h2>
+    <ul>
       <li>Install Wireshark on your host operating system</li>
       <li>Master capture and display filter syntax</li>
       <li>Analyze training PCAPs to identify security-relevant findings</li>
       <li>Document your analysis methodology for Lab 3.3</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Key Concepts</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Packet Capture:</strong> Recording network traffic for offline analysis</li>
-      <li><strong style="color: #ffffff;">Capture Filters (BPF):</strong> Limit what traffic is recorded during capture</li>
-      <li><strong style="color: #ffffff;">Display Filters:</strong> Filter already-captured traffic for focused analysis</li>
-      <li><strong style="color: #ffffff;">Protocol Dissection:</strong> Breaking down packets into their component layers</li>
-      <li><strong style="color: #ffffff;">Flow Analysis:</strong> Understanding the sequence and relationship of packets</li>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li>Wireshark installation on host OS and network interface selection</li>
+      <li>Capture filters (BPF syntax) vs. display filters (Wireshark syntax)</li>
+      <li>Protocol cataloging — TCP, UDP, HTTP, TLS, DNS, ICMP</li>
+      <li>TCP stream reconstruction and credential exposure analysis</li>
+      <li>Statistical analysis: Endpoint Statistics, IO Graphs, Flow Graphs</li>
+      <li>Training PCAP analysis — identifying and documenting security findings</li>
     </ul>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Critical: Install on Host OS</div>
-        <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Wireshark must be installed on your <strong style="color: #ffffff;">host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized &#8212; capturing from the host gives you the complete picture.</p>
-                <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-top: 15px;">
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-            <img src="https://jfnewsom.github.io/is3513-assets/headshots/carmen-vega.png" alt="Carmen Vega" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
-            <div>
-              <div style="font-weight: 600; font-size: 14px; color: #7B68EE;">Carmen Vega</div>
-              <div style="font-size: 12px; color: #B0B8C4;">Junior Security Analyst, NEXUS Security</div>
-            </div>
-          </div>
-          <p style="font-style: italic; color: #B0B8C4; line-height: 1.6; margin: 0; font-size: 14px;">"I once captured on the wrong interface for 30 minutes. Check your interface BEFORE you start. Look for the interface showing packet activity &#8212; the little graphs next to each interface name will show you which one is live."</p>
-        </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Critical: Install on Host OS</div>
+        <p>Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized &#8212; capturing from the host gives you the complete picture.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">None</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>I once captured on the wrong interface for 30 minutes. Check your interface BEFORE you start. Look for the interface showing packet activity &#8212; the little graphs next to each interface name will show you which one is live.</p>
       </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 3.3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Continue saving screenshots to your <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Lab3-Screenshots</code> folder. Your Wireshark analysis screenshots will form the "Tool Documentation" section of your Week 3 Engagement Packet.</p>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">folder</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Save For Lab 3.3</div>
+        <p>This is <strong>Week 2 of a 3-week module</strong>. Continue saving screenshots to your <code>Module3_Screenshots</code> folder. Your Wireshark analysis screenshots will form the &#8220;Tool Documentation&#8221; section of your Week 3 Engagement Packet.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
-          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
-        </tr>
-      </thead>
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 1: Install Wireshark and identify interfaces</td>
-          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 2: Learn capture and display filters</td>
-          <td style="padding: 12px 15px; text-align: center;">30-40 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: Protocol cataloging exercise</td>
-          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 4: Advanced analysis techniques</td>
-          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 5: Training PCAP analysis</td>
-          <td style="padding: 12px 15px; text-align: center;">30-45 min</td>
-        </tr>
-        <tr style="background: #1a1f2e;">
-          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">170-235 min</td>
-        </tr>
+        <tr><td>Checkpoint 1: Install Wireshark and identify interfaces</td><td>20-30 min</td></tr>
+        <tr><td>Checkpoint 2: Learn capture and display filters</td><td>30-40 min</td></tr>
+        <tr><td>Checkpoint 3: Protocol cataloging exercise</td><td>45-60 min</td></tr>
+        <tr><td>Checkpoint 4: Advanced analysis techniques</td><td>45-60 min</td></tr>
+        <tr><td>Checkpoint 5: Training PCAP analysis</td><td>30-45 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>170-235 min</td></tr>
       </tbody>
     </table>
-    
-    <p style="color: #B0B8C4; margin: 20px 0 0 0; line-height: 1.8;"><strong style="color: #ffffff;">Timesheet Entry:</strong> Log this as <strong style="color: #FF9F1C;">Internal Training: 3-4 hours</strong> &#8212; Protocol analysis fundamentals. This is billable to NEXUS internal training, not client work.</p>
+
+    <p>Log this as <em>Internal Training: 3&#8211;4 hours &#8212; Protocol analysis fundamentals</em>. This is billable to NEXUS internal training, not client work.</p>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_2_1.svg" alt="Checkpoint 1 - Install Wireshark and Identify Interfaces" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Installing Wireshark on your host operating system and identifying which network interface to use for captures.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Wireshark is the industry-standard network protocol analyzer. SOC analysts, incident responders, and penetration testers all rely on it daily. Understanding interface selection is critical &#8212; capturing on the wrong interface is the #1 beginner mistake.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Download Wireshark from <a href="https://www.wireshark.org/download.html" style="color: #4169E1;">wireshark.org/download.html</a></li>
-      <li>Install using default options (Windows: allow Npcap installation; macOS: grant permissions when prompted)</li>
-      <li>Launch Wireshark and observe the interface list on the welcome screen</li>
-      <li>Identify your active interface by looking for the one with traffic (the sparkline graph shows activity)</li>
-      <li>Note your interface name &#8212; you'll need this for all future captures</li>
-    </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/terminal.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Verify Active Interface (Optional CLI Method)</div>
-        <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You can also identify your interface from the command line:</p>
-        <pre style="background: #1a1f2e; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 0;"><code style="font-family: Consolas, Monaco, monospace; font-size: 14px; color: #00D26A;"># Windows (PowerShell)
-Get-NetAdapter | Where-Object Status -eq "Up"
 
-# macOS/Linux
-ifconfig | grep -E "^[a-z]"</code></pre>
-      </div>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">No interfaces visible:</strong> On Windows, run Wireshark as Administrator. On macOS, ensure you granted capture permissions during install.</li>
-          <li><strong style="color: #ffffff;">VirtualBox interfaces showing:</strong> You'll see "VirtualBox Host-Only" adapters &#8212; ignore these for now. Use your Wi-Fi or Ethernet interface.</li>
-          <li><strong style="color: #ffffff;">Multiple active interfaces:</strong> If you have both Wi-Fi and Ethernet connected, pick whichever you use for internet access.</li>
-        </ul>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #7</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture Wireshark's welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">07-wireshark-interfaces.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark installed and running on your host OS. You know which interface to use for captures (likely Wi-Fi or Ethernet).</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers TCP/IP fundamentals and network architecture. Understanding how packets traverse network interfaces is foundational to protocol analysis. <em>Reading this chapter? That's a reference for your Lab 3.3 report.</em></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is Npcap and why does Wireshark need it for packet capture? How does promiscuous mode work at the kernel level? Check the Wireshark documentation at <a href="https://www.wireshark.org/docs/" style="color: #4169E1;">wireshark.org/docs</a>.</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark Foundation. (n.d.). <em>Wireshark User's Guide</em>. Retrieved from https://www.wireshark.org/docs/wsug_html/</p>
-      </div>
-    </div>
+    <div class="nx-sub">Install Wireshark and Identify Interfaces</div>
   </div>
-</div>
-
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_2_2.svg" alt="Checkpoint 2 - Learn Capture and Display Filters" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Understanding the difference between capture filters and display filters, and practicing filter syntax.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Large captures can contain millions of packets. Without filtering, finding relevant traffic is like searching for a needle in a haystack. Mastering filters is what separates efficient analysts from those who drown in data.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Filter Comparison</h4>
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin-bottom: 25px;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Aspect</th>
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Capture Filter</th>
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Display Filter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">When applied</td>
-          <td style="padding: 12px 15px;">During capture</td>
-          <td style="padding: 12px 15px;">After capture</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Syntax</td>
-          <td style="padding: 12px 15px;">BPF (Berkeley Packet Filter)</td>
-          <td style="padding: 12px 15px;">Wireshark-specific</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Example: Port 80</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">port 80</code></td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tcp.port == 80</code></td>
-        </tr>
-        <tr>
-          <td style="padding: 12px 15px;">Example: Specific host</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">host 10.0.0.1</code></td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip.addr == 10.0.0.1</code></td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Practice Exercise</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Start a capture on your active interface (no filter)</li>
-      <li>Let it run for 30 seconds while browsing a website</li>
-      <li>Stop the capture</li>
-      <li>Apply each of these display filters and observe the results:
-        <ul style="margin-top: 8px; margin-left: 20px;">
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">dns</code> &#8212; Show only DNS queries</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http</code> &#8212; Show only HTTP traffic</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tcp.port == 443</code> &#8212; Show HTTPS traffic</li>
-          <li><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ip.addr == YOUR_IP</code> &#8212; Show only your traffic</li>
-        </ul>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Installing Wireshark on your host operating system and identifying which network interface to use for captures.</p>
+    <h3>Why It Matters</h3>
+    <p>Wireshark is the industry-standard network protocol analyzer. SOC analysts, incident responders, and penetration testers all rely on it daily. Understanding interface selection is critical &#8212; capturing on the wrong interface is the #1 beginner mistake.</p>
+    <ol>
+      <li>Download Wireshark from <a href="https://wireshark.org/download.html">wireshark.org/download.html</a>
+      </li>
+      <li>Install using default options (Windows: allow Npcap installation; macOS: grant permissions when prompted).
+      </li>
+      <li>Launch Wireshark and observe the interface list on the welcome screen.
+      </li>
+      <li>Identify your active interface by looking for the one with traffic (the sparkline graph shows activity).
+      </li>
+      <li>Note your interface name &#8212; you&#8217;ll need this for all future captures.
       </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Filter Syntax Helper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Display filters turn <strong style="color: #00D26A;">green</strong> when valid and <strong style="color: #FF3B3B;">red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.</p>
+    <p><strong>Verify Active Interface (Optional CLI Method)</strong></p>
+    <ol>
+      <li>Windows (PowerShell):
+        <div class="nx-cmd">Get-NetAdapter | Where-Object Status -eq "Up"</div>
+      </li>
+      <li>macOS/Linux:
+        <div class="nx-cmd">ifconfig | grep -E "^[a-z]"</div>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture Wireshark&#8217;s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface. Save as <code>07-wireshark-interfaces.png</code></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Mixing syntax:</strong> Don't use display filter syntax in the capture filter box (or vice versa). They're different languages.</li>
-          <li><strong style="color: #ffffff;">Forgetting == vs =:</strong> Display filters use <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">==</code> for equality, not single <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">=</code>.</li>
-          <li><strong style="color: #ffffff;">Case sensitivity:</strong> Protocol names in display filters are lowercase (<code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http</code> not <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">HTTP</code>).</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>No interfaces visible:</strong> On Windows, run Wireshark as Administrator. On macOS, ensure you granted capture permissions during install.</li>
+          <li><strong>VirtualBox interfaces showing:</strong> You&#8217;ll see &#8220;VirtualBox Host-Only&#8221; adapters &#8212; ignore these. Use your Wi-Fi or Ethernet interface.</li>
+          <li><strong>Multiple active interfaces:</strong> If you have both Wi-Fi and Ethernet connected, pick whichever you use for internet access.</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #8</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture Wireshark with a <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">dns</code> display filter applied, showing filtered results. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">08-dns-filter.png</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Wireshark installed and running on your host OS. You know which interface to use for captures (likely Wi-Fi or Ethernet).</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Understanding of when to use capture vs display filters. Ability to apply basic display filters to isolate traffic by protocol, port, or IP address.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 9 covers TCP/IP fundamentals and network architecture. Understanding how packets traverse network interfaces is foundational to protocol analysis.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers TCP/IP fundamentals and protocol behavior. Chapter 13 discusses network monitoring and IDS concepts &#8212; the same principles apply to manual traffic analysis.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is Npcap and why does Wireshark need it for packet capture? How does promiscuous mode work at the kernel level?</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is BPF (Berkeley Packet Filter) and why do capture filters use different syntax than display filters? Check the Wireshark Wiki's page on capture filters.</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark Wiki. (n.d.). <em>CaptureFilters</em>. Retrieved from https://wiki.wireshark.org/CaptureFilters<br>Wireshark Foundation. (n.d.). <em>Display Filter Reference</em>. Retrieved from https://www.wireshark.org/docs/dfref/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Wireshark Foundation. (n.d.). <em>Wireshark User&#8217;s Guide</em>. Retrieved from https://www.wireshark.org/docs/wsug_html/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_2_3.svg" alt="Checkpoint 3 - Protocol Cataloging Exercise" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Systematically documenting common network protocols by filtering and analyzing traffic for each one.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Security analysts must recognize normal protocol behavior to identify anomalies. This exercise builds your baseline understanding of common protocols &#8212; you'll reference this knowledge during incident investigations and threat hunting.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Protocol Documentation Template</h4>
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">For each protocol below, document:</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">What is the protocol's purpose?</strong></li>
-      <li><strong style="color: #ffffff;">Is it secure?</strong> Is there a more secure alternative?</li>
-      <li><strong style="color: #ffffff;">What port(s) does it use?</strong></li>
-      <li><strong style="color: #ffffff;">Screenshot of filtered traffic</strong></li>
-    </ol>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Required Protocols</h4>
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4; margin-bottom: 25px;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Protocol</th>
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Display Filter</th>
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Port(s)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">TCP</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tcp</code></td>
-          <td style="padding: 12px 15px;">Various</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">UDP</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">udp</code></td>
-          <td style="padding: 12px 15px;">Various</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">HTTP</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http</code></td>
-          <td style="padding: 12px 15px;">80</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">HTTPS/TLS</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tls</code></td>
-          <td style="padding: 12px 15px;">443</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">DNS</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">dns</code></td>
-          <td style="padding: 12px 15px;">53</td>
-        </tr>
-        <tr>
-          <td style="padding: 12px 15px;">ICMP</td>
-          <td style="padding: 12px 15px;"><code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">icmp</code></td>
-          <td style="padding: 12px 15px;">N/A (Layer 3)</td>
-        </tr>
-      </tbody>
-    </table>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Generating ICMP Traffic</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">ICMP won't appear in normal browsing. To capture ICMP traffic, run <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ping google.com</code> from a terminal while Wireshark is capturing.</p>
-      </div>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #9 &#8212; TCP</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tcp</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">09-tcp.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #10 &#8212; UDP</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">udp</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">10-udp.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11 &#8212; HTTP</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-http.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12 &#8212; TLS</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">tls</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-tls.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #13 &#8212; DNS</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">dns</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-dns.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14 &#8212; ICMP</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Apply the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">icmp</code> filter and capture the filtered traffic. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-icmp.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Documentation for 6 protocols including purpose, security assessment, ports, and filtered traffic screenshots. This becomes the core of your "Tool Documentation" section in Lab 3.3.</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 9 covers the TCP/IP protocol stack and common protocols. Understanding protocol layering (OSI model) helps you interpret what you see in Wireshark's packet dissection.</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Where do protocols get their official definitions? Look up RFC 793 (TCP) or RFC 1035 (DNS) at <a href="https://www.rfc-editor.org/" style="color: #4169E1;">rfc-editor.org</a>. What organization publishes RFCs?</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">RFC Editor. (n.d.). <em>RFC 793: Transmission Control Protocol</em>. IETF. Retrieved from https://www.rfc-editor.org/rfc/rfc793<br>RFC Editor. (n.d.). <em>RFC 1122: Requirements for Internet Hosts</em>. IETF. Retrieved from https://tools.ietf.org/html/rfc1122</p>
-      </div>
-    </div>
+    <div class="nx-sub">Learn Capture and Display Filters</div>
   </div>
-</div>
-
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_2_4.svg" alt="Checkpoint 4 - Advanced Analysis Techniques" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Learning advanced Wireshark features: Follow TCP Stream, Endpoint Statistics, IO Graphs, and Flow Graphs.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Basic filtering shows individual packets. Advanced techniques reveal patterns, relationships, and behaviors. These are the tools that separate packet-by-packet analysis from true network investigation.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Technique 1: Follow TCP Stream</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Reconstructs the complete conversation between two endpoints.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Find an HTTP or TCP packet in your capture</li>
-      <li>Right-click &#8594; <strong style="color: #ffffff;">Follow</strong> &#8594; <strong style="color: #ffffff;">TCP Stream</strong></li>
-      <li>Observe the full conversation (requests in red, responses in blue)</li>
-      <li>Note: This is how analysts read cleartext credentials in HTTP traffic</li>
-    </ol>
-
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #15</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-tcp-stream.png</code></p>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Understanding the difference between capture filters and display filters, and practicing filter syntax.</p>
+    <h3>Why It Matters</h3>
+    <p>Large captures can contain millions of packets. Without filtering, finding relevant traffic is like searching for a needle in a haystack. Mastering filters is what separates efficient analysts from those who drown in data.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Filter Comparison</div>
+        <p></p>
       </div>
     </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Technique 2: Endpoint Statistics</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Shows which hosts are generating the most traffic.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Go to <strong style="color: #ffffff;">Statistics</strong> &#8594; <strong style="color: #ffffff;">Endpoints</strong></li>
-      <li>Click the <strong style="color: #ffffff;">IPv4</strong> tab</li>
-      <li>Sort by "Packets" or "Bytes" to see top talkers</li>
-      <li>Use case: Identify suspicious high-volume hosts during incident response</li>
+    <p><strong>Practice Exercise</strong></p>
+    <ol>
+      <li>Start a capture on your active interface (no filter).
+      </li>
+      <li>Let it run for 30 seconds while browsing a website.
+      </li>
+      <li>Stop the capture.
+      </li>
+      <li>Apply each of these display filters and observe the results:
+      </li>
+      <li>Show only DNS queries:
+        <div class="nx-cmd">dns</div>
+      </li>
+      <li>Show only HTTP traffic:
+        <div class="nx-cmd">http</div>
+      </li>
+      <li>Show HTTPS traffic:
+        <div class="nx-cmd">tcp.port == 443</div>
+      </li>
+      <li>Show only your traffic (replace with your IP):
+        <div class="nx-cmd">ip.addr == YOUR_IP</div>
+      </li>
     </ol>
-
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #16</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-endpoints.png</code></p>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Filter Syntax Helper</div>
+        <p>Display filters turn <strong>green</strong> when valid and <strong>red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.</p>
       </div>
     </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Technique 3: IO Graphs</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Visualizes traffic patterns over time.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Go to <strong style="color: #ffffff;">Statistics</strong> &#8594; <strong style="color: #ffffff;">I/O Graphs</strong></li>
-      <li>Observe the default "All Packets" graph</li>
-      <li>Add a new line: Click <strong style="color: #ffffff;">+</strong>, enter filter <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">dns</code>, change color</li>
-      <li>Use case: Spot traffic spikes, beaconing patterns, data exfiltration</li>
-    </ol>
-
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #17</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the IO Graph showing at least two lines &#8212; the default "All Packets" and your custom DNS filter. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-io-graph.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture Wireshark with a <code>dns</code> display filter applied, showing filtered results. Save as <code>08-dns-filter.png</code></p>
       </div>
     </div>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Technique 4: Flow Graphs</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Shows the sequence of packets between hosts visually.</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Go to <strong style="color: #ffffff;">Statistics</strong> &#8594; <strong style="color: #ffffff;">Flow Graph</strong></li>
-      <li>Select "Displayed packets" to use your current filter</li>
-      <li>Choose "TCP Flows" for flow type</li>
-      <li>Use case: Understand handshakes, retransmissions, connection sequences</li>
-    </ol>
-
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #18</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the Flow Graph showing TCP packet sequences between hosts. Use "Displayed packets" with a filter applied to keep it readable. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">18-flow-graph.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Following encrypted streams:</strong> TCP stream on HTTPS shows gibberish &#8212; that's encryption working. Try HTTP instead for readable content.</li>
-          <li><strong style="color: #ffffff;">Empty IO Graphs:</strong> Make sure you have enough captured data. A 10-second capture won't show meaningful patterns.</li>
-          <li><strong style="color: #ffffff;">Overwhelming flow graphs:</strong> Apply a filter first to reduce the number of flows shown.</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Mixing syntax:</strong> Don&#8217;t use display filter syntax in the capture filter box (or vice versa) &#8212; they&#8217;re different languages</li>
+          <li><strong>Forgetting == vs =:</strong> Display filters use <code>==</code> for equality, not single <code>=</code></li>
+          <li><strong>Case sensitivity:</strong> Protocol names in display filters are lowercase (<code>http</code> not <code>HTTP</code>)</li>
         </ul>
       </div>
     </div>
-    
-
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Hands-on experience with all four advanced techniques. Understanding of when to use each one during an investigation.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Understanding of when to use capture vs. display filters. Ability to apply basic display filters to isolate traffic by protocol, port, or IP address.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 13 covers IDS/IPS concepts including signature-based and anomaly-based detection. IO Graphs and endpoint statistics support anomaly detection by visualizing baseline deviations.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 9 covers TCP/IP fundamentals and protocol behavior. Chapter 13 discusses network monitoring and IDS concepts &#8212; the same principles apply to manual traffic analysis.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is TCP stream reassembly and why is it useful? What is the TCP three-way handshake and how does it appear in a flow graph? The Wireshark Wiki has detailed explanations.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is BPF (Berkeley Packet Filter) and why do capture filters use different syntax than display filters? Check the Wireshark Wiki&#8217;s page on capture filters.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark Documentation. (n.d.). <em>Following Protocol Streams</em>. Retrieved from https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html<br>Wireshark Wiki. (n.d.). <em>TCP Analysis</em>. Retrieved from https://wiki.wireshark.org/TCP_Analyze_Sequence_Numbers</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Wireshark Wiki. (n.d.). CaptureFilters. Retrieved from https://wiki.wireshark.org/CaptureFilters &#8212; Wireshark Foundation. (n.d.). Display Filter Reference. Retrieved from https://www.wireshark.org/docs/dfref/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_3_2_5.svg" alt="Checkpoint 5 - Training PCAP Analysis" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Analyzing a training PCAP file provided by NEXUS to practice identifying security-relevant findings.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Next week you'll analyze live traffic from the Gulf Coast Healthcare patient portal. This training exercise prepares you by having you practice finding real issues in a controlled capture.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Training PCAP Information</h4>
-    <p style="color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8;">Download the training PCAP to your host machine: <a href="https://jfnewsom.github.io/is3513-assets/pcaps/credential-leak.pcap" style="color: #4169E1; text-decoration: none; font-weight: 600;">credential-leak.pcap</a></p>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">This PCAP contains simulated traffic from a web application that has a security issue. Your task:</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Open the PCAP in Wireshark</li>
-      <li>Apply filters to identify HTTP traffic</li>
-      <li>Use Follow TCP Stream to examine conversations</li>
-      <li>Find the security issue (hint: look for form submissions)</li>
-      <li>Document what you found and why it's a problem</li>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">Protocol Cataloging Exercise</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Systematically documenting common network protocols by filtering and analyzing traffic for each one.</p>
+    <h3>Why It Matters</h3>
+    <p>Security analysts must recognize normal protocol behavior to identify anomalies. This exercise builds your baseline understanding of common protocols &#8212; you&#8217;ll reference this knowledge during incident investigations and threat hunting.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Required Protocols</div>
+        <p></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>tcp</code> filter and capture the filtered traffic. Save as <code>09-tcp.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>udp</code> filter and capture the filtered traffic. Save as <code>10-udp.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>http</code> filter and capture the filtered traffic. Save as <code>11-http.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>tls</code> filter and capture the filtered traffic. Save as <code>12-tls.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>dns</code> filter and capture the filtered traffic. Save as <code>13-dns.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Apply the <code>icmp</code> filter and capture the filtered traffic. Save as <code>14-icmp.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>{'label': 'Mixing filter syntax', 'text': 'BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.'}</li>
+          <li>{'label': 'No ICMP traffic', 'text': "ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing."}</li>
+          <li>{'label': 'Missing protocol documentation', 'text': "Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section."}</li>
+          <li>{'label': 'Case sensitivity in display filters', 'text': 'Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid.'}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Documentation for 6 protocols including purpose, security assessment, ports, and filtered traffic screenshots. This becomes the core of your &#8220;Tool Documentation&#8221; section in Lab 3.3.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 9 covers the TCP/IP protocol stack and common protocols. Understanding protocol layering (OSI model) helps you interpret what you see in Wireshark&#8217;s packet dissection.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Where do protocols get their official definitions? Look up RFC 793 (TCP) or RFC 1035 (DNS) at rfc-editor.org. What organization publishes RFCs?</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>RFC Editor. (n.d.). RFC 793: Transmission Control Protocol. IETF. https://www.rfc-editor.org/rfc/rfc793 &#8212; RFC Editor. (n.d.). RFC 1122: Requirements for Internet Hosts. IETF. https://tools.ietf.org/html/rfc1122</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">Advanced Analysis Techniques</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Learning advanced Wireshark features: Follow TCP Stream, Endpoint Statistics, IO Graphs, and Flow Graphs.</p>
+    <h3>Why It Matters</h3>
+    <p>Basic filtering shows individual packets. Advanced techniques reveal patterns, relationships, and behaviors. These are the tools that separate packet-by-packet analysis from true network investigation.</p>
+    <p><strong>Technique 1: Follow TCP Stream</strong></p>
+    <ol>
+      <li>Find an HTTP or TCP packet in your capture.
+      </li>
+      <li>Right-click &#8594; Follow &#8594; TCP Stream.
+      </li>
+      <li>Observe the full conversation (requests in red, responses in blue).
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Reconstructs the complete conversation between two endpoints. Client requests appear in red, server responses in blue.</p>
+            <p><strong>In your output:</strong> This is how analysts read cleartext credentials in HTTP traffic.</p>
+          </div>
+        </details>
+      </li>
     </ol>
-    
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue. Save as <code>15-tcp-stream.png</code></p>
+      </div>
+    </div>
+    <p><strong>Technique 2: Endpoint Statistics</strong></p>
+    <ol>
+      <li>Go to Statistics &#8594; Endpoints.
+      </li>
+      <li>Click the IPv4 tab.
+      </li>
+      <li>Sort by &#8220;Packets&#8221; or &#8220;Bytes&#8221; to see top talkers.
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Use case: Identify suspicious high-volume hosts during incident response.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers. Save as <code>16-endpoints.png</code></p>
+      </div>
+    </div>
+    <p><strong>Technique 3: IO Graphs</strong></p>
+    <ol>
+      <li>Go to Statistics &#8594; I/O Graphs.
+      </li>
+      <li>Observe the default &#8220;All Packets&#8221; graph.
+      </li>
+      <li>Add a new line: Click <strong>+</strong>, enter filter <code>dns</code>, change color.
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Use case: Spot traffic spikes, beaconing patterns, data exfiltration.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the IO Graph showing at least two lines &#8212; the default &#8220;All Packets&#8221; and your custom DNS filter. Save as <code>17-io-graph.png</code></p>
+      </div>
+    </div>
+    <p><strong>Technique 4: Flow Graphs</strong></p>
+    <ol>
+      <li>Go to Statistics &#8594; Flow Graph.
+      </li>
+      <li>Select &#8220;Displayed packets&#8221; to use your current filter.
+      </li>
+      <li>Choose &#8220;TCP Flows&#8221; for flow type.
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Use case: Understand handshakes, retransmissions, connection sequences.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the Flow Graph showing TCP packet sequences between hosts. Use &#8220;Displayed packets&#8221; with a filter applied to keep it readable. Save as <code>18-flow-graph.png</code></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Following encrypted streams:</strong> TCP stream on HTTPS shows gibberish &#8212; that&#8217;s encryption working. Try HTTP instead for readable content.</li>
+          <li><strong>Empty IO Graphs:</strong> Make sure you have enough captured data. A 10-second capture won&#8217;t show meaningful patterns.</li>
+          <li><strong>Overwhelming flow graphs:</strong> Apply a filter first to reduce the number of flows shown.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Hands-on experience with all four advanced techniques. Understanding of when to use each one during an investigation.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 13 covers IDS/IPS concepts including signature-based and anomaly-based detection. IO Graphs and endpoint statistics support anomaly detection by visualizing baseline deviations.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is TCP stream reassembly and why is it useful? What is the TCP three-way handshake and how does it appear in a flow graph?</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>Wireshark Documentation. (n.d.). Following Protocol Streams. https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowStreamSection.html &#8212; Wireshark Wiki. (n.d.). TCP Analysis. https://wiki.wireshark.org/TCP_Analyze_Sequence_Numbers</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">5</div>
+    </div>
+    <div class="nx-sub">Training PCAP Analysis</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Analyzing a training PCAP file provided by NEXUS to practice identifying security-relevant findings.</p>
+    <h3>Why It Matters</h3>
+    <p>Next week you&#8217;ll analyze live traffic from the Gulf Coast Healthcare patient portal. This training exercise prepares you by having you practice finding real issues in a controlled capture.</p>
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Derek Mitchell</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
+          <div class="nx-quote-name">Derek Mitchell</div>
+          <div class="nx-quote-title">Senior Security Engineer (Blue Team Lead), NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"I hand-picked these training captures to teach you what matters. The credential leak PCAP shows exactly why we push clients to use HTTPS everywhere. <strong style="color: #ffffff;">When you find the issue, you'll understand viscerally why encryption matters.</strong>"</p>
+      <p>&#8220;I hand-picked these training captures to teach you what matters. The credential leak PCAP shows exactly why we push clients to use HTTPS everywhere. When you find the issue, you&#8217;ll understand viscerally why encryption matters.&#8221;</p>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">download</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Training PCAP</div>
+        <p>Download the training PCAP to your host machine: <strong>credential-leak.pcap</strong></p>
       </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Skipping the basics:</strong> Start with <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http</code> filter before diving deeper.</li>
-          <li><strong style="color: #ffffff;">Missing POST requests:</strong> The interesting data is often in POST requests, not GET. Filter: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">http.request.method == POST</code></li>
-          <li><strong style="color: #ffffff;">Not documenting the finding:</strong> Don't just find it &#8212; explain what you found, why it's bad, and what should be done about it.</li>
+    </div>
+    <ol>
+      <li>Open <code>credential-leak.pcap</code> in Wireshark.
+      </li>
+      <li>Apply filters to identify HTTP traffic.
+      </li>
+      <li>Use Follow TCP Stream to examine conversations.
+      </li>
+      <li>Find the security issue (hint: look for form submissions).
+      </li>
+      <li>Document what you found and why it&#8217;s a problem.
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the security issue you discovered (TCP stream or packet details showing the problem). Save as <code>19-credential-finding.png</code> &#8212; this is your last screenshot for Lab 3.2!</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li><strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper</li>
+          <li><strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code></li>
+          <li><strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #19</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the security issue you discovered (TCP stream or packet details showing the problem). Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">19-credential-finding.png</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A screenshot of the security finding in the training PCAP. Notes documenting: what the issue is, why it&#8217;s a security problem, and what remediation you would recommend.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A screenshot of the security finding in the training PCAP. Notes documenting: what the issue is, why it's a security problem, and what remediation you would recommend.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 4 covers cryptography fundamentals including why encryption matters for data in transit. The issue you found in this PCAP directly illustrates a cryptographic failure.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>The credential exposure you found is a real vulnerability class. Look up OWASP&#8217;s guidance on &#8220;Sensitive Data Exposure&#8221; or &#8220;Cryptographic Failures&#8221; &#8212; what does OWASP recommend to prevent this?</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">The credential exposure you found is a real vulnerability class. Look up OWASP's guidance on "Sensitive Data Exposure" or "Cryptographic Failures" &#8212; what does OWASP recommend to prevent this?</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">OWASP. (2021). <em>A02:2021 &#8212; Cryptographic Failures</em>. OWASP Top 10. Retrieved from https://owasp.org/Top10/A02_2021-Cryptographic_Failures/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>OWASP. (2021). A02:2021 &#8212; Cryptographic Failures. OWASP Top 10. Retrieved from https://owasp.org/Top10/A02_2021-Cryptographic_Failures/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspectives" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">What Red Team Learns</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark is an attacker&#8217;s reconnaissance tool. On a compromised network segment, attackers use packet capture to harvest credentials from unencrypted traffic, map internal services, identify vulnerable protocols, and understand network architecture. The credential leak you found in the training PCAP? That&#8217;s exactly what attackers look for.</p>
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li>Wireshark is an attacker&#8217;s reconnaissance tool</li>
+          <li>On a compromised network segment, attackers use packet capture to harvest credentials from unencrypted traffic</li>
+          <li>Packet analysis maps internal services, identifies vulnerable protocols, and reveals network architecture</li>
+        </ul>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What Blue Team Learns</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">For defenders, Wireshark is essential for incident response and threat hunting. When a security alert fires, packet captures provide ground truth. You can verify what actually happened, reconstruct attacker actions, identify compromised systems, and gather evidence.</p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li>For defenders, Wireshark is essential for incident response and threat hunting</li>
+          <li>When a security alert fires, packet captures provide ground truth</li>
+          <li>You can verify what happened, reconstruct attacker actions, identify compromised systems, and gather evidence</li>
+        </ul>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 20px; width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/sync_alt.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">The Purple Team Connection</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Wireshark is the great equalizer &#8212; both attackers and defenders use identical analysis techniques. When you found the cleartext credentials in the training PCAP, you experienced both sides: understanding how attackers harvest credentials <em>and</em> how defenders detect credential exposure. This dual perspective is the essence of purple team operations.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>Wireshark is the great equalizer &#8212; both attackers and defenders use identical analysis techniques. When you found the cleartext credentials in the training PCAP, you experienced both sides simultaneously. This dual perspective is the essence of purple team operations.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify you've completed everything before taking the Canvas quiz:</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Technical Skills</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
+    </div>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>07-wireshark-interfaces.png</code> &#8212; Wireshark welcome screen with active interface identified</li>
+      <li>&#9744; <code>08-dns-filter.png</code> &#8212; DNS display filter applied and filtered results visible</li>
+      <li>&#9744; <code>09-tcp.png</code> &#8212; TCP display filter applied</li>
+      <li>&#9744; <code>10-udp.png</code> &#8212; UDP display filter applied</li>
+      <li>&#9744; <code>11-http.png</code> &#8212; HTTP display filter applied</li>
+      <li>&#9744; <code>12-tls.png</code> &#8212; TLS display filter applied</li>
+      <li>&#9744; <code>13-dns.png</code> &#8212; DNS display filter applied (full protocol catalog screenshot)</li>
+      <li>&#9744; <code>14-icmp.png</code> &#8212; ICMP display filter (generated via ping)</li>
+      <li>&#9744; <code>15-tcp-stream.png</code> &#8212; Follow TCP Stream window with color-coded conversation</li>
+      <li>&#9744; <code>16-endpoints.png</code> &#8212; Endpoint Statistics — IPv4 tab sorted by packet count</li>
+      <li>&#9744; <code>17-io-graph.png</code> &#8212; IO Graph with default + custom DNS filter lines</li>
+      <li>&#9744; <code>18-flow-graph.png</code> &#8212; Flow Graph showing TCP packet sequences</li>
+      <li>&#9744; <code>19-credential-finding.png</code> &#8212; Security finding in training PCAP (credential exposure)</li>
+    </ul>
+
+    <h2>Technical Skills</h2>
+    <ul class="nx-checklist">
       <li>&#9744; Wireshark installed on host OS and working</li>
       <li>&#9744; Can identify and select the correct capture interface</li>
       <li>&#9744; Understand difference between capture and display filters</li>
@@ -841,86 +718,86 @@ ifconfig | grep -E "^[a-z]"</code></pre>
       <li>&#9744; Can create IO Graphs with custom filters</li>
       <li>&#9744; Can generate Flow Graphs for TCP flows</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Documentation (13 Screenshots)</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">07-wireshark-interfaces.png</code> &#8212; Interface selection screen</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">08-dns-filter.png</code> &#8212; DNS display filter applied</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">09-tcp.png</code> &#8212; TCP filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">10-udp.png</code> &#8212; UDP filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">11-http.png</code> &#8212; HTTP filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">12-tls.png</code> &#8212; TLS filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">13-dns.png</code> &#8212; DNS filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">14-icmp.png</code> &#8212; ICMP filtered traffic</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">15-tcp-stream.png</code> &#8212; Follow TCP Stream example</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">16-endpoints.png</code> &#8212; Endpoint Statistics</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">17-io-graph.png</code> &#8212; IO Graph with custom filter</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">18-flow-graph.png</code> &#8212; Flow Graph</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">19-credential-finding.png</code> &#8212; Training PCAP security finding</li>
+
+    <h2>Documentation (13 Screenshots)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; 07-wireshark-interfaces.png &#8212; Interface selection screen</li>
+      <li>&#9744; 08-dns-filter.png &#8212; DNS display filter applied</li>
+      <li>&#9744; 09-tcp.png &#8212; TCP filtered traffic</li>
+      <li>&#9744; 10-udp.png &#8212; UDP filtered traffic</li>
+      <li>&#9744; 11-http.png &#8212; HTTP filtered traffic</li>
+      <li>&#9744; 12-tls.png &#8212; TLS filtered traffic</li>
+      <li>&#9744; 13-dns.png &#8212; DNS filtered traffic</li>
+      <li>&#9744; 14-icmp.png &#8212; ICMP filtered traffic</li>
+      <li>&#9744; 15-tcp-stream.png &#8212; Follow TCP Stream example</li>
+      <li>&#9744; 16-endpoints.png &#8212; Endpoint Statistics</li>
+      <li>&#9744; 17-io-graph.png &#8212; IO Graph with custom filter</li>
+      <li>&#9744; 18-flow-graph.png &#8212; Flow Graph</li>
+      <li>&#9744; 19-credential-finding.png &#8212; Training PCAP security finding</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Protocol Documentation</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2; list-style: none;">
+
+    <h2>Protocol Documentation</h2>
+    <ul class="nx-checklist">
       <li>&#9744; Documented purpose for each of 6 protocols</li>
       <li>&#9744; Assessed security of each protocol</li>
       <li>&#9744; Identified ports for each protocol</li>
       <li>&#9744; Notes saved for Lab 3.3 Engagement Packet</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 3.2 Quiz</strong> in Canvas. The quiz verifies you completed the hands-on work &#8212; questions will ask about specific outputs and findings from your Wireshark analysis. Keep Wireshark open while taking the quiz.</p>
-      </div>
-    </div>
+
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Getting Help</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Discord:</strong> Post in #lab-help for technical issues (fastest response)</li>
-      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> #lab-help</li>
+      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Late Work Policy</h3>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped, but the skills learned here are essential for Lab 3.3's live Azure capture.</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">GenAI Policy</h3>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may use AI tools (ChatGPT, Claude, etc.) to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
-      <li>Explain Wireshark features and filter syntax</li>
+
+    <h2>Late Work Policy</h2>
+    <p>Late work is not accepted. Drop policies exist for emergencies.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
+      <li>Explain command syntax and tool functionality</li>
       <li>Troubleshoot errors and technical issues</li>
-      <li>Understand protocol behavior from the readings</li>
+      <li>Understand concepts from assigned readings</li>
+      <li>Proofread and grammar check</li>
+      <li>Suggest report structure improvements</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may <strong style="color: #FF3B3B;">NOT</strong> use AI tools to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
+      <li>Write entire sections of reports</li>
       <li>Answer quiz questions directly</li>
-      <li>Generate fake screenshots or analysis</li>
-      <li>Complete the hands-on work for you</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete hands-on exercises on your behalf</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Think of AI like a tutor, not a ghostwriter.</strong> It can help you understand and improve, but the work itself must be yours.</p>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What's Next</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 3.3: Network Analysis Engagement</strong> &#8212; Next week you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply everything you learned here. You'll compile your Weeks 1-2 documentation plus new analysis into your Engagement Packet. The skills from this lab are non-negotiable for that assessment.</p>
+    <p><em>AI is a tutor, not a ghostwriter.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>{'text': "Lab 3.3: Network Analysis Engagement — Next week you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Weeks 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."}</p>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>

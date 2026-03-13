@@ -3,666 +3,610 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 5.2 - Risk Assessment &amp; Prioritization</title>
+  <title>Lab 5.2 &#8212; Risk Assessment & Prioritization</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+<h1 class="nx-sr-only">Lab 5.2 &#8212; Risk Assessment & Prioritization</h1>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab5_2_Header.svg" alt="Lab 5.2 - Risk Assessment &amp; Prioritization" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 5: Infrastructure, Risk &amp; Resilience</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Last week you identified 28 vulnerabilities in LoneStar DevOps infrastructure. This week, you'll transform that raw data into actionable intelligence. Not all vulnerabilities are equal &mdash; a CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets.</p>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/marcus-chen.png" alt="Marcus Chen" style="width: 100%; height: 100%; object-fit: cover;">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; color: #7B68EE; margin-bottom: 4px;">Marcus Chen</div>
-        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">Founder &amp; Principal Consultant, NEXUS Security</div>
-        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Anyone can run a scanner and produce a list of CVEs. What separates a consultant from a technician is <strong style="color: #ffffff;">context</strong>. A vulnerability report that says 'fix everything' is worthless. A report that says 'fix these three things first because they expose customer data and the enterprise deal depends on it' &mdash; that's worth the invoice."</p>
-      </div>
+
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">5.2</div>
     </div>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 20 &mdash; Risk Management | Chapter 21 &mdash; Change Management</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Focus Areas</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>CVSS 3.1 scoring methodology and interpretation</li>
-      <li>Business impact assessment techniques</li>
-      <li>Risk matrix construction and visualization</li>
-      <li>Constraint-aware prioritization frameworks</li>
-    </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <div class="nx-sub">Risk Assessment & Prioritization</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 5: Infrastructure, Risk & Resilience</p>
+
+    <h2>Overview</h2>
+    <p>Last week you identified 28 vulnerabilities in LoneStar DevOps infrastructure. This week, you’ll transform that raw data into actionable intelligence. Not all vulnerabilities are equal — a CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/marcus-chen.png" alt="Marcus Chen">
+        <div>
+          <div class="nx-quote-name">Marcus Chen</div>
+          <div class="nx-quote-title">Founder & Principal Consultant, NEXUS Security</div>
+        </div>
+      </div>
+      <p>&#8220;Anyone can run a scanner and produce a list of CVEs. What separates a consultant from a technician is context. A vulnerability report that says ‘fix everything’ is worthless. A report that says ‘fix these three things first because they expose customer data and the enterprise deal depends on it’ — that’s worth the invoice.&#8221;</p>
+    </div>
+    <h2>Chapters Covered</h2>
+    <p>Chapter 20 — Risk Management | Chapter 21 — Change Management</p>
+
+
+    <h2>Assignment Objectives</h2>
+    <ul>
       <li>Score all Lab 5.1 vulnerabilities using CVSS 3.1</li>
       <li>Map vulnerabilities to business assets and assess impact</li>
       <li>Construct a risk matrix that communicates to executives</li>
       <li>Create a prioritized remediation roadmap for LoneStar DevOps</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 5.3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 2 of a 3-week module</strong>. Save all work to your <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Lab5-Screenshots</code> folder. You'll compile these into your Lab 5.3 Risk &amp; Vulnerability Assessment Report next week.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li>CVSS 3.1 scoring methodology and interpretation</li>
+      <li>Business impact assessment techniques</li>
+      <li>Risk matrix construction and visualization</li>
+      <li>Constraint-aware prioritization frameworks</li>
+    </ul>
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>This is Week 2 of a 3-week module. Save all work to your Lab5-Screenshots folder. You’ll compile these into your Lab 5.3 Risk & Vulnerability Assessment Report next week.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-top: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Analysis-Focused Lab</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #fff;">Lab 5.1 completion is required.</strong> You need your vulnerability findings from last week &mdash; the 28 vulnerabilities you identified. This lab is analysis-focused rather than tool-focused. You won't be running terminal commands &mdash; you'll be working with CVSS calculators in your browser and building tables and matrices. <strong style="color: #fff;">Your rationale matters more than your ranking.</strong></p>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Analysis-Focused Lab</div>
+        <p>Lab 5.1 completion is required. You need your vulnerability findings from last week — the 28 vulnerabilities you identified. This lab is analysis-focused rather than tool-focused. You won’t be running terminal commands — you’ll be working with CVSS calculators in your browser and building tables and matrices. Your rationale matters more than your ranking.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
-          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
-        </tr>
-      </thead>
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 1: CVSS Scoring Workshop</td>
-          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 2: Business Impact Assessment</td>
-          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: Risk Matrix Construction</td>
-          <td style="padding: 12px 15px; text-align: center;">30-45 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 4: Prioritization Framework</td>
-          <td style="padding: 12px 15px; text-align: center;">45-60 min</td>
-        </tr>
-        <tr style="background: rgba(255, 159, 28, 0.15);">
-          <td style="padding: 12px 15px; font-weight: 600; color: #ffffff;">Total Estimated Time</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">3-4 hours</td>
-        </tr>
+        <tr><td>Checkpoint 1: CVSS Scoring Workshop</td><td>45–60 min</td></tr>
+        <tr><td>Checkpoint 2: Business Impact Assessment</td><td>45–60 min</td></tr>
+        <tr><td>Checkpoint 3: Risk Matrix Construction</td><td>30–45 min</td></tr>
+        <tr><td>Checkpoint 4: Prioritization Framework</td><td>45–60 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>3–4 hours</td></tr>
       </tbody>
     </table>
+
+    <p>This is Week 2 of a 3-week module. Log as <em>Internal Training: 3&#8211;4 hours &#8212; Risk assessment and prioritization</em>. This is analysis-focused work, not tool-running &#8212; your CVSS rationale and business context notes are the deliverable. Save all screenshots (#11&#8211;18) to your existing <code>Lab53-Screenshots</code> folder.</p>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_1.svg" alt="Checkpoint 1: CVSS Scoring Workshop" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Scoring each vulnerability from Lab 5.1 using the CVSS 3.1 calculator.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">CVSS provides a standardized way to communicate vulnerability severity. It's the common language between security teams, vendors, and clients.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Access the CVSS Calculator:</strong> NVD calculator at <a href="https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator" style="color: #4169E1;">nvd.nist.gov</a> or FIRST calculator at <a href="https://www.first.org/cvss/calculator/3.1" style="color: #4169E1;">first.org</a></li>
-      <li><strong style="color: #ffffff;">For Each Vulnerability:</strong> Look up the CVE (if available) or calculate based on characteristics</li>
-      <li><strong style="color: #ffffff;">Document Components:</strong> Attack Vector, Attack Complexity, Privileges Required, User Interaction, Scope, C/I/A Impact</li>
-      <li><strong style="color: #ffffff;">Create a Comprehensive Table:</strong> CVE ID (if applicable), Vulnerability Name, Base Score, Severity Rating</li>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">CVSS Scoring Workshop</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Scoring each vulnerability from Lab 5.1 using the CVSS 3.1 calculator.</p>
+    <h3>Why It Matters</h3>
+    <p>CVSS provides a standardized way to communicate vulnerability severity. It’s the common language between security teams, vendors, and clients.</p>
+    <ol>
+      <li>Access the CVSS Calculator: NVD calculator at nvd.nist.gov/vuln-metrics/cvss/v3-calculator or FIRST calculator at first.org/cvss/calculator/3.1
+      </li>
+      <li>For each vulnerability: look up the CVE (if available) or calculate based on characteristics
+      </li>
+      <li>Document components: Attack Vector, Attack Complexity, Privileges Required, User Interaction, Scope, C/I/A Impact
+      </li>
+      <li>Create a comprehensive table: CVE ID (if applicable), Vulnerability Name, Base Score, Severity Rating
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #11</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture CVSS calculator with one vulnerability scored. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-cvss-calculator.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #12</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your complete vulnerability scores table. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-vulnerability-scores.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-    <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Confusing Attack Vector with Attack Complexity:</strong> Attack Vector is <em>where</em> the attacker must be (network, adjacent, local, physical). Attack Complexity is <em>how hard</em> the exploit is to execute</li>
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Using CVSS 2.0 scores:</strong> Some older CVE entries show CVSS 2.0 scores. Always use the v3.1 calculator at first.org for consistency</li>
-          <li style="margin-bottom: 6px;"><strong style="color: #ffffff;">Skipping the justification:</strong> A CVSS score without explanation is meaningless &#8212; document <em>why</em> you selected each metric value</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>{'label': 'Confusing Attack Vector with Attack Complexity', 'text': 'Attack Vector is where the attacker must be (network, adjacent, local, physical). Attack Complexity is how hard the exploit is to execute.'}</li>
+          <li>{'label': 'Using CVSS 2.0 scores', 'text': 'Some older CVE entries show CVSS 2.0 scores. Always use the v3.1 calculator at first.org for consistency.'}</li>
+          <li>{'label': 'Skipping the justification', 'text': 'A CVSS score without explanation is meaningless — document why you selected each metric value.'}</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between CVSS Base, Temporal, and Environmental scores? Research how different organizations use each type.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What’s the difference between CVSS Base, Temporal, and Environmental scores? Research how different organizations use each type.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched CVSS scoring. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">FIRST. Common Vulnerability Scoring System v3.1: Specification Document. https://www.first.org/cvss/specification-document</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>You just researched CVSS scoring. Add it to your references: FIRST. Common Vulnerability Scoring System v3.1: Specification Document. https://www.first.org/cvss/specification-document</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete table with CVSS scores for all vulnerabilities identified in Lab 5.1.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A complete table with CVSS scores for all vulnerabilities identified in Lab 5.1.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Vulnerability Assessment" section.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p></p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_2.svg" alt="Checkpoint 2: Business Impact Assessment" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Creating a vulnerability-to-asset mapping that shows how each finding affects LoneStar's business.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">A CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets. Business context determines actual risk.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Identify Critical Assets:</strong> webapp-prod (customer portal), db-primary (MySQL with customer data), dev-api (Node.js), mgmt-ssh (management access)</li>
-      <li><strong style="color: #ffffff;">Create Vulnerability-to-Asset Mapping:</strong> Which asset(s) does each vulnerability affect?</li>
-      <li><strong style="color: #ffffff;">Assess Impact Categories:</strong> Financial, Reputational, Operational, Compliance</li>
-      <li><strong style="color: #ffffff;">Document Business Context:</strong> $12M ARR, 200+ customers, Series B preparation</li>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">Business Impact Assessment</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Creating a vulnerability-to-asset mapping that shows how each finding affects LoneStar’s business.</p>
+    <h3>Why It Matters</h3>
+    <p>A CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets. Business context determines actual risk.</p>
+    <ol>
+      <li>Identify critical assets: webapp-prod (customer portal), db-primary (MySQL with customer data), dev-api (Node.js), mgmt-ssh (management access)
+      </li>
+      <li>Create vulnerability-to-asset mapping: which asset(s) does each vulnerability affect?
+      </li>
+      <li>Assess impact categories: Financial, Reputational, Operational, Compliance
+      </li>
+      <li>Document business context: $12M ARR, 200+ customers, Series B preparation
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/amanda-nguyen.png" alt="Amanda Nguyen" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/amanda-nguyen.png" alt="Amanda Nguyen">
+        <div>
+          <div class="nx-quote-name">Amanda Nguyen</div>
+          <div class="nx-quote-title">CEO & Co-Founder, LoneStar DevOps</div>
+        </div>
       </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; color: #00BCD4; margin-bottom: 4px;">Amanda Nguyen</div>
-        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">CEO &amp; Co-Founder, LoneStar DevOps</div>
-        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"I need to present to Longhorn Ventures in three weeks. <strong style="color: #ffffff;">I need to know: what could actually hurt us, and what's the plan to fix it?</strong>"</p>
+      <p>&#8220;I need to present to Longhorn Ventures in three weeks. I need to know: what could actually hurt us, and what’s the plan to fix it?&#8221;</p>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #13</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture vulnerability-to-asset mapping. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-asset-mapping.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #14</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture business impact assessment. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-business-impact.png</code></p>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Don’t Forget jdavis</div>
+        <p>Former employee with sudo access is a critical business risk — left 6 months ago, works for competitor.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Don't Forget jdavis</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Former employee with sudo access is a critical business risk &mdash; left 6 months ago, works for competitor.</p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Technical-only focus:</strong> A "medium" vuln on a critical asset may need higher priority</li>
-          <li><strong style="color: #ffffff;">Missing context:</strong> Document WHY each asset matters to the business</li>
-          <li><strong style="color: #ffffff;">Forgetting dependencies:</strong> A compromised build server affects everything it deploys</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>{'label': 'Technical-only focus', 'text': 'A “medium” vuln on a critical asset may need higher priority.'}</li>
+          <li>{'label': 'Missing context', 'text': 'Document WHY each asset matters to the business.'}</li>
+          <li>{'label': 'Forgetting dependencies', 'text': 'A compromised build server affects everything it deploys.'}</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How do you calculate the business impact of a potential breach? Research qualitative vs. quantitative risk assessment methods.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>How do you calculate the business impact of a potential breach? Research qualitative vs. quantitative risk assessment methods.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched business impact. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">FAIR: Factor Analysis of Information Risk. The Open Group, https://www.opengroup.org/certifications/openfair</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>You just researched business impact. Add it to your references: FAIR: Factor Analysis of Information Risk. The Open Group, https://www.opengroup.org/certifications/openfair</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A mapping of vulnerabilities to business assets with documented business impact.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A mapping of vulnerabilities to business assets with documented business impact.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Business Impact Analysis" section.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p></p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_3.svg" alt="Checkpoint 3: Risk Matrix Construction" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Building a 5&#215;5 risk matrix plotting vulnerabilities by likelihood and impact.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Executives understand "red quadrant" better than "CVSS 9.8." A risk matrix translates technical assessments into business language.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Define Likelihood Levels (1-5):</strong> Rare &#8594; Unlikely &#8594; Possible &#8594; Likely &#8594; Almost Certain</li>
-      <li><strong style="color: #ffffff;">Define Impact Levels (1-5):</strong> Negligible &#8594; Minor &#8594; Moderate &#8594; Major &#8594; Catastrophic</li>
-      <li><strong style="color: #ffffff;">Calculate Risk Scores:</strong> Risk = Likelihood &#215; Impact. Critical (15-25), High (10-14), Medium (5-9), Low (1-4)</li>
-      <li><strong style="color: #ffffff;">Create Visual Matrix:</strong> 5&#215;5 grid, color-coded by risk level</li>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">Risk Matrix Construction</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Building a 5×5 risk matrix plotting vulnerabilities by likelihood and impact.</p>
+    <h3>Why It Matters</h3>
+    <p>Executives understand “red quadrant” better than “CVSS 9.8.” A risk matrix translates technical assessments into business language.</p>
+    <ol>
+      <li>Define Likelihood Levels (1–5): Rare → Unlikely → Possible → Likely → Almost Certain
+      </li>
+      <li>Define Impact Levels (1–5): Negligible → Minor → Moderate → Major → Catastrophic
+      </li>
+      <li>Calculate Risk Scores: Risk = Likelihood × Impact. Critical (15–25), High (10–14), Medium (5–9), Low (1–4)
+      </li>
+      <li>Create Visual Matrix: 5×5 grid, color-coded by risk level
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #15</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture completed 5&#215;5 risk matrix. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-risk-matrix.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #16</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture risk score calculations table. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-risk-scores.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Inconsistent scales:</strong> Use the same 1-5 scale for both likelihood and impact</li>
-          <li><strong style="color: #ffffff;">Missing color coding:</strong> Visual distinction makes the matrix actionable</li>
-          <li><strong style="color: #ffffff;">No thresholds defined:</strong> Document what score ranges mean (critical, high, medium, low)</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>{'label': 'Inconsistent scales', 'text': 'Use the same 1–5 scale for both likelihood and impact.'}</li>
+          <li>{'label': 'Missing color coding', 'text': 'Visual distinction makes the matrix actionable.'}</li>
+          <li>{'label': 'No thresholds defined', 'text': 'Document what score ranges mean (critical, high, medium, low).'}</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What is defense in depth and how does it relate to vulnerability management? Research layered security controls and compensating controls.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What is defense in depth and how does it relate to vulnerability management? Research layered security controls and compensating controls.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched defense strategies. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">CIS Controls v8. Center for Internet Security, https://www.cisecurity.org/controls</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>You just researched defense strategies. Add it to your references: CIS Controls v8. Center for Internet Security, https://www.cisecurity.org/controls</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A complete risk matrix with all vulnerabilities categorized.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A complete risk matrix with all vulnerabilities categorized.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Risk Assessment Frameworks" section.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p></p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_5_2_4.svg" alt="Checkpoint 4: Prioritization Framework" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 0 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">What You're Doing</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Creating a prioritized remediation roadmap that considers real-world constraints.</p>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Why It Matters</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">A report that says "fix everything immediately" is useless. LoneStar has a 2-person DevOps team, no staging environment, and can't take the portal offline during business hours.</p>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What factors beyond CVSS scores should influence vulnerability prioritization? Research how business context affects remediation urgency.</p>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">Prioritization Framework</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Creating a prioritized remediation roadmap that considers real-world constraints.</p>
+    <h3>Why It Matters</h3>
+    <p>A report that says ‘fix everything immediately’ is useless. LoneStar has a 2-person DevOps team, no staging environment, and can’t take the portal offline during business hours.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What factors beyond CVSS scores should influence vulnerability prioritization? Research how business context affects remediation urgency.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">FIRST Stakeholder-Specific Vulnerability Categorization (SSVC): <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">https://www.first.org/cvss/</code>. Your textbook Chapter 10 covers business impact analysis.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>FIRST Stakeholder-Specific Vulnerability Categorization (SSVC): https://www.first.org/cvss/. Your textbook Chapter 10 covers business impact analysis.</p>
       </div>
     </div>
-    
-    <h3 style="color: #00D26A; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Step-by-Step Instructions</h3>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Document Constraints:</strong> 2 DevOps engineers (Sarah + Miguel), no staging, no business-hours downtime, 4-week timeline</li>
-      <li><strong style="color: #ffffff;">Assess Remediation Complexity:</strong> Effort, downtime, skill level, testing requirements</li>
-      <li><strong style="color: #ffffff;">Create Prioritization Matrix:</strong> Risk Score vs. Remediation Complexity</li>
-      <li><strong style="color: #ffffff;">Build Prioritized Roadmap:</strong> Sequenced list with rationale for each position</li>
+    <ol>
+      <li>Document constraints: 2 DevOps engineers (Sarah + Miguel), no staging, no business-hours downtime, 4-week timeline
+      </li>
+      <li>Assess remediation complexity: effort, downtime, skill level, testing requirements
+      </li>
+      <li>Create prioritization matrix: Risk Score vs. Remediation Complexity
+      </li>
+      <li>Build prioritized roadmap: sequenced list with rationale for each position
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; overflow: hidden;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/sarah-martinez.png" alt="Sarah Martinez" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/sarah-martinez.png" alt="Sarah Martinez">
+        <div>
+          <div class="nx-quote-name">Sarah Martinez</div>
+          <div class="nx-quote-title">Senior DevOps Engineer, LoneStar DevOps</div>
+        </div>
       </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; color: #00BCD4; margin-bottom: 4px;">Sarah Martinez</div>
-        <div style="font-size: 13px; color: #B0B8C4; margin-bottom: 12px;">Senior DevOps Engineer, LoneStar DevOps</div>
-        <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"<strong style="color: #ffffff;">It's just me and Miguel, and we can't flip a switch and fix everything overnight.</strong> Give me quick wins I can show Amanda next week, and a realistic plan for the harder stuff."</p>
+      <p>&#8220;It’s just me and Miguel, and we can’t flip a switch and fix everything overnight. Give me quick wins I can show Amanda next week, and a realistic plan for the harder stuff.&#8221;</p>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Key Insight: CVSS vs. Business Priority</div>
+        <p>WordPress SQLi (CVSS 9.8) = High priority (marketing site). MySQL default creds (~CVSS 7.5) = HIGHEST priority (exposes ALL customer data).</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Key Insight: CVSS vs. Business Priority</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">WordPress SQLi (CVSS 9.8)</strong> = High priority (marketing site)<br><strong style="color: #ffffff;">MySQL default creds (~CVSS 7.5)</strong> = HIGHEST priority (exposes ALL customer data)</p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #17</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture prioritization framework. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-prioritization-framework.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p></p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #18</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture final remediation roadmap with rationale. Save as <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">18-remediation-roadmap.png</code></p>
-      </div>
-    </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 20px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Unrealistic timelines:</strong> A 2-person team can't fix 28 vulns in one sprint</li>
-          <li><strong style="color: #ffffff;">No quick wins:</strong> Include some easy fixes to show early progress</li>
-          <li><strong style="color: #ffffff;">Missing rationale:</strong> Explain WHY you prioritized each item</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>{'label': 'Unrealistic timelines', 'text': 'A 2-person team can’t fix 28 vulns in one sprint.'}</li>
+          <li>{'label': 'No quick wins', 'text': 'Include some easy fixes to show early progress.'}</li>
+          <li>{'label': 'Missing rationale', 'text': 'Explain WHY you prioritized each item.'}</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to translate technical findings into business language.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to translate technical findings into business language.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">You just researched risk communication. Add it to your references: <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">ISACA Risk IT Framework. ISACA, https://www.isaca.org/resources/risk-it</code></p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>You just researched risk communication. Add it to your references: ISACA Risk IT Framework. ISACA, https://www.isaca.org/resources/risk-it</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A prioritized remediation roadmap that accounts for LoneStar's constraints with clear rationale.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A prioritized remediation roadmap that accounts for LoneStar’s constraints with clear rationale.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Chapter 20: Risk Management</strong> &mdash; See "Risk Treatment" section.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p></p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Purple_Team_Header.svg" alt="Purple Team Perspectives" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #7B68EE; border-bottom: 4px solid #7B68EE;">
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF3B3B; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/bug_report.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 59, 59, 0.12); border-left: 4px solid #FF3B3B; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF3B3B; margin-bottom: 12px;">What Red Team Learns</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Attackers don't prioritize by CVSS &mdash; they prioritize by <strong style="color: #ffffff;">attack path</strong>. MySQL default creds &#8594; customer database &#8594; API keys &#8594; cascade to 200+ customer environments.</p>
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li>{'label': '', 'text': 'Attackers don’t prioritize by CVSS — they prioritize by attack path. MySQL default creds → customer database → API keys → cascade to 200+ customer environments.'}</li>
+        </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/shield.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What Blue Team Learns</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Defenders need to communicate risk to stakeholders who don't understand CVEs. <strong style="color: #ffffff;">Your deliverables need to serve both technical and business audiences.</strong></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li>{'label': '', 'text': 'Defenders need to communicate risk to stakeholders who don’t understand CVEs. Your deliverables need to serve both technical and business audiences.'}</li>
+        </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/sync_alt.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.12); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">The Purple Team Connection</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Effective risk assessment combines both perspectives: technically sound + practically implementable.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>Effective risk assessment combines both perspectives: technically sound + practically implementable.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Checkpoint Verification</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 25px; line-height: 2; list-style: none;">
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
+    </div>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>11-cvss-calculator.png</code> &#8212; CVSS 3.1 calculator with one vulnerability scored</li>
+      <li>&#9744; <code>12-vulnerability-scores.png</code> &#8212; Complete table of all vulnerabilities with CVSS scores</li>
+      <li>&#9744; <code>13-asset-mapping.png</code> &#8212; Vulnerability-to-asset mapping table</li>
+      <li>&#9744; <code>14-business-impact.png</code> &#8212; Business impact assessment for LoneStar assets</li>
+      <li>&#9744; <code>15-risk-matrix.png</code> &#8212; Completed 5×5 risk matrix with color coding</li>
+      <li>&#9744; <code>16-risk-scores.png</code> &#8212; Risk score calculations table (Likelihood × Impact)</li>
+      <li>&#9744; <code>17-prioritization-framework.png</code> &#8212; Prioritization framework (Risk Score vs. Remediation Complexity)</li>
+      <li>&#9744; <code>18-remediation-roadmap.png</code> &#8212; Final remediation roadmap with phased rationale</li>
+    </ul>
+
+    <h2>Checkpoint Verification</h2>
+    <ul class="nx-checklist">
       <li>&#9744; All Lab 5.1 vulnerabilities have CVSS scores</li>
       <li>&#9744; Vulnerability-to-asset mapping is complete</li>
-      <li>&#9744; 5&#215;5 risk matrix is complete and color-coded</li>
+      <li>&#9744; 5×5 risk matrix is complete and color-coded</li>
       <li>&#9744; Prioritized remediation roadmap created with rationale</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Documentation (8 Screenshots)</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 25px; line-height: 2; list-style: none;">
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">11-cvss-calculator.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">12-vulnerability-scores.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">13-asset-mapping.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">14-business-impact.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">15-risk-matrix.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">16-risk-scores.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">17-prioritization-framework.png</code></li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">18-remediation-roadmap.png</code></li>
+
+    <h2>Documentation (8 Screenshots)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; {'filename': '11-cvss-calculator.png'}</li>
+      <li>&#9744; {'filename': '12-vulnerability-scores.png'}</li>
+      <li>&#9744; {'filename': '13-asset-mapping.png'}</li>
+      <li>&#9744; {'filename': '14-business-impact.png'}</li>
+      <li>&#9744; {'filename': '15-risk-matrix.png'}</li>
+      <li>&#9744; {'filename': '16-risk-scores.png'}</li>
+      <li>&#9744; {'filename': '17-prioritization-framework.png'}</li>
+      <li>&#9744; {'filename': '18-remediation-roadmap.png'}</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Submission</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #ffffff;">Lab 5.2 Quiz</strong> in Canvas.</p>
+
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">quiz</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Canvas Submission</div>
+        <p>{'text': 'Take the Lab 5.2 Quiz in Canvas.'}</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 0 0 12px 0; font-weight: 600;">Getting Help</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li><strong style="color: #ffffff;">Discord:</strong> Post in #lab-help for technical issues (fastest response)</li>
-      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> Post in #lab-help for technical issues (fastest response)</li>
+      <li><strong>Office Hours:</strong> calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
     </ul>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h3>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &mdash; use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational work.</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h3>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may use AI tools (ChatGPT, Claude, etc.) to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+
+    <h2>Late Work Policy</h2>
+    <p>Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don’t use that as an excuse to skip foundational work.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
       <li>Explain command syntax and tool functionality</li>
       <li>Troubleshoot errors and technical issues</li>
       <li>Understand concepts from the readings</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">You may <strong style="color: #FF3B3B;">NOT</strong> use AI tools to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 20px 0; padding-left: 20px; line-height: 1.8;">
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
       <li>Answer quiz questions directly</li>
       <li>Generate fake screenshots or outputs</li>
       <li>Complete the hands-on work for you</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><strong style="color: #ffffff;">Think of AI like a tutor, not a ghostwriter.</strong> It can help you understand and improve, but the work itself must be yours.</p>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">What's Next</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;"><strong style="color: #ffffff;">Lab 5.3: Risk &amp; Vulnerability Assessment Report</strong> &mdash; Compile everything from Weeks 1 and 2 into a professional assessment report for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team.</p>
+    <p><em>Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>{'title': 'Lab 5.3: Risk & Vulnerability Assessment Report', 'text': 'Compile everything from Weeks 1 and 2 into a professional assessment report for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team.'}</p>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>
