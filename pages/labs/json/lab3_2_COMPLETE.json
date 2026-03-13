@@ -261,27 +261,25 @@
             {
               "text": "Apply each of these display filters and observe the results:",
               "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Show only DNS queries:",
-              "command": "dns",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Show only HTTP traffic:",
-              "command": "http",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Show HTTPS traffic:",
-              "command": "tcp.port == 443",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Show only your traffic (replace with your IP):",
-              "command": "ip.addr == YOUR_IP",
-              "whatThisDoes": null
+              "whatThisDoes": null,
+              "subItems": [
+                {
+                  "code": "dns",
+                  "label": "Show only DNS queries"
+                },
+                {
+                  "code": "http",
+                  "label": "Show only HTTP traffic"
+                },
+                {
+                  "code": "tcp.port == 443",
+                  "label": "Show HTTPS traffic"
+                },
+                {
+                  "code": "ip.addr == YOUR_IP",
+                  "label": "Show only your traffic (replace with your IP)"
+                }
+              ]
             }
           ]
         },

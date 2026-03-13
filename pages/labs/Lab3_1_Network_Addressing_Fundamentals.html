@@ -412,12 +412,36 @@
         <div class="nx-cidr-caption">New CIDR: /24 (22 original + 2 borrowed = 24)</div>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">The Complete Subnet Table (192.168.0.0/22 &#8594; /24)</div>
-      </div>
-    </div>
+    <h3>The Complete Subnet Table (192.168.0.0/22 &#8594; /24)</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Subnet Address</th>
+        <th>Usable Host Range</th>
+        <th>Broadcast</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">192.168.0.0/24</td>
+          <td>192.168.0.1 &#8212; 192.168.0.254</td>
+          <td>192.168.0.255</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">192.168.1.0/24</td>
+          <td>192.168.1.1 &#8212; 192.168.1.254</td>
+          <td>192.168.1.255</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">192.168.2.0/24</td>
+          <td>192.168.2.1 &#8212; 192.168.2.254</td>
+          <td>192.168.2.255</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">192.168.3.0/24</td>
+          <td>192.168.3.1 &#8212; 192.168.3.254</td>
+          <td>192.168.3.255</td>
+        </tr>
+      </tbody>
+    </table>
     <p><strong>Your Turn</strong></p>
     <ol>
       <li>Starting with <code>172.16.0.0/16</code>, borrow 4 bits for subnetting:

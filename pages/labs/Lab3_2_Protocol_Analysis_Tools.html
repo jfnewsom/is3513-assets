@@ -218,12 +218,36 @@
     <p>Understanding the difference between capture filters and display filters, and practicing filter syntax.</p>
     <h3>Why It Matters</h3>
     <p>Large captures can contain millions of packets. Without filtering, finding relevant traffic is like searching for a needle in a haystack. Mastering filters is what separates efficient analysts from those who drown in data.</p>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Filter Comparison</div>
-      </div>
-    </div>
+    <h3>Filter Comparison</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Aspect</th>
+        <th>Capture Filter</th>
+        <th>Display Filter</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">When applied</td>
+          <td>During capture</td>
+          <td>After capture</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Syntax</td>
+          <td>BPF (Berkeley Packet Filter)</td>
+          <td>Wireshark-specific</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Example: Port 80</td>
+          <td><code>port 80</code></td>
+          <td><code>tcp.port == 80</code></td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Example: Specific host</td>
+          <td><code>host 10.0.0.1</code></td>
+          <td><code>ip.addr == 10.0.0.1</code></td>
+        </tr>
+      </tbody>
+    </table>
     <p><strong>Practice Exercise</strong></p>
     <ol>
       <li>Start a capture on your active interface (no filter).
@@ -233,18 +257,12 @@
       <li>Stop the capture.
       </li>
       <li>Apply each of these display filters and observe the results:
-      </li>
-      <li>Show only DNS queries:
-        <div class="nx-cmd">dns</div>
-      </li>
-      <li>Show only HTTP traffic:
-        <div class="nx-cmd">http</div>
-      </li>
-      <li>Show HTTPS traffic:
-        <div class="nx-cmd">tcp.port == 443</div>
-      </li>
-      <li>Show only your traffic (replace with your IP):
-        <div class="nx-cmd">ip.addr == YOUR_IP</div>
+        <ul>
+          <li><code>dns</code> &#8212; Show only DNS queries</li>
+          <li><code>http</code> &#8212; Show only HTTP traffic</li>
+          <li><code>tcp.port == 443</code> &#8212; Show HTTPS traffic</li>
+          <li><code>ip.addr == YOUR_IP</code> &#8212; Show only your traffic (replace with your IP)</li>
+        </ul>
       </li>
     </ol>
     <div class="nx-callout nx-cyan">
@@ -317,12 +335,47 @@
     <p>Systematically documenting common network protocols by filtering and analyzing traffic for each one.</p>
     <h3>Why It Matters</h3>
     <p>Security analysts must recognize normal protocol behavior to identify anomalies. This exercise builds your baseline understanding of common protocols &#8212; you&#8217;ll reference this knowledge during incident investigations and threat hunting.</p>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Required Protocols</div>
-      </div>
-    </div>
+    <h3>Required Protocols</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Protocol</th>
+        <th>Display Filter</th>
+        <th>Port(s)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">TCP</td>
+          <td><code>tcp</code></td>
+          <td>Various</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">UDP</td>
+          <td><code>udp</code></td>
+          <td>Various</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">HTTP</td>
+          <td><code>http</code></td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">HTTPS/TLS</td>
+          <td><code>tls</code></td>
+          <td>443</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">DNS</td>
+          <td><code>dns</code></td>
+          <td>53</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">ICMP</td>
+          <td><code>icmp</code></td>
+          <td>N/A (Layer 3)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.</em></p>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">

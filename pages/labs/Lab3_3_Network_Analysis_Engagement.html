@@ -445,12 +445,36 @@
         <p>Statistics &#8594; Flow Graph &#8212; shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing. Save as <code>29-flow-graph.png</code></p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Tiered Discovery Classification</div>
-      </div>
-    </div>
+    <h3>Tiered Discovery Classification</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Tier</th>
+        <th>Classification</th>
+        <th>Description</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">Critical</td>
+          <td>Immediate Action</td>
+          <td>Active compromise, data exfiltration, malware C2</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">High</td>
+          <td>Significant Risk</td>
+          <td>Exposed credentials, unencrypted data</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Medium</td>
+          <td>Notable Concern</td>
+          <td>Unusual patterns, misconfigurations</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Low</td>
+          <td>Informational</td>
+          <td>Expected patterns, baseline documentation</td>
+        </tr>
+      </tbody>
+    </table>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">

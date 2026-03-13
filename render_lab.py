@@ -192,6 +192,34 @@ def render_what_this_does(wtd):
     )
 
 
+def render_generic_table(block):
+    """Render a generic data table (columns + rows) inside a checkpoint."""
+    title   = block.get("title", "")
+    columns = block.get("columns", [])
+    rows    = block.get("rows", [])
+    note    = block.get("note")
+
+    out = ""
+    if title:
+        out += f'    <h3>{h(title)}</h3>\n'
+    out += '    <table class="nx-time-table">\n'
+    out += '      <thead><tr>\n'
+    for col in columns:
+        out += f'        <th>{h(col)}</th>\n'
+    out += '      </tr></thead>\n'
+    out += '      <tbody>\n'
+    for row in rows:
+        out += '        <tr>\n'
+        for i, cell in enumerate(row):
+            td_class = ' class="nx-time-label"' if i == 0 else ""
+            out += f'          <td{td_class}>{h(cell)}</td>\n'
+        out += '        </tr>\n'
+    out += '      </tbody>\n    </table>\n'
+    if note:
+        out += f'    <p><em>{h(note)}</em></p>\n'
+    return out
+
+
 def render_steps_block(block):
     """Render a steps block as a numbered <ol> with nx-cmd blocks."""
     part  = block.get("part")
@@ -205,12 +233,25 @@ def render_steps_block(block):
     start_attr = f' start="{start}"' if start != 1 else ""
     out += f'    <ol{start_attr}>\n'
     for step in steps:
-        text    = h(step.get("text", ""))
-        command = step.get("command")
-        wtd     = step.get("whatThisDoes")
+        text      = h(step.get("text", ""))
+        command   = step.get("command")
+        wtd       = step.get("whatThisDoes")
+        sub_items = step.get("subItems", [])
         out += f'      <li>{text}\n'
         if command:
             out += f'        <div class="nx-cmd">{command}</div>\n'
+        if sub_items:
+            out += '        <ul>\n'
+            for si in sub_items:
+                code  = si.get("code", "")
+                label = h(si.get("label", ""))
+                if code and label:
+                    out += f'          <li><code>{code}</code> &#8212; {label}</li>\n'
+                elif code:
+                    out += f'          <li><code>{code}</code></li>\n'
+                else:
+                    out += f'          <li>{label}</li>\n'
+            out += '        </ul>\n'
         if wtd:
             out += render_what_this_does(wtd)
         out += f'      </li>\n'
@@ -352,6 +393,8 @@ def render_checkpoint_content(content_list):
         btype = block.get("type", "")
         if btype == "narrative":
             out += render_narrative(block)
+        elif btype == "table":
+            out += render_generic_table(block)
         elif btype == "steps":
             out += render_steps_block(block)
         elif btype == "conversionTable":
