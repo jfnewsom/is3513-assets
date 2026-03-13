@@ -631,9 +631,21 @@ def render_final_checklist(data):
     # Checklist sections
     for sec in fc.get("sections", []):
         sec_title = h(sec.get("label", sec.get("title", "")))
+        sec_type  = sec.get("type", "checklist")
         inner += f'    <h2>{sec_title}</h2>\n    <ul class="nx-checklist">\n'
         for item in sec.get("items", []):
-            inner += f'      <li>&#9744; {h(item)}</li>\n'
+            if isinstance(item, dict):
+                if sec_type == "screenshotTable":
+                    num  = h(str(item.get("number", "")))
+                    desc = h(item.get("description", ""))
+                    inner += f'      <li>&#9744; <strong>{num}.</strong> {desc}</li>\n'
+                else:
+                    # generic dict fallback — bold label + text
+                    label = h(item.get("label", item.get("title", "")))
+                    text  = h(item.get("text", item.get("description", "")))
+                    inner += f'      <li>&#9744; <strong>{label}:</strong> {text}</li>\n'
+            else:
+                inner += f'      <li>&#9744; {h(item)}</li>\n'
         inner += '    </ul>\n\n'
 
     # Canvas submission callout
@@ -686,9 +698,14 @@ def render_grading_standards(data):
     if bonus:
         inner += f'    <h2 class="nx-accent">Bonus Opportunity</h2>\n    <p>{h(bonus)}</p>\n\n'
 
-    rubric = gs.get("rubricCallout")
+    rubric = gs.get("rubricCallout") or gs.get("fullRubricCallout")
+    if not rubric:
+        rd = gs.get("keyFlags", {}).get("rubricDocument") or gs.get("rubricDocument")
+        if rd:
+            rubric = rd.get("text", rd) if isinstance(rd, dict) else rd
     if rubric:
-        inner += callout_p("nx-purple", "description", "Full Rubric", rubric)
+        rubric_text = rubric.get("text", rubric) if isinstance(rubric, dict) else rubric
+        inner += callout_p("nx-purple", "description", "Full Rubric", rubric_text)
 
     hdr  = header("grading", "standards", "How This Assignment Is Graded", accent)
     body = card(inner, accent)

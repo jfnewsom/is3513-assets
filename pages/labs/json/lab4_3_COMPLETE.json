@@ -674,9 +674,7 @@
       "label": "OSINT Wordlist",
       "text": "Research TV show characters to create a custom wordlist. Document your research methodology, sources used, and demonstrate improved crack rates against the character hashes."
     },
-    "fullRubricCallout": {
-      "text": "Available in Canvas: IS3513_Assessment_Report_Rubric_v2.docx"
-    }
+    "fullRubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>"
   },
   "needHelp": {
     "channels": [

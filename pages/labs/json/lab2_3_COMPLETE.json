@@ -809,7 +809,7 @@
       "Academic integrity violation"
     ],
     "bonus": null,
-    "rubricCallout": "Full rubric available in Canvas: IS3513_Assessment_Report_Rubric_v2.docx",
+    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {

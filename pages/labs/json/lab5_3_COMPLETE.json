@@ -540,7 +540,7 @@
     "automaticZero": "No submission, AI-generated content, fabricated screenshots or tool outputs, work shared with or from another student, wrong file format (PDF instead of .docx), or academic integrity violation.",
     "bonusOpportunity": null,
     "keyFlags": {
-      "rubricDocument": "IS3513_Assessment_Report_Rubric_v2.docx",
+      "rubricDocument": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
       "note": "Full rubric available in Canvas."
     }
   },

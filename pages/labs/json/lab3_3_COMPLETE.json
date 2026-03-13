@@ -533,22 +533,10 @@
           "title": "Common Pitfalls",
           "icon": "warning",
           "items": [
-            {
-              "label": "Wrong Wireshark interface",
-              "text": "Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it."
-            },
-            {
-              "label": "Single-protocol capture",
-              "text": "Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture."
-            },
-            {
-              "label": "VPN blocking SSH",
-              "text": "If you can't connect to the Azure portal, disable any VPN on your host machine first. Some campus networks also block outbound port 22 — try from a mobile hotspot."
-            },
-            {
-              "label": "Skipping server exploration",
-              "text": "The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully."
-            }
+            "<strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.",
+            "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
+            "<strong>VPN blocking SSH:</strong> If you can't connect to the Azure portal, disable any VPN on your host machine first. Some campus networks also block outbound port 22 — try from a mobile hotspot.",
+            "<strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully."
           ]
         },
         {
@@ -775,7 +763,7 @@
       "amount": "+5%",
       "description": "NetworkMiner Analysis: Install NetworkMiner on Windows and analyze the same PCAP. Compare and contrast its capabilities with Wireshark in an additional section."
     },
-    "rubricCallout": "Full rubric available in Canvas: <code>IS3513_Assessment_Report_Rubric_v2.docx</code>",
+    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {

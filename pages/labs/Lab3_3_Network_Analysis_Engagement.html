@@ -487,10 +487,10 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>{'label': 'Wrong Wireshark interface', 'text': 'Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.'}</li>
-          <li>{'label': 'Single-protocol capture', 'text': 'Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.'}</li>
-          <li>{'label': 'VPN blocking SSH', 'text': "If you can't connect to the Azure portal, disable any VPN on your host machine first. Some campus networks also block outbound port 22 — try from a mobile hotspot."}</li>
-          <li>{'label': 'Skipping server exploration', 'text': 'The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully.'}</li>
+          <li><strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.</li>
+          <li><strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.</li>
+          <li><strong>VPN blocking SSH:</strong> If you can't connect to the Azure portal, disable any VPN on your host machine first. Some campus networks also block outbound port 22 — try from a mobile hotspot.</li>
+          <li><strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully.</li>
         </ul>
       </div>
     </div>
@@ -639,17 +639,17 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots Required (This Week)</h2>
     <ul class="nx-checklist">
-      <li>&#9744; {'number': '20', 'description': 'Successful SSH connection to Azure VM'}</li>
-      <li>&#9744; {'number': '21', 'description': 'Firefox certificate warning (self-signed cert finding)'}</li>
-      <li>&#9744; {'number': '22', 'description': 'curl header comparison (HTTP vs HTTPS)'}</li>
-      <li>&#9744; {'number': '23', 'description': 'nginx server configuration'}</li>
-      <li>&#9744; {'number': '24', 'description': 'Protocol Hierarchy verification'}</li>
-      <li>&#9744; {'number': '25', 'description': 'Protocol Distribution analysis'}</li>
-      <li>&#9744; {'number': '26', 'description': 'Endpoint Statistics'}</li>
-      <li>&#9744; {'number': '27', 'description': 'TCP Stream reconstruction'}</li>
-      <li>&#9744; {'number': '28', 'description': 'IO Graph'}</li>
-      <li>&#9744; {'number': '29', 'description': 'Flow Graph'}</li>
-      <li>&#9744; {'number': '30', 'description': 'Notable security finding with evidence'}</li>
+      <li>&#9744; <strong>20.</strong> Successful SSH connection to Azure VM</li>
+      <li>&#9744; <strong>21.</strong> Firefox certificate warning (self-signed cert finding)</li>
+      <li>&#9744; <strong>22.</strong> curl header comparison (HTTP vs HTTPS)</li>
+      <li>&#9744; <strong>23.</strong> nginx server configuration</li>
+      <li>&#9744; <strong>24.</strong> Protocol Hierarchy verification</li>
+      <li>&#9744; <strong>25.</strong> Protocol Distribution analysis</li>
+      <li>&#9744; <strong>26.</strong> Endpoint Statistics</li>
+      <li>&#9744; <strong>27.</strong> TCP Stream reconstruction</li>
+      <li>&#9744; <strong>28.</strong> IO Graph</li>
+      <li>&#9744; <strong>29.</strong> Flow Graph</li>
+      <li>&#9744; <strong>30.</strong> Notable security finding with evidence</li>
     </ul>
 
     <h2>Submission Requirements</h2>
@@ -710,7 +710,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">description</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Full Rubric</div>
-        <p>Full rubric available in Canvas: <code>IS3513_Assessment_Report_Rubric_v2.docx</code></p>
+        <p>Full grading rubric: <a href="../support/Grading_Info.html">Grading Info</a></p>
       </div>
     </div>
   </div>

@@ -490,7 +490,7 @@
       "amount": "+5%",
       "description": "Additional Recon Tool: Document one reconnaissance tool not covered in Lab 1.2 and demonstrate it against the training targets. Include purpose, syntax, example output, and when to use it."
     },
-    "rubricCallout": "Available in Canvas: IS3513_Assessment_Report_Rubric_v2.docx",
+    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
