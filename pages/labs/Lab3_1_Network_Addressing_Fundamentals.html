@@ -113,11 +113,48 @@
     <p>Building fluency converting between decimal, binary, and hexadecimal number systems &#8212; the foundation for understanding network addresses.</p>
     <h3>Why It Matters</h3>
     <p>IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools.</p>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+    <p class="nx-cidr-vis-intro">Memorize these 16 values (0&#8211;15) and you can convert anything:</p>
+    <div class="nx-conv-wrap">
+      <table class="nx-conv-table">
+        <thead><tr>
+          <th class="nx-conv-dec">Dec</th>
+          <th class="nx-conv-hex">Hex</th>
+          <th class="nx-conv-bin">Binary</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="nx-conv-dec">0</td><td class="nx-conv-hex">0</td><td class="nx-conv-bin">0000</td></tr>
+          <tr><td class="nx-conv-dec">1</td><td class="nx-conv-hex">1</td><td class="nx-conv-bin">0001</td></tr>
+          <tr><td class="nx-conv-dec">2</td><td class="nx-conv-hex">2</td><td class="nx-conv-bin">0010</td></tr>
+          <tr><td class="nx-conv-dec">3</td><td class="nx-conv-hex">3</td><td class="nx-conv-bin">0011</td></tr>
+          <tr><td class="nx-conv-dec">4</td><td class="nx-conv-hex">4</td><td class="nx-conv-bin">0100</td></tr>
+          <tr><td class="nx-conv-dec">5</td><td class="nx-conv-hex">5</td><td class="nx-conv-bin">0101</td></tr>
+          <tr><td class="nx-conv-dec">6</td><td class="nx-conv-hex">6</td><td class="nx-conv-bin">0110</td></tr>
+          <tr><td class="nx-conv-dec">7</td><td class="nx-conv-hex">7</td><td class="nx-conv-bin">0111</td></tr>
+        </tbody>
+      </table>
+      <table class="nx-conv-table">
+        <thead><tr>
+          <th class="nx-conv-dec">Dec</th>
+          <th class="nx-conv-hex">Hex</th>
+          <th class="nx-conv-bin">Binary</th>
+        </tr></thead>
+        <tbody>
+          <tr><td class="nx-conv-dec">8</td><td class="nx-conv-hex">8</td><td class="nx-conv-bin">1000</td></tr>
+          <tr><td class="nx-conv-dec">9</td><td class="nx-conv-hex">9</td><td class="nx-conv-bin">1001</td></tr>
+          <tr><td class="nx-conv-dec">10</td><td class="nx-conv-hex">A</td><td class="nx-conv-bin">1010</td></tr>
+          <tr><td class="nx-conv-dec">11</td><td class="nx-conv-hex">B</td><td class="nx-conv-bin">1011</td></tr>
+          <tr><td class="nx-conv-dec">12</td><td class="nx-conv-hex">C</td><td class="nx-conv-bin">1100</td></tr>
+          <tr><td class="nx-conv-dec">13</td><td class="nx-conv-hex">D</td><td class="nx-conv-bin">1101</td></tr>
+          <tr><td class="nx-conv-dec">14</td><td class="nx-conv-hex">E</td><td class="nx-conv-bin">1110</td></tr>
+          <tr><td class="nx-conv-dec">15</td><td class="nx-conv-hex">F</td><td class="nx-conv-bin">1111</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">The Conversion Cheat Sheet</div>
-        <p></p>
+        <div class="nx-callout-title">How to Use This Table</div>
+        <p>To convert <strong>168</strong> to hex: 168 = 160 + 8 = A0 + 08 = <strong>A8</strong>. To convert <strong>252</strong>: 252 = 240 + 12 = F0 + 0C = <strong>FC</strong>.</p>
       </div>
     </div>
     <p><strong>Practice Problems</strong></p>

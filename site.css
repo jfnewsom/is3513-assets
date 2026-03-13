@@ -807,3 +807,97 @@ summary {
   .nx-platform-cards { grid-template-columns: 1fr 1fr; }
   .nx-btn-row { flex-direction: column; }
 }
+
+/* ── CIDR Bit Visualizer ──────────────────────────────────── */
+.nx-cidr-vis { margin: 20px 0; }
+.nx-cidr-vis-title {
+  color: #00D26A;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+.nx-cidr-vis-intro { color: #B0B8C4; margin: 0 0 15px 0; line-height: 1.8; }
+.nx-cidr-box {
+  background: #0d1117;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+.nx-cidr-badges { text-align: center; margin-bottom: 15px; }
+.nx-cidr-badge {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin: 5px;
+}
+.nx-cidr-badge-net  { background: rgba(255,107,107,0.2); color: #FF6B6B; border: 1px solid #FF6B6B; }
+.nx-cidr-badge-sub  { background: rgba(255,230,109,0.2); color: #FFE66D; border: 1px solid #FFE66D; }
+.nx-cidr-badge-host { background: rgba(78,205,196,0.2);  color: #4ECDC4; border: 1px solid #4ECDC4; }
+.nx-cidr-bits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 15px 10px;
+  background: #0d1117;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+.nx-bit-net,
+.nx-bit-sub,
+.nx-bit-host {
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 3px;
+  display: inline-block;
+  min-width: 16px;
+  text-align: center;
+}
+.nx-bit-net  { color: #FF6B6B; }
+.nx-bit-sub  { color: #FFE66D; }
+.nx-bit-host { color: #4ECDC4; }
+.nx-bit-dot  { color: #ffffff; font-size: 16px; font-weight: bold; padding: 0 2px; }
+.nx-cidr-caption {
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+  font-size: 13px;
+  color: #B0B8C4;
+}
+
+/* ── Conversion Cheat Sheet Table ────────────────────────────── */
+.nx-conv-wrap {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 15px 0 20px 0;
+}
+.nx-conv-table {
+  border-collapse: collapse;
+  background: #0d1117;
+  flex: 1;
+  min-width: 200px;
+  font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+  font-size: 14px;
+}
+.nx-conv-table th {
+  padding: 8px 12px;
+  text-align: center;
+  font-weight: 600;
+}
+.nx-conv-table td {
+  padding: 6px 12px;
+  text-align: center;
+  border-bottom: 1px solid #1a1f2e;
+}
+.nx-conv-table tr:last-child td { border-bottom: none; }
+.nx-conv-dec { color: #4169E1; border-bottom: 2px solid #4169E1 !important; }
+.nx-conv-hex { color: #00D26A; border-bottom: 2px solid #00D26A !important; }
+.nx-conv-bin { color: #FF9F1C; border-bottom: 2px solid #FF9F1C !important; }

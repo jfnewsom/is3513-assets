@@ -3,819 +3,830 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 1.1 - Kali Linux Environment Setup</title>
+  <title>Lab 1.1 &#8212; Kali Linux Environment Setup</title>
+  <link rel="stylesheet" href="../../site.css">
 </head>
-<body style="background: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; margin: 0;">
+<body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+<h1 class="nx-sr-only">Lab 1.1 &#8212; Kali Linux Environment Setup</h1>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Lab1_1_Header.svg" alt="Lab 1.1 - Kali Linux Environment Setup" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    <p style="color: #7B68EE; font-weight: 600; margin: 0 0 20px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Module 1: Threat Intelligence &amp; Reconnaissance</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Overview</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0; line-height: 1.8;">Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.</p>
-    
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin: 25px 0;">
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;">
+
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">1.1</div>
+    </div>
+    <div class="nx-sub">Kali Linux Environment Setup</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 1: Threat Intelligence &amp; Reconnaissance</p>
+
+    <h2>Overview</h2>
+    <p>Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-header">
+        <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez">
         <div>
-          <div style="font-weight: 600; font-size: 15px; color: #7B68EE;">Maya Rodriguez</div>
-          <div style="font-size: 13px; color: #B0B8C4;">Senior Penetration Tester, NEXUS Security</div>
+          <div class="nx-quote-name">Maya Rodriguez</div>
+          <div class="nx-quote-title">Senior Penetration Tester, NEXUS Security</div>
         </div>
       </div>
-      <p style="font-style: italic; color: #B0B8C4; line-height: 1.7; margin: 0;">"Every analyst at NEXUS starts here &#8212; building their own lab environment. This isn't just homework; it's your personal security workstation. <strong style="color: #ffffff;">Treat it like your toolkit.</strong> You'll use this setup for every client engagement this semester. Document everything &#8212; your future self will thank you when you're writing runbooks at 2 AM."</p>
+      <p>&#8220;Every analyst at NEXUS starts here — building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything — your future self will thank you when you're writing runbooks at 2 AM.&#8221;</p>
     </div>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Chapters Covered</h3>
-    <p style="color: #B0B8C4; margin: 0 0 20px 0;">Chapter 1 &#8212; Introduction to Security | Chapter 2 &#8212; General Security Concepts</p>
-    
-    <h3 style="color: #ffffff; font-size: 18px; margin: 25px 0 12px 0; font-weight: 600;">Assignment Objectives</h3>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
+    <h2>Chapters Covered</h2>
+    <p>Chapter 1 — Introduction to Security | Chapter 2 — General Security Concepts</p>
+
+
+    <h2>Assignment Objectives</h2>
+    <ul>
       <li>Deploy Kali Linux as your security operations platform</li>
       <li>Install and verify Docker for containerized client targets</li>
       <li>Document your environment for your Lab 1.3 Engagement Packet</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/folder.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Save For Lab 1.3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">This is <strong style="color: #fff;">Week 1 of a 3-week module</strong>. Create a folder called <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">Module1_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Week 3.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li>Virtualization fundamentals and hypervisor architecture</li>
+      <li>Kali Linux as a purpose-built security testing platform</li>
+      <li>Docker container fundamentals and container vs. VM differences</li>
+      <li>Environment verification and baseline documentation</li>
+    </ul>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">folder</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Save For Lab 1.3</div>
+        <p>This is Week 1 of a 3-week module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Week 3.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Time_Guide_Header.svg" alt="Time Guide" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #FF9F1C; border-bottom: 4px solid #FF9F1C;">
-    <table style="width: 100%; border-collapse: collapse; color: #B0B8C4;">
-      <thead>
-        <tr style="background: #1a1f2e;">
-          <th style="padding: 12px 15px; text-align: left; color: #ffffff; font-weight: 600;">Task</th>
-          <th style="padding: 12px 15px; text-align: center; color: #ffffff; font-weight: 600; width: 120px;">Est. Time</th>
-        </tr>
-      </thead>
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 1: Download and install VirtualBox</td>
-          <td style="padding: 12px 15px; text-align: center;">15-20 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 2: Download Kali Linux ISO</td>
-          <td style="padding: 12px 15px; text-align: center;">20-45 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 3: Create and configure VM</td>
-          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 4: Install Kali Linux</td>
-          <td style="padding: 12px 15px; text-align: center;">20-30 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 5: Install and verify Docker</td>
-          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2f3e;">
-          <td style="padding: 12px 15px;">Checkpoint 6: System verification</td>
-          <td style="padding: 12px 15px; text-align: center;">10-15 min</td>
-        </tr>
-        <tr style="background: #1a1f2e;">
-          <td style="padding: 12px 15px; font-weight: 600; color: #FF9F1C;">TOTAL</td>
-          <td style="padding: 12px 15px; text-align: center; font-weight: 600; color: #FF9F1C;">85-140 min</td>
-        </tr>
+        <tr><td>Checkpoint 1: Download and install VirtualBox</td><td>15-20 min</td></tr>
+        <tr><td>Checkpoint 2: Download Kali Linux ISO</td><td>20-45 min</td></tr>
+        <tr><td>Checkpoint 3: Create and configure VM</td><td>10-15 min</td></tr>
+        <tr><td>Checkpoint 4: Install Kali Linux</td><td>20-30 min</td></tr>
+        <tr><td>Checkpoint 5: Install and verify Docker</td><td>10-15 min</td></tr>
+        <tr><td>Checkpoint 6: System verification</td><td>10-15 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>85-140 min</td></tr>
       </tbody>
     </table>
+
+    <p>This is Week 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder &#8212; you&#8217;ll need them all in Week 3.</p>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_1.svg" alt="Checkpoint 1 - Download and Install VirtualBox" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Installing VirtualBox, a free hypervisor that allows you to run virtual machines on your computer.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Virtual machines allow you to run a complete operating system inside your existing OS. This is how security professionals maintain isolated environments for testing tools, malware analysis, and client engagements without risking their primary system.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Navigate to <a href="https://www.virtualbox.org/wiki/Downloads" style="color: #4169E1;">virtualbox.org/wiki/Downloads</a></li>
-      <li>Download the installer for your host operating system (Windows, macOS, or Linux)</li>
-      <li>Run the installer with default settings</li>
-      <li>Restart your computer if prompted</li>
-      <li>Launch VirtualBox to verify installation</li>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">Download and Install VirtualBox</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Installing VirtualBox, a free hypervisor that allows you to run virtual machines on your computer.</p>
+    <h3>Why It Matters</h3>
+    <p>Virtual machines allow you to run a complete operating system inside your existing OS. This is how security professionals maintain isolated environments for testing tools, malware analysis, and client engagements without risking their primary system.</p>
+    <ol>
+      <li>Navigate to virtualbox.org/wiki/Downloads
+      </li>
+      <li>Download the installer for your host operating system (Windows, macOS, or Linux)
+      </li>
+      <li>Run the installer with default settings
+      </li>
+      <li>Restart your computer if prompted
+      </li>
+      <li>Launch VirtualBox to verify installation
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">macOS users:</strong> You may need to allow the kernel extension in System Preferences &gt; Security &amp; Privacy</li>
-          <li><strong style="color: #ffffff;">Windows users:</strong> Enable Hyper-V/virtualization in BIOS if VirtualBox won't start VMs</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>macOS users: You may need to allow the kernel extension in System Preferences > Security & Privacy</li>
+          <li>Windows users: Enable Hyper-V/virtualization in BIOS if VirtualBox won't start VMs</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox Manager window opens successfully, showing an empty list of virtual machines.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>VirtualBox Manager window opens successfully, showing an empty list of virtual machines.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation &#8212; a core security control that prevents testing activities from affecting production systems. <em>Reading this chapter? That's a reference for your Lab 1.3 report.</em></p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation — a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your Lab 1.3 report.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between Type 1 and Type 2 hypervisors? Research where VirtualBox falls in this classification and why it matters for security testing.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What's the difference between Type 1 and Type 2 hypervisors? Research where VirtualBox falls in this classification and why it matters for security testing.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox User Manual, Chapter 1: Introduction. Oracle Corporation. Available at: https://www.virtualbox.org/manual/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That's a Reference!</div>
+        <p>VirtualBox User Manual, Chapter 1: Introduction. Oracle Corporation. Available at: https://www.virtualbox.org/manual/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_2.svg" alt="Checkpoint 2 - Download Kali Linux ISO" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Downloading the Kali Linux installer image (~4GB) from the official source.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Kali Linux is a Debian-based distribution designed specifically for penetration testing and security auditing. It comes pre-loaded with hundreds of security tools that you'll use throughout the semester for both offensive and defensive work.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Navigate to <a href="https://www.kali.org/get-kali/#kali-installer-images" style="color: #4169E1;">kali.org/get-kali</a></li>
-      <li>Select <strong style="color: #fff;">Installer Images</strong></li>
-      <li>Choose the correct architecture:
-        <ul style="margin-top: 8px; margin-left: 20px;">
-          <li><strong style="color: #fff;">64-bit (amd64):</strong> For Intel/AMD processors</li>
-          <li><strong style="color: #fff;">Apple Silicon (arm64):</strong> For M1/M2/M3 Macs using UTM</li>
-        </ul>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">Download Kali Linux ISO</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Downloading the Kali Linux installer image (~4GB) from the official source.</p>
+    <h3>Why It Matters</h3>
+    <p>Kali Linux is a Debian-based distribution designed specifically for penetration testing and security auditing. It comes pre-loaded with hundreds of security tools that you'll use throughout the semester for both offensive and defensive work.</p>
+    <ol>
+      <li>Navigate to kali.org/get-kali
       </li>
-      <li>Download the ISO file (approximately 4GB)</li>
-      <li>Note the download location &#8212; you'll need this for the next checkpoint</li>
+      <li>Select Installer Images
+      </li>
+      <li>Choose the correct architecture: 64-bit (amd64): For Intel/AMD processors Apple Silicon (arm64): For M1/M2/M3 Macs using UTM
+      </li>
+      <li>Download the ISO file (approximately 4GB)
+      </li>
+      <li>Note the download location — you'll need this for the next checkpoint
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Time-Saving Tip</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Start this download before working on other tasks. A 4GB download can take 10-30 minutes depending on your connection. You can proceed to review the remaining checkpoints while it downloads.</p>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Time-Saving Tip</div>
+        <p>Start this download before working on other tasks. A 4GB download can take 10-30 minutes depending on your connection. You can proceed to review the remaining checkpoints while it downloads.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Wrong architecture:</strong> Download the amd64 (64-bit) version unless you have Apple Silicon</li>
-          <li><strong style="color: #ffffff;">Unofficial sources:</strong> Only download from kali.org &#8212; third-party ISOs may contain malware</li>
-          <li><strong style="color: #ffffff;">Interrupted download:</strong> If download fails, delete partial file and restart &#8212; don't resume corrupted downloads</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Wrong architecture: Download the amd64 (64-bit) version unless you have Apple Silicon</li>
+          <li>Unofficial sources: Only download from kali.org — third-party ISOs may contain malware</li>
+          <li>Interrupted download: If download fails, delete partial file and restart — don't resume corrupted downloads</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A file named something like <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-linux-2024.x-installer-amd64.iso</code> in your Downloads folder.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A file named something like kali-linux-2024.x-installer-amd64.iso in your Downloads folder.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 1 discusses security tools and the importance of using trusted sources. Kali Linux is purpose-built for security testing, containing tools you'll use throughout this course for both offensive and defensive work.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 1 discusses security tools and the importance of using trusted sources. Kali Linux is purpose-built for security testing, containing tools you'll use throughout this course for both offensive and defensive work.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Why is Kali Linux based on Debian rather than another distribution? Research the advantages of Debian's package management for security tools.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Why is Kali Linux based on Debian rather than another distribution? Research the advantages of Debian's package management for security tools.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Kali Linux Documentation - What is Kali Linux? Offensive Security. Available at: https://www.kali.org/docs/introduction/what-is-kali-linux/</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That's a Reference!</div>
+        <p>Kali Linux Documentation - What is Kali Linux? Offensive Security. Available at: https://www.kali.org/docs/introduction/what-is-kali-linux/</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_3.svg" alt="Checkpoint 3 - Create and Configure VM" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Proper VM configuration affects performance, stability, and functionality. The VM name is especially important &#8212; it appears in your terminal prompt and must be visible in screenshots for assignment verification.</p>
-    
-        <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>In VirtualBox Manager, click <strong style="color: #fff;">New</strong></li>
-      <li>Configure the VM name using this exact format: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code>
-        <ul style="margin-top: 8px; margin-left: 20px;">
-          <li>Example: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-newsom-abc123</code></li>
-        </ul>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">Create and Configure VM</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.</p>
+    <h3>Why It Matters</h3>
+    <p>Proper VM configuration affects performance, stability, and functionality. The VM name is especially important — it appears in your terminal prompt and must be visible in screenshots for assignment verification.</p>
+    <ol>
+      <li>In VirtualBox Manager, click New
       </li>
-      <li>Set Type: <strong style="color: #fff;">Linux</strong>, Version: <strong style="color: #fff;">Debian (64-bit)</strong></li>
-      <li>Allocate RAM: <strong style="color: #fff;">4096 MB minimum</strong> (8192 MB recommended if available)</li>
-      <li>Create a virtual hard disk: <strong style="color: #fff;">VDI format, Dynamically allocated, 80 GB</strong></li>
-      <li>Before starting, go to <strong style="color: #fff;">Settings &gt; System &gt; Processor</strong>: Allocate 2+ CPUs</li>
-      <li>Go to <strong style="color: #fff;">Settings &gt; Storage</strong>: Click the empty disk under Controller: IDE, then click the disk icon and choose your Kali ISO</li>
+      <li>Configure the VM name using this exact format: kali-lastname-studentID Example: kali-newsom-abc123
+      </li>
+      <li>Set Type: Linux, Version: Debian (64-bit)
+      </li>
+      <li>Allocate RAM: 4096 MB minimum (8192 MB recommended if available)
+      </li>
+      <li>Create a virtual hard disk: VDI format, Dynamically allocated, 80 GB
+      </li>
+      <li>Before starting, go to Settings > System > Processor: Allocate 2+ CPUs
+      </li>
+      <li>Go to Settings > Storage: Click the empty disk under Controller: IDE, then click the disk icon and choose your Kali ISO
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF2641; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/error.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 38, 65, 0.12); border-left: 4px solid #FF2641; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF2641; margin-bottom: 12px;">Critical: VM Naming Convention</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Your VM name <strong style="color: #fff;">must</strong> follow the format <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code>. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots.</p>
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Critical: VM Naming Convention</div>
+        <p>Your VM name must follow the format kali-lastname-studentID. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #1</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">01-vm-settings.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as 01-vm-settings.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Wrong VM name format:</strong> Must be kali-lastname-studentID exactly &#8212; this appears in all your screenshots</li>
-          <li><strong style="color: #ffffff;">Too little RAM:</strong> 2GB minimum, 4GB recommended &#8212; less causes performance issues</li>
-          <li><strong style="color: #ffffff;">ISO not attached:</strong> VM won't boot if the ISO isn't mounted in the optical drive settings</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Wrong VM name format: Must be kali-lastname-studentID exactly — this appears in all your screenshots</li>
+          <li>Too little RAM: 2GB minimum, 4GB recommended — less causes performance issues</li>
+          <li>ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A VM entry in VirtualBox Manager with your name following the <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code> format, with the Kali ISO attached.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A VM entry in VirtualBox Manager with your name following the kali-lastname-studentID format, with the Kali ISO attached.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 covers system resources and security considerations. Proper resource allocation ensures your testing environment performs reliably without impacting your host system's stability.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 covers system resources and security considerations. Proper resource allocation ensures your testing environment performs reliably without impacting your host system's stability.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What are VDI, VMDK, and VHD disk formats? Research the differences and why VDI is preferred for VirtualBox.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What are VDI, VMDK, and VHD disk formats? Research the differences and why VDI is preferred for VirtualBox.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">VirtualBox User Manual, Chapter 5: Virtual Storage. Oracle Corporation. Available at: https://www.virtualbox.org/manual/ch05.html</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That's a Reference!</div>
+        <p>VirtualBox User Manual, Chapter 5: Virtual Storage. Oracle Corporation. Available at: https://www.virtualbox.org/manual/ch05.html</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_4.svg" alt="Checkpoint 4 - Install Kali Linux" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Running the Kali Linux installer inside your virtual machine to create a functional security testing environment.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Kali Linux comes pre-loaded with hundreds of security tools. A proper installation ensures all tools work correctly and the system is stable for the entire semester.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Start the VM in VirtualBox Manager</li>
-      <li>Select <strong style="color: #fff;">Graphical Install</strong> from the boot menu</li>
-      <li>Choose your language, location, and keyboard layout</li>
-      <li>Set hostname to match your VM name: <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">kali-lastname-studentID</code></li>
-      <li>Leave domain name blank</li>
-      <li>Create your user account (remember these credentials!)</li>
-      <li>Use <strong style="color: #fff;">Guided - use entire disk</strong> for partitioning</li>
-      <li>Select <strong style="color: #fff;">All files in one partition</strong></li>
-      <li>Confirm and write changes to disk</li>
-      <li>Wait for installation to complete (15-25 minutes)</li>
-      <li>Reboot when prompted</li>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">Install Kali Linux</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Running the Kali Linux installer inside your virtual machine to create a functional security testing environment.</p>
+    <h3>Why It Matters</h3>
+    <p>Kali Linux comes pre-loaded with hundreds of security tools. A proper installation ensures all tools work correctly and the system is stable for the entire semester.</p>
+    <ol>
+      <li>Start the VM in VirtualBox Manager
+      </li>
+      <li>Select Graphical Install from the boot menu
+      </li>
+      <li>Choose your language, location, and keyboard layout
+      </li>
+      <li>Set hostname to match your VM name: kali-lastname-studentID
+      </li>
+      <li>Leave domain name blank
+      </li>
+      <li>Create your user account (remember these credentials!)
+      </li>
+      <li>Use Guided - use entire disk for partitioning
+      </li>
+      <li>Select All files in one partition
+      </li>
+      <li>Confirm and write changes to disk
+      </li>
+      <li>Wait for installation to complete (15-25 minutes)
+      </li>
+      <li>Reboot when prompted
+      </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #2</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture the Kali desktop after login, with the terminal open showing your hostname. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">02-kali-desktop.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the Kali desktop after login, with the terminal open showing your hostname. Save as 02-kali-desktop.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Forgetting credentials:</strong> Write down your username and password &#8212; you'll need them all semester</li>
-          <li><strong style="color: #ffffff;">Wrong hostname:</strong> The hostname should match your VM name format</li>
-          <li><strong style="color: #ffffff;">Installation hangs:</strong> If stuck, check that VT-x/AMD-V is enabled in BIOS</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Forgetting credentials: Write down your username and password — you'll need them all semester</li>
+          <li>Wrong hostname: The hostname should match your VM name format</li>
+          <li>Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 discusses operating system security and hardening. Understanding the installation process helps you make informed security decisions about system configuration.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 discusses operating system security and hardening. Understanding the installation process helps you make informed security decisions about system configuration.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_5.svg" alt="Checkpoint 5 - Install and Verify Docker" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Installing Docker, the containerization platform we'll use to deploy vulnerable lab targets throughout the course.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers &#8212; without it, you can't complete the labs.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Step-by-Step Instructions</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Open a terminal and run each command one at a time:</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Update your package lists:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo apt update</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">apt update</code> refreshes the list of available packages from the repositories. It does not install anything &#8212; it just checks what&#8217;s available. Always run this before installing new software so you get the latest versions.</p>
-        </div>
-      </details>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">5</div>
+    </div>
+    <div class="nx-sub">Install and Verify Docker</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Installing Docker, the containerization platform we'll use to deploy vulnerable lab targets throughout the course.</p>
+    <h3>Why It Matters</h3>
+    <p>Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers — without it, you can't complete the labs.</p>
+    <ol>
+      <li>Update your package lists: sudo apt update ▶ What this does Concept: apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what’s available. Always run this before installing new software so you get the latest versions.
+        <div class="nx-cmd">sudo apt update</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> apt update refreshes the list of available packages from the repositories. It does not install anything — it just checks what's available. Always run this before installing new software so you get the latest versions.</p>
+          </div>
+        </details>
       </li>
-      <li>Install Docker and Docker Compose:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo apt install -y docker.io docker-compose</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">apt install</code> downloads and installs packages. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-y</code> flag automatically answers &#8220;yes&#8221; to the confirmation prompt. <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker.io</code> is the container engine; <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker-compose</code> lets you define multi-container environments in a single file. We&#8217;ll use both throughout the course.</p>
-        </div>
-      </details>
+      <li>Install Docker and Docker Compose: sudo apt install -y docker.io docker-compose ▶ What this does Concept: apt install downloads and installs packages. The -y flag automatically answers “yes” to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file. We’ll use both throughout the course.
+        <div class="nx-cmd">sudo apt install -y docker.io docker-compose</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> apt install downloads and installs packages. The -y flag automatically answers "yes" to the confirmation prompt. docker.io is the container engine; docker-compose lets you define multi-container environments in a single file.</p>
+          </div>
+        </details>
       </li>
-      <li>Enable Docker to start automatically and start it now:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo systemctl enable docker --now</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">systemctl enable</code> tells the system to start Docker automatically on every boot. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">--now</code> flag also starts it immediately so you don&#8217;t have to reboot first.</p>
-        </div>
-      </details>
+      <li>Enable Docker to start automatically and start it now: sudo systemctl enable docker --now ▶ What this does Concept: systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don’t have to reboot first.
+        <div class="nx-cmd">sudo systemctl enable docker --now</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> systemctl enable tells the system to start Docker automatically on every boot. The --now flag also starts it immediately so you don't have to reboot first.</p>
+          </div>
+        </details>
       </li>
-      <li>Add your user to the Docker group:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">sudo usermod -aG docker $USER</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">usermod -aG</code> appends (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-a</code>) your user to a group (<code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-G</code>). By default, Docker commands require root access. Adding yourself to the <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker</code> group lets you run Docker without <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">sudo</code> every time.</p>
-        </div>
-      </details>
+      <li>Add your user to the Docker group: sudo usermod -aG docker $USER ▶ What this does Concept: usermod -aG appends (-a) your user to a group (-G). By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time.
+        <div class="nx-cmd">sudo usermod -aG docker $USER</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> usermod -aG appends your user to a group. By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00BCD4; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/lightbulb.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 188, 212, 0.12); border-left: 4px solid #00BCD4; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00BCD4; margin-bottom: 12px;">Pro Tip</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After adding yourself to the docker group, you must <strong style="color: #fff;">log out and back in</strong> (or reboot) for the group membership to take effect. Until then, you'll need <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">sudo</code> for docker commands.</p>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Pro Tip</div>
+        <p>After adding yourself to the docker group, you must log out and back in (or reboot) for the group membership to take effect. Until then, you'll need sudo for docker commands.</p>
       </div>
     </div>
-    
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">After logging back in, verify the installation:</p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;" start="5">
-      <li>Check the Docker version:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">docker --version</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> You should see the installed Docker version number. If you get &#8220;command not found&#8221; or a permission error, the installation didn&#8217;t complete correctly or you haven&#8217;t logged out and back in yet.</p>
-        </div>
-      </details>
+    <ol start="5">
+      <li>Check the Docker version: docker --version ▶ What this does In your output: You should see the installed Docker version number. If you get “command not found” or a permission error, the installation didn’t complete correctly or you haven’t logged out and back in yet.
+        <div class="nx-cmd">docker --version</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> You should see the installed Docker version number. If you get "command not found" or a permission error, the installation didn't complete correctly or you haven't logged out and back in yet.</p>
+          </div>
+        </details>
       </li>
-      <li>Run the Docker test container:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">docker run hello-world</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker run</code> pulls an image from Docker Hub and runs it as a container. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">hello-world</code> image is a tiny test container that prints a success message. If you see &#8220;Hello from Docker!&#8221; &#8212; Docker is fully working.</p>
-        </div>
-      </details>
+      <li>Run the Docker test container: docker run hello-world ▶ What this does Concept: docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see “Hello from Docker!” — Docker is fully working.
+        <div class="nx-cmd">docker run hello-world</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see "Hello from Docker!" — Docker is fully working.</p>
+          </div>
+        </details>
       </li>
     </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #3</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">docker --version</code> and the hello-world output. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">03-docker-version.png</code></p>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture docker --version and the hello-world output. Save as 03-docker-version.png</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">Permission denied:</strong> You didn't log out after adding yourself to the docker group</li>
-          <li><strong style="color: #ffffff;">Cannot connect to daemon:</strong> Docker service isn't running &#8212; check with <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo systemctl status docker</code></li>
-          <li><strong style="color: #ffffff;">Network errors:</strong> VM needs internet access &#8212; check VirtualBox network settings</li>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Permission denied: You didn't log out after adding yourself to the docker group</li>
+          <li>Cannot connect to daemon: Docker service isn't running — check with sudo systemctl status docker</li>
+          <li>Network errors: VM needs internet access — check VirtualBox network settings</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Docker installed and running. The <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">hello-world</code> container should display "Hello from Docker!" confirming everything works.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Docker installed and running. The hello-world container should display "Hello from Docker!" confirming everything works.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">What's the difference between a container and a virtual machine? Research how Docker's architecture differs from VirtualBox and why containers are preferred for deploying applications.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>What's the difference between a container and a virtual machine? Research how Docker's architecture differs from VirtualBox and why containers are preferred for deploying applications.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px;">
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">That's a Reference!</div>
+        <p>Docker Documentation: Get Docker. Available at: https://docs.docker.com/get-docker/</p>
       </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">That's a Reference!</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Docker Documentation: Get Docker. Available at: https://docs.docker.com/get-docker/</p>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 covers defense in depth and isolation as a security control. Docker uses Linux kernel features &#8212; namespaces and cgroups &#8212; to create lightweight isolation without a full hypervisor. Containers and VMs represent two different points on the isolation spectrum that security professionals choose between based on their threat model.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Checkpoint_1_1_6.svg" alt="Checkpoint 6 - System Verification" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">What You're Doing</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Running a series of commands to verify your environment is properly configured and all required tools are available.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Why It Matters</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Catching configuration issues now prevents frustration later. A working baseline environment means you can focus on learning security concepts instead of troubleshooting setup problems.</p>
-    
-    <h4 style="color: #00D26A; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; margin: 0 0 8px 0; font-weight: 600;">Verification Commands</h4>
-    <p style="color: #B0B8C4; margin: 0 0 10px 0; line-height: 1.8;">Run each command one at a time and verify the output before moving to the next:</p>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part A: System Information</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;">
-      <li>Display your hostname:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">hostname</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">In your output:</strong> This should show <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">kali-lastname-studentID</code> (the hostname you set in Checkpoint 4). If it shows something else, you need to fix it before proceeding.</p>
-        </div>
-      </details>
-      </li>
-      <li>Display kernel and OS information:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">uname -a</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">uname -a</code> prints all system information: kernel name, hostname, kernel version, architecture. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-a</code> flag means &#8220;all.&#8221; This is a standard first step when documenting an engagement environment.</p>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part B: Network Connectivity</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;" start="3">
-      <li>Display your network interfaces and IP addresses:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ip addr</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ip addr</code> lists all network interfaces and their assigned IP addresses. Look for your <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">eth0</code> interface &#8212; it should have an IP address assigned by VirtualBox&#8217;s NAT adapter (typically 10.0.2.x). No IP means no network connectivity.</p>
-        </div>
-      </details>
-      </li>
-      <li>Test internet connectivity:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">ping -c 3 8.8.8.8</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">ping</code> sends ICMP echo requests to test network reachability. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">-c 3</code> flag limits it to 3 packets (otherwise it runs forever). 8.8.8.8 is Google&#8217;s public DNS. If all 3 packets come back, you have internet connectivity.</p>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part C: Security Tools</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;" start="5">
-      <li>Verify Nmap is installed:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">nmap --version</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> Nmap is the industry-standard network scanner. You&#8217;ll use it heavily starting in Module 1 Lab 2. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">--version</code> flag confirms it&#8217;s installed and shows the version number.</p>
-        </div>
-      </details>
-      </li>
-      <li>Verify Wireshark is installed:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">wireshark --version</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> Wireshark is a packet capture and analysis tool. You&#8217;ll use it in Module 3 to inspect network traffic. Confirming the version now ensures it&#8217;s ready when you need it.</p>
-        </div>
-      </details>
-      </li>
-      <li>Verify John the Ripper is installed:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">john --help | head -5</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> John the Ripper is a password cracking tool you&#8217;ll use in Module 4. The <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">| head -5</code> pipe takes the first 5 lines of output, which is enough to confirm it&#8217;s installed without flooding your terminal.</p>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-    <p style="color: #B0B8C4; margin: 25px 0 15px 0; line-height: 1.8;"><strong style="color: #ffffff;">Part D: Docker</strong></p>
-    <ol style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2;" start="8">
-      <li>Confirm Docker version:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">docker --version</div>
-      </li>
-      <li>Verify no containers are running yet:
-        <div style="background: #1a1f2e; padding: 15px 20px; border-radius: 6px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A; overflow-x: auto; margin: 10px 0;">docker ps</div>
-      <details style="margin: 8px 0 4px 0;">
-        <summary style="color: #7B68EE; cursor: pointer; font-size: 13px; font-weight: 600; padding: 6px 0;">&#9654; What this does</summary>
-        <div style="background: rgba(123, 104, 238, 0.08); border-left: 3px solid #7B68EE; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 6px 0; font-size: 13px; color: #B0B8C4; line-height: 1.7;">
-          <p style="margin: 0;"><strong style="color: #7B68EE;">Concept:</strong> <code style="background: #1a1f2e; padding: 1px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; color: #00D26A;">docker ps</code> lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you&#8217;ll confirm your lab target containers are running before you start scanning.</p>
-        </div>
-      </details>
-      </li>
-    </ol>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/photo_camera.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Screenshot #4</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 14px; color: #00D26A;">04-system-verification.png</code></p>
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 6 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">6</div>
+    </div>
+    <div class="nx-sub">System Verification</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Running a series of commands to verify your environment is properly configured and all required tools are available.</p>
+    <h3>Why It Matters</h3>
+    <p>Catching configuration issues now prevents frustration later. A working baseline environment means you can focus on learning security concepts instead of troubleshooting setup problems.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>Part A: System Information</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FF9F1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/warning.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+    <ol>
+      <li>Display your hostname: hostname ▶ What this does In your output: This should show kali-lastname-studentID (the hostname you set in Checkpoint 4). If it shows something else, you need to fix it before proceeding.
+        <div class="nx-cmd">hostname</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> This should show kali-lastname-studentID. If it shows something else, you need to fix it before proceeding.</p>
+          </div>
+        </details>
+      </li>
+      <li>Display kernel and OS information: uname -a ▶ What this does Concept: uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means “all.” This is a standard first step when documenting an engagement environment.
+        <div class="nx-cmd">uname -a</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> uname -a prints all system information: kernel name, hostname, kernel version, architecture. The -a flag means "all." This is a standard first step when documenting an engagement environment.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>Part B: Network Connectivity</p>
       </div>
-      <div style="background: rgba(255, 159, 28, 0.12); border-left: 4px solid #FF9F1C; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 12px;">Common Pitfalls</div>
-        <ul style="color: #B0B8C4; margin: 0; padding-left: 18px; line-height: 1.8;">
-          <li><strong style="color: #ffffff;">No network:</strong> Check VirtualBox network adapter settings (NAT should work)</li>
-          <li><strong style="color: #ffffff;">Tool not found:</strong> Some tools may need installation &#8212; use <code style="background: #1a1f2e; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">sudo apt install &lt;tool-name&gt;</code></li>
-          <li><strong style="color: #ffffff;">Wrong hostname:</strong> If hostname doesn't match expected format, ask in Discord before proceeding</li>
+    </div>
+    <ol start="3">
+      <li>Display your network interfaces and IP addresses: ip addr ▶ What this does Concept: ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox’s NAT adapter (typically 10.0.2.x). No IP means no network connectivity.
+        <div class="nx-cmd">ip addr</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface — it should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x).</p>
+          </div>
+        </details>
+      </li>
+      <li>Test internet connectivity: ping -c 3 8.8.8.8 ▶ What this does Concept: ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets (otherwise it runs forever). 8.8.8.8 is Google’s public DNS. If all 3 packets come back, you have internet connectivity.
+        <div class="nx-cmd">ping -c 3 8.8.8.8</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> ping sends ICMP echo requests to test network reachability. The -c 3 flag limits it to 3 packets. 8.8.8.8 is Google's public DNS. If all 3 packets come back, you have internet connectivity.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>Part C: Security Tools</p>
+      </div>
+    </div>
+    <ol start="5">
+      <li>Verify Nmap is installed: nmap --version ▶ What this does Concept: Nmap is the industry-standard network scanner. You’ll use it heavily starting in Module 1 Lab 2. The --version flag confirms it’s installed and shows the version number.
+        <div class="nx-cmd">nmap --version</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Nmap is the industry-standard network scanner. You'll use it heavily starting in Module 1 Lab 2. The --version flag confirms it's installed and shows the version number.</p>
+          </div>
+        </details>
+      </li>
+      <li>Verify Wireshark is installed: wireshark --version ▶ What this does Concept: Wireshark is a packet capture and analysis tool. You’ll use it in Module 3 to inspect network traffic. Confirming the version now ensures it’s ready when you need it.
+        <div class="nx-cmd">wireshark --version</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Wireshark is a packet capture and analysis tool. You'll use it in Module 3 to inspect network traffic.</p>
+          </div>
+        </details>
+      </li>
+      <li>Verify John the Ripper is installed: john --help | head -5 ▶ What this does Concept: John the Ripper is a password cracking tool you’ll use in Module 4. The | head -5 pipe takes the first 5 lines of output, which is enough to confirm it’s installed without flooding your terminal.
+        <div class="nx-cmd">john --help | head -5</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> John the Ripper is a password cracking tool you'll use in Module 4. The | head -5 pipe takes the first 5 lines of output — enough to confirm it's installed without flooding your terminal.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title"></div>
+        <p>Part D: Docker</p>
+      </div>
+    </div>
+    <ol start="8">
+      <li>Confirm Docker version: docker --version
+        <div class="nx-cmd">docker --version</div>
+      </li>
+      <li>Verify no containers are running yet: docker ps ▶ What this does Concept: docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you’ll confirm your lab target containers are running before you start scanning.
+        <div class="nx-cmd">docker ps</div>
+        <details>
+          <summary>&#9654; What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> docker ps lists running containers. Right now it should show an empty table (just headers). In later modules, this is how you'll confirm your lab target containers are running before you start scanning.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as 04-system-verification.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>No network: Check VirtualBox network adapter settings (NAT should work)</li>
+          <li>Tool not found: Some tools may need installation — use sudo apt install <tool-name></li>
+          <li>Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding</li>
         </ul>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #00D26A; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/check_circle.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(0, 210, 106, 0.12); border-left: 4px solid #00D26A; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #00D26A; margin-bottom: 12px;">What You Should Have</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">All verification commands running successfully. Your Kali environment is ready for the semester's security labs and exercises.</p>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>All verification commands running successfully. Your Kali environment is ready for the semester's security labs and exercises.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-bottom: 20px; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #7B68EE; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/menu_book.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(123, 104, 238, 0.10); border-left: 4px solid #7B68EE; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #7B68EE; margin-bottom: 12px;">Textbook Reference</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Chapter 2 introduces the security tools and platforms you'll use throughout the course. Your verified environment is the foundation for all hands-on exercises.</p>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Textbook Reference</div>
+        <p>Chapter 2 introduces the security tools and platforms you'll use throughout the course. Your verified environment is the foundation for all hands-on exercises.</p>
       </div>
     </div>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #FFF700; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/search.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0);">
-      </div>
-      <div style="background: rgba(255, 247, 0, 0.12); border-left: 4px solid #FFF700; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #FFF700; margin-bottom: 12px;">Dig Deeper</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Explore the Kali Linux tools menu. How many categories of tools are available? Pick one category and research what 2-3 of its tools do.</p>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Explore the Kali Linux tools menu. How many categories of tools are available? Pick one category and research what 2-3 of its tools do.</p>
       </div>
     </div>
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Final_Checklist_Header.svg" alt="Final Checklist" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #00D26A; border-bottom: 4px solid #00D26A;">
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Verify all requirements before taking the Canvas quiz:</p>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Screenshots (4 Required)</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">01-vm-settings.png</code> &#8212; VM configuration with correct name</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">02-kali-desktop.png</code> &#8212; Kali desktop after login</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">03-docker-version.png</code> &#8212; Docker version output</li>
-      <li>&#9744; <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">04-system-verification.png</code> &#8212; All verification commands</li>
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li>{'label': 'Isolated Attack Platforms', 'text': 'Virtual machines let attackers operate from a clean, disposable environment. After an engagement, the VM can be rolled back or deleted &#8212; leaving no artifacts on the analyst&#8217;s host.'}</li>
+          <li>{'label': 'Container Recon Targets', 'text': 'Docker containers are everywhere in modern infrastructure. Understanding how they run and expose ports is essential for finding attack surface in containerized environments.'}</li>
+          <li>{'label': 'Tool Availability', 'text': 'Kali Linux pre-loads every tool you&#8217;ll use this semester. Attackers maintain their own customized distributions &#8212; having a ready toolkit is a force multiplier.'}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li>{'label': 'Environment Hygiene', 'text': 'Defenders use virtualization the same way &#8212; isolated sandboxes for malware analysis, forensics, and safe tool testing. Understanding the tech from both sides makes you a better analyst.'}</li>
+          <li>{'label': 'Container Security Posture', 'text': 'Every port mapped in <code>docker run</code> is a potential attack surface. Defenders must understand container networking to audit what&#8217;s actually exposed.'}</li>
+          <li>{'label': 'Documentation Discipline', 'text': 'Blue teamers live and die by documentation. Building the habit of capturing and naming screenshots in Week 1 reflects how real SOC analysts maintain evidence chains.'}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>Your lab environment is both your attack platform and your first blue team lesson. Every security professional &#8212; red or blue &#8212; maintains an isolated, documented, reproducible workspace. This setup is that workspace.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
+    </div>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>01-vm-settings.png</code> &#8212; VM configuration with correct name</li>
+      <li>&#9744; <code>02-kali-desktop.png</code> &#8212; Kali desktop after login</li>
+      <li>&#9744; <code>03-docker-version.png</code> &#8212; Docker version output</li>
+      <li>&#9744; <code>04-system-verification.png</code> &#8212; All verification commands</li>
     </ul>
-    
-    <h4 style="color: #ffffff; font-size: 16px; margin: 20px 0 12px 0; font-weight: 600;">Environment Verification</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2; list-style: none;">
-      <li>&#9744; VM named <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">kali-lastname-studentID</code></li>
-      <li>&#9744; Kali Linux installed and boots to desktop</li>
-      <li>&#9744; Docker installed and running</li>
-      <li>&#9744; All screenshots saved to <code style="background: #1a1f2e; padding: 3px 10px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">Module1_Screenshots</code> folder</li>
+
+    <h2>Screenshots (4 Required)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; 01-vm-settings.png &#8212; VM configuration window showing name, RAM, and CPU count</li>
+      <li>&#9744; 02-kali-desktop.png &#8212; Kali desktop after first login</li>
+      <li>&#9744; 03-docker-version.png &#8212; docker --version and hello-world output</li>
+      <li>&#9744; 04-system-verification.png &#8212; hostname visible in verification commands output</li>
     </ul>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/quiz.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Canvas Quiz</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">Take the <strong style="color: #fff;">Lab 1.1 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong style="color: #fff;">Keep your VM running while taking the quiz.</strong></p>
-      </div>
-    </div>
+
+    <h2>Environment Verification</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; VM named exactly kali-lastname-studentID</li>
+      <li>&#9744; Kali Linux boots to desktop</li>
+      <li>&#9744; Docker installed, running, and hello-world container executes</li>
+      <li>&#9744; All four screenshots saved to Module1_Screenshots folder</li>
+    </ul>
+
+    <h2>Canvas Quiz</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Take the Lab 1.1 Quiz in Canvas</li>
+      <li>&#9744; Keep your VM running while taking the quiz &#8212; questions reference specific outputs</li>
+    </ul>
+
   </div>
 </div>
 
-<div style="margin-bottom: 50px;">
-  <img src="https://jfnewsom.github.io/is3513-assets/headers/Need_Help_Header.svg" alt="Need Help?" style="display: block; max-width: 100%; height: auto;">
-  
-  <div style="background: #0A0E17; padding: 30px 30px 30px 50px; border-radius: 0 0 8px 0; border-left: 4px solid #4169E1; border-bottom: 4px solid #4169E1;">
-    
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This course officially supports <strong style="color: #fff;">VirtualBox with Kali Linux installed from ISO</strong>. Students using other hypervisors (VMware, Parallels, UTM) are responsible for their own troubleshooting.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Getting Help</h4>
-    <ul style="color: #B0B8C4; margin: 0 0 25px 0; padding-left: 20px; line-height: 2.2;">
-      <li><strong style="color: #ffffff;">Discord:</strong> Post in <code style="background: #1a1f2e; padding: 2px 8px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; color: #00D26A;">#lab-help</code> for technical issues (fastest response)</li>
-      <li><strong style="color: #ffffff;">Office Hours:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" style="color: #4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-      <li><strong style="color: #ffffff;">Email:</strong> john.newsom@utsa.edu (for private matters only)</li>
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> #lab-help</li>
+      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
     </ul>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Late Work Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped, but don't use that as an excuse to skip foundational setup work.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">GenAI Policy</h4>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #00D26A;">You may use AI tools</strong> (ChatGPT, Claude, etc.) to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+
+    <h2>Late Work Policy</h2>
+    <p>Late work is not accepted. Drop policies exist for emergencies.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
       <li>Explain command syntax and tool functionality</li>
       <li>Troubleshoot errors and technical issues</li>
-      <li>Understand concepts from the readings</li>
+      <li>Understand concepts from assigned readings</li>
+      <li>Proofread and grammar check</li>
+      <li>Suggest report structure improvements</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 12px 0; line-height: 1.8;"><strong style="color: #FF2641;">You may NOT use AI tools</strong> to:</p>
-    <ul style="color: #B0B8C4; margin: 0 0 15px 0; padding-left: 20px; line-height: 1.8;">
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
+      <li>Write entire sections of reports</li>
       <li>Answer quiz questions directly</li>
       <li>Generate fake screenshots or outputs</li>
-      <li>Complete the hands-on work for you</li>
+      <li>Complete hands-on exercises on your behalf</li>
     </ul>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;"><em>Think of AI like a tutor, not a ghostwriter.</em> It can help you understand and improve, but the work itself must be yours.</p>
-    
-        <h4 style="color: #ffffff; font-size: 16px; margin: 25px 0 12px 0; font-weight: 600;">Academic Integrity</h4>
-    <p style="color: #B0B8C4; margin: 0 0 25px 0; line-height: 1.8;">This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
-    
-        <div style="position: relative; margin-left: 20px;">
-      <div style="position: absolute; left: -36px; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: #4169E1; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;">
-        <img src="https://jfnewsom.github.io/is3513-assets/nexus-icons/arrow_forward.svg" alt="" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
-      </div>
-      <div style="background: rgba(65, 105, 225, 0.12); border-left: 4px solid #4169E1; padding: 20px 25px; border-radius: 0 8px 8px 0; margin-left: -12px;">
-        <div style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #4169E1; margin-bottom: 12px;">Next Steps</div>
-        <p style="color: #B0B8C4; margin: 0; line-height: 1.8;">After completing this lab, take the <strong style="color: #fff;">Lab 1.1 Quiz</strong> in Canvas, then proceed to <strong style="color: #fff;">Lab 1.2: Reconnaissance Tool Exploration</strong>.</p>
+    <p><em>AI is a tutor, not a ghostwriter.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>{'type': 'nextLab', 'text': 'Take the Lab 1.1 Quiz in Canvas, then proceed to Lab 1.2: Reconnaissance Tool Exploration.'}</p>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>
