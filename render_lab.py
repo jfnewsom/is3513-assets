@@ -122,7 +122,7 @@ def render_callout_block(block):
 
 def render_char_quote(block):
     character = h(block.get("character", ""))
-    role      = h(block.get("title", ""))
+    role      = h(block.get("role", block.get("title", "")))
     headshot  = block.get("headshot", "")
     text      = h(block.get("text", block.get("quote", "")))
     img_src   = f"{ASSETS}/headshots/{headshot}"
@@ -447,6 +447,9 @@ def render_intro(data):
     # Callouts (error banners etc.)
     for c_block in intro.get("callouts", []):
         ct = c_block.get("type", "")
+        if ct == "characterQuote":
+            inner += render_char_quote(c_block)
+            continue
         cfg = CALLOUT_MAP.get(ct, ("nx-red", "error", ""))
         css_cls, default_icon, default_title = cfg
         icon  = c_block.get("icon", default_icon)
