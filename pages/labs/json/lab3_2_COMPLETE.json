@@ -694,7 +694,7 @@
           "type": "callout",
           "icon": "download",
           "title": "Training PCAP",
-          "text": "Download the training PCAP to your host machine: <strong>credential-leak.pcap</strong>",
+          "text": "Download the training PCAP to your host machine: <a href=\"https://raw.githubusercontent.com/jfnewsom/is3513-assets/main/pcaps/credential-leak.pcap\"><strong>credential-leak.pcap</strong></a>",
           "calloutType": "tip"
         },
         {
