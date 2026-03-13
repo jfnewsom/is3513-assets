@@ -518,7 +518,10 @@ def render_you_already_have(data):
         badge_html = f' <span class="nx-badge-new">{badge}</span>' if badge else ""
         inner += f'    <h2>{title}{badge_html}</h2>\n    <ul class="nx-checklist">\n'
         for item in sec.get("items", []):
-            inner += f'      <li><span class="nx-check">&#10004;</span> {h(item)}</li>\n'
+            if badge:
+                inner += f'      <li><span class="nx-badge-new">{badge}</span> {h(item)}</li>\n'
+            else:
+                inner += f'      <li><span class="nx-check">&#10004;</span> {h(item)}</li>\n'
         inner += '    </ul>\n\n'
 
     # Callouts
