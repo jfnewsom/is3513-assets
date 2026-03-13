@@ -94,97 +94,7 @@
           "whyItMatters": "IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools."
         },
         {
-          "title": "The Conversion Cheat Sheet",
-          "subtitle": "Memorize these 16 values (0&#8211;15) and you can convert anything:",
-          "columns": [
-            "Dec",
-            "Hex",
-            "Binary"
-          ],
-          "rows": [
-            [
-              "0",
-              "0",
-              "0000"
-            ],
-            [
-              "1",
-              "1",
-              "0001"
-            ],
-            [
-              "2",
-              "2",
-              "0010"
-            ],
-            [
-              "3",
-              "3",
-              "0011"
-            ],
-            [
-              "4",
-              "4",
-              "0100"
-            ],
-            [
-              "5",
-              "5",
-              "0101"
-            ],
-            [
-              "6",
-              "6",
-              "0110"
-            ],
-            [
-              "7",
-              "7",
-              "0111"
-            ],
-            [
-              "8",
-              "8",
-              "1000"
-            ],
-            [
-              "9",
-              "9",
-              "1001"
-            ],
-            [
-              "10",
-              "A",
-              "1010"
-            ],
-            [
-              "11",
-              "B",
-              "1011"
-            ],
-            [
-              "12",
-              "C",
-              "1100"
-            ],
-            [
-              "13",
-              "D",
-              "1101"
-            ],
-            [
-              "14",
-              "E",
-              "1110"
-            ],
-            [
-              "15",
-              "F",
-              "1111"
-            ]
-          ],
-          "note": "To convert 168 to hex: 168 = 160 + 8 = A0 + 08 = <strong>A8</strong>. To convert 252: 252 = 240 + 12 = F0 + 0C = <strong>FC</strong>.",
-          "type": "table"
+          "type": "conversionTable"
         },
         {
           "part": "Practice Problems",
@@ -272,11 +182,10 @@
           "whyItMatters": "CIDR notation is the universal language for describing network size. When you see <code>192.168.1.0/24</code>, you need to instantly know how many hosts that includes, where it starts, and where it ends. This is essential for firewall rules, capture filters, and vulnerability scans."
         },
         {
-          "type": "callout",
-          "icon": "calculate",
+          "type": "cidrVisualizer",
           "title": "The Visual Count-Out Method",
-          "text": "For <code>192.168.0.0/22</code>: Network: 22 bits | Host: 10 bits<br><code>11111111.11111111.11111100.00000000</code><br>Subnet Mask: <strong>255.255.252.0</strong> (FF.FF.FC.00)",
-          "calloutType": "conceptBox"
+          "intro": "For <code>192.168.0.0/22</code>:",
+          "prefix": 22
         },
         {
           "part": "Analysis Exercise",
@@ -379,11 +288,12 @@
           "whyItMatters": "Network segmentation is a core security control. By dividing networks into subnets, you can isolate sensitive systems, limit blast radius during incidents, and apply different security policies to different zones. This is why firewalls, VLANs, and access controls all depend on understanding subnet boundaries."
         },
         {
-          "type": "callout",
-          "icon": "calculate",
+          "type": "cidrVisualizer",
           "title": "Borrowing Bits",
-          "text": "Starting with <code>192.168.0.0/22</code>, borrow 2 host bits for subnets:<br>Network: 22 | Subnet: +2 | Host: 8<br><code>11111111.11111111.11111111.00000000</code><br>New CIDR: <strong>/24</strong> &#8212; 4 subnets, 254 hosts each",
-          "calloutType": "conceptBox"
+          "intro": "Starting with <code>192.168.0.0/22</code>, borrow <strong>2 host bits</strong> for subnets. Bits move from <span class=\"nx-bit-host\">host</span> to <span class=\"nx-bit-sub\">subnet</span>:",
+          "prefix": 22,
+          "subnetBits": 2,
+          "caption": "New CIDR: /24 (22 original + 2 borrowed = 24)"
         },
         {
           "title": "The Complete Subnet Table (192.168.0.0/22 &#8594; /24)",

@@ -126,18 +126,21 @@ def render_char_quote(block):
     headshot  = block.get("headshot", "")
     text      = h(block.get("text", block.get("quote", "")))
     img_src   = f"{ASSETS}/headshots/{headshot}"
-    # alt text: name only (strip degree suffix if present)
     alt_name  = character.split(",")[0].strip()
     return (
         f'    <div class="nx-quote">\n'
-        f'      <div class="nx-quote-header">\n'
-        f'        <img src="{img_src}" alt="{alt_name}">\n'
-        f'        <div>\n'
-        f'          <div class="nx-quote-name">{character}</div>\n'
-        f'          <div class="nx-quote-title">{role}</div>\n'
+        f'      <div class="nx-quote-main">\n'
+        f'        <div class="nx-quote-avatar">\n'
+        f'          <img src="{img_src}" alt="{alt_name}">\n'
+        f'        </div>\n'
+        f'        <div class="nx-quote-bubble">\n'
+        f'          <p>&#8220;{text}&#8221;</p>\n'
         f'        </div>\n'
         f'      </div>\n'
-        f'      <p>&#8220;{text}&#8221;</p>\n'
+        f'      <div class="nx-quote-attribution">\n'
+        f'        <div class="nx-quote-name">{character}</div>\n'
+        f'        <div class="nx-quote-title">{role}</div>\n'
+        f'      </div>\n'
         f'    </div>\n'
     )
 
@@ -227,6 +230,121 @@ def render_narrative(block):
     return out
 
 
+def render_conversion_table(block):
+    """Render the Dec/Hex/Binary 0-15 conversion cheat sheet (two side-by-side tables)."""
+    tip = block.get("tip", "To convert <strong>168</strong> to hex: 168 = 160 + 8 = A0 + 08 = <strong>A8</strong>. To convert <strong>252</strong>: 252 = 240 + 12 = F0 + 0C = <strong>FC</strong>.")
+
+    def table_html(rows):
+        hdr = (
+            '        <thead><tr>\n'
+            '          <th class="nx-conv-dec">Dec</th>\n'
+            '          <th class="nx-conv-hex">Hex</th>\n'
+            '          <th class="nx-conv-bin">Binary</th>\n'
+            '        </tr></thead>\n'
+            '        <tbody>\n'
+        )
+        body = ""
+        for d in rows:
+            body += (
+                f'          <tr>'
+                f'<td class="nx-conv-dec">{d}</td>'
+                f'<td class="nx-conv-hex">{format(d, "X")}</td>'
+                f'<td class="nx-conv-bin">{format(d, "04b")}</td>'
+                f'</tr>\n'
+            )
+        return f'      <table class="nx-conv-table">\n{hdr}{body}        </tbody>\n      </table>\n'
+
+    return (
+        f'    <p class="nx-cidr-vis-intro">Memorize these 16 values (0&#8211;15) and you can convert anything:</p>\n'
+        f'    <div class="nx-conv-wrap">\n'
+        f'{table_html(range(8))}'
+        f'{table_html(range(8, 16))}'
+        f'    </div>\n'
+        f'    <div class="nx-callout nx-cyan">\n'
+        f'      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>\n'
+        f'      <div class="nx-callout-body">\n'
+        f'        <div class="nx-callout-title">How to Use This Table</div>\n'
+        f'        <p>{h(tip)}</p>\n'
+        f'      </div>\n'
+        f'    </div>\n'
+    )
+
+
+def render_cidr_visualizer(block):
+    """Render color-coded 32-bit CIDR visualizer.
+    JSON fields:
+      title       – heading text (optional)
+      intro       – paragraph before the box (optional)
+      prefix      – int, network bits (required)
+      subnetBits  – int, bits borrowed for subnetting (default 0 = 2-color mode)
+      caption     – text below the bit row (optional; auto-generated if absent)
+    """
+    prefix      = int(block.get("prefix", 24))
+    subnet_bits = int(block.get("subnetBits", 0))
+    host_bits   = 32 - prefix - subnet_bits
+    title       = block.get("title", "The Visual Count-Out Method")
+    intro       = block.get("intro", "")
+    caption     = block.get("caption", "")
+
+    # Auto-caption when not provided
+    if not caption:
+        if subnet_bits:
+            new_prefix = prefix + subnet_bits
+            caption = f"New CIDR: /{new_prefix} ({prefix} original + {subnet_bits} borrowed = {new_prefix})"
+        else:
+            # Build subnet mask from prefix
+            mask_int = (0xFFFFFFFF << (32 - prefix)) & 0xFFFFFFFF
+            octets = [(mask_int >> (8 * i)) & 0xFF for i in [3, 2, 1, 0]]
+            hex_parts = ".".join(f"{o:02X}" for o in octets)
+            dec_parts = ".".join(str(o) for o in octets)
+            caption = f"Subnet Mask: {dec_parts} ({hex_parts})"
+
+    # Badge row
+    badge_html = f'<span class="nx-cidr-badge nx-cidr-badge-net">Network: {prefix} bits</span>\n'
+    if subnet_bits:
+        badge_html += f'        <span class="nx-cidr-badge nx-cidr-badge-sub">Subnet: +{subnet_bits} bits</span>\n'
+    badge_html += f'        <span class="nx-cidr-badge nx-cidr-badge-host">Host: {host_bits} bits</span>'
+
+    # Bit spans — iterate all 32 bits, inserting dots between octets
+    def bit_span(i):
+        """Return the CSS class for bit position i (0 = leftmost)."""
+        if i < prefix:
+            return "nx-bit-net"
+        elif i < prefix + subnet_bits:
+            return "nx-bit-sub"
+        else:
+            return "nx-bit-host"
+
+    bit_value = lambda i: "1" if i < prefix + subnet_bits else "0"
+
+    bits_html = ""
+    for i in range(32):
+        if i > 0 and i % 8 == 0:
+            bits_html += '        <span class="nx-bit-dot">.</span>\n'
+        css = bit_span(i)
+        val = bit_value(i)
+        bits_html += f'        <span class="{css}">{val}</span>\n'
+
+    title_html = f'    <h4 class="nx-cidr-vis-title">{title}</h4>\n' if title else ""
+    intro_html = f'    <p class="nx-cidr-vis-intro">{h(intro)}</p>\n' if intro else ""
+
+    return (
+        f'    <div class="nx-cidr-vis">\n'
+        f'{title_html}'
+        f'{intro_html}'
+        f'      <div class="nx-cidr-box">\n'
+        f'        <div class="nx-cidr-badges">\n'
+        f'        {badge_html}\n'
+        f'        </div>\n'
+        f'        <div class="nx-cidr-bits">\n'
+        f'{bits_html}'
+        f'        </div>\n'
+        f'        <div class="nx-cidr-caption">{caption}</div>\n'
+        f'      </div>\n'
+        f'    </div>\n'
+    )
+
+
 def render_checkpoint_content(content_list):
     """Route each content block in a checkpoint to its renderer."""
     out = ""
@@ -236,6 +354,10 @@ def render_checkpoint_content(content_list):
             out += render_narrative(block)
         elif btype == "steps":
             out += render_steps_block(block)
+        elif btype == "conversionTable":
+            out += render_conversion_table(block)
+        elif btype == "cidrVisualizer":
+            out += render_cidr_visualizer(block)
         elif btype == "callout":
             out += render_callout_block(block)
         else:
@@ -573,7 +695,8 @@ def render_need_help(data):
     # What's next
     whats_next = nh.get("whatsNext")
     if whats_next:
-        inner += callout_p("nx-blue", "arrow_forward", "What&#8217;s Next", whats_next)
+        wn_text = whats_next.get("text", whats_next) if isinstance(whats_next, dict) else whats_next
+        inner += callout_p("nx-blue", "arrow_forward", "What&#8217;s Next", wn_text)
 
     hdr  = header("need", "help?", "Support resources and course policies", accent)
     body = card(inner, accent)
