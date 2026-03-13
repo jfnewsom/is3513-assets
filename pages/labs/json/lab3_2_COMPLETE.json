@@ -439,22 +439,10 @@
           "title": "Common Pitfalls",
           "icon": "warning",
           "items": [
-            {
-              "label": "Mixing filter syntax",
-              "text": "BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently."
-            },
-            {
-              "label": "No ICMP traffic",
-              "text": "ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing."
-            },
-            {
-              "label": "Missing protocol documentation",
-              "text": "Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section."
-            },
-            {
-              "label": "Case sensitivity in display filters",
-              "text": "Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
-            }
+            "<strong>Mixing filter syntax:</strong> BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.",
+            "<strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing.",
+            "<strong>Missing protocol documentation:</strong> Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section.",
+            "<strong>Case sensitivity in display filters:</strong> Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
           ]
         },
         {
