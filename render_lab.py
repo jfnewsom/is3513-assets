@@ -228,7 +228,7 @@ def render_steps_block(block):
 
     out = ""
     if part:
-        out += f'    <p><strong>{h(part)}</strong></p>\n'
+        out += f'    <h3>{h(part)}</h3>\n'
 
     start_attr = f' start="{start}"' if start != 1 else ""
     out += f'    <ol{start_attr}>\n'

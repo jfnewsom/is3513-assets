@@ -181,7 +181,7 @@
     <p>Deploying the Gulf Coast patient portal container and documenting the broken state before making any changes.</p>
     <h3>Why It Matters</h3>
     <p>HIPAA requires documentation of security incidents and remediation. &#8220;Before&#8221; evidence proves due diligence for auditors. If you fix it first and document after, you have no proof of what the original problem was.</p>
-    <p><strong>Part A: Deploy the Gulf Coast portal container</strong></p>
+    <h3>Part A: Deploy the Gulf Coast portal container</h3>
     <ol>
       <li>Create a working directory for this engagement:
         <div class="nx-cmd">mkdir -p ~/lab2-gulfcoast</div>
@@ -207,7 +207,7 @@
         </details>
       </li>
     </ol>
-    <p><strong>Part B: Document the broken state</strong></p>
+    <h3>Part B: Document the broken state</h3>
     <ol>
       <li>Open Firefox and navigate to <code>https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.
       </li>
@@ -313,7 +313,7 @@
         <div class="nx-quote-title">Security Compliance Specialist, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: SSH into the container and explore the PKI structure</strong></p>
+    <h3>Part A: SSH into the container and explore the PKI structure</h3>
     <ol>
       <li>SSH into the Gulf Coast portal container (password: <code>nexus2026</code>):
         <div class="nx-cmd">ssh -p 2222 student@localhost</div>
@@ -335,7 +335,7 @@
         </details>
       </li>
     </ol>
-    <p><strong>Part B: Generate a new Certificate Signing Request (CSR)</strong></p>
+    <h3>Part B: Generate a new Certificate Signing Request (CSR)</h3>
     <ol>
       <li>Generate a new CSR using the existing private key:
         <div class="nx-cmd">openssl req -new -key certs/portal.key -out csr/portal-new.csr -subj "/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local"</div>
@@ -361,7 +361,7 @@
         <p>Capture the CSR generation command and output. Save as <code>gulfcoast-03-csr-generation.png</code></p>
       </div>
     </div>
-    <p><strong>Part C: Sign the CSR with the Certificate Authority</strong></p>
+    <h3>Part C: Sign the CSR with the Certificate Authority</h3>
     <ol>
       <li>Sign the CSR using the CA certificate and key (requires sudo because the CA key is root-owned):
         <div class="nx-cmd">sudo openssl x509 -req -in csr/portal-new.csr -CA CA/ca.crt -CAkey CA/ca.key -CAcreateserial -out certs/portal-new.crt -days 365 -sha256</div>
@@ -389,7 +389,7 @@
         <p>Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>gulfcoast-04-cert-signing.png</code></p>
       </div>
     </div>
-    <p><strong>Part D: Install the new certificate</strong></p>
+    <h3>Part D: Install the new certificate</h3>
     <ol>
       <li>Copy the new certificate into Apache&#8217;s SSL directory:
         <div class="nx-cmd">sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</div>
@@ -443,7 +443,7 @@
     <p>Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.</p>
     <h3>Why It Matters</h3>
     <p>Verification proves the fix worked. Combined with your &#8220;before&#8221; screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success.</p>
-    <p><strong>Part A: Restart Apache and verify the fix</strong></p>
+    <h3>Part A: Restart Apache and verify the fix</h3>
     <ol>
       <li>Restart Apache to load the new certificate:
         <div class="nx-cmd">sudo service apache2 restart</div>
@@ -494,7 +494,7 @@
         <p>Capture the browser showing the portal without an expired certificate warning. Save as <code>gulfcoast-08-browser-success.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Bonus &#8212; Hunt for additional findings</strong></p>
+    <h3>Part B: Bonus &#8212; Hunt for additional findings</h3>
     <ol>
       <li>SSH back into the container and investigate the following areas. Document anything concerning in your report:
         <div class="nx-cmd">ssh -p 2222 student@localhost</div>

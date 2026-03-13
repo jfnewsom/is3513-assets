@@ -179,7 +179,7 @@
     <p>Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.</p>
     <h3>Why It Matters</h3>
     <p>This is your first interaction with real cloud infrastructure. Unlike training PCAPs, this is live traffic to a production-like environment. The skills you practiced in Lab 3.2 now apply to actual client systems. Jennifer Walsh is counting on your analysis to determine if the anomalous traffic her team flagged represents a genuine threat.</p>
-    <p><strong>Step 1: Prepare Your Capture Environment</strong></p>
+    <h3>Step 1: Prepare Your Capture Environment</h3>
     <ol>
       <li>Open Wireshark on your <strong>host machine</strong> (not inside the Kali VM).
       </li>
@@ -206,7 +206,7 @@
         </details>
       </li>
     </ol>
-    <p><strong>Step 2: Connect to Azure VM</strong></p>
+    <h3>Step 2: Connect to Azure VM</h3>
     <ol>
       <li>Open a terminal in your Kali VM.
       </li>
@@ -236,7 +236,7 @@
         <p>Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt. Save as <code>20-azure-ssh-connection.png</code></p>
       </div>
     </div>
-    <p><strong>Step 3 &#8212; Activity A: Browse via HTTPS</strong></p>
+    <h3>Step 3 &#8212; Activity A: Browse via HTTPS</h3>
     <ol>
       <li>Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.azurecontainer.io</code>
       </li>
@@ -252,14 +252,14 @@
         <p>Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding. Save as <code>21-certificate-warning.png</code></p>
       </div>
     </div>
-    <p><strong>Step 3 &#8212; Activity B: Browse via HTTP</strong></p>
+    <h3>Step 3 &#8212; Activity B: Browse via HTTP</h3>
     <ol>
       <li>In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.azurecontainer.io</code>
       </li>
       <li>Notice anything different about how the site responds? Document your observation.
       </li>
     </ol>
-    <p><strong>Step 3 &#8212; Activity C: Reconnaissance from Kali</strong></p>
+    <h3>Step 3 &#8212; Activity C: Reconnaissance from Kali</h3>
     <ol>
       <li>In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:
         <div class="nx-cmd">curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io</div>
@@ -298,7 +298,7 @@
         <p>Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses. Save as <code>22-curl-header-comparison.png</code></p>
       </div>
     </div>
-    <p><strong>Step 3 &#8212; Activity D: Server Exploration via SSH</strong></p>
+    <h3>Step 3 &#8212; Activity D: Server Exploration via SSH</h3>
     <ol>
       <li>In your SSH session, list the web server&#8217;s document root:
         <div class="nx-cmd">ls /var/www/</div>
@@ -338,7 +338,7 @@
         <p>Capture the nginx configuration output showing the server setup. Save as <code>23-nginx-server-config.png</code></p>
       </div>
     </div>
-    <p><strong>Step 4: Verify Your Capture</strong></p>
+    <h3>Step 4: Verify Your Capture</h3>
     <ol>
       <li>In Wireshark, go to Statistics &#8594; Protocol Hierarchy.
       </li>

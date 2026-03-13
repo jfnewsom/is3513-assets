@@ -128,7 +128,7 @@
         <div class="nx-quote-title">Security Compliance Specialist, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Create a test file and generate its hash</strong></p>
+    <h3>Part A: Create a test file and generate its hash</h3>
     <ol>
       <li>Create a working directory:
         <div class="nx-cmd">mkdir -p ~/lab2-crypto</div>
@@ -157,7 +157,7 @@
         <p>Capture the file creation and SHA-256 hash output. Save as <code>01-hash-sha256.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Demonstrate the avalanche effect</strong></p>
+    <h3>Part B: Demonstrate the avalanche effect</h3>
     <ol>
       <li>Create a slightly modified file (change one character):
         <div class="nx-cmd">echo "Patient: John Smith, DOB: 1985-03-16, MRN: 12345" > patient2.txt</div>
@@ -248,7 +248,7 @@
         <div class="nx-quote-title">Security Compliance Specialist, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Encrypt a file with AES-256</strong></p>
+    <h3>Part A: Encrypt a file with AES-256</h3>
     <ol>
       <li>Encrypt your patient file (use password <code>nexus2026</code> when prompted):
         <div class="nx-cmd">openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc</div>
@@ -289,7 +289,7 @@
         <p>Capture the encryption command and the hex dump showing unreadable encrypted content. Save as <code>03-symmetric-encrypt.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Decrypt the file</strong></p>
+    <h3>Part B: Decrypt the file</h3>
     <ol>
       <li>Decrypt using the same password:
         <div class="nx-cmd">openssl enc -aes-256-cbc -d -pbkdf2 -in patient.txt.enc -out patient_decrypted.txt</div>
@@ -384,7 +384,7 @@
         <div class="nx-quote-title">Security Compliance Specialist, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Generate an RSA keypair</strong></p>
+    <h3>Part A: Generate an RSA keypair</h3>
     <ol>
       <li>Generate a 2048-bit RSA private key:
         <div class="nx-cmd">openssl genrsa -out private.pem 2048</div>
@@ -424,7 +424,7 @@
         <p>Capture the keypair generation, file listing, and public key contents. Save as <code>05-rsa-keypair.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Encrypt with public key</strong></p>
+    <h3>Part B: Encrypt with public key</h3>
     <ol>
       <li>Create a small message to encrypt:
         <div class="nx-cmd">echo "Secret: AES key is nexus2026" > secret.txt</div>
@@ -453,7 +453,7 @@
         <p>Capture the encryption command and verify the encrypted file exists. Save as <code>06-rsa-encrypt.png</code></p>
       </div>
     </div>
-    <p><strong>Part C: Decrypt with private key</strong></p>
+    <h3>Part C: Decrypt with private key</h3>
     <ol>
       <li>Decrypt using the private key:
         <div class="nx-cmd">openssl pkeyutl -decrypt -inkey private.pem -in secret.enc -out secret_decrypted.txt</div>
@@ -539,7 +539,7 @@
         <div class="nx-quote-title">Security Compliance Specialist, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Sign a document</strong></p>
+    <h3>Part A: Sign a document</h3>
     <ol>
       <li>Create a document to sign:
         <div class="nx-cmd">echo "Medication Order: Amoxicillin 500mg TID x 10 days - Dr. Chen" > order.txt</div>
@@ -571,7 +571,7 @@
         <p>Capture the signing command and file listing showing both the order and signature files. Save as <code>08-signature-create.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Verify the signature</strong></p>
+    <h3>Part B: Verify the signature</h3>
     <ol>
       <li>Verify using the public key:
         <div class="nx-cmd">openssl dgst -sha256 -verify public.pem -signature order.sig order.txt</div>

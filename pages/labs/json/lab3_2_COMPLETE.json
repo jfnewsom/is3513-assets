@@ -287,7 +287,7 @@
           "type": "callout",
           "icon": "lightbulb",
           "title": "Filter Syntax Helper",
-          "text": "Display filters turn <strong>green</strong> when valid and <strong>red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.",
+          "text": "Display filters turn <strong style=\"color: #00D26A;\">green</strong> when valid and <strong style=\"color: #FF6B6B;\">red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.",
           "calloutType": "tip"
         },
         {

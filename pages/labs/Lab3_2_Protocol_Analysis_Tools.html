@@ -146,7 +146,7 @@
       <li>Note your interface name &#8212; you&#8217;ll need this for all future captures.
       </li>
     </ol>
-    <p><strong>Verify Active Interface (Optional CLI Method)</strong></p>
+    <h3>Verify Active Interface (Optional CLI Method)</h3>
     <ol>
       <li>Windows (PowerShell):
         <div class="nx-cmd">Get-NetAdapter | Where-Object Status -eq "Up"</div>
@@ -248,7 +248,7 @@
         </tr>
       </tbody>
     </table>
-    <p><strong>Practice Exercise</strong></p>
+    <h3>Practice Exercise</h3>
     <ol>
       <li>Start a capture on your active interface (no filter).
       </li>
@@ -269,7 +269,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Filter Syntax Helper</div>
-        <p>Display filters turn <strong>green</strong> when valid and <strong>red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.</p>
+        <p>Display filters turn <strong style="color: #00D26A;">green</strong> when valid and <strong style="color: #FF6B6B;">red</strong> when invalid. If your filter bar is red, check your syntax. You can also use the Expression builder (bookmark icon next to the filter bar) to construct filters visually.</p>
       </div>
     </div>
     <div class="nx-callout nx-blue">
@@ -475,7 +475,7 @@
     <p>Learning advanced Wireshark features: Follow TCP Stream, Endpoint Statistics, IO Graphs, and Flow Graphs.</p>
     <h3>Why It Matters</h3>
     <p>Basic filtering shows individual packets. Advanced techniques reveal patterns, relationships, and behaviors. These are the tools that separate packet-by-packet analysis from true network investigation.</p>
-    <p><strong>Technique 1: Follow TCP Stream</strong></p>
+    <h3>Technique 1: Follow TCP Stream</h3>
     <ol>
       <li>Find an HTTP or TCP packet in your capture.
       </li>
@@ -498,7 +498,7 @@
         <p>Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue. Save as <code>15-tcp-stream.png</code></p>
       </div>
     </div>
-    <p><strong>Technique 2: Endpoint Statistics</strong></p>
+    <h3>Technique 2: Endpoint Statistics</h3>
     <ol>
       <li>Go to Statistics &#8594; Endpoints.
       </li>
@@ -520,7 +520,7 @@
         <p>Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers. Save as <code>16-endpoints.png</code></p>
       </div>
     </div>
-    <p><strong>Technique 3: IO Graphs</strong></p>
+    <h3>Technique 3: IO Graphs</h3>
     <ol>
       <li>Go to Statistics &#8594; I/O Graphs.
       </li>
@@ -542,7 +542,7 @@
         <p>Capture the IO Graph showing at least two lines &#8212; the default &#8220;All Packets&#8221; and your custom DNS filter. Save as <code>17-io-graph.png</code></p>
       </div>
     </div>
-    <p><strong>Technique 4: Flow Graphs</strong></p>
+    <h3>Technique 4: Flow Graphs</h3>
     <ol>
       <li>Go to Statistics &#8594; Flow Graph.
       </li>

@@ -128,7 +128,7 @@
         <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Generate an RSA keypair</strong></p>
+    <h3>Part A: Generate an RSA keypair</h3>
     <ol>
       <li>Create a working directory for this lab:
         <div class="nx-cmd">mkdir -p ~/lab2-auth</div>
@@ -167,7 +167,7 @@
         <p>Capture the RSA key generation showing the randomart and file listing. Save as <code>10-keygen-rsa.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Generate an ED25519 keypair</strong></p>
+    <h3>Part B: Generate an ED25519 keypair</h3>
     <ol>
       <li>Generate an ED25519 key (modern, faster, smaller):
         <div class="nx-cmd">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
@@ -254,7 +254,7 @@
     <p>Understanding and configuring proper file permissions for SSH keys. You&#8217;ll see why SSH refuses to use keys with incorrect permissions and how to fix common permission problems.</p>
     <h3>Why It Matters</h3>
     <p>A private key with world-readable permissions is a security disaster. SSH clients will refuse to use improperly secured keys, and attackers specifically look for misconfigured key files. Proper permissions are the difference between security and breach.</p>
-    <p><strong>Part A: Examine default permissions</strong></p>
+    <h3>Part A: Examine default permissions</h3>
     <ol>
       <li>Check the current permissions on your keys:
         <div class="nx-cmd">ls -la ~/lab2-auth/id_*</div>
@@ -276,7 +276,7 @@
         </details>
       </li>
     </ol>
-    <p><strong>Part B: Demonstrate the risk of weak permissions</strong></p>
+    <h3>Part B: Demonstrate the risk of weak permissions</h3>
     <ol>
       <li>Copy the private key to a shared directory for this demonstration:
         <div class="nx-cmd">cp ~/lab2-auth/id_ed25519_lab /tmp/demo_key</div>
@@ -314,7 +314,7 @@
         <p>Capture the output showing the <code>nobody</code> user successfully reading your private key. The <code>-----BEGIN OPENSSH PRIVATE KEY-----</code> header should be visible. Save as <code>12-permission-error.png</code></p>
       </div>
     </div>
-    <p><strong>Part C: Fix the permissions and verify</strong></p>
+    <h3>Part C: Fix the permissions and verify</h3>
     <ol>
       <li>Restrict the file back to owner-only:
         <div class="nx-cmd">chmod 600 /tmp/demo_key</div>
@@ -417,7 +417,7 @@
         <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Set up authorized_keys</strong></p>
+    <h3>Part A: Set up authorized_keys</h3>
     <ol>
       <li>Create the <code>.ssh</code> directory if it doesn&#8217;t exist:
         <div class="nx-cmd">mkdir -p ~/.ssh</div>
@@ -451,7 +451,7 @@
         <p>Capture the <code>.ssh</code> directory listing and <code>authorized_keys</code> content. Save as <code>14-authorized-keys.png</code></p>
       </div>
     </div>
-    <p><strong>Part B: Test key-based authentication</strong></p>
+    <h3>Part B: Test key-based authentication</h3>
     <ol>
       <li>Start the SSH service if not running:
         <div class="nx-cmd">sudo systemctl start ssh</div>
@@ -481,7 +481,7 @@
         <p>Capture the successful SSH connection using key-based authentication. Save as <code>15-ssh-keyauth.png</code></p>
       </div>
     </div>
-    <p><strong>Part C: Create an SSH config file</strong></p>
+    <h3>Part C: Create an SSH config file</h3>
     <ol>
       <li>Open a new config file in nano:
         <div class="nx-cmd">nano ~/.ssh/config</div>
@@ -606,7 +606,7 @@
         <div class="nx-quote-title">Blue Team Lead, NEXUS Security</div>
       </div>
     </div>
-    <p><strong>Part A: Examine the current authentication policy</strong></p>
+    <h3>Part A: Examine the current authentication policy</h3>
     <ol>
       <li>Check what authentication methods your SSH server currently accepts:
         <div class="nx-cmd">sudo sshd -T | grep -i authenticationmethods</div>
@@ -619,7 +619,7 @@
         </details>
       </li>
     </ol>
-    <p><strong>Part B: Require both key and password</strong></p>
+    <h3>Part B: Require both key and password</h3>
     <ol>
       <li>Add the MFA directive to your SSH server configuration:
         <div class="nx-cmd">echo "AuthenticationMethods publickey,password" | sudo tee -a /etc/ssh/sshd_config</div>
@@ -637,7 +637,7 @@
         <div class="nx-cmd">sudo systemctl restart ssh</div>
       </li>
     </ol>
-    <p><strong>Part C: Test multi-factor login</strong></p>
+    <h3>Part C: Test multi-factor login</h3>
     <ol>
       <li>Connect using your SSH config alias:
         <div class="nx-cmd">ssh labserver whoami</div>
@@ -656,7 +656,7 @@
         <p>Capture your successful MFA login showing both prompts and the <code>whoami</code> output. Save as <code>17-mfa-login.png</code> &#8212; this is your last screenshot for Lab 2.2!</p>
       </div>
     </div>
-    <p><strong>Part D: Revert to single-factor</strong></p>
+    <h3>Part D: Revert to single-factor</h3>
     <ol>
       <li>Remove the MFA directive so later labs aren&#8217;t affected:
         <div class="nx-cmd">sudo sed -i '/^AuthenticationMethods/d' /etc/ssh/sshd_config</div>
