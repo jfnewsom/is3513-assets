@@ -1,0 +1,64 @@
+{
+  "type": "support_page",
+  "title": "Textbook – IS3513",
+  "htmlTitle": "Textbook – IS3513",
+  "accentColor": "#00D26A",
+  "headerKeyword": "textbook",
+  "headerSecondary": "info",
+  "headerSubtitle": "Conklin &amp; White · CompTIA Security+ · 6th Edition",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "This course uses a required textbook that aligns with <strong style=\"color:#ffffff;\">CompTIA Security+ certification objectives</strong>. The hands-on labs bring the textbook concepts to life."
+    },
+    {
+      "type": "two_col_specs",
+      "color": "#00D26A",
+      "label": "Book Details",
+      "left": [
+        { "key": "Title", "value": "Principles of Computer Security: CompTIA Security+ and Beyond" },
+        { "key": "Edition", "value": "Sixth Edition" },
+        { "key": "Authors", "value": "Wm. Arthur Conklin &amp; Greg White" }
+      ],
+      "right": [
+        { "key": "Publisher", "value": "McGraw-Hill Education" },
+        { "key": "ISBN", "value": "9781260474312" },
+        { "key": "Format", "value": "Physical or digital (VitalSource / Connect)" }
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "How to Access",
+      "items": [
+        "<strong style=\"color:#ffffff;\">UTSA Bookstore</strong> &#8212; Physical or digital; may be included in your course materials fee. Check with the bookstore.",
+        "<strong style=\"color:#ffffff;\">McGraw-Hill Connect</strong> &#8212; Digital access with interactive features. Check Canvas for the course-specific access link.",
+        "<strong style=\"color:#ffffff;\">Amazon / Other Retailers</strong> &#8212; Search by ISBN for used copies or alternative retailers. Always verify you&#8217;re getting the 6th edition."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Chapter Coverage by Module",
+      "paragraphs": [
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#FF9F1C;text-align:left;padding:8px 12px;border-bottom:2px solid #FF9F1C;\">Module</th><th style=\"color:#FF9F1C;text-align:left;padding:8px 12px;border-bottom:2px solid #FF9F1C;\">Topic</th><th style=\"color:#FF9F1C;text-align:left;padding:8px 12px;border-bottom:2px solid #FF9F1C;\">Chapters</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Module 1</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Threat Intelligence &amp; Reconnaissance</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">CH 1, 2</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Module 2</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Cryptography &amp; Authentication</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">CH 6, 11</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Module 3</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Networks &amp; Defense</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">CH 9, 13, 18</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Module 4</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Threats &amp; Attacks</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">CH 15, 16</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Module 5</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Infrastructure &amp; Risk Management</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">CH 10, 20</td></tr></tbody></table>"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "How to Use the Textbook",
+      "items": [
+        "<strong style=\"color:#ffffff;\">Before each module:</strong> Read the assigned chapters to understand the concepts you&#8217;ll be practicing in the labs.",
+        "<strong style=\"color:#ffffff;\">During labs:</strong> Reference specific sections when you need deeper explanation of a technique or tool.",
+        "<strong style=\"color:#ffffff;\">For reports:</strong> Cite the textbook when explaining methodology or referencing security principles. It counts toward your 10-citation requirement.",
+        "<strong style=\"color:#ffffff;\">For exams:</strong> Module exams draw from both textbook content and lab experience."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;If we don&#8217;t touch it in a lab, we don&#8217;t assign the reading.&rdquo; Every assigned chapter directly supports the hands-on work.</em>"
+    },
+    {
+      "type": "footer",
+      "html": "The textbook is your reference manual. The labs are where you learn."
+    }
+  ]
+}

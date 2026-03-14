@@ -1,0 +1,102 @@
+{
+  "type": "support_page",
+  "title": "IS3513 – Information Assurance and Security",
+  "htmlTitle": "Home – IS3513",
+  "accentColor": "#4169E1",
+  "headerKeyword": "is3513",
+  "headerSecondary": "information assurance & security",
+  "headerSubtitle": "UTSA · John Newsom · Spring 2026",
+  "sections": [
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "New to the course?",
+      "html": "Complete the <strong>Start Here</strong> section before diving into assignments. It covers the syllabus, textbook, Discord, and your Kali VM setup. <a href=\"StartHere.html\" style=\"color:#00D26A;\">Go to Start Here →</a>"
+    },
+    {
+      "type": "stat_blocks",
+      "blocks": [
+        { "label": "Modules", "labelColor": "#4169E1", "value": "5" },
+        { "label": "Foundation Labs", "labelColor": "#00BCD4", "value": "10" },
+        { "label": "Engagement Packets", "labelColor": "#7B68EE", "value": "5" },
+        { "label": "Module Exams", "labelColor": "#FF9F1C", "value": "5" }
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Your Instructor",
+      "paragraphs": [
+        "<strong style=\"color:#ffffff;\">John Newsom</strong> — Assistant Coach, UTSA Cybersecurity Competition Teams (CPTC &amp; CCDC)",
+        "San Antonio native &bull; UTSA alum &bull; Air Force veteran &bull; Former radio DJ"
+      ],
+      "items": [
+        "Email: <a href=\"mailto:john.newsom@utsa.edu\" style=\"color:#4169E1;\">john.newsom@utsa.edu</a>",
+        "Office: NPB 470D (or Zoom by appointment)",
+        "Scheduling: <a href=\"https://calendly.com/john-newsom-utsa/student-meeting\" target=\"_blank\" style=\"color:#4169E1;\">calendly.com/john-newsom-utsa/student-meeting</a>"
+      ]
+    },
+    {
+      "type": "info_box",
+      "color": "#00BCD4",
+      "label": "Course Format",
+      "paragraphs": [
+        "<strong style=\"color:#ffffff;\">Delivery:</strong> Asynchronous Online &mdash; no live sessions. Work at your own pace within weekly deadlines.",
+        "<strong style=\"color:#ffffff;\">3-Week Module Cycle:</strong> Weeks 1 &amp; 2 are Foundation Labs (quiz-verified). Week 3 is an Engagement Packet (client report). Repeat &times;5.",
+        "<strong style=\"color:#ffffff;\">Support:</strong> Discord for questions, Calendly for appointments, email for private matters only.",
+        "<strong style=\"color:#ffffff;\">Textbook:</strong> Conklin &amp; White, <em>Principles of Computer Security: CompTIA Security+ and Beyond</em>, 6th Ed."
+      ]
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#7B68EE",
+        "label": "Getting Started",
+        "items": [
+          "<a href=\"StartHere.html\" style=\"color:#7B68EE;\">Start Here</a>",
+          "<a href=\"Kali_VM_Setup.html\" style=\"color:#7B68EE;\">Kali VM Setup</a>",
+          "<a href=\"Course_Schedule.html\" style=\"color:#7B68EE;\">Course Schedule</a>",
+          "<a href=\"Textbook.html\" style=\"color:#7B68EE;\">Textbook Info</a>"
+        ]
+      },
+      "right": {
+        "color": "#FF9F1C",
+        "label": "Policies &amp; Grading",
+        "items": [
+          "<a href=\"Grading_Info.html\" style=\"color:#FF9F1C;\">Grading Info</a>",
+          "<a href=\"GenAI_Policy.html\" style=\"color:#FF9F1C;\">GenAI Policy</a>",
+          "<a href=\"Screenshot_Requirements.html\" style=\"color:#FF9F1C;\">Screenshot Requirements</a>",
+          "<a href=\"citations.html\" style=\"color:#FF9F1C;\">Citation Requirements</a>"
+        ]
+      }
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#00BCD4",
+        "label": "Documentation",
+        "items": [
+          "<a href=\"Engagement_Packet_Guide.html\" style=\"color:#00BCD4;\">Engagement Packet Guide</a>",
+          "<a href=\"How_To_Get_Help.html\" style=\"color:#00BCD4;\">How to Get Help</a>",
+          "<a href=\"Discord.html\" style=\"color:#00BCD4;\">Discord Server</a>"
+        ]
+      },
+      "right": {
+        "color": "#00D26A",
+        "label": "NEXUS World",
+        "items": [
+          "<a href=\"NEXUS_Security.html\" style=\"color:#00D26A;\">NEXUS Security</a>",
+          "<a href=\"Meet_The_Team.html\" style=\"color:#00D26A;\">Meet the Team</a>",
+          "<a href=\"Our_Clients.html\" style=\"color:#00D26A;\">Our Clients</a>"
+        ]
+      }
+    },
+    {
+      "type": "footer",
+      "html": "Questions? Ask in <strong>#course-questions</strong> on Discord or schedule office hours via Calendly. Welcome to NEXUS Security, analyst."
+    }
+  ]
+}

@@ -55,6 +55,12 @@
     ],
     "callouts": [
       {
+        "type": "warning",
+        "title": "Prerequisite",
+        "icon": "warning",
+        "text": "This lab requires a working Kali Linux VM from Lab 1.1 and completed work from Lab 2.1: Cryptographic Foundations. Both must be done before starting here."
+      },
+      {
         "type": "tip",
         "title": "Save For Lab 2.3",
         "icon": "folder",
@@ -934,6 +940,14 @@
     },
     "whatsNext": {
       "text": "After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three weeks into a complete Engagement Packet for the Gulf Coast Healthcare client."
-    }
+    },
+    "customCallouts": [
+      {
+        "type": "warning",
+        "icon": "warning",
+        "title": "Lab Environment Only",
+        "text": "The SSH keys you generate and configure in this lab are <strong>for training purposes only</strong>. Never use lab-generated keys in production systems."
+      }
+    ]
   }
 }

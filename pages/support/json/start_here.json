@@ -1,0 +1,110 @@
+{
+  "type": "support_page",
+  "title": "Start Here – IS3513",
+  "htmlTitle": "Start Here – IS3513",
+  "accentColor": "#00D26A",
+  "headerKeyword": "start",
+  "headerSecondary": "here",
+  "headerSubtitle": "Complete these 4 checkpoints before starting any labs",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Complete these 4 checkpoints <strong style=\"color:#ffffff;\">in order</strong> before diving into assignments. Each step ensures you&#8217;re set up for success."
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "✓ 1. Read the Syllabus",
+      "paragraphs": [
+        "The syllabus is your contract for grading, policies, and expectations. It covers late work policy, drop policies, academic integrity, and everything else that governs this course."
+      ],
+      "button": {
+        "label": "Read the Syllabus →",
+        "href": "https://utsa.instructure.com/courses/69678/assignments/syllabus",
+        "color": "#00D26A",
+        "textColor": "#0A0E17"
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "✓ 2. Obtain the Textbook",
+      "paragraphs": [
+        "<strong style=\"color:#ffffff;\">Required:</strong> Conklin &amp; White, <em>Principles of Computer Security: CompTIA Security+ and Beyond</em>, Sixth Edition (ISBN: 9781260474312). McGraw-Hill Education."
+      ],
+      "items": [
+        "<strong>UTSA Bookstore</strong> — Physical or digital; may be included in course materials fee",
+        "<strong>McGraw-Hill Connect</strong> — Digital access; check Canvas for course-specific link",
+        "<strong>Amazon / other retailers</strong> — ISBN lookup for used copies; ensure 6th edition"
+      ],
+      "button": {
+        "label": "Textbook Details →",
+        "href": "Textbook.html",
+        "color": "#4169E1"
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#5865F2",
+      "label": "✓ 3. Join Discord (Optional but Recommended)",
+      "paragraphs": [
+        "Discord is the fastest way to get help in this course. Most questions are answered within minutes by classmates or the instructor. <strong style=\"color:#ffffff;\">You must read the Terms of Service before joining.</strong>"
+      ],
+      "button": {
+        "label": "Discord Server Info →",
+        "href": "Discord.html",
+        "color": "#5865F2"
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "✓ 4. Set Up Your Kali VM",
+      "paragraphs": [
+        "Your Kali Linux VM is your security workstation for the entire semester. Every lab runs on it. Set it up now and name it correctly.",
+        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> (e.g., kali-newsom-abc123). This name must appear in every screenshot."
+      ],
+      "button": {
+        "label": "Kali VM Setup Guide →",
+        "href": "Kali_VM_Setup.html",
+        "color": "#FF9F1C",
+        "textColor": "#0A0E17"
+      }
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#7B68EE",
+        "label": "Policies to Know",
+        "items": [
+          "<a href=\"Grading_Info.html\" style=\"color:#7B68EE;\">Grading Info</a>",
+          "<a href=\"GenAI_Policy.html\" style=\"color:#7B68EE;\">GenAI Policy</a>",
+          "<a href=\"Screenshot_Requirements.html\" style=\"color:#7B68EE;\">Screenshot Requirements</a>",
+          "<a href=\"citations.html\" style=\"color:#7B68EE;\">Citation Requirements</a>"
+        ]
+      },
+      "right": {
+        "color": "#00BCD4",
+        "label": "NEXUS World",
+        "items": [
+          "<a href=\"NEXUS_Security.html\" style=\"color:#00BCD4;\">NEXUS Security</a>",
+          "<a href=\"Meet_The_Team.html\" style=\"color:#00BCD4;\">Meet the Team</a>",
+          "<a href=\"Our_Clients.html\" style=\"color:#00BCD4;\">Our Clients</a>"
+        ]
+      }
+    },
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "What&#8217;s Next?",
+      "headingStyle": true,
+      "html": "After completing all 4 checkpoints, head to <strong>Module 1: Threat Intelligence &amp; Reconnaissance</strong> to begin your NEXUS journey."
+    },
+    {
+      "type": "footer",
+      "html": "Questions? Check <a href=\"How_To_Get_Help.html\">How to Get Help</a> or post in Discord. Don&#8217;t wait until you&#8217;re stuck &#8212; ask early."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "type": "support_page",
+  "title": "Citation Requirements – IS3513",
+  "htmlTitle": "Citation Requirements – IS3513",
+  "accentColor": "#FF9F1C",
+  "headerKeyword": "citation",
+  "headerSecondary": "requirements",
+  "headerSubtitle": "10 Minimum · APA Format · Word Built-In Tools",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Citations aren&#8217;t bureaucratic hoop-jumping &#8212; they&#8217;re <strong style=\"color:#ffffff;\">credibility builders</strong>. A client can&#8217;t see your skills directly. They see your work. Every citation says: <em>&#8220;I did the homework. You can trust this.&#8221;</em>"
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "colorRgb": "230, 57, 70",
+      "label": "Deduction:",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;10%</strong> per missing citation. 10 citations required. Zero citations = <strong style=\"color:#E63946;\">&#8722;100%</strong>. This requirement is non-negotiable."
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "The Math Is Simple",
+      "items": [
+        "<strong style=\"color:#00D26A;\">10+ citations</strong> &#8212; No deduction",
+        "<strong style=\"color:#FF9F1C;\">8 citations</strong> &#8212; &#8722;20%",
+        "<strong style=\"color:#E63946;\">5 citations</strong> &#8212; &#8722;50%",
+        "<strong style=\"color:#E63946;\">0 citations</strong> &#8212; &#8722;100%"
+      ],
+      "tip": "Each module has 18&#8211;26 natural citation opportunities. If you&#8217;re actually documenting your methodology, 10 is trivially easy. If you&#8217;re struggling to find 10, you&#8217;re not doing the research that makes your work credible."
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#00D26A",
+        "label": "Strong Sources",
+        "items": [
+          "Official tool documentation",
+          "Man pages you referenced",
+          "Vendor security guides",
+          "NIST, CIS, OWASP standards",
+          "RFC documents",
+          "Your course textbook",
+          "Peer-reviewed papers"
+        ]
+      },
+      "right": {
+        "color": "#FF9F1C",
+        "label": "Acceptable Sources",
+        "items": [
+          "Reputable tech blogs",
+          "Stack Overflow answers",
+          "GitHub documentation",
+          "Tutorial sites (with caution)",
+          "Wikipedia (general context only)"
+        ]
+      }
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "colorRgb": "230, 57, 70",
+      "label": "Avoid:",
+      "html": "Random forum posts &bull; AI-generated content &bull; Sources you didn&#8217;t actually read &bull; Anything behind a paywall you didn&#8217;t access &bull; Wikipedia as a primary source"
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "How to Cite — Using Microsoft Word",
+      "paragraphs": [
+        "Use Word&#8217;s built-in citation tools. Do not type references manually &#8212; Word automates formatting and bibliography generation."
+      ],
+      "items": [
+        "Place your cursor where the citation belongs in the text",
+        "Go to <strong>References → Insert Citation → Add New Source</strong>",
+        "Fill in source details (author, title, URL, date accessed)",
+        "At document end: <strong>References → Bibliography → Insert Bibliography</strong>",
+        "Before submitting: Select All (Ctrl+A) then Update Fields (F9)"
+      ],
+      "tip": "<strong style=\"color:#ffffff;\">Style: APA format.</strong> Consistency matters. All citations in your document should use the same style."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Where Citations Naturally Fit",
+      "paragraphs": [
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Report Section</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Typical Citation Opportunities</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Runbook</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Tool documentation, command syntax references, man pages</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Methodology</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Industry standards, frameworks (NIST, OWASP), best practices</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Findings</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">CVE references, vendor advisories, vulnerability databases</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Recommendations</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Hardening guides, CIS benchmarks, vendor documentation</td></tr></tbody></table>"
+      ]
+    },
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "Pro Tip:",
+      "html": "<strong>Cite as you work.</strong> Keep a running list of sources as you move through each lab. When you look something up, add it immediately. Reconstructing your sources after the fact is painful and usually incomplete."
+    },
+    {
+      "type": "footer",
+      "html": "Ten citations minimum. No exceptions. Build credibility."
+    }
+  ]
+}

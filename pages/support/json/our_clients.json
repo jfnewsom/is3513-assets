@@ -1,0 +1,83 @@
+{
+  "type": "support_page",
+  "title": "Our Clients – IS3513",
+  "htmlTitle": "Our Clients – IS3513",
+  "accentColor": "#FF9F1C",
+  "headerKeyword": "our",
+  "headerSecondary": "clients",
+  "headerSubtitle": "Four Texas Businesses · Five Engagements",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "NEXUS Security serves Texas businesses across multiple industries. Each client has unique challenges, regulatory requirements, and stakeholders. You&#8217;ll work with all four over the course of the semester."
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Brazos Financial Group — Modules 1 &amp; 4",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Dallas, Texas &bull; Financial Services &bull; 450 employees</strong>",
+        "Wealth management firm managing $2.8B in assets. A recent merger brought legacy systems and compliance concerns. An SEC examination is scheduled in 6 months. Leadership knows they have problems but needs data to justify remediation budget.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Windows Active Directory &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> SEC compliance"
+      ],
+      "subheading": "Key Stakeholders:",
+      "items": [
+        "Ray Jimenez &#8212; CTO",
+        "Victoria Caldwell &#8212; CCO",
+        "Maggie Brazos-Chen &#8212; CEO"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Gulf Coast Healthcare Partners — Modules 2 &amp; 3",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Houston, Texas &bull; Healthcare &bull; 800+ employees</strong>",
+        "Multi-location healthcare network with 12 clinics across Greater Houston. The patient portal has certificate issues causing browser security warnings. HIPAA compliance is non-negotiable &#8212; patient trust is everything.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed (Linux servers) &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> HIPAA compliance, patient trust"
+      ],
+      "subheading": "Key Stakeholders:",
+      "items": [
+        "Dr. Michael Okonkwo &#8212; CMO",
+        "Jennifer Walsh &#8212; CISO",
+        "Thomas Kowalski &#8212; IT Manager"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "LoneStar DevOps — Modules 3 &amp; 5",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Austin, Texas &bull; Technology &bull; 45 employees</strong>",
+        "Fast-growing DevOps startup seeking enterprise clients. Series B funding depends on passing enterprise security reviews. A &#8220;move fast, break things&#8221; culture is colliding with enterprise compliance requirements.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Cloud-native, containers &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> Enterprise security review"
+      ],
+      "subheading": "Key Stakeholders:",
+      "items": [
+        "Amanda Nguyen &#8212; CEO",
+        "Sarah Martinez &#8212; DevOps Lead",
+        "Miguel Rodriguez &#8212; DevOps Engineer"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#E63946",
+      "label": "Alamo Industries — Module 4",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">San Antonio, Texas &bull; Manufacturing &bull; 2,500 employees</strong>",
+        "Third-generation family manufacturing company with DoD contracts. CMMC Level 2 certification is required to keep federal business. Legacy OT systems haven&#8217;t been updated &#8220;since the Reagan administration.&#8221;",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed IT/OT, Linux &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> CMMC certification"
+      ],
+      "subheading": "Key Stakeholders:",
+      "items": [
+        "Bobby Alamo III &#8212; CEO",
+        "Elena Vasquez &#8212; IT Manager",
+        "Frank Morrison &#8212; Plant Manager"
+      ]
+    },
+    {
+      "type": "footer",
+      "html": "You&#8217;ll learn more about each client as their modules begin. Study your stakeholders &#8212; knowing who reads your report shapes how you write it."
+    }
+  ]
+}

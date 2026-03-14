@@ -1,0 +1,111 @@
+{
+  "type": "support_page",
+  "title": "Screenshot Requirements – IS3513",
+  "htmlTitle": "Screenshot Requirements – IS3513",
+  "accentColor": "#E63946",
+  "headerKeyword": "screenshot",
+  "headerSecondary": "requirements",
+  "headerSubtitle": "Evidence Standards for Lab Submissions",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Screenshots are <strong style=\"color:#ffffff;\">evidence</strong>. In professional security work, undocumented claims don&#8217;t exist. Every screenshot must prove <em>you</em> did the work on <em>your</em> system."
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "colorRgb": "230, 57, 70",
+      "label": "Deduction:",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing or unverifiable screenshot. No VM name visible? Wrong filename? Missing required capture? Each one costs you."
+    },
+    {
+      "type": "two_column",
+      "style": "detailed",
+      "left": {
+        "color": "#00D26A",
+        "label": "✓ Verifiable Screenshot",
+        "items": [
+          { "title": "VM name in terminal prompt", "desc": "kali-lastname-abc123 visible" },
+          { "title": "VM name in window title bar", "desc": "hostname visible at top" },
+          { "title": "Hostname visible in command output", "desc": "e.g., uname -n output" }
+        ]
+      },
+      "right": {
+        "color": "#E63946",
+        "label": "✗ Unverifiable Screenshot",
+        "items": [
+          { "title": "Generic \"kali@kali\" prompt", "desc": "default name, not yours" },
+          { "title": "Cropped to hide hostname", "desc": "partial screenshots rejected" },
+          { "title": "Web browser only, no VM context", "desc": "could be anyone&#8217;s machine" }
+        ]
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Critical: VM Name Visibility",
+      "paragraphs": [
+        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> and this name must be visible in every screenshot.",
+        "Without your VM name, there&#8217;s no way to verify <em>you</em> ran the commands. Screenshots without identification could be copied from anywhere &#8212; and occasionally are."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Filename Convention",
+      "paragraphs": [
+        "All screenshots follow this naming pattern: <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">##-description.png</code>"
+      ],
+      "items": [
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">01-vm-settings.png</code> &#8212; First screenshot, VM configuration",
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">07-nmap-scan-results.png</code> &#8212; Seventh screenshot, nmap output",
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">15-wireshark-tcp-stream.png</code> &#8212; Fifteenth screenshot, Wireshark analysis"
+      ],
+      "tip": "Two-digit numbers keep files sorted correctly (01, 02&#8230; not 1, 2, 10, 11). This matters when you&#8217;re compiling 20+ screenshots into a report."
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#00D26A",
+        "label": "Always Capture",
+        "items": [
+          "Command you ran",
+          "Output / results",
+          "VM name visible (terminal prompt or title)",
+          "Relevant context (IP addresses, tool version, etc.)"
+        ]
+      },
+      "right": {
+        "color": "#7B68EE",
+        "label": "When Instructed",
+        "items": [
+          "Error messages (document failures too)",
+          "Configuration screens",
+          "Before/after comparisons",
+          "Specific UI elements"
+        ]
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Folder Organization",
+      "paragraphs": [
+        "Keep screenshots organized by lab in your Kali VM:"
+      ],
+      "code_block": "~/Screenshots/\n├── Lab1-Screenshots/\n│   ├── 01-vm-settings.png\n│   ├── 02-kali-desktop.png\n│   └── ...\n├── Lab2-Screenshots/\n├── Lab3-Screenshots/\n└── ..."
+    },
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "Pro Tip:",
+      "html": "<strong>Screenshot as you go.</strong> Don&#8217;t try to recreate screenshots after the fact. Take them in real-time as you work. Missing a screenshot means redoing the work &#8212; or taking the deduction."
+    },
+    {
+      "type": "footer",
+      "html": "Every screenshot is evidence. Make it count."
+    }
+  ]
+}

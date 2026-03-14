@@ -1,0 +1,71 @@
+{
+  "type": "support_page",
+  "title": "Meet the Team – IS3513",
+  "htmlTitle": "Meet the Team – IS3513",
+  "accentColor": "#7B68EE",
+  "headerKeyword": "meet",
+  "headerSecondary": "the team",
+  "headerSubtitle": "Your Colleagues at NEXUS Security",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "These are your colleagues at NEXUS Security. You&#8217;ll hear from them throughout the semester &#8212; in lab callouts, mentor quotes, and guidance sections. They&#8217;re fictional, but the lessons they teach are real."
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Marcus Chen — Founder &amp; Principal Consultant",
+      "paragraphs": [
+        "Former NSA analyst turned private sector. Marcus founded NEXUS after 15 years in government cybersecurity. He sets the strategic direction for engagements and handles executive-level client relationships. You won&#8217;t hear from him often &#8212; but when you do, listen."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;The executive summary is the most important page in your report. Make sure a CEO can hand it to their board and look confident.&rdquo;</em>"
+    },
+    {
+      "type": "named_section",
+      "color": "#E63946",
+      "label": "Maya Rodriguez — Senior Penetration Tester",
+      "paragraphs": [
+        "Red team specialist with a talent for finding what others miss. Maya leads offensive engagements and mentors junior analysts on methodology. She&#8217;s methodical, technical, and pushes you to dig deeper. Her training sessions are challenging but fair."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;Start wide, then go deep. Port scan first, then investigate interesting services. Don&#8217;t tunnel-vision on the first finding.&rdquo;</em>"
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "Carmen Vega — Junior Security Analyst",
+      "paragraphs": [
+        "Your peer at NEXUS &#8212; she started six months before you. Carmen handles OSINT research and client prep. She&#8217;s been where you are, made the same mistakes, and learned from them. She&#8217;ll share research openly and warn you about common pitfalls."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;I forgot to screenshot my nmap scan before moving on. Had to re-run everything. Save as you go &#8212; trust me.&rdquo;</em>"
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Derek Mitchell — Security Operations Lead",
+      "paragraphs": [
+        "Blue team specialist who monitors and defends NEXUS client environments. Derek oversees SOC workflows, incident response procedures, and defensive tooling. He&#8217;s the one who builds the playbooks that stop the attacks Maya finds."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;Every red team finding is a detection opportunity. When you find something, my first question is: would we have seen this in the logs?&rdquo;</em>"
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Maria Delgado, PhD — Security Compliance Specialist",
+      "paragraphs": [
+        "Bridges the gap between technical findings and regulatory requirements. Maria translates NEXUS engagements into HIPAA, PCI-DSS, and CMMC compliance language. She&#8217;s the one who makes sure your report recommendations actually map to what the client&#8217;s auditors will check."
+      ],
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;Cryptography isn&#8217;t magic &#8212; it&#8217;s math. And math done wrong is worse than no math at all because it gives false confidence.&rdquo;</em>"
+    },
+    {
+      "type": "callout_bar",
+      "color": "#7B68EE",
+      "colorRgb": "123, 104, 238",
+      "label": "Note:",
+      "html": "You&#8217;ll also interact with <strong>client stakeholders</strong> throughout the semester. Check the <a href=\"Our_Clients.html\" style=\"color:#7B68EE;\">Our Clients</a> page to learn about the businesses you&#8217;ll be working with."
+    },
+    {
+      "type": "footer",
+      "html": "Your team has your back. Now let&#8217;s get to work."
+    }
+  ]
+}

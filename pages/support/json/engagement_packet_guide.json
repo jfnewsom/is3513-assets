@@ -1,0 +1,125 @@
+{
+  "type": "support_page",
+  "title": "Engagement Packet Guide – IS3513",
+  "htmlTitle": "Engagement Packet Guide – IS3513",
+  "accentColor": "#7B68EE",
+  "headerKeyword": "engagement",
+  "headerSecondary": "packet guide",
+  "headerSubtitle": "Section A · Section B · Section C",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Every Week 3 submission is an <strong style=\"color:#ffffff;\">Engagement Packet</strong> &#8212; a professional deliverable that mirrors real consulting workflows. Three sections. One document. <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#7B68EE;\">.docx only</code> &#8212; no PDF submissions accepted."
+    },
+    {
+      "type": "stat_blocks",
+      "blocks": [
+        { "label": "Section A", "labelColor": "#FF9F1C", "value": "NEXUS Timesheet" },
+        { "label": "Section B", "labelColor": "#00D26A", "value": "Internal Runbook" },
+        { "label": "Section C", "labelColor": "#4169E1", "value": "Client Report" }
+      ]
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "colorRgb": "230, 57, 70",
+      "label": "Critical Requirements:",
+      "html": "Format: <strong>.docx only</strong> (no PDFs) &nbsp;&bull;&nbsp; Citations: <strong>10 minimum</strong> (&#8722;10% each missing) &nbsp;&bull;&nbsp; Screenshots: <strong>VM name visible in all</strong> (&#8722;5% each unverifiable)"
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Section A: NEXUS Timesheet",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Audience: NEXUS Management &nbsp;&bull;&nbsp; Purpose: Billing Justification</strong>",
+        "Consulting firms bill clients for time. Every hour must be justified. Generic entries like &#8220;did lab work&#8221; won&#8217;t fly &#8212; describe what you actually did."
+      ],
+      "subheading": "Billing Categories:",
+      "items": [
+        "<strong style=\"color:#ffffff;\">Week 1 &#8212; Internal Training:</strong> Environment setup, initial tool learning, configuration",
+        "<strong style=\"color:#ffffff;\">Week 2 &#8212; Internal Training:</strong> Tool exploration, technique practice, methodology development",
+        "<strong style=\"color:#ffffff;\">Week 3 &#8212; Client Billable:</strong> Engagement execution, analysis, report writing"
+      ],
+      "tip": "<strong style=\"color:#ffffff;\">Example (Module 1):</strong> Week 1: Kali VM installation (1.0 hr), network adapter config (0.5 hr), snapshot setup (0.5 hr), tool inventory (1.0 hr), recon methodology review (1.0 hr) = <strong>4.0 hrs internal</strong>. Week 3: Brazos external recon (2.0 hr), subdomain enumeration (1.0 hr), findings analysis (1.0 hr), report drafting (1.5 hr) = <strong>5.5 hrs billable</strong>."
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "Section B: Internal Runbook",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Audience: NEXUS Team &nbsp;&bull;&nbsp; Purpose: Knowledge Transfer</strong>",
+        "Create methodology documentation so another analyst could reproduce your work. &#8220;Here&#8217;s how to do X for the next analyst.&#8221; When you leave, your methodology stays."
+      ],
+      "subheading": "What to Include:",
+      "items": [
+        "<strong style=\"color:#ffffff;\">From Week 1:</strong> Environment setup steps, tool installation procedures, configuration documentation, screenshots of key steps",
+        "<strong style=\"color:#ffffff;\">From Week 2:</strong> Tool usage documentation, command syntax with explanations, technique workflows, output interpretation guides",
+        "<strong style=\"color:#ffffff;\">From Week 3:</strong> Engagement workflow, lessons learned, what worked and what didn&#8217;t, recommendations for next time"
+      ],
+      "tip": "<strong style=\"color:#ffffff;\">The Reproducibility Test:</strong> Could a junior analyst who wasn&#8217;t in this class follow your runbook and achieve the same results? If the answer is no, add more detail. <em style=\"color:#B0B8C4;\">Pro tip: If you took good screenshots in Labs X.1 and X.2, your runbook is 60&#8211;70% done before Week 3 starts. Just compile and polish.</em>"
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Section C: Client Report",
+      "paragraphs": [
+        "<strong style=\"color:#B0B8C4;\">Audience: Fictional Client Contact &nbsp;&bull;&nbsp; Purpose: Professional Deliverable</strong>",
+        "Write the report you would hand to a real client. This is what Ray Jimenez, Jennifer Walsh, Amanda Nguyen, or Bobby Alamo would actually read."
+      ],
+      "subheading": "Required Sections:",
+      "items": [
+        "<strong style=\"color:#ffffff;\">1. Executive Summary</strong> (1 page max) &#8212; High-level overview for non-technical readers. What did you find? What&#8217;s the risk? What should they do? No jargon. A CEO should understand this.",
+        "<strong style=\"color:#ffffff;\">2. Scope and Methodology</strong> &#8212; What systems were tested? What was out of scope? What approach did you take?",
+        "<strong style=\"color:#ffffff;\">3. Findings</strong> &#8212; Each finding needs: description, evidence (screenshots), severity, and business impact.",
+        "<strong style=\"color:#ffffff;\">4. Risk Analysis</strong> &#8212; What&#8217;s the actual risk to the business? Likelihood, impact, and business context. Not everything high-severity is high-priority.",
+        "<strong style=\"color:#ffffff;\">5. Recommendations</strong> &#8212; Actionable, prioritized, realistic. Quick wins and long-term improvements. Reference industry standards (CIS, NIST)."
+      ]
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#00D26A",
+        "label": "Writing: Do This",
+        "items": [
+          "Write in third person, past tense",
+          "Use clear, professional language",
+          "Explain technical terms",
+          "Support all claims with evidence",
+          "Proofread for grammar and spelling"
+        ]
+      },
+      "right": {
+        "color": "#E63946",
+        "label": "Writing: Avoid This",
+        "items": [
+          "First person (&#8220;I ran nmap&#8230;&#8221;)",
+          "Unexplained jargon",
+          "Claims without screenshots",
+          "Copy-pasted tool output without analysis",
+          "Casual language or slang"
+        ]
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Pre-Submission Checklist",
+      "items": [
+        "File saved as <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">.docx</code> &#8212; not PDF, not Pages, not Google Docs export",
+        "All three sections present: Timesheet, Runbook, Client Report",
+        "10+ citations with auto-generated bibliography (References → Bibliography)",
+        "All screenshots show VM name (<code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">kali-lastname-studentID</code> visible)",
+        "Screenshot filenames follow <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">##-description.png</code> convention",
+        "Executive summary is non-technical and under one page",
+        "Each finding includes severity, evidence, and business impact",
+        "Recommendations are actionable and reference industry standards",
+        "Document spellchecked and proofread"
+      ]
+    },
+    {
+      "type": "footer",
+      "html": "Submitted to the Lab X.3 assignment in Canvas. No late work accepted. Format: <strong>.docx only</strong>."
+    }
+  ]
+}

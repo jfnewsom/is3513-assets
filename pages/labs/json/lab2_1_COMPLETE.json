@@ -55,6 +55,12 @@
     ],
     "callouts": [
       {
+        "type": "warning",
+        "title": "Prerequisite",
+        "icon": "warning",
+        "text": "This lab requires a working Kali Linux VM from Lab 1.1. If you haven&#8217;t completed Lab 1.1, stop here and complete it first."
+      },
+      {
         "type": "tip",
         "title": "Save For Lab 2.3",
         "icon": "folder",

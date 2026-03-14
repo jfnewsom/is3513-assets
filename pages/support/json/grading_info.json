@@ -1,0 +1,66 @@
+{
+  "type": "support_page",
+  "title": "Grading Info – IS3513",
+  "htmlTitle": "Grading Info – IS3513",
+  "accentColor": "#4169E1",
+  "headerKeyword": "grading",
+  "headerSecondary": "info",
+  "headerSubtitle": "How Your Work Is Evaluated",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "Your grade reflects <strong style=\"color:#ffffff;\">professional competency</strong>, not just completion. We use a two-part system for Engagement Packets: additive scoring for quality, plus deductions for missing documentation requirements."
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Category Weights",
+      "paragraphs": [
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Category</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Weight</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Components</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Foundation Labs</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">30%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Labs X.1 and X.2 (10 total, quiz-verified)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Engagement Packets</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">45%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Labs X.3 (5 total, manually graded)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Module Exams</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">25%</td><td style=\"color:#B0B8C4;padding:8px 12px;\">End-of-module exams (5 total)</td></tr></tbody></table>"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Engagement Packet Grading: Part 1 — Quality Ladder (Additive)",
+      "paragraphs": [
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Component</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Weight</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">What We Evaluate</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Assignment Objectives</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">40%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">All three weeks complete? Timesheet, Runbook, and Client Report present?</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Technical Documentation</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">40%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Reproducibility &#8212; could another analyst follow your runbook?</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Professional Communication</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">20%</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Client-ready? Clear writing, proper formatting, executive summary?</td></tr></tbody></table>"
+      ]
+    },
+    {
+      "type": "two_column",
+      "style": "simple",
+      "left": {
+        "color": "#E63946",
+        "label": "Part 2 — Documentation Deductions",
+        "items": [
+          "<strong style=\"color:#E63946;\">&#8722;10%</strong> per missing citation (10 required; zero citations = &#8722;100%)",
+          "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing or unverifiable screenshot",
+          "No VM name visible? Wrong filename? Each one costs you.",
+          "These are not optional. In professional security work, undocumented claims are worthless."
+        ]
+      },
+      "right": {
+        "color": "#00D26A",
+        "label": "Drop Policies",
+        "items": [
+          "<strong style=\"color:#ffffff;\">2</strong> Foundation Lab grades dropped (lowest)",
+          "<strong style=\"color:#ffffff;\">1</strong> Engagement Packet grade dropped (lowest)",
+          "<strong style=\"color:#ffffff;\">1</strong> Module Exam grade dropped (lowest)",
+          "Drop policies exist for emergencies. Use them wisely &#8212; don&#8217;t burn a drop on procrastination."
+        ]
+      }
+    },
+    {
+      "type": "callout_bar",
+      "color": "#E63946",
+      "colorRgb": "230, 57, 70",
+      "label": "Late Work Policy:",
+      "html": "<strong>No late work accepted.</strong> The drop policies exist to accommodate emergencies, illness, and life events. If something comes up, a drop covers it &#8212; you don&#8217;t need a separate exception."
+    },
+    {
+      "type": "footer",
+      "html": "Questions about grading? Ask in <strong>#course-questions</strong> on Discord. Document everything &#8212; evidence is everything in this field."
+    }
+  ]
+}
