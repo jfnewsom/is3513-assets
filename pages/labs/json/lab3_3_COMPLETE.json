@@ -400,7 +400,7 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "<strong>VPN blocking SSH:</strong> If you can&#8217;t connect, disable any VPN on your host machine first",
+            "<strong>VPN blocking SSH:</strong> If you can&#8217;t connect, disable any VPN on your host machine first. Some campus networks also block outbound port 22 &#8212; try from a mobile hotspot.",
             "<strong>Wrong interface:</strong> Wireshark runs on your HOST machine &#8212; all other activities (browsing, SSH, curl) happen inside your Kali VM",
             "<strong>Firewall issues:</strong> Some campus networks block outbound SSH (port 22) &#8212; try from a mobile hotspot",
             "<strong>Password typo:</strong> Password is case-sensitive: <code>NEXUSanalyst2026!</code>"
@@ -535,7 +535,6 @@
           "items": [
             "<strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.",
             "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
-            "<strong>VPN blocking SSH:</strong> If you can't connect to the Azure portal, disable any VPN on your host machine first. Some campus networks also block outbound port 22 — try from a mobile hotspot.",
             "<strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully."
           ]
         },

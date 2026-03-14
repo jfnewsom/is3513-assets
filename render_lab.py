@@ -841,7 +841,16 @@ if __name__ == "__main__":
 
     if len(sys.argv) >= 3:
         out_path = Path(sys.argv[2])
-        out_path.write_text(html)
-        print(f"Written: {out_path}")
     else:
-        print(html)
+        # Auto-derive output path: same directory as JSON's sibling pages/labs/
+        # e.g. pages/labs/json/lab3_2_COMPLETE.json -> pages/labs/Lab3_2_Protocol_Analysis_Tools.html
+        import re as _re
+        meta      = data.get("meta", {})
+        lab_id    = meta.get("labId", "").replace(".", "_")
+        title     = meta.get("title", json_path.stem)
+        safe      = _re.sub(r"[^A-Za-z0-9]+", "_", title).strip("_")
+        html_name = f"Lab{lab_id}_{safe}.html"
+        out_path  = json_path.parent.parent / html_name  # json/ -> pages/labs/
+
+    out_path.write_text(html)
+    print(f"Written: {out_path}")
