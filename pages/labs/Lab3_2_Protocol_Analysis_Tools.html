@@ -380,13 +380,16 @@
       <li>Start a new Wireshark capture on your active interface (no capture filter).
       </li>
       <li>Generate <strong>HTTP traffic</strong>: visit <code>http://neverssl.com</code> in your browser. This site intentionally serves plain HTTP and will never redirect to HTTPS &#8212; it exists exactly for this purpose.
-        <details>
-          <summary>What this does</summary>
-          <div class="nx-details-body">
-            <p><strong>Concept:</strong> Most modern websites force HTTPS immediately. neverssl.com is maintained specifically to provide plain HTTP traffic for testing and training.</p>
-          </div>
-        </details>
       </li>
+    </ol>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Browser Blocking neverssl.com?</div>
+        <p>Most browsers now have forced HTTPS or HSTS enabled by default, which will block the site or silently redirect you to HTTPS &#8212; defeating the purpose. If the page won&#8217;t load over HTTP, search <strong>&#8220;disable forced HTTPS [your browser name]&#8221;</strong> for instructions on turning it off temporarily.</p>
+      </div>
+    </div>
+    <ol start="3">
       <li>Generate <strong>DNS traffic</strong>: visit any website or run <code>nslookup google.com</code> in a terminal.
       </li>
       <li>Generate <strong>HTTPS/TLS traffic</strong>: visit any standard website (e.g., <code>https://www.google.com</code>).
