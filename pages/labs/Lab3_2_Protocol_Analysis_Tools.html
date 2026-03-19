@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 <h1 class="nx-sr-only">Lab 3.2 &#8212; Protocol Analysis Tools</h1>
 
 
@@ -643,11 +644,11 @@
     <ol>
       <li>Open <code>credential-leak.pcap</code> in Wireshark.
       </li>
-      <li>Apply filters to identify HTTP traffic.
+      <li>Apply filters to identify FTP traffic. Use the display filter <code>ftp</code> to isolate control channel packets.
       </li>
       <li>Use Follow TCP Stream to examine conversations.
       </li>
-      <li>Find the security issue (hint: look for form submissions).
+      <li>Find the security issue (hint: look for the USER and PASS commands in the FTP control channel).
       </li>
       <li>Document what you found and why it&#8217;s a problem.
       </li>
@@ -664,8 +665,8 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper</li>
-          <li><strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code></li>
+          <li><strong>Skipping the basics:</strong> Start with <code>ftp</code> filter before diving deeper</li>
+          <li><strong>Missing credentials:</strong> The username and password are in the FTP control channel. Filter: <code>ftp.request.command == "USER"</code> or <code>ftp.request.command == "PASS"</code></li>
           <li><strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it</li>
         </ul>
       </div>
