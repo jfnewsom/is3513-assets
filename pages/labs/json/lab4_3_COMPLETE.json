@@ -8,8 +8,7 @@
     "chapters": [
       "Chapter 15 — Types of Attacks",
       "Chapter 16 — Security Assessment Tools"
-    ],
-    "headerSvg": "Lab4_3_Header.svg"
+    ]
   },
   "intro": {
     "overview": "This is your Week 3 Engagement Packet for Module 4. You’ve spent the last two weeks conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
@@ -118,7 +117,6 @@
     {
       "number": 1,
       "title": "Report Setup & Week 1-2 Compilation",
-      "altText": "Checkpoint_4_3_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -291,7 +289,6 @@
     {
       "number": 2,
       "title": "Platform Comparison Analysis",
-      "altText": "Checkpoint_4_3_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -372,7 +369,6 @@
     {
       "number": 3,
       "title": "Client Recommendations",
-      "altText": "Checkpoint_4_3_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -475,7 +471,6 @@
     {
       "number": 4,
       "title": "Executive Summary & Final Polish",
-      "altText": "Checkpoint_4_3_4.svg",
       "content": [
         {
           "type": "narrative",

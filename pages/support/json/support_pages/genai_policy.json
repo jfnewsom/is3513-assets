@@ -1,15 +1,14 @@
 {
   "type": "support_page",
-  "title": "GenAI Policy \u2013 IS3513",
-  "htmlTitle": "GenAI Policy \u2013 IS3513",
+  "title": "GenAI Policy – IS3513",
+  "htmlTitle": "GenAI Policy – IS3513",
   "accentColor": "#7B68EE",
-  "headerSvg": "GenAI_Policy_Header.svg",
   "sections": [
     {
       "type": "callout_bar",
       "color": "#7B68EE",
       "label": "The Guiding Principle",
-      "html": "<div style=\"color:#ffffff;font-size:15px;font-style:italic;line-height:1.7;margin-top:8px;\">\u201cAI can help you understand and improve your work, but the work itself must be yours. Think of AI like a tutor, not a ghostwriter.\u201d</div>",
+      "html": "<div style=\"color:#ffffff;font-size:15px;font-style:italic;line-height:1.7;margin-top:8px;\">“AI can help you understand and improve your work, but the work itself must be yours. Think of AI like a tutor, not a ghostwriter.”</div>",
       "headingStyle": true
     },
     {
@@ -21,7 +20,7 @@
       "style": "detailed",
       "left": {
         "color": "#00D26A",
-        "label": "\u2713 Permitted Use",
+        "label": "✓ Permitted Use",
         "items": [
           {
             "title": "Explaining command syntax",
@@ -47,7 +46,7 @@
       },
       "right": {
         "color": "#E63946",
-        "label": "\u2717 Prohibited Use",
+        "label": "✗ Prohibited Use",
         "items": [
           {
             "title": "Writing report sections",
@@ -67,7 +66,7 @@
           },
           {
             "title": "Fabricating tool output",
-            "desc": "Real results only, even if they\u2019re incomplete"
+            "desc": "Real results only, even if they’re incomplete"
           }
         ]
       }
@@ -78,7 +77,7 @@
       "label": "Why This Matters in Cybersecurity",
       "paragraphs": [
         "In professional security work, your findings must be <strong style=\"color:#ffffff;\">defensible and reproducible</strong>. If you tell a client they have a critical vulnerability, you need to prove it. AI-generated fabrications could lead to false positives (wasting client resources) or false negatives (missing real threats).",
-        "The skills you build here\u2014running tools, interpreting output, documenting methodology\u2014are exactly what employers and certifications test. Shortcuts now create gaps that will hurt you later."
+        "The skills you build here—running tools, interpreting output, documenting methodology—are exactly what employers and certifications test. Shortcuts now create gaps that will hurt you later."
       ]
     },
     {
@@ -88,16 +87,16 @@
       "examples": {
         "ok": {
           "color": "#00D26A",
-          "label": "\u2713 OK to Ask",
+          "label": "✓ OK to Ask",
           "items": [
             "\"What does the -sV flag do in Nmap?\"",
-            "\"Why am I getting \u2018permission denied\u2019 when running this?\"",
+            "\"Why am I getting ‘permission denied’ when running this?\"",
             "\"How should I organize my findings section?\""
           ]
         },
         "notOk": {
           "color": "#E63946",
-          "label": "\u2717 Not OK to Ask",
+          "label": "✗ Not OK to Ask",
           "items": [
             "\"Write an executive summary for my Nmap scan\"",
             "\"Generate a vulnerability assessment report\"",
@@ -110,11 +109,11 @@
       "type": "callout_bar",
       "color": "#7B68EE",
       "label": "The Bottom Line:",
-      "html": " Use AI to <strong style=\"color:#00D26A;\">understand</strong> concepts and tools. Don\u2019t use it to <strong style=\"color:#E63946;\">produce your deliverables</strong>. The goal is to make YOU a security professional, not to make you good at prompting AI."
+      "html": " Use AI to <strong style=\"color:#00D26A;\">understand</strong> concepts and tools. Don’t use it to <strong style=\"color:#E63946;\">produce your deliverables</strong>. The goal is to make YOU a security professional, not to make you good at prompting AI."
     },
     {
       "type": "footer",
-      "html": "Questions about what\u2019s allowed? Ask in Discord or email."
+      "html": "Questions about what’s allowed? Ask in Discord or email."
     }
   ],
   "headerKeyword": "genai",

@@ -7,7 +7,6 @@
   "chapters": "5 & 10",
   "client": "Brazos Financial",
   "clientColor": "#FF9F1C",
-  "headerSvg": "Module_5_Header.svg",
   "overview": "Module 5 zooms out from technical execution to organizational risk. You'll learn how security decisions are framed in business terms, how policies and frameworks govern security programs, and deliver a final risk assessment that ties your semester together.",
   "weeks_breakdown": [
     {
@@ -55,7 +54,7 @@
   "notice": {
     "color": "#7B68EE",
     "colorRgb": "123, 104, 238",
-    "label": "\ud83c\udfaf Capstone Module:",
+    "label": "🎯 Capstone Module:",
     "body": "This engagement is your most complex deliverable. You'll use skills from every previous module: reconnaissance, cryptography analysis, network understanding, and now vulnerability assessment. Show us what you've learned."
   }
 }

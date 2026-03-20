@@ -9,7 +9,6 @@
       "Chapter 15 &#8212; Types of Attacks",
       "Chapter 16 &#8212; Security Tools"
     ],
-    "headerSvg": "Lab4_1_Header.svg",
     "screenshotStart": 1
   },
   "intro": {
@@ -75,7 +74,6 @@
     {
       "number": 1,
       "title": "Hash File Setup &#38; Format Identification",
-      "altText": "Checkpoint_4_1_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -195,7 +193,6 @@
     {
       "number": 2,
       "title": "John the Ripper Attack",
-      "altText": "Checkpoint_4_1_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -332,7 +329,6 @@
     {
       "number": 3,
       "title": "Hashcat Attack",
-      "altText": "Checkpoint_4_1_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -476,7 +472,6 @@
     {
       "number": 4,
       "title": "Results Analysis &#38; Documentation",
-      "altText": "Checkpoint_4_1_4.svg",
       "content": [
         {
           "type": "narrative",

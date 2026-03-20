@@ -9,7 +9,6 @@
       "Chapter 6 &#8212; Applied Cryptography",
       "Chapter 11 &#8212; Authentication and Remote Access"
     ],
-    "headerSvg": "Lab2_2_Header.svg",
     "screenshotStart": 10
   },
   "intro": {
@@ -101,7 +100,6 @@
     {
       "number": 1,
       "title": "SSH Key Generation",
-      "altText": "Checkpoint_2_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -257,7 +255,6 @@
     {
       "number": 2,
       "title": "Key Permissions",
-      "altText": "Checkpoint_2_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -411,7 +408,6 @@
     {
       "number": 3,
       "title": "SSH Configuration",
-      "altText": "Checkpoint_2_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -620,7 +616,6 @@
     {
       "number": 4,
       "title": "Multi-Factor Authentication",
-      "altText": "Checkpoint_2_2_4.svg",
       "content": [
         {
           "type": "narrative",

@@ -7,8 +7,7 @@
   "chapters": "1 & 2",
   "client": "Brazos Financial",
   "clientColor": "#FF9F1C",
-  "headerSvg": "Module_1_Header.svg",
-  "overview": "Your first module at NEXUS establishes your security workstation and teaches reconnaissance methodology. You'll learn what attackers can discover about an organization without ever touching their systems\u2014then apply those skills to a real client assessment.",
+  "overview": "Your first module at NEXUS establishes your security workstation and teaches reconnaissance methodology. You'll learn what attackers can discover about an organization without ever touching their systems—then apply those skills to a real client assessment.",
   "weeks_breakdown": [
     {
       "weekLabel": "WEEK 1",
@@ -37,7 +36,7 @@
   ],
   "clientContext": {
     "label": "Client Context: Brazos Financial Group",
-    "body": "Ray Jimenez (CTO) wants to understand what an attacker could discover about Brazos without insider access. The SEC examination is in 6 months\u2014he needs ammunition for his security budget presentation to the board."
+    "body": "Ray Jimenez (CTO) wants to understand what an attacker could discover about Brazos without insider access. The SEC examination is in 6 months—he needs ammunition for his security budget presentation to the board."
   },
   "skills": {
     "left": [

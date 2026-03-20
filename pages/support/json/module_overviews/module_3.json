@@ -7,8 +7,7 @@
   "chapters": "4 & 9",
   "client": "LoneStar DevOps",
   "clientColor": "#00D26A",
-  "headerSvg": "Module_3_Header.svg",
-  "overview": "Module 3 puts you inside the wire. You'll capture and analyze live network traffic, identify suspicious patterns, and understand how attackers move through networks\u2014then investigate a real incident on a DevOps client's infrastructure.",
+  "overview": "Module 3 puts you inside the wire. You'll capture and analyze live network traffic, identify suspicious patterns, and understand how attackers move through networks—then investigate a real incident on a DevOps client's infrastructure.",
   "weeks_breakdown": [
     {
       "weekLabel": "WEEK 7",
@@ -55,7 +54,7 @@
   "notice": {
     "color": "#FF9F1C",
     "colorRgb": "255, 159, 28",
-    "label": "\u26a0\ufe0f Spring Break follows this module (March 9\u201314).",
-    "body": "Plan accordingly\u2014don't leave Week 9 work until the last minute."
+    "label": "⚠️ Spring Break follows this module (March 9–14).",
+    "body": "Plan accordingly—don't leave Week 9 work until the last minute."
   }
 }

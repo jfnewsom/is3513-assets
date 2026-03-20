@@ -9,7 +9,6 @@
       "Chapter 20 — Risk Management",
       "Chapter 21 — Change Management"
     ],
-    "headerSvg": "Lab5_2_Header.svg",
     "screenshotStart": 11
   },
   "intro": {
@@ -75,7 +74,6 @@
     {
       "number": 1,
       "title": "CVSS Scoring Workshop",
-      "altText": "Checkpoint_5_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -167,7 +165,6 @@
     {
       "number": 2,
       "title": "Business Impact Assessment",
-      "altText": "Checkpoint_5_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -273,7 +270,6 @@
     {
       "number": 3,
       "title": "Risk Matrix Construction",
-      "altText": "Checkpoint_5_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -365,7 +361,6 @@
     {
       "number": 4,
       "title": "Prioritization Framework",
-      "altText": "Checkpoint_5_2_4.svg",
       "content": [
         {
           "type": "narrative",

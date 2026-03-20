@@ -10,7 +10,6 @@
       "Chapter 13 &#8212; IDS and Network Security (partial)",
       "Chapter 18 &#8212; Cloud Computing"
     ],
-    "headerSvg": "Lab3_2_Header.svg",
     "screenshotStart": 7
   },
   "intro": {
@@ -90,7 +89,6 @@
     {
       "number": 1,
       "title": "Install Wireshark and Identify Interfaces",
-      "altText": "Checkpoint_3_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -198,7 +196,6 @@
     {
       "number": 2,
       "title": "Learn Capture and Display Filters",
-      "altText": "Checkpoint_3_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -341,7 +338,6 @@
     {
       "number": 3,
       "title": "Protocol Cataloging Exercise",
-      "altText": "Checkpoint_3_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -388,59 +384,8 @@
               "N/A (Layer 3)"
             ]
           ],
-          "note": null,
+          "note": "ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.",
           "type": "table"
-        },
-        {
-          "part": "Generate Your Traffic",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Start a new Wireshark capture on your active interface (no capture filter).",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Generate <strong>HTTP traffic</strong>: visit <code>http://neverssl.com</code> in your browser. This site intentionally serves plain HTTP and will never redirect to HTTPS &#8212; it exists exactly for this purpose.",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Browser Blocking neverssl.com?",
-          "text": "Most browsers now have forced HTTPS or HSTS enabled by default, which will block the site or silently redirect you to HTTPS &#8212; defeating the purpose. If the page won&#8217;t load over HTTP, search <strong>&#8220;disable forced HTTPS [your browser name]&#8221;</strong> for instructions on turning it off temporarily.",
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "part": null,
-          "start": 3,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Generate <strong>DNS traffic</strong>: visit any website or run <code>nslookup google.com</code> in a terminal.",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Generate <strong>HTTPS/TLS traffic</strong>: visit any standard website (e.g., <code>https://www.google.com</code>).",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Generate <strong>ICMP traffic</strong>: open a terminal and run <code>ping google.com</code> for about 10 seconds, then press Ctrl+C.",
-              "command": "ping google.com",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Stop the capture. You should now have all six protocol types represented in a single capture file.",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
         },
         {
           "type": "callout",
@@ -491,6 +436,7 @@
           "icon": "warning",
           "items": [
             "<strong>Mixing filter syntax:</strong> BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.",
+            "<strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing.",
             "<strong>Missing protocol documentation:</strong> Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section.",
             "<strong>Case sensitivity in display filters:</strong> Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
           ]
@@ -528,7 +474,6 @@
     {
       "number": 4,
       "title": "Advanced Analysis Techniques",
-      "altText": "Checkpoint_3_2_4.svg",
       "content": [
         {
           "type": "narrative",
@@ -711,7 +656,6 @@
     {
       "number": 5,
       "title": "Training PCAP Analysis",
-      "altText": "Checkpoint_3_2_5.svg",
       "content": [
         {
           "type": "narrative",
@@ -744,7 +688,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Apply filters to identify FTP traffic. Use the display filter <code>ftp</code> to isolate control channel packets.",
+              "text": "Apply filters to identify HTTP traffic.",
               "command": null,
               "whatThisDoes": null
             },
@@ -754,7 +698,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Find the security issue (hint: look for the USER and PASS commands in the FTP control channel).",
+              "text": "Find the security issue (hint: look for form submissions).",
               "command": null,
               "whatThisDoes": null
             },
@@ -778,8 +722,8 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "<strong>Skipping the basics:</strong> Start with <code>ftp</code> filter before diving deeper",
-            "<strong>Missing credentials:</strong> The username and password are in the FTP control channel. Filter: <code>ftp.request.command == \"USER\"</code> or <code>ftp.request.command == \"PASS\"</code>",
+            "<strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper",
+            "<strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code>",
             "<strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it"
           ],
           "calloutType": "commonPitfalls"
