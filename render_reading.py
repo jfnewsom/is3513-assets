@@ -77,7 +77,6 @@ def render(data):
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<script src="{ASSETS}/nav.js"></script>
 
 <div class="nx-page">
 
