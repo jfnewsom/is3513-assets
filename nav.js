@@ -3,7 +3,11 @@
   const S = BASE + '/support';
 
   const params = new URLSearchParams(window.location.search);
-  const isLab = params.get('context') === 'lab';
+  const isLab    = params.get('context') === 'lab';
+  const isModule = params.get('context') === 'module';
+
+  // Module overview context — no nav at all
+  if (isModule) return;
 
   /* ── Google Fonts ───────────────────────────────────────────── */
   const fontLink = document.createElement('link');
