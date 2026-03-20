@@ -33,7 +33,14 @@
       "Execute GPU-accelerated attacks using Hashcat",
       "Document your methodology and results for Lab 4.3"
     ],
-    "callouts": []
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 4.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 1 of a 3-week module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 4.3 Engagement Packet in Week 3."
+      }
+    ]
   },
   "timeGuide": {
     "rows": [

@@ -34,6 +34,8 @@ CALLOUT_MAP = {
     "characterQuote":    ("nx-purple", None,              None),
     "nextSteps":         ("nx-blue",   "arrow_forward",   "Next Steps"),
     "cleanup":           ("nx-cyan",   "cleaning_services", "Cleanup"),
+    "exampleCommands":   ("nx-blue",   "terminal",          "Example Commands"),
+    "saveForLab":        ("nx-cyan",   "folder",            "Save Your Work"),
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -110,10 +112,36 @@ def render_callout_block(block):
     if ct == "reportSections":
         return render_report_sections(block)
 
-    # Items list
+    # exampleCommands — render code field as a <pre><code> block
+    if ct == "exampleCommands":
+        code = block.get("code", "")
+        body = f'        <pre><code>{h(code)}</code></pre>\n' if code else ""
+        return callout(css_class, icon, title, body)
+
+    # screenshot — structured format with number/description/filename
+    if ct in ("screenshot", "screenshotRange"):
+        num  = block.get("number")
+        desc = block.get("description", block.get("text", block.get("body", "")))
+        fname = block.get("filename", "")
+        if num is not None:
+            num_str = f"Screenshot {num}" if isinstance(num, int) else f"Screenshots {num}"
+            fname_str = f' Save as: <code>{h(fname)}</code>' if fname else ""
+            text = f"<strong>{num_str}.</strong> {h(desc)}{fname_str}"
+            body = f"        <p>{text}</p>\n"
+            return callout(css_class, icon, title, body)
+
+    # Items list — supports both string items and {label, text} object items
     items = block.get("items")
     if items:
-        return callout_ul(css_class, icon, title, items)
+        if items and isinstance(items[0], dict):
+            lis = "".join(
+                f'          <li><strong>{h(i.get("label",""))}</strong> — {h(i.get("text",""))}</li>\n'
+                for i in items
+            )
+        else:
+            lis = "".join(f'          <li>{h(i)}</li>\n' for i in items)
+        body = f'        <ul>\n{lis}        </ul>\n'
+        return callout(css_class, icon, title, body)
 
     # Plain text
     text = block.get("text", block.get("body", ""))
