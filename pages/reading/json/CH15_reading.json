@@ -1,0 +1,21 @@
+{
+  "chapter": 15,
+  "title": "Types of Attacks and Malicious Software",
+  "module": "Module 4: Threats &#38; Attacks",
+  "headerSvg": "Chapter_15_Reading_Header.svg",
+  "assignment": "full chapter (~90 minutes)",
+  "partial": false,
+  "readSections": [
+    "Attacks on Systems",
+    "Password Attacks",
+    "Network Attacks",
+    "Social Engineering",
+    "Malicious Software Overview",
+    "Viruses, Worms, and Trojans",
+    "Ransomware and Advanced Threats",
+    "Attack Mitigation Strategies"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Password Attacks</strong> and <strong>Social Engineering</strong>. Labs 4.1 and 4.2 demonstrate password attacks hands-on &#8212; the chapter gives you the theory behind what you&#8217;re doing.",
+  "secplus": "Domain 2.1 (Threat Actors), Domain 2.2 (Attack Types), Domain 2.4 (Malicious Activity)"
+}

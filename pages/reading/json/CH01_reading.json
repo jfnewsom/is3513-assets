@@ -1,0 +1,20 @@
+{
+  "chapter": 1,
+  "title": "Introduction and Security Trends",
+  "module": "Module 1: Threat Intelligence &#38; Reconnaissance",
+  "headerSvg": "Chapter_1_Reading_Header.svg",
+  "assignment": "pages 1&#8211;20 (~45 minutes)",
+  "partial": false,
+  "readSections": [
+    "The Computer Security Problem",
+    "Threats to Security",
+    "Attributes of Actors",
+    "Security Trends",
+    "Targets and Attacks",
+    "Approaches to Computer Security",
+    "Ethics"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Attributes of Actors</strong> and <strong>Targets and Attacks</strong>. Understanding threat actor motivations and common attack vectors is foundational for everything else in this course.",
+  "secplus": "Domain 1.1 (Threat Actors), Domain 1.2 (Attack Vectors), Domain 2.1 (Security Concepts)"
+}

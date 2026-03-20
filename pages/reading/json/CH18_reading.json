@@ -1,0 +1,20 @@
+{
+  "chapter": 18,
+  "title": "Cloud Computing",
+  "module": "Module 3: Networks, Cloud &#38; Defense",
+  "headerSvg": "Chapter_18_Reading_Header.svg",
+  "assignment": "full chapter (~60 minutes)",
+  "partial": false,
+  "readSections": [
+    "Cloud Computing Concepts",
+    "Cloud Service Models (IaaS, PaaS, SaaS)",
+    "Cloud Deployment Models",
+    "Cloud Security Challenges",
+    "Virtualization and Containers",
+    "Cloud Access Controls",
+    "Shared Responsibility Model"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Shared Responsibility Model</strong> and <strong>Cloud Service Models</strong>. Lab 3.3 connects directly to Azure infrastructure &#8212; you&#8217;re not just reading theory.",
+  "secplus": "Domain 3.1 (Cloud Security), Domain 3.2 (Virtualization Security), Domain 4.1 (Cloud Assessment)"
+}

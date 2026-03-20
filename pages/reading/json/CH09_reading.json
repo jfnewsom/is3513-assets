@@ -1,0 +1,20 @@
+{
+  "chapter": 9,
+  "title": "Network Fundamentals",
+  "module": "Module 3: Networks, Cloud &#38; Defense",
+  "headerSvg": "Chapter_9_Reading_Header.svg",
+  "assignment": "pages 269&#8211;305 (~60 minutes)",
+  "partial": false,
+  "readSections": [
+    "Network Basics",
+    "TCP/IP Protocol Suite",
+    "IP Addressing and Subnetting",
+    "Network Devices",
+    "Wireless Networking",
+    "Network Security Fundamentals",
+    "Firewalls and Filtering"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>IP Addressing and Subnetting</strong> and <strong>TCP/IP Protocol Suite</strong>. Lab 3.1 puts these concepts into practice with hands-on CIDR calculations.",
+  "secplus": "Domain 3.1 (Network Architecture), Domain 3.2 (Network Security Design), Domain 4.1 (Security Assessment Tools)"
+}

@@ -1,0 +1,20 @@
+{
+  "chapter": 16,
+  "title": "Security Tools and Techniques",
+  "module": "Module 4: Threats &#38; Attacks",
+  "headerSvg": "Chapter_16_Reading_Header.svg",
+  "assignment": "pages 614&#8211;644 (~45 minutes)",
+  "partial": false,
+  "readSections": [
+    "Security Assessment Overview",
+    "Vulnerability Scanning",
+    "Penetration Testing Concepts",
+    "Password Auditing Tools",
+    "Network Analysis Tools",
+    "Log Analysis",
+    "Threat Intelligence"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Password Auditing Tools</strong> and <strong>Vulnerability Scanning</strong>. This chapter contextualizes the tools you&#8217;re using across Labs 4.1 and 4.2.",
+  "secplus": "Domain 4.1 (Security Assessment Tools), Domain 2.1 (Threat Intelligence), Domain 2.4 (Indicators of Compromise)"
+}
