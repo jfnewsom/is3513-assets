@@ -79,7 +79,7 @@ def render(data):
 
 <div class="nx-page">
 
-  <div class="nx-section">
+  <div class="nx-section nx-section--flush">
     <div class="nx-header" style="--accent: #4169E1;">
       <div class="nx-header-top">
         <div class="nx-kw">chapter</div>
