@@ -23,7 +23,6 @@ def render(data):
     ch       = data["chapter"]
     title    = data["title"]
     module   = data["module"]
-    header   = data.get("headerSvg", f"Chapter_{ch}_Reading_Header.svg")
     assign   = data["assignment"]
     partial  = data.get("partial", False)
     partial_note = data.get("partialNote", "")
@@ -80,7 +79,15 @@ def render(data):
 
 <div class="nx-page">
 
-  <img class="nx-header-img" src="{ASSETS}/headers/{h(header)}" alt="Chapter {ch} Reading &#8212; {h(title)}">
+  <div class="nx-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">chapter</div>
+        <div class="nx-sec">{ch}</div>
+      </div>
+      <div class="nx-sub">{h(title)}</div>
+    </div>
+  </div>
 
   <div class="nx-card" style="--accent: #4169E1;">
 
