@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 <h1 class="nx-sr-only">Lab 3.2 &#8212; Protocol Analysis Tools</h1>
 
 
@@ -375,31 +374,7 @@
         </tr>
       </tbody>
     </table>
-    <h3>Generate Your Traffic</h3>
-    <ol>
-      <li>Start a new Wireshark capture on your active interface (no capture filter).
-      </li>
-      <li>Generate <strong>HTTP traffic</strong>: visit <code>http://neverssl.com</code> in your browser. This site intentionally serves plain HTTP and will never redirect to HTTPS &#8212; it exists exactly for this purpose.
-      </li>
-    </ol>
-    <div class="nx-callout nx-orange">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Browser Blocking neverssl.com?</div>
-        <p>Most browsers now have forced HTTPS or HSTS enabled by default, which will block the site or silently redirect you to HTTPS &#8212; defeating the purpose. If the page won&#8217;t load over HTTP, search <strong>&#8220;disable forced HTTPS [your browser name]&#8221;</strong> for instructions on turning it off temporarily.</p>
-      </div>
-    </div>
-    <ol start="3">
-      <li>Generate <strong>DNS traffic</strong>: visit any website or run <code>nslookup google.com</code> in a terminal.
-      </li>
-      <li>Generate <strong>HTTPS/TLS traffic</strong>: visit any standard website (e.g., <code>https://www.google.com</code>).
-      </li>
-      <li>Generate <strong>ICMP traffic</strong>: open a terminal and run <code>ping google.com</code> for about 10 seconds, then press Ctrl+C.
-        <div class="nx-cmd">ping google.com</div>
-      </li>
-      <li>Stop the capture. You should now have all six protocol types represented in a single capture file.
-      </li>
-    </ol>
+    <p><em>ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.</em></p>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
@@ -448,6 +423,7 @@
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Mixing filter syntax:</strong> BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.</li>
+          <li><strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing — you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing.</li>
           <li><strong>Missing protocol documentation:</strong> Don't just capture — document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section.</li>
           <li><strong>Case sensitivity in display filters:</strong> Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid.</li>
         </ul>
@@ -667,11 +643,11 @@
     <ol>
       <li>Open <code>credential-leak.pcap</code> in Wireshark.
       </li>
-      <li>Apply filters to identify FTP traffic. Use the display filter <code>ftp</code> to isolate control channel packets.
+      <li>Apply filters to identify HTTP traffic.
       </li>
       <li>Use Follow TCP Stream to examine conversations.
       </li>
-      <li>Find the security issue (hint: look for the USER and PASS commands in the FTP control channel).
+      <li>Find the security issue (hint: look for form submissions).
       </li>
       <li>Document what you found and why it&#8217;s a problem.
       </li>
@@ -688,8 +664,8 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Skipping the basics:</strong> Start with <code>ftp</code> filter before diving deeper</li>
-          <li><strong>Missing credentials:</strong> The username and password are in the FTP control channel. Filter: <code>ftp.request.command == "USER"</code> or <code>ftp.request.command == "PASS"</code></li>
+          <li><strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper</li>
+          <li><strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code></li>
           <li><strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it</li>
         </ul>
       </div>

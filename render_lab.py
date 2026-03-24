@@ -846,7 +846,6 @@ def render(data):
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<script src="{nav_src}"></script>
 <h1 class="nx-sr-only">Lab {lab_num} &#8212; {title}</h1>
 
 {body}
