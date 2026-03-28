@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>Module 5 Study Worksheet | IS3513</title>
+  <link rel="stylesheet" href="https://jfnewsom.github.io/is3513-assets/site.css">
+<style>
+
+    /* ── Worksheet-specific screen styles ───────────────────── */
+    body { padding: 30px; }
+
+    .ws-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ws-section { margin-bottom: 40px; }
+
+    /* fill-in blank */
+    .ws-blank {
+      display: inline-block;
+      border-bottom: 2px solid #4a5568;
+      min-width: 140px;
+      height: 20px;
+      vertical-align: bottom;
+    }
+
+    /* key question callout */
+    .ws-key-question {
+      border-left: 4px solid #FEC618;
+      background: rgba(254, 198, 24, 0.07);
+      padding: 10px 16px;
+      margin: 14px 0;
+      color: #B0B8C4;
+      font-style: italic;
+    }
+    .ws-key-question strong { color: #FEC618; font-style: normal; }
+
+    /* section intro text */
+    .ws-section-intro {
+      color: #7B68EE;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+      border-left: 3px solid #2a2f3e;
+      padding-left: 12px;
+    }
+
+    /* answer lines for open-ended questions */
+    .ws-answer-line {
+      border-bottom: 1px solid #2a2f3e;
+      min-height: 48px;
+      margin-bottom: 2px;
+    }
+    .ws-answer-line + .ws-answer-line { margin-top: 0; }
+
+    .ws-concept-q {
+      border-bottom: 1px solid #2a2f3e;
+      padding: 10px 0;
+      color: #B0B8C4;
+      min-height: 56px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* fill table */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px 0;
+    }
+    .ws-table th {
+      background: #1a1f2e;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .ws-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2f3e;
+      color: #B0B8C4;
+      vertical-align: top;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table .ws-answer-cell {
+      min-width: 160px;
+      border-left: 1px solid #2a2f3e;
+    }
+    .ws-table code {
+      background: #1a1f2e;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* footer callout */
+    .ws-footer-callout {
+      background: #0A0E17;
+      border: 2px solid #4169E1;
+      padding: 18px 24px;
+      color: #B0B8C4;
+      border-radius: 6px;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+    .ws-footer-callout strong { color: #4169E1; }
+
+    /* tool version row */
+    .ws-tool-versions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      color: #B0B8C4;
+      font-size: 14px;
+    }
+    .ws-tool-version-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ws-tool-version-item code {
+      background: #1a1f2e;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* ── Print styles ─────────────────────────────────────────── */
+    @media print {
+
+      /* hide chrome */
+      #nexus-nav,
+      .site-footer { display: none !important; }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        padding: 0 !important;
+      }
+
+      .ws-wrapper {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      /* ── Header block ── */
+      .nx-header {
+        border-left: 4pt solid #000 !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+      }
+      .nx-kw {
+        background: #000 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sec {
+        background: #333 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sub {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 13pt !important;
+        padding: 7pt 14pt !important;
+      }
+
+      /* ── Card block ── */
+      .nx-card {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+        border-bottom: 3pt solid #000 !important;
+        border-radius: 0 !important;
+        padding: 12pt 14pt 12pt 18pt !important;
+        page-break-inside: avoid;
+      }
+
+      .nx-card h2 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #ccc;
+        padding-bottom: 3pt;
+        margin: 14pt 0 8pt 0 !important;
+      }
+      .nx-card h3 {
+        color: #000 !important;
+        font-size: 10pt !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+        background: #eee;
+        padding: 3pt 6pt !important;
+        margin: 10pt 0 5pt 0 !important;
+      }
+      .nx-card p,
+      .nx-card li,
+      .nx-card ul,
+      .nx-card ol { color: #000 !important; }
+      .nx-card strong { color: #000 !important; }
+      .nx-card code {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        font-size: 9pt !important;
+        padding: 1pt 4pt !important;
+      }
+
+      /* ── Section ── */
+      .ws-section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt !important;
+      }
+
+      /* ── Fill-in blanks ── */
+      .ws-blank {
+        border-bottom: 1.5pt solid #000 !important;
+        min-width: 120pt !important;
+        height: 13pt !important;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+      /* ── Key question ── */
+      .ws-key-question {
+        border-left: 3pt solid #333 !important;
+        background: #f5f5f5 !important;
+        padding: 6pt 10pt !important;
+        margin: 8pt 0 !important;
+        color: #000 !important;
+      }
+      .ws-key-question strong { color: #000 !important; }
+
+      /* ── Section intro ── */
+      .ws-section-intro {
+        color: #444 !important;
+        border-left: 2pt solid #999 !important;
+      }
+
+      /* ── Answer lines ── */
+      .ws-answer-line {
+        border-bottom: 1pt solid #bbb !important;
+        min-height: 36pt;
+      }
+
+      .ws-concept-q {
+        color: #000 !important;
+        border-bottom: 1pt solid #ccc !important;
+        min-height: 42pt;
+      }
+
+      /* ── Fill table ── */
+      .ws-table {
+        font-size: 9.5pt !important;
+      }
+      .ws-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1pt solid #999 !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table td {
+        color: #000 !important;
+        border: 1pt solid #ccc !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table .ws-answer-cell {
+        border-left: 1pt solid #ccc !important;
+      }
+      .ws-table code {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 8.5pt !important;
+      }
+
+      /* ── Footer callout ── */
+      .ws-footer-callout {
+        background: #eee !important;
+        border: 1.5pt solid #000 !important;
+        color: #000 !important;
+        padding: 10pt 14pt !important;
+      }
+      .ws-footer-callout strong { color: #000 !important; }
+
+      /* ── Tool versions ── */
+      .ws-tool-versions { color: #000 !important; }
+      .ws-tool-version-item code {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="ws-wrapper">
+
+  <div class="nx-header" style="--accent: #4169E1; margin-bottom: 30px;">
+    <div class="nx-header-top">
+      <div class="nx-kw">IS3513</div>
+      <div class="nx-sec">Module 5 Study Worksheet</div>
+    </div>
+    <div class="nx-sub">Infrastructure &amp; Risk Management &bull; Chapters 10 &amp; 20 &bull; Labs 5.1, 5.2, 5.3 &bull; Weeks 13&ndash;15</div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+      <div class="nx-callout nx-blue" style="--callout-color:#4169E1; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 5 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">Risk Management Fundamentals</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+      <h3>Core Risk Concepts</h3>
+      <ul>
+        <li>Risk &mdash; possibility of suffering harm or loss</li>
+        <li>Threat &mdash; potential cause of unwanted incident</li>
+        <li>Vulnerability &mdash; weakness that can be exploited</li>
+        <li>Asset &mdash; anything of value to organization</li>
+        <li>Impact &mdash; actual damage when threat exploits vulnerability</li>
+        <li>Likelihood &mdash; probability threat will exploit vulnerability</li>
+        <li>Attack vector &mdash; path attacker uses to reach target</li>
+        <li>Threat vector &mdash; method threat uses to gain access</li>
+      </ul>
+      <h3>Risk Relationships</h3>
+      <div class="ws-key-question"><strong>Risk = Threat &times; Vulnerability &times; Impact</strong><br>or simplified: <strong>Risk = Likelihood &times; Impact</strong></div>
+      <h3>Risk Truths</h3>
+      <ul>
+        <li>Risk cannot be completely eliminated &mdash; it&rsquo;s absolute</li>
+        <li>Not every risk needs to be mitigated</li>
+        <li>Risk management must balance cost vs. benefit</li>
+        <li>Qualitative and quantitative approaches both have value</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Quantitative Risk Analysis</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <h3>Key Formulas</h3>
+      <ul>
+        <li>SLE (Single Loss Expectancy) = AV &times; EF</li>
+        <li>ALE (Annualized Loss Expectancy) = SLE &times; ARO</li>
+        <li>AV = Asset Value</li>
+        <li>EF = Exposure Factor (percentage of asset lost)</li>
+        <li>ARO = Annualized Rate of Occurrence</li>
+      </ul>
+      <h3>Quantitative Metrics</h3>
+      <ul>
+        <li>TCO (Total Cost of Ownership) &mdash; all costs over asset lifetime</li>
+        <li>ROI (Return on Investment) &mdash; benefit vs. cost ratio</li>
+        <li>MTBF (Mean Time Between Failures) &mdash; average time before failure</li>
+        <li>MTTR (Mean Time to Repair) &mdash; average time to restore</li>
+        <li>RTO (Recovery Time Objective) &mdash; maximum acceptable downtime</li>
+        <li>RPO (Recovery Point Objective) &mdash; maximum acceptable data loss</li>
+      </ul>
+      <h3>Practice Problem</h3>
+      <div class="ws-concept-q"><strong>A server farm has 5 servers. If 2 fail in an incident, what is the Exposure Factor?</strong><br>Answer: <span class="ws-blank" style="min-width:200px;">&nbsp;</span></div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Qualitative Risk Analysis</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <h3>Qualitative Approach</h3>
+      <ul>
+        <li>Uses professional judgment and experience</li>
+        <li>Categorizes risks as High/Medium/Low</li>
+        <li>Risk matrix &mdash; plots likelihood vs. impact</li>
+        <li>5&times;5 matrix &mdash; more granular than 3&times;3</li>
+        <li>Faster than quantitative, less precise</li>
+        <li>Subjective but valuable for prioritization</li>
+      </ul>
+      <h3>Risk Documentation</h3>
+      <ul>
+        <li>Risk register &mdash; documented list of identified risks</li>
+        <li>Risk owner &mdash; person accountable for managing specific risk</li>
+        <li>Risk appetite &mdash; level of risk organization willing to accept</li>
+        <li>Risk tolerance &mdash; acceptable deviation from risk appetite</li>
+        <li>Residual risk &mdash; risk remaining after controls implemented</li>
+        <li>Inherent risk &mdash; risk before any controls</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Risk Treatment Strategies</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <h3>The Four Treatment Options</h3>
+      <ul>
+        <li>Mitigate/Reduce &mdash; implement controls to reduce likelihood or impact</li>
+        <li>Transfer &mdash; shift risk to third party (insurance, outsourcing)</li>
+        <li>Accept &mdash; acknowledge risk and continue without action</li>
+        <li>Avoid &mdash; eliminate risk by discontinuing activity</li>
+      </ul>
+      <h3>Treatment Decisions</h3>
+      <ul>
+        <li>Cost of control should not exceed potential loss</li>
+        <li>Accept when control costs exceed risk impact</li>
+        <li>Transfer when risk is outside core competency</li>
+        <li>Avoid when risk is unacceptable and no reasonable control exists</li>
+        <li>Cyber insurance &mdash; example of risk transfer</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00BCD4;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Vulnerability Management</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00BCD4;">
+      <h3>Vulnerability Sources</h3>
+      <ul>
+        <li>CVE (Common Vulnerabilities and Exposures) &mdash; standardized IDs</li>
+        <li>NVD (National Vulnerability Database) &mdash; NIST-maintained database</li>
+        <li>Exploit-DB &mdash; public exploit database</li>
+        <li>Vendor advisories &mdash; Microsoft, Cisco, etc.</li>
+        <li>Bug bounty programs &mdash; crowdsourced vulnerability discovery</li>
+      </ul>
+      <h3>CVSS (Common Vulnerability Scoring System)</h3>
+      <ul>
+        <li>Version 3.1 is current standard</li>
+        <li>Scores range 0.0 to 10.0</li>
+        <li>None: 0.0 &bull; Low: 0.1&ndash;3.9 &bull; Medium: 4.0&ndash;6.9 &bull; High: 7.0&ndash;8.9 &bull; Critical: 9.0&ndash;10.0</li>
+      </ul>
+      <h3>Vulnerability Scanning</h3>
+      <ul>
+        <li>Credentialed scan &mdash; authenticates to target, more thorough</li>
+        <li>Non-credentialed scan &mdash; external perspective only</li>
+        <li>Active scanning &mdash; sends probes to target</li>
+        <li>Passive scanning &mdash; observes traffic without probing</li>
+        <li>False positive &mdash; reported vulnerability that doesn&rsquo;t exist</li>
+        <li>False negative &mdash; missed actual vulnerability</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF9F1C;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Infrastructure Security</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF9F1C;">
+      <h3>Network Security Devices</h3>
+      <ul>
+        <li>Firewall &mdash; implicit deny, rule-based filtering</li>
+        <li>Next-gen firewall (NGFW) &mdash; application awareness, IPS, deep inspection</li>
+        <li>WAF (Web Application Firewall) &mdash; protects web apps</li>
+        <li>UTM (Unified Threat Management) &mdash; multiple security functions</li>
+        <li>NAC (Network Access Control) &mdash; verifies device compliance</li>
+      </ul>
+      <h3>Data Protection</h3>
+      <ul>
+        <li>DLP (Data Loss Prevention) &mdash; prevents unauthorized data transfer</li>
+        <li>Encryption at rest &mdash; stored data encrypted</li>
+        <li>Encryption in transit &mdash; data encrypted during transmission</li>
+        <li>Data classification &mdash; categorizing data by sensitivity</li>
+        <li>Data masking &mdash; obscuring sensitive data</li>
+        <li>Tokenization &mdash; replacing sensitive data with tokens</li>
+      </ul>
+      <h3>Virtualization Security</h3>
+      <ul>
+        <li>Hypervisor &mdash; Type 1 (bare metal) vs. Type 2 (hosted)</li>
+        <li>VM escape &mdash; breaking out of VM to host</li>
+        <li>VM sprawl &mdash; uncontrolled VM proliferation</li>
+        <li>Snapshot &mdash; point-in-time VM state</li>
+        <li>Resource isolation &mdash; preventing VMs from affecting each other</li>
+      </ul>
+      <h3>Network Attacks (Review)</h3>
+      <ul>
+        <li>ARP poisoning &mdash; falsifying ARP responses</li>
+        <li>MAC flooding &mdash; overwhelming switch CAM table</li>
+        <li>VLAN hopping &mdash; gaining access to other VLANs</li>
+        <li>DNS poisoning &mdash; corrupting DNS cache</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Lab Knowledge &mdash; Vulnerability Scanning</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <p class="ws-section-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+      <h3>Nmap for Vulnerability Detection</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Purpose</th><th>Flag/Command</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SYN scan (stealth)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>TCP connect scan (full handshake)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Service version detection</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Aggressive scan (OS + version + scripts)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Scan all 65,535 ports</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Run vulnerability scripts</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+      <div class="ws-concept-q"><strong>How many NSE scripts does Nmap include?</strong><br>Answer: <span class="ws-blank" style="min-width:200px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>Why is service version detection (<code>-sV</code>) important before running vuln scripts?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>A SYN scan (<code>-sS</code>) completes the full TCP three-way handshake: TRUE / FALSE</strong><br>Answer: <span class="ws-blank" style="min-width:120px;">&nbsp;</span></div>
+
+      <h3>Other Scanning Tools</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Tool</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>searchsploit</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Nikto</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>WPScan</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>npm audit</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+      <div class="ws-concept-q"><strong>What command searches Exploit-DB for Apache vulnerabilities?</strong><br>Answer: <span class="ws-blank" style="min-width:340px;">&nbsp;</span></div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF9F1C;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Lab Knowledge &mdash; Risk Assessment</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF9F1C;">
+      <h3>CVSS Classification Practice</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>CVSS Score</th><th>Severity Rating</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>6.5</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>7.5</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>9.5</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>3.2</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+      <div class="ws-concept-q"><strong>Who maintains the National Vulnerability Database (NVD)?</strong><br>Answer: <span class="ws-blank" style="min-width:260px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>Why might a lower CVSS score be prioritized over a higher one?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>Business context is irrelevant when prioritizing vulnerabilities: TRUE / FALSE</strong><br>Answer: <span class="ws-blank" style="min-width:120px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>In a qualitative risk matrix, what two factors determine where a risk is plotted?</strong><br>Answer: <span class="ws-blank" style="min-width:300px;">&nbsp;</span></div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <p class="ws-section-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+      <div class="ws-concept-q"><strong>1.</strong> Your vulnerability scan shows 500+ findings. How do you prioritize what the client should fix first?</div>
+      <div class="ws-concept-q"><strong>2.</strong> A client asks why they should pay for cyber insurance when they already have security controls. How do you explain?</div>
+      <div class="ws-concept-q"><strong>3.</strong> Leadership wants to know the ROI of a proposed security investment. What metrics would you use?</div>
+      <div class="ws-concept-q"><strong>4.</strong> A critical vulnerability exists in a system that cannot be patched due to vendor support issues. What risk treatment options exist?</div>
+      <h3>Purple Team Thinking</h3>
+      <div class="ws-concept-q"><strong>5.</strong> You find an unpatched Apache server with a known exploit. Red team: what&rsquo;s your attack path? Blue team: what&rsquo;s the remediation?</div>
+      <div class="ws-concept-q"><strong>6.</strong> A client has no vulnerability management program. Red team: why is this organization an easy target? Blue team: what process do you recommend?</div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">10</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+      <div class="ws-concept-q"><strong>1.</strong> Explain the relationship between threat, vulnerability, and risk.</div>
+      <div class="ws-concept-q"><strong>2.</strong> Calculate ALE given: Asset Value = $100,000, Exposure Factor = 40%, ARO = 2</div>
+      <div class="ws-concept-q"><strong>3.</strong> When should an organization choose to accept a risk rather than mitigate it?</div>
+      <div class="ws-concept-q"><strong>4.</strong> What&rsquo;s the difference between quantitative and qualitative risk analysis?</div>
+      <div class="ws-concept-q"><strong>5.</strong> Explain what residual risk is and why it matters.</div>
+      <div class="ws-concept-q"><strong>6.</strong> What is the purpose of CVSS scoring?</div>
+      <div class="ws-concept-q"><strong>7.</strong> Why might a CVSS 6.5 vulnerability be fixed before a CVSS 9.0?</div>
+      <div class="ws-concept-q"><strong>8.</strong> What are the four risk treatment strategies?</div>
+      <div class="ws-concept-q"><strong>9.</strong> What&rsquo;s the difference between a SYN scan and a TCP connect scan?</div>
+      <div class="ws-concept-q"><strong>10.</strong> Why is business context important when prioritizing vulnerabilities?</div>
+      <div class="ws-footer-callout" style="margin-top: 20px;">
+        <strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 5 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.
+      </div>
+    </div>
+  </div>
+</div><!-- /ws-wrapper -->
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>

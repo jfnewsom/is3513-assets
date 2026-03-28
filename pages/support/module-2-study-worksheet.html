@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>Module 2 Study Worksheet | IS3513</title>
+  <link rel="stylesheet" href="https://jfnewsom.github.io/is3513-assets/site.css">
+  <style>
+
+    /* ── Worksheet-specific screen styles ───────────────────── */
+    body { padding: 30px; }
+
+    .ws-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ws-section { margin-bottom: 40px; }
+
+    /* fill-in blank */
+    .ws-blank {
+      display: inline-block;
+      border-bottom: 2px solid #4a5568;
+      min-width: 140px;
+      height: 20px;
+      vertical-align: bottom;
+    }
+
+    /* key question callout */
+    .ws-key-question {
+      border-left: 4px solid #FEC618;
+      background: rgba(254, 198, 24, 0.07);
+      padding: 10px 16px;
+      margin: 14px 0;
+      color: #B0B8C4;
+      font-style: italic;
+    }
+    .ws-key-question strong { color: #FEC618; font-style: normal; }
+
+    /* section intro text */
+    .ws-section-intro {
+      color: #7B68EE;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+      border-left: 3px solid #2a2f3e;
+      padding-left: 12px;
+    }
+
+    /* answer lines for open-ended questions */
+    .ws-answer-line {
+      border-bottom: 1px solid #2a2f3e;
+      min-height: 48px;
+      margin-bottom: 2px;
+    }
+    .ws-answer-line + .ws-answer-line { margin-top: 0; }
+
+    .ws-concept-q {
+      border-bottom: 1px solid #2a2f3e;
+      padding: 10px 0;
+      color: #B0B8C4;
+      min-height: 56px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* fill table */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px 0;
+    }
+    .ws-table th {
+      background: #1a1f2e;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .ws-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2f3e;
+      color: #B0B8C4;
+      vertical-align: top;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table .ws-answer-cell {
+      min-width: 160px;
+      border-left: 1px solid #2a2f3e;
+    }
+    .ws-table code {
+      background: #1a1f2e;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* footer callout */
+    .ws-footer-callout {
+      background: #0A0E17;
+      border: 2px solid #4169E1;
+      padding: 18px 24px;
+      color: #B0B8C4;
+      border-radius: 6px;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+    .ws-footer-callout strong { color: #4169E1; }
+
+    /* tool version row */
+    .ws-tool-versions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      color: #B0B8C4;
+      font-size: 14px;
+    }
+    .ws-tool-version-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ws-tool-version-item code {
+      background: #1a1f2e;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* ── Print styles ─────────────────────────────────────────── */
+    @media print {
+
+      /* hide chrome */
+      #nexus-nav,
+      .site-footer { display: none !important; }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        padding: 0 !important;
+      }
+
+      .ws-wrapper {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      /* ── Header block ── */
+      .nx-header {
+        border-left: 4pt solid #000 !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+      }
+      .nx-kw {
+        background: #000 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sec {
+        background: #333 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sub {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 13pt !important;
+        padding: 7pt 14pt !important;
+      }
+
+      /* ── Card block ── */
+      .nx-card {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+        border-bottom: 3pt solid #000 !important;
+        border-radius: 0 !important;
+        padding: 12pt 14pt 12pt 18pt !important;
+        page-break-inside: avoid;
+      }
+
+      .nx-card h2 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #ccc;
+        padding-bottom: 3pt;
+        margin: 14pt 0 8pt 0 !important;
+      }
+      .nx-card h3 {
+        color: #000 !important;
+        font-size: 10pt !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+        background: #eee;
+        padding: 3pt 6pt !important;
+        margin: 10pt 0 5pt 0 !important;
+      }
+      .nx-card p,
+      .nx-card li,
+      .nx-card ul,
+      .nx-card ol { color: #000 !important; }
+      .nx-card strong { color: #000 !important; }
+      .nx-card code {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        font-size: 9pt !important;
+        padding: 1pt 4pt !important;
+      }
+
+      /* ── Section ── */
+      .ws-section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt !important;
+      }
+
+      /* ── Fill-in blanks ── */
+      .ws-blank {
+        border-bottom: 1.5pt solid #000 !important;
+        min-width: 120pt !important;
+        height: 13pt !important;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+      /* ── Key question ── */
+      .ws-key-question {
+        border-left: 3pt solid #333 !important;
+        background: #f5f5f5 !important;
+        padding: 6pt 10pt !important;
+        margin: 8pt 0 !important;
+        color: #000 !important;
+      }
+      .ws-key-question strong { color: #000 !important; }
+
+      /* ── Section intro ── */
+      .ws-section-intro {
+        color: #444 !important;
+        border-left: 2pt solid #999 !important;
+      }
+
+      /* ── Answer lines ── */
+      .ws-answer-line {
+        border-bottom: 1pt solid #bbb !important;
+        min-height: 36pt;
+      }
+
+      .ws-concept-q {
+        color: #000 !important;
+        border-bottom: 1pt solid #ccc !important;
+        min-height: 42pt;
+      }
+
+      /* ── Fill table ── */
+      .ws-table {
+        font-size: 9.5pt !important;
+      }
+      .ws-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1pt solid #999 !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table td {
+        color: #000 !important;
+        border: 1pt solid #ccc !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table .ws-answer-cell {
+        border-left: 1pt solid #ccc !important;
+      }
+      .ws-table code {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 8.5pt !important;
+      }
+
+      /* ── Footer callout ── */
+      .ws-footer-callout {
+        background: #eee !important;
+        border: 1.5pt solid #000 !important;
+        color: #000 !important;
+        padding: 10pt 14pt !important;
+      }
+      .ws-footer-callout strong { color: #000 !important; }
+
+      /* ── Tool versions ── */
+      .ws-tool-versions { color: #000 !important; }
+      .ws-tool-version-item code {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="ws-wrapper">
+  <!-- ── PAGE HEADER ─────────────────────────────────────────── -->
+  <div class="nx-header" style="--accent: #4169E1; margin-bottom: 30px;">
+    <div class="nx-header-top">
+      <div class="nx-kw">IS3513</div>
+      <div class="nx-sec">Module 2 Study Worksheet</div>
+    </div>
+    <div class="nx-sub">Cryptography &amp; Authentication &bull; Chapters 6 &amp; 11 &bull; Labs 2.1, 2.2, 2.3 &bull; Weeks 4&ndash;6</div>
+  </div>
+
+  <!-- How to Use -->
+  <div class="ws-section">
+    <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+      <div class="nx-callout nx-blue" style="--callout-color:#4169E1; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 2 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>  <!-- ── SECTION 1: CRYPTOGRAPHIC FOUNDATIONS ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">Cryptographic Foundations</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+
+      <h3>Core Cryptographic Goals</h3>
+      <ul>
+        <li>Confidentiality &mdash; keeping data secret</li>
+        <li>Integrity &mdash; ensuring data hasn&rsquo;t been altered</li>
+        <li>Authentication &mdash; verifying identity</li>
+        <li>Non-repudiation &mdash; proof of origin that cannot be denied</li>
+      </ul>
+
+      <h3>Data States</h3>
+      <ul>
+        <li>Data at rest &mdash; stored on disk, database, backup</li>
+        <li>Data in transit &mdash; moving across network</li>
+        <li>Data in use &mdash; currently being processed by CPU</li>
+      </ul>
+
+      <h3>Encryption Types</h3>
+      <ul>
+        <li>Symmetric encryption &mdash; same key encrypts and decrypts</li>
+        <li>Asymmetric encryption &mdash; public key encrypts, private key decrypts (or vice versa for signing)</li>
+        <li>Stream cipher &mdash; encrypts one bit/byte at a time</li>
+        <li>Block cipher &mdash; encrypts fixed-size blocks</li>
+      </ul>
+
+      <h3>Symmetric Algorithms</h3>
+      <ul>
+        <li>AES (Advanced Encryption Standard) &mdash; current NIST standard, 128/192/256-bit keys</li>
+        <li>DES (Data Encryption Standard) &mdash; obsolete, 56-bit key</li>
+        <li>3DES (Triple DES) &mdash; legacy, applies DES three times</li>
+        <li>Blowfish / Twofish &mdash; alternative symmetric ciphers</li>
+        <li>RC4 &mdash; stream cipher, considered weak</li>
+      </ul>
+
+      <h3>Asymmetric Algorithms</h3>
+      <ul>
+        <li>RSA &mdash; most common, used for encryption and digital signatures</li>
+        <li>Diffie-Hellman &mdash; key exchange only, not encryption</li>
+        <li>ECC (Elliptic Curve Cryptography) &mdash; smaller keys, equivalent security</li>
+        <li>DSA (Digital Signature Algorithm) &mdash; signatures only</li>
+        <li>Ed25519 &mdash; modern elliptic curve for SSH keys</li>
+      </ul>
+
+      <h3>Cipher Modes</h3>
+      <ul>
+        <li>CBC (Cipher Block Chaining) &mdash; each block XORed with previous</li>
+        <li>GCM (Galois/Counter Mode) &mdash; provides authentication + encryption</li>
+        <li>ECB (Electronic Codebook) &mdash; insecure, patterns visible</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 2: HASHING ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Hashing</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <h3>Hash Function Properties</h3>
+      <ul>
+        <li>One-way function &mdash; cannot reverse hash to get input</li>
+        <li>Deterministic &mdash; same input always produces same output</li>
+        <li>Collision resistance &mdash; two different inputs should not produce same hash</li>
+        <li>Avalanche effect &mdash; small input change causes drastically different output</li>
+        <li>Fixed output length &mdash; regardless of input size</li>
+      </ul>
+
+      <h3>Hash Algorithms</h3>
+      <ul>
+        <li>MD5 &mdash; 128-bit (32 hex chars), broken, do NOT use for security</li>
+        <li>SHA-1 &mdash; 160-bit (40 hex chars), deprecated, vulnerable to collisions</li>
+        <li>SHA-256 &mdash; 256-bit (64 hex chars), current standard</li>
+        <li>SHA-512 &mdash; 512-bit (128 hex chars), stronger variant</li>
+        <li>SHA-3 &mdash; newest SHA family, different internal structure</li>
+      </ul>
+
+      <h3>Password Hashing</h3>
+      <ul>
+        <li>Salting &mdash; random data added before hashing to prevent rainbow tables</li>
+        <li>Key stretching &mdash; running hash algorithm many times to slow cracking</li>
+        <li>bcrypt &mdash; adaptive password hashing with built-in salt</li>
+        <li>PBKDF2 &mdash; key derivation function with configurable iterations</li>
+        <li>Argon2 &mdash; modern password hashing, memory-hard</li>
+      </ul>
+
+      <h3>Attacks on Hashing</h3>
+      <ul>
+        <li>Rainbow table attack &mdash; precomputed hash lookup table</li>
+        <li>Birthday attack &mdash; exploits collision probability mathematics</li>
+        <li>Dictionary attack &mdash; trying common passwords</li>
+        <li>Brute force &mdash; trying all possible combinations</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 3: DIGITAL SIGNATURES &AMP; PKI ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Digital Signatures &amp; PKI</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <h3>Digital Signatures</h3>
+      <ul>
+        <li>Created with sender&rsquo;s private key</li>
+        <li>Verified with sender&rsquo;s public key</li>
+        <li>Provides authentication, integrity, and non-repudiation</li>
+        <li>Process: hash message &rarr; encrypt hash with private key</li>
+      </ul>
+
+      <h3>Public Key Infrastructure (PKI)</h3>
+      <ul>
+        <li>Certificate Authority (CA) &mdash; trusted third party that issues certificates</li>
+        <li>Digital certificate &mdash; binds public key to identity</li>
+        <li>Certificate chain &mdash; hierarchy from root CA to end certificate</li>
+        <li>Certificate revocation &mdash; invalidating compromised certificates</li>
+        <li>CRL (Certificate Revocation List) &mdash; list of revoked certificates</li>
+        <li>OCSP (Online Certificate Status Protocol) &mdash; real-time revocation checking</li>
+      </ul>
+
+      <h3>Certificate Types</h3>
+      <ul>
+        <li>Self-signed certificate &mdash; signed by own private key, not trusted by browsers</li>
+        <li>CA-signed certificate &mdash; signed by trusted CA, browser-trusted</li>
+        <li>Wildcard certificate &mdash; covers all subdomains (*.example.com)</li>
+        <li>SAN certificate &mdash; Subject Alternative Name, multiple domains</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 4: AUTHENTICATION ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Authentication</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <h3>Authentication Factors</h3>
+      <ul>
+        <li>Something you know &mdash; password, PIN, security questions</li>
+        <li>Something you have &mdash; smart card, token, phone (SMS/app)</li>
+        <li>Something you are &mdash; fingerprint, facial recognition, iris scan</li>
+        <li>Somewhere you are &mdash; geolocation, IP-based</li>
+        <li>Something you do &mdash; typing patterns, gait analysis</li>
+      </ul>
+
+      <h3>Multi-Factor Authentication (MFA)</h3>
+      <ul>
+        <li>Combines two or more different factor types</li>
+        <li>Password + SMS code = 2FA (but SMS is weak)</li>
+        <li>Password + authenticator app = stronger 2FA</li>
+        <li>TOTP (Time-based One-Time Password) &mdash; changes every 30 seconds</li>
+        <li>HOTP (HMAC-based One-Time Password) &mdash; counter-based</li>
+      </ul>
+
+      <h3>Authentication Protocols</h3>
+      <ul>
+        <li>PAP (Password Authentication Protocol) &mdash; cleartext, insecure</li>
+        <li>CHAP (Challenge-Handshake Authentication Protocol) &mdash; challenge-response, more secure</li>
+        <li>EAP (Extensible Authentication Protocol) &mdash; framework for various methods</li>
+        <li>Kerberos &mdash; ticket-based, uses KDC (Key Distribution Center)</li>
+      </ul>
+
+      <h3>AAA Framework</h3>
+      <ul>
+        <li>Authentication &mdash; proving who you are</li>
+        <li>Authorization &mdash; what you&rsquo;re allowed to do</li>
+        <li>Accounting &mdash; logging what you did</li>
+      </ul>
+
+      <h3>AAA Protocols</h3>
+      <ul>
+        <li>RADIUS &mdash; UDP, encrypts only password, common for network access</li>
+        <li>TACACS+ &mdash; TCP, encrypts entire payload, Cisco-developed</li>
+        <li>802.1X &mdash; port-based network access control using EAP</li>
+      </ul>
+
+      <h3>Access Control Models</h3>
+      <ul>
+        <li>DAC (Discretionary Access Control) &mdash; owner controls access</li>
+        <li>MAC (Mandatory Access Control) &mdash; system-enforced labels</li>
+        <li>RBAC (Role-Based Access Control) &mdash; permissions based on job role</li>
+        <li>ABAC (Attribute-Based Access Control) &mdash; policies based on attributes</li>
+      </ul>
+
+      <h3>Single Sign-On (SSO)</h3>
+      <ul>
+        <li>Authenticate once, access multiple applications</li>
+        <li>SAML &mdash; XML-based, enterprise SSO</li>
+        <li>OAuth &mdash; authorization framework (not authentication)</li>
+        <li>OpenID Connect &mdash; authentication layer on top of OAuth</li>
+        <li>Federation &mdash; trust between different organizations</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 5: SECURE PROTOCOLS ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00BCD4;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Secure Protocols</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00BCD4;">
+      <h3>SSH (Secure Shell)</h3>
+      <ul>
+        <li>Encrypted remote access &mdash; replaces Telnet</li>
+        <li>Port 22 by default</li>
+        <li>Supports password and key-based authentication</li>
+        <li>Key-based auth stronger than passwords</li>
+      </ul>
+
+      <h3>TLS/SSL</h3>
+      <ul>
+        <li>TLS (Transport Layer Security) &mdash; current standard, replaced SSL</li>
+        <li>SSL (Secure Sockets Layer) &mdash; deprecated, do not use</li>
+        <li>HTTPS &mdash; HTTP over TLS (port 443)</li>
+        <li>Cipher suite &mdash; combination of key exchange, encryption, and hash algorithms</li>
+        <li>Perfect Forward Secrecy &mdash; compromised key doesn&rsquo;t expose past sessions</li>
+      </ul>
+
+      <h3>Other Secure Protocols</h3>
+      <ul>
+        <li>SFTP &mdash; SSH File Transfer Protocol</li>
+        <li>FTPS &mdash; FTP over TLS</li>
+        <li>LDAPS &mdash; LDAP over TLS</li>
+        <li>DNSSEC &mdash; DNS Security Extensions</li>
+        <li>S/MIME &mdash; secure email</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 6: LAB KNOWLEDGE ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Lab Knowledge</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <p class="ws-section-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+
+      <h3>Hash Output Lengths</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Algorithm</th><th>Hex Characters</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>MD5</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>SHA-256</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>SHA-512</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>OpenSSL Commands</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Purpose</th><th>Command</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Check OpenSSL version</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Generate RSA private key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Extract public key from private key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Create digital signature</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Verify digital signature</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Encrypt file with AES-256-CBC</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Decrypt file (flag for decryption)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Calculate SHA-256 hash</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Test TLS connection to server</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <p class="ws-section-intro">What message does OpenSSL display when signature verification succeeds?</p>
+      <div class="ws-concept-q">Answer: <span class="ws-blank" style="min-width:260px;">&nbsp;</span></div>
+
+      <h3>SSH Key Management</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Default SSH key directory</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Command to generate 4096-bit RSA key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Command to generate Ed25519 key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Correct permissions for private key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Typical permissions for public key</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>File storing authorized public keys</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Command to display key fingerprint</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Default hash algorithm for fingerprints</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <p class="ws-section-intro">Why would SSH refuse to use a private key with permissions 644?</p>
+      <div class="ws-concept-q">Answer: <span class="ws-blank" style="min-width:400px;">&nbsp;</span></div>
+
+      <h3>TLS Cipher Suites</h3>
+      <p style="color:#B0B8C4; font-size:14px;">In <code>TLS_AES_256_GCM_SHA384</code>:</p>
+      <ul>
+        <li>AES_256 = <span class="ws-blank">&nbsp;</span></li>
+        <li>GCM = <span class="ws-blank">&nbsp;</span></li>
+        <li>SHA384 = <span class="ws-blank">&nbsp;</span></li>
+      </ul>
+      <div class="ws-concept-q"><strong>What cipher suite was negotiated in YOUR TLS connection test?</strong><br>Answer: <span class="ws-blank" style="min-width:300px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>What limitation exists with self-signed certificates compared to CA-signed?</strong><br>Answer: <span class="ws-blank" style="min-width:300px;">&nbsp;</span></div>    </div>
+  </div>  <!-- ── SECTION 7: CRYPTOGRAPHIC ATTACKS ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Cryptographic Attacks</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <ul>
+        <li>Man-in-the-Middle (MITM) &mdash; attacker intercepts and possibly modifies communication</li>
+        <li>Replay attack &mdash; capturing and retransmitting valid data</li>
+        <li>Downgrade attack &mdash; forcing use of weaker encryption</li>
+        <li>Side-channel attack &mdash; exploiting implementation (timing, power analysis)</li>
+        <li>Known plaintext attack &mdash; attacker has plaintext and ciphertext pairs</li>
+        <li>Chosen plaintext attack &mdash; attacker can encrypt arbitrary plaintexts</li>
+        <li>Pass-the-hash &mdash; using stolen hash without cracking it</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 8: PROFESSIONAL APPLICATION ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <p class="ws-section-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+
+      <div class="ws-concept-q"><strong>1.</strong> A healthcare organization asks you to audit their certificate management. Their certificates expired last month. How do you communicate this risk to non-technical leadership?</div>
+      <div class="ws-concept-q"><strong>2.</strong> Your client is using MD5 to hash passwords. They say &ldquo;it&rsquo;s worked fine for years.&rdquo; How do you explain why they need to change?</div>
+      <div class="ws-concept-q"><strong>3.</strong> A client wants to implement MFA but says SMS-based codes are &ldquo;good enough.&rdquo; What&rsquo;s your response?</div>
+      <div class="ws-concept-q"><strong>4.</strong> You discover a client is storing passwords in plaintext in their database. What&rsquo;s your immediate recommendation and why?</div>
+
+      <h3>Purple Team Thinking</h3>
+      <div class="ws-concept-q"><strong>5.</strong> You find a web server using TLS 1.0. Red team: how could this be exploited? Blue team: what&rsquo;s the fix?</div>
+      <div class="ws-concept-q"><strong>6.</strong> A client&rsquo;s SSH server accepts password authentication. Red team perspective: why is this a target? Blue team: what should change?</div>    </div>
+  </div>  <!-- ── SECTION 9: CONCEPT CHECK ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+
+      <div class="ws-concept-q"><strong>1.</strong> Explain the difference between symmetric and asymmetric encryption. When would you use each?</div>
+      <div class="ws-concept-q"><strong>2.</strong> How does a digital signature provide non-repudiation?</div>
+      <div class="ws-concept-q"><strong>3.</strong> Why is salting essential for password storage? What attack does it prevent?</div>
+      <div class="ws-concept-q"><strong>4.</strong> What is the avalanche effect and why is it important for hash functions?</div>
+      <div class="ws-concept-q"><strong>5.</strong> Compare RADIUS and TACACS+ &mdash; what&rsquo;s the key difference?</div>
+      <div class="ws-concept-q"><strong>6.</strong> Why is MD5 considered insecure but still widely used for file integrity checks?</div>
+      <div class="ws-concept-q"><strong>7.</strong> Explain why SSH key-based authentication is more secure than password authentication.</div>
+      <div class="ws-concept-q"><strong>8.</strong> What are the three authentication factors? Give an example of each.</div>
+      <div class="ws-concept-q"><strong>9.</strong> What does 802.1X provide and where is it typically used?</div>
+      <div class="ws-concept-q"><strong>10.</strong> Why would using ECB mode for encryption be a security risk?</div>
+
+      <div class="ws-footer-callout" style="margin-top: 20px;">
+        <strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 2 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.
+      </div>
+    </div>
+  </div>
+</div><!-- /ws-wrapper -->
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>Module 3 Study Worksheet | IS3513</title>
+  <link rel="stylesheet" href="https://jfnewsom.github.io/is3513-assets/site.css">
+<style>
+
+    /* ── Worksheet-specific screen styles ───────────────────── */
+    body { padding: 30px; }
+
+    .ws-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ws-section { margin-bottom: 40px; }
+
+    /* fill-in blank */
+    .ws-blank {
+      display: inline-block;
+      border-bottom: 2px solid #4a5568;
+      min-width: 140px;
+      height: 20px;
+      vertical-align: bottom;
+    }
+
+    /* key question callout */
+    .ws-key-question {
+      border-left: 4px solid #FEC618;
+      background: rgba(254, 198, 24, 0.07);
+      padding: 10px 16px;
+      margin: 14px 0;
+      color: #B0B8C4;
+      font-style: italic;
+    }
+    .ws-key-question strong { color: #FEC618; font-style: normal; }
+
+    /* section intro text */
+    .ws-section-intro {
+      color: #7B68EE;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+      border-left: 3px solid #2a2f3e;
+      padding-left: 12px;
+    }
+
+    /* answer lines for open-ended questions */
+    .ws-answer-line {
+      border-bottom: 1px solid #2a2f3e;
+      min-height: 48px;
+      margin-bottom: 2px;
+    }
+    .ws-answer-line + .ws-answer-line { margin-top: 0; }
+
+    .ws-concept-q {
+      border-bottom: 1px solid #2a2f3e;
+      padding: 10px 0;
+      color: #B0B8C4;
+      min-height: 56px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* fill table */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px 0;
+    }
+    .ws-table th {
+      background: #1a1f2e;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .ws-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2f3e;
+      color: #B0B8C4;
+      vertical-align: top;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table .ws-answer-cell {
+      min-width: 160px;
+      border-left: 1px solid #2a2f3e;
+    }
+    .ws-table code {
+      background: #1a1f2e;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* footer callout */
+    .ws-footer-callout {
+      background: #0A0E17;
+      border: 2px solid #4169E1;
+      padding: 18px 24px;
+      color: #B0B8C4;
+      border-radius: 6px;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+    .ws-footer-callout strong { color: #4169E1; }
+
+    /* tool version row */
+    .ws-tool-versions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      color: #B0B8C4;
+      font-size: 14px;
+    }
+    .ws-tool-version-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ws-tool-version-item code {
+      background: #1a1f2e;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* ── Print styles ─────────────────────────────────────────── */
+    @media print {
+
+      /* hide chrome */
+      #nexus-nav,
+      .site-footer { display: none !important; }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        padding: 0 !important;
+      }
+
+      .ws-wrapper {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      /* ── Header block ── */
+      .nx-header {
+        border-left: 4pt solid #000 !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+      }
+      .nx-kw {
+        background: #000 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sec {
+        background: #333 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sub {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 13pt !important;
+        padding: 7pt 14pt !important;
+      }
+
+      /* ── Card block ── */
+      .nx-card {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+        border-bottom: 3pt solid #000 !important;
+        border-radius: 0 !important;
+        padding: 12pt 14pt 12pt 18pt !important;
+        page-break-inside: avoid;
+      }
+
+      .nx-card h2 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #ccc;
+        padding-bottom: 3pt;
+        margin: 14pt 0 8pt 0 !important;
+      }
+      .nx-card h3 {
+        color: #000 !important;
+        font-size: 10pt !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+        background: #eee;
+        padding: 3pt 6pt !important;
+        margin: 10pt 0 5pt 0 !important;
+      }
+      .nx-card p,
+      .nx-card li,
+      .nx-card ul,
+      .nx-card ol { color: #000 !important; }
+      .nx-card strong { color: #000 !important; }
+      .nx-card code {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        font-size: 9pt !important;
+        padding: 1pt 4pt !important;
+      }
+
+      /* ── Section ── */
+      .ws-section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt !important;
+      }
+
+      /* ── Fill-in blanks ── */
+      .ws-blank {
+        border-bottom: 1.5pt solid #000 !important;
+        min-width: 120pt !important;
+        height: 13pt !important;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+      /* ── Key question ── */
+      .ws-key-question {
+        border-left: 3pt solid #333 !important;
+        background: #f5f5f5 !important;
+        padding: 6pt 10pt !important;
+        margin: 8pt 0 !important;
+        color: #000 !important;
+      }
+      .ws-key-question strong { color: #000 !important; }
+
+      /* ── Section intro ── */
+      .ws-section-intro {
+        color: #444 !important;
+        border-left: 2pt solid #999 !important;
+      }
+
+      /* ── Answer lines ── */
+      .ws-answer-line {
+        border-bottom: 1pt solid #bbb !important;
+        min-height: 36pt;
+      }
+
+      .ws-concept-q {
+        color: #000 !important;
+        border-bottom: 1pt solid #ccc !important;
+        min-height: 42pt;
+      }
+
+      /* ── Fill table ── */
+      .ws-table {
+        font-size: 9.5pt !important;
+      }
+      .ws-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1pt solid #999 !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table td {
+        color: #000 !important;
+        border: 1pt solid #ccc !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table .ws-answer-cell {
+        border-left: 1pt solid #ccc !important;
+      }
+      .ws-table code {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 8.5pt !important;
+      }
+
+      /* ── Footer callout ── */
+      .ws-footer-callout {
+        background: #eee !important;
+        border: 1.5pt solid #000 !important;
+        color: #000 !important;
+        padding: 10pt 14pt !important;
+      }
+      .ws-footer-callout strong { color: #000 !important; }
+
+      /* ── Tool versions ── */
+      .ws-tool-versions { color: #000 !important; }
+      .ws-tool-version-item code {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="ws-wrapper">
+  <!-- ── PAGE HEADER ─────────────────────────────────────────── -->
+  <div class="nx-header" style="--accent: #4169E1; margin-bottom: 30px;">
+    <div class="nx-header-top">
+      <div class="nx-kw">IS3513</div>
+      <div class="nx-sec">Module 3 Study Worksheet</div>
+    </div>
+    <div class="nx-sub">Networks &amp; Defense &bull; Chapters 9, 13 &amp; 18 &bull; Labs 3.1, 3.2, 3.3 &bull; Weeks 7&ndash;9</div>
+  </div>
+
+  <!-- How to Use -->
+  <div class="ws-section">
+    <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+      <div class="nx-callout nx-blue" style="--callout-color:#4169E1; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 3 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ── SECTION 1 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">Network Fundamentals</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+
+      <h3>The OSI Model</h3>
+      <ul>
+        <li>Layer 7 &mdash; Application (HTTP, FTP, SMTP)</li>
+        <li>Layer 6 &mdash; Presentation (encryption, compression)</li>
+        <li>Layer 5 &mdash; Session (session management)</li>
+        <li>Layer 4 &mdash; Transport (TCP, UDP)</li>
+        <li>Layer 3 &mdash; Network (IP, routing)</li>
+        <li>Layer 2 &mdash; Data Link (MAC addresses, switches)</li>
+        <li>Layer 1 &mdash; Physical (cables, hubs)</li>
+      </ul>
+
+      <h3>TCP vs. UDP</h3>
+      <ul>
+        <li>TCP &mdash; connection-oriented, reliable, three-way handshake (SYN, SYN/ACK, ACK)</li>
+        <li>UDP &mdash; connectionless, unreliable, no handshake, faster</li>
+        <li>TCP ports &mdash; HTTP (80), HTTPS (443), SSH (22), FTP (21), Telnet (23), SMTP (25)</li>
+        <li>UDP ports &mdash; DNS (53), DHCP (67/68), TFTP (69), SNMP (161)</li>
+      </ul>
+
+      <h3>Network Protocols</h3>
+      <ul>
+        <li>ICMP &mdash; Internet Control Message Protocol, used by ping and traceroute</li>
+        <li>ARP &mdash; Address Resolution Protocol, maps IP to MAC addresses</li>
+        <li>DHCP &mdash; Dynamic Host Configuration Protocol, assigns IP addresses</li>
+        <li>DNS &mdash; Domain Name System, resolves names to IP addresses</li>
+        <li>SLAAC &mdash; Stateless Address Autoconfiguration, IPv6 auto-config</li>
+      </ul>
+
+      <h3>IP Addressing</h3>
+      <ul>
+        <li>IPv4 &mdash; 32 bits, dotted decimal (192.168.1.1)</li>
+        <li>IPv6 &mdash; 128 bits, hexadecimal with colons</li>
+        <li>Private IP ranges &mdash; 10.x.x.x, 172.16&ndash;31.x.x, 192.168.x.x</li>
+        <li>Loopback &mdash; 127.0.0.1 (IPv4), ::1 (IPv6)</li>
+        <li>CIDR notation &mdash; /24 = 255.255.255.0</li>
+      </ul>
+
+      <h3>Network Classes (Legacy)</h3>
+      <ul>
+        <li>Class A &mdash; /8, 16 million hosts</li>
+        <li>Class B &mdash; /16, 65,534 hosts</li>
+        <li>Class C &mdash; /24, 254 hosts</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 2 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Network Devices</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <h3>Layer 1 Devices</h3>
+      <ul>
+        <li>Hub &mdash; broadcasts to all ports, shared collision domain</li>
+        <li>Repeater &mdash; regenerates signal to extend distance</li>
+      </ul>
+
+      <h3>Layer 2 Devices</h3>
+      <ul>
+        <li>Switch &mdash; forwards based on MAC address, separate collision domains per port</li>
+        <li>Bridge &mdash; connects network segments at Layer 2</li>
+        <li>WAP (Wireless Access Point) &mdash; connects wireless clients to wired network</li>
+      </ul>
+
+      <h3>Layer 3 Devices</h3>
+      <ul>
+        <li>Router &mdash; forwards based on IP address, separates broadcast domains</li>
+        <li>Layer 3 switch &mdash; switch with routing capabilities</li>
+      </ul>
+
+      <h3>Security Devices</h3>
+      <ul>
+        <li>Firewall &mdash; filters traffic based on rules</li>
+        <li>IDS (Intrusion Detection System) &mdash; monitors and alerts</li>
+        <li>IPS (Intrusion Prevention System) &mdash; monitors and blocks</li>
+        <li>Proxy &mdash; intermediary that filters/caches traffic</li>
+        <li>Load balancer &mdash; distributes traffic across servers</li>
+        <li>VPN concentrator &mdash; handles VPN connections</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 3 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Network Architecture</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <h3>Network Types</h3>
+      <ul>
+        <li>LAN &mdash; Local Area Network, single location</li>
+        <li>WAN &mdash; Wide Area Network, geographically dispersed</li>
+        <li>WLAN &mdash; Wireless LAN</li>
+        <li>MAN &mdash; Metropolitan Area Network</li>
+        <li>PAN &mdash; Personal Area Network (Bluetooth)</li>
+      </ul>
+
+      <h3>Network Zones</h3>
+      <ul>
+        <li>Intranet &mdash; internal network, trusted zone</li>
+        <li>Extranet &mdash; extended access to partners</li>
+        <li>DMZ &mdash; Demilitarized Zone, buffer between internal and external</li>
+        <li>Internet &mdash; public, untrusted network</li>
+      </ul>
+
+      <h3>Topologies</h3>
+      <ul>
+        <li>Star &mdash; all devices connect to central point (most common)</li>
+        <li>Bus &mdash; single cable, all devices attached</li>
+        <li>Ring &mdash; devices connected in a circle</li>
+        <li>Mesh &mdash; every device connected to every other device</li>
+        <li>Hybrid &mdash; combination of topologies</li>
+      </ul>
+
+      <h3>Segmentation</h3>
+      <ul>
+        <li>VLAN &mdash; Virtual LAN, logical segmentation</li>
+        <li>Subnetting &mdash; dividing networks into smaller segments</li>
+        <li>NAT &mdash; Network Address Translation, hides internal IPs</li>
+        <li>PAT &mdash; Port Address Translation, multiple internal IPs share one external</li>
+        <li>Air gap &mdash; complete physical isolation</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 4 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Intrusion Detection &amp; Prevention</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <h3>IDS Types</h3>
+      <ul>
+        <li>NIDS &mdash; Network-based, monitors network traffic</li>
+        <li>HIDS &mdash; Host-based, monitors single system (files, processes, logs)</li>
+        <li>Wireless IDS &mdash; monitors wireless networks</li>
+      </ul>
+
+      <h3>Detection Methods</h3>
+      <ul>
+        <li>Signature-based &mdash; compares against known attack patterns (signature database)</li>
+        <li>Anomaly-based &mdash; compares against baseline of normal behavior</li>
+        <li>Heuristic &mdash; uses rules and algorithms to identify suspicious activity</li>
+      </ul>
+
+      <h3>IDS Outcomes</h3>
+      <ul>
+        <li>True positive &mdash; correctly identified attack</li>
+        <li>True negative &mdash; correctly identified normal traffic</li>
+        <li>False positive &mdash; alert on legitimate traffic (not actually malicious)</li>
+        <li>False negative &mdash; missed actual attack (malicious goes undetected)</li>
+      </ul>
+
+      <h3>IDS/IPS Tools</h3>
+      <ul>
+        <li>Snort &mdash; open-source IDS since 1998, de facto standard</li>
+        <li>Suricata &mdash; high-performance alternative to Snort</li>
+        <li>OSSEC &mdash; host-based IDS</li>
+        <li>Zeek (formerly Bro) &mdash; network analysis framework</li>
+      </ul>
+
+      <h3>Key Concepts</h3>
+      <ul>
+        <li>Promiscuous mode &mdash; NIC captures all traffic, not just addressed to it</li>
+        <li>Inline vs. passive &mdash; IPS inline (can block), IDS passive (monitor only)</li>
+        <li>Correlation &mdash; connecting related events from multiple sources</li>
+        <li>SIEM &mdash; Security Information and Event Management</li>
+        <li>Encrypted traffic limitation &mdash; NIDS cannot inspect encrypted payloads</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 5 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00BCD4;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Cloud &amp; Virtualization</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00BCD4;">
+      <h3>Cloud Service Models</h3>
+      <ul>
+        <li>IaaS &mdash; Infrastructure as a Service (VMs, storage, networking)</li>
+        <li>PaaS &mdash; Platform as a Service (development environment)</li>
+        <li>SaaS &mdash; Software as a Service (applications via browser)</li>
+        <li>XaaS &mdash; Anything as a Service</li>
+      </ul>
+
+      <h3>Cloud Deployment Models</h3>
+      <ul>
+        <li>Public cloud &mdash; shared infrastructure, third-party operated</li>
+        <li>Private cloud &mdash; dedicated to single organization</li>
+        <li>Hybrid cloud &mdash; combination of public and private</li>
+        <li>Community cloud &mdash; shared by organizations with common concerns</li>
+      </ul>
+
+      <h3>Virtualization</h3>
+      <ul>
+        <li>Hypervisor &mdash; software layer between VMs and hardware</li>
+        <li>Type 1 (bare metal) &mdash; runs directly on hardware (VMware ESXi, Hyper-V)</li>
+        <li>Type 2 (hosted) &mdash; runs on host OS (VirtualBox, VMware Workstation)</li>
+        <li>VM sprawl &mdash; uncontrolled proliferation of virtual machines</li>
+        <li>VM escape &mdash; attack breaks out of VM to host</li>
+        <li>Snapshot &mdash; saved state of VM at point in time</li>
+      </ul>
+
+      <h3>Cloud Security</h3>
+      <ul>
+        <li>Shared responsibility model &mdash; cloud provider vs. customer responsibilities</li>
+        <li>CASB &mdash; Cloud Access Security Broker</li>
+        <li>Data sovereignty &mdash; data subject to laws of country where stored</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 6 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF9F1C;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Lab Knowledge &mdash; Networking</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF9F1C;">
+      <p class="ws-section-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+
+      <h3>Binary &amp; Hex Conversion</h3>
+      <p style="color:#B0B8C4; font-size:14px;">8-bit place values: 128, 64, 32, 16, 8, 4, 2, 1</p>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Conversion</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Binary 11000000 to decimal</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Decimal 252 to hexadecimal</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Hex 2B to decimal</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Subnetting</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Subnet mask for /24</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Network 192.168.1.0/24 broadcast address</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Network 192.168.0.0/24 first usable host</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Usable hosts in /24 (formula: 2^n &minus; 2)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Subnets created by borrowing 2 bits</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Linux Network Commands</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Purpose</th><th>Command</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Display IP addresses</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Display routing table</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Display ARP cache</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>    </div>
+  </div>  <!-- ── SECTION 7 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Lab Knowledge &mdash; Wireshark</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <h3>Filter Types</h3>
+      <ul>
+        <li>Capture filters &mdash; BPF syntax, applied during capture</li>
+        <li>Display filters &mdash; Wireshark syntax, applied after capture</li>
+      </ul>
+
+      <div class="ws-concept-q"><strong>Capture and display filters use the same syntax: TRUE / FALSE</strong><br>
+      Answer: <span class="ws-blank" style="min-width:120px;">&nbsp;</span></div>
+
+      <h3>Display Filter Syntax</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Filter for&hellip;</th><th>Syntax</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DNS traffic</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>HTTP traffic</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Traffic to/from 192.168.1.100</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Traffic on TCP port 443</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Equality operator</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Wireshark Basics</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standard capture file extension</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Mode to capture all traffic on segment</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Color when filter syntax is valid</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Windows capture driver</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Feature to view entire TCP conversation</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <div class="ws-concept-q"><strong>Protocol names in display filters must be: UPPERCASE / lowercase</strong><br>
+      Answer: <span class="ws-blank" style="min-width:120px;">&nbsp;</span></div>    </div>
+  </div>  <!-- ── SECTION 8 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Network Attacks</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <ul>
+        <li>ARP poisoning/spoofing &mdash; falsifying ARP responses to redirect traffic</li>
+        <li>MAC flooding &mdash; overwhelming switch CAM table to force hub behavior</li>
+        <li>VLAN hopping &mdash; gaining access to other VLANs</li>
+        <li>DNS poisoning &mdash; corrupting DNS cache with false records</li>
+        <li>DHCP starvation &mdash; exhausting DHCP address pool</li>
+        <li>Rogue DHCP &mdash; unauthorized DHCP server assigning malicious settings</li>
+        <li>Man-in-the-Middle &mdash; intercepting communication between two parties</li>
+        <li>Replay attack &mdash; capturing and retransmitting valid traffic</li>
+        <li>Amplification attack &mdash; using protocols to magnify DoS traffic</li>
+      </ul>    </div>
+  </div>  <!-- ── SECTION 9 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <p class="ws-section-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+
+      <div class="ws-concept-q"><strong>1.</strong> Your IDS is generating hundreds of alerts per day, most of which are false positives. How do you approach tuning it?</div>
+      <div class="ws-concept-q"><strong>2.</strong> A client asks whether they should use signature-based or anomaly-based detection. What factors influence your recommendation?</div>
+      <div class="ws-concept-q"><strong>3.</strong> You capture network traffic and find unencrypted credentials. How do you report this finding?</div>
+      <div class="ws-concept-q"><strong>4.</strong> A client&rsquo;s network has no segmentation&mdash;everything is on one flat network. Explain the risk in business terms.</div>
+
+      <h3>Purple Team Thinking</h3>
+      <div class="ws-concept-q"><strong>5.</strong> You discover a switch with no port security. Red team: what attack does this enable? Blue team: what&rsquo;s the mitigation?</div>
+      <div class="ws-concept-q"><strong>6.</strong> A client&rsquo;s DMZ allows direct database connections from the internet. Red team: why is this attractive? Blue team: what architecture change is needed?</div>    </div>
+  </div>  <!-- ── SECTION 10 ── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">10</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+
+      <div class="ws-concept-q"><strong>1.</strong> Explain the TCP three-way handshake. Why doesn&rsquo;t UDP need one?</div>
+      <div class="ws-concept-q"><strong>2.</strong> What&rsquo;s the difference between a switch and a hub? Why does it matter for security?</div>
+      <div class="ws-concept-q"><strong>3.</strong> What is the purpose of a DMZ? What types of systems belong there?</div>
+      <div class="ws-concept-q"><strong>4.</strong> Compare NIDS and HIDS&mdash;advantages and disadvantages of each.</div>
+      <div class="ws-concept-q"><strong>5.</strong> What is a false positive? A false negative? Which is more dangerous?</div>
+      <div class="ws-concept-q"><strong>6.</strong> Why can&rsquo;t a network IDS inspect encrypted traffic? What&rsquo;s the workaround?</div>
+      <div class="ws-concept-q"><strong>7.</strong> Explain the difference between IaaS, PaaS, and SaaS with examples.</div>
+      <div class="ws-concept-q"><strong>8.</strong> What&rsquo;s the difference between Type 1 and Type 2 hypervisors?</div>
+      <div class="ws-concept-q"><strong>9.</strong> What does NAT do and why is it considered a security benefit?</div>
+      <div class="ws-concept-q"><strong>10.</strong> Why is Snort called the &ldquo;de facto standard&rdquo; for open-source IDS?</div>
+
+      <div class="ws-footer-callout" style="margin-top: 20px;">
+        <strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 3 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.
+      </div>
+    </div>
+  </div>
+</div><!-- /ws-wrapper -->
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>

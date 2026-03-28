@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>Module 4 Study Worksheet | IS3513</title>
+  <link rel="stylesheet" href="https://jfnewsom.github.io/is3513-assets/site.css">
+<style>
+
+    /* ── Worksheet-specific screen styles ───────────────────── */
+    body { padding: 30px; }
+
+    .ws-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ws-section { margin-bottom: 40px; }
+
+    /* fill-in blank */
+    .ws-blank {
+      display: inline-block;
+      border-bottom: 2px solid #4a5568;
+      min-width: 140px;
+      height: 20px;
+      vertical-align: bottom;
+    }
+
+    /* key question callout */
+    .ws-key-question {
+      border-left: 4px solid #FEC618;
+      background: rgba(254, 198, 24, 0.07);
+      padding: 10px 16px;
+      margin: 14px 0;
+      color: #B0B8C4;
+      font-style: italic;
+    }
+    .ws-key-question strong { color: #FEC618; font-style: normal; }
+
+    /* section intro text */
+    .ws-section-intro {
+      color: #7B68EE;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+      border-left: 3px solid #2a2f3e;
+      padding-left: 12px;
+    }
+
+    /* answer lines for open-ended questions */
+    .ws-answer-line {
+      border-bottom: 1px solid #2a2f3e;
+      min-height: 48px;
+      margin-bottom: 2px;
+    }
+    .ws-answer-line + .ws-answer-line { margin-top: 0; }
+
+    .ws-concept-q {
+      border-bottom: 1px solid #2a2f3e;
+      padding: 10px 0;
+      color: #B0B8C4;
+      min-height: 56px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* fill table */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px 0;
+    }
+    .ws-table th {
+      background: #1a1f2e;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .ws-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2f3e;
+      color: #B0B8C4;
+      vertical-align: top;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table .ws-answer-cell {
+      min-width: 160px;
+      border-left: 1px solid #2a2f3e;
+    }
+    .ws-table code {
+      background: #1a1f2e;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* footer callout */
+    .ws-footer-callout {
+      background: #0A0E17;
+      border: 2px solid #4169E1;
+      padding: 18px 24px;
+      color: #B0B8C4;
+      border-radius: 6px;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+    .ws-footer-callout strong { color: #4169E1; }
+
+    /* tool version row */
+    .ws-tool-versions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      color: #B0B8C4;
+      font-size: 14px;
+    }
+    .ws-tool-version-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ws-tool-version-item code {
+      background: #1a1f2e;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* ── Print styles ─────────────────────────────────────────── */
+    @media print {
+
+      /* hide chrome */
+      #nexus-nav,
+      .site-footer { display: none !important; }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        padding: 0 !important;
+      }
+
+      .ws-wrapper {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      /* ── Header block ── */
+      .nx-header {
+        border-left: 4pt solid #000 !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+      }
+      .nx-kw {
+        background: #000 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sec {
+        background: #333 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sub {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 13pt !important;
+        padding: 7pt 14pt !important;
+      }
+
+      /* ── Card block ── */
+      .nx-card {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+        border-bottom: 3pt solid #000 !important;
+        border-radius: 0 !important;
+        padding: 12pt 14pt 12pt 18pt !important;
+        page-break-inside: avoid;
+      }
+
+      .nx-card h2 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #ccc;
+        padding-bottom: 3pt;
+        margin: 14pt 0 8pt 0 !important;
+      }
+      .nx-card h3 {
+        color: #000 !important;
+        font-size: 10pt !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+        background: #eee;
+        padding: 3pt 6pt !important;
+        margin: 10pt 0 5pt 0 !important;
+      }
+      .nx-card p,
+      .nx-card li,
+      .nx-card ul,
+      .nx-card ol { color: #000 !important; }
+      .nx-card strong { color: #000 !important; }
+      .nx-card code {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        font-size: 9pt !important;
+        padding: 1pt 4pt !important;
+      }
+
+      /* ── Section ── */
+      .ws-section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt !important;
+      }
+
+      /* ── Fill-in blanks ── */
+      .ws-blank {
+        border-bottom: 1.5pt solid #000 !important;
+        min-width: 120pt !important;
+        height: 13pt !important;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+      /* ── Key question ── */
+      .ws-key-question {
+        border-left: 3pt solid #333 !important;
+        background: #f5f5f5 !important;
+        padding: 6pt 10pt !important;
+        margin: 8pt 0 !important;
+        color: #000 !important;
+      }
+      .ws-key-question strong { color: #000 !important; }
+
+      /* ── Section intro ── */
+      .ws-section-intro {
+        color: #444 !important;
+        border-left: 2pt solid #999 !important;
+      }
+
+      /* ── Answer lines ── */
+      .ws-answer-line {
+        border-bottom: 1pt solid #bbb !important;
+        min-height: 36pt;
+      }
+
+      .ws-concept-q {
+        color: #000 !important;
+        border-bottom: 1pt solid #ccc !important;
+        min-height: 42pt;
+      }
+
+      /* ── Fill table ── */
+      .ws-table {
+        font-size: 9.5pt !important;
+      }
+      .ws-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1pt solid #999 !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table td {
+        color: #000 !important;
+        border: 1pt solid #ccc !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table .ws-answer-cell {
+        border-left: 1pt solid #ccc !important;
+      }
+      .ws-table code {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 8.5pt !important;
+      }
+
+      /* ── Footer callout ── */
+      .ws-footer-callout {
+        background: #eee !important;
+        border: 1.5pt solid #000 !important;
+        color: #000 !important;
+        padding: 10pt 14pt !important;
+      }
+      .ws-footer-callout strong { color: #000 !important; }
+
+      /* ── Tool versions ── */
+      .ws-tool-versions { color: #000 !important; }
+      .ws-tool-version-item code {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="ws-wrapper">
+
+  <div class="nx-header" style="--accent: #4169E1; margin-bottom: 30px;">
+    <div class="nx-header-top">
+      <div class="nx-kw">IS3513</div>
+      <div class="nx-sec">Module 4 Study Worksheet</div>
+    </div>
+    <div class="nx-sub">Threats &amp; Attacks &bull; Chapters 15 &amp; 16 &bull; Labs 4.1, 4.2, 4.3 &bull; Weeks 10&ndash;12</div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+      <div class="nx-callout nx-blue" style="--callout-color:#4169E1; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 4 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">Attack Fundamentals</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+      <h3>Attack Categories</h3>
+      <ul>
+        <li>Target of opportunity &mdash; any vulnerable system found</li>
+        <li>Targeted attack &mdash; specific organization chosen deliberately</li>
+        <li>Active attack &mdash; modifies data or systems</li>
+        <li>Passive attack &mdash; observes without modification</li>
+      </ul>
+      <h3>Spoofing &amp; Impersonation</h3>
+      <ul>
+        <li>Spoofing &mdash; making traffic appear from different source</li>
+        <li>IP spoofing &mdash; falsifying source IP address</li>
+        <li>MAC spoofing &mdash; falsifying MAC address</li>
+        <li>Email spoofing &mdash; forging sender address</li>
+        <li>Caller ID spoofing &mdash; falsifying phone number</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Malware</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <h3>Malware Types</h3>
+      <ul>
+        <li>Virus &mdash; requires host file, user action to spread</li>
+        <li>Worm &mdash; self-replicating, no user action needed</li>
+        <li>Trojan &mdash; disguised as legitimate software</li>
+        <li>RAT (Remote Access Trojan) &mdash; provides backdoor access</li>
+        <li>Rootkit &mdash; hides at OS/kernel level, very difficult to detect</li>
+        <li>Bootkit &mdash; rootkit that infects boot process</li>
+        <li>Ransomware &mdash; encrypts files, demands payment</li>
+        <li>Spyware &mdash; monitors user activity</li>
+        <li>Keylogger &mdash; captures keystrokes</li>
+        <li>Adware &mdash; displays unwanted advertisements</li>
+        <li>Botnet &mdash; network of compromised systems (zombies)</li>
+        <li>Logic bomb &mdash; triggers on specific condition or date</li>
+        <li>Fileless malware &mdash; lives in memory only</li>
+        <li>PUP (Potentially Unwanted Program) &mdash; gray area software</li>
+      </ul>
+      <h3>Malware Techniques</h3>
+      <ul>
+        <li>Polymorphic &mdash; changes code to avoid detection</li>
+        <li>Metamorphic &mdash; completely rewrites itself</li>
+        <li>Armored &mdash; makes analysis difficult</li>
+        <li>Packing &mdash; compresses/encrypts to hide signatures</li>
+        <li>Shimming &mdash; inserting code between driver and OS</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Social Engineering</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+      <h3>Phishing Variants</h3>
+      <ul>
+        <li>Phishing &mdash; mass email attack, generic targets</li>
+        <li>Spear phishing &mdash; targeted at specific individual</li>
+        <li>Whaling &mdash; targeting executives</li>
+        <li>BEC (Business Email Compromise) &mdash; impersonating CEO for wire transfer</li>
+        <li>Vishing &mdash; voice phishing via phone</li>
+        <li>Smishing &mdash; SMS phishing</li>
+        <li>Pharming &mdash; redirecting to fake website via DNS</li>
+      </ul>
+      <h3>Social Engineering Techniques</h3>
+      <ul>
+        <li>Pretexting &mdash; fabricated scenario to extract information</li>
+        <li>Baiting &mdash; leaving infected media (USB drives)</li>
+        <li>Quid pro quo &mdash; offering something in exchange for info</li>
+        <li>Tailgating/Piggybacking &mdash; following through secure doors</li>
+        <li>Shoulder surfing &mdash; watching someone enter credentials</li>
+        <li>Dumpster diving &mdash; searching trash for sensitive info</li>
+        <li>Watering hole &mdash; compromising sites target visits</li>
+        <li>Typosquatting &mdash; registering misspelled domain names</li>
+        <li>Impersonation &mdash; pretending to be someone else</li>
+      </ul>
+      <h3>Social Engineering Principles</h3>
+      <ul>
+        <li>Authority &mdash; people obey authority figures</li>
+        <li>Urgency &mdash; pressure to act quickly bypasses thinking</li>
+        <li>Intimidation &mdash; fear causes compliance</li>
+        <li>Consensus/Social proof &mdash; people follow the crowd</li>
+        <li>Scarcity &mdash; limited availability increases desire</li>
+        <li>Trust &mdash; exploiting established relationships</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Application Attacks</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <h3>Injection Attacks</h3>
+      <ul>
+        <li>SQL injection &mdash; inserting SQL commands into input fields</li>
+        <li>Command injection &mdash; executing OS commands through application</li>
+        <li>LDAP injection &mdash; manipulating LDAP queries</li>
+        <li>XML injection &mdash; inserting malicious XML</li>
+        <li>XSS (Cross-Site Scripting) &mdash; injecting client-side scripts</li>
+        <li>Stored XSS &mdash; script saved on server</li>
+        <li>Reflected XSS &mdash; script in URL, reflected back</li>
+        <li>DOM-based XSS &mdash; script manipulates page DOM</li>
+      </ul>
+      <h3>Memory Attacks</h3>
+      <ul>
+        <li>Buffer overflow &mdash; writing beyond allocated memory</li>
+        <li>Integer overflow &mdash; exceeding integer size limits</li>
+        <li>Memory leak &mdash; failing to release unused memory</li>
+        <li>Use after free &mdash; accessing memory after deallocation</li>
+        <li>Heap spray &mdash; filling heap with malicious code</li>
+      </ul>
+      <h3>Other Application Attacks</h3>
+      <ul>
+        <li>CSRF (Cross-Site Request Forgery) &mdash; forging requests from authenticated user</li>
+        <li>Directory traversal &mdash; accessing files outside web root (../)</li>
+        <li>Race condition &mdash; exploiting timing between operations</li>
+        <li>TOCTOU (Time of Check to Time of Use) &mdash; state change between check and use</li>
+        <li>API abuse &mdash; exploiting poorly secured APIs</li>
+        <li>Resource exhaustion &mdash; consuming all available resources</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00BCD4;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Denial of Service</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00BCD4;">
+      <ul>
+        <li>DoS &mdash; Denial of Service, single source</li>
+        <li>DDoS &mdash; Distributed DoS, multiple sources (botnet)</li>
+        <li>SYN flood &mdash; exhausting connections with incomplete handshakes</li>
+        <li>Ping flood &mdash; overwhelming with ICMP echo requests</li>
+        <li>Ping of death &mdash; malformed ping packets</li>
+        <li>Smurf attack &mdash; ICMP amplification using broadcast</li>
+        <li>Fraggle attack &mdash; UDP amplification</li>
+        <li>Teardrop &mdash; overlapping IP fragments</li>
+        <li>Amplification attack &mdash; using protocols to magnify traffic</li>
+        <li>NTP amplification &mdash; abusing NTP monlist command</li>
+        <li>DNS amplification &mdash; abusing open DNS resolvers</li>
+        <li>Application layer DoS &mdash; targeting specific application</li>
+        <li>Slowloris &mdash; holding connections open slowly</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF9F1C;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Change Management</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF9F1C;">
+      <h3>Change Management Concepts</h3>
+      <ul>
+        <li>Change management &mdash; controlled process for system modifications</li>
+        <li>Baseline &mdash; documented starting configuration</li>
+        <li>Configuration management &mdash; maintaining system state</li>
+        <li>Change Advisory Board (CAB) &mdash; oversees change process</li>
+        <li>Standard change &mdash; pre-approved, low-risk, routine</li>
+        <li>Normal change &mdash; requires CAB approval</li>
+        <li>Emergency change &mdash; urgent, expedited approval</li>
+        <li>Backout plan &mdash; reverting if change fails</li>
+      </ul>
+      <h3>Environments</h3>
+      <ul>
+        <li>Development &mdash; where code is written</li>
+        <li>Test/QA &mdash; where code is verified</li>
+        <li>Staging &mdash; mirrors production for final validation</li>
+        <li>Production &mdash; live systems with real data</li>
+        <li>Sandbox &mdash; isolated testing environment</li>
+      </ul>
+      <h3>Key Principles</h3>
+      <ul>
+        <li>Separation of duties &mdash; developers shouldn&rsquo;t deploy to production</li>
+        <li>Incident management &mdash; restoring service after unplanned interruption</li>
+        <li>Problem management &mdash; identifying root causes</li>
+        <li>CMMI (Capability Maturity Model Integration) &mdash; process maturity levels</li>
+        <li>Level 1: Initial &mdash; ad hoc, chaotic</li>
+        <li>Level 2: Managed &mdash; project-level processes</li>
+        <li>Level 3: Defined &mdash; organization-wide processes</li>
+        <li>Level 4: Quantitatively Managed &mdash; metrics-driven</li>
+        <li>Level 5: Optimizing &mdash; continuous improvement</li>
+      </ul>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Lab Knowledge &mdash; Password Cracking</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <p class="ws-section-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+      <h3>Password Attack Types</h3>
+      <ul>
+        <li>Dictionary attack &mdash; trying words from a wordlist</li>
+        <li>Brute force &mdash; trying all possible combinations</li>
+        <li>Hybrid attack &mdash; dictionary + modifications (rules)</li>
+        <li>Rainbow table &mdash; precomputed hash lookup</li>
+        <li>Pass-the-hash &mdash; using hash without cracking</li>
+        <li>Credential stuffing &mdash; using leaked credentials on other sites</li>
+        <li>Password spraying &mdash; few passwords against many accounts</li>
+      </ul>
+      <h3>Windows Password Hashing</h3>
+      <ul>
+        <li>NTLM &mdash; NT LAN Manager, uses MD4</li>
+        <li>NTLM is unsalted &mdash; identical passwords = identical hashes</li>
+        <li>Vulnerable to rainbow tables because unsalted</li>
+        <li>Stored in SAM database or Active Directory</li>
+      </ul>
+      <h3>Linux Password Hashing</h3>
+      <ul>
+        <li><code>$1$</code> &mdash; MD5 crypt (weak)</li>
+        <li><code>$5$</code> &mdash; SHA-256 crypt</li>
+        <li><code>$6$</code> &mdash; SHA-512 crypt (current default)</li>
+        <li>Salt stored between second and third $ symbols</li>
+        <li>Key stretching &mdash; 5,000+ iterations by default</li>
+        <li>Stored in <code>/etc/shadow</code></li>
+        <li>Much slower to crack than NTLM due to salting and iterations</li>
+      </ul>
+      <h3>Cracking Tools</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>rockyou.txt location on Kali</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Command to extract compressed rockyou.txt</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Hashcat attack mode for dictionary (-a)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Hashcat mode for NTLM (-m)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Hashcat mode for SHA-512 crypt (-m)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Hashcat option to show cracked passwords</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>John the Ripper format for NTLM</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>John the Ripper format for SHA-512</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Where John stores cracked passwords</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Command to show John&rsquo;s cracked passwords</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+      <div class="ws-concept-q"><strong>Why is NTLM considered cryptographically weak?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>Why are Linux SHA-512 hashes slower to crack than NTLM?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>Why can Hashcat use GPU while some algorithms are CPU-only?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>
+      <div class="ws-concept-q"><strong>What is the primary purpose of salt in password hashing?</strong><br>Answer: <span class="ws-blank" style="min-width:360px;">&nbsp;</span></div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <p class="ws-section-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+      <div class="ws-concept-q"><strong>1.</strong> You successfully crack 70% of a client&rsquo;s Windows passwords in under an hour using a common wordlist. How do you present this finding to leadership?</div>
+      <div class="ws-concept-q"><strong>2.</strong> A client&rsquo;s users are falling for phishing emails despite training. What additional controls would you recommend?</div>
+      <div class="ws-concept-q"><strong>3.</strong> You discover a client has no change management process&mdash;developers push directly to production. Explain the risk in business terms.</div>
+      <div class="ws-concept-q"><strong>4.</strong> A penetration test reveals a buffer overflow vulnerability in a custom application. The development team says fixing it would take months. How do you advise the client?</div>
+      <h3>Purple Team Thinking</h3>
+      <div class="ws-concept-q"><strong>5.</strong> You find unsalted password hashes in a database. Red team: what&rsquo;s your attack plan? Blue team: what&rsquo;s the remediation?</div>
+      <div class="ws-concept-q"><strong>6.</strong> A client&rsquo;s web application has no rate limiting on login attempts. Red team: how do you exploit this? Blue team: what controls are needed?</div>    </div>
+  </div>
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+      <div class="ws-concept-q"><strong>1.</strong> What&rsquo;s the difference between a virus and a worm?</div>
+      <div class="ws-concept-q"><strong>2.</strong> Explain how a rootkit differs from other malware types.</div>
+      <div class="ws-concept-q"><strong>3.</strong> What makes a SYN flood attack effective?</div>
+      <div class="ws-concept-q"><strong>4.</strong> Why is phishing still the most successful attack vector?</div>
+      <div class="ws-concept-q"><strong>5.</strong> Explain the purpose of a Change Advisory Board.</div>
+      <div class="ws-concept-q"><strong>6.</strong> Why should developers not have access to deploy to production?</div>
+      <div class="ws-concept-q"><strong>7.</strong> What&rsquo;s the difference between dictionary and brute force attacks?</div>
+      <div class="ws-concept-q"><strong>8.</strong> Why does salting prevent rainbow table attacks?</div>
+      <div class="ws-concept-q"><strong>9.</strong> Compare NTLM and SHA-512 crypt for password security.</div>
+      <div class="ws-concept-q"><strong>10.</strong> What is shimming and why is it a concern?</div>
+      <div class="ws-footer-callout" style="margin-top: 20px;">
+        <strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 4 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.
+      </div>
+    </div>
+  </div>
+</div><!-- /ws-wrapper -->
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>
