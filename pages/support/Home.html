@@ -3,120 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home – IS3513</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>IS3513 - Information Assurance and Security</title>
   <link rel="stylesheet" href="../../site.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 
 <div class="nx-page">
 
-<div class="nx-section">
-
-  <!-- Header -->
-  <div class="nx-header" style="--accent: #4169E1;">
-    <div class="nx-header-top">
-      <div class="nx-kw">is3513</div>
-      <div class="nx-sec">information assurance & security</div>
+  <!-- COURSE HEADER -->
+  <div class="nx-section nx-section--flush">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">IS3513</div>
+        <div class="nx-sec">Information Assurance &amp; Security</div>
+      </div>
+      <div class="nx-sub">UTSA &mdash; Spring 2026 &mdash; John Newsom</div>
     </div>
-    <div class="nx-sub">UTSA · John Newsom · Spring 2026</div>
   </div>
 
-  <!-- Main card -->
-  <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+  <!-- MAIN CARD -->
+  <div class="nx-card" style="--accent: #4169E1;">
 
-  <div class="nx-client-ctx" style="--client-color: #00D26A; --client-rgb: 0, 210, 106;">
-    <span class="nx-client-ctx__label">New to the course?</span>
-    <span class="nx-client-ctx__body">Complete the <strong>Start Here</strong> section before diving into assignments. It covers the syllabus, textbook, Discord, and your Kali VM setup. <a href="StartHere.html" style="color:#00D26A;">Go to Start Here →</a></span>
-  </div>
+    <!-- NEW TO THE COURSE CALLOUT -->
+    <div class="nx-callout nx-orange nx-callout--action">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <p><strong>New to the course?</strong> Complete the <strong>Start Here</strong> section before diving into assignments.</p>
+      </div>
+      <a href="StartHere.html" class="nx-btn nx-callout__action-btn">Go to Start Here &rarr;</a>
+    </div>
 
-  <div class="nx-info-bar nx-info-bar--lg">
+    <!-- INSTRUCTOR + QUICK LINKS -->
+    <div class="nx-home-row">
+
+      <div class="nx-home-col">
+        <div class="nx-section-label" style="--accent: #4169E1;">Your Instructor</div>
+        <div class="nx-instructor">
+          <img class="nx-instructor__photo" src="https://jfnewsom.github.io/is2053-assets/photos/john-newsom-headshot.jpg" alt="John Newsom">
+          <div class="nx-instructor__bio">
+            <div class="nx-instructor__name">John Newsom</div>
+            <div class="nx-instructor__title">Assistant Coach, UTSA Cyber Defense &amp; Penetration Testing Teams</div>
+            <div class="nx-instructor__note">San Antonio native &bull; UTSA alum &bull; Air Force veteran &bull; Former radio DJ</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nx-home-col">
+        <div class="nx-section-label" style="--accent: #7B68EE;">Quick Links</div>
+        <div class="nx-link-list">
+          <div class="nx-link-list__item">
+            <span class="material-icons nx-inline-icon nx-inline-icon--purple">description</span>
+            <a href="https://utsa.simplesyllabus.com/doc/dw263zc1k/Spring-2026-IS-3513-ON1-Information-Assurance-and-Security?mode=view" target="_blank" style="color: #7B68EE;">Course Syllabus</a>
+          </div>
+          <div class="nx-link-list__item">
+            <span class="material-icons nx-inline-icon nx-inline-icon--green">arrow_forward</span>
+            <a href="StartHere.html" style="color: #00D26A;">Start Here</a>
+          </div>
+          <div class="nx-link-list__item">
+            <span class="material-icons nx-inline-icon nx-inline-icon--cyan">menu_book</span>
+            <a href="Engagement_Packet_Guide.html" style="color: #00BCD4;">Engagement Packet Guide</a>
+          </div>
+          <div class="nx-link-list__item">
+            <span class="material-icons nx-inline-icon nx-inline-icon--discord">terminal</span>
+            <a href="Discord.html" style="color: #5865F2;">Discord Server</a>
+            <span class="nx-link-list__note">(read terms first)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT + COURSE FORMAT -->
+    <div class="nx-home-row">
+
+      <div class="nx-home-col">
+        <div class="nx-section-label nx-section-label--cyan">Contact Details</div>
+        <div class="nx-link-list">
+          <div class="nx-link-list__item"><strong>Email:</strong> <a href="mailto:john.newsom@utsa.edu">john.newsom@utsa.edu</a></div>
+          <div class="nx-link-list__item"><strong>Phone/Text:</strong> (210) 533-5512</div>
+          <div class="nx-link-list__item"><strong>Office:</strong> NPB 470D or Zoom by appointment</div>
+          <div class="nx-link-list__item"><strong>Schedule:</strong> <a href="https://calendly.com/john-newsom-utsa/student-meeting" target="_blank" style="color: #00BCD4;">calendly.com/john-newsom-utsa</a></div>
+        </div>
+      </div>
+
+      <div class="nx-home-col">
+        <div class="nx-section-label nx-section-label--green">Course Format</div>
+        <div class="nx-link-list">
+          <div class="nx-link-list__item"><strong>Delivery:</strong> Asynchronous Online</div>
+          <div class="nx-link-list__item"><strong>Live Sessions:</strong> None (work at your own pace)</div>
+          <div class="nx-link-list__item"><strong>Support:</strong> <a href="How_To_Get_Help.html" style="color: #00BCD4;">Discord, Email, Calendly</a></div>
+          <div class="nx-link-list__item"><strong>Textbook:</strong> <a href="Textbook.html" style="color: #7B68EE;">Conklin &amp; White, 6th Ed.</a></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STAT BLOCKS -->
+    <div class="nx-stat-bar">
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #4169E1;">Modules</div>
+        <div class="nx-info-stat__label nx-info-stat__label--purple">Modules</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">5</div>
       </div>
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #00BCD4;">Foundation Labs</div>
+        <div class="nx-info-stat__label nx-info-stat__label--green">Foundation Labs</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">10</div>
       </div>
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #7B68EE;">Engagement Packets</div>
+        <div class="nx-info-stat__label nx-info-stat__label--orange">Engagement Packets</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">5</div>
       </div>
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #FF9F1C;">Module Exams</div>
+        <div class="nx-info-stat__label nx-info-stat__label--red">Module Exams</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">5</div>
       </div>
-  </div>
-
-  <div class="nx-named-section">
-    <div class="nx-section-label" style="--accent: #4169E1; color: #4169E1; border-bottom-color: #4169E1;">Your Instructor</div>
-    <p class="nx-exam-body"><strong style="color:#ffffff;">John Newsom</strong> — Assistant Coach, UTSA Cybersecurity Competition Teams (CPTC &amp; CCDC)</p>
-    <p class="nx-exam-body">San Antonio native &bull; UTSA alum &bull; Air Force veteran &bull; Former radio DJ</p>
-    <ul class="nx-exam-tips">
-      <li>Email: <a href="mailto:john.newsom@utsa.edu" style="color:#4169E1;">john.newsom@utsa.edu</a></li>
-      <li>Office: NPB 470D (or Zoom by appointment)</li>
-      <li>Scheduling: <a href="https://calendly.com/john-newsom-utsa/student-meeting" target="_blank" style="color:#4169E1;">calendly.com/john-newsom-utsa/student-meeting</a></li>
-    </ul>
-  </div>
-
-  <div class="nx-info-box">
-    <div class="nx-info-box__label" style="color: #00BCD4;">Course Format</div>
-    <div class="nx-info-box__body">
-        <p><strong style="color:#ffffff;">Delivery:</strong> Asynchronous Online &mdash; no live sessions. Work at your own pace within weekly deadlines.</p>
-        <p><strong style="color:#ffffff;">3-Week Module Cycle:</strong> Weeks 1 &amp; 2 are Foundation Labs (quiz-verified). Week 3 is an Engagement Packet (client report). Repeat &times;5.</p>
-        <p><strong style="color:#ffffff;">Support:</strong> Discord for questions, Calendly for appointments, email for private matters only.</p>
-        <p><strong style="color:#ffffff;">Textbook:</strong> Conklin &amp; White, <em>Principles of Computer Security: CompTIA Security+ and Beyond</em>, 6th Ed.</p>
     </div>
-  </div>
 
-  <div class="nx-two-col">
-      <div class="nx-two-col__col">
-        <div class="nx-section-label" style="--accent: #7B68EE; color: #7B68EE; border-bottom-color: #7B68EE;">Getting Started</div>
-        <div class="nx-two-col__list">
-          <div class="nx-two-col__item"><a href="StartHere.html" style="color:#7B68EE;">Start Here</a></div>
-          <div class="nx-two-col__item"><a href="Kali_VM_Setup.html" style="color:#7B68EE;">Kali VM Setup</a></div>
-          <div class="nx-two-col__item"><a href="Course_Schedule.html" style="color:#7B68EE;">Course Schedule</a></div>
-          <div class="nx-two-col__item"><a href="Textbook.html" style="color:#7B68EE;">Textbook Info</a></div>
+    <!-- 3-WEEK CYCLE CALLOUT -->
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">3-Week Module Cycle</div>
+        <p>Week 1 &amp; 2 = Foundation Labs (quiz-verified) &rarr; Week 3 = Engagement Packet (client report). See <a href="Grading_Info.html">Grading Info</a> for details.</p>
+      </div>
+    </div>
+
+    <!-- RESOURCE LINKS GRID -->
+    <div class="nx-section-label nx-section-label--orange">Course Resources</div>
+    <div class="nx-resource-grid">
+
+      <div class="nx-resource-card">
+        <div class="nx-info-stat__label nx-info-stat__label--green">Getting Started</div>
+        <div class="nx-resource-links">
+          <div><a href="StartHere.html">Start Here</a></div>
+          <div><a href="Kali_VM_Setup.html">Kali VM Setup</a></div>
+          <div><a href="Course_Schedule.html">Course Schedule</a></div>
         </div>
       </div>
-      <div class="nx-two-col__col">
-        <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">Policies &amp; Grading</div>
-        <div class="nx-two-col__list">
-          <div class="nx-two-col__item"><a href="Grading_Info.html" style="color:#FF9F1C;">Grading Info</a></div>
-          <div class="nx-two-col__item"><a href="GenAI_Policy.html" style="color:#FF9F1C;">GenAI Policy</a></div>
-          <div class="nx-two-col__item"><a href="Screenshot_Requirements.html" style="color:#FF9F1C;">Screenshot Requirements</a></div>
-          <div class="nx-two-col__item"><a href="citations.html" style="color:#FF9F1C;">Citation Requirements</a></div>
+
+      <div class="nx-resource-card">
+        <div class="nx-info-stat__label nx-info-stat__label--gold">Policies &amp; Grading</div>
+        <div class="nx-resource-links">
+          <div><a href="Grading_Info.html">Grading Info</a></div>
+          <div><a href="GenAI_Policy.html">GenAI Policy</a></div>
+          <div><a href="How_To_Get_Help.html">How to Get Help</a></div>
         </div>
       </div>
-  </div>
 
-  <div class="nx-two-col">
-      <div class="nx-two-col__col">
-        <div class="nx-section-label" style="--accent: #00BCD4; color: #00BCD4; border-bottom-color: #00BCD4;">Documentation</div>
-        <div class="nx-two-col__list">
-          <div class="nx-two-col__item"><a href="Engagement_Packet_Guide.html" style="color:#00BCD4;">Engagement Packet Guide</a></div>
-          <div class="nx-two-col__item"><a href="How_To_Get_Help.html" style="color:#00BCD4;">How to Get Help</a></div>
-          <div class="nx-two-col__item"><a href="Discord.html" style="color:#00BCD4;">Discord Server</a></div>
+      <div class="nx-resource-card">
+        <div class="nx-info-stat__label nx-info-stat__label--cyan">Documentation</div>
+        <div class="nx-resource-links">
+          <div><a href="Engagement_Packet_Guide.html">Report Guide</a></div>
+          <div><a href="Screenshot_Requirements.html">Screenshot Guide</a></div>
+          <div><a href="citations.html">Citations</a></div>
         </div>
       </div>
-      <div class="nx-two-col__col">
-        <div class="nx-section-label" style="--accent: #00D26A; color: #00D26A; border-bottom-color: #00D26A;">NEXUS World</div>
-        <div class="nx-two-col__list">
-          <div class="nx-two-col__item"><a href="NEXUS_Security.html" style="color:#00D26A;">NEXUS Security</a></div>
-          <div class="nx-two-col__item"><a href="Meet_The_Team.html" style="color:#00D26A;">Meet the Team</a></div>
-          <div class="nx-two-col__item"><a href="Our_Clients.html" style="color:#00D26A;">Our Clients</a></div>
+
+      <div class="nx-resource-card">
+        <div class="nx-info-stat__label nx-info-stat__label--purple">NEXUS World</div>
+        <div class="nx-resource-links">
+          <div><a href="NEXUS_Security.html">NEXUS Security</a></div>
+          <div><a href="Meet_The_Team.html">Meet the Team</a></div>
+          <div><a href="Our_Clients.html">Our Clients</a></div>
         </div>
       </div>
-  </div>
 
-  <div class="nx-page-footer">Questions? Ask in <strong>#course-questions</strong> on Discord or schedule office hours via Calendly. Welcome to NEXUS Security, analyst.</div>
+    </div>
 
-  </div>
+    <!-- MODULE CARDS -->
+    <div class="nx-section-label" style="--accent: #4169E1;">Modules</div>
+    <div class="nx-module-row">
+      <div class="nx-module-card">
+        <a href="Module_1.html">
+          <div class="nx-module-card__title">Module 1</div>
+          <div class="nx-info-stat__label">Reconnaissance</div>
+        </a>
+      </div>
+      <div class="nx-module-card">
+        <a href="Module_2.html">
+          <div class="nx-module-card__title">Module 2</div>
+          <div class="nx-info-stat__label">Crypto &amp; Auth</div>
+        </a>
+      </div>
+      <div class="nx-module-card">
+        <a href="Module_3.html">
+          <div class="nx-module-card__title">Module 3</div>
+          <div class="nx-info-stat__label">Networks</div>
+        </a>
+      </div>
+      <div class="nx-module-card">
+        <a href="Module_4.html">
+          <div class="nx-module-card__title">Module 4</div>
+          <div class="nx-info-stat__label">Threats</div>
+        </a>
+      </div>
+      <div class="nx-module-card">
+        <a href="Module_5.html">
+          <div class="nx-module-card__title">Module 5</div>
+          <div class="nx-info-stat__label">Risk Mgmt</div>
+        </a>
+      </div>
+    </div>
 
-</div>
+    <!-- FOOTER -->
+    <div class="nx-page-footer">
+      Questions? Ask in <a href="Discord.html" style="color: #5865F2;">Discord</a> or <a href="https://calendly.com/john-newsom-utsa/student-meeting" target="_blank" style="color: #00BCD4;">schedule office hours</a>.
+    </div>
 
-</div>
+  </div><!-- end nx-card -->
+
+</div><!-- end nx-page -->
+
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>
