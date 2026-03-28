@@ -427,6 +427,12 @@
 
   /* ── Mount nav + footer ─────────────────────────────────── */
   function mount() {
+    const touchIcon = document.createElement('link');
+    touchIcon.rel   = 'apple-touch-icon';
+    touchIcon.sizes = '180x180';
+    touchIcon.href  = BASE + '/apple-touch-icon.png';
+    document.head.appendChild(touchIcon);
+
     const style = document.createElement('style');
     style.id = 'is3513-nav-styles';
     style.textContent = css;
