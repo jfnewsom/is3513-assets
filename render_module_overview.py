@@ -29,6 +29,7 @@ def shell(module_num, title, accent, body):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Module {module_num}: {title} &#8211; IS3513</title>
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="{CSS_PATH}">
 </head>
 <body>

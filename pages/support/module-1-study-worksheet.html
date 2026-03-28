@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <title>Module 1 Study Worksheet | IS3513</title>
+  <link rel="stylesheet" href="https://jfnewsom.github.io/is3513-assets/site.css">
+  <style>
+
+    /* ── Worksheet-specific screen styles ───────────────────── */
+    body { padding: 30px; }
+
+    .ws-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ws-section { margin-bottom: 40px; }
+
+    /* fill-in blank */
+    .ws-blank {
+      display: inline-block;
+      border-bottom: 2px solid #4a5568;
+      min-width: 140px;
+      height: 20px;
+      vertical-align: bottom;
+    }
+
+    /* key question callout */
+    .ws-key-question {
+      border-left: 4px solid #FEC618;
+      background: rgba(254, 198, 24, 0.07);
+      padding: 10px 16px;
+      margin: 14px 0;
+      color: #B0B8C4;
+      font-style: italic;
+    }
+    .ws-key-question strong { color: #FEC618; font-style: normal; }
+
+    /* section intro text */
+    .ws-section-intro {
+      color: #7B68EE;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0 0 16px 0;
+      border-left: 3px solid #2a2f3e;
+      padding-left: 12px;
+    }
+
+    /* answer lines for open-ended questions */
+    .ws-answer-line {
+      border-bottom: 1px solid #2a2f3e;
+      min-height: 48px;
+      margin-bottom: 2px;
+    }
+    .ws-answer-line + .ws-answer-line { margin-top: 0; }
+
+    .ws-concept-q {
+      border-bottom: 1px solid #2a2f3e;
+      padding: 10px 0;
+      color: #B0B8C4;
+      min-height: 56px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* fill table */
+    .ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 12px 0 20px 0;
+    }
+    .ws-table th {
+      background: #1a1f2e;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .ws-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2f3e;
+      color: #B0B8C4;
+      vertical-align: top;
+    }
+    .ws-table tr:last-child td { border-bottom: none; }
+    .ws-table .ws-answer-cell {
+      min-width: 160px;
+      border-left: 1px solid #2a2f3e;
+    }
+    .ws-table code {
+      background: #1a1f2e;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* footer callout */
+    .ws-footer-callout {
+      background: #0A0E17;
+      border: 2px solid #4169E1;
+      padding: 18px 24px;
+      color: #B0B8C4;
+      border-radius: 6px;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+    .ws-footer-callout strong { color: #4169E1; }
+
+    /* tool version row */
+    .ws-tool-versions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+      color: #B0B8C4;
+      font-size: 14px;
+    }
+    .ws-tool-version-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ws-tool-version-item code {
+      background: #1a1f2e;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #00D26A;
+    }
+
+    /* ── Print styles ─────────────────────────────────────────── */
+    @media print {
+
+      /* hide chrome */
+      #nexus-nav,
+      .site-footer { display: none !important; }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.5;
+        padding: 0 !important;
+      }
+
+      .ws-wrapper {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      /* ── Header block ── */
+      .nx-header {
+        border-left: 4pt solid #000 !important;
+        page-break-inside: avoid;
+        margin-bottom: 12pt !important;
+      }
+      .nx-kw {
+        background: #000 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sec {
+        background: #333 !important;
+        color: #fff !important;
+        font-size: 22pt !important;
+        padding: 10pt 14pt !important;
+      }
+      .nx-sub {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 13pt !important;
+        padding: 7pt 14pt !important;
+      }
+
+      /* ── Card block ── */
+      .nx-card {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+        border-bottom: 3pt solid #000 !important;
+        border-radius: 0 !important;
+        padding: 12pt 14pt 12pt 18pt !important;
+        page-break-inside: avoid;
+      }
+
+      .nx-card h2 {
+        color: #000 !important;
+        font-size: 13pt !important;
+        border-bottom: 1pt solid #ccc;
+        padding-bottom: 3pt;
+        margin: 14pt 0 8pt 0 !important;
+      }
+      .nx-card h3 {
+        color: #000 !important;
+        font-size: 10pt !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5pt;
+        background: #eee;
+        padding: 3pt 6pt !important;
+        margin: 10pt 0 5pt 0 !important;
+      }
+      .nx-card p,
+      .nx-card li,
+      .nx-card ul,
+      .nx-card ol { color: #000 !important; }
+      .nx-card strong { color: #000 !important; }
+      .nx-card code {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        font-size: 9pt !important;
+        padding: 1pt 4pt !important;
+      }
+
+      /* ── Section ── */
+      .ws-section {
+        page-break-inside: avoid;
+        margin-bottom: 16pt !important;
+      }
+
+      /* ── Fill-in blanks ── */
+      .ws-blank {
+        border-bottom: 1.5pt solid #000 !important;
+        min-width: 120pt !important;
+        height: 13pt !important;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+
+      /* ── Key question ── */
+      .ws-key-question {
+        border-left: 3pt solid #333 !important;
+        background: #f5f5f5 !important;
+        padding: 6pt 10pt !important;
+        margin: 8pt 0 !important;
+        color: #000 !important;
+      }
+      .ws-key-question strong { color: #000 !important; }
+
+      /* ── Section intro ── */
+      .ws-section-intro {
+        color: #444 !important;
+        border-left: 2pt solid #999 !important;
+      }
+
+      /* ── Answer lines ── */
+      .ws-answer-line {
+        border-bottom: 1pt solid #bbb !important;
+        min-height: 36pt;
+      }
+
+      .ws-concept-q {
+        color: #000 !important;
+        border-bottom: 1pt solid #ccc !important;
+        min-height: 42pt;
+      }
+
+      /* ── Fill table ── */
+      .ws-table {
+        font-size: 9.5pt !important;
+      }
+      .ws-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1pt solid #999 !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table td {
+        color: #000 !important;
+        border: 1pt solid #ccc !important;
+        padding: 5pt 8pt !important;
+      }
+      .ws-table .ws-answer-cell {
+        border-left: 1pt solid #ccc !important;
+      }
+      .ws-table code {
+        background: #eee !important;
+        color: #000 !important;
+        font-size: 8.5pt !important;
+      }
+
+      /* ── Footer callout ── */
+      .ws-footer-callout {
+        background: #eee !important;
+        border: 1.5pt solid #000 !important;
+        color: #000 !important;
+        padding: 10pt 14pt !important;
+      }
+      .ws-footer-callout strong { color: #000 !important; }
+
+      /* ── Tool versions ── */
+      .ws-tool-versions { color: #000 !important; }
+      .ws-tool-version-item code {
+        background: #eee !important;
+        color: #000 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="ws-wrapper">
+
+  <!-- ── PAGE HEADER ─────────────────────────────────────────── -->
+  <div class="nx-header" style="--accent: #4169E1; margin-bottom: 30px;">
+    <div class="nx-header-top">
+      <div class="nx-kw">IS3513</div>
+      <div class="nx-sec">Module 1 Study Worksheet</div>
+    </div>
+    <div class="nx-sub">Threat Intelligence &amp; Reconnaissance &bull; Chapters 1 &amp; 2 &bull; Labs 1.1, 1.2, 1.3 &bull; Weeks 1&ndash;3</div>
+  </div>
+
+  <!-- How to Use -->
+  <div class="ws-section">
+    <div class="nx-card nx-card--sym" style="--accent: #4169E1;">
+      <div class="nx-callout nx-blue" style="--callout-color:#4169E1; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 1 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 1: THE FOUNDATIONS ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">The Foundations</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+
+      <h3>The CIA Triad</h3>
+      <ul>
+        <li>Confidentiality</li>
+        <li>Integrity</li>
+        <li>Availability</li>
+        <li>Non-repudiation (the unofficial fourth pillar)</li>
+      </ul>
+
+      <h3>Core Security Concepts</h3>
+      <ul>
+        <li>Threat</li>
+        <li>Vulnerability</li>
+        <li>Risk</li>
+        <li>Exploit</li>
+        <li>Zero-day attack</li>
+        <li>Attack surface</li>
+        <li>Attack vector vs. threat vector</li>
+        <li>Indicators of Compromise (IoCs)</li>
+      </ul>
+
+      <h3>AAA Framework</h3>
+      <ul>
+        <li>Authentication &mdash; proving who you are</li>
+        <li>Authorization &mdash; what you&rsquo;re allowed to do</li>
+        <li>Accounting &mdash; logging what you did</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: KNOW YOUR ADVERSARIES ───────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Know Your Adversaries</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+
+      <h3>Threat Actor Types</h3>
+      <ul>
+        <li>Script kiddie &mdash; motivation, capability, typical attacks</li>
+        <li>Hacktivist &mdash; motivation, typical targets</li>
+        <li>Organized crime &mdash; motivation, business model</li>
+        <li>Nation-state actor / Advanced Persistent Threat (APT) &mdash; characteristics, dwell time</li>
+        <li>Insider threat &mdash; why it&rsquo;s harder to detect than external threats</li>
+        <li>Competitor &mdash; corporate espionage motivations</li>
+      </ul>
+
+      <h3>Hacker Classifications</h3>
+      <ul>
+        <li>White hat &mdash; authorized, ethical</li>
+        <li>Black hat &mdash; malicious, unauthorized</li>
+        <li>Gray hat &mdash; unauthorized but not malicious; ethical ambiguity</li>
+        <li>Bug bounty programs &mdash; how they fit in</li>
+        <li>Responsible disclosure vs. full disclosure</li>
+      </ul>
+
+      <h3>Attack Categories</h3>
+      <ul>
+        <li>Target of opportunity vs. targeted attack &mdash; what&rsquo;s the difference?</li>
+        <li>Active attack vs. passive attack</li>
+        <li>Insider attack vs. outsider attack</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: MALWARE & ATTACK TYPES ──────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF2641;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Malware &amp; Attack Types</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF2641;">
+
+      <h3>Malware Categories</h3>
+      <ul>
+        <li>Virus &mdash; requires host file, user action to spread</li>
+        <li>Worm &mdash; self-replicating, no user action needed</li>
+        <li>Trojan &mdash; disguised as legitimate software</li>
+        <li>Ransomware &mdash; encryption, extortion, why modern versions are hard to reverse</li>
+        <li>Rootkit &mdash; hides at OS/kernel level</li>
+        <li>Spyware &mdash; monitors user activity</li>
+        <li>Keylogger &mdash; captures keystrokes</li>
+        <li>RAT (Remote Access Trojan) &mdash; persistent backdoor</li>
+        <li>Botnet &mdash; network of compromised systems</li>
+        <li>Logic bomb &mdash; triggered by condition</li>
+        <li>Fileless malware &mdash; lives in memory, no files on disk</li>
+      </ul>
+
+      <div class="ws-key-question"><strong>Key question:</strong> What is the PRIMARY difference between a virus and a worm?</div>
+
+      <h3>Social Engineering Attacks</h3>
+      <ul>
+        <li>Phishing &mdash; mass email, generic targets</li>
+        <li>Spear phishing &mdash; targeted at specific individual</li>
+        <li>Whaling &mdash; targeting executives</li>
+        <li>Business Email Compromise (BEC) &mdash; impersonating CEO, wire fraud</li>
+        <li>Vishing &mdash; voice phishing (phone calls)</li>
+        <li>Smishing &mdash; SMS phishing</li>
+        <li>Pretexting &mdash; fabricated scenario to extract info</li>
+        <li>Baiting &mdash; leaving infected USB drives</li>
+        <li>Tailgating / piggybacking &mdash; following through secure doors</li>
+        <li>Shoulder surfing &mdash; watching someone enter credentials</li>
+        <li>Dumpster diving &mdash; searching trash for sensitive info</li>
+        <li>Watering hole attack &mdash; compromising sites your target visits</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: SECURITY PRINCIPLES ────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Security Principles</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <p class="ws-section-intro">These aren&rsquo;t just definitions &mdash; understand WHY each principle matters.</p>
+
+      <h3>Core Principles</h3>
+      <ul>
+        <li>Least privilege &mdash; minimum access necessary</li>
+        <li>Separation of duties &mdash; no single person controls entire process</li>
+        <li>Defense in depth / layered security &mdash; multiple overlapping controls</li>
+        <li>Need to know &mdash; access based on job requirements</li>
+        <li>Implicit deny / default deny &mdash; if not explicitly allowed, it&rsquo;s denied</li>
+        <li>Zero Trust &mdash; never trust, always verify; validate every request</li>
+        <li>Open design &mdash; security shouldn&rsquo;t depend on secrecy of mechanism</li>
+        <li>Security through obscurity &mdash; why it fails as primary defense</li>
+        <li>Fail-safe / fail-secure &mdash; system fails to secure state</li>
+        <li>Due diligence &mdash; research before acting</li>
+        <li>Due care &mdash; acting responsibly with what you know</li>
+      </ul>
+
+      <h3>The Protection Equation</h3>
+      <p>Protection = <span class="ws-blank">&nbsp;</span> + <span class="ws-blank">&nbsp;</span> + <span class="ws-blank">&nbsp;</span></p>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: SECURITY MODELS & FRAMEWORKS ────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00BCD4;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Security Models &amp; Frameworks</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00BCD4;">
+
+      <h3>Access Control Models</h3>
+      <ul>
+        <li>Bell-LaPadula &mdash; confidentiality focused
+          <br><em>Rules: &ldquo;No read <span class="ws-blank" style="min-width:80px;">&nbsp;</span>, no write <span class="ws-blank" style="min-width:80px;">&nbsp;</span>&rdquo;</em>
+        </li>
+        <li>Biba &mdash; integrity focused
+          <br><em>Which CIA element does Biba primarily protect? <span class="ws-blank" style="min-width:120px;">&nbsp;</span></em>
+        </li>
+        <li>Clark-Wilson &mdash; integrity through well-formed transactions</li>
+      </ul>
+
+      <h3>Security Controls — By Function</h3>
+      <ul>
+        <li>Preventive &mdash; stops attacks before they happen</li>
+        <li>Detective &mdash; identifies attacks in progress or after</li>
+        <li>Corrective &mdash; fixes damage after attack</li>
+        <li>Deterrent &mdash; discourages attacks</li>
+        <li>Compensating &mdash; alternative when primary control isn&rsquo;t feasible</li>
+      </ul>
+
+      <h3>Security Controls — By Category</h3>
+      <ul>
+        <li>Administrative / managerial &mdash; policies, procedures, training</li>
+        <li>Technical / logical &mdash; firewalls, encryption, access controls</li>
+        <li>Physical &mdash; locks, guards, cameras, fences</li>
+      </ul>
+
+      <h3>Frameworks</h3>
+      <ul>
+        <li>Kill chain &mdash; sequential steps from recon to objective</li>
+        <li>MITRE ATT&amp;CK &mdash; knowledge base of adversary tactics and techniques</li>
+        <li>NIST Cybersecurity Framework &mdash; five core functions:
+          <br><span style="font-size:14px;">1. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          2. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          3. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          4. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          5. <span class="ws-blank" style="min-width:90px;">&nbsp;</span></span>
+        </li>
+        <li>Diamond Model &mdash; adversary, capability, infrastructure, victim</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: RECONNAISSANCE ─────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #FF9F1C;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Reconnaissance Concepts</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #FF9F1C;">
+
+      <h3>Types of Reconnaissance</h3>
+      <ul>
+        <li>Passive reconnaissance &mdash; no direct interaction with target</li>
+        <li>Active reconnaissance &mdash; direct interaction, detectable</li>
+        <li>Footprinting &mdash; gathering info about target organization</li>
+        <li>Enumeration &mdash; extracting specific info (users, shares, services)</li>
+        <li>Banner grabbing &mdash; identifying service versions</li>
+        <li>OSINT (Open Source Intelligence) &mdash; publicly available info</li>
+      </ul>
+
+      <h3>Reconnaissance Techniques</h3>
+      <ul>
+        <li>WHOIS lookups &mdash; domain registration info</li>
+        <li>DNS reconnaissance &mdash; zone transfers, record enumeration</li>
+        <li>Google dorking &mdash; advanced search operators to find exposed info</li>
+        <li>Shodan &mdash; search engine for internet-connected devices</li>
+        <li>Metadata analysis &mdash; extracting info from document properties</li>
+        <li>Social media mining &mdash; OSINT from public profiles</li>
+      </ul>
+
+      <h3>Key Terms</h3>
+      <ul>
+        <li>CVE (Common Vulnerabilities and Exposures) &mdash; standardized vulnerability IDs</li>
+        <li>Exploit-DB &mdash; database of public exploits</li>
+        <li>Attack surface &mdash; all points where attacker can try to enter</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── SECTION 7: LAB KNOWLEDGE ───────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #00D26A;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Lab Knowledge</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #00D26A;">
+      <p class="ws-section-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+
+      <h3>Linux System Commands</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>What You Need</th><th>Command</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kernel version only</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Kernel version + release + architecture</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Distribution release info</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Network interfaces and IP addresses</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Default gateway</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>DNS server configuration file</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>VirtualBox NAT default gateway IP</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Nmap Flags</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Purpose</th><th>Flag</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Service version detection</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Default NSE scripts</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Aggressive scan (OS + version + scripts + traceroute)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>What does &ldquo;filtered&rdquo; port status mean?</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>scanme.nmap.org Results</h3>
+      <p class="ws-section-intro">Record your actual findings from Lab 1.2:</p>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Finding</th><th>Your Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SSH version (port 22)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Apache version (port 80)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>nping-echo port number</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>HTTP page title (script scan)</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Service on port 31337</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Other Tools</h3>
+      <table class="ws-table">
+        <thead>
+          <tr><th>Question</th><th>Answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>DIRB default wordlist path</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Words in common.txt</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>enum4linux flag for RID cycling</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Purpose of banner grabbing</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Searchsploit database queries</td><td class="ws-answer-cell"></td></tr>
+          <tr><td>Difference: active vs. passive recon</td><td class="ws-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Tool Versions (Your System)</h3>
+      <div class="ws-tool-versions">
+        <div class="ws-tool-version-item"><code>nmap</code> <span class="ws-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="ws-tool-version-item"><code>nikto</code> <span class="ws-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="ws-tool-version-item"><code>dirb</code> <span class="ws-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="ws-tool-version-item"><code>enum4linux</code> <span class="ws-blank" style="min-width:100px;">&nbsp;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 8: PROFESSIONAL APPLICATION ────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #7B68EE;">
+      <p class="ws-section-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+
+      <h3>Professional Ethics</h3>
+      <div class="ws-concept-q"><strong>1.</strong> What must you verify FIRST before conducting any reconnaissance against a target?</div>
+      <div class="ws-concept-q"><strong>2.</strong> True or False: You may exceed your authorized scope if you discover critical vulnerabilities. Explain.</div>
+      <div class="ws-concept-q"><strong>3.</strong> You discover exposed customer PII during an engagement. What&rsquo;s the appropriate action?</div>
+      <div class="ws-concept-q"><strong>4.</strong> What&rsquo;s the difference between responsible disclosure and full disclosure?</div>
+
+      <h3>Communication</h3>
+      <div class="ws-concept-q"><strong>5.</strong> How would you explain an outdated Apache vulnerability to a non-technical CTO?</div>
+      <div class="ws-concept-q"><strong>6.</strong> A client can only fix 2 of 5 findings this quarter. What criteria help prioritize?</div>
+
+      <h3>Purple Team Thinking</h3>
+      <div class="ws-concept-q"><strong>7.</strong> You find an outdated web server. Red team perspective: how would you exploit it? Blue team: what&rsquo;s the fix?</div>
+      <div class="ws-concept-q"><strong>8.</strong> A website reveals employee email format and leadership names. Red: how is this useful? Blue: what should change?</div>
+      <div class="ws-concept-q"><strong>9.</strong> How can the same reconnaissance tools serve both attackers and defenders?</div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 9: CONCEPT CHECK ───────────────────────────── -->
+  <div class="ws-section">
+    <div class="nx-header" style="--accent: #4169E1;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card" style="--accent: #4169E1;">
+      <p class="ws-section-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+
+      <div class="ws-concept-q"><strong>1.</strong> Explain the relationship between threats, vulnerabilities, and risks.</div>
+      <div class="ws-concept-q"><strong>2.</strong> Why is data typically more valuable than the hardware storing it?</div>
+      <div class="ws-concept-q"><strong>3.</strong> What makes APTs more dangerous than script kiddies? (Think: resources, patience, sophistication)</div>
+      <div class="ws-concept-q"><strong>4.</strong> Why are insider threats harder to detect than external threats?</div>
+      <div class="ws-concept-q"><strong>5.</strong> A bank requires two employees to authorize large transfers. What principle? Why effective?</div>
+      <div class="ws-concept-q"><strong>6.</strong> In Bell-LaPadula, can a Secret user read Top Secret? Write to Unclassified? Why?</div>
+      <div class="ws-concept-q"><strong>7.</strong> What is Zero Trust and why does it matter in modern networks?</div>
+      <div class="ws-concept-q"><strong>8.</strong> What are the five NIST CSF core functions?</div>
+      <div class="ws-concept-q"><strong>9.</strong> What&rsquo;s the primary difference between a virus and a worm?</div>
+      <div class="ws-concept-q"><strong>10.</strong> Why is security through obscurity unreliable as a primary defense?</div>
+
+      <div class="ws-footer-callout" style="margin-top: 20px;">
+        <strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 1 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /ws-wrapper -->
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>
