@@ -456,7 +456,7 @@ def render_intro(data):
     sec_text = ".".join(lab_id_parts)   # e.g. "2.3"
 
     accent = "#7B68EE" if is_engagement else "#4169E1"
-    nav_src = f'{ASSETS}/nav.js{"?context=lab" if is_engagement else ""}'
+    nav_src = f'{ASSETS}/nav.js'
 
     inner = f'    <p class="nx-module-label">{h(meta["module"])}</p>\n\n'
     inner += f'    <h2>Overview</h2>\n    <p>{h(intro["overview"])}</p>\n\n'

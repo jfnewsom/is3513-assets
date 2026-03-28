@@ -2,12 +2,22 @@
   const BASE = 'https://jfnewsom.github.io/is3513-assets/pages';
   const S = BASE + '/support';
 
-  const params = new URLSearchParams(window.location.search);
-  const isLab    = params.get('context') === 'lab';
-  const isModule = params.get('context') === 'module';
+  // ── Context detection (mirrors IS2053 behavior) ──────────────
+  // Primary gate: iframe detection.
+  // Assignment pages (labs, reading, exams, module overviews) are
+  // embedded in Canvas as plain iframes — they get no nav at all.
+  // Support pages embedded in Canvas use ?context=support in the
+  // iframe src to opt into the nav.
+  // Direct URL access (student navigates to the page) gets full nav.
+  const inIframe = window.self !== window.top;
+  const ctx = new URLSearchParams(window.location.search).get('context');
 
-  // Module overview context — no nav at all
-  if (isModule) return;
+  // In a Canvas iframe without ?context=support → silent exit, no nav
+  if (inIframe && ctx !== 'support') return;
+
+  // IS3513-specific: reference docs linked from engagement labs
+  // open in a new tab with ?context=lab — show the compact lab nav.
+  const isLab = !inIframe && ctx === 'lab';
 
   /* ── Google Fonts ───────────────────────────────────────────── */
   const fontLink = document.createElement('link');
