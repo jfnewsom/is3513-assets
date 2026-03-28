@@ -3,13 +3,12 @@
     "labId": "4_2",
     "title": "Linux Password Cracking",
     "labType": "foundation",
-    "module": "Module 4: Authentication &#38; Access Control",
+    "module": "Module 4: Threats &#38; Attacks",
     "client": null,
     "chapters": [
       "Chapter 15 &#8212; Types of Attacks",
       "Chapter 16 &#8212; Security Tools"
     ],
-    "headerSvg": "Lab4_2_Header.svg",
     "screenshotStart": 11
   },
   "intro": {
@@ -34,6 +33,12 @@
       "Identify shared account and service account security risks"
     ],
     "callouts": [
+      {
+        "type": "tip",
+        "title": "Save For Lab 4.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. You should have 10 screenshots from Lab 4.1. This week adds 9 more."
+      },
       {
         "type": "characterQuote",
         "character": "Elena Vasquez",
@@ -80,7 +85,6 @@
     {
       "number": 1,
       "title": "Hash File Setup &#38; Format Analysis",
-      "altText": "Checkpoint_4_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -188,7 +192,6 @@
     {
       "number": 2,
       "title": "John the Ripper Attack",
-      "altText": "Checkpoint_4_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -323,7 +326,6 @@
     {
       "number": 3,
       "title": "Hashcat Attack",
-      "altText": "Checkpoint_4_2_3.svg",
       "content": [
         {
           "type": "narrative",

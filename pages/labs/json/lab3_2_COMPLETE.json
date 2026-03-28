@@ -10,7 +10,6 @@
       "Chapter 13 &#8212; IDS and Network Security (partial)",
       "Chapter 18 &#8212; Cloud Computing"
     ],
-    "headerSvg": "Lab3_2_Header.svg",
     "screenshotStart": 7
   },
   "intro": {
@@ -90,7 +89,6 @@
     {
       "number": 1,
       "title": "Install Wireshark and Identify Interfaces",
-      "altText": "Checkpoint_3_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -198,7 +196,6 @@
     {
       "number": 2,
       "title": "Learn Capture and Display Filters",
-      "altText": "Checkpoint_3_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -341,7 +338,6 @@
     {
       "number": 3,
       "title": "Protocol Cataloging Exercise",
-      "altText": "Checkpoint_3_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -478,7 +474,6 @@
     {
       "number": 4,
       "title": "Advanced Analysis Techniques",
-      "altText": "Checkpoint_3_2_4.svg",
       "content": [
         {
           "type": "narrative",
@@ -661,7 +656,6 @@
     {
       "number": 5,
       "title": "Training PCAP Analysis",
-      "altText": "Checkpoint_3_2_5.svg",
       "content": [
         {
           "type": "narrative",

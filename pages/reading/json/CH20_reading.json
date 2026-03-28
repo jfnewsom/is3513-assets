@@ -1,0 +1,21 @@
+{
+  "chapter": 20,
+  "title": "Risk Management",
+  "module": "Module 5: Infrastructure, Risk &#38; Resilience",
+  "headerSvg": "Chapter_20_Reading_Header.svg",
+  "assignment": "full chapter (~75 minutes)",
+  "partial": false,
+  "readSections": [
+    "Risk Management Concepts",
+    "Risk Identification",
+    "Risk Assessment Methodologies",
+    "Qualitative vs. Quantitative Risk Analysis",
+    "Risk Mitigation Strategies",
+    "Risk Acceptance and Transfer",
+    "Business Continuity and Disaster Recovery",
+    "RTO and RPO"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>RTO and RPO</strong> and <strong>Qualitative vs. Quantitative Risk Analysis</strong>. These are Security+ exam staples and the analytical framework for Lab 5.2.",
+  "secplus": "Domain 5.2 (Risk Management Processes), Domain 5.3 (Risk Mitigation Strategies), Domain 3.4 (Resilience and Recovery)"
+}

@@ -9,7 +9,6 @@
       "Chapter 20 — Risk Management",
       "Chapter 21 — Change Management"
     ],
-    "headerSvg": "Lab5_2_Header.svg",
     "screenshotStart": 11
   },
   "intro": {
@@ -34,9 +33,10 @@
     ],
     "callouts": [
       {
-        "type": "saveForLab",
-        "folderName": "Lab5-Screenshots",
-        "text": "This is Week 2 of a 3-week module. Save all work to your Lab5-Screenshots folder. You’ll compile these into your Lab 5.3 Risk & Vulnerability Assessment Report next week."
+        "type": "tip",
+        "title": "Save For Lab 5.3",
+        "icon": "folder",
+        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module5_Screenshots</code> folder. You should have screenshots 01&#8211;10 from Lab 5.1. This week adds 8 more."
       },
       {
         "type": "warning",
@@ -74,7 +74,6 @@
     {
       "number": 1,
       "title": "CVSS Scoring Workshop",
-      "altText": "Checkpoint_5_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -166,7 +165,6 @@
     {
       "number": 2,
       "title": "Business Impact Assessment",
-      "altText": "Checkpoint_5_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -272,7 +270,6 @@
     {
       "number": 3,
       "title": "Risk Matrix Construction",
-      "altText": "Checkpoint_5_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -364,7 +361,6 @@
     {
       "number": 4,
       "title": "Prioritization Framework",
-      "altText": "Checkpoint_5_2_4.svg",
       "content": [
         {
           "type": "narrative",

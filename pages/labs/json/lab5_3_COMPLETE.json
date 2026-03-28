@@ -8,8 +8,7 @@
     "chapters": [
       "Chapter 10 — Infrastructure Security",
       "Chapter 20 — Risk Management"
-    ],
-    "headerSvg": "Lab5_3_Header.svg"
+    ]
   },
   "intro": {
     "overview": "Culmination of three-week LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one week; needs investor-ready report.",
@@ -132,7 +131,6 @@
     {
       "number": 1,
       "title": "Timesheet Documentation",
-      "altText": "Checkpoint_5_3_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -177,7 +175,6 @@
     {
       "number": 2,
       "title": "Internal Runbook",
-      "altText": "Checkpoint_5_3_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -223,7 +220,6 @@
     {
       "number": 3,
       "title": "Executive Summary",
-      "altText": "Checkpoint_5_3_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -275,7 +271,6 @@
     {
       "number": 4,
       "title": "Technical Findings",
-      "altText": "Checkpoint_5_3_4.svg",
       "content": [
         {
           "type": "narrative",
@@ -348,7 +343,6 @@
     {
       "number": 5,
       "title": "Remediation Roadmap",
-      "altText": "Checkpoint_5_3_5.svg",
       "content": [
         {
           "type": "narrative",
@@ -406,7 +400,6 @@
     {
       "number": 6,
       "title": "Final Assembly",
-      "altText": "Checkpoint_5_3_6.svg",
       "content": [
         {
           "type": "narrative",

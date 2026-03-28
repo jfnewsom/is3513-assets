@@ -1,0 +1,29 @@
+{
+  "chapter": 13,
+  "title": "IDS and Network Security",
+  "module": "Module 3: Networks, Cloud &#38; Defense",
+  "headerSvg": "Chapter_13_Reading_Header.svg",
+  "assignment": "intro sections only (~25 minutes)",
+  "partial": true,
+  "partialNote": "This is a <strong>partial chapter</strong> (~15 pages). Read only the sections listed below. The remaining sections are covered in depth in IS3523 (Security Architecture).",
+  "readSections": [
+    "History of Intrusion Detection Systems",
+    "IDS Overview",
+    "IDS Models",
+    "Signatures",
+    "False Positives/Negatives",
+    "Network-Based IDSs",
+    "Host-Based IDSs",
+    "Intrusion Prevention Systems"
+  ],
+  "skipSections": [
+    "NIDS Tools",
+    "Network Security Monitoring",
+    "SIEM",
+    "DLP",
+    "Tools",
+    "Indicators of Compromise"
+  ],
+  "focusAreas": "Pay special attention to <strong>IDS Models</strong> and <strong>False Positives/Negatives</strong>. Understanding detection methodology helps you interpret the traffic patterns you&#8217;ll analyze in Lab 3.3.",
+  "secplus": "Domain 3.2 (Network Security Design), Domain 4.1 (Security Assessment Tools)"
+}

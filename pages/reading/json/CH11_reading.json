@@ -1,0 +1,21 @@
+{
+  "chapter": 11,
+  "title": "Authentication and Remote Access",
+  "module": "Module 2: Cryptography &#38; Authentication",
+  "headerSvg": "Chapter_11_Reading_Header.svg",
+  "assignment": "pages 359&#8211;416 (~90 minutes)",
+  "partial": false,
+  "readSections": [
+    "Authentication Concepts",
+    "Authentication Factors",
+    "Password-Based Authentication",
+    "Token-Based Authentication",
+    "Biometric Authentication",
+    "Multifactor Authentication",
+    "Remote Access Technologies",
+    "Single Sign-On (SSO)"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Authentication Factors</strong> and <strong>Multifactor Authentication</strong>. Understanding authentication weakness is foundational for the password-cracking work in Module 4.",
+  "secplus": "Domain 1.4 (Authentication Technologies), Domain 4.6 (Identity and Access Management)"
+}

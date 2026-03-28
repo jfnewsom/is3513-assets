@@ -155,8 +155,9 @@ def render_named_section(sec):
     if sec.get("button"):
         b = sec["button"]
         text_color = b.get("textColor", "#ffffff")
+        _tgt = ' target="_blank"' if b["href"].startswith("http") else ""
         parts.append(
-            f'    <a href="{b["href"]}" target="_blank" class="nx-btn" '
+            f'    <a href="{b["href"]}"{_tgt} class="nx-btn" '
             f'style="background: {b["color"]}; color: {text_color};">{b["label"]}</a>'
         )
 
@@ -247,8 +248,9 @@ def render_button_row(sec):
     btns = ""
     for b in sec["buttons"]:
         text_color = b.get("textColor", "#ffffff")
+        _tgt = ' target="_blank"' if b["href"].startswith("http") else ""
         btns += (
-            f'      <a href="{b["href"]}" target="_blank" class="nx-btn" '
+            f'      <a href="{b["href"]}"{_tgt} class="nx-btn" '
             f'style="background: {b["color"]}; color: {text_color};">{b["label"]}</a>\n'
         )
     return (
@@ -302,6 +304,7 @@ def render_acknowledgment_box(sec):
     )
     b = sec["button"]
     text_color = b.get("textColor", "#ffffff")
+    _tgt = ' target="_blank"' if b["href"].startswith("http") else ""
     return (
         f'  <div class="nx-ack-box" style="--ack-color: {accent};">\n'
         f'    <div class="nx-ack-box__heading">{heading}</div>\n'
@@ -309,7 +312,7 @@ def render_acknowledgment_box(sec):
         f'{items_html}'
         f'{warn_html}'
         f'    </div>\n'
-        f'    <a href="{b["href"]}" target="_blank" class="nx-btn" '
+        f'    <a href="{b["href"]}"{_tgt} class="nx-btn" '
         f'style="background: {b["color"]}; color: {text_color};">{b["label"]}</a>\n'
         f'  </div>'
     )

@@ -9,7 +9,6 @@
       "Chapter 1 — Introduction to Security",
       "Chapter 2 — General Security Concepts"
     ],
-    "headerSvg": "Lab1_1_Header.svg",
     "screenshotStart": 1
   },
   "intro": {
@@ -77,7 +76,6 @@
     {
       "number": 1,
       "title": "Download and Install VirtualBox",
-      "altText": "Checkpoint_1_1_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -158,7 +156,6 @@
     {
       "number": 2,
       "title": "Download Kali Linux ISO",
-      "altText": "Checkpoint_1_1_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -247,7 +244,6 @@
     {
       "number": 3,
       "title": "Create and Configure VM",
-      "altText": "Checkpoint_1_1_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -353,7 +349,6 @@
     {
       "number": 4,
       "title": "Install Kali Linux",
-      "altText": "Checkpoint_1_1_4.svg",
       "content": [
         {
           "type": "narrative",
@@ -458,7 +453,6 @@
     {
       "number": 5,
       "title": "Install and Verify Docker",
-      "altText": "Checkpoint_1_1_5.svg",
       "content": [
         {
           "type": "narrative",
@@ -576,7 +570,6 @@
     {
       "number": 6,
       "title": "System Verification",
-      "altText": "Checkpoint_1_1_6.svg",
       "content": [
         {
           "type": "narrative",

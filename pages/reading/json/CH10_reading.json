@@ -1,0 +1,20 @@
+{
+  "chapter": 10,
+  "title": "Infrastructure Security",
+  "module": "Module 5: Infrastructure, Risk &#38; Resilience",
+  "headerSvg": "Chapter_10_Reading_Header.svg",
+  "assignment": "pages 311&#8211;352 (~75 minutes)",
+  "partial": false,
+  "readSections": [
+    "Infrastructure Security Concepts",
+    "Securing Network Devices",
+    "Securing Servers",
+    "Virtualization Security",
+    "Physical Security",
+    "Defense in Depth",
+    "Resilience and Recovery"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Defense in Depth</strong> and <strong>Virtualization Security</strong>. The Docker-based lab environment in Module 5 is a direct application of these concepts.",
+  "secplus": "Domain 3.3 (Secure Infrastructure), Domain 3.4 (Resilience and Recovery), Domain 5.2 (Risk Management)"
+}

@@ -1,19 +1,18 @@
 {
   "type": "support_page",
-  "title": "Kali VM Setup \u2013 IS3513",
-  "htmlTitle": "Kali VM Setup \u2013 IS3513",
+  "title": "Kali VM Setup – IS3513",
+  "htmlTitle": "Kali VM Setup – IS3513",
   "accentColor": "#7B68EE",
-  "headerSvg": "Kali_VM_Setup_Header.svg",
   "sections": [
     {
       "type": "intro",
-      "html": "Your Kali Linux VM is your security workstation for the entire semester. This page covers quick-reference info\u2014<strong style=\"color:#ffffff;\">Lab 1.1 has the full step-by-step instructions</strong>."
+      "html": "Your Kali Linux VM is your security workstation for the entire semester. This page covers quick-reference info—<strong style=\"color:#ffffff;\">Lab 1.1 has the full step-by-step instructions</strong>."
     },
     {
       "type": "callout_bar",
       "color": "#00D26A",
       "label": "Officially Supported:",
-      "html": " VirtualBox with Kali Linux installed from ISO. Other hypervisors (VMware, Parallels, UTM) may work but you\u2019re responsible for your own troubleshooting."
+      "html": " VirtualBox with Kali Linux installed from ISO. Other hypervisors (VMware, Parallels, UTM) may work but you’re responsible for your own troubleshooting."
     },
     {
       "type": "platform_cards",
@@ -26,7 +25,7 @@
             "VirtualBox 7.x",
             "Kali ISO (64-bit)"
           ],
-          "status": "\u2713 Fully supported",
+          "status": "✓ Fully supported",
           "statusColor": "#00D26A"
         },
         {
@@ -35,7 +34,7 @@
             "VirtualBox 7.x",
             "Kali ISO (64-bit)"
           ],
-          "status": "\u2713 Fully supported",
+          "status": "✓ Fully supported",
           "statusColor": "#00D26A"
         },
         {
@@ -44,7 +43,7 @@
             "VirtualBox 7.1+ (ARM64 beta)",
             "Kali ISO (ARM64)"
           ],
-          "status": "\u26a0 See Lab 1.1 notes",
+          "status": "⚠ See Lab 1.1 notes",
           "statusColor": "#FF9F1C"
         },
         {
@@ -53,7 +52,7 @@
             "VirtualBox 7.1+ (ARM64 beta)",
             "Kali ISO (ARM64)"
           ],
-          "status": "\u26a0 See Lab 1.1 notes",
+          "status": "⚠ See Lab 1.1 notes",
           "statusColor": "#FF9F1C"
         }
       ]
@@ -63,7 +62,7 @@
       "color": "#7B68EE",
       "label": "VM Naming Convention (Critical!)",
       "paragraphs": [
-        "Your VM must be named following this format\u2014it appears in your terminal prompt and verifies your work is yours:"
+        "Your VM must be named following this format—it appears in your terminal prompt and verifies your work is yours:"
       ],
       "code_block": "kali-lastname-studentID",
       "tip": "<strong style=\"color:#ffffff;\">Example:</strong> <code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00D26A;\">kali-smith-abc123</code>"
@@ -107,13 +106,13 @@
       "labelColor": "#4169E1",
       "buttons": [
         {
-          "label": "VirtualBox \u2192",
+          "label": "VirtualBox →",
           "href": "https://www.virtualbox.org/wiki/Downloads",
           "color": "#4169E1",
           "textColor": "#ffffff"
         },
         {
-          "label": "Kali ISO \u2192",
+          "label": "Kali ISO →",
           "href": "https://www.kali.org/get-kali/#kali-installer-images",
           "color": "#00D26A",
           "textColor": "#0A0E17"
@@ -123,7 +122,7 @@
     {
       "type": "callout_bar",
       "color": "#E63946",
-      "label": "VM Won\u2019t Start?",
+      "label": "VM Won’t Start?",
       "html": " Check that virtualization is enabled in your BIOS/UEFI settings. On Windows, you may also need to disable Hyper-V. See Lab 1.1 troubleshooting section or ask in Discord."
     },
     {

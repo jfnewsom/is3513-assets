@@ -9,7 +9,6 @@
       "Chapter 6 &#8212; Applied Cryptography",
       "Chapter 7 &#8212; Public Key Infrastructure"
     ],
-    "headerSvg": "Lab2_3_Header.svg",
     "screenshotStart": 18
   },
   "intro": {
@@ -162,7 +161,6 @@
     {
       "number": 1,
       "title": "Deploy Container and Diagnose",
-      "altText": "Checkpoint_2_3_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -316,7 +314,6 @@
     {
       "number": 2,
       "title": "Certificate Remediation",
-      "altText": "Checkpoint_2_3_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -497,7 +494,6 @@
     {
       "number": 3,
       "title": "Verification and Bonus Findings",
-      "altText": "Checkpoint_2_3_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -646,7 +642,6 @@
     {
       "number": 4,
       "title": "Compile Engagement Packet",
-      "altText": "Checkpoint_2_3_4.svg",
       "content": [
         {
           "type": "narrative",

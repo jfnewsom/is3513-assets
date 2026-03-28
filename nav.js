@@ -1,10 +1,13 @@
 (function () {
   const BASE = 'https://jfnewsom.github.io/is3513-assets/pages';
   const S = BASE + '/support';
-  const SC = BASE + '/scenario';
 
   const params = new URLSearchParams(window.location.search);
-  const isLab = params.get('context') === 'lab';
+  const isLab    = params.get('context') === 'lab';
+  const isModule = params.get('context') === 'module';
+
+  // Module overview context — no nav at all
+  if (isModule) return;
 
   /* ── Google Fonts ───────────────────────────────────────────── */
   const fontLink = document.createElement('link');
@@ -293,9 +296,9 @@
             <div class="nav-trigger">NEXUS World <span class="caret">&#9660;</span></div>
             <div class="nav-dropdown">
               <div class="drop-label">NEXUS World</div>
-              <a href="${SC}/NEXUS_Security.html"><span class="drop-dot nav-dd-purple"></span>NEXUS Security</a>
-              <a href="${SC}/Meet_The_Team.html"><span class="drop-dot nav-dd-purple"></span>Meet the Team</a>
-              <a href="${SC}/Our_Clients.html"><span class="drop-dot nav-dd-purple"></span>Our Clients</a>
+              <a href="${S}/NEXUS_Security.html"><span class="drop-dot nav-dd-purple"></span>NEXUS Security</a>
+              <a href="${S}/Meet_The_Team.html"><span class="drop-dot nav-dd-purple"></span>Meet the Team</a>
+              <a href="${S}/Our_Clients.html"><span class="drop-dot nav-dd-purple"></span>Our Clients</a>
             </div>
           </div>
 

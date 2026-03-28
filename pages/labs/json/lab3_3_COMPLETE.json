@@ -10,7 +10,6 @@
       "Chapter 13 &#8212; IDS and Network Security (partial)",
       "Chapter 18 &#8212; Cloud Computing"
     ],
-    "headerSvg": "Lab3_3_Header.svg",
     "screenshotStart": 20
   },
   "intro": {
@@ -135,7 +134,6 @@
     {
       "number": 1,
       "title": "Azure Connection &amp; Live Capture",
-      "altText": "Checkpoint_3_3_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -426,7 +424,6 @@
     {
       "number": 2,
       "title": "Traffic Analysis &amp; Finding Documentation",
-      "altText": "Checkpoint_3_3_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -557,7 +554,6 @@
     {
       "number": 3,
       "title": "Report Compilation &amp; Delivery",
-      "altText": "Checkpoint_3_3_3.svg",
       "content": [
         {
           "type": "narrative",

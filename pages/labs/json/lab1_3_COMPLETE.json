@@ -9,7 +9,6 @@
       "Chapter 1 &#8212; Introduction to Security",
       "Chapter 2 &#8212; General Security Concepts"
     ],
-    "headerSvg": "Lab1_3_Header.svg",
     "screenshotStart": 14
   },
   "intro": {
@@ -132,7 +131,6 @@
     {
       "number": 1,
       "title": "Deploy Brazos Container",
-      "altText": "Checkpoint_1_3_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -210,7 +208,6 @@
     {
       "number": 2,
       "title": "Full Reconnaissance Workflow",
-      "altText": "Checkpoint_1_3_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -315,7 +312,6 @@
     {
       "number": 3,
       "title": "Compile Engagement Packet",
-      "altText": "Checkpoint_1_3_3.svg",
       "content": [
         {
           "type": "narrative",

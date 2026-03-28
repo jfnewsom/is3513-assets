@@ -1,0 +1,20 @@
+{
+  "chapter": 6,
+  "title": "Applied Cryptography",
+  "module": "Module 2: Cryptography &#38; Authentication",
+  "headerSvg": "Chapter_6_Reading_Header.svg",
+  "assignment": "pages 148&#8211;180 (~60 minutes)",
+  "partial": false,
+  "readSections": [
+    "Cryptographic Concepts",
+    "Symmetric Encryption",
+    "Asymmetric Encryption",
+    "Hashing",
+    "Digital Signatures",
+    "Public Key Infrastructure (PKI)",
+    "Certificates and Certificate Authorities"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>PKI</strong> and <strong>Certificates</strong>. You&#8217;ll be generating and inspecting real certificates in Lab 2.2.",
+  "secplus": "Domain 1.4 (Cryptographic Solutions), Domain 4.6 (Cryptographic Protocols)"
+}

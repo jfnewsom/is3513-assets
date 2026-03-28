@@ -1,0 +1,19 @@
+{
+  "chapter": 2,
+  "title": "General Security Concepts",
+  "module": "Module 1: Threat Intelligence &#38; Reconnaissance",
+  "headerSvg": "Chapter_2_Reading_Header.svg",
+  "assignment": "pages 27&#8211;44 (~30 minutes)",
+  "partial": false,
+  "readSections": [
+    "Security Concepts",
+    "Security Principles",
+    "Security Policies",
+    "Types of Security Controls",
+    "Identification, Authentication, and Authorization",
+    "Cryptography Overview"
+  ],
+  "skipSections": [],
+  "focusAreas": "Pay special attention to <strong>Types of Security Controls</strong> and <strong>Identification, Authentication, and Authorization</strong>. These concepts underpin every module in this course.",
+  "secplus": "Domain 1.1 (Threat Actors), Domain 1.2 (Attack Vectors), Domain 2.1 (Security Concepts)"
+}

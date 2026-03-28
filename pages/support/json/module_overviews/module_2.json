@@ -7,8 +7,7 @@
   "chapters": "6 & 11",
   "client": "Gulf Coast Healthcare",
   "clientColor": "#00BCD4",
-  "headerSvg": "Module_2_Header.svg",
-  "overview": "Module 2 builds your cryptographic foundations. You'll understand how encryption protects data, how certificates establish trust, and how authentication systems verify identity\u2014then fix a real certificate problem on a healthcare client's patient portal.",
+  "overview": "Module 2 builds your cryptographic foundations. You'll understand how encryption protects data, how certificates establish trust, and how authentication systems verify identity—then fix a real certificate problem on a healthcare client's patient portal.",
   "weeks_breakdown": [
     {
       "weekLabel": "WEEK 4",
@@ -37,7 +36,7 @@
   ],
   "clientContext": {
     "label": "Client Context: Gulf Coast Healthcare Partners",
-    "body": "Patients are seeing browser security warnings when accessing the portal. Dr. Okonkwo is concerned about patient trust. Jennifer Walsh (CISO) needs the certificate issue diagnosed and fixed\u2014with documentation for HIPAA compliance records."
+    "body": "Patients are seeing browser security warnings when accessing the portal. Dr. Okonkwo is concerned about patient trust. Jennifer Walsh (CISO) needs the certificate issue diagnosed and fixed—with documentation for HIPAA compliance records."
   },
   "skills": {
     "left": [

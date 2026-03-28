@@ -7,7 +7,6 @@
   "chapters": "3 & 7",
   "client": "Alamo Industries",
   "clientColor": "#FF9F1C",
-  "headerSvg": "Module_4_Header.svg",
   "overview": "Module 4 is where you go on offense. You'll learn how vulnerabilities are discovered and exploited, practice controlled attacks in a safe lab environment, and then conduct a structured penetration test for a manufacturing client.",
   "weeks_breakdown": [
     {
@@ -55,7 +54,7 @@
   "notice": {
     "color": "#E63946",
     "colorRgb": "230, 57, 70",
-    "label": "\u26a0\ufe0f Offensive Techniques Module:",
+    "label": "⚠️ Offensive Techniques Module:",
     "body": "These skills are for authorized security assessments only. Never use password cracking tools without explicit written permission. Everything here is on NEXUS-authorized client systems."
   }
 }

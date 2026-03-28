@@ -9,7 +9,6 @@
       "Chapter 1 &#8212; Introduction to Security",
       "Chapter 2 &#8212; General Security Concepts"
     ],
-    "headerSvg": "Lab1_2_Header.svg",
     "screenshotStart": 7
   },
   "intro": {
@@ -86,7 +85,6 @@
     {
       "number": 1,
       "title": "nmap Network Scanning",
-      "altText": "Checkpoint_1_2_1.svg",
       "content": [
         {
           "type": "narrative",
@@ -199,7 +197,6 @@
     {
       "number": 2,
       "title": "netcat Banner Grabbing",
-      "altText": "Checkpoint_1_2_2.svg",
       "content": [
         {
           "type": "narrative",
@@ -304,7 +301,6 @@
     {
       "number": 3,
       "title": "dirb Directory Discovery",
-      "altText": "Checkpoint_1_2_3.svg",
       "content": [
         {
           "type": "narrative",
@@ -398,7 +394,6 @@
     {
       "number": 4,
       "title": "nikto Vulnerability Scanning",
-      "altText": "Checkpoint_1_2_4.svg",
       "content": [
         {
           "type": "narrative",
@@ -485,7 +480,6 @@
     {
       "number": 5,
       "title": "enum4linux SMB Enumeration",
-      "altText": "Checkpoint_1_2_5.svg",
       "content": [
         {
           "type": "narrative",
@@ -578,7 +572,6 @@
     {
       "number": 6,
       "title": "searchsploit Vulnerability Research",
-      "altText": "Checkpoint_1_2_6.svg",
       "content": [
         {
           "type": "narrative",
