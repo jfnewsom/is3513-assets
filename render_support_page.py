@@ -405,6 +405,25 @@ def render(data):
 
 # ── Entry point ────────────────────────────────────────────────────────────────
 
+# Canonical output filenames — must match existing repo filenames exactly.
+# home.json is excluded: Home.html is hand-coded, outside the renderer pipeline.
+SUPPORT_FILENAME_MAP = {
+    "citations":              "Citations.html",
+    "course_schedule":        "Course_Schedule.html",
+    "discord":                "Discord.html",
+    "engagement_packet_guide":"Engagement_Packet_Guide.html",
+    "genai_policy":           "GenAI_Policy.html",
+    "grading_info":           "Grading_Info.html",
+    "how_to_get_help":        "How_To_Get_Help.html",
+    "kali_vm_setup":          "Kali_VM_Setup.html",
+    "meet_the_team":          "Meet_The_Team.html",
+    "nexus_security":         "NEXUS_Security.html",
+    "our_clients":            "Our_Clients.html",
+    "screenshot_requirements":"Screenshot_Requirements.html",
+    "start_here":             "StartHere.html",
+    "textbook":               "Textbook.html",
+}
+
 def main():
     if len(sys.argv) == 3:
         src, dst = sys.argv[1], sys.argv[2]
@@ -419,11 +438,13 @@ def main():
         out_dir = os.path.join(base, "pages", "support")
         os.makedirs(out_dir, exist_ok=True)
         for src in sorted(glob.glob(os.path.join(src_dir, "*.json"))):
+            stem = os.path.splitext(os.path.basename(src))[0]
+            if stem not in SUPPORT_FILENAME_MAP:
+                print(f"Skipped: {stem}.json (not in SUPPORT_FILENAME_MAP)")
+                continue
             with open(src) as f:
                 data = json.load(f)
-            name = os.path.splitext(os.path.basename(src))[0]
-            # Capitalise to match existing filenames: discord → Discord
-            dst = os.path.join(out_dir, name[0].upper() + name[1:] + ".html")
+            dst = os.path.join(out_dir, SUPPORT_FILENAME_MAP[stem])
             with open(dst, "w") as f:
                 f.write(render(data))
             print(f"Rendered: {os.path.basename(dst)}")
