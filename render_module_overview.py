@@ -33,7 +33,6 @@ def shell(module_num, title, accent, body):
   <link rel="stylesheet" href="{CSS_PATH}">
 </head>
 <body>
-<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 
 <div class="nx-page">
 
@@ -58,6 +57,7 @@ def shell(module_num, title, accent, body):
 </div>
 
 </div>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>"""
 
@@ -157,8 +157,8 @@ def main():
         print(f"Rendered: {dst}")
     else:
         base    = os.path.dirname(os.path.abspath(__file__))
-        src_dir = os.path.join(base, "json", "module_overviews")
-        out_dir = os.path.join(base, "output", "modules")
+        src_dir = os.path.join(base, "pages", "support", "json", "module_overviews")
+        out_dir = os.path.join(base, "pages", "support")
         os.makedirs(out_dir, exist_ok=True)
         for src in sorted(glob.glob(os.path.join(src_dir, "module_*.json"))):
             with open(src) as f:

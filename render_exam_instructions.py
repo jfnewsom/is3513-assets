@@ -26,7 +26,6 @@ def shell(module_num, module_title, body):
   <link rel="stylesheet" href="{CSS_PATH}">
 </head>
 <body>
-<script src="{ASSETS}/nav.js"></script>
 
 <div class="nx-page">
 
@@ -51,6 +50,7 @@ def shell(module_num, module_title, body):
 </div>
 
 </div>
+<script src="{ASSETS}/nav.js"></script>
 </body>
 </html>"""
 
@@ -155,8 +155,8 @@ def main():
         print(f"Rendered: {dst}")
     else:
         base    = os.path.dirname(os.path.abspath(__file__))
-        src_dir = os.path.join(base, "json", "exam_instructions")
-        out_dir = os.path.join(base, "output", "exams")
+        src_dir = os.path.join(base, "pages", "support", "json", "exam_instructions")
+        out_dir = os.path.join(base, "pages", "support")
         os.makedirs(out_dir, exist_ok=True)
         for src in sorted(glob.glob(os.path.join(src_dir, "exam_module_*.json"))):
             with open(src) as f:

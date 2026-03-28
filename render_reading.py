@@ -120,6 +120,7 @@ def render(data):
 
 </div>
 
+<script src="{ASSETS}/nav.js"></script>
 </body>
 </html>"""
 

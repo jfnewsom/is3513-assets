@@ -850,6 +850,7 @@ def render(data):
 <h1 class="nx-sr-only">Lab {lab_num} &#8212; {title}</h1>
 
 {body}
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>"""
 

@@ -365,7 +365,6 @@ def shell(html_title, accent, keyword, secondary, subtitle, body):
   <link rel="stylesheet" href="{CSS_PATH}">
 </head>
 <body>
-<script src="{ASSETS}/nav.js"></script>
 
 <div class="nx-page">
 
@@ -390,6 +389,7 @@ def shell(html_title, accent, keyword, secondary, subtitle, body):
 </div>
 
 </div>
+<script src="{ASSETS}/nav.js"></script>
 </body>
 </html>"""
 
@@ -415,8 +415,8 @@ def main():
         print(f"Rendered: {dst}")
     else:
         base    = os.path.dirname(os.path.abspath(__file__))
-        src_dir = os.path.join(base, "json", "support_pages")
-        out_dir = os.path.join(base, "output", "support")
+        src_dir = os.path.join(base, "pages", "support", "json", "support_pages")
+        out_dir = os.path.join(base, "pages", "support")
         os.makedirs(out_dir, exist_ok=True)
         for src in sorted(glob.glob(os.path.join(src_dir, "*.json"))):
             with open(src) as f:
