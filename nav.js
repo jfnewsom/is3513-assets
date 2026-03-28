@@ -67,21 +67,11 @@
       letter-spacing: 0.02em;
       padding: 0 12px 0 0;
       margin-right: 4px;
-      border-right: 1px solid #e0e4ef;
       white-space: nowrap;
       flex-shrink: 0;
       transition: color 0.15s;
     }
-    #nexus-nav .nav-logo .logo-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #4169E1;
-      flex-shrink: 0;
-      transition: background 0.15s;
-    }
     #nexus-nav .nav-logo:hover { color: #4169E1; }
-    #nexus-nav .nav-logo:hover .logo-dot { background: #7b68ee; }
 
     /* ── Dropdown menus ── */
     #nexus-nav .nav-menu {
@@ -298,12 +288,19 @@
     return `<a href="${url}"><span class="drop-dot nav-dd-cyan"></span>${label}</a>`;
   }
 
-  /* ── Labs dropdown (direct browser only) ───────────────────── */
+  /* ── Modules dropdown (direct browser only) ───────────────────── */
   const L = BASE + '/labs/';
-  const labsDropdown = showFull ? `
+  const M = BASE + '/support/';
+  const modulesDropdown = showFull ? `
     <div class="nav-item">
-      <div class="nav-trigger">Labs <span class="caret">&#9660;</span></div>
+      <div class="nav-trigger">Modules <span class="caret">&#9660;</span></div>
       <div class="nav-dropdown">
+        <div class="drop-label">Module Overviews</div>
+        <a href="${M}Module_1.html"><span class="drop-dot nav-dd-purple"></span>Module 1 &mdash; Reconnaissance</a>
+        <a href="${M}Module_2.html"><span class="drop-dot nav-dd-purple"></span>Module 2 &mdash; Cryptography &amp; Auth</a>
+        <a href="${M}Module_3.html"><span class="drop-dot nav-dd-purple"></span>Module 3 &mdash; Networks &amp; Cloud</a>
+        <a href="${M}Module_4.html"><span class="drop-dot nav-dd-purple"></span>Module 4 &mdash; Threats &amp; Attacks</a>
+        <a href="${M}Module_5.html"><span class="drop-dot nav-dd-purple"></span>Module 5 &mdash; Risk &amp; Infrastructure</a>
         <div class="drop-label">Lab Assignments</div>
         <div class="drop-sub">Module 1 &mdash; Reconnaissance</div>
         ${link('Lab 1.1 &mdash; Kali Environment Setup',       L + 'Lab1_1_Kali_Environment_Setup.html')}
@@ -360,8 +357,7 @@
   if (isLab) {
     html = `
       <div class="nav-inner">
-        <a class="nav-logo" href="${S}/Home.html">
-          <span class="logo-dot"></span>NEXUS
+        <a class="nav-logo" href="${S}/Home.html">IS3513</a>
         </a>
         <div class="lab-nav">
           <span class="lab-back" onclick="history.back()">
@@ -373,7 +369,7 @@
             <a href="${S}/Engagement_Packet_Guide.html?context=lab">Engagement Packet Guide</a>
             <a href="${S}/GenAI_Policy.html?context=lab">GenAI Policy</a>
             <a href="${S}/Screenshot_Requirements.html?context=lab">Screenshot Requirements</a>
-            <a href="${S}/citations.html?context=lab">Citations</a>
+            <a href="${S}/Citations.html?context=lab">Citations</a>
           </div>
         </div>
         <a class="nav-discord" href="${S}/Discord.html?context=lab">Discord</a>
@@ -382,43 +378,30 @@
   } else {
     html = `
       <div class="nav-inner">
-        <a class="nav-logo" href="${S}/Home.html">
-          <span class="logo-dot"></span>IS3513 Home
+        <a class="nav-logo" href="${S}/Home.html">IS3513</a>
         </a>
         <div class="nav-menu">
 
           <div class="nav-item">
-            <div class="nav-trigger">Getting Started <span class="caret">&#9660;</span></div>
+            <div class="nav-trigger">Course Info <span class="caret">&#9660;</span></div>
             <div class="nav-dropdown">
               <div class="drop-label">Getting Started</div>
               <a href="${S}/StartHere.html"><span class="drop-dot nav-dd-green"></span>Start Here</a>
               <a href="${S}/Kali_VM_Setup.html"><span class="drop-dot nav-dd-green"></span>Kali VM Setup</a>
               <a href="${S}/Course_Schedule.html"><span class="drop-dot nav-dd-green"></span>Course Schedule</a>
               <a href="${S}/Textbook.html"><span class="drop-dot nav-dd-green"></span>Textbook Info</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <div class="nav-trigger">Policies &amp; Grading <span class="caret">&#9660;</span></div>
-            <div class="nav-dropdown">
-              <div class="drop-label">Policies &amp; Grading</div>
+              <div class="drop-label">Policies</div>
               <a href="${S}/Grading_Info.html"><span class="drop-dot nav-dd-yellow"></span>Grading Info</a>
               <a href="${S}/GenAI_Policy.html"><span class="drop-dot nav-dd-yellow"></span>GenAI Policy</a>
               <a href="${S}/How_To_Get_Help.html"><span class="drop-dot nav-dd-yellow"></span>How to Get Help</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <div class="nav-trigger">Documentation <span class="caret">&#9660;</span></div>
-            <div class="nav-dropdown">
-              <div class="drop-label">Documentation</div>
+              <div class="drop-label">Reference</div>
               <a href="${S}/Engagement_Packet_Guide.html"><span class="drop-dot nav-dd-cyan"></span>Engagement Packet Guide</a>
               <a href="${S}/Screenshot_Requirements.html"><span class="drop-dot nav-dd-cyan"></span>Screenshot Requirements</a>
-              <a href="${S}/citations.html"><span class="drop-dot nav-dd-cyan"></span>Citations</a>
+              <a href="${S}/Citations.html"><span class="drop-dot nav-dd-cyan"></span>Citations</a>
             </div>
           </div>
 
-          ${labsDropdown}
+          ${modulesDropdown}
           ${readingDropdown}
 
           <div class="nav-item">
