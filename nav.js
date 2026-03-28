@@ -43,8 +43,10 @@
   /* ── Styles ─────────────────────────────────────────────── */
   const css = `
     #is3513-nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 9999;
       background: #0d0d0d;
       border-bottom: 1px solid #1e1e1e;
@@ -52,6 +54,7 @@
       font-size: 13px;
       user-select: none;
     }
+    body { padding-top: 42px; }
     #is3513-nav a { text-decoration: none; }
 
     #is3513-nav .nav-inner {
