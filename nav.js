@@ -19,6 +19,10 @@
   // open in a new tab with ?context=lab — show the compact lab nav.
   const isLab = !inIframe && ctx === 'lab';
 
+  // showFull: true when accessed directly in browser; false in support iframe.
+  // Labs and Reading dropdowns only render when showFull is true.
+  const showFull = !inIframe;
+
   /* ── Google Fonts ───────────────────────────────────────────── */
   const fontLink = document.createElement('link');
   fontLink.rel = 'stylesheet';
@@ -155,6 +159,15 @@
       padding: 8px 16px 4px;
       color: #b0b8c4;
     }
+    #nexus-nav .nav-dropdown .drop-sub {
+      font-family: 'Roboto', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 16px 2px;
+      color: #4a5568;
+    }
 
     /* ── Discord button ── */
     #nexus-nav .nav-discord {
@@ -231,12 +244,115 @@
     .nav-dd-yellow { background: #fec618; }
     .nav-dd-cyan   { background: #00bcd4; }
     .nav-dd-purple { background: #7b68ee; }
+
+    /* ── Injected footer ────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid #e0e4ef;
+      padding: 24px 40px 20px 40px;
+      margin-top: 0;
+      text-align: center;
+      background: #fff;
+    }
+    .site-footer__logo {
+      height: 48px;
+      display: block;
+      margin: 0 auto 16px auto;
+    }
+    .site-footer__citation {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      border: 1px solid #2a2a2a;
+      border-left: 3px solid #4169E1;
+      padding: 6px 14px;
+      margin-bottom: 14px;
+    }
+    .site-footer__citation-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #4169E1;
+      white-space: nowrap;
+    }
+    .site-footer__citation-text {
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      color: #555;
+    }
+    .site-footer__copyright {
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      color: #888;
+    }
   `;
 
   /* ── Inject styles ──────────────────────────────────────────── */
   const style = document.createElement('style');
   style.textContent = css;
   document.head.appendChild(style);
+
+  /* ── Helper: dropdown link ──────────────────────────────────── */
+  function link(label, url) {
+    return `<a href="${url}"><span class="drop-dot nav-dd-cyan"></span>${label}</a>`;
+  }
+
+  /* ── Labs dropdown (direct browser only) ───────────────────── */
+  const L = BASE + '/labs/';
+  const labsDropdown = showFull ? `
+    <div class="nav-item">
+      <div class="nav-trigger">Labs <span class="caret">&#9660;</span></div>
+      <div class="nav-dropdown">
+        <div class="drop-label">Lab Assignments</div>
+        <div class="drop-sub">Module 1 &mdash; Reconnaissance</div>
+        ${link('Lab 1.1 &mdash; Kali Environment Setup',       L + 'Lab1_1_Kali_Environment_Setup.html')}
+        ${link('Lab 1.2 &mdash; Reconnaissance Tools',         L + 'Lab1_2_Reconnaissance_Tool_Exploration.html')}
+        ${link('Lab 1.3 &mdash; Brazos Engagement',            L + 'Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html')}
+        <div class="drop-sub">Module 2 &mdash; Cryptography &amp; Auth</div>
+        ${link('Lab 2.1 &mdash; Cryptographic Foundations',    L + 'Lab2_1_Cryptographic_Foundations.html')}
+        ${link('Lab 2.2 &mdash; Authentication Systems',       L + 'Lab2_2_Authentication_Systems.html')}
+        ${link('Lab 2.3 &mdash; Gulf Coast Engagement',        L + 'Lab2_3_Gulf_Coast_Certificate_Remediation.html')}
+        <div class="drop-sub">Module 3 &mdash; Networks &amp; Cloud</div>
+        ${link('Lab 3.1 &mdash; Network Addressing',           L + 'Lab3_1_Network_Addressing_Fundamentals.html')}
+        ${link('Lab 3.2 &mdash; Protocol Analysis',            L + 'Lab3_2_Protocol_Analysis_Tools.html')}
+        ${link('Lab 3.3 &mdash; Network Analysis Engagement',  L + 'Lab3_3_Network_Analysis_Engagement.html')}
+        <div class="drop-sub">Module 4 &mdash; Threats &amp; Attacks</div>
+        ${link('Lab 4.1 &mdash; Windows Password Cracking',    L + 'Lab4_1_Windows_Password_Cracking.html')}
+        ${link('Lab 4.2 &mdash; Linux Password Cracking',      L + 'Lab4_2_Linux_Password_Cracking.html')}
+        ${link('Lab 4.3 &mdash; Password Security Assessment', L + 'Lab4_3_Password_Security_Assessment.html')}
+        <div class="drop-sub">Module 5 &mdash; Risk &amp; Infrastructure</div>
+        ${link('Lab 5.1 &mdash; Vulnerability Scanning',       L + 'Lab5_1_Vulnerability_Discovery_Scanning.html')}
+        ${link('Lab 5.2 &mdash; Risk Assessment',              L + 'Lab5_2_Risk_Assessment_Prioritization.html')}
+        ${link('Lab 5.3 &mdash; LoneStar Engagement',          L + 'Lab5_3_Risk_Vulnerability_Assessment_Report.html')}
+      </div>
+    </div>` : '';
+
+  /* ── Reading dropdown (direct browser only) ─────────────────── */
+  const R = BASE + '/reading/';
+  const readingDropdown = showFull ? `
+    <div class="nav-item">
+      <div class="nav-trigger">Reading <span class="caret">&#9660;</span></div>
+      <div class="nav-dropdown">
+        <div class="drop-label">Chapter Guides</div>
+        <div class="drop-sub">Module 1 &mdash; Ch. 1&ndash;2</div>
+        <a href="${R}CH01-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 1 &mdash; Intro &amp; Security Trends</a>
+        <a href="${R}CH02-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 2 &mdash; General Security Concepts</a>
+        <div class="drop-sub">Module 2 &mdash; Ch. 6 &amp; 11</div>
+        <a href="${R}CH06-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 6 &mdash; Applied Cryptography</a>
+        <a href="${R}CH11-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 11 &mdash; Authentication &amp; Remote Access</a>
+        <div class="drop-sub">Module 3 &mdash; Ch. 9, 13 &amp; 18</div>
+        <a href="${R}CH09-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 9 &mdash; Network Fundamentals</a>
+        <a href="${R}CH13-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 13 &mdash; IDS &amp; Network Security</a>
+        <a href="${R}CH18-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 18 &mdash; Cloud Computing</a>
+        <div class="drop-sub">Module 4 &mdash; Ch. 15 &amp; 16</div>
+        <a href="${R}CH15-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 15 &mdash; Types of Attacks</a>
+        <a href="${R}CH16-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 16 &mdash; Security Tools &amp; Techniques</a>
+        <div class="drop-sub">Module 5 &mdash; Ch. 10 &amp; 20</div>
+        <a href="${R}CH10-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 10 &mdash; Infrastructure Security</a>
+        <a href="${R}CH20-Reading.html"><span class="drop-dot nav-dd-yellow"></span>Chapter 20 &mdash; Risk Management</a>
+      </div>
+    </div>` : '';
 
   /* ── Build nav HTML ─────────────────────────────────────────── */
   let html = '';
@@ -302,6 +418,9 @@
             </div>
           </div>
 
+          ${labsDropdown}
+          ${readingDropdown}
+
           <div class="nav-item">
             <div class="nav-trigger">NEXUS World <span class="caret">&#9660;</span></div>
             <div class="nav-dropdown">
@@ -318,12 +437,29 @@
     `;
   }
 
-  /* ── Mount nav ──────────────────────────────────────────────── */
+  /* ── Mount nav + footer ─────────────────────────────────────── */
   function mount() {
     const nav = document.createElement('nav');
     nav.id = 'nexus-nav';
     nav.innerHTML = html;
     document.body.insertBefore(nav, document.body.firstChild);
+
+    const footer = document.createElement('footer');
+    footer.className = 'site-footer';
+    footer.innerHTML =
+      '<img class="site-footer__logo"' +
+      ' src="https://jfnewsom.github.io/is2053-assets/branding/UTSanAntonio_H_Logo_Dual_TM_RGB.png"' +
+      ' alt="UT San Antonio">' +
+      '<div class="site-footer__citation">' +
+      '<span class="site-footer__citation-label">Textbook</span>' +
+      '<span class="site-footer__citation-text"><em>Principles of Computer Security: CompTIA Security+ and Beyond</em>, 6th Edition' +
+      ' &middot; Conklin &amp; White &middot; McGraw-Hill &middot; ISBN 978-1-260-47431-2</span>' +
+      '</div>' +
+      '<div class="site-footer__copyright">' +
+      '&copy; 2026 The University of Texas at San Antonio. Developed by John Newsom' +
+      ' for IS3513: Information Assurance and Security. All rights reserved.' +
+      '</div>';
+    document.body.appendChild(footer);
   }
 
   if (document.body) {
