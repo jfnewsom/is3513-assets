@@ -22,7 +22,7 @@ body {
 /* ── Section wrapper ──────────────────────────────────────── */
 .nx-section { margin-bottom: 50px; }
 .nx-section--flush { margin-bottom: 0; }
-body > .nx-section:first-child { margin-top: 40px; }
+body > .nx-section:first-of-type { margin-top: 40px; }
 
 /* ============================================================
    SECTION HEADERS
