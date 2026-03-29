@@ -161,6 +161,42 @@ def render_named_section(sec):
             f'style="background: {b["color"]}; color: {text_color};">{b["label"]}</a>'
         )
 
+    if sec.get("html_blocks"):
+        for block in sec["html_blocks"]:
+            parts.append(f'    {block}')
+
+    if sec.get("expandables"):
+        for ex in sec["expandables"]:
+            summary = ex["summary"]
+            body    = ex.get("bodyHtml", "")
+            kind    = ex.get("kind", "neutral")
+            cls     = f"nx-expand nx-expand--{kind}" if kind != "neutral" else "nx-expand"
+            parts.append(
+                f'    <details class="{cls}">\n'
+                f'      <summary>{summary}</summary>\n'
+                f'      <div class="nx-expand__body">\n'
+                f'{body}\n'
+                f'      </div>\n'
+                f'    </details>'
+            )
+
+    if sec.get("word_tip"):
+        wt = sec["word_tip"]
+        title = wt["title"]
+        items_html = "".join(
+            f'        <p class="nx-word-tip__item">{item}</p>\n'
+            for item in wt.get("items", [])
+        )
+        parts.append(
+            f'    <div class="nx-word-tip">\n'
+            f'      <div class="nx-word-tip__badge">W</div>\n'
+            f'      <div class="nx-word-tip__content">\n'
+            f'        <div class="nx-word-tip__title">{title}</div>\n'
+            f'{items_html}'
+            f'      </div>\n'
+            f'    </div>'
+        )
+
     if sec.get("examples"):
         ex = sec["examples"]
         ok    = ex.get("ok", {})

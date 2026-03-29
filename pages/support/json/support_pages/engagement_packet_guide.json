@@ -9,14 +9,26 @@
   "sections": [
     {
       "type": "intro",
-      "html": "Every Week 3 submission is an <strong style=\"color:#ffffff;\">Engagement Packet</strong> &#8212; a professional deliverable that mirrors real consulting workflows. Three sections. One document. <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#7B68EE;\">.docx only</code> &#8212; no PDF submissions accepted."
+      "html": "Every Week 3 submission is an <strong style=\"color:#ffffff;\">Engagement Packet</strong> &mdash; a professional deliverable that mirrors real consulting workflows. Three sections. One document. <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#7B68EE;\">.docx only</code> &mdash; no PDF submissions accepted."
     },
     {
       "type": "stat_blocks",
       "blocks": [
-        { "label": "Section A", "labelColor": "#FF9F1C", "value": "NEXUS Timesheet" },
-        { "label": "Section B", "labelColor": "#00D26A", "value": "Internal Runbook" },
-        { "label": "Section C", "labelColor": "#4169E1", "value": "Client Report" }
+        {
+          "label": "Section A",
+          "labelColor": "#FF9F1C",
+          "value": "NEXUS Timesheet"
+        },
+        {
+          "label": "Section B",
+          "labelColor": "#00D26A",
+          "value": "Internal Runbook"
+        },
+        {
+          "label": "Section C",
+          "labelColor": "#4169E1",
+          "value": "Client Report"
+        }
       ]
     },
     {
@@ -24,7 +36,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Critical Requirements:",
-      "html": "Format: <strong>.docx only</strong> (no PDFs) &nbsp;&bull;&nbsp; Citations: <strong>10 minimum</strong> (&#8722;10% each missing) &nbsp;&bull;&nbsp; Screenshots: <strong>VM name visible in all</strong> (&#8722;5% each unverifiable)"
+      "html": "Format: <strong>.docx only</strong> (no PDFs) &nbsp;&bull;&nbsp; File: <strong>LastName_LabX.3_EngagementPacket.docx</strong> &nbsp;&bull;&nbsp; Citations: <strong>10 minimum</strong> &nbsp;&bull;&nbsp; Screenshots: <strong>VM name visible in all</strong>"
     },
     {
       "type": "named_section",
@@ -32,15 +44,42 @@
       "label": "Section A: NEXUS Timesheet",
       "paragraphs": [
         "<strong style=\"color:#B0B8C4;\">Audience: NEXUS Management &nbsp;&bull;&nbsp; Purpose: Billing Justification</strong>",
-        "Consulting firms bill clients for time. Every hour must be justified. Generic entries like &#8220;did lab work&#8221; won&#8217;t fly &#8212; describe what you actually did."
+        "Consulting firms bill clients for time, and every hour must be justified. Generic entries like &#8220;did lab work&#8221; won&#8217;t fly &#8212; describe what you actually did, which tools you used, and approximately how long each task took. <strong style=\"color:#fff;\">Track time as you work, not after.</strong> Reconstructing hours days later leads to inaccurate entries that undermine your credibility."
       ],
       "subheading": "Billing Categories:",
-      "items": [
-        "<strong style=\"color:#ffffff;\">Week 1 &#8212; Internal Training:</strong> Environment setup, initial tool learning, configuration",
-        "<strong style=\"color:#ffffff;\">Week 2 &#8212; Internal Training:</strong> Tool exploration, technique practice, methodology development",
-        "<strong style=\"color:#ffffff;\">Week 3 &#8212; Client Billable:</strong> Engagement execution, analysis, report writing"
+      "html_blocks": [
+        "<table class=\"nx-data-table\">\n  <thead><tr><th>Week</th><th>Billing Type</th><th>What Counts</th></tr></thead>\n  <tbody>\n    <tr><td>Week 1</td><td class=\"nx-col-internal\">Internal Training</td><td>Environment setup, initial tool learning, configuration</td></tr>\n    <tr><td>Week 2</td><td class=\"nx-col-internal\">Internal Training</td><td>Tool exploration, technique practice, methodology development</td></tr>\n    <tr><td>Week 3</td><td class=\"nx-col-billable\">Client Billable</td><td>Engagement execution, analysis, report writing</td></tr>\n  </tbody>\n</table>"
       ],
-      "tip": "<strong style=\"color:#ffffff;\">Example (Module 1):</strong> Week 1: Kali VM installation (1.0 hr), network adapter config (0.5 hr), snapshot setup (0.5 hr), tool inventory (1.0 hr), recon methodology review (1.0 hr) = <strong>4.0 hrs internal</strong>. Week 3: Brazos external recon (2.0 hr), subdomain enumeration (1.0 hr), findings analysis (1.0 hr), report drafting (1.5 hr) = <strong>5.5 hrs billable</strong>."
+      "expandables": [
+        {
+          "kind": "good",
+          "summary": "✓ Good Example: Module 1 Reconnaissance Timesheet — well-scoped, specific activities",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><strong style=\"color:#00D26A\">Week 1 – Internal Training (4.0 hours)</strong>\n  Kali Linux VM installation and verification ............. 1.0 hr\n  Network adapter configuration (NAT + Host-Only) ......... 0.5 hr\n  Snapshot creation and naming convention setup ............ 0.5 hr\n  Tool inventory and version documentation ................. 1.0 hr\n  Reconnaissance methodology review (Chapter 3) ........... 1.0 hr\n\n<strong style=\"color:#00D26A\">Week 2 – Internal Training (4.5 hours)</strong>\n  Nmap scan type comparison (TCP SYN, Connect, UDP) ........ 1.5 hr\n  theHarvester email enumeration practice .................. 0.75 hr\n  Whois and DNS reconnaissance techniques .................. 0.75 hr\n  OSINT framework exploration (Maltego CE, Shodan) ......... 1.0 hr\n  Runbook documentation and screenshot organization ......... 0.5 hr\n\n<strong style=\"color:#00D26A\">Week 3 – Client Billable (5.5 hours)</strong>\n  Brazos Financial external perimeter reconnaissance ........ 2.0 hr\n  Subdomain enumeration and service fingerprinting .......... 1.0 hr\n  Finding analysis and risk severity assessment ............. 1.0 hr\n  Client report drafting and evidence compilation ........... 1.5 hr\n\n<strong>ENGAGEMENT TOTAL: 14.0 hours</strong>  |  Internal: 8.5 hr  |  Billable: 5.5 hr</pre>"
+        },
+        {
+          "kind": "good",
+          "summary": "✓ Good Example: Module 4 Password Security Timesheet — shows cracking methodology breakdown",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><strong style=\"color:#00D26A\">Week 1 – Internal Training (4.0 hours)</strong>\n  Password hashing concepts (NTLM, SHA-512, bcrypt) ........ 1.0 hr\n  Hashcat installation and GPU config verification .......... 0.5 hr\n  Dictionary attacks with rockyou.txt wordlist ............. 1.0 hr\n  Rule-based attacks (best64.rule, d3ad0ne.rule) ........... 1.0 hr\n  Practice cracking Windows NTLM hashes .................... 0.5 hr\n\n<strong style=\"color:#00D26A\">Week 2 – Internal Training (4.0 hours)</strong>\n  John the Ripper setup and comparison with Hashcat ........ 0.75 hr\n  Linux shadow file format and SHA-512 analysis ............ 0.75 hr\n  Custom wordlist generation with CeWL ..................... 0.75 hr\n  Mask attacks for pattern-based passwords ................. 1.0 hr\n  OSINT-driven password guessing methodology ............... 0.75 hr\n\n<strong style=\"color:#00D26A\">Week 3 – Client Billable (6.0 hours)</strong>\n  Brazos Financial hash file acquisition and inventory ...... 0.5 hr\n  Initial dictionary attack campaign (rockyou + custom) .... 1.5 hr\n  Rule-based and mask attack optimization .................. 1.0 hr\n  OSINT research on employee password patterns ............. 0.75 hr\n  Cracked password analysis and pattern identification ..... 0.75 hr\n  Policy recommendations and report compilation ............ 1.5 hr\n\n<strong>ENGAGEMENT TOTAL: 14.0 hours</strong>  |  Internal: 8.0 hr  |  Billable: 6.0 hr</pre>"
+        },
+        {
+          "kind": "bad",
+          "summary": "✗ Bad Example: Vague and Unusable — why 'did lab work' gets flagged",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><span style=\"color:#E63946\">Week 1 (3 hours)\n- Did the lab stuff\n- Set up VM\n\nWeek 2 (2 hours)\n- Practiced with tools\n- Took some screenshots\n\nWeek 3 (4 hours)\n- Scanned the client\n- Wrote report\n\nTotal: 9 hours</span></pre>\n<div class=\"nx-expand__why\">WHY THIS FAILS:\n  <ul>\n    <li>No specific activities — \"lab stuff\" tells management nothing</li>\n    <li>No breakdown of individual tasks or tools used</li>\n    <li>Times are suspiciously round and almost certainly inaccurate</li>\n    <li>No billing category distinction — which hours are internal vs. billable?</li>\n    <li>Would be rejected by any real consulting firm</li>\n  </ul>\n</div>"
+        },
+        {
+          "kind": "bad",
+          "summary": "✗ Bad Example: Unrealistic Times — what it signals when the math doesn't add up",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><span style=\"color:#E63946\">Week 3 – Client Billable (2.0 hours)\n- Complete network reconnaissance of 500+ hosts: 0.5 hr\n- Full vulnerability assessment of all systems: 0.5 hr\n- Professional 20-page report with all findings: 1.0 hr</span></pre>\n<div class=\"nx-expand__why\">WHY THIS FAILS:\n  <ul>\n    <li>Reconnaissance of 500 hosts takes hours, not 30 minutes</li>\n    <li>A vulnerability assessment cannot be rushed to 30 minutes</li>\n    <li>A 20-page professional report takes 4–8 hours minimum</li>\n    <li>These times show you either didn't do the work, or don't understand what the work requires — neither is good</li>\n  </ul>\n</div>"
+        }
+      ],
+      "word_tip": {
+        "title": "Word: Professional Timesheet Tables",
+        "items": [
+          "<strong style=\"color:#ffffff;\">Create a table:</strong> <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Insert &rarr; Table</code> &rarr; 4 columns (Week, Activity, Hours, Notes). Apply <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Table Design &rarr; Grid Table 4 - Accent 1</code> for professional alternating rows.",
+          "<strong style=\"color:#ffffff;\">Auto-calculate totals:</strong> Click your Total cell &rarr; <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Table Layout &rarr; Formula &rarr; =SUM(ABOVE)</code>. Word calculates hours automatically and you never risk addition errors.",
+          "<strong style=\"color:#ffffff;\">Repeating headers on multi-page tables:</strong> Select your header row &rarr; <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Table Layout &rarr; Repeat Header Rows</code>. The column headers re-appear on every page without any extra work."
+        ]
+      }
     },
     {
       "type": "named_section",
@@ -50,13 +89,44 @@
         "<strong style=\"color:#B0B8C4;\">Audience: NEXUS Team &nbsp;&bull;&nbsp; Purpose: Knowledge Transfer</strong>",
         "Create methodology documentation so another analyst could reproduce your work. &#8220;Here&#8217;s how to do X for the next analyst.&#8221; When you leave, your methodology stays."
       ],
-      "subheading": "What to Include:",
-      "items": [
-        "<strong style=\"color:#ffffff;\">From Week 1:</strong> Environment setup steps, tool installation procedures, configuration documentation, screenshots of key steps",
-        "<strong style=\"color:#ffffff;\">From Week 2:</strong> Tool usage documentation, command syntax with explanations, technique workflows, output interpretation guides",
-        "<strong style=\"color:#ffffff;\">From Week 3:</strong> Engagement workflow, lessons learned, what worked and what didn&#8217;t, recommendations for next time"
+      "subheading": "It's Really for Future You",
+      "tip": "<strong style=\"color:#ffffff;\">Pro Tip:</strong> If you followed directions in Labs X.1 and X.2, your runbook is 60&#8211;70% complete before Week 3 starts. Compile, organize, and polish what you already documented.",
+      "expandables": [
+        {
+          "kind": "neutral",
+          "summary": "What to include from each week (Week 1 / Week 2 / Week 3)",
+          "bodyHtml": "<div style=\"display:flex;gap:14px;\"><div style=\"flex:1;background:#1a1f2e;padding:14px;border-radius:6px;\"><div style=\"color:#FF9F1C;font-size:12px;margin-bottom:8px;font-weight:600;\">From Week 1</div><ul style=\"color:#B0B8C4;margin:0;padding-left:16px;font-size:13px;line-height:1.8\"><li>Environment setup steps</li><li>Tool installation procedures</li><li>Configuration documentation</li><li>Screenshots of key steps</li></ul></div><div style=\"flex:1;background:#1a1f2e;padding:14px;border-radius:6px;\"><div style=\"color:#00BCD4;font-size:12px;margin-bottom:8px;font-weight:600;\">From Week 2</div><ul style=\"color:#B0B8C4;margin:0;padding-left:16px;font-size:13px;line-height:1.8\"><li>Tool usage documentation</li><li>Command syntax with explanations</li><li>Technique workflows</li><li>Output interpretation guides</li></ul></div><div style=\"flex:1;background:#1a1f2e;padding:14px;border-radius:6px;\"><div style=\"color:#00D26A;font-size:12px;margin-bottom:8px;font-weight:600;\">From Week 3</div><ul style=\"color:#B0B8C4;margin:0;padding-left:16px;font-size:13px;line-height:1.8\"><li>Engagement workflow</li><li>Lessons learned</li><li>What worked / didn't work</li><li>Recommendations for next time</li></ul></div></div><p style=\"color:#B0B8C4;font-size:13px;margin:12px 0 0 0;font-style:italic\">The Reproducibility Test: Could a junior analyst who wasn't in this class follow your runbook and achieve the same results? If no &mdash; add more detail.</p>"
+        },
+        {
+          "kind": "good",
+          "summary": "✓ Good Example: Nmap Service Detection — complete format with flags, output, next steps",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><strong style=\"color:#00D26A\">NMAP SERVICE VERSION DETECTION</strong>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<strong>Purpose:</strong>\nIdentify running services and their specific versions on target hosts.\nVersion info is critical for vulnerability research.\n\n<strong>Basic Command:</strong>\n  nmap -sV [target]\n\n<strong>Recommended Flags:</strong>\n  -sV                     Service version detection\n  -sC                     Default scripts (safe recon)\n  --version-intensity 5   Thorough probing (1–9 scale)\n  -oN output.txt          Save to text file\n\n<strong>Full Engagement Command:</strong>\n  nmap -sV -sC --version-intensity 5 -oN brazos-svc.txt 10.0.0.0/24\n\n<strong>Output Interpretation:</strong>\n  PORT      STATE  SERVICE    VERSION\n  22/tcp    open   ssh        OpenSSH 8.9p1 Ubuntu 3\n  80/tcp    open   http       Apache httpd 2.4.29        ← flag this version\n  3306/tcp  open   mysql      MySQL 5.7.42               ← EOL, research CVEs\n\n<strong>Next Steps After Scan:</strong>\n1. Record all service versions in findings documentation\n2. Search NVD/CVE databases for known vulnerabilities per version\n3. Note outdated versions for remediation recommendations\n4. Cross-reference with client's patch management policy\n\n<strong>Reference:</strong> Nmap Network Scanning, Gordon Lyon (nmap.org/book)</pre>"
+        },
+        {
+          "kind": "good",
+          "summary": "✓ Good Example: Hashcat Password Cracking Methodology — attack strategy with documentation guide",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><strong style=\"color:#00D26A\">HASHCAT PASSWORD CRACKING METHODOLOGY</strong>\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n<strong>Purpose:</strong>\nAssess password strength by attempting to crack captured hashes.\nDemonstrates real-world attack feasibility to the client.\n\n<strong>Common Hash Modes:</strong>\n  -m 0      MD5\n  -m 1000   NTLM (Windows)\n  -m 1800   sha512crypt (Linux /etc/shadow)\n  -m 3200   bcrypt\n\n<strong>Attack Strategy (run in order):</strong>\n1. Dictionary attack — try common passwords first\n   hashcat -m 1000 -a 0 hashes.txt rockyou.txt\n\n2. Dictionary + Rules — add common mutations\n   hashcat -m 1000 -a 0 hashes.txt rockyou.txt -r best64.rule\n\n3. Mask attack — if password policy is known\n   hashcat -m 1000 -a 3 hashes.txt ?u?l?l?l?l?d?d\n   (Uppercase + 5 lowercase + 2 digits — e.g., Passwo12)\n\n<strong>Documenting Results:</strong>\n  • Total hashes provided: X\n  • Cracked within 1 hour: Y (Z%)\n  • Common patterns observed: [company name, seasons, years]\n  • Policy gaps identified: [minimum length, complexity]\n\n<strong>Ethical Note:</strong> Only crack hashes you have explicit authorization to test.\nDocument authorization in engagement scope.\n\n<strong>Reference:</strong> Hashcat Wiki (hashcat.net/wiki) | NIST SP 800-63B</pre>"
+        },
+        {
+          "kind": "bad",
+          "summary": "✗ Bad Example: Unusable Documentation — 'I used nmap to scan stuff'",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><span style=\"color:#E63946\">Nmap\n\nI used nmap to scan stuff. The command was nmap with some flags.\nIt showed open ports which I put in the report.</span></pre>\n<div class=\"nx-expand__why\">WHY THIS FAILS:\n  <ul>\n    <li>No actual command syntax — another analyst can't reproduce this</li>\n    <li>No explanation of what the flags do or why they were chosen</li>\n    <li>No output interpretation guide</li>\n    <li>No screenshots referenced</li>\n    <li>\"scan stuff\" tells the next analyst exactly nothing</li>\n    <li>You've wasted the learning you did in Weeks 1–2</li>\n  </ul>\n</div>"
+        },
+        {
+          "kind": "bad",
+          "summary": "✗ Bad Example: Copy-Pasted Without Understanding — references StackOverflow instead of your own methodology",
+          "bodyHtml": "<pre class=\"nx-expand__pre\"><span style=\"color:#E63946\">WIRESHARK ANALYSIS\n\nFrom StackOverflow: \"To capture packets use:\n  wireshark -i eth0 -k\nThen apply filter: tcp.port == 80\"\n\nFrom YouTube tutorial: \"Click the blue shark fin to start capture\"</span></pre>\n<div class=\"nx-expand__why\">WHY THIS FAILS:\n  <ul>\n    <li>Copy-pasted from internet with no understanding</li>\n    <li>No explanation of what the commands/filters actually do</li>\n    <li>No adaptation to your engagement environment</li>\n    <li>No screenshots of <em>your</em> work</li>\n    <li>Runbooks document YOUR methodology — not the internet's. If asked to explain this in an interview, you couldn't.</li>\n  </ul>\n</div>"
+        }
       ],
-      "tip": "<strong style=\"color:#ffffff;\">The Reproducibility Test:</strong> Could a junior analyst who wasn&#8217;t in this class follow your runbook and achieve the same results? If the answer is no, add more detail. <em style=\"color:#B0B8C4;\">Pro tip: If you took good screenshots in Labs X.1 and X.2, your runbook is 60&#8211;70% done before Week 3 starts. Just compile and polish.</em>"
+      "word_tip": {
+        "title": "Word: Formatting Commands and Code Blocks",
+        "items": [
+          "<strong style=\"color:#ffffff;\">Monospace font for commands:</strong> Select your command text &rarr; change font to <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Consolas</code>. This visually distinguishes commands from prose so readers can scan without reading every word.",
+          "<strong style=\"color:#ffffff;\">Create a Code Block style:</strong> Format one code block perfectly &rarr; select the text &rarr; <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Home &rarr; Styles pane &rarr; Create a Style</code> &rarr; name it \"Code Block\". Now apply it to every command with one click instead of reformatting each time.",
+          "<strong style=\"color:#ffffff;\">Paste without formatting:</strong> When copying from terminal, use <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Ctrl+Shift+V</kbd> (Paste Special &rarr; Unformatted Text) to avoid inheriting terminal font/color settings. Then apply your Code Block style.",
+          "<strong style=\"color:#ffffff;\">Multi-level numbered lists for procedures:</strong> After typing a numbered item, press <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Tab</kbd> to indent to a sub-step, <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Shift+Tab</kbd> to go back up. If numbering restarts at 1 after a screenshot, right-click the number &rarr; Continue Numbering."
+        ]
+      }
     },
     {
       "type": "named_section",
@@ -64,16 +134,69 @@
       "label": "Section C: Client Report",
       "paragraphs": [
         "<strong style=\"color:#B0B8C4;\">Audience: Fictional Client Contact &nbsp;&bull;&nbsp; Purpose: Professional Deliverable</strong>",
-        "Write the report you would hand to a real client. This is what Ray Jimenez, Jennifer Walsh, Amanda Nguyen, or Bobby Alamo would actually read."
+        "Write the report you would hand to a real client. This is what Ray Jimenez, Jennifer Walsh, Amanda Nguyen, or Bobby Alamo would actually read. A professional security report has <strong style=\"color:#ffffff;\">13 components</strong> across three groups. Expand each section below for what to include and what to avoid."
       ],
-      "subheading": "Required Sections:",
-      "items": [
-        "<strong style=\"color:#ffffff;\">1. Executive Summary</strong> (1 page max) &#8212; High-level overview for non-technical readers. What did you find? What&#8217;s the risk? What should they do? No jargon. A CEO should understand this.",
-        "<strong style=\"color:#ffffff;\">2. Scope and Methodology</strong> &#8212; What systems were tested? What was out of scope? What approach did you take?",
-        "<strong style=\"color:#ffffff;\">3. Findings</strong> &#8212; Each finding needs: description, evidence (screenshots), severity, and business impact.",
-        "<strong style=\"color:#ffffff;\">4. Risk Analysis</strong> &#8212; What&#8217;s the actual risk to the business? Likelihood, impact, and business context. Not everything high-severity is high-priority.",
-        "<strong style=\"color:#ffffff;\">5. Recommendations</strong> &#8212; Actionable, prioritized, realistic. Quick wins and long-term improvements. Reference industry standards (CIS, NIST)."
-      ]
+      "expandables": [
+        {
+          "kind": "neutral",
+          "summary": "Front Matter — Cover Page, Confidentiality & Disclaimer, Table of Contents",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">These three components set the professional tone before the client reads a single technical word.</p>\n<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 6px 0;\">1. Cover Page</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 14px 0;\">Report title, client name, assessment dates, your firm name (NEXUS Security Consulting), and \"CONFIDENTIAL\" marking. Use Word's built-in cover page templates (<code style=\"color:#5B9BD5\">Insert → Cover Page</code>) rather than building from scratch. Set <code style=\"color:#5B9BD5\">Different First Page</code> in the header so page numbers don't appear on the cover.</p>\n<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 6px 0;\">2. Confidentiality &amp; Disclaimer</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 14px 0;\">Standard legal boilerplate — states the report is confidential, limits distribution to authorized personnel, notes that the assessment reflects conditions at a specific point in time, and caps liability. Once you write this once, save it as a Quick Part so you never type it again.</p>\n<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 6px 0;\">3. Table of Contents</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;\">Auto-generated from Heading styles — never typed manually. <code style=\"color:#5B9BD5\">References → Table of Contents → Automatic Table 1</code>. Requires that every section title uses a proper Heading 1/2/3 style. Update before submission with <kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#5B9BD5\">Ctrl+A</kbd> then <kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#5B9BD5\">F9</kbd>.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Executive Summary — one page, risk level first, severity table, 3 immediate actions",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\"><strong style=\"color:#7B68EE\">One page maximum.</strong> Written for executives who won't read technical details. A CEO should understand every word. Lead with the risk level in paragraph one — don't bury it.</p>\n<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 8px 0;\">Required elements:</p>\n<ul style=\"color:#B0B8C4;font-size:13px;margin:0 0 14px 0;padding-left:18px;line-height:1.8\">\n  <li>Overall risk level stated immediately (HIGH / MODERATE / LOW)</li>\n  <li>Findings distribution table (Critical / High / Medium / Low counts)</li>\n  <li>3 prioritized immediate actions — specific, not vague</li>\n</ul>\n<table class=\"nx-data-table\">\n  <thead><tr><th>Severity</th><th>Count</th><th>What it means</th></tr></thead>\n  <tbody>\n    <tr><td class=\"nx-col-crit\">Critical</td><td>2</td><td>Immediate exploitation risk — patch within 24–48 hours</td></tr>\n    <tr><td class=\"nx-col-high\">High</td><td>4</td><td>Significant weakness — address within 2 weeks</td></tr>\n    <tr><td class=\"nx-col-med\">Medium</td><td>4</td><td>Moderate risk — include in next patch cycle</td></tr>\n    <tr><td class=\"nx-col-low\">Low</td><td>2</td><td>Minor hardening opportunities</td></tr>\n  </tbody>\n</table>\n<div class=\"nx-expand__why\" style=\"border-color:#E63946;background:rgba(230,57,70,0.08)\">\n  <span style=\"color:#E63946;font-weight:600\">Common mistakes:</span>\n  <ul>\n    <li>Burying the overall risk assessment in paragraph three</li>\n    <li>Using technical jargon — \"SSRF via X-Forwarded-For header\" means nothing to a CFO</li>\n    <li>Vague action items like \"improve security posture\"</li>\n    <li>Running more than one page</li>\n  </ul>\n</div>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Scope & Methodology — what was tested, what wasn't, and why the boundaries matter",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Defines exactly what was (and was not) tested. Vague scope creates disputes. Clear scope protects everyone.</p>\n<table class=\"nx-data-table\">\n  <thead><tr><th>Element</th><th>What to include</th></tr></thead>\n  <tbody>\n    <tr><td style=\"color:#fff;font-weight:600\">In Scope</td><td>Specific IP ranges, hostnames, applications, time window</td></tr>\n    <tr><td style=\"color:#fff;font-weight:600\">Out of Scope</td><td>Internal networks, third-party services, DoS testing, social engineering</td></tr>\n    <tr><td style=\"color:#fff;font-weight:600\">Methodology</td><td>Reconnaissance → Enumeration → Vulnerability Analysis → Reporting</td></tr>\n    <tr><td style=\"color:#fff;font-weight:600\">Constraints</td><td>Business hours only, specific systems excluded at client request</td></tr>\n  </tbody>\n</table>\n<p style=\"color:#B0B8C4;font-size:13px;margin:12px 0 0 0;font-style:italic\">\"We tested the client's network and web applications\" is not a scope statement. Which network? Which applications? No IP ranges = no verifiability = disputes later.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Risk Rating Scale — tie severity labels to CVSS scores so 'Critical' means something specific",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Define what Critical, High, Medium, and Low mean in your report before using those words. Readers need an objective standard, not your personal opinion.</p><table class=\"nx-data-table\"><thead><tr><th>Rating</th><th>CVSS Score</th><th>Expected Action</th></tr></thead><tbody><tr><td class=\"nx-col-crit\">Critical</td><td>9.0–10.0</td><td>Immediate exploitation possible — 24–48 hour remediation</td></tr><tr><td class=\"nx-col-high\">High</td><td>7.0–8.9</td><td>Significant weakness — address within 2 weeks</td></tr><tr><td class=\"nx-col-med\">Medium</td><td>4.0–6.9</td><td>Moderate risk — next patch cycle</td></tr><tr><td class=\"nx-col-low\">Low</td><td>0.1–3.9</td><td>Best practice hardening — backlog item</td></tr></tbody></table><p style=\"color:#B0B8C4;font-size:13px;margin:10px 0 0 0;\">Save this table as a Quick Part and drop it into every report. Adjust CVSS thresholds if the client's business context warrants it (e.g., healthcare clients may bump some Medium findings to High due to PHI exposure).</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Attack Narrative — chain vulnerabilities into a story, not just a list of findings",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">The Attack Narrative shows how an attacker could chain your findings into a realistic attack path. It's where you demonstrate that you think like an attacker, not just a scanner operator.</p><p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\"><strong style=\"color:#fff\">Structure:</strong> Step 1 (Initial Access) → Step 2 (Privilege Escalation or Lateral Movement) → Step 3 (Data Access or Impact). Each step references a specific finding number.</p><p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;\">End with a Business Impact statement that ties the full chain to consequences the client's leadership actually cares about — regulatory exposure, customer data, operational disruption.</p><div class=\"nx-expand__why\" style=\"border-color:#E63946;background:rgba(230,57,70,0.08)\"><span style=\"color:#E63946;font-weight:600\">What it is NOT:</span><ul><li>A bullet list of your findings in order</li><li>\"We found these vulnerabilities that could be exploited: Finding 1, Finding 2, Finding 3\"</li><li>The same content as the Technical Findings section, repeated in prose</li></ul></div>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Technical Findings — the heart of the report, all six elements required per finding",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\"><strong style=\"color:#fff\">The heart of the report.</strong> Every finding needs all six elements — missing one undermines credibility.</p>\n<table class=\"nx-data-table\">\n  <thead><tr><th>#</th><th>Element</th><th>What to include</th></tr></thead>\n  <tbody>\n    <tr><td>1</td><td style=\"color:#fff;font-weight:600\">Title &amp; Severity</td><td>Descriptive name + Critical/High/Medium/Low badge + CVE if applicable</td></tr>\n    <tr><td>2</td><td style=\"color:#fff;font-weight:600\">Affected Systems</td><td>Specific hosts, IPs, services — not \"some servers\"</td></tr>\n    <tr><td>3</td><td style=\"color:#fff;font-weight:600\">Observation</td><td>What you found, in third person past tense, no jargon</td></tr>\n    <tr><td>4</td><td style=\"color:#fff;font-weight:600\">Evidence</td><td>Screenshot with VM name visible, referenced as \"Figure X\"</td></tr>\n    <tr><td>5</td><td style=\"color:#fff;font-weight:600\">Business Impact</td><td>Tie the finding to real consequences for THIS client's business</td></tr>\n    <tr><td>6</td><td style=\"color:#fff;font-weight:600\">Remediation</td><td>Specific, actionable, references a standard (CIS, NIST)</td></tr>\n  </tbody>\n</table>\n<p style=\"color:#B0B8C4;font-size:13px;margin:14px 0 8px 0;font-weight:600;color:#fff\">Client context matters. The same vulnerability gets written differently depending on who's reading:</p>\n<ul style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;padding-left:18px;line-height:1.9\">\n  <li><strong style=\"color:#FF9F1C\">Brazos Financial</strong> — frame risk in terms of SEC cybersecurity rule compliance and AUM exposure</li>\n  <li><strong style=\"color:#00D26A\">Gulf Coast Healthcare</strong> — connect findings to HIPAA Security Rule sections and OCR audit risk</li>\n  <li><strong style=\"color:#7B68EE\">LoneStar DevOps</strong> — tie to Series A/enterprise customer trust and CI/CD pipeline security</li>\n  <li><strong style=\"color:#4169E1\">Alamo Industries</strong> — reference CMMC requirements and IT/OT convergence risks</li>\n</ul>\n<div class=\"nx-expand__why\" style=\"border-color:#E63946;background:rgba(230,57,70,0.08)\">\n  <span style=\"color:#E63946;font-weight:600\">Classic incomplete finding:</span>\n  <ul>\n    <li><em>Title:</em> \"Old Software\" — no severity, no CVE, no affected systems</li>\n    <li><em>Body:</em> \"The server is running old software that should be updated.\" — no version info, no evidence, no impact, no specific remediation</li>\n    <li>The client can't act on this. It wastes everyone's time.</li>\n  </ul>\n</div>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Security Strengths — what the client is doing right, with specific evidence",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Not fluff — it reinforces good practices and gives a balanced report. A report with nothing positive feels biased.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Strengths need evidence, just like findings. <em>\"The company appears to take security seriously\"</em> is not a strength observation — it's a placeholder.</p>\n<ul style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;padding-left:18px;line-height:1.9\">\n  <li><strong style=\"color:#00D26A\">Good:</strong> \"MFA is enforced on all VPN connections and administrative interfaces\" — specific, observable, verifiable</li>\n  <li><strong style=\"color:#00D26A\">Good:</strong> \"Patch compliance for external systems is at 94% based on the January 3 Nessus scan\" — cited, measurable</li>\n  <li><strong style=\"color:#E63946\">Weak:</strong> \"They have some good practices in place\" — tells the client nothing about what to keep doing</li>\n</ul>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Recommendations — tiered by timeline (Immediate / Short-term / Long-term) with standards references",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Actionable, prioritized, realistic. A client who paid for an assessment deserves specific guidance — not \"update your software.\"</p>\n<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 8px 0;\">Tiered structure:</p>\n<table class=\"nx-data-table\">\n  <thead><tr><th>Tier</th><th>Timeline</th><th>Example</th></tr></thead>\n  <tbody>\n    <tr><td class=\"nx-col-crit\">Immediate</td><td>0–30 days</td><td>Patch Apache to 2.4.58; disable TLS 1.0/1.1 on public services; rotate exposed credentials</td></tr>\n    <tr><td class=\"nx-col-high\">Short-term</td><td>30–90 days</td><td>Deploy WAF; implement automated patch management; enforce password complexity policy</td></tr>\n    <tr><td class=\"nx-col-low\">Long-term</td><td>90+ days</td><td>Adopt secrets management (HashiCorp Vault); establish annual pentest cadence; develop IR playbooks</td></tr>\n  </tbody>\n</table>\n<p style=\"color:#B0B8C4;font-size:13px;margin:12px 0 0 0;\">Always reference an industry standard (CIS Controls, NIST CSF, NIST SP 800-53) to back up recommendations. A recommendation with no framework citation is just an opinion.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Screenshots & Evidence — VM name in every screenshot, auto-numbered captions, cross-referenced in text",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;\">Every claim needs proof. Screenshots without VM names are unverifiable — see the <a href=\"Screenshot_Requirements.html\" style=\"color:#4169E1;\">Screenshot Requirements</a> page for the full standard. Key rules here:</p><ul style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\"><li>VM name (<code style=\"color:#7B68EE\">kali-lastname-studentID</code>) must be visible in the terminal prompt in every screenshot</li><li>File naming: <code style=\"color:#7B68EE\">##-description.png</code> (e.g., 07-nmap-service-scan.png)</li><li>Embed screenshots inline — never link to external files</li><li>Every figure gets a caption (Word auto-numbering) and is referenced in the text (Word cross-reference)</li><li>Annotate screenshots to highlight the key finding — draw a box, add an arrow, bold the relevant output line</li></ul><p style=\"color:#B0B8C4;font-size:13px;margin:0;font-style:italic\">Screenshots go in the Findings body. Raw terminal output goes in Appendix A. Don't mix them.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Appendices & References — organize raw output, cite 10+ sources, never type a bibliography manually",
+          "bodyHtml": "<p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Appendix A: Raw Tool Output</p><p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Paste raw text output here — full nmap scans, hashcat session logs, Wireshark statistics. Label each block clearly (\"Appendix A1: Full Nmap Version Scan, January 15 14:32 CST\"). Reference from the body: \"See Appendix A1.\" Screenshots do NOT go here.</p><p style=\"color:#ffffff;font-size:13px;font-weight:600;margin:0 0 6px 0;\">References (Minimum 10)</p><p style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;\">See the <a href=\"Citations.html\" style=\"color:#4169E1;\">Citations page</a> for the full guide. Quick reminder of what counts:</p><ul style=\"color:#B0B8C4;font-size:13px;margin:0;padding-left:18px;line-height:1.8\"><li>NIST publications, CIS Benchmarks, OWASP guides, CVE entries</li><li>Tool documentation (nmap.org/book, hashcat.net/wiki, Wireshark docs)</li><li>Course textbook (Conklin &amp; White) — cite the specific chapter</li><li>Man pages, RFC documents, vendor security advisories</li><li>Google is a search engine, not a source. Wikipedia is a starting point, not a citation.</li></ul>"
+        }
+      ],
+      "word_tip": {
+        "title": "Word: Finding Templates and Consistent Formatting",
+        "items": [
+          "<strong style=\"color:#ffffff;\">Save a finding template as a Quick Part:</strong> Format one finding perfectly (title, severity badge, all six subsections). Select it all &rarr; <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Insert &rarr; Quick Parts &rarr; Save Selection</code> &rarr; name it \"Finding Template\". Clients notice when Finding #1 looks different from Finding #7.",
+          "<strong style=\"color:#ffffff;\">Severity badges with text boxes:</strong> <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Insert &rarr; Text Box &rarr; Simple Text Box</code>. Set fill color (red for Critical), white text, no outline. Right-click &rarr; Wrap Text &rarr; In Front of Text to position it in the finding header.",
+          "<strong style=\"color:#ffffff;\">Page breaks between findings:</strong> Place cursor before each new finding &rarr; <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Ctrl+Enter</kbd>. Each finding on its own page reads more professionally than findings running together.",
+          "<strong style=\"color:#ffffff;\">SmartArt for attack chains:</strong> <code style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Insert &rarr; SmartArt &rarr; Process &rarr; Basic Chevron Process</code>. Each chevron = one step in the attack path. Color-code by severity. Group shapes with <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5;\">Ctrl+G</kbd> so they move as one unit."
+        ]
+      }
     },
     {
       "type": "two_column",
@@ -84,7 +207,7 @@
         "items": [
           "Write in third person, past tense",
           "Use clear, professional language",
-          "Explain technical terms",
+          "Explain technical terms on first use",
           "Support all claims with evidence",
           "Proofread for grammar and spelling"
         ]
@@ -103,23 +226,79 @@
     },
     {
       "type": "named_section",
+      "color": "#5B9BD5",
+      "label": "Word Automation Quick Reference",
+      "paragraphs": [
+        "Master these features and your reports will look professional with a fraction of the formatting effort. Every one of these is a skill you'll use in professional practice &mdash; not just for this course. Expand what you need, when you need it."
+      ],
+      "expandables": [
+        {
+          "kind": "neutral",
+          "summary": "Document Setup — auto-populate your name in headers, footers, and cover page",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Set this once and your name auto-populates the cover page, headers, and footers in every report you create from the IS3513 template.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Windows: Set User Information</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;padding-left:18px;line-height:1.9\">\n  <li><code style=\"color:#5B9BD5\">File → Options → General</code></li>\n  <li>Under <strong>Personalize your copy of Microsoft Office</strong> — enter your <strong>User name</strong> and <strong>Initials</strong></li>\n  <li>Click OK, then close and reopen your document</li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Mac: Set User Information</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;padding-left:18px;line-height:1.9\">\n  <li><code style=\"color:#5B9BD5\">Word → Preferences → User Information</code></li>\n  <li>Enter your <strong>Name</strong> and <strong>Initials</strong></li>\n  <li>Close Preferences, then close and reopen your document</li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Verify your fields are working</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;\">Right-click your name on the cover page → <strong>Toggle Field Codes</strong>. You should see <code style=\"color:#5B9BD5\">{ AUTHOR }</code> or <code style=\"color:#5B9BD5\">{ TITLE }</code> rather than plain typed text. Toggle again to return to normal view.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:6px 0 0 0;font-style:italic\">If the cover still shows a placeholder after setting user info: <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+A</kbd> then <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">F9</kbd> (Windows) or <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Cmd+A</kbd> then <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">fn+F9</kbd> (Mac). Save, close, reopen.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Headings → Automatic Table of Contents — never type a TOC manually",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\"><strong style=\"color:#fff\">Never type a Table of Contents manually.</strong> Word builds it from your Heading styles and updates it in seconds. A hand-typed TOC breaks every time you add content.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Step 1 — Apply Heading Styles</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\">Select each section title → <code style=\"color:#5B9BD5\">Home → Styles → Heading 1</code> for main sections, <code style=\"color:#5B9BD5\">Heading 2</code> for subsections. Shortcut: <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+Alt+1</kbd> / <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+Alt+2</kbd>. Never just make text big and bold — use actual styles or the TOC won't see it.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Step 2 — Insert the TOC</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\">Place cursor on the TOC page → <code style=\"color:#5B9BD5\">References → Table of Contents → Automatic Table 1</code>. Word builds it instantly.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Step 3 — Update before submitting</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;\"><kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+A</kbd> → <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">F9</kbd> → choose <em>Update entire table</em>. This refreshes page numbers whenever you've added or rearranged content.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:6px 0 0 0;font-style:italic\">Bonus: TOC entries are clickable hyperlinks — Ctrl+Click to jump to any section. Your PDF reader will have the same navigation.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Figure Captions & Cross-References — auto-numbered figures that update when you rearrange",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\"><strong style=\"color:#fff\">Never type \"Figure 1\" manually.</strong> Word tracks figure numbers automatically. Add an image, delete an image, reorder — all numbers update with one keystroke.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Adding a caption</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\">\n  <li>Click your screenshot or image</li>\n  <li><code style=\"color:#5B9BD5\">References → Insert Caption</code></li>\n  <li>Label: <strong>Figure</strong>, then type a description — e.g., \"Nmap service scan results showing Apache 2.4.29\"</li>\n  <li>Word adds \"Figure 1:\" and auto-increments for every subsequent image</li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Referencing a figure in text</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\">\n  <li>Place cursor where \"Figure X\" should appear</li>\n  <li><code style=\"color:#5B9BD5\">References → Cross-reference</code></li>\n  <li>Reference type: <strong>Figure</strong> → select your figure → check <em>Insert as hyperlink</em> → Insert</li>\n</ol>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;\">Update all at once: <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+A</kbd> → <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">F9</kbd> — this is the same update-all command as the TOC. Do it once before every submission and everything refreshes.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:6px 0 0 0;font-style:italic\">\"Error! Reference source not found\" = you typed the figure number manually. Delete it and use Cross-reference instead.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Citation Manager & Bibliography — 10 sources, auto-formatted, zero manual typing",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\"><strong style=\"color:#fff\">Never type a bibliography manually.</strong> Word's citation manager formats every source automatically and generates the reference list with one click.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Adding a source</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\">\n  <li><code style=\"color:#5B9BD5\">References → Manage Sources → New</code></li>\n  <li>Choose Type of Source (Website, Book, Report, etc.)</li>\n  <li>Fill in Author, Title, Year, URL — sources save for reuse across documents</li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Inserting an in-text citation</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\">Place cursor after your claim → <code style=\"color:#5B9BD5\">References → Insert Citation</code> → select your source. Word adds \"(Author, Year)\" automatically. Build your source library as you write — don't wait until the end.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Generating the bibliography</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;\">Cursor at end of document → <code style=\"color:#5B9BD5\">References → Bibliography → Insert Bibliography</code>. Done. Update with <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">Ctrl+A</kbd> → <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">F9</kbd> before submitting.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;font-weight:600;color:#fff\">What counts as a citable source:</p>\n<ul style=\"color:#B0B8C4;font-size:13px;margin:0 0 8px 0;padding-left:18px;line-height:1.8\">\n  <li>NIST publications, CIS Benchmarks, OWASP guides</li>\n  <li>CVE entries from nvd.nist.gov</li>\n  <li>Tool documentation (Nmap book, Hashcat wiki, Wireshark docs)</li>\n  <li>The course textbook (Conklin &amp; White)</li>\n  <li>Man pages, vendor docs, RFC documents</li>\n</ul>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0;font-style:italic\">Google is a search engine, not a source. Wikipedia is a starting point, not a citation. Minimum 10 sources — aim for quality over quantity.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Tables — professional timesheet tables, =SUM(ABOVE), color-coded severity cells",
+          "bodyHtml": "<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Creating a professional table</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\">\n  <li><code style=\"color:#5B9BD5\">Insert → Table</code> → choose grid size</li>\n  <li>Click inside table → <code style=\"color:#5B9BD5\">Table Design</code> tab appears → choose a style (\"Grid Table 4 - Accent 1\" gives professional alternating rows)</li>\n  <li>Check <strong>Header Row</strong> and <strong>Banded Rows</strong></li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Keep header row visible on multi-page tables</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\">Select the header row → <code style=\"color:#5B9BD5\">Table Layout → Repeat Header Rows</code>. The header re-appears automatically on every page.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Auto-calculate timesheet totals</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\">Click in the \"Total\" cell → <code style=\"color:#5B9BD5\">Table Layout → Formula</code> → enter <code style=\"color:#5B9BD5\">=SUM(ABOVE)</code>. Word calculates your hours automatically. Update with <kbd style=\"background:#1a1f2e;padding:2px 5px;border-radius:3px;color:#5B9BD5\">F9</kbd> if you change values.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Color-code severity in findings tables</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;\">Click in severity cell → <code style=\"color:#5B9BD5\">Table Design → Shading</code> → Red (#C00000) for Critical, Orange (#E26B0A) for High, Yellow (#FFFF00) for Medium, Green (#70AD47) for Low. White text on red/orange; black on yellow/green.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Quick Parts — save your disclaimer, finding template, scope table; reuse across reports",
+          "bodyHtml": "<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 12px 0;\">Quick Parts let you save any formatted block — your disclaimer, a finding template, your scope table — and insert it anywhere with two clicks. Build your library once and reuse it across every engagement.</p>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Saving a block</p>\n<ol style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;padding-left:18px;line-height:1.9\">\n  <li>Select the formatted content you want to reuse (disclaimer, finding template, etc.)</li>\n  <li><code style=\"color:#5B9BD5\">Insert → Quick Parts → Save Selection to Quick Part Gallery</code></li>\n  <li>Give it a descriptive name (e.g., \"Security Report Disclaimer\")</li>\n</ol>\n<p style=\"color:#5B9BD5;font-size:13px;font-weight:600;margin:0 0 6px 0;\">Inserting a saved block</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 10px 0;\"><code style=\"color:#5B9BD5\">Insert → Quick Parts</code> → click the saved item. It drops in with full formatting intact.</p>\n<p style=\"color:#B0B8C4;font-size:13px;margin:0 0 6px 0;font-style:italic\">Good candidates for Quick Parts: confidentiality disclaimer, finding template (with all 6 subsections), scope table skeleton, risk rating table, remediation timeline table, NEXUS Security boilerplate intro.</p>"
+        },
+        {
+          "kind": "neutral",
+          "summary": "Keyboard Shortcuts & Troubleshooting — the 6 you'll use every report + common fixes",
+          "bodyHtml": "<div class=\"nx-shortcut-grid\">\n  <div class=\"nx-shortcut-card\"><code>Ctrl+A, F9</code><p>Update ALL fields — TOC, figure numbers, cross-references, bibliography. Run this before every submission.</p></div>\n  <div class=\"nx-shortcut-card\"><code>Ctrl+Enter</code><p>Page break. Never hit Enter 20 times to start a new page — this breaks whenever you edit content above.</p></div>\n  <div class=\"nx-shortcut-card\"><code>Ctrl+Shift+V</code><p>Paste without formatting. Use when copying from terminal or the web to prevent font/spacing disasters.</p></div>\n  <div class=\"nx-shortcut-card\"><code>Ctrl+Alt+1/2/3</code><p>Apply Heading 1/2/3 instantly. Required for auto-TOC to work. Faster than clicking the Styles pane.</p></div>\n  <div class=\"nx-shortcut-card\"><code>Ctrl+D</code><p>Font dialog — change font, size, and color in one place. Good for applying Consolas to command blocks.</p></div>\n  <div class=\"nx-shortcut-card\"><code>Cmd+A, fn+F9</code><p>Mac equivalent of Ctrl+A, F9. Update all fields on macOS. fn key required on most Mac keyboards.</p></div>\n</div>\n<p style=\"color:#B0B8C4;font-size:13px;margin:10px 0 0 0;\"><strong style=\"color:#fff\">Troubleshooting quick hits:</strong></p>\n<ul style=\"color:#B0B8C4;font-size:13px;margin:6px 0 0 0;padding-left:18px;line-height:1.8\">\n  <li><strong style=\"color:#fff\">TOC shows wrong page numbers:</strong> Ctrl+A → F9 → Update entire table</li>\n  <li><strong style=\"color:#fff\">Numbered list restarts at 1:</strong> Right-click the number → Continue Numbering</li>\n  <li><strong style=\"color:#fff\">Table splits awkwardly across pages:</strong> Select header row → Table Layout → Repeat Header Rows</li>\n  <li><strong style=\"color:#fff\">Figure caption separated from image:</strong> Select image → Home → Paragraph → Keep with next</li>\n  <li><strong style=\"color:#fff\">Can't delete blank page at end:</strong> Home → Show/Hide ¶ → delete the paragraph marks you see there</li>\n</ul>"
+        }
+      ]
+    },
+    {
+      "type": "named_section",
       "color": "#00BCD4",
       "label": "Pre-Submission Checklist",
+      "paragraphs": [
+        "Verify every item before you hit Submit. This is the most-read section of this page for a reason."
+      ],
+      "subheading": "Content Quality",
       "items": [
-        "File saved as <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">.docx</code> &#8212; not PDF, not Pages, not Google Docs export",
-        "All three sections present: Timesheet, Runbook, Client Report",
-        "10+ citations with auto-generated bibliography (References → Bibliography)",
-        "All screenshots show VM name (<code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">kali-lastname-studentID</code> visible)",
-        "Screenshot filenames follow <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">##-description.png</code> convention",
-        "Executive summary is non-technical and under one page",
-        "Each finding includes severity, evidence, and business impact",
-        "Recommendations are actionable and reference industry standards",
-        "Document spellchecked and proofread"
+        "File saved as <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">.docx</code> &mdash; not PDF, not Pages, not Google Docs export",
+        "Filename: <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">LastName_LabX.3_EngagementPacket.docx</code>",
+        "All three sections present: Section A Timesheet, Section B Runbook, Section C Client Report",
+        "Table of contents included and auto-generated (not typed)",
+        "Page numbers on all pages except the cover"
+      ],
+      "tip": "<ul style=\"margin:4px 0;padding-left:18px;line-height:1.9;color:#B0B8C4;\"><li>10+ citations using Word&#8217;s citation manager (References &rarr; Insert Citation)</li><li>Bibliography auto-generated (References &rarr; Bibliography) &mdash; not typed</li><li>All screenshots <strong style=\"color:#ffffff;\">embedded</strong> (not linked to external files)</li><li>VM name visible in all screenshots (<code style=\"color:#00BCD4;\">kali-lastname-studentID</code> in the prompt)</li><li>Screenshot filenames follow <code style=\"color:#00BCD4;\">##-description.png</code> convention</li><li>All figures have auto-numbered captions (References &rarr; Insert Caption)</li><li>Figure cross-references in text are live links, not manually typed numbers</li></ul>",
+      "expandables": [
+        {
+          "kind": "neutral",
+          "summary": "Section C self-check — does your report pass the professional standard?",
+          "bodyHtml": "<ul style=\"color:#B0B8C4;font-size:13px;margin:0;padding-left:18px;line-height:2.0\"><li>Executive summary is non-technical and under one page</li><li>Overall risk level (HIGH / MODERATE / LOW) stated in paragraph one of exec summary</li><li>Scope section lists specific IP ranges and explicit out-of-scope items</li><li>Risk rating scale defined with CVSS ranges</li><li>Each finding includes: severity, affected systems, observation, evidence, business impact, remediation</li><li>Business impact is framed in terms relevant to THIS client (financial, healthcare, DevOps, manufacturing)</li><li>Recommendations are tiered by timeline and reference a standard (CIS, NIST)</li><li>Security Strengths section contains at least one specific, evidenced positive observation</li><li>Report is written in third person, past tense throughout</li><li>No jargon left unexplained</li></ul>"
+        }
+      ],
+      "html_blocks": [
+        "<div style=\"background:rgba(0,188,212,0.08);border-left:3px solid #00BCD4;padding:14px 18px;border-radius:0 6px 6px 0;margin-top:16px;\"><strong style=\"color:#00BCD4;\">Final Step:</strong> <span style=\"color:#B0B8C4;font-size:14px;\">Select all (<kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#00BCD4;\">Ctrl+A</kbd>) then update fields (<kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#00BCD4;\">F9</kbd>). This refreshes your table of contents, all figure numbers, and your bibliography in one pass. On Mac: <kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#00BCD4;\">Cmd+A</kbd> then <kbd style=\"background:#1a1f2e;padding:2px 6px;border-radius:3px;color:#00BCD4;\">fn+F9</kbd>. Do this. Every time. Without exception.</span></div>"
       ]
     },
     {
       "type": "footer",
-      "html": "Submitted to the Lab X.3 assignment in Canvas. No late work accepted. Format: <strong>.docx only</strong>."
+      "html": "Submit to the Lab X.3 assignment in Canvas. No late work accepted. Format: <strong>.docx only</strong>. Questions? Discord <strong>#course-questions</strong>."
     }
   ]
 }
