@@ -106,7 +106,7 @@
           "steps": [
             {
               "step": 1,
-              "text": "Download <code>alamo-hashes.txt</code> from Canvas to your <code>~/lab4</code> directory",
+              "text": "Download <code>alamo-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-hashes.txt\" target=\"_blank\" download>click here to download</a> &mdash; then move it to your <code>~/lab4</code> directory",
               "command": null,
               "whatThisDoes": null
             },
@@ -446,6 +446,12 @@
           "type": "callout",
           "text": "Comparing Windows and Linux password cracking reveals how defensive architecture choices affect attacker timelines. The same weak password pattern cracks instantly on NTLM but takes noticeable time on SHA-512. Architecture matters &#8212; but so does password policy. Frank Morrison&#8217;s argument that &#8220;the password has worked fine for ten years&#8221; misses the point. Security isn&#8217;t about whether something has failed yet &#8212; it&#8217;s about whether it&#8217;s resistant to attack.",
           "calloutType": "purpleTeamConnection"
+        },
+        {
+          "type": "callout",
+          "calloutType": "tip",
+          "title": "Optional Bonus: OSINT Wordlists",
+          "text": "Want to push further? Carmen compiled OSINT dossiers on Alamo Industries employees. Use them to build targeted wordlists from employee details (job titles, departments, hire years, location) and re-run your attacks. <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-dossiers.pdf\" target=\"_blank\">Alamo Industries Employee Dossiers (PDF)</a>. Document any additional cracks for Lab 4.3 bonus credit."
         }
       ]
     }
