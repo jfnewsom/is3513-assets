@@ -360,9 +360,8 @@
         ${link('Lab 4.2 &mdash; Linux Password Cracking',       L + '/Lab4_2_Linux_Password_Cracking.html',                    'dd-cyan')}
         ${link('Lab 4.3 &mdash; Password Security Assessment',  L + '/Lab4_3_Password_Security_Assessment.html',               'dd-cyan')}
         <div class="drop-sub">Module 5 &mdash; Risk &amp; Infrastructure</div>
-        ${link('Lab 5.1 &mdash; Vulnerability Scanning',        L + '/Lab5_1_Vulnerability_Discovery_Scanning.html',           'dd-cyan')}
-        ${link('Lab 5.2 &mdash; Risk Assessment',               L + '/Lab5_2_Risk_Assessment_Prioritization.html',             'dd-cyan')}
-        ${link('Lab 5.3 &mdash; LoneStar Engagement',           L + '/Lab5_3_Risk_Vulnerability_Assessment_Report.html',       'dd-cyan')}
+        ${link('Lab 5.1 &mdash; Vulnerability Assessment &amp; Risk Analysis', L + '/Lab5_1_Vulnerability_Assessment_Risk_Analysis.html',    'dd-cyan')}
+        ${link('Lab 5.2 &mdash; LoneStar Engagement',                        L + '/Lab5_2_Risk_Vulnerability_Assessment_Report.html',      'dd-cyan')}
       </div>
     </div>` : '';
 
