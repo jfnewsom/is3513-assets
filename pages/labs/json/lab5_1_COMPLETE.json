@@ -1,7 +1,7 @@
 {
   "meta": {
     "labId": "5.1",
-    "title": "Vulnerability Discovery & Scanning",
+    "title": "Vulnerability Assessment & Risk Analysis",
     "labType": "foundation",
     "module": "Module 5: Infrastructure, Risk & Resilience",
     "client": "LoneStar DevOps",
@@ -12,60 +12,71 @@
     "screenshotStart": 1
   },
   "intro": {
-    "overview": "LoneStar DevOps, an Austin-based startup, has an enterprise prospect requiring a third-party security assessment. Their rapid growth has outpaced their security maturity, and with Series B funding on the horizon, they need to know exactly what vulnerabilities exist in their infrastructure. This week, you'll deploy a local simulation of their environment and conduct comprehensive vulnerability discovery using the same methodology NEXUS uses for real client engagements.",
+    "overview": "LoneStar DevOps has an enterprise prospect requiring a third-party security assessment. Their rapid growth has outpaced their security maturity, and with Series B funding on the horizon, they need to know exactly what vulnerabilities exist in their infrastructure — and which ones to fix first. This week you'll deploy a local simulation of their environment, conduct comprehensive vulnerability discovery, and transform raw findings into a prioritized risk analysis that Amanda Nguyen can take to investors.",
     "mentorQuote": {
       "character": "Maya Rodriguez",
       "title": "Senior Penetration Tester, NEXUS Security",
       "headshot": "maya-rodriguez.png",
-      "quote": "Scan everything. Version detect everything. The vulnerability you miss is the one that gets exploited. Thoroughness beats speed every time in vulnerability assessment. Amanda Nguyen is counting on us to find what their competitors' security team will find — and we need to find it first."
+      "quote": "Scan everything. Version detect everything. The vulnerability you miss is the one that gets exploited. But finding vulnerabilities is only half the job — a scanner output is worthless without context. Anyone can produce a list of CVEs. What separates a consultant from a technician is knowing which ones actually matter to the client."
     },
     "focusAreas": [
       "Docker container deployment and network architecture",
       "Network scanning and service discovery with Nmap",
       "Vulnerability identification using NSE scripts",
-      "Application-specific scanning (WPScan, npm audit, MySQL)",
-      "CVE research and vulnerability documentation"
+      "Application-specific scanning (WPScan, MySQL)",
+      "CVSS 3.1 scoring and vulnerability prioritization",
+      "Risk matrix construction and remediation planning"
     ],
     "objectives": [
       "Deploy the LoneStar DevOps simulated infrastructure using Docker",
       "Conduct comprehensive port scanning and service enumeration",
-      "Identify and document 25–30 vulnerabilities across all services",
-      "Research CVEs and record base CVSS scores for each finding"
+      "Identify and document key vulnerabilities across all services",
+      "Select and score the top 10 findings using CVSS 3.1",
+      "Build a risk matrix and prioritized remediation roadmap"
     ],
     "callouts": [
       {
         "type": "tip",
-        "title": "Save For Lab 5.3",
+        "title": "Save For Lab 5.2",
         "icon": "folder",
-        "text": "This is <strong>Week 1 of a 3-week module</strong>. Create a folder called <code>Module5_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 5.3 Engagement Packet in Week 3."
+        "text": "This is <strong>Week 1 of a 2-week module</strong>. Create a folder called <code>Module5_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 5.2 Engagement Packet next week."
+      },
+      {
+        "type": "warning",
+        "title": "This Lab Is Longer Than Usual",
+        "text": "This Foundation Lab covers both vulnerability discovery and risk analysis in a single week. Budget <strong>3&#8211;3.5 hours</strong> and don&#8217;t start it the night before it&#8217;s due. Checkpoints 1&#8211;3 are tool-based; Checkpoints 4&#8211;5 are analysis-based and can be done without your VM running."
       }
     ]
   },
   "timeGuide": {
     "rows": [
       {
-        "task": "Checkpoint 1: Deploy LoneStar infrastructure (Docker pull + run)",
-        "time": "20–30 min"
+        "task": "Checkpoint 1: Deploy LoneStar infrastructure",
+        "time": "20&#8211;30 min"
       },
       {
-        "task": "Checkpoint 2: Network & port scanning (Nmap discovery)",
-        "time": "40–50 min"
+        "task": "Checkpoint 2: Network and vulnerability scanning",
+        "time": "45&#8211;60 min"
       },
       {
-        "task": "Checkpoint 3: Vulnerability scanning (NSE scripts)",
-        "time": "45–60 min"
+        "task": "Checkpoint 3: Application-specific scanning",
+        "time": "30&#8211;40 min"
       },
       {
-        "task": "Checkpoint 4: Application-specific scanning (WPScan, npm audit, MySQL)",
-        "time": "60–75 min"
+        "task": "Checkpoint 4: CVSS scoring (top 10 findings)",
+        "time": "30&#8211;40 min"
+      },
+      {
+        "task": "Checkpoint 5: Risk matrix and prioritization",
+        "time": "45&#8211;60 min"
       }
     ],
     "totalRow": {
       "label": "TOTAL",
-      "time": "2.5&#8211;3.5 hours",
-      "note": "Scan times vary; plan for Nmap NSE and WPScan to run in the background."
+      "time": "3&#8211;3.5 hours",
+      "note": "Scan times vary. Nmap NSE and WPScan can take 10&#8211;15 minutes each &#8212; let them run in the background while you document earlier findings."
     },
-    "timesheetNote": "Scanning time varies based on your system performance. Nmap vulnerability scripts and WPScan can take 10–15 minutes each to complete. Plan for scans to run in the background while you document previous findings."
+    "timesheetNote": "Log this week as <em>Internal Training: 3&#8211;3.5 hours &#8212; Vulnerability assessment and risk analysis</em>. This is Week 1 of a 2-week module. Your Engagement Packet (Lab 5.2) is due next week."
   },
   "checkpoints": [
     {
@@ -74,39 +85,28 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "A local simulation of LoneStar DevOps’s infrastructure using Docker containers. This includes their customer portal (WordPress), database server (MySQL), development API (Node.js), and management access (SSH).",
+          "whatYoureDoing": "A local simulation of LoneStar DevOps&#8217;s infrastructure using Docker containers: their customer portal (WordPress), database server (MySQL), development API (Node.js), and management access (SSH).",
           "whyItMatters": "Vulnerability assessments require a target environment. Docker allows us to create isolated, reproducible simulations of client infrastructure without touching their production systems. This is how NEXUS tests assessment methodology before deploying to client networks."
         },
         {
           "type": "steps",
-          "role": null,
           "steps": [
             {
               "text": "Verify Docker is running:",
-              "command": "docker --version",
-              "whatThisDoes": null,
-              "substeps": null
+              "command": "docker --version"
             },
             {
-              "text": "Pull the LoneStar infrastructure image from Docker Hub",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Pull the LoneStar infrastructure image from Docker Hub"
             },
             {
-              "text": "Deploy all four containers with the provided docker-compose configuration",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Deploy all four containers with the provided docker-compose configuration"
             },
             {
               "text": "Verify all containers are running:",
-              "command": "docker ps",
-              "whatThisDoes": null,
-              "substeps": null
+              "command": "docker ps"
             },
             {
-              "text": "Test connectivity to each service (WordPress on 8080, MySQL on 3306, API on 3000, SSH on 2222)",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Test connectivity to each service (WordPress on 8080, MySQL on 3306, API on 3000, SSH on 2222)"
             }
           ]
         },
@@ -119,17 +119,17 @@
           "type": "callout",
           "calloutType": "screenshot",
           "number": 1,
-          "description": "Capture docker ps output showing all four containers running.",
+          "description": "docker ps output showing all four containers running.",
           "filename": "01-docker-containers.png",
-          "body": "Take Screenshot 01. Capture the output of <code>docker ps</code> showing all four LoneStar containers running (webapp-prod, db-primary, dev-api, mgmt-ssh). Your VM hostname must be visible in the terminal prompt."
+          "body": "Take Screenshot 01. Capture <code>docker ps</code> showing all four LoneStar containers running (webapp-prod, db-primary, dev-api, mgmt-ssh). Your VM hostname must be visible in the terminal prompt."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
           "number": 2,
-          "description": "Capture WordPress landing page at http://localhost:8080.",
-          "filename": "02-wordpress-landing.png",
-          "body": "Take Screenshot 02. Capture your terminal showing a successful connectivity test to each service — for example, curl output for localhost:8080 (WordPress) and localhost:3000 (API). If using a browser, capture the WordPress login page at localhost:8080 with your VM hostname visible in an adjacent terminal."
+          "description": "Connectivity test to at least one service.",
+          "filename": "02-service-connectivity.png",
+          "body": "Take Screenshot 02. Capture a successful connectivity test &#8212; curl output for localhost:8080 (WordPress) or the WordPress login page in a browser with your VM hostname visible in an adjacent terminal."
         },
         {
           "type": "callout",
@@ -137,15 +137,15 @@
           "items": [
             {
               "label": "Docker not running",
-              "text": "Start with sudo systemctl start docker"
+              "text": "Start with <code>sudo systemctl start docker</code>"
             },
             {
               "label": "Port already in use",
-              "text": "Check with sudo netstat -tulpn"
+              "text": "Check with <code>sudo netstat -tulpn</code>"
             },
             {
-              "label": "Containers won’t start",
-              "text": "Check logs with docker logs [container-name]"
+              "label": "Containers won&#8217;t start",
+              "text": "Check logs with <code>docker logs [container-name]</code>"
             }
           ]
         },
@@ -157,7 +157,7 @@
         {
           "type": "callout",
           "calloutType": "thatsAReference",
-          "text": "You just researched security assessments. Add it to your references: PTES: Penetration Testing Execution Standard. http://www.pentest-standard.org/"
+          "text": "Add to your references: PTES &#8212; Penetration Testing Execution Standard. http://www.pentest-standard.org/"
         },
         {
           "type": "callout",
@@ -168,18 +168,18 @@
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 10",
-          "text": "Review Chapter 10 sections on infrastructure security and defense-in-depth. Note how LoneStar’s architecture violates several layered security principles."
+          "text": "Review the Virtualization section, particularly Application Cells/Containers. Note how LoneStar&#8217;s containerized architecture both enables this assessment and introduces its own security considerations."
         }
       ]
     },
     {
       "number": 2,
-      "title": "Network and Port Scanning",
+      "title": "Network and Vulnerability Scanning",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "A complete inventory of LoneStar’s network attack surface — every open port, every running service, and version information for each.",
-          "whyItMatters": "Service enumeration is the foundation of vulnerability assessment. Version detection reveals outdated software with known vulnerabilities. Without accurate version information, you can’t research CVEs or assess risk. This step feeds directly into CVSS scoring in Lab 5.2."
+          "whatYoureDoing": "A complete inventory of LoneStar&#8217;s attack surface &#8212; every open port, every running service, version information, and known vulnerabilities &#8212; in a single combined scan pass.",
+          "whyItMatters": "Service enumeration is the foundation of vulnerability assessment. Running version detection and default NSE scripts together is how NEXUS conducts efficient assessments &#8212; one thorough pass beats two partial ones. Version strings reveal outdated software; NSE scripts surface known CVEs and misconfigurations."
         },
         {
           "type": "callout",
@@ -187,61 +187,48 @@
           "character": "Carmen Vega",
           "title": "Junior Security Analyst, NEXUS Security",
           "headshot": "carmen-vega.png",
-          "quote": "My first vulnerability assessment, I missed an open MySQL port because I only scanned common ports. Check your scans twice. Run a full port scan at least once — you’d be surprised what services companies expose on weird ports."
+          "quote": "My first vulnerability assessment, I missed an open MySQL port because I only scanned common ports. Check your scans twice. Run a full port scan at least once &#8212; you&#8217;d be surprised what services companies expose on non-standard ports."
         },
         {
           "type": "steps",
-          "role": null,
           "steps": [
             {
-              "text": "Identify the Docker network range (typically 172.17.0.0/16)",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Identify the Docker network range:",
+              "command": "ip addr show docker0"
             },
             {
-              "text": "Run a host discovery scan to identify all container IPs",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Run host discovery to identify all container IPs:",
+              "command": "sudo nmap -sn 172.17.0.0/24"
             },
             {
-              "text": "Perform a full port scan on each discovered host",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Run a combined version detection and default script scan against all containers:",
+              "command": "sudo nmap -sV -sC -p- 172.17.0.2-5"
             },
             {
-              "text": "Run service version detection (-sV) on all open ports",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Document all services with their exact version numbers",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Review output and document all services with exact version strings and any CVEs flagged by NSE scripts"
             }
           ]
         },
         {
           "type": "callout",
           "calloutType": "exampleCommands",
-          "code": "# Find Docker network range\nip addr show docker0\n\n# Host discovery on Docker network\nsudo nmap -sn 172.17.0.0/24\n\n# Full port scan with version detection\nsudo nmap -sV -p- 172.17.0.2-5\n\n# Quick scan of known ports\nsudo nmap -sV -sC -p 22,80,3000,3306,8080 172.17.0.2-5"
+          "code": "# Find Docker network range\nip addr show docker0\n\n# Host discovery\nsudo nmap -sn 172.17.0.0/24\n\n# Combined version detection + default NSE scripts (full port range)\nsudo nmap -sV -sC -p- 172.17.0.2-5\n\n# Targeted vulnerability scripts if you want to go deeper\nsudo nmap --script vuln -p 3306 172.17.0.3"
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": "3-4",
-          "items": [
-            {
-              "number": 3,
-              "description": "Host discovery showing all container IPs.",
-              "filename": "03-host-discovery.png"
-            },
-            {
-              "number": 4,
-              "description": "Service version detection results.",
-              "filename": "04-service-versions.png"
-            }
-          ],
-          "body": "Take Screenshot 03. Capture the full nmap -sV output from your service version detection scan. The output must show at least one host IP, open ports, and version strings (e.g., Apache 2.4.x, MySQL 5.7.x, OpenSSH). Your VM hostname must be visible in the prompt."
+          "number": 3,
+          "description": "Host discovery showing all container IPs.",
+          "filename": "03-host-discovery.png",
+          "body": "Take Screenshot 03. Capture the nmap host discovery output showing all container IPs identified. Your VM hostname must be visible in the prompt."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 4,
+          "description": "Combined -sV -sC scan results showing services, versions, and NSE findings.",
+          "filename": "04-combined-scan.png",
+          "body": "Take Screenshot 04. Capture the combined scan output showing open ports, version strings (e.g., Apache 2.4.x, MySQL 5.7.x, OpenSSH 7.6p1), and any CVE identifiers flagged by NSE scripts. Output will be long &#8212; scroll to capture the most significant findings. Multiple screenshots labeled 04a, 04b are fine."
         },
         {
           "type": "callout",
@@ -249,119 +236,15 @@
           "items": [
             {
               "label": "Wrong subnet",
-              "text": "Scan the Docker bridge network, not your host network. Verify your target range with docker network inspect bridge"
+              "text": "Scan the Docker bridge network, not your host network. Verify your target range with <code>docker network inspect bridge</code>"
             },
             {
-              "label": "Skipping version detection",
-              "text": "Port numbers alone aren’t enough — always use -sV to identify exact service versions"
+              "label": "Skipping -sC",
+              "text": "The <code>-sC</code> flag runs default NSE scripts alongside version detection &#8212; this is what surfaces misconfigurations and CVEs without a separate scan pass"
             },
             {
-              "label": "Incomplete scan range",
-              "text": "Default Nmap only scans common ports. Use -p- if you suspect services on non-standard ports"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "What’s the difference between TCP connect scan (-sT) and SYN scan (-sS)? Check man nmap."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add to references: Nmap Reference Guide. https://nmap.org/book/man.html"
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A documented inventory showing: WordPress 5.1.1 on Apache, MySQL 5.7.26, Node.js 14.x API, OpenSSH 7.6p1, plus exact version numbers for all detected services."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 10",
-          "text": "Chapter 10 discusses network scanning and enumeration as part of infrastructure assessment. Compare the Nmap output you collected to the scanning methodologies described in the text."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Vulnerability Scanning",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "An automated vulnerability scan using Nmap’s NSE (Nmap Scripting Engine) to identify known vulnerabilities, misconfigurations, and security weaknesses across all services.",
-          "whyItMatters": "NSE scripts automate vulnerability checking against known CVEs, default credentials, and common misconfigurations. While manual testing is more thorough, automated scans provide baseline coverage and ensure you don’t miss obvious issues."
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Run the default NSE vulnerability scripts against all containers",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Run MySQL-specific scripts against the database container",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Run HTTP-specific scripts against the WordPress container",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Run SSH-specific scripts against the management container",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Document all identified vulnerabilities with CVE numbers where available",
-              "whatThisDoes": null,
-              "substeps": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "exampleCommands",
-          "code": "# Run default vulnerability scripts\nsudo nmap --script vuln 172.17.0.2-5\n\n# MySQL vulnerability scanning\nsudo nmap --script mysql-vuln* -p 3306 172.17.0.3\n\n# HTTP vulnerability scanning\nsudo nmap --script http-vuln* -p 80,8080 172.17.0.2\n\n# SSH-specific scanning\nsudo nmap --script ssh* -p 22 172.17.0.5\n\n# Check for default credentials\nsudo nmap --script mysql-empty-password -p 3306 172.17.0.3"
-        },
-        {
-          "type": "callout",
-          "calloutType": "screenshot",
-          "number": "5-6",
-          "items": [
-            {
-              "number": 5,
-              "description": "NSE vulnerability scan with CVE identified.",
-              "filename": "05-nse-vuln-scan.png"
-            },
-            {
-              "number": 6,
-              "description": "MySQL vulnerability/credential scan.",
-              "filename": "06-mysql-scan.png"
-            }
-          ],
-          "body": "Take Screenshot 04. Capture the NSE vulnerability scan results showing identified findings. The output must include at least one CVE identifier or vulnerability label. If results are long, scroll to show the most significant findings — capture multiple screenshots if needed, labeled 04a, 04b."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Script category confusion",
-              "text": "--script vuln and --script default run different scripts — know what you’re running"
-            },
-            {
-              "label": "Scan takes too long",
-              "text": "NSE vuln scripts can be slow. Target specific ports with -p to reduce scan time"
-            },
-            {
-              "label": "Missing CVE numbers",
-              "text": "Document every CVE ID the scripts report. You’ll need these in Lab 5.2 for CVSS scoring"
+              "label": "Long scan times",
+              "text": "A full <code>-p-</code> scan can take 5&#8211;10 minutes per host. Let it run and document findings from earlier checkpoints in the meantime"
             }
           ]
         },
@@ -373,29 +256,29 @@
         {
           "type": "callout",
           "calloutType": "thatsAReference",
-          "text": "Add: Nmap Scripting Engine (NSE). https://nmap.org/book/nse.html and CVE - MITRE. https://cve.mitre.org/"
+          "text": "Add: Nmap Reference Guide. https://nmap.org/book/man.html and CVE &#8212; MITRE. https://cve.mitre.org/"
         },
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "NSE scan results identifying: MySQL default credentials, Apache CVEs, SSH configuration weaknesses, and at least 5–8 vulnerabilities with CVE numbers documented."
+          "text": "A documented service inventory showing WordPress on Apache, MySQL, Node.js API, and OpenSSH with exact version numbers &#8212; plus any CVEs or misconfigurations flagged by NSE scripts."
         },
         {
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 10",
-          "text": "Chapter 10 covers vulnerability scanning as part of infrastructure security assessment. Note how the text distinguishes between authenticated and unauthenticated scans and when each is appropriate."
+          "text": "Review the Security Devices sections (Firewalls, IDS, Network Access Control). Note which of these controls LoneStar&#8217;s infrastructure is missing, and consider how each gap contributes to the findings your scan surfaces."
         }
       ]
     },
     {
-      "number": 4,
+      "number": 3,
       "title": "Application-Specific Scanning",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Deep vulnerability analysis using application-specific tools: WPScan for WordPress, npm audit for Node.js, and MySQL client for database security assessment.",
-          "whyItMatters": "Generic scanners miss application-specific vulnerabilities. WPScan knows WordPress vulnerabilities that Nmap doesn’t. npm audit understands Node.js dependency trees. This layered approach ensures comprehensive coverage — it’s how NEXUS achieves thorough assessments."
+          "whatYoureDoing": "Deep vulnerability analysis using application-specific tools: WPScan for the WordPress customer portal and MySQL client for database credential testing.",
+          "whyItMatters": "Generic scanners miss application-specific vulnerabilities. WPScan knows WordPress plugin and theme vulnerabilities that Nmap doesn&#8217;t. Default database credentials are one of the most common and damaging findings in real assessments &#8212; a compromised database is a compromised business."
         },
         {
           "type": "callout",
@@ -403,71 +286,54 @@
           "character": "Sarah Martinez",
           "title": "Lead DevOps Engineer, LoneStar DevOps",
           "headshot": "sarah-martinez.png",
-          "quote": "I’ve been saying we need to address this for months. Finally, someone’s listening. That npm audit output is going to make Amanda’s eyes pop. We haven’t updated those dependencies since Jake left. Just… be thorough. I need ammunition to get budget for this."
+          "quote": "I&#8217;ve been saying we need to address this for months. Finally someone&#8217;s listening. Just be thorough. I need ammunition to get budget for this."
         },
         {
           "type": "steps",
-          "role": null,
           "steps": [
             {
-              "text": "Run WPScan against the WordPress installation",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Run WPScan against the WordPress installation:",
+              "command": "wpscan --url http://localhost:8080 --enumerate vp,vt,u"
             },
             {
-              "text": "Connect to the Node.js container and run npm audit",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Test MySQL authentication with default and weak credentials:",
+              "command": "mysql -h localhost -P 3306 -u root -p"
             },
             {
-              "text": "Test MySQL authentication with default/weak credentials",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Check for former employee account on SSH:",
+              "command": "ssh -p 2222 jdavis@localhost"
             },
             {
-              "text": "Check SSH for weak passwords and configuration issues",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Document all findings with severity ratings",
-              "whatThisDoes": null,
-              "substeps": null
+              "text": "Document all findings with severity ratings and note which asset each affects"
             }
           ]
         },
         {
           "type": "callout",
           "calloutType": "exampleCommands",
-          "code": "# WordPress vulnerability scan\nwpscan --url http://localhost:8080 --enumerate vp,vt,u\n\n# Node.js dependency audit (inside container)\ndocker exec -it dev-api npm audit\n\n# MySQL credential test\nmysql -h localhost -P 3306 -u root -p\n\n# SSH weak password test (try common passwords)\nssh -p 2222 admin@localhost\n\n# Check for former employee account\nssh -p 2222 jdavis@localhost"
+          "code": "# WordPress vulnerability scan\nwpscan --url http://localhost:8080 --enumerate vp,vt,u\n\n# MySQL credential test (try: root/root, root/password, root/[blank])\nmysql -h localhost -P 3306 -u root -p\n\n# Former employee account check\nssh -p 2222 jdavis@localhost"
+        },
+        {
+          "type": "callout",
+          "calloutType": "tip",
+          "title": "What About npm audit?",
+          "text": "The Node.js container supports dependency auditing via <code>docker exec -it dev-api npm audit</code>. This is a real tool used in production environments &#8212; worth knowing it exists. It&#8217;s not required for this lab, but if you run it, any high/critical findings are fair game for your Checkpoint 4 CVSS selection."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": "7-10",
-          "items": [
-            {
-              "number": 7,
-              "description": "WPScan results.",
-              "filename": "07-wpscan-results.png"
-            },
-            {
-              "number": 8,
-              "description": "npm audit output.",
-              "filename": "08-npm-audit.png"
-            },
-            {
-              "number": 9,
-              "description": "MySQL credential test.",
-              "filename": "09-mysql-access.png"
-            },
-            {
-              "number": 10,
-              "description": "SSH finding.",
-              "filename": "10-ssh-finding.png"
-            }
-          ],
-          "body": "Take Screenshot 05. Capture WPScan output showing WordPress vulnerabilities and plugin findings, OR your npm audit output showing Node.js dependency vulnerabilities. The output must show version information and at least one identified vulnerability or finding. Your VM hostname must be visible in the prompt."
+          "number": 5,
+          "description": "WPScan output showing WordPress vulnerabilities.",
+          "filename": "05-wpscan-results.png",
+          "body": "Take Screenshot 05. Capture WPScan output showing identified vulnerabilities, plugin findings, or version information. Your VM hostname must be visible in the prompt."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 6,
+          "description": "MySQL credential test result OR SSH former employee finding.",
+          "filename": "06-credential-finding.png",
+          "body": "Take Screenshot 06. Capture either your MySQL connection attempt (success or failure with the credentials you tried) or your SSH test for the jdavis account. Document what you found."
         },
         {
           "type": "callout",
@@ -475,43 +341,239 @@
           "items": [
             {
               "label": "WPScan API token",
-              "text": "Some WPScan features require a free API token. If enumeration returns limited results, check whether you need to register at wpscan.com"
+              "text": "Some WPScan features require a free API token. If enumeration returns limited results, register at wpscan.com for a free token"
             },
             {
-              "label": "npm audit inside container",
-              "text": "You must docker exec into the container to run npm audit — running it on your host checks your host’s packages, not the target’s"
+              "label": "MySQL connection refused",
+              "text": "Verify the db-primary container is running with <code>docker ps</code> before attempting the connection"
             },
             {
-              "label": "Tool output overload",
-              "text": "WPScan and npm audit produce verbose output. Focus on high/critical severity findings first and document systematically"
+              "label": "Too many findings",
+              "text": "WPScan can be verbose. Focus on vulnerabilities with CVE numbers or severity ratings &#8212; these are your Checkpoint 4 candidates"
             }
           ]
         },
         {
           "type": "callout",
           "calloutType": "digDeeper",
-          "text": "Research CVE-2019-10744 (Lodash prototype pollution). What makes this vulnerability particularly dangerous in Node.js applications? Search the NIST NVD database."
+          "text": "What makes default credentials such a persistent problem in the industry? Research &#8220;credential stuffing&#8221; and how default password databases are used in real attacks."
         },
         {
           "type": "callout",
           "calloutType": "thatsAReference",
-          "text": "Add: CVSS v3.1 Specification. FIRST, https://www.first.org/cvss/specification-document"
+          "text": "Add: WPScan WordPress Vulnerability Database. https://wpscan.com/wordpresses"
         },
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A comprehensive vulnerability inventory with 25–30 findings including: WordPress SQL injection CVE, outdated Apache/PHP, MySQL default credentials, 15+ npm vulnerabilities, weak SSH passwords, and active former employee account (jdavis)."
+          "text": "WPScan findings from the WordPress portal, results from MySQL credential testing, and documentation of the jdavis former employee account. Combined with Checkpoint 2, you should have enough findings to select a strong top 10 for CVSS scoring."
         },
         {
           "type": "callout",
           "calloutType": "textbookReference",
           "chapter": "Chapter 20",
-          "text": "Chapter 20 introduces risk identification and the relationship between vulnerabilities, threats, and assets. The application-specific findings you documented here are exactly the type of data that feeds into the risk assessment process you’ll perform in Lab 5.2."
+          "text": "The Chapter 20 sections on Business Risks and Business Impact Analysis explain why the jdavis account and MySQL default credentials rank above many higher-CVSS findings. Start thinking about asset mapping &#8212; which container holds customer data, and what&#8217;s the impact if it&#8217;s compromised?"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "CVSS Scoring &#8212; Top 10 Findings",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Selecting your 10 most significant findings from Checkpoints 2 and 3, then scoring each using the CVSS 3.1 calculator.",
+          "whyItMatters": "CVSS provides a standardized language for communicating vulnerability severity across teams, vendors, and clients. But before you can score, you have to select &#8212; and selection requires judgment. Which 10 findings represent the real risk surface for LoneStar? That decision is more important than the scores themselves."
+        },
+        {
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "character": "Marcus Chen",
+          "title": "Founder & Principal Consultant, NEXUS Security",
+          "headshot": "marcus-chen.png",
+          "quote": "Anyone can run a scanner and produce a list of CVEs. What separates a consultant from a technician is context. Select findings that tell a story about LoneStar&#8217;s actual risk &#8212; not just the highest numbers."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Review all findings from Checkpoints 2 and 3. Select the 10 that best represent LoneStar&#8217;s risk profile. Document your selection rationale &#8212; why these 10?"
+            },
+            {
+              "text": "Access the CVSS 3.1 calculator: https://www.first.org/cvss/calculator/3.1"
+            },
+            {
+              "text": "For each finding: look up the CVE if available, or calculate based on characteristics. Document Attack Vector, Attack Complexity, Privileges Required, User Interaction, Scope, and C/I/A Impact"
+            },
+            {
+              "text": "Build a summary table: Finding Name, CVE (if applicable), Base Score, Severity Rating, one-sentence rationale for inclusion"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "tip",
+          "title": "Key Insight: CVSS Score &#8260; Business Priority",
+          "text": "WordPress SQL injection may score 9.8 but only affects the marketing site. MySQL default credentials may score 7.3 but expose ALL customer data. Your selection and rationale should reflect this distinction &#8212; it&#8217;s what your Engagement Packet will need to defend."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 7,
+          "description": "CVSS 3.1 calculator with at least one vulnerability scored.",
+          "filename": "07-cvss-calculator.png",
+          "body": "Take Screenshot 07. Capture the CVSS calculator with one of your top 10 findings fully scored. The metric selections and resulting score must be visible."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 8,
+          "description": "Complete top-10 vulnerability table with CVSS scores.",
+          "filename": "08-vulnerability-scores.png",
+          "body": "Take Screenshot 08. Capture your completed summary table showing all 10 selected findings with CVSS scores, severity ratings, and your selection rationale. A Word or spreadsheet table is fine &#8212; legibility matters."
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "items": [
+            {
+              "label": "Using CVSS 2.0 scores",
+              "text": "Some older CVE entries show CVSS 2.0 scores. Always use the v3.1 calculator at first.org for consistency"
+            },
+            {
+              "label": "Confusing Attack Vector with Attack Complexity",
+              "text": "Attack Vector is WHERE the attacker must be (network, adjacent, local, physical). Attack Complexity is HOW HARD the exploit is to execute"
+            },
+            {
+              "label": "Skipping the rationale",
+              "text": "A score without explanation is just a number. Document why you selected each finding and why you assigned each metric value"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "text": "What&#8217;s the difference between CVSS Base, Temporal, and Environmental scores? Research how organizations use each type and when Environmental scores change the remediation picture."
+        },
+        {
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "text": "Add: FIRST. CVSS v3.1 Specification Document. https://www.first.org/cvss/specification-document and NIST NVD CVSS Calculator. https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator"
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "text": "A top-10 vulnerability table with CVSS 3.1 scores, severity ratings, and written rationale for your selection. This feeds directly into your Lab 5.2 Engagement Packet."
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "chapter": "Chapter 20",
+          "text": "Chapter 20&#8217;s Qualitatively and Quantitatively Assessing Risk sections explain the underlying logic of scoring frameworks. CVSS is the industry implementation of the quantitative approach the text describes &#8212; translating vulnerability characteristics into a numeric score that enables objective comparison."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Risk Matrix and Prioritization",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Building a 5&#215;5 risk matrix that plots your top 10 findings by likelihood and impact, then translating it into a prioritized remediation roadmap that accounts for LoneStar&#8217;s real-world constraints.",
+          "whyItMatters": "Executives understand &#8220;red quadrant&#8221; better than &#8220;CVSS 9.8.&#8221; A risk matrix translates technical findings into business language. But a report that says &#8220;fix everything immediately&#8221; is useless &#8212; LoneStar has a 2-person DevOps team, no staging environment, and can&#8217;t take the portal offline during business hours. Your roadmap has to work in the real world."
+        },
+        {
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "character": "Amanda Nguyen",
+          "title": "CEO & Co-Founder, LoneStar DevOps",
+          "headshot": "amanda-nguyen.png",
+          "quote": "I present to Longhorn Ventures in three weeks. I need to know what could actually hurt us and what the plan is to fix it. Give me something I can hand to investors."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Define Likelihood Levels (1&#8211;5): Rare &#8594; Unlikely &#8594; Possible &#8594; Likely &#8594; Almost Certain"
+            },
+            {
+              "text": "Define Impact Levels (1&#8211;5): Negligible &#8594; Minor &#8594; Moderate &#8594; Major &#8594; Catastrophic. Consider LoneStar&#8217;s context: $12M ARR, 200+ customers, Series B preparation, customer credentials and API keys in the database"
+            },
+            {
+              "text": "Calculate Risk Score for each finding: Risk = Likelihood &#215; Impact. Plot all 10 on a color-coded 5&#215;5 grid: Critical (15&#8211;25), High (10&#8211;14), Medium (5&#8211;9), Low (1&#8211;4)"
+            },
+            {
+              "text": "Build a prioritized remediation roadmap. Account for constraints: 2 DevOps engineers, no staging environment, zero-downtime requirement for the customer portal, 4-week timeline before enterprise review. Sequence by: risk score, remediation complexity, and quick wins that demonstrate progress to Amanda"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "character": "Sarah Martinez",
+          "title": "Lead DevOps Engineer, LoneStar DevOps",
+          "headshot": "sarah-martinez.png",
+          "quote": "It&#8217;s just me and Miguel, and we can&#8217;t flip a switch and fix everything overnight. Give me quick wins I can show Amanda next week, and a realistic plan for the harder stuff."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 9,
+          "description": "Completed 5&#215;5 risk matrix with findings plotted.",
+          "filename": "09-risk-matrix.png",
+          "body": "Take Screenshot 09. Capture your completed risk matrix showing all 10 findings plotted with color coding. A Word table, spreadsheet, or hand-drawn grid photographed clearly are all acceptable."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 10,
+          "description": "Prioritized remediation roadmap.",
+          "filename": "10-remediation-roadmap.png",
+          "body": "Take Screenshot 10. Capture your remediation roadmap showing sequenced findings with rationale. It must show at least: priority order, estimated remediation complexity (easy/medium/hard), and a brief justification for your top 3 priorities."
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "items": [
+            {
+              "label": "Ranking by CVSS alone",
+              "text": "Business impact, asset criticality, and remediation complexity all affect real priority. MySQL default creds beat a high-CVSS vuln on a non-critical service"
+            },
+            {
+              "label": "No quick wins",
+              "text": "Include some easy fixes (disable the jdavis account, change default passwords) to give Sarah immediate action items"
+            },
+            {
+              "label": "Unrealistic timelines",
+              "text": "A 2-person team cannot remediate 10 critical findings in one sprint. Sequence realistically"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "digDeeper",
+          "text": "How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to frame technical findings for board-level audiences."
+        },
+        {
+          "type": "callout",
+          "calloutType": "thatsAReference",
+          "text": "Add: CIS Controls v8. Center for Internet Security. https://www.cisecurity.org/controls and ISACA Risk IT Framework. ISACA. https://www.isaca.org/resources/risk-it"
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "text": "A color-coded 5&#215;5 risk matrix with all 10 findings plotted, and a sequenced remediation roadmap with rationale that accounts for LoneStar&#8217;s constraints. These are the core deliverables of your Lab 5.2 Engagement Packet."
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "chapter": "Chapter 20",
+          "text": "Chapter 20&#8217;s Qualitatively Assessing Risk and Risk Management Best Practices sections explain the methodology behind what you just built. Pay particular attention to Probability/Threat Likelihood and Risks Associated with Cloud Computing and Virtualization &#8212; both map directly to your LoneStar findings."
         },
         {
           "type": "callout",
           "calloutType": "canvasSubmission",
-          "text": "Take the Lab 5.1 Quiz in Canvas. The quiz verifies you completed the hands-on work — questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
+          "text": "Take the Lab 5.1 Quiz in Canvas. The quiz verifies you completed the hands-on work &#8212; questions will ask about specific outputs you should have seen. Keep your screenshots handy while taking the quiz."
         }
       ]
     }
@@ -523,15 +585,15 @@
       "items": [
         {
           "label": "Attack Surface Mapping",
-          "text": "How to systematically discover every entry point an attacker could exploit."
+          "text": "How to systematically discover every entry point &#8212; open ports, outdated services, misconfigured applications."
         },
         {
           "label": "Vulnerability Chaining",
-          "text": "Individual findings combine — MySQL access + former employee account = lateral movement."
+          "text": "Individual findings combine. MySQL default creds + jdavis sudo account = full environment access + former employee with competitive motive."
         },
         {
-          "label": "Exploitation Path Identification",
-          "text": "Version detection reveals which CVEs apply and which exploits might work."
+          "label": "Exploitation Path Prioritization",
+          "text": "Attackers don&#8217;t target the highest CVSS first &#8212; they target the most accessible path to the most valuable data."
         }
       ]
     },
@@ -541,61 +603,62 @@
       "items": [
         {
           "label": "Asset Inventory",
-          "text": "You can’t protect what you don’t know exists — accurate service mapping is defensive foundation."
+          "text": "You can&#8217;t protect what you don&#8217;t know exists. Accurate service mapping is the defensive foundation."
         },
         {
-          "label": "Patch Prioritization",
-          "text": "CVSS scores and version information drive remediation urgency decisions."
+          "label": "Risk Communication",
+          "text": "Technical findings only drive action when stakeholders understand the business impact. The risk matrix is a translation tool."
         },
         {
-          "label": "Account Hygiene",
-          "text": "Former employee accounts (jdavis) represent process failures, not just technical vulnerabilities."
+          "label": "Constraint-Aware Remediation",
+          "text": "A perfect remediation plan that ignores team capacity and operational constraints will never be implemented."
         }
       ]
     },
-    "connection": "Vulnerability discovery serves both offense and defense. The same scan that identifies attack vectors also creates the remediation checklist. When red team finds a weak MySQL password, blue team knows exactly what to fix. This is why security assessments help both sides — the report you’ll build isn’t just about finding problems, it’s about giving defenders a roadmap to close the gaps before real attackers find them."
+    "connection": "This lab is the full assessment lifecycle in one pass: discover, score, prioritize, communicate. Red team finds the paths; blue team closes them. The deliverables you build here &#8212; the vulnerability inventory, CVSS table, risk matrix, and roadmap &#8212; serve both audiences simultaneously. Your Engagement Packet next week is about presenting that work to a client who needs to act on it."
   },
   "finalChecklist": {
+    "intro": "Verify you have completed the following before taking the Lab 5.1 Quiz:",
     "screenshotTable": [
       {
         "file": "01-docker-containers.png",
         "description": "docker ps showing all four containers running"
       },
       {
-        "file": "02-wordpress-landing.png",
-        "description": "WordPress landing page at http://localhost:8080"
+        "file": "02-service-connectivity.png",
+        "description": "Successful connectivity test to at least one service"
       },
       {
         "file": "03-host-discovery.png",
         "description": "Nmap host discovery with all container IPs identified"
       },
       {
-        "file": "04-service-versions.png",
-        "description": "Nmap -sV output showing services and exact version numbers"
+        "file": "04-combined-scan.png",
+        "description": "Combined -sV -sC scan output showing services, versions, and NSE findings"
       },
       {
-        "file": "05-nse-vuln-scan.png",
-        "description": "NSE vulnerability scan with at least one CVE identified"
+        "file": "05-wpscan-results.png",
+        "description": "WPScan output with WordPress findings"
       },
       {
-        "file": "06-mysql-scan.png",
-        "description": "MySQL-specific NSE scan results"
+        "file": "06-credential-finding.png",
+        "description": "MySQL credential test or SSH jdavis account finding"
       },
       {
-        "file": "07-wpscan-results.png",
-        "description": "WPScan output with WordPress vulnerabilities"
+        "file": "07-cvss-calculator.png",
+        "description": "CVSS 3.1 calculator with one finding scored"
       },
       {
-        "file": "08-npm-audit.png",
-        "description": "npm audit output from inside the dev-api container"
+        "file": "08-vulnerability-scores.png",
+        "description": "Top-10 vulnerability table with CVSS scores and selection rationale"
       },
       {
-        "file": "09-mysql-access.png",
-        "description": "MySQL credential test (default/weak credentials)"
+        "file": "09-risk-matrix.png",
+        "description": "Completed 5&#215;5 risk matrix with findings plotted and color coded"
       },
       {
-        "file": "10-ssh-finding.png",
-        "description": "SSH finding — weak password or former employee account (jdavis)"
+        "file": "10-remediation-roadmap.png",
+        "description": "Prioritized remediation roadmap with rationale"
       }
     ],
     "sections": [
@@ -603,20 +666,20 @@
         "title": null,
         "type": "checklist",
         "items": [
-          "All four Docker containers running (webapp-prod, db-primary, dev-api, mgmt-ssh)",
+          "All four Docker containers running and services accessible",
           "Host discovery scan completed with all container IPs identified",
-          "Service version detection completed for all open ports",
-          "NSE vulnerability scripts run against all services",
-          "WPScan completed against WordPress",
-          "npm audit run inside Node.js container",
+          "Combined -sV -sC scan completed for all hosts",
+          "WPScan run against WordPress portal",
           "MySQL credential testing completed",
-          "SSH weak password/former employee testing completed",
-          "8–10 screenshots saved in Lab5-Screenshots folder",
-          "Vulnerability list documented with CVE numbers (25–30 findings)"
+          "jdavis SSH account tested",
+          "Top 10 findings selected with written rationale",
+          "All 10 findings scored using CVSS 3.1 calculator",
+          "5&#215;5 risk matrix completed and color coded",
+          "Prioritized remediation roadmap completed",
+          "All 10 screenshots saved in Module5_Screenshots folder"
         ]
       }
-    ],
-    "intro": "Verify you have completed the following before taking the Lab 5.1 Quiz:"
+    ]
   },
   "needHelp": {
     "channels": [
@@ -633,23 +696,25 @@
         "detail": "john.newsom@utsa.edu (for private matters only)"
       }
     ],
-    "lateWorkPolicy": "Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don’t use that as an excuse to skip critical assessment skills.",
+    "lateWorkPolicy": "Late submissions are not accepted. The course drop policies exist for emergencies &#8212; use them wisely. This lab is eligible to be dropped, but don&#8217;t skip the vulnerability assessment skills it builds.",
     "genAI": {
       "permitted": [
         "Explain command syntax and tool functionality",
         "Troubleshoot errors and technical issues",
-        "Understand concepts from the readings"
+        "Understand concepts from the readings",
+        "Help interpret CVSS metric definitions"
       ],
       "prohibited": [
         "Answer quiz questions directly",
         "Generate fake screenshots or scan outputs",
-        "Complete the hands-on scanning work for you"
+        "Complete the hands-on scanning or analysis work for you",
+        "Assign CVSS scores without you working through the calculator"
       ],
       "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
     },
     "whatsNext": {
-      "title": "Lab 5.2: Risk Assessment & Prioritization",
-      "text": "Next week you’ll score each vulnerability using CVSS, assess business impact, and build a prioritization framework. LoneStar can’t fix everything before their enterprise review — which vulnerabilities matter most?"
+      "title": "Lab 5.2: Risk & Vulnerability Assessment Report",
+      "text": "Next week you&#8217;ll compile everything from this lab into a professional Engagement Packet for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team. You already have the building blocks &#8212; Week 2 is about assembling and presenting them."
     }
   }
 }

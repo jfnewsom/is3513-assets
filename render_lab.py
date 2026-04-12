@@ -568,7 +568,8 @@ def render_you_already_have(data):
         text  = c_block.get("text", c_block.get("body", ""))
         inner += callout_p(css_cls, icon, title, text)
 
-    hdr  = header("you already", "have", "Three-Week Engagement Model", accent)
+    subtitle = yah.get("subtitle", "Three-Week Engagement Model")
+    hdr  = header("you already", "have", subtitle, accent)
     body = card(inner, accent)
     return section(hdr + body, "you already have")
 

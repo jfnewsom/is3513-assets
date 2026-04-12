@@ -1,475 +1,480 @@
 {
   "meta": {
     "labId": "5.2",
-    "title": "Risk Assessment & Prioritization",
-    "labType": "foundation",
+    "title": "Risk & Vulnerability Assessment Report",
+    "labType": "engagement",
     "module": "Module 5: Infrastructure, Risk & Resilience",
     "client": "LoneStar DevOps",
     "chapters": [
-      "Chapter 20 — Risk Management",
-      "Chapter 21 — Change Management"
-    ],
-    "screenshotStart": 11
+      "Chapter 10 — Infrastructure Security",
+      "Chapter 20 — Risk Management"
+    ]
   },
   "intro": {
-    "overview": "Last week you identified 28 vulnerabilities in LoneStar DevOps infrastructure. This week, you’ll transform that raw data into actionable intelligence. Not all vulnerabilities are equal — a CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets.",
+    "overview": "Culmination of the two-week LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one week; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this week is about assembling it into a professional deliverable that serves both audiences.",
     "mentorQuote": {
       "character": "Marcus Chen",
-      "title": "Founder & Principal Consultant, NEXUS Security",
+      "title": "Founder, NEXUS Security",
       "headshot": "marcus-chen.png",
-      "quote": "Anyone can run a scanner and produce a list of CVEs. What separates a consultant from a technician is context. A vulnerability report that says ‘fix everything’ is worthless. A report that says ‘fix these three things first because they expose customer data and the enterprise deal depends on it’ — that’s worth the invoice."
+      "quote": "The executive summary is the most important page in the report. Amanda will hand it to investors who won't read the rest. One page, clear language, no jargon. If you can't explain the risk in plain English, you don't understand it well enough yet."
     },
     "focusAreas": [
-      "CVSS 3.1 scoring methodology and interpretation",
-      "Business impact assessment techniques",
-      "Risk matrix construction and visualization",
-      "Constraint-aware prioritization frameworks"
+      "Professional security report compilation",
+      "Executive summary writing for non-technical audiences",
+      "Prioritized remediation roadmap development",
+      "Multi-audience communication (executives vs. technical staff)",
+      "Business constraint integration in security recommendations"
     ],
     "objectives": [
-      "Score all Lab 5.1 vulnerabilities using CVSS 3.1",
-      "Map vulnerabilities to business assets and assess impact",
-      "Construct a risk matrix that communicates to executives",
-      "Create a prioritized remediation roadmap for LoneStar DevOps"
+      "Compile vulnerability findings and risk analysis from Lab 5.1 into a cohesive report",
+      "Write an executive summary suitable for investor presentation",
+      "Develop a prioritized remediation roadmap aligned to LoneStar&#8217;s 4-week constraint",
+      "Provide actionable recommendations Sarah&#8217;s team can implement"
+    ],
+    "callouts": [
+      {
+        "type": "error",
+        "title": ".docx Format Required",
+        "body": "PDF submissions receive an automatic zero. If you drafted in Google Docs, export to .docx before submitting."
+      },
+      {
+        "type": "warning",
+        "title": "Minimum Requirements",
+        "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-lastname-studentID). Use naming convention: ##-description.png."
+      }
+    ]
+  },
+  "youAlreadyHave": {
+    "subtitle": "Two-Week Engagement Model",
+    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report all week in Lab 5.1.",
+    "sections": [
+      {
+        "title": "From Lab 5.1 &#8212; Vulnerability Assessment &amp; Risk Analysis",
+        "items": [
+          "Environment specifications (LoneStar DevOps target systems and Docker architecture)",
+          "Nmap scanning methodology and combined -sV -sC results",
+          "WPScan findings from the WordPress portal",
+          "MySQL and SSH credential testing results",
+          "Top 10 vulnerabilities selected and documented with rationale",
+          "CVSS 3.1 scores and severity ratings for all 10 findings",
+          "5&#215;5 risk matrix with findings plotted and color coded",
+          "Prioritized remediation roadmap draft",
+          "10 screenshots documenting your full methodology"
+        ]
+      },
+      {
+        "title": "NEW This Week",
+        "badge": "NEW",
+        "items": [
+          "Title Page, Table of Contents, Executive Summary",
+          "NEXUS Timesheet (Section A)",
+          "Finalized Remediation Roadmap with phased timelines",
+          "Long-term Security Recommendations",
+          "Professional Reflection, References, Appendix"
+        ]
+      }
     ],
     "callouts": [
       {
         "type": "tip",
-        "title": "Save For Lab 5.3",
-        "icon": "folder",
-        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module5_Screenshots</code> folder. You should have screenshots 01&#8211;10 from Lab 5.1. This week adds 8 more."
-      },
-      {
-        "type": "warning",
-        "title": "Analysis-Focused Lab",
-        "text": "Lab 5.1 completion is required. You need your vulnerability findings from last week — the 28 vulnerabilities you identified. This lab is analysis-focused rather than tool-focused. You won’t be running terminal commands — you’ll be working with CVSS calculators in your browser and building tables and matrices. Your rationale matters more than your ranking."
+        "title": "You&#8217;re Already 50&#8211;60% Done",
+        "body": "Your vulnerability inventory, CVSS table, risk matrix, and roadmap draft are done. This week is compilation, executive summary, and professional polish &#8212; not starting over."
       }
     ]
   },
   "timeGuide": {
     "rows": [
       {
-        "task": "Checkpoint 1: CVSS Scoring Workshop",
-        "time": "45–60 min"
+        "checkpoint": "CP1",
+        "task": "Timesheet documentation (Section A)",
+        "time": "15&#8211;20 min"
       },
       {
-        "task": "Checkpoint 2: Business Impact Assessment",
-        "time": "45–60 min"
+        "checkpoint": "CP2",
+        "task": "Runbook compilation (Section B)",
+        "time": "45&#8211;60 min"
       },
       {
-        "task": "Checkpoint 3: Risk Matrix Construction",
-        "time": "30–45 min"
+        "checkpoint": "CP3",
+        "task": "Executive Summary (new work)",
+        "time": "45&#8211;60 min"
       },
       {
-        "task": "Checkpoint 4: Prioritization Framework",
-        "time": "45–60 min"
+        "checkpoint": "CP4",
+        "task": "Findings &amp; risk analysis compilation",
+        "time": "60&#8211;90 min"
+      },
+      {
+        "checkpoint": "CP5",
+        "task": "Remediation roadmap (new work)",
+        "time": "45&#8211;60 min"
+      },
+      {
+        "checkpoint": "CP6",
+        "task": "Final review &amp; formatting",
+        "time": "30&#8211;45 min"
       }
     ],
     "totalRow": {
       "label": "Total Estimated Time",
-      "time": "3–4 hours"
+      "time": "4&#8211;6 hours"
     },
-    "timesheetNote": "This is Week 2 of a 3-week module. Log as <em>Internal Training: 3&#8211;4 hours &#8212; Risk assessment and prioritization</em>. This is analysis-focused work, not tool-running &#8212; your CVSS rationale and business context notes are the deliverable. Save all screenshots (#11&#8211;18) to your existing <code>Lab53-Screenshots</code> folder."
+    "timesheetNote": "Time estimates assume you completed Lab 5.1 thoroughly. If your earlier documentation is sparse, budget additional time.",
+    "introText": "This lab focuses on report compilation and new analysis. Most content comes from Lab 5.1."
   },
   "checkpoints": [
     {
       "number": 1,
-      "title": "CVSS Scoring Workshop",
+      "title": "Timesheet Documentation",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Scoring each vulnerability from Lab 5.1 using the CVSS 3.1 calculator.",
-          "whyItMatters": "CVSS provides a standardized way to communicate vulnerability severity. It’s the common language between security teams, vendors, and clients."
+          "whatYoureDoing": "Billing justification &#8212; document all hours across the 2-week assessment.",
+          "whyItMatters": "Consulting engagements require time accountability. Clients and firm management need to verify that billed hours match actual work performed."
         },
         {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Access the CVSS Calculator: NVD calculator at nvd.nist.gov/vuln-metrics/cvss/v3-calculator or FIRST calculator at first.org/cvss/calculator/3.1",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "For each vulnerability: look up the CVE (if available) or calculate based on characteristics",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Document components: Attack Vector, Attack Complexity, Privileges Required, User Interaction, Scope, C/I/A Impact",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create a comprehensive table: CVE ID (if applicable), Vulnerability Name, Base Score, Severity Rating",
-              "whatThisDoes": null,
-              "substeps": null
-            }
+          "type": "includeList",
+          "title": "Include in Section A",
+          "items": [
+            "Week-by-week hour breakdown (Lab 5.1 and Lab 5.2)",
+            "Internal vs. client-billable hour split",
+            "Total hours across both weeks",
+            "Justification narrative for each line item"
           ]
         },
         {
           "type": "callout",
-          "calloutType": "screenshot",
-          "number": 11,
-          "description": "Capture CVSS calculator with one vulnerability scored.",
-          "filename": "11-cvss-calculator.png"
-        },
-        {
-          "type": "callout",
-          "calloutType": "screenshot",
-          "number": 12,
-          "description": "Capture your complete vulnerability scores table.",
-          "filename": "12-vulnerability-scores.png"
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 10 covers infrastructure security and the consulting engagement lifecycle. Your Section A timesheet documents exactly the billable activity pattern described in Chapter 10&#8217;s coverage of security assessment engagements."
         },
         {
           "type": "callout",
           "calloutType": "commonPitfalls",
           "items": [
             {
-              "label": "Confusing Attack Vector with Attack Complexity",
-              "text": "Attack Vector is where the attacker must be (network, adjacent, local, physical). Attack Complexity is how hard the exploit is to execute."
+              "label": "Generic descriptions",
+              "text": "&#8220;Did lab&#8221; is not a billable line item. Use specific activity names (e.g., &#8220;Nmap service enumeration and NSE vulnerability scanning&#8221;)"
             },
             {
-              "label": "Using CVSS 2.0 scores",
-              "text": "Some older CVE entries show CVSS 2.0 scores. Always use the v3.1 calculator at first.org for consistency."
+              "label": "Unrealistic time entries",
+              "text": "Entries that don&#8217;t reflect actual work raise flags in a real consulting environment"
             },
             {
-              "label": "Skipping the justification",
-              "text": "A CVSS score without explanation is meaningless — document why you selected each metric value."
+              "label": "Missing internal training hours",
+              "text": "Your Lab 5.1 scanning and analysis work counts as internal training hours &#8212; those belong on the timesheet"
             }
           ]
         },
         {
           "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "What’s the difference between CVSS Base, Temporal, and Environmental scores? Research how different organizations use each type."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "You just researched CVSS scoring. Add it to your references: FIRST. Common Vulnerability Scoring System v3.1: Specification Document. https://www.first.org/cvss/specification-document"
-        },
-        {
-          "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A complete table with CVSS scores for all vulnerabilities identified in Lab 5.1."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 20: Risk Management",
-          "text": null,
-          "body": "Chapter 20 covers quantitative risk assessment and introduces the vocabulary of risk scoring. CVSS is the industry implementation of the quantitative approach Chapter 20 describes &#8212; translating vulnerability characteristics into a numeric score that enables objective comparison and prioritization across a mixed finding set."
+          "text": "A complete timesheet showing 7&#8211;10 hours distributed across both weeks, with specific justifications for each entry."
         }
       ]
     },
     {
       "number": 2,
-      "title": "Business Impact Assessment",
+      "title": "Internal Runbook",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Creating a vulnerability-to-asset mapping that shows how each finding affects LoneStar’s business.",
-          "whyItMatters": "A CVSS 9.8 on a test server matters less than a CVSS 7.3 on a production database holding customer secrets. Business context determines actual risk."
+          "whatYoureDoing": "Document the assessment methodology so another NEXUS analyst could reproduce the entire engagement.",
+          "whyItMatters": "NEXUS builds institutional knowledge through runbooks. If you leave the firm tomorrow, another analyst needs to be able to repeat your work for follow-up engagements."
         },
         {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Identify critical assets: webapp-prod (customer portal), db-primary (MySQL with customer data), dev-api (Node.js), mgmt-ssh (management access)",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create vulnerability-to-asset mapping: which asset(s) does each vulnerability affect?",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Assess impact categories: Financial, Reputational, Operational, Compliance",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Document business context: $12M ARR, 200+ customers, Series B preparation",
-              "whatThisDoes": null,
-              "substeps": null
-            }
+          "type": "includeList",
+          "title": "Include in Section B",
+          "items": [
+            "Environment specifications and target system details (Docker architecture, container IPs, services)",
+            "Scanning commands with exact parameters used (nmap flags, WPScan options)",
+            "CVSS scoring methodology and selection rationale for your top 10",
+            "Risk matrix framework and scoring criteria",
+            "Lessons learned and recommendations for future assessments"
           ]
         },
         {
           "type": "callout",
-          "calloutType": "characterQuote",
-          "character": "Amanda Nguyen",
-          "title": "CEO & Co-Founder, LoneStar DevOps",
-          "headshot": "amanda-nguyen.png",
-          "quote": "I need to present to Longhorn Ventures in three weeks. I need to know: what could actually hurt us, and what’s the plan to fix it?"
-        },
-        {
-          "type": "callout",
-          "calloutType": "screenshot",
-          "number": 13,
-          "description": "Capture vulnerability-to-asset mapping.",
-          "filename": "13-asset-mapping.png"
-        },
-        {
-          "type": "callout",
-          "calloutType": "screenshot",
-          "number": 14,
-          "description": "Capture business impact assessment.",
-          "filename": "14-business-impact.png"
-        },
-        {
-          "type": "callout",
-          "calloutType": "warning",
-          "title": "Don’t Forget jdavis",
-          "text": "Former employee with sudo access is a critical business risk — left 6 months ago, works for competitor."
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 10 discusses vulnerability assessment methodology and how analysts document reproducible procedures. Your runbook is precisely this kind of institutional knowledge transfer. Reference Chapter 10&#8217;s sections on assessment documentation standards when describing your methodology."
         },
         {
           "type": "callout",
           "calloutType": "commonPitfalls",
           "items": [
             {
-              "label": "Technical-only focus",
-              "text": "A “medium” vuln on a critical asset may need higher priority."
+              "label": "Copy-pasting lab instructions",
+              "text": "Document what you actually did, not what the lab told you to do. There&#8217;s a difference"
             },
             {
               "label": "Missing context",
-              "text": "Document WHY each asset matters to the business."
+              "text": "Commands without explanation of why you ran them aren&#8217;t reproducible documentation"
             },
             {
-              "label": "Forgetting dependencies",
-              "text": "A compromised build server affects everything it deploys."
+              "label": "No screenshots",
+              "text": "Your Lab 5.1 screenshots belong in the runbook as evidence that the steps produce the expected output"
             }
           ]
         },
         {
           "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "How do you calculate the business impact of a potential breach? Research qualitative vs. quantitative risk assessment methods."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "You just researched business impact. Add it to your references: FAIR: Factor Analysis of Information Risk. The Open Group, https://www.opengroup.org/certifications/openfair"
-        },
-        {
-          "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A mapping of vulnerabilities to business assets with documented business impact."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 20: Risk Management",
-          "text": null,
-          "body": "Chapter 20&#8217;s Business Risks and Business Impact Analysis sections explain how technical vulnerabilities connect to organizational consequences. The vulnerability-to-asset mapping you&#8217;re building is a direct application of Chapter 20&#8217;s framework: identify which assets are exposed, then assess the business impact if those assets are compromised."
+          "text": "A reproducible runbook another NEXUS analyst could follow to repeat the LoneStar DevOps vulnerability assessment from scratch."
         }
       ]
     },
     {
       "number": 3,
-      "title": "Risk Matrix Construction",
+      "title": "Executive Summary",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Building a 5×5 risk matrix plotting vulnerabilities by likelihood and impact.",
-          "whyItMatters": "Executives understand “red quadrant” better than “CVSS 9.8.” A risk matrix translates technical assessments into business language."
+          "whatYoureDoing": "Write a one-page summary Amanda can hand directly to Longhorn Ventures investors &#8212; no jargon, no technical detail.",
+          "whyItMatters": "Investors don&#8217;t read full security reports. Amanda&#8217;s credibility with Longhorn Ventures depends entirely on this single page."
         },
         {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Define Likelihood Levels (1–5): Rare → Unlikely → Possible → Likely → Almost Certain",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Define Impact Levels (1–5): Negligible → Minor → Moderate → Major → Catastrophic",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Calculate Risk Scores: Risk = Likelihood × Impact. Critical (15–25), High (10–14), Medium (5–9), Low (1–4)",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create Visual Matrix: 5×5 grid, color-coded by risk level",
-              "whatThisDoes": null,
-              "substeps": null
-            }
+          "type": "includeList",
+          "title": "Include in Executive Summary",
+          "items": [
+            "Assessment scope and timeline",
+            "Key findings summary (plain language &#8212; no CVE numbers)",
+            "Business risk statement (what this means for LoneStar&#8217;s operations and Series B)",
+            "High-level remediation plan overview",
+            "Clear recommendation and proposed next steps"
           ]
         },
         {
           "type": "callout",
-          "calloutType": "screenshot",
-          "number": 15,
-          "description": "Capture completed 5×5 risk matrix.",
-          "filename": "15-risk-matrix.png"
+          "calloutType": "thatsAReference",
+          "body": "NIST SP 800-30 &#8212; Guide for Conducting Risk Assessments. Cite this when describing your risk communication approach."
         },
         {
           "type": "callout",
-          "calloutType": "screenshot",
-          "number": 16,
-          "description": "Capture risk score calculations table.",
-          "filename": "16-risk-scores.png"
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 20 covers risk management reporting and stakeholder communication &#8212; the same non-technical framing your executive summary requires. NIST SP 800-30 provides the risk communication framework that informed your executive summary structure."
         },
         {
           "type": "callout",
           "calloutType": "commonPitfalls",
           "items": [
             {
-              "label": "Inconsistent scales",
-              "text": "Use the same 1–5 scale for both likelihood and impact."
+              "label": "Too technical",
+              "text": "If you mention CVSS or CVE IDs, rewrite the sentence in plain English"
             },
             {
-              "label": "Missing color coding",
-              "text": "Visual distinction makes the matrix actionable."
+              "label": "Too long",
+              "text": "One page maximum, no exceptions"
             },
             {
-              "label": "No thresholds defined",
-              "text": "Document what score ranges mean (critical, high, medium, low)."
+              "label": "No clear recommendation",
+              "text": "Executives need to know what to do next. End with a specific action"
             }
           ]
         },
         {
           "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "What is defense in depth and how does it relate to vulnerability management? Research layered security controls and compensating controls."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "You just researched defense strategies. Add it to your references: CIS Controls v8. Center for Internet Security, https://www.cisecurity.org/controls"
-        },
-        {
-          "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A complete risk matrix with all vulnerabilities categorized."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 20: Risk Management",
-          "text": null,
-          "body": "Chapter 20 covers qualitative risk assessment, including likelihood-impact matrices as a tool for communicating risk to stakeholders. The 5&#215;5 matrix you&#8217;re constructing is a direct implementation of Chapter 20&#8217;s qualitative methodology &#8212; translating technical severity into a visual format executives and board members can interpret without a security background."
+          "text": "A one-page executive summary a non-technical CEO can read and understand in three minutes."
         }
       ]
     },
     {
       "number": 4,
-      "title": "Prioritization Framework",
+      "title": "Technical Findings",
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Creating a prioritized remediation roadmap that considers real-world constraints.",
-          "whyItMatters": "A report that says ‘fix everything immediately’ is useless. LoneStar has a 2-person DevOps team, no staging environment, and can’t take the portal offline during business hours."
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "What factors beyond CVSS scores should influence vulnerability prioritization? Research how business context affects remediation urgency."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "FIRST Stakeholder-Specific Vulnerability Categorization (SSVC): https://www.first.org/cvss/. Your textbook Chapter 10 covers business impact analysis."
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Document constraints: 2 DevOps engineers (Sarah + Miguel), no staging, no business-hours downtime, 4-week timeline",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Assess remediation complexity: effort, downtime, skill level, testing requirements",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create prioritization matrix: Risk Score vs. Remediation Complexity",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Build prioritized roadmap: sequenced list with rationale for each position",
-              "whatThisDoes": null,
-              "substeps": null
-            }
-          ]
+          "whatYoureDoing": "Compile your top 10 vulnerability findings and risk analysis from Lab 5.1 into client report format.",
+          "whyItMatters": "Sarah needs technical details to fix the vulnerabilities. This section tells LoneStar exactly what was found, how it was scored, and why it matters to their business."
         },
         {
           "type": "callout",
           "calloutType": "characterQuote",
           "character": "Sarah Martinez",
-          "title": "Senior DevOps Engineer, LoneStar DevOps",
+          "title": "Lead DevOps Engineer, LoneStar DevOps",
           "headshot": "sarah-martinez.png",
-          "quote": "It’s just me and Miguel, and we can’t flip a switch and fix everything overnight. Give me quick wins I can show Amanda next week, and a realistic plan for the harder stuff."
+          "quote": "Give me actionable steps. Tell me the order, the testing required, the downtime implications. I can&#8217;t fix what I don&#8217;t understand."
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Technical Findings",
+          "items": [
+            "Your top 10 vulnerabilities with selection rationale",
+            "CVSS 3.1 scores and severity ratings for each finding",
+            "Business impact statement for each critical/high finding",
+            "5&#215;5 risk matrix with findings plotted",
+            "Evidence screenshots from Lab 5.1",
+            "CVE reference numbers where applicable"
+          ]
         },
         {
           "type": "callout",
-          "calloutType": "tip",
-          "title": "Key Insight: CVSS vs. Business Priority",
-          "text": "WordPress SQLi (CVSS 9.8) = High priority (marketing site). MySQL default creds (~CVSS 7.5) = HIGHEST priority (exposes ALL customer data)."
+          "calloutType": "digDeeper",
+          "body": "What is the difference between a vulnerability assessment and a penetration test? Your report is the former &#8212; understanding the distinction matters for setting client expectations."
         },
         {
           "type": "callout",
-          "calloutType": "screenshot",
-          "number": 17,
-          "description": "Capture prioritization framework.",
-          "filename": "17-prioritization-framework.png"
+          "calloutType": "thatsAReference",
+          "items": [
+            "PTES &#8212; Penetration Testing Execution Standard: http://www.pentest-standard.org/",
+            "NIST SP 800-115 &#8212; Technical Guide to Information Security Testing and Assessment"
+          ]
         },
         {
           "type": "callout",
-          "calloutType": "screenshot",
-          "number": 18,
-          "description": "Capture final remediation roadmap with rationale.",
-          "filename": "18-remediation-roadmap.png"
+          "calloutType": "textbookReference",
+          "body": "Chapter 10 covers infrastructure security assessment methodology &#8212; how analysts document devices, services, and vulnerabilities in a structured, reproducible format. Chapter 20&#8217;s Business Risks and Qualitatively Assessing Risk sections provide the framework for your CVSS scores and risk matrix. Both should appear in your reference list."
         },
         {
           "type": "callout",
           "calloutType": "commonPitfalls",
           "items": [
             {
-              "label": "Unrealistic timelines",
-              "text": "A 2-person team can’t fix 28 vulns in one sprint."
+              "label": "Raw scanner output pasted directly",
+              "text": "Format findings for a client audience &#8212; terminal dumps belong in the appendix, not the findings section"
             },
             {
-              "label": "No quick wins",
-              "text": "Include some easy fixes to show early progress."
+              "label": "Missing evidence",
+              "text": "Every finding needs a supporting screenshot from Lab 5.1"
             },
             {
-              "label": "Missing rationale",
-              "text": "Explain WHY you prioritized each item."
+              "label": "Inconsistent severity ratings",
+              "text": "Your written severity labels must match your CVSS scores"
             }
           ]
         },
         {
           "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "text": "A complete technical findings section with your top 10 vulnerabilities, CVSS scores, business impact statements, and risk matrix visualization."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Remediation Roadmap",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Expand the remediation roadmap draft from Lab 5.1 into a complete phased plan with timelines, specific actions, and realistic recommendations.",
+          "whyItMatters": "Sarah needs a realistic plan she can actually execute with two engineers and a limited budget in four weeks. A list of fixes is not a roadmap."
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Remediation Roadmap",
+          "items": [
+            "Phase 1 (Week 1) &#8212; Quick wins and critical vulnerabilities (disable jdavis, change default credentials)",
+            "Phase 2 (Weeks 2&#8211;3) &#8212; High-priority remediations",
+            "Phase 3 (Week 4+) &#8212; Medium-priority and hardening measures",
+            "Specific remediation actions for each finding",
+            "Testing and validation steps after each remediation",
+            "Downtime and maintenance window considerations"
+          ]
+        },
+        {
+          "type": "callout",
           "calloutType": "digDeeper",
-          "text": "How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to translate technical findings into business language."
+          "body": "What is a vulnerability management program? Remediation isn&#8217;t a one-time event &#8212; it&#8217;s a continuous cycle of discover, assess, prioritize, remediate, and verify."
         },
         {
           "type": "callout",
           "calloutType": "thatsAReference",
-          "text": "You just researched risk communication. Add it to your references: ISACA Risk IT Framework. ISACA, https://www.isaca.org/resources/risk-it"
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A prioritized remediation roadmap that accounts for LoneStar’s constraints with clear rationale."
+          "body": "NIST SP 800-40 Rev. 4 &#8212; Guide to Enterprise Patch Management Planning. Directly applicable to LoneStar&#8217;s remediation strategy."
         },
         {
           "type": "callout",
           "calloutType": "textbookReference",
-          "chapter": "Chapter 20: Risk Management",
-          "text": null,
-          "body": "Chapter 20 covers risk treatment strategies &#8212; mitigate, accept, transfer, and avoid &#8212; and the factors that determine which strategy applies in a given context. Your prioritization framework applies Chapter 20&#8217;s risk treatment logic under real-world constraints: not just ranking by CVSS score, but accounting for remediation complexity, resource availability, and LoneStar&#8217;s zero-downtime requirement."
+          "body": "Chapter 20 &#8212; Risk Mitigation Strategies covers change management, change control processes, and rollback procedures. These apply directly to your remediation phases."
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "items": [
+            {
+              "label": "No phases",
+              "text": "A flat list of fixes is not a roadmap. Sequence matters"
+            },
+            {
+              "label": "Ignoring constraints",
+              "text": "2 engineers, limited budget, 4-week window, zero-downtime requirement. Your roadmap must work within these"
+            },
+            {
+              "label": "Missing quick wins",
+              "text": "Phase 1 should show early progress. Disabling the jdavis account takes five minutes and eliminates a critical risk"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "text": "A phased remediation roadmap with realistic timelines that respects LoneStar&#8217;s resource and time constraints."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Final Assembly",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Complete a final quality review of the entire report before submission.",
+          "whyItMatters": "Typos and formatting errors undermine credibility. Longhorn Ventures is evaluating LoneStar &#8212; and by extension, NEXUS. Your report reflects on both."
+        },
+        {
+          "type": "checklist",
+          "title": "Final Assembly Checklist",
+          "items": [
+            "Section A: Timesheet complete with hour justifications for both weeks",
+            "Section B: Runbook is reproducible by another analyst",
+            "Section C: Executive summary fits on one page",
+            "Section C: Top 10 vulnerabilities documented with CVSS scores",
+            "Section C: Risk matrix included and color coded",
+            "Section C: Remediation roadmap with phased timelines",
+            "All Lab 5.1 screenshots included as evidence",
+            "VM name visible in terminal screenshots (kali-lastname-studentID)",
+            "Minimum 10 references included",
+            "Document is .docx format (not PDF)",
+            "Professional formatting and grammar throughout"
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "items": [
+            {
+              "label": "Inconsistent formatting",
+              "text": "Sections compiled from different sources often have mismatched fonts, heading sizes, and spacing &#8212; do a final formatting pass"
+            },
+            {
+              "label": "Missing page numbers",
+              "text": "A multi-section professional report needs page numbers"
+            },
+            {
+              "label": "Weak references",
+              "text": "&#8220;Google.com&#8221; is not a valid citation. Every reference needs author, title, organization, URL, and access date"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "text": "A complete, polished Engagement Packet ready for submission: all sections finalized, updated Table of Contents with page numbers, all Lab 5.1 screenshots embedded with captions, VM name visible in every terminal screenshot, 10+ valid references listed, professional formatting and grammar reviewed, and the file saved as <code>IS3513_Lab52_Lastname_Firstname.docx</code>."
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "icon": "book",
+          "text": "Chapters 10 and 20 together span the full arc of this module: Chapter 10 covers infrastructure security and vulnerability assessment methodology; Chapter 20 covers risk management, business impact analysis, and remediation planning. Both should appear in your final reference list."
+        },
+        {
+          "type": "callout",
+          "calloutType": "canvasSubmission",
+          "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one week of the due date."
         }
       ]
     }
@@ -480,7 +485,7 @@
       "items": [
         {
           "label": "",
-          "text": "Attackers don’t prioritize by CVSS — they prioritize by attack path. MySQL default creds → customer database → API keys → cascade to 200+ customer environments."
+          "text": "Vulnerability discovery informs attack planning. Understanding how defenders prioritize helps attackers identify overlooked vectors. The jdavis account is the kind of finding real pentesters love &#8212; technical teams often miss human factors."
         }
       ]
     },
@@ -489,98 +494,77 @@
       "items": [
         {
           "label": "",
-          "text": "Defenders need to communicate risk to stakeholders who don’t understand CVEs. Your deliverables need to serve both technical and business audiences."
+          "text": "Risk assessment and remediation planning are core defensive skills. Your report serves two audiences &#8212; executives who approve budgets and engineers who implement fixes. Both need to leave with a clear picture of what happens next."
         }
       ]
     },
-    "connection": "Effective risk assessment combines both perspectives: technically sound + practically implementable."
+    "connection": "Both perspectives inform the complete risk picture. Discovery serves both attack planning AND asset inventory. Risk assessment considers exploitability AND business impact. The roadmap addresses offensive findings AND defensive priorities. Your report should help Amanda (business view) AND Sarah (technical view) &#8212; that&#8217;s purple team thinking in action."
   },
   "finalChecklist": {
-    "screenshotTable": [
-      {
-        "file": "11-cvss-calculator.png",
-        "description": "CVSS 3.1 calculator with one vulnerability scored"
-      },
-      {
-        "file": "12-vulnerability-scores.png",
-        "description": "Complete table of all vulnerabilities with CVSS scores"
-      },
-      {
-        "file": "13-asset-mapping.png",
-        "description": "Vulnerability-to-asset mapping table"
-      },
-      {
-        "file": "14-business-impact.png",
-        "description": "Business impact assessment for LoneStar assets"
-      },
-      {
-        "file": "15-risk-matrix.png",
-        "description": "Completed 5×5 risk matrix with color coding"
-      },
-      {
-        "file": "16-risk-scores.png",
-        "description": "Risk score calculations table (Likelihood × Impact)"
-      },
-      {
-        "file": "17-prioritization-framework.png",
-        "description": "Prioritization framework (Risk Score vs. Remediation Complexity)"
-      },
-      {
-        "file": "18-remediation-roadmap.png",
-        "description": "Final remediation roadmap with phased rationale"
-      }
-    ],
+    "screenshotTable": null,
     "sections": [
       {
-        "title": "Checkpoint Verification",
-        "type": "checklist",
+        "title": "Report Sections",
         "items": [
-          "All Lab 5.1 vulnerabilities have CVSS scores",
-          "Vulnerability-to-asset mapping is complete",
-          "5×5 risk matrix is complete and color-coded",
-          "Prioritized remediation roadmap created with rationale"
+          "Title Page",
+          "Table of Contents",
+          "Executive Summary",
+          "Section A &#8212; NEXUS Timesheet",
+          "Section B &#8212; Internal Runbook",
+          "Section C &#8212; Client Report",
+          "Professional Reflection",
+          "References (minimum 10)",
+          "Appendix"
         ]
       },
       {
-        "title": "Documentation (8 Screenshots)",
-        "type": "screenshotTable",
+        "title": "Documentation Verification",
         "items": [
-          {
-            "filename": "11-cvss-calculator.png"
-          },
-          {
-            "filename": "12-vulnerability-scores.png"
-          },
-          {
-            "filename": "13-asset-mapping.png"
-          },
-          {
-            "filename": "14-business-impact.png"
-          },
-          {
-            "filename": "15-risk-matrix.png"
-          },
-          {
-            "filename": "16-risk-scores.png"
-          },
-          {
-            "filename": "17-prioritization-framework.png"
-          },
-          {
-            "filename": "18-remediation-roadmap.png"
-          }
+          "All Lab 5.1 screenshots embedded as evidence",
+          "VM name visible in all terminal screenshots",
+          "Captions present on all screenshots",
+          "10+ valid references included"
+        ]
+      },
+      {
+        "title": "Submission Format",
+        "items": [
+          ".docx format (not PDF)",
+          "Filename: IS3513_Lab52_Lastname_Firstname.docx",
+          "Professional formatting throughout",
+          "Grammar and spelling checked"
         ]
       }
+    ]
+  },
+  "gradingStandards": {
+    "qualityLadder": {
+      "assignmentObjectives": "40%",
+      "technicalDocumentation": "40%",
+      "professionalCommunication": "20%"
+    },
+    "penalties": [
+      {
+        "penalty": "-5% per instance",
+        "condition": "Missing or unverifiable screenshot"
+      },
+      {
+        "penalty": "-10% per missing reference",
+        "condition": "References below minimum of 10"
+      }
     ],
-    "canvasSubmission": {
-      "text": "Take the Lab 5.2 Quiz in Canvas."
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots or tool outputs, work shared with or from another student, wrong file format (PDF instead of .docx), or academic integrity violation.",
+    "bonusOpportunity": null,
+    "keyFlags": {
+      "rubricDocument": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+      "note": "Full rubric available in Canvas."
     }
   },
   "needHelp": {
     "channels": [
       {
         "label": "Discord",
-        "detail": "Post in #lab-help for technical issues (fastest response)"
+        "detail": "#lab-help (fastest response)"
       },
       {
         "label": "Office Hours",
@@ -588,26 +572,27 @@
       },
       {
         "label": "Email",
-        "detail": "john.newsom@utsa.edu (for private matters only)"
+        "detail": "john.newsom@utsa.edu (private matters only)"
       }
     ],
-    "lateWorkPolicy": "Late submissions are not accepted. The course drop policies exist for emergencies — use them wisely. This lab is eligible to be dropped, but don’t use that as an excuse to skip foundational work.",
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies. This Engagement Packet is eligible to be your one dropped score.",
     "genAI": {
       "permitted": [
-        "Explain command syntax and tool functionality",
-        "Troubleshoot errors and technical issues",
-        "Understand concepts from the readings"
+        "Proofread and grammar check your writing",
+        "Suggest report structure improvements",
+        "Explain technical concepts to verify your accuracy"
       ],
       "prohibited": [
-        "Answer quiz questions directly",
-        "Generate fake screenshots or outputs",
-        "Complete the hands-on work for you"
+        "Write entire report sections",
+        "Generate vulnerability analysis or findings",
+        "Create fake screenshots or tool outputs"
       ],
-      "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
+      "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "title": "Lab 5.3: Risk & Vulnerability Assessment Report",
-      "text": "Compile everything from Weeks 1 and 2 into a professional assessment report for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team."
+      "type": "moduleComplete",
+      "title": "Module 5 Complete!",
+      "body": "You&#8217;ve completed the full security assessment lifecycle &#8212; from vulnerability discovery through risk analysis to professional reporting. These are the same skills NEXUS uses with real clients. Complete the Module 5 Exam covering Chapters 10 and 20 to finish the module."
     }
   }
 }
