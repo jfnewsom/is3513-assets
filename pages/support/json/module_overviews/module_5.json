@@ -1,52 +1,52 @@
 {
   "type": "module_overview",
   "module": 5,
-  "title": "Risk Management & Security Policy",
+  "title": "Infrastructure, Risk & Resilience",
   "accentColor": "#7B68EE",
-  "weeks": "13-15",
-  "chapters": "5 & 10",
-  "client": "Brazos Financial",
-  "clientColor": "#FF9F1C",
-  "overview": "Module 5 zooms out from technical execution to organizational risk. You'll learn how security decisions are framed in business terms, how policies and frameworks govern security programs, and deliver a final risk assessment that ties your semester together.",
+  "weeks": "13&#8211;14",
+  "chapters": "10 & 20",
+  "client": "LoneStar DevOps",
+  "clientColor": "#7B68EE",
+  "overview": "Module 5 brings the full assessment lifecycle together. You'll deploy a simulated client environment, discover and score vulnerabilities, build a risk matrix, and compile everything into a professional Engagement Packet — the same deliverable a real security consultant hands to a client.",
   "weeks_breakdown": [
     {
       "weekLabel": "WEEK 13",
       "type": "foundation",
-      "labTitle": "Lab 5.1: Risk Assessment Methodology",
-      "labDesc": "NIST RMF, risk registers, likelihood/impact matrices. Qualitative vs quantitative.",
+      "labTitle": "Lab 5.1: Vulnerability Assessment & Risk Analysis",
+      "labDesc": "Deploy LoneStar DevOps infrastructure, conduct vulnerability scanning, score top 10 findings with CVSS 3.1, build risk matrix and remediation roadmap.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
     {
       "weekLabel": "WEEK 14",
-      "type": "foundation",
-      "labTitle": "Lab 5.2: Security Policy & Compliance Frameworks",
-      "labDesc": "Policy writing, NIST CSF, ISO 27001 overview, compliance mapping.",
-      "badgeLabel": "Internal Training",
-      "badgeColor": "#00D26A"
+      "type": "engagement",
+      "labTitle": "Lab 5.2: LoneStar DevOps Engagement",
+      "labDesc": "Compile findings into a professional Engagement Packet. Executive summary for Amanda Nguyen (investors), technical runbook and remediation roadmap for Sarah Martinez.",
+      "badgeLabel": "Client Billable",
+      "badgeColor": "#FF9F1C"
     },
     {
       "weekLabel": "WEEK 15",
-      "type": "engagement",
-      "labTitle": "Lab 5.3: Brazos Financial Risk Assessment",
-      "labDesc": "Capstone engagement. Full risk assessment + remediation roadmap.",
-      "badgeLabel": "Client Billable",
-      "badgeColor": "#FF9F1C"
+      "type": "review",
+      "labTitle": "Review & Exam Prep",
+      "labDesc": "No lab assignment this week. Review Chapters 10 and 20 and your Lab 5.1 work in preparation for the Module 5 Exam.",
+      "badgeLabel": "No Assignment",
+      "badgeColor": "#4169E1"
     }
   ],
   "clientContext": {
-    "label": "Client Context: Brazos Financial Group",
-    "body": "You're back at Brazos for the capstone. Ray Jimenez now has your recon findings from Module 1. He needs a complete risk assessment that quantifies the threats you identified, prioritizes remediation, and gives the board a security investment roadmap."
+    "label": "Client Context: LoneStar DevOps (Austin, TX)",
+    "body": "LoneStar is an 85-person SaaS startup with $12M ARR and a Series B on the horizon. Their infrastructure was set up by a developer who left six months ago. An enterprise prospect requires a third-party security assessment before signing. Amanda Nguyen (CEO) needs a report she can hand to Longhorn Ventures investors. Sarah Martinez (Lead DevOps) needs a roadmap she can actually execute with two engineers and no staging environment."
   },
   "skills": {
     "left": [
-      "Risk identification and scoring",
-      "NIST RMF application",
-      "Security policy writing"
+      "Docker container deployment",
+      "Nmap service enumeration",
+      "NSE vulnerability scripting"
     ],
     "right": [
-      "Compliance framework mapping",
-      "Remediation planning",
+      "CVSS 3.1 scoring",
+      "Risk matrix construction",
       "Executive risk communication"
     ]
   },
@@ -54,7 +54,7 @@
   "notice": {
     "color": "#7B68EE",
     "colorRgb": "123, 104, 238",
-    "label": "🎯 Capstone Module:",
-    "body": "This engagement is your most complex deliverable. You'll use skills from every previous module: reconnaissance, cryptography analysis, network understanding, and now vulnerability assessment. Show us what you've learned."
+    "label": "&#127919; Capstone Module:",
+    "body": "This is the complete engagement workflow in two weeks: discover, score, prioritize, and report. You'll draw on skills from every previous module — reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness — and apply them to a real risk management deliverable."
   }
 }
