@@ -3,18 +3,26 @@
   "title": "Infrastructure Security",
   "module": "Module 5: Infrastructure, Risk &#38; Resilience",
   "headerSvg": "Chapter_10_Reading_Header.svg",
-  "assignment": "pages 311&#8211;352 (~75 minutes)",
-  "partial": false,
+  "assignment": "partial chapter (~30 minutes)",
+  "partial": true,
+  "partialNote": "This is a <strong>partial chapter</strong> assignment. Read only the sections listed below. Networking hardware and physical media sections are covered in Module 3 and are not revisited here.",
   "readSections": [
-    "Infrastructure Security Concepts",
-    "Securing Network Devices",
-    "Securing Servers",
-    "Virtualization Security",
-    "Physical Security",
-    "Defense in Depth",
-    "Resilience and Recovery"
+    "Devices &#8212; Servers and Device Security, Common Concerns only",
+    "Virtualization (full section: Hypervisor, Application Cells/Containers, VM Sprawl Avoidance, VM Escape Protection, Snapshots, Patch Compatibility, Host Availability/Elasticity, Security Control Testing, Sandboxing)",
+    "Security Devices &#8212; Firewalls, Intrusion Detection Systems, Network Access Control, Network Monitoring/Diagnostic only"
   ],
-  "skipSections": [],
-  "focusAreas": "Pay special attention to <strong>Defense in Depth</strong> and <strong>Virtualization Security</strong>. The Docker-based lab environment in Module 5 is a direct application of these concepts.",
-  "secplus": "Domain 3.3 (Secure Infrastructure), Domain 3.4 (Resilience and Recovery), Domain 5.2 (Risk Management)"
+  "skipSections": [
+    "Devices &#8212; Workstations, Mobile Devices, Network-Attached Storage, Removable Storage",
+    "Networking (Network Interface Cards, Hubs, Bridges, Switches, Port Security, Routers)",
+    "Security Devices &#8212; VPN Concentrator, Wireless Devices, Modems, Telephony, Load Balancers, Proxies, Web Security Gateways, Internet Content Filters, Data Loss Prevention, Unified Threat Management",
+    "Security Device/Technology Placement (Sensors, Collectors, TAPs and Port Mirror, Correlation Engines, Filters, SSL Accelerators, DDoS Mitigator, Aggregation Switches)",
+    "Tunneling/VPN",
+    "Storage Area Networks",
+    "Media (Coaxial Cable, UTP/STP, Fiber, Unguided Media)",
+    "Removable Media",
+    "Security Concerns for Transmission Media",
+    "Physical Security Concerns"
+  ],
+  "focusAreas": "Pay special attention to <strong>Application Cells/Containers</strong> and <strong>VM Escape Protection</strong> &#8212; you will be scanning Docker containers in Lab 5.1, and these sections explain exactly what you are looking at. The Security Devices subsections give you the conceptual vocabulary for interpreting what your scanner finds.",
+  "secplus": "Domain 3.3 (Secure Infrastructure), Domain 5.2 (Risk Management)"
 }

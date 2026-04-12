@@ -3,19 +3,31 @@
   "title": "Risk Management",
   "module": "Module 5: Infrastructure, Risk &#38; Resilience",
   "headerSvg": "Chapter_20_Reading_Header.svg",
-  "assignment": "full chapter (~75 minutes)",
-  "partial": false,
+  "assignment": "partial chapter (~35 minutes)",
+  "partial": true,
+  "partialNote": "This is a <strong>partial chapter</strong> assignment. Read only the sections listed below. Risk management model comparisons and third-party risk frameworks are omitted &#8212; focus on the assessment and prioritization workflow you will apply in Lab 5.2.",
   "readSections": [
-    "Risk Management Concepts",
-    "Risk Identification",
-    "Risk Assessment Methodologies",
-    "Qualitative vs. Quantitative Risk Analysis",
-    "Risk Mitigation Strategies",
-    "Risk Acceptance and Transfer",
-    "Business Continuity and Disaster Recovery",
-    "RTO and RPO"
+    "An Overview of Risk Management",
+    "Risk Management Vocabulary",
+    "What Is Risk Management? &#8212; Risk Response Techniques and Risk Management Frameworks only",
+    "Security Controls (Categories, Control Types)",
+    "Business Risks (Business Impact Analysis, Mission-Essential Functions, Identification of Critical Systems, Single Point of Failure, Impact)",
+    "Risk Assessment",
+    "Qualitatively Assessing Risk (Risk Matrix/Heat Map)",
+    "Quantitatively Assessing Risk (Adding Objectivity to a Qualitative Assessment, Risk Calculation)",
+    "Qualitative vs. Quantitative Risk Assessment",
+    "Risk Management Best Practices (System Vulnerabilities, Threat Vectors, Probability/Threat Likelihood, Risks Associated with Cloud Computing and Virtualization)"
   ],
-  "skipSections": [],
-  "focusAreas": "Pay special attention to <strong>RTO and RPO</strong> and <strong>Qualitative vs. Quantitative Risk Analysis</strong>. These are Security+ exam staples and the analytical framework for Lab 5.2.",
+  "skipSections": [
+    "An Overview of Risk Management &#8212; Example of Risk Management at the International Banking Level",
+    "What Is Risk Management? &#8212; Risk Management Culture",
+    "Business Risks &#8212; Examples of Business Risks, Examples of Technology Risks",
+    "Third-party Risks (Vendor Management, Supply Chain, Outsourced Code Development, Data Storage)",
+    "Risk Mitigation Strategies (Change Management, Incident Management, User Rights and Permissions Reviews, Data Loss or Theft)",
+    "Risk Management Models (General Risk Management Model, Software Engineering Institute Model, NIST Risk Models, Model Application)",
+    "Tools &#8212; Cost-Effectiveness Modeling",
+    "Additional References"
+  ],
+  "focusAreas": "Pay special attention to <strong>Qualitatively Assessing Risk</strong> and <strong>Business Impact Analysis</strong>. The Risk Matrix/Heat Map is the primary tool you will build in Lab 5.2, and the Business Risks section explains how to translate technical findings into language Amanda Nguyen can take to her investors. <strong>Risk Matrix and Probability/Threat Likelihood are Security+ exam staples.</strong>",
   "secplus": "Domain 5.2 (Risk Management Processes), Domain 5.3 (Risk Mitigation Strategies), Domain 3.4 (Resilience and Recovery)"
 }
