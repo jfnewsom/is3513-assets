@@ -12,7 +12,7 @@
     "screenshotStart": 1
   },
   "intro": {
-    "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This week you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Week 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper.",
+    "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This week you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Week 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
     "mentorQuote": {
       "character": "Carmen Vega",
       "title": "Junior Analyst (OSINT), NEXUS Security",
@@ -85,7 +85,7 @@
           "steps": [
             {
               "step": 1,
-              "text": "Download <code>brazos-hashes.txt</code> from the Lab 4.1 assignment in Canvas",
+              "text": "Download <code>brazos-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-hashes.txt\" target=\"_blank\" download>click here to download</a>",
               "command": null,
               "whatThisDoes": null
             },
@@ -574,7 +574,7 @@
         {
           "type": "callout",
           "title": "Optional Bonus: OSINT Wordlists",
-          "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are linked in Canvas. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
+          "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are available here: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
           "calloutType": "goBeyond"
         },
         {

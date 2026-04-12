@@ -37,7 +37,7 @@
         "type": "tip",
         "title": "Save For Lab 4.3",
         "icon": "folder",
-        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. You should have 10 screenshots from Lab 4.1. This week adds 9 more."
+        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. You should have 10 screenshots from Lab 4.1. This week adds 10 more."
       },
       {
         "type": "characterQuote",
@@ -106,7 +106,7 @@
           "steps": [
             {
               "step": 1,
-              "text": "Download <code>alamo-hashes.txt</code> from Canvas to your <code>~/lab4</code> directory",
+              "text": "Download <code>alamo-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-hashes.txt\" target=\"_blank\" download>click here to download</a> &mdash; then move it to your <code>~/lab4</code> directory",
               "command": null,
               "whatThisDoes": null
             },
@@ -446,6 +446,122 @@
           "type": "callout",
           "text": "Comparing Windows and Linux password cracking reveals how defensive architecture choices affect attacker timelines. The same weak password pattern cracks instantly on NTLM but takes noticeable time on SHA-512. Architecture matters &#8212; but so does password policy. Frank Morrison&#8217;s argument that &#8220;the password has worked fine for ten years&#8221; misses the point. Security isn&#8217;t about whether something has failed yet &#8212; it&#8217;s about whether it&#8217;s resistant to attack.",
           "calloutType": "purpleTeamConnection"
+        },
+        {
+          "type": "callout",
+          "calloutType": "tip",
+          "title": "Optional Bonus: OSINT Wordlists",
+          "text": "Want to push further? Carmen compiled OSINT dossiers on Alamo Industries employees. Use them to build targeted wordlists from employee details (job titles, departments, hire years, location) and re-run your attacks. <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-dossiers.pdf\" target=\"_blank\">Alamo Industries Employee Dossiers (PDF)</a>. Document any additional cracks for Lab 4.3 bonus credit."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Results Analysis &#38; Platform Comparison",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Compiling your cracking results into two structured tables: an 8-account summary for Alamo Industries and a 4-cell platform comparison showing NTLM vs. SHA-512 speeds across both tools. These tables are the analytical core of your Lab 4.3 engagement report.",
+          "whyItMatters": "Raw terminal output is not a deliverable. Organized findings are. A results table tells the client which accounts are compromised and which credentials are still protecting access. A speed comparison table gives you the concrete numbers to explain <em>why</em> algorithm choice matters &#8212; not just that it does."
+        },
+        {
+          "type": "callout",
+          "character": "Carmen Vega",
+          "headshot": "carmen-vega.png",
+          "calloutType": "characterQuote",
+          "title": "Principal Security Consultant, NEXUS Security",
+          "quote": "Elena&#8217;s been fighting this battle internally for three years. Your results table gives her something she can put in front of Frank: names, accounts, and passwords in plain language. That&#8217;s how you make the technical case to a non-technical audience. The speed numbers make the architecture case. You need both."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "step": 1,
+              "text": "Retrieve your final cracked results from both tools:",
+              "command": "john --show ~/lab4/alamo-hashes.txt && echo '---' && hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
+              "whatThisDoes": {
+                "concept": "Running both <code>--show</code> commands back-to-back gives you a single terminal view of all cracked credentials from both tools. The results should largely overlap since both used rockyou.txt against the same hashes. Any differences indicate one tool ran longer or the potfiles diverged.",
+                "output": "You should see <code>username:password</code> pairs for each cracked account. Note which of the 8 Alamo accounts remain uncracked &#8212; these are accounts where the password was not in rockyou.txt within your session&#8217;s time window.",
+                "flags": null
+              }
+            },
+            {
+              "step": 2,
+              "text": "Build your 8-account results table. Use <code>printf</code> to format it neatly in the terminal:",
+              "command": "printf \"%-18s %-20s %-16s\\n\" \"Username\" \"Password\" \"Account Type\" && printf \"%-18s %-20s %-16s\\n\" \"------------------\" \"--------------------\" \"----------------\"",
+              "whatThisDoes": {
+                "concept": "<code>printf</code> with fixed-width format strings (<code>%-18s</code> = left-align in 18 characters) creates clean columnar output. You&#8217;ll add one row per account manually below this header.",
+                "output": "A formatted table header. You&#8217;ll fill in each of the 8 Alamo accounts: username, the cracked password (or <em>not cracked</em>), and the account type (individual, shared, or service). Reference Elena Vasquez&#8217;s notes in the lab header &#8212; she flagged which accounts are shared floor accounts vs. service accounts.",
+                "flags": null
+              }
+            },
+            {
+              "step": 3,
+              "text": "Below the header, add a row for each of the 8 accounts using the pattern:",
+              "command": "printf \"%-18s %-20s %-16s\\n\" \"[username]\" \"[password or not cracked]\" \"[account type]\"",
+              "whatThisDoes": {
+                "concept": "Repeat this command for each account, substituting in your actual results. Account types to use: <strong>Individual</strong> (personal employee account), <strong>Shared</strong> (multiple users share the credential), <strong>Service</strong> (application or process account, not a human user). You can find account type information in the hash file comments or from context in the lab narrative.",
+                "output": "A completed 8-row table. When all rows are printed, your terminal should show a clean, readable summary of all Alamo Industries accounts and their cracking status.",
+                "flags": null
+              }
+            },
+            {
+              "step": 4,
+              "text": "When your results table is complete and readable in the terminal, take Screenshot 20.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "number": 20,
+          "text": "Capture your completed results table showing all 8 Alamo accounts with usernames, cracked passwords (or <em>not cracked</em>), and account types. The full table must be visible. Save as <code>20-alamo-results-table.png</code>. VM name must be visible.",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "text": "How do cracking speed differences translate into real-world attacker timelines? Research how security researchers estimate &#8220;time to crack&#8221; for different password lengths and hash algorithms. What does the NTLM vs. SHA-512 gap mean for an attacker with a GPU cluster vs. a commodity laptop?",
+          "calloutType": "digDeeper"
+        },
+        {
+          "type": "callout",
+          "text": "NIST SP 800-63B Section 5.1.1.2 addresses offline attack resistance and the role of memory-hard functions. This directly supports your speed comparison analysis: https://pages.nist.gov/800-63-3/sp800-63b.html",
+          "calloutType": "thatsAReference"
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "title": "Common Pitfalls",
+          "icon": "warning",
+          "items": [
+            {
+              "label": "Leaving cells blank",
+              "text": "Every account needs an entry. If a password wasn&#8217;t cracked, write <em>not cracked</em> &#8212; that&#8217;s a finding too. It tells the client which accounts have stronger passwords (or passwords not in rockyou.txt)."
+            },
+            {
+              "label": "Forgetting the speed comparison",
+              "text": "Your Lab 4.3 report requires H/s data from all four cracking sessions: John against NTLM (Lab 4.1), Hashcat against NTLM (Lab 4.1), John against SHA-512 (this lab), and Hashcat against SHA-512 (this lab). If you didn&#8217;t record Lab 4.1 speeds, go back and check your Lab 4.1 screenshots now &#8212; not during Lab 4.3."
+            },
+            {
+              "label": "Mixing up account types",
+              "text": "Shared and service accounts carry different risk profiles. Shared accounts can&#8217;t be attributed to an individual; service accounts often have elevated privileges. These distinctions matter for the recommendation section of your engagement report."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "whatYouShouldHave",
+          "title": "What You Should Have",
+          "icon": "check",
+          "text": "A completed 8-account results table for Alamo Industries (username, cracked password or <em>not cracked</em>, account type) captured as Screenshot 20. You should also have four H/s speed data points recorded from your notes or screenshots: John and Hashcat speeds from both Lab 4.1 (NTLM) and this lab (SHA-512). That&#8217;s everything you need for the platform comparison section of Lab 4.3."
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "menu_book",
+          "text": "Chapter 15 covers password attack methodologies and Chapter 16 covers security assessment documentation. Your results table is the output artifact of an offensive assessment &#8212; it feeds directly into the defensive recommendations you&#8217;ll write in Lab 4.3. Both chapters support this checkpoint."
         }
       ]
     }
