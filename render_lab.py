@@ -265,8 +265,9 @@ def render_steps_block(block):
         command   = step.get("command")
         wtd       = step.get("whatThisDoes")
         sub_items = step.get("subItems", [])
+        sub_steps = step.get("substeps") or []
         # If step has no visible content at all, render wtd outside the ol entirely
-        if not text and not command and not sub_items and wtd:
+        if not text and not command and not sub_items and not sub_steps and wtd:
             out += f'    </ol>\n'
             out += render_what_this_does(wtd)
             out += f'    <ol start="{steps.index(step) + start + 1}">\n'
@@ -285,6 +286,11 @@ def render_steps_block(block):
                     out += f'          <li><code>{code}</code></li>\n'
                 else:
                     out += f'          <li>{label}</li>\n'
+            out += '        </ul>\n'
+        if sub_steps:
+            out += '        <ul>\n'
+            for ss in sub_steps:
+                out += f'          <li>{h(ss)}</li>\n'
             out += '        </ul>\n'
         if wtd:
             out += render_what_this_does(wtd)
