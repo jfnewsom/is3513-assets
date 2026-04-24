@@ -85,7 +85,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "A local simulation of LoneStar DevOps&#8217;s infrastructure using Docker containers: their customer portal (WordPress), database server (MySQL), development API (Node.js), and management access (SSH).",
+          "whatYoureDoing": "A local simulation of LoneStar DevOps&#8217;s infrastructure as a single Docker container running four internal services: their customer portal (WordPress on port 8080), database server (MySQL on 3306), development API (Node.js on 3000), and management access (SSH on 2222).",
           "whyItMatters": "Vulnerability assessments require a target environment. Docker allows us to create isolated, reproducible simulations of client infrastructure without touching their production systems. This is how NEXUS tests assessment methodology before deploying to client networks."
         },
         {
@@ -96,32 +96,38 @@
               "command": "docker --version"
             },
             {
-              "text": "Pull the LoneStar infrastructure image from Docker Hub"
+              "text": "Pull the LoneStar infrastructure image from Docker Hub:",
+              "command": "docker pull jfnewsom/lonestar-startup:latest"
             },
             {
-              "text": "Deploy all four containers with the provided docker-compose configuration"
+              "text": "Run the container with all four service ports exposed:",
+              "command": "docker run -d --name lonestar -p 8080:80 -p 3306:3306 -p 3000:3000 -p 2222:22 jfnewsom/lonestar-startup:latest"
             },
             {
-              "text": "Verify all containers are running:",
+              "text": "Verify the container is running:",
               "command": "docker ps"
             },
             {
-              "text": "Test connectivity to each service (WordPress on 8080, MySQL on 3306, API on 3000, SSH on 2222)"
+              "text": "Verify all four internal services are up inside the container:",
+              "command": "docker exec lonestar supervisorctl status"
+            },
+            {
+              "text": "Test connectivity to each service (WordPress on 8080, MySQL on 3306, API on 3000, SSH on 2222)."
             }
           ]
         },
         {
           "type": "callout",
           "calloutType": "exampleCommands",
-          "code": "# Verify Docker is working\ndocker --version\n\n# Pull and start all containers\ndocker-compose -f lonestar-infra.yml up -d\n\n# Verify containers are running\ndocker ps\n\n# Check container network\ndocker network inspect bridge"
+          "code": "# Verify Docker is working\ndocker --version\n\n# Pull and start the LoneStar container\ndocker pull jfnewsom/lonestar-startup:latest\ndocker run -d --name lonestar \\\n  -p 8080:80 -p 3306:3306 -p 3000:3000 -p 2222:22 \\\n  jfnewsom/lonestar-startup:latest\n\n# Verify container and internal services\ndocker ps\ndocker exec lonestar supervisorctl status\n\n# Quick connectivity checks\ncurl -sI http://localhost:8080/ | head -1\ncurl -s http://localhost:3000/"
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
           "number": 1,
-          "description": "docker ps output showing all four containers running.",
+          "description": "docker ps + supervisorctl status showing the lonestar container and its four internal services.",
           "filename": "01-docker-containers.png",
-          "body": "Take Screenshot 01. Capture <code>docker ps</code> showing all four LoneStar containers running (webapp-prod, db-primary, dev-api, mgmt-ssh). Your VM hostname must be visible in the terminal prompt."
+          "body": "Take Screenshot 01. Capture a terminal showing both <code>docker ps</code> (the <code>lonestar</code> container running) and <code>docker exec lonestar supervisorctl status</code> (all four internal services &#8212; <code>webapp-prod</code>, <code>db-primary</code>, <code>dev-api</code>, <code>mgmt-ssh</code> &#8212; showing <code>RUNNING</code>). Your VM hostname must be visible in the terminal prompt."
         },
         {
           "type": "callout",
@@ -141,11 +147,15 @@
             },
             {
               "label": "Port already in use",
-              "text": "Check with <code>sudo netstat -tulpn</code>"
+              "text": "If <code>docker run</code> errors on a port, find the conflict with <code>sudo ss -tulpn | grep -E ':(8080|3306|3000|2222)'</code> and stop whatever&#8217;s listening, or pick an alternate host port."
             },
             {
-              "label": "Containers won&#8217;t start",
-              "text": "Check logs with <code>docker logs [container-name]</code>"
+              "label": "Container name already in use",
+              "text": "If <code>docker run</code> reports that the name <code>lonestar</code> is already taken, remove the old one with <code>docker rm -f lonestar</code> and re-run."
+            },
+            {
+              "label": "A service shows as not RUNNING in supervisorctl",
+              "text": "Inspect logs for that service inside the container, e.g. <code>docker exec lonestar tail -50 /var/log/supervisor/webapp-prod.err.log</code>."
             }
           ]
         },
