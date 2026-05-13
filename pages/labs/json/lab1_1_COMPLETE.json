@@ -35,7 +35,7 @@
         "type": "tip",
         "title": "Save For Lab 1.3",
         "icon": "folder",
-        "text": "This is Week 1 of a 3-week module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Week 3."
+        "text": "This is Unit 1 of a 3-unit module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Unit 3."
       }
     ]
   },
@@ -70,7 +70,7 @@
       "label": "Total Estimated Time",
       "time": "85-140 min"
     },
-    "timesheetNote": "This is Week 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder &#8212; you&#8217;ll need them all in Week 3."
+    "timesheetNote": "This is Unit 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder &#8212; you&#8217;ll need them all in Unit 3."
   },
   "checkpoints": [
     {
@@ -740,7 +740,7 @@
         },
         {
           "label": "Documentation Discipline",
-          "text": "Blue teamers live and die by documentation. Building the habit of capturing and naming screenshots in Week 1 reflects how real SOC analysts maintain evidence chains."
+          "text": "Blue teamers live and die by documentation. Building the habit of capturing and naming screenshots in Unit 1 reflects how real SOC analysts maintain evidence chains."
         }
       ]
     },

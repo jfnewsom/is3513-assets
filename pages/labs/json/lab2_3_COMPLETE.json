@@ -12,7 +12,7 @@
     "screenshotStart": 18
   },
   "intro": {
-    "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six weeks. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
+    "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
     "mentorQuote": {
       "character": "Maria Delgado, PhD",
       "title": "Security Compliance Specialist, NEXUS Security",
@@ -38,7 +38,7 @@
       },
       {
         "title": "Engagement Packet Compilation",
-        "description": "Assembling three weeks of work into a single professional deliverable — the Section A/B/C structure used by NEXUS Security for all client engagements."
+        "description": "Assembling three units of work into a single professional deliverable — the Section A/B/C structure used by NEXUS Security for all client engagements."
       }
     ],
     "objectives": [
@@ -84,10 +84,10 @@
     }
   },
   "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 weeks.",
+    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.",
     "sections": [
       {
-        "title": "From Week 1 — Lab 2.1: Cryptographic Foundations",
+        "title": "From Unit 1 — Lab 2.1: Cryptographic Foundations",
         "items": [
           "Hash function demonstrations (SHA-256 comparison showing avalanche effect)",
           "Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)",
@@ -97,7 +97,7 @@
         ]
       },
       {
-        "title": "From Week 2 — Lab 2.2: Authentication Systems",
+        "title": "From Unit 2 — Lab 2.2: Authentication Systems",
         "items": [
           "SSH key generation — RSA and ED25519 comparison",
           "File permission security demonstration (break/fix cycle)",
@@ -107,7 +107,7 @@
         ]
       },
       {
-        "title": "New This Week — Lab 2.3",
+        "title": "New This Unit — Lab 2.3",
         "items": [
           "Title Page, Table of Contents, Executive Summary",
           "Certificate diagnosis and remediation documentation",
@@ -122,13 +122,13 @@
         "type": "callout",
         "calloutType": "tip",
         "title": "You're Already 60–70% Done",
-        "body": "If you followed the Week 1–2 instructions, most of your report is already written. This week is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+        "body": "If you followed the Unit 1–2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
       },
       {
         "type": "tip",
         "icon": "check_circle",
         "title": "You&#8217;re Already 60&#8211;70% Done",
-        "text": "If you followed the Week 1&#8211;2 instructions, most of your report is already written. This week is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+        "text": "If you followed the Unit 1&#8211;2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
       }
     ]
   },
@@ -155,7 +155,7 @@
       "label": "Total Estimated Time",
       "time": "4-5 hours"
     },
-    "timesheetNote": "Week 3 is your first client-billable week. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in Section A of your NEXUS Timesheet. Weeks 1 and 2 were internal training and are NOT client billable."
+    "timesheetNote": "Unit 3 is your first client-billable unit. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in Section A of your NEXUS Timesheet. Units 1 and 2 were internal training and are NOT client billable."
   },
   "checkpoints": [
     {
@@ -645,8 +645,8 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Compiling all three weeks of Module 2 work into a professional Engagement Packet.",
-          "whyItMatters": "This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six weeks, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
+          "whatYoureDoing": "Compiling all three units of Module 2 work into a professional Engagement Packet.",
+          "whyItMatters": "This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
         },
         {
           "type": "callout",
@@ -659,7 +659,7 @@
           "sections": [
             {
               "label": "Section A: NEXUS Timesheet",
-              "description": "A table showing your hours across all 3 weeks. Weeks 1&#8211;2: Internal training (not client billable) &#8212; Lab 2.1 and Lab 2.2 work. Week 3: Client billable hours &#8212; Gulf Coast certificate remediation. Include dates, activities, and hours per task."
+              "description": "A table showing your hours across all 3 units. Units 1&#8211;2: Internal training (not client billable) &#8212; Lab 2.1 and Lab 2.2 work. Unit 3: Client billable hours &#8212; Gulf Coast certificate remediation. Include dates, activities, and hours per task."
             },
             {
               "label": "Section B: Internal Runbook",
@@ -849,7 +849,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this week will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data."
+      "text": "Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data."
     }
   }
 }

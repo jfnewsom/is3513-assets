@@ -12,7 +12,7 @@
     "screenshotStart": 1
   },
   "intro": {
-    "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This week you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Week 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
+    "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
     "mentorQuote": {
       "character": "Carmen Vega",
       "title": "Junior Analyst (OSINT), NEXUS Security",
@@ -37,7 +37,7 @@
         "type": "tip",
         "title": "Save For Lab 4.3",
         "icon": "folder",
-        "text": "This is <strong>Week 1 of a 3-week module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 4.3 Engagement Packet in Week 3."
+        "text": "This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 4.3 Engagement Packet in Unit 3."
       }
     ]
   },
@@ -475,7 +475,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Compiling your cracking results into a structured format for your Week 3 engagement report. Documenting which passwords cracked, which survived, and why.",
+          "whatYoureDoing": "Compiling your cracking results into a structured format for your Unit 3 engagement report. Documenting which passwords cracked, which survived, and why.",
           "whyItMatters": "Professional security assessments require clear, reproducible documentation. Clients need to know which accounts are vulnerable, why they&#8217;re vulnerable, and what to do about it. The analysis you document now becomes the foundation of your Lab 4.3 engagement packet."
         },
         {
@@ -785,7 +785,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Next week in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format &#8212; and a dramatically different experience. Document everything from both weeks for your Lab 4.3 Password Security Assessment engagement packet."
+      "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format &#8212; and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
     }
   }
 }

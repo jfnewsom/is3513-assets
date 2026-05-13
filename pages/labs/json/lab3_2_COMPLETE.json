@@ -13,7 +13,7 @@
     "screenshotStart": 7
   },
   "intro": {
-    "overview": "This week is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.",
+    "overview": "This unit is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.",
     "mentorQuote": {
       "character": "Derek Mitchell",
       "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
@@ -52,7 +52,7 @@
         "type": "tip",
         "title": "Save For Lab 3.3",
         "icon": "folder",
-        "text": "This is <strong>Week 2 of a 3-week module</strong>. Continue saving screenshots to your <code>Module3_Screenshots</code> folder. Your Wireshark analysis screenshots will form the &#8220;Tool Documentation&#8221; section of your Week 3 Engagement Packet."
+        "text": "This is <strong>Unit 2 of a 3-unit module</strong>. Continue saving screenshots to your <code>Module3_Screenshots</code> folder. Your Wireshark analysis screenshots will form the &#8220;Tool Documentation&#8221; section of your Unit 3 Engagement Packet."
       }
     ]
   },
@@ -660,7 +660,7 @@
         {
           "type": "narrative",
           "whatYoureDoing": "Analyzing a training PCAP file provided by NEXUS to practice identifying security-relevant findings.",
-          "whyItMatters": "Next week you&#8217;ll analyze live traffic from the Gulf Coast Healthcare patient portal. This training exercise prepares you by having you practice finding real issues in a controlled capture."
+          "whyItMatters": "Next unit you&#8217;ll analyze live traffic from the Gulf Coast Healthcare patient portal. This training exercise prepares you by having you practice finding real issues in a controlled capture."
         },
         {
           "character": "Derek Mitchell",
@@ -880,7 +880,7 @@
     "canvasQuiz": "Take the <strong>Lab 3.2 Quiz</strong> in Canvas. The quiz verifies you completed the hands-on work &#8212; questions will ask about specific outputs and findings from your Wireshark analysis. <strong>Keep Wireshark open while taking the quiz.</strong>"
   },
   "needHelp": {
-    "nextModule": "Lab 3.3: Network Analysis Engagement &#8212; Next week you&#8217;ll connect to Gulf Coast Healthcare&#8217;s Azure-hosted patient portal, capture live traffic, and apply everything you learned here. The skills from this lab are non-negotiable for that assessment.",
+    "nextModule": "Lab 3.3: Network Analysis Engagement &#8212; Next unit you&#8217;ll connect to Gulf Coast Healthcare&#8217;s Azure-hosted patient portal, capture live traffic, and apply everything you learned here. The skills from this lab are non-negotiable for that assessment.",
     "channels": [
       {
         "detail": "#lab-help",
@@ -913,7 +913,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Lab 3.3: Network Analysis Engagement — Next week you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Weeks 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."
+      "text": "Lab 3.3: Network Analysis Engagement — Next unit you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Units 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."
     }
   }
 }

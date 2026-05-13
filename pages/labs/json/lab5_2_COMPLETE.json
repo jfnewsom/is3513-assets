@@ -11,7 +11,7 @@
     ]
   },
   "intro": {
-    "overview": "Culmination of the two-week LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one week; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this week is about assembling it into a professional deliverable that serves both audiences.",
+    "overview": "Culmination of the two-unit LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one unit; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this unit is about assembling it into a professional deliverable that serves both audiences.",
     "mentorQuote": {
       "character": "Marcus Chen",
       "title": "Founder, NEXUS Security",
@@ -45,8 +45,8 @@
     ]
   },
   "youAlreadyHave": {
-    "subtitle": "Two-Week Engagement Model",
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report all week in Lab 5.1.",
+    "subtitle": "Two-Unit Engagement Model",
+    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report all unit in Lab 5.1.",
     "sections": [
       {
         "title": "From Lab 5.1 &#8212; Vulnerability Assessment &amp; Risk Analysis",
@@ -63,7 +63,7 @@
         ]
       },
       {
-        "title": "NEW This Week",
+        "title": "NEW This Unit",
         "badge": "NEW",
         "items": [
           "Title Page, Table of Contents, Executive Summary",
@@ -78,7 +78,7 @@
       {
         "type": "tip",
         "title": "You&#8217;re Already 50&#8211;60% Done",
-        "body": "Your vulnerability inventory, CVSS table, risk matrix, and roadmap draft are done. This week is compilation, executive summary, and professional polish &#8212; not starting over."
+        "body": "Your vulnerability inventory, CVSS table, risk matrix, and roadmap draft are done. This unit is compilation, executive summary, and professional polish &#8212; not starting over."
       }
     ]
   },
@@ -129,16 +129,16 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Billing justification &#8212; document all hours across the 2-week assessment.",
+          "whatYoureDoing": "Billing justification &#8212; document all hours across the 2-unit assessment.",
           "whyItMatters": "Consulting engagements require time accountability. Clients and firm management need to verify that billed hours match actual work performed."
         },
         {
           "type": "includeList",
           "title": "Include in Section A",
           "items": [
-            "Week-by-week hour breakdown (Lab 5.1 and Lab 5.2)",
+            "Unit-by-unit hour breakdown (Lab 5.1 and Lab 5.2)",
             "Internal vs. client-billable hour split",
-            "Total hours across both weeks",
+            "Total hours across both units",
             "Justification narrative for each line item"
           ]
         },
@@ -170,7 +170,7 @@
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A complete timesheet showing 7&#8211;10 hours distributed across both weeks, with specific justifications for each entry."
+          "text": "A complete timesheet showing 7&#8211;10 hours distributed across both units, with specific justifications for each entry."
         }
       ]
     },
@@ -362,7 +362,7 @@
         {
           "type": "narrative",
           "whatYoureDoing": "Expand the remediation roadmap draft from Lab 5.1 into a complete phased plan with timelines, specific actions, and realistic recommendations.",
-          "whyItMatters": "Sarah needs a realistic plan she can actually execute with two engineers and a limited budget in four weeks. A list of fixes is not a roadmap."
+          "whyItMatters": "Sarah needs a realistic plan she can actually execute with two engineers and a limited budget in four units. A list of fixes is not a roadmap."
         },
         {
           "type": "includeList",
@@ -429,7 +429,7 @@
           "type": "checklist",
           "title": "Final Assembly Checklist",
           "items": [
-            "Section A: Timesheet complete with hour justifications for both weeks",
+            "Section A: Timesheet complete with hour justifications for both units",
             "Section B: Runbook is reproducible by another analyst",
             "Section C: Executive summary fits on one page",
             "Section C: Top 10 vulnerabilities documented with CVSS scores",
@@ -474,7 +474,7 @@
         {
           "type": "callout",
           "calloutType": "canvasSubmission",
-          "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one week of the due date."
+          "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one unit of the due date."
         }
       ]
     }

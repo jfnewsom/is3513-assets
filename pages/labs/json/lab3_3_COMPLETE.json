@@ -13,7 +13,7 @@
     "screenshotStart": 20
   },
   "intro": {
-    "overview": "This is it &#8212; your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Weeks 1&#8211;2 to deliver a professional Engagement Packet.",
+    "overview": "This is it &#8212; your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1&#8211;2 to deliver a professional Engagement Packet.",
     "mentorQuote": {
       "character": "Derek Mitchell",
       "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
@@ -33,7 +33,7 @@
       "Capture live network traffic using Wireshark on your host",
       "Apply ALL analysis techniques from Lab 3.2 to live capture",
       "Document findings with tiered discovery classification",
-      "Compile three weeks of work into professional Engagement Packet",
+      "Compile three units of work into professional Engagement Packet",
       "Write executive summary addressing Jennifer Walsh&#8217;s concerns"
     ],
     "callouts": [
@@ -47,7 +47,7 @@
         "type": "warning",
         "title": "Minimum Requirements",
         "icon": "warning",
-        "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this week (20–30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, and textbook chapters all count."
+        "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this unit (20–30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, and textbook chapters all count."
       }
     ],
     "clientContext": {
@@ -66,7 +66,7 @@
     "intro": "If you followed directions in Labs 3.1 and 3.2, you already have most of the technical foundation for this Engagement Packet.",
     "sections": [
       {
-        "title": "From Week 7 — Lab 3.1: Network Addressing Fundamentals",
+        "title": "From Unit 1 — Lab 3.1: Network Addressing Fundamentals",
         "items": [
           "IP configuration screenshots (<code>ip addr</code>, <code>ip route</code>)",
           "Network interface documentation",
@@ -76,7 +76,7 @@
         ]
       },
       {
-        "title": "From Week 8 — Lab 3.2: Protocol Analysis Tools",
+        "title": "From Unit 2 — Lab 3.2: Protocol Analysis Tools",
         "items": [
           "Wireshark installation and configuration notes",
           "Capture filter documentation",
@@ -89,7 +89,7 @@
         ]
       },
       {
-        "title": "New This Week — Lab 3.3",
+        "title": "New This Unit — Lab 3.3",
         "items": [
           "Azure SSH connection and live capture",
           "Live traffic analysis with tiered discoveries",
@@ -105,7 +105,7 @@
       {
         "type": "tip",
         "title": "You&#8217;re Already 60&#8211;70% Done",
-        "text": "If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This week is about applying those skills to a live engagement and wrapping it in professional packaging. Gather your <code>Lab3-Screenshots</code> folder and your notes &#8212; the hard work is already done."
+        "text": "If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This unit is about applying those skills to a live engagement and wrapping it in professional packaging. Gather your <code>Lab3-Screenshots</code> folder and your notes &#8212; the hard work is already done."
       }
     ]
   },
@@ -128,7 +128,7 @@
       "label": "Total Estimated Time",
       "time": "4&#8211;5.5 hours"
     },
-    "timesheetNote": "This is a client engagement &#8212; <strong>all time this week is billable to the client</strong> (Gulf Coast Healthcare Partners + LoneStar DevOps). This is significantly more than Foundation Labs because you&#8217;re delivering a complete professional report."
+    "timesheetNote": "This is a client engagement &#8212; <strong>all time this unit is billable to the client</strong> (Gulf Coast Healthcare Partners + LoneStar DevOps). This is significantly more than Foundation Labs because you&#8217;re delivering a complete professional report."
   },
   "checkpoints": [
     {
@@ -540,7 +540,7 @@
           "calloutType": "textbookReference",
           "title": "Textbook Reference",
           "icon": "book",
-          "text": "Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this week put Chapter 18 concepts into practice — cite it in your client report."
+          "text": "Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this unit put Chapter 18 concepts into practice — cite it in your client report."
         },
         {
           "type": "callout",
@@ -557,7 +557,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Compile your three weeks of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.",
+          "whatYoureDoing": "Compile your three units of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.",
           "whyItMatters": "Technical skills are only half the job. The ability to communicate findings clearly, professionally, and actionably is what separates good analysts from great ones. Jennifer Walsh doesn&#8217;t need raw data &#8212; she needs a report she can present to her board."
         },
         {
@@ -615,7 +615,7 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "<strong>Forgetting Weeks 1&#8211;2:</strong> Include Labs 3.1 and 3.2 work",
+            "<strong>Forgetting Units 1&#8211;2:</strong> Include Labs 3.1 and 3.2 work",
             "<strong>Technical jargon:</strong> Executive summary must be non-technical",
             "<strong>Missing references:</strong> 10 minimum &#8212; man pages count!",
             "<strong>PDF submission:</strong> Must be DOCX format"
@@ -711,7 +711,7 @@
             "description": "Notable security finding with evidence"
           }
         ],
-        "title": "Screenshots Required (This Week)"
+        "title": "Screenshots Required (This Unit)"
       },
       {
         "type": "checklist",
@@ -762,7 +762,7 @@
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
-    "nextModule": "Module 4: Threats &amp; Attacks begins next week. You&#8217;ll shift focus to password security with Brazos Financial Group and Alamo Industries as clients.",
+    "nextModule": "Module 4: Threats &amp; Attacks begins next unit. You&#8217;ll shift focus to password security with Brazos Financial Group and Alamo Industries as clients.",
     "channels": [
       {
         "detail": "#lab-help",

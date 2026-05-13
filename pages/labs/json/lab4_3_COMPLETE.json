@@ -11,7 +11,7 @@
     ]
   },
   "intro": {
-    "overview": "This is your Week 3 Engagement Packet for Module 4. You’ve spent the last two weeks conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
+    "overview": "This is your Unit 3 Engagement Packet for Module 4. You’ve spent the last two units conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
     "mentorQuote": {
       "character": "Marcus Chen",
       "title": "Founder & Principal, NEXUS Security",
@@ -48,10 +48,10 @@
     ]
   },
   "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You’ve been building this report for 3 weeks.",
+    "intro": "This is NOT starting from scratch. You’ve been building this report for 3 units.",
     "sections": [
       {
-        "title": "From Week 1 (Lab 4.1 — Windows Password Cracking)",
+        "title": "From Unit 1 (Lab 4.1 — Windows Password Cracking)",
         "items": [
           "Brazos Financial NTLM hash extraction methodology",
           "John the Ripper execution and results (Windows)",
@@ -61,7 +61,7 @@
         ]
       },
       {
-        "title": "From Week 2 (Lab 4.2 — Linux Password Cracking)",
+        "title": "From Unit 2 (Lab 4.2 — Linux Password Cracking)",
         "items": [
           "Alamo Industries SHA-512 hash extraction methodology",
           "John the Ripper execution and results (Linux)",
@@ -72,10 +72,10 @@
         ]
       },
       {
-        "title": "NEW This Week",
+        "title": "NEW This Unit",
         "items": [
           "Title Page, Table of Contents, Executive Summary",
-          "NEXUS Timesheet (Section A) with all 3 weeks",
+          "NEXUS Timesheet (Section A) with all 3 units",
           "Platform Comparison Analysis (NTLM vs SHA-512)",
           "Client-Specific Recommendations (Brazos + Alamo)",
           "Professional Reflection, References, Appendix"
@@ -87,7 +87,7 @@
   "timeGuide": {
     "rows": [
       {
-        "task": "Checkpoint 1: Report Setup & Week 1-2 Compilation",
+        "task": "Checkpoint 1: Report Setup & Unit 1-2 Compilation",
         "time": "45–60 min"
       },
       {
@@ -107,16 +107,16 @@
       "label": "TOTAL",
       "time": "3–4.5 hours"
     },
-    "timesheetNote": "This is Week 3 of a 3-week module &#8212; your first Engagement Packet with <em>two</em> clients. All time this week is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3&#8211;4.5 hours &#8212; Password Security Assessment</em>. You should already have 20 screenshots from Labs 4.1 and 4.2 in your <code>Module4_Screenshots</code> folder &#8212; verify the count before you begin.",
+    "timesheetNote": "This is Unit 3 of a 3-unit module &#8212; your first Engagement Packet with <em>two</em> clients. All time this unit is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3&#8211;4.5 hours &#8212; Password Security Assessment</em>. You should already have 20 screenshots from Labs 4.1 and 4.2 in your <code>Module4_Screenshots</code> folder &#8212; verify the count before you begin.",
     "tipCallout": {
       "title": "You’re Already 60–70% Done",
-      "text": "If you followed the Week 1-2 instructions, most of your report is already written. This week is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+      "text": "If you followed the Unit 1-2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
     }
   },
   "checkpoints": [
     {
       "number": 1,
-      "title": "Report Setup & Week 1-2 Compilation",
+      "title": "Report Setup & Unit 1-2 Compilation",
       "content": [
         {
           "type": "narrative",
@@ -282,7 +282,7 @@
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A Word document with all 12 section headers, imported content from Weeks 1-2, all 12 screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
+          "text": "A Word document with all 12 section headers, imported content from Units 1-2, all 12 screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
         }
       ]
     },

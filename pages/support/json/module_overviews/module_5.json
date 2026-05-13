@@ -3,14 +3,14 @@
   "module": 5,
   "title": "Infrastructure, Risk & Resilience",
   "accentColor": "#7B68EE",
-  "weeks": "13&#8211;14",
+  "units": "1-2",
   "chapters": "10 & 20",
   "client": "LoneStar DevOps",
   "clientColor": "#7B68EE",
   "overview": "Module 5 brings the full assessment lifecycle together. You'll deploy a simulated client environment, discover and score vulnerabilities, build a risk matrix, and compile everything into a professional Engagement Packet — the same deliverable a real security consultant hands to a client.",
-  "weeks_breakdown": [
+  "units_breakdown": [
     {
-      "weekLabel": "WEEK 13",
+      "unitLabel": "UNIT 1",
       "type": "foundation",
       "labTitle": "Lab 5.1: Vulnerability Assessment & Risk Analysis",
       "labDesc": "Deploy LoneStar DevOps infrastructure, conduct vulnerability scanning, score top 10 findings with CVSS 3.1, build risk matrix and remediation roadmap.",
@@ -18,20 +18,12 @@
       "badgeColor": "#00D26A"
     },
     {
-      "weekLabel": "WEEK 14",
+      "unitLabel": "UNIT 2",
       "type": "engagement",
       "labTitle": "Lab 5.2: LoneStar DevOps Engagement",
       "labDesc": "Compile findings into a professional Engagement Packet. Executive summary for Amanda Nguyen (investors), technical runbook and remediation roadmap for Sarah Martinez.",
       "badgeLabel": "Client Billable",
       "badgeColor": "#FF9F1C"
-    },
-    {
-      "weekLabel": "WEEK 15",
-      "type": "review",
-      "labTitle": "Review & Exam Prep",
-      "labDesc": "No lab assignment this week. Review Chapters 10 and 20 and your Lab 5.1 work in preparation for the Module 5 Exam.",
-      "badgeLabel": "No Assignment",
-      "badgeColor": "#4169E1"
     }
   ],
   "clientContext": {
@@ -55,6 +47,6 @@
     "color": "#7B68EE",
     "colorRgb": "123, 104, 238",
     "label": "&#127919; Capstone Module:",
-    "body": "This is the complete engagement workflow in two weeks: discover, score, prioritize, and report. You'll draw on skills from every previous module — reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness — and apply them to a real risk management deliverable."
+    "body": "This is the complete engagement workflow in two units: discover, score, prioritize, and report. You'll draw on skills from every previous module — reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness — and apply them to a real risk management deliverable."
   }
 }

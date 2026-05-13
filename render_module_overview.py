@@ -72,8 +72,8 @@ def render(data):
     # Info bar
     info_bar = f"""    <div class="nx-info-bar">
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label">Weeks</div>
-        <div class="nx-info-stat__value">{data['weeks']}</div>
+        <div class="nx-info-stat__label">Units</div>
+        <div class="nx-info-stat__value">{data['units']}</div>
       </div>
       <div class="nx-info-stat">
         <div class="nx-info-stat__label">Chapters</div>
@@ -97,14 +97,14 @@ def render(data):
       <span class="nx-client-ctx__body"> {notice['body']}</span>
     </div>"""
 
-    # Week breakdown
+    # Unit breakdown
     week_rows = []
-    for week in data["weeks_breakdown"]:
+    for week in data["units_breakdown"]:
         badge_color = week["badgeColor"]
         badge_text  = "#0A0E17" if week["type"] == "foundation" else "#ffffff"
         week_rows.append(
             f"""      <div class="nx-week-row" style="--badge-color: {badge_color}; --badge-text: {badge_text};">
-        <div class="nx-week-badge">{week['weekLabel']}</div>
+        <div class="nx-week-badge">{week['unitLabel']}</div>
         <div class="nx-week-info">
           <div class="nx-week-title">{week['labTitle']}</div>
           <div class="nx-week-desc">{week['labDesc']}</div>

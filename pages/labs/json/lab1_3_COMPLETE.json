@@ -12,7 +12,7 @@
     "screenshotStart": 14
   },
   "intro": {
-    "overview": "Congratulations &#8212; you&#8217;ve completed NEXUS reconnaissance training and you&#8217;re cleared for client work. Brazos Financial Group needs an external attack surface assessment. This week you&#8217;ll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: timesheet showing all three weeks, your internal runbook documenting your methodology, and a professional client report for Ray Jimenez.",
+    "overview": "Congratulations &#8212; you&#8217;ve completed NEXUS reconnaissance training and you&#8217;re cleared for client work. Brazos Financial Group needs an external attack surface assessment. This unit you&#8217;ll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: timesheet showing all three units, your internal runbook documenting your methodology, and a professional client report for Ray Jimenez.",
     "mentorQuote": {
       "character": "Maya Rodriguez",
       "title": "Senior Penetration Tester, NEXUS Security",
@@ -43,7 +43,7 @@
         "type": "warning",
         "title": "Minimum Requirements",
         "icon": "warning",
-        "body": "Minimum 22 screenshots (01&#8211;13 from Weeks 1&#8211;2, plus 14&#8211;22 from this week). Minimum 10 references in APA format. All three report sections (A, B, C) must be present. Missing any of these results in automatic score penalties."
+        "body": "Minimum 22 screenshots (01&#8211;13 from Units 1&#8211;2, plus 14&#8211;22 from this unit). Minimum 10 references in APA format. All three report sections (A, B, C) must be present. Missing any of these results in automatic score penalties."
       }
     ],
     "clientContext": {
@@ -58,7 +58,7 @@
     }
   },
   "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 weeks. If you followed the Week 1-2 instructions, most of your report is already written.",
+    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units. If you followed the Unit 1-2 instructions, most of your report is already written.",
     "sections": [
       {
         "items": [
@@ -66,7 +66,7 @@
           "VM configuration, Docker installation verification",
           "Timesheet hours: Internal training (environment setup)"
         ],
-        "title": "From Week 1 (Lab 1.1 &#8212; Kali Environment Setup)"
+        "title": "From Unit 1 (Lab 1.1 &#8212; Kali Environment Setup)"
       },
       {
         "items": [
@@ -75,7 +75,7 @@
           "Research notes on tool capabilities and flags",
           "Timesheet hours: Internal training (tool certification)"
         ],
-        "title": "From Week 2 (Lab 1.2 &#8212; Reconnaissance Tool Exploration)"
+        "title": "From Unit 2 (Lab 1.2 &#8212; Reconnaissance Tool Exploration)"
       },
       {
         "items": [
@@ -85,7 +85,7 @@
           "CVE research for discovered versions",
           "Professional Reflection, References, Appendix"
         ],
-        "title": "NEW This Week",
+        "title": "NEW This Unit",
         "badge": "NEW"
       }
     ],
@@ -94,14 +94,14 @@
         "type": "tip",
         "icon": "lightbulb",
         "title": "You&#8217;re Already 60-70% Done",
-        "text": "This week is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+        "text": "This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
       }
     ]
   },
   "timeGuide": {
     "rows": [
       {
-        "task": "Read instructions and review Week 1-2 materials",
+        "task": "Read instructions and review Unit 1-2 materials",
         "time": "15 min"
       },
       {
@@ -315,7 +315,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Assembling your complete Engagement Packet: combining Week 1-2 documentation with this week&#8217;s findings into a professional deliverable with three sections.",
+          "whatYoureDoing": "Assembling your complete Engagement Packet: combining Unit 1-2 documentation with this unit&#8217;s findings into a professional deliverable with three sections.",
           "whyItMatters": "Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations."
         },
         {
@@ -329,7 +329,7 @@
           "sections": [
             {
               "label": "Section A: NEXUS Timesheet",
-              "description": "Justify hours across all three weeks: internal training (Weeks 1-2) and client billable (Week 3)."
+              "description": "Justify hours across all three units: internal training (Units 1-2) and client billable (Unit 3)."
             },
             {
               "label": "Section B: Internal Runbook",
@@ -351,9 +351,9 @@
             "Title Page",
             "Executive Summary (1 page)",
             "Table of Contents",
-            "Environment Specifications (from Week 1)",
-            "Tool Documentation (from Week 2)",
-            "Assessment Results (Week 3 findings)",
+            "Environment Specifications (from Unit 1)",
+            "Tool Documentation (from Unit 2)",
+            "Assessment Results (Unit 3 findings)",
             "Vulnerability Research (CVE lookups)",
             "Risk Analysis",
             "Recommendations",
@@ -390,7 +390,7 @@
           "items": [
             {
               "label": "Starting from scratch",
-              "text": "Your report is 60&#8211;70% complete from Weeks 1 and 2. Import your existing screenshots and documentation &#8212; don&#8217;t rewrite what you already have."
+              "text": "Your report is 60&#8211;70% complete from Units 1 and 2. Import your existing screenshots and documentation &#8212; don&#8217;t rewrite what you already have."
             },
             {
               "label": "PDF submission",
@@ -447,8 +447,8 @@
       {
         "title": "Screenshots",
         "items": [
-          "All Week 1-2 screenshots included (01-13)",
-          "Week 3 screenshots (14-22 minimum)",
+          "All Unit 1-2 screenshots included (01-13)",
+          "Unit 3 screenshots (14-22 minimum)",
           "Screenshots are clear and readable",
           "VM hostname visible in terminal screenshots"
         ]

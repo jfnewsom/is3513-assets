@@ -12,7 +12,7 @@
     "screenshotStart": 11
   },
   "intro": {
-    "overview": "After cracking Brazos Financial&#8217;s Windows passwords last week, NEXUS Security now turns to Alamo Industries&#8217; Linux infrastructure. You&#8217;ll use the same tools &#8212; John the Ripper and Hashcat &#8212; but experience dramatically different results. Linux&#8217;s SHA-512 algorithm with salting creates significantly higher computational barriers. This lab demonstrates how defensive architecture choices directly impact attacker timelines.",
+    "overview": "After cracking Brazos Financial&#8217;s Windows passwords last unit, NEXUS Security now turns to Alamo Industries&#8217; Linux infrastructure. You&#8217;ll use the same tools &#8212; John the Ripper and Hashcat &#8212; but experience dramatically different results. Linux&#8217;s SHA-512 algorithm with salting creates significantly higher computational barriers. This lab demonstrates how defensive architecture choices directly impact attacker timelines.",
     "mentorQuote": {
       "character": "Carmen Vega",
       "title": "Principal Security Consultant, NEXUS Security",
@@ -37,7 +37,7 @@
         "type": "tip",
         "title": "Save For Lab 4.3",
         "icon": "folder",
-        "text": "This is <strong>Week 2 of a 3-week module</strong>. Add this week&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. You should have 10 screenshots from Lab 4.1. This week adds 10 more."
+        "text": "This is <strong>Unit 2 of a 3-unit module</strong>. Add this unit&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. You should have 10 screenshots from Lab 4.1. This unit adds 10 more."
       },
       {
         "type": "characterQuote",
@@ -75,10 +75,10 @@
       "label": "Total Estimated Time",
       "time": "3&#8211;4 hours"
     },
-    "timesheetNote": "This is Week 2 of a 3-week module. Log as <em>Internal Training: 3&#8211;4 hours &#8212; Linux SHA-512 password cracking</em>. Save all screenshots (#11&#8211;20) to your existing <code>Module4_Screenshots</code> folder. You already have 10 screenshots from Lab 4.1; this week adds 10 more.",
+    "timesheetNote": "This is Unit 2 of a 3-unit module. Log as <em>Internal Training: 3&#8211;4 hours &#8212; Linux SHA-512 password cracking</em>. Save all screenshots (#11&#8211;20) to your existing <code>Module4_Screenshots</code> folder. You already have 10 screenshots from Lab 4.1; this unit adds 10 more.",
     "warningCallout": {
       "title": "Expect Slower Results",
-      "text": "SHA-512 is deliberately designed to be slow. Where Lab 4.1&#8217;s NTLM attacks showed millions or billions of H/s, expect only thousands of H/s this week. This is not a problem with your setup &#8212; it&#8217;s the algorithm working as intended."
+      "text": "SHA-512 is deliberately designed to be slow. Where Lab 4.1&#8217;s NTLM attacks showed millions or billions of H/s, expect only thousands of H/s this unit. This is not a problem with your setup &#8212; it&#8217;s the algorithm working as intended."
     }
   },
   "checkpoints": [
@@ -724,7 +724,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Lab 4.3: Password Security Assessment Report &#8212; Next week you&#8217;ll combine your Brazos Financial (Windows/NTLM) and Alamo Industries (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both clients."
+      "text": "Lab 4.3: Password Security Assessment Report &#8212; Next unit you&#8217;ll combine your Brazos Financial (Windows/NTLM) and Alamo Industries (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both clients."
     }
   }
 }

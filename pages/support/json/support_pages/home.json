@@ -17,10 +17,26 @@
     {
       "type": "stat_blocks",
       "blocks": [
-        { "label": "Modules", "labelColor": "#4169E1", "value": "5" },
-        { "label": "Foundation Labs", "labelColor": "#00BCD4", "value": "10" },
-        { "label": "Engagement Packets", "labelColor": "#7B68EE", "value": "5" },
-        { "label": "Module Exams", "labelColor": "#FF9F1C", "value": "5" }
+        {
+          "label": "Modules",
+          "labelColor": "#4169E1",
+          "value": "5"
+        },
+        {
+          "label": "Foundation Labs",
+          "labelColor": "#00BCD4",
+          "value": "10"
+        },
+        {
+          "label": "Engagement Packets",
+          "labelColor": "#7B68EE",
+          "value": "5"
+        },
+        {
+          "label": "Module Exams",
+          "labelColor": "#FF9F1C",
+          "value": "5"
+        }
       ]
     },
     {
@@ -43,7 +59,7 @@
       "label": "Course Format",
       "paragraphs": [
         "<strong style=\"color:#ffffff;\">Delivery:</strong> Asynchronous Online &mdash; no live sessions. Work at your own pace within weekly deadlines.",
-        "<strong style=\"color:#ffffff;\">3-Week Module Cycle:</strong> Weeks 1 &amp; 2 are Foundation Labs (quiz-verified). Week 3 is an Engagement Packet (client report). Repeat &times;5.",
+        "<strong style=\"color:#ffffff;\">3-Unit Module Cycle:</strong> Units 1 &amp; 2 are Foundation Labs (quiz-verified). Unit 3 is an Engagement Packet (client report). Repeat &times;5.",
         "<strong style=\"color:#ffffff;\">Support:</strong> Discord for questions, Calendly for appointments, email for private matters only.",
         "<strong style=\"color:#ffffff;\">Textbook:</strong> Conklin &amp; White, <em>Principles of Computer Security: CompTIA Security+ and Beyond</em>, 6th Ed."
       ]

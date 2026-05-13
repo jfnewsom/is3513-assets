@@ -3,14 +3,14 @@
   "module": 4,
   "title": "Threats & Attacks",
   "accentColor": "#7B68EE",
-  "weeks": "10-12",
+  "units": "1-3",
   "chapters": "15 & 16",
   "client": "Brazos Financial + Alamo Industries",
   "clientColor": "#FF9F1C",
-  "overview": "Module 4 is where you go on offense — carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Week 1 focuses on Windows (NTLM), Week 2 on Linux (SHA-512), and Week 3 you deliver a professional password security assessment to two clients.",
-  "weeks_breakdown": [
+  "overview": "Module 4 is where you go on offense — carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Unit 1 focuses on Windows (NTLM), Unit 2 on Linux (SHA-512), and Unit 3 you deliver a professional password security assessment to two clients.",
+  "units_breakdown": [
     {
-      "weekLabel": "WEEK 10",
+      "unitLabel": "UNIT 1",
       "type": "foundation",
       "labTitle": "Lab 4.1: Windows Password Cracking",
       "labDesc": "Crack NTLM hashes from Brazos Financial using John the Ripper and Hashcat. Learn why unsalted hashes are a structural weakness.",
@@ -18,7 +18,7 @@
       "badgeColor": "#00D26A"
     },
     {
-      "weekLabel": "WEEK 11",
+      "unitLabel": "UNIT 2",
       "type": "foundation",
       "labTitle": "Lab 4.2: Linux Password Cracking",
       "labDesc": "Crack SHA-512 hashes from Alamo Industries. Compare salted Linux hashes to NTLM — the difference is dramatic.",
@@ -26,7 +26,7 @@
       "badgeColor": "#00D26A"
     },
     {
-      "weekLabel": "WEEK 12",
+      "unitLabel": "UNIT 3",
       "type": "engagement",
       "labTitle": "Lab 4.3: Password Security Assessment",
       "labDesc": "Client engagement. Compile your findings into a professional password security report for both clients.",
