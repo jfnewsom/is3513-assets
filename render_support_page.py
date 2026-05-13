@@ -442,7 +442,6 @@ def render(data):
 # ── Entry point ────────────────────────────────────────────────────────────────
 
 # Canonical output filenames — must match existing repo filenames exactly.
-# home.json is excluded: Home.html is hand-coded, outside the renderer pipeline.
 SUPPORT_FILENAME_MAP = {
     "citations":              "Citations.html",
     "course_schedule":        "Course_Schedule.html",
