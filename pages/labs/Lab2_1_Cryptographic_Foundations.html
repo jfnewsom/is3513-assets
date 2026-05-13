@@ -654,9 +654,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Red Team Learns</div>
         <ul>
-          <li>{'label': 'Hash Collision Exploitation', 'text': 'Hash collisions expose weak integrity checks — attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use.'}</li>
-          <li>{'label': 'Symmetric Key Theft', 'text': 'Intercepting or stealing AES keys gives full decryption capability; key management failures are more common than algorithm breaks.'}</li>
-          <li>{'label': 'RSA Key Misuse', 'text': 'Confusing public and private key roles, or using undersized keys, allows attackers to break encryption or forge signatures on affected systems.'}</li>
+          <li><strong>Hash Collision Exploitation:</strong> Hash collisions expose weak integrity checks — attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use.</li>
+          <li><strong>Symmetric Key Theft:</strong> Intercepting or stealing AES keys gives full decryption capability; key management failures are more common than algorithm breaks.</li>
+          <li><strong>RSA Key Misuse:</strong> Confusing public and private key roles, or using undersized keys, allows attackers to break encryption or forge signatures on affected systems.</li>
         </ul>
       </div>
     </div>
@@ -665,9 +665,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Blue Team Learns</div>
         <ul>
-          <li>{'label': 'Hash Algorithm Policy', 'text': 'Use SHA-256 or stronger for all integrity checks; flag any system still using MD5 or SHA-1 as a compliance finding.'}</li>
-          <li>{'label': 'Key Management Controls', 'text': 'Enforce key management policies — keys stored at rest must be encrypted, and private keys must never leave the system that generated them.'}</li>
-          <li>{'label': 'Signature Verification', 'text': 'Verify digital signatures as part of software deployment pipelines — unsigned or unverified binaries are a malware delivery vector.'}</li>
+          <li><strong>Hash Algorithm Policy:</strong> Use SHA-256 or stronger for all integrity checks; flag any system still using MD5 or SHA-1 as a compliance finding.</li>
+          <li><strong>Key Management Controls:</strong> Enforce key management policies — keys stored at rest must be encrypted, and private keys must never leave the system that generated them.</li>
+          <li><strong>Signature Verification:</strong> Verify digital signatures as part of software deployment pipelines — unsigned or unverified binaries are a malware delivery vector.</li>
         </ul>
       </div>
     </div>

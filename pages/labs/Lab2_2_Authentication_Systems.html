@@ -733,9 +733,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Red Team Learns</div>
         <ul>
-          <li>{'label': 'SSH Key Theft', 'text': 'A stolen private key with no passphrase grants permanent access to every server that trusts it — no password to crack, no alert triggered.'}</li>
-          <li>{'label': 'Permission Reconnaissance', 'text': 'Misconfigured file permissions (644 on private keys, world-readable ~/.ssh) signal careless infrastructure and are a high-value target for lateral movement.'}</li>
-          <li>{'label': 'Single-Factor Exploitation', 'text': 'One compromised key with no MFA equals total access — attackers who obtain a key file from a misconfigured backup or shared directory own the system immediately.'}</li>
+          <li><strong>SSH Key Theft:</strong> A stolen private key with no passphrase grants permanent access to every server that trusts it — no password to crack, no alert triggered.</li>
+          <li><strong>Permission Reconnaissance:</strong> Misconfigured file permissions (644 on private keys, world-readable ~/.ssh) signal careless infrastructure and are a high-value target for lateral movement.</li>
+          <li><strong>Single-Factor Exploitation:</strong> One compromised key with no MFA equals total access — attackers who obtain a key file from a misconfigured backup or shared directory own the system immediately.</li>
         </ul>
       </div>
     </div>
@@ -744,9 +744,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Blue Team Learns</div>
         <ul>
-          <li>{'label': 'Permission Hardening', 'text': 'Enforce key permissions as part of hardening checklists — audit scripts should flag any private key file not at 600 or ~/.ssh directory not at 700.'}</li>
-          <li>{'label': 'Passphrase Requirements', 'text': "Require passphrases on all SSH keys used for privileged access; key-only login without a passphrase removes the 'something you know' factor entirely."}</li>
-          <li>{'label': 'authorized_keys Inventory', 'text': 'Maintain authorized_keys inventory and audit for unknown entries — unrecognized keys in authorized_keys files are a persistence mechanism for attackers.'}</li>
+          <li><strong>Permission Hardening:</strong> Enforce key permissions as part of hardening checklists — audit scripts should flag any private key file not at 600 or ~/.ssh directory not at 700.</li>
+          <li><strong>Passphrase Requirements:</strong> Require passphrases on all SSH keys used for privileged access; key-only login without a passphrase removes the 'something you know' factor entirely.</li>
+          <li><strong>authorized_keys Inventory:</strong> Maintain authorized_keys inventory and audit for unknown entries — unrecognized keys in authorized_keys files are a persistence mechanism for attackers.</li>
         </ul>
       </div>
     </div>

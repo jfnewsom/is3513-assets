@@ -90,7 +90,20 @@ def callout_p(css_class, icon, title, text):
 
 
 def callout_ul(css_class, icon, title, items):
-    lis = "".join(f'          <li>{h(i)}</li>\n' for i in items)
+    parts = []
+    for i in items:
+        if isinstance(i, dict):
+            label = h(i.get("label", i.get("title", "")))
+            text  = h(i.get("text",  i.get("description", "")))
+            if label and text:
+                parts.append(f'          <li><strong>{label}:</strong> {text}</li>\n')
+            elif label:
+                parts.append(f'          <li><strong>{label}</strong></li>\n')
+            else:
+                parts.append(f'          <li>{text}</li>\n')
+        else:
+            parts.append(f'          <li>{h(i)}</li>\n')
+    lis = "".join(parts)
     body = f'        <ul>\n{lis}        </ul>\n'
     return callout(css_class, icon, title, body)
 
