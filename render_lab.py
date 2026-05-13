@@ -670,10 +670,18 @@ def render_final_checklist(data):
         inner += f'    <h2>{sec_title}</h2>\n    <ul class="nx-checklist">\n'
         for item in sec.get("items", []):
             if isinstance(item, dict):
-                if sec_type == "screenshotTable":
+                # Screenshot row: {number, description} or {filename, description}.
+                # Recognized regardless of sec_type so JSONs that omit type still render.
+                if sec_type == "screenshotTable" or ("number" in item and "description" in item):
                     num  = h(str(item.get("number", "")))
                     desc = h(item.get("description", ""))
                     inner += f'      <li>&#9744; <strong>{num}.</strong> {desc}</li>\n'
+                elif "filename" in item and "description" in item:
+                    fname = h(item.get("filename", ""))
+                    desc  = h(item.get("description", ""))
+                    inner += f'      <li>&#9744; <code>{fname}</code> &#8212; {desc}</li>\n'
+                elif "check" in item:
+                    inner += f'      <li>&#9744; {h(item["check"])}</li>\n'
                 else:
                     # generic dict fallback — bold label + text
                     label = h(item.get("label", item.get("title", "")))

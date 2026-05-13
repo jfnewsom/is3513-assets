@@ -577,10 +577,7 @@
           "whyItMatters": "Catching configuration issues now prevents frustration later. A working baseline environment means you can focus on learning security concepts instead of troubleshooting setup problems."
         },
         {
-          "text": "Part A: System Information",
-          "type": "heading"
-        },
-        {
+          "part": "Part A: System Information",
           "start": 1,
           "type": "steps",
           "steps": [
@@ -601,10 +598,7 @@
           ]
         },
         {
-          "text": "Part B: Network Connectivity",
-          "type": "heading"
-        },
-        {
+          "part": "Part B: Network Connectivity",
           "start": 3,
           "type": "steps",
           "steps": [
@@ -625,10 +619,7 @@
           ]
         },
         {
-          "text": "Part C: Security Tools",
-          "type": "heading"
-        },
-        {
+          "part": "Part C: Security Tools",
           "start": 5,
           "type": "steps",
           "steps": [
@@ -656,10 +647,7 @@
           ]
         },
         {
-          "text": "Part D: Docker",
-          "type": "heading"
-        },
-        {
+          "part": "Part D: Docker",
           "start": 8,
           "type": "steps",
           "steps": [
