@@ -16,7 +16,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing or unverifiable screenshot. No VM name visible? Wrong filename? Missing required capture? Each one costs you."
+      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per missing screenshot below the 20 required. A screenshot without the VM name visible counts as missing. Capped at &#8722;50%."
     },
     {
       "type": "two_column",
@@ -25,18 +25,36 @@
         "color": "#00D26A",
         "label": "✓ Verifiable Screenshot",
         "items": [
-          { "title": "VM name in terminal prompt", "desc": "kali-lastname-abc123 visible" },
-          { "title": "VM name in window title bar", "desc": "hostname visible at top" },
-          { "title": "Hostname visible in command output", "desc": "e.g., uname -n output" }
+          {
+            "title": "VM name in terminal prompt",
+            "desc": "kali-lastname-abc123 visible"
+          },
+          {
+            "title": "VM name in window title bar",
+            "desc": "hostname visible at top"
+          },
+          {
+            "title": "Hostname visible in command output",
+            "desc": "e.g., uname -n output"
+          }
         ]
       },
       "right": {
         "color": "#E63946",
         "label": "✗ Unverifiable Screenshot",
         "items": [
-          { "title": "Generic \"kali@kali\" prompt", "desc": "default name, not yours" },
-          { "title": "Cropped to hide hostname", "desc": "partial screenshots rejected" },
-          { "title": "Web browser only, no VM context", "desc": "could be anyone&#8217;s machine" }
+          {
+            "title": "Generic \"kali@kali\" prompt",
+            "desc": "default name, not yours"
+          },
+          {
+            "title": "Cropped to hide hostname",
+            "desc": "partial screenshots rejected"
+          },
+          {
+            "title": "Web browser only, no VM context",
+            "desc": "could be anyone&#8217;s machine"
+          }
         ]
       }
     },

@@ -556,19 +556,17 @@
     },
     "penalties": [
       {
-        "penalty": "-5% per instance",
-        "condition": "Missing or unverifiable screenshot"
+        "penalty": "-2.5%",
+        "condition": "Per missing screenshot below minimum of 20 (a screenshot without the VM hostname visible counts as missing)"
       },
       {
-        "penalty": "-10% per missing reference",
-        "condition": "References below minimum of 10"
+        "penalty": "-5%",
+        "condition": "Per missing reference below minimum of 10"
       }
     ],
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots or tool outputs, work shared with or from another student, wrong file format (PDF instead of .docx), or academic integrity violation.",
-    "keyFlags": {
-      "rubricDocument": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-      "note": "Full rubric available in Canvas."
-    }
+    "bonus": null,
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.",
+    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>"
   },
   "needHelp": {
     "channels": [

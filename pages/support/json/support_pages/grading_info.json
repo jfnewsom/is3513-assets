@@ -34,9 +34,8 @@
         "color": "#E63946",
         "label": "Part 2 — Documentation Deductions",
         "items": [
-          "<strong style=\"color:#E63946;\">&#8722;10%</strong> per missing citation (10 required; zero citations = &#8722;100%)",
-          "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing or unverifiable screenshot",
-          "No VM name visible? Wrong filename? Each one costs you.",
+          "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing citation (10 required; capped at &#8722;50%)",
+          "<strong style=\"color:#E63946;\">&#8722;2.5%</strong> per missing screenshot (20 required; a screenshot without the VM name visible counts as missing; capped at &#8722;50%)",
           "These are not optional. In professional security work, undocumented claims are worthless."
         ]
       },
