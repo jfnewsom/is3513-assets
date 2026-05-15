@@ -12,12 +12,12 @@
   },
   "intro": {
     "overview": "Culmination of the two-unit LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one unit; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this unit is about assembling it into a professional deliverable that serves both audiences.",
-    "mentorQuote": {
-      "character": "Marcus Chen",
-      "title": "Founder, NEXUS Security",
-      "headshot": "marcus-chen.png",
-      "quote": "The executive summary is the most important page in the report. Amanda will hand it to investors who won't read the rest. One page, clear language, no jargon. If you can't explain the risk in plain English, you don't understand it well enough yet."
-    },
+    "objectives": [
+      "Compile vulnerability findings and risk analysis from Lab 5.1 into a cohesive report",
+      "Write an executive summary suitable for investor presentation",
+      "Develop a prioritized remediation roadmap aligned to LoneStar&#8217;s 4-week constraint",
+      "Provide actionable recommendations Sarah&#8217;s team can implement"
+    ],
     "focusAreas": [
       "Professional security report compilation",
       "Executive summary writing for non-technical audiences",
@@ -25,12 +25,17 @@
       "Multi-audience communication (executives vs. technical staff)",
       "Business constraint integration in security recommendations"
     ],
-    "objectives": [
-      "Compile vulnerability findings and risk analysis from Lab 5.1 into a cohesive report",
-      "Write an executive summary suitable for investor presentation",
-      "Develop a prioritized remediation roadmap aligned to LoneStar&#8217;s 4-week constraint",
-      "Provide actionable recommendations Sarah&#8217;s team can implement"
-    ],
+    "clientContext": {
+      "client": "LoneStar DevOps",
+      "description": "LoneStar DevOps requires a written vulnerability and risk assessment deliverable before their Fortune 500 prospect will sign. This engagement packet is the formal report and internal runbook covering the findings you discovered in Lab 5.1 — CEO Amanda Nguyen needs a client-ready document, and Head of Engineering needs an internal playbook for the remediation team.",
+      "contacts": [
+        {
+          "name": "Amanda Nguyen",
+          "title": "CEO & Co-Founder, LoneStar DevOps",
+          "quote": "Our enterprise prospect won&#8217;t sign without this assessment. I need a document I can hand to their security team without rewriting it."
+        }
+      ]
+    },
     "callouts": [
       {
         "type": "error",
@@ -42,7 +47,13 @@
         "title": "Minimum Requirements",
         "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-lastname-studentID). Use naming convention: ##-description.png."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Marcus Chen",
+      "title": "Founder, NEXUS Security",
+      "headshot": "marcus-chen.png",
+      "quote": "The executive summary is the most important page in the report. Amanda will hand it to investors who won't read the rest. One page, clear language, no jargon. If you can't explain the risk in plain English, you don't understand it well enough yet."
+    }
   },
   "youAlreadyHave": {
     "subtitle": "Two-Unit Engagement Model",
@@ -535,7 +546,8 @@
           "Grammar and spelling checked"
         ]
       }
-    ]
+    ],
+    "canvasSubmission": "Submit your completed Engagement Packet as a single <code>.docx</code> file in Canvas. <strong>PDF submissions are not accepted.</strong> Verify your filename matches the required naming convention before submitting."
   },
   "gradingStandards": {
     "qualityLadder": {

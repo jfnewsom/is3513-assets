@@ -13,23 +13,22 @@
   },
   "intro": {
     "overview": "Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.",
-    "mentorQuote": {
-      "character": "Maya Rodriguez",
-      "title": "Senior Penetration Tester, NEXUS Security",
-      "headshot": "maya-rodriguez.png",
-      "quote": "Every analyst at NEXUS starts here — building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything — your future self will thank you when you're writing runbooks at 2 AM."
-    },
+    "objectives": [
+      "Deploy Kali Linux as your security operations platform",
+      "Install and verify Docker for containerized client targets",
+      "Document your environment for your Lab 1.3 Engagement Packet"
+    ],
     "focusAreas": [
       "Virtualization fundamentals and hypervisor architecture",
       "Kali Linux as a purpose-built security testing platform",
       "Docker container fundamentals and container vs. VM differences",
       "Environment verification and baseline documentation"
     ],
-    "objectives": [
-      "Deploy Kali Linux as your security operations platform",
-      "Install and verify Docker for containerized client targets",
-      "Document your environment for your Lab 1.3 Engagement Packet"
-    ],
+    "clientContext": {
+      "client": "Brazos Financial Group",
+      "description": "Dallas-based wealth management firm ($2.8B AUM, 450 employees) facing an SEC cybersecurity examination in six months. Your Module 1 engagement begins with internal training — you'll build the analyst workstation and toolkit you'll use for the Brazos network reconnaissance assessment in Unit 3.",
+      "contacts": []
+    },
     "callouts": [
       {
         "type": "tip",
@@ -37,7 +36,13 @@
         "icon": "folder",
         "text": "This is Unit 1 of a 3-unit module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Unit 3."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Maya Rodriguez",
+      "title": "Senior Penetration Tester, NEXUS Security",
+      "headshot": "maya-rodriguez.png",
+      "quote": "Every analyst at NEXUS starts here — building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything — your future self will thank you when you're writing runbooks at 2 AM."
+    }
   },
   "timeGuide": {
     "rows": [
@@ -791,12 +796,6 @@
           "Keep your VM running while taking the quiz &#8212; questions reference specific outputs"
         ]
       }
-    ],
-    "items": [
-      "VM named kali-lastname-studentID",
-      "Kali Linux installed and boots to desktop",
-      "Docker installed and running",
-      "All screenshots saved to Module1_Screenshots folder"
     ],
     "canvasQuiz": "Take the Lab 1.1 Quiz in Canvas. Questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
   },

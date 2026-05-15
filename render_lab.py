@@ -598,9 +598,18 @@ def render_time_guide(data):
     rows = tg.get("rows", [])
     total = tg.get("totalRow", {})
     note  = tg.get("timesheetNote")
+    intro_text = tg.get("introText")
+    warn = tg.get("warningCallout")
+    tip  = tg.get("tipCallout")
     accent = "#FF9F1C"
 
-    inner = (
+    inner = ""
+
+    # Optional intro paragraph before the table
+    if intro_text:
+        inner += f'    <p>{h(intro_text)}</p>\n\n'
+
+    inner += (
         f'    <table class="nx-time-table">\n'
         f'      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>\n'
         f'      <tbody>\n'
@@ -617,6 +626,18 @@ def render_time_guide(data):
 
     if note:
         inner += f'\n    <p>{h(note)}</p>\n'
+
+    # Optional warning callout (e.g., Lab 4.2 — "Expect Slower Results")
+    if warn:
+        wtitle = warn.get("title", "Heads Up") if isinstance(warn, dict) else "Heads Up"
+        wtext  = warn.get("text",  warn)       if isinstance(warn, dict) else warn
+        inner += "\n" + callout_p("nx-orange", "warning", wtitle, wtext)
+
+    # Optional tip callout (e.g., Lab 4.3 — "You're Already 60-70% Done")
+    if tip:
+        ttitle = tip.get("title", "Pro Tip") if isinstance(tip, dict) else "Pro Tip"
+        ttext  = tip.get("text",  tip)       if isinstance(tip, dict) else tip
+        inner += "\n" + callout_p("nx-cyan", "lightbulb", ttitle, ttext)
 
     hdr  = header("time", "guide", "Estimated completion times per checkpoint", accent)
     body = card(inner, accent)
@@ -704,11 +725,17 @@ def render_final_checklist(data):
                 inner += f'      <li>&#9744; {h(item)}</li>\n'
         inner += '    </ul>\n\n'
 
-    # Canvas submission callout
+    # Canvas submission callout (engagement packets)
     canvas = fc.get("canvasSubmission")
     if canvas:
         canvas_text = canvas.get("text", canvas) if isinstance(canvas, dict) else canvas
         inner += callout_p("nx-cyan", "quiz", "Canvas Submission", canvas_text)
+
+    # Canvas quiz callout (foundation labs)
+    quiz = fc.get("canvasQuiz")
+    if quiz:
+        quiz_text = quiz.get("text", quiz) if isinstance(quiz, dict) else quiz
+        inner += callout_p("nx-cyan", "quiz", "Take the Quiz in Canvas", quiz_text)
 
     # Final warning callout
     warn = fc.get("finalWarning")

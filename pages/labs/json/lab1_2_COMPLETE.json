@@ -13,20 +13,6 @@
   },
   "intro": {
     "overview": "This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next unit, you'll apply these skills against a real client engagement.",
-    "mentorQuote": {
-      "character": "Maya Rodriguez",
-      "title": "Senior Penetration Tester, NEXUS Security",
-      "headshot": "maya-rodriguez.png",
-      "quote": "Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next unit. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology."
-    },
-    "focusAreas": [
-      "Network scanning and service enumeration with nmap",
-      "Manual banner grabbing with netcat",
-      "Web directory discovery with dirb",
-      "Web vulnerability scanning with nikto",
-      "SMB enumeration methodology with enum4linux",
-      "Vulnerability research using searchsploit and Exploit-DB"
-    ],
     "objectives": [
       "Demonstrate network scanning with nmap (version and script scans)",
       "Perform banner grabbing with netcat",
@@ -35,6 +21,19 @@
       "Explore SMB enumeration capabilities with enum4linux",
       "Research vulnerabilities using searchsploit"
     ],
+    "focusAreas": [
+      "Network scanning and service enumeration with nmap",
+      "Manual banner grabbing with netcat",
+      "Web directory discovery with dirb",
+      "Web vulnerability scanning with nikto",
+      "SMB enumeration methodology with enum4linux",
+      "Vulnerability research using searchsploit and Exploit-DB"
+    ],
+    "clientContext": {
+      "client": "Brazos Financial Group",
+      "description": "Dallas-based wealth management firm preparing for an SEC cybersecurity examination. This unit is internal training on reconnaissance and OSINT techniques; in Unit 3 you'll apply these techniques against Brazos's publicly available footprint as the first phase of their assessment.",
+      "contacts": []
+    },
     "callouts": [
       {
         "type": "tip",
@@ -42,7 +41,13 @@
         "icon": "folder",
         "text": "This is Unit 2 of a 3-unit module. Continue saving screenshots to your Module1_Screenshots folder. You'll compile these into your Lab 1.3 Engagement Packet next unit."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Maya Rodriguez",
+      "title": "Senior Penetration Tester, NEXUS Security",
+      "headshot": "maya-rodriguez.png",
+      "quote": "Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next unit. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology."
+    }
   },
   "timeGuide": {
     "rows": [
@@ -760,11 +765,6 @@
           "Keep your VM running while taking the quiz &#8212; questions reference specific tool outputs"
         ]
       }
-    ],
-    "items": [
-      "Your hostname (kali-lastname-studentID) is visible in terminal screenshots",
-      "Screenshots are clear and readable",
-      "All screenshots saved in Module1_Screenshots folder"
     ],
     "canvasQuiz": "Take the Lab 1.2 Quiz in Canvas. Questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
   },

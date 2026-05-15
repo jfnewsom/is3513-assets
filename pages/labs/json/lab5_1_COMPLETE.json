@@ -13,12 +13,13 @@
   },
   "intro": {
     "overview": "LoneStar DevOps has an enterprise prospect requiring a third-party security assessment. Their rapid growth has outpaced their security maturity, and with Series B funding on the horizon, they need to know exactly what vulnerabilities exist in their infrastructure — and which ones to fix first. This unit you'll deploy a local simulation of their environment, conduct comprehensive vulnerability discovery, and transform raw findings into a prioritized risk analysis that Amanda Nguyen can take to investors.",
-    "mentorQuote": {
-      "character": "Maya Rodriguez",
-      "title": "Senior Penetration Tester, NEXUS Security",
-      "headshot": "maya-rodriguez.png",
-      "quote": "Scan everything. Version detect everything. The vulnerability you miss is the one that gets exploited. But finding vulnerabilities is only half the job — a scanner output is worthless without context. Anyone can produce a list of CVEs. What separates a consultant from a technician is knowing which ones actually matter to the client."
-    },
+    "objectives": [
+      "Deploy the LoneStar DevOps simulated infrastructure using Docker",
+      "Conduct comprehensive port scanning and service enumeration",
+      "Identify and document key vulnerabilities across all services",
+      "Select and score the top 10 findings using CVSS 3.1",
+      "Build a risk matrix and prioritized remediation roadmap"
+    ],
     "focusAreas": [
       "Docker container deployment and network architecture",
       "Network scanning and service discovery with Nmap",
@@ -27,13 +28,11 @@
       "CVSS 3.1 scoring and vulnerability prioritization",
       "Risk matrix construction and remediation planning"
     ],
-    "objectives": [
-      "Deploy the LoneStar DevOps simulated infrastructure using Docker",
-      "Conduct comprehensive port scanning and service enumeration",
-      "Identify and document key vulnerabilities across all services",
-      "Select and score the top 10 findings using CVSS 3.1",
-      "Build a risk matrix and prioritized remediation roadmap"
-    ],
+    "clientContext": {
+      "client": "LoneStar DevOps",
+      "description": "Austin-based SaaS infrastructure-automation company (85 employees, $12M ARR) seeking a third-party security assessment to close a Fortune 500 enterprise sales motion. Their lonestar-startup container runs WordPress, MySQL, Node.js dev-api, and OpenSSH — all with documented vulnerabilities. This integrated lab combines vulnerability discovery, CVSS scoring, and risk-matrix analysis into a single engagement.",
+      "contacts": []
+    },
     "callouts": [
       {
         "type": "tip",
@@ -46,7 +45,13 @@
         "title": "This Lab Is Longer Than Usual",
         "text": "This Foundation Lab covers both vulnerability discovery and risk analysis in a single unit. Budget <strong>3&#8211;3.5 hours</strong> and don&#8217;t start it the night before it&#8217;s due. Checkpoints 1&#8211;3 are tool-based; Checkpoints 4&#8211;5 are analysis-based and can be done without your VM running."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Maya Rodriguez",
+      "title": "Senior Penetration Tester, NEXUS Security",
+      "headshot": "maya-rodriguez.png",
+      "quote": "Scan everything. Version detect everything. The vulnerability you miss is the one that gets exploited. But finding vulnerabilities is only half the job — a scanner output is worthless without context. Anyone can produce a list of CVEs. What separates a consultant from a technician is knowing which ones actually matter to the client."
+    }
   },
   "timeGuide": {
     "rows": [
@@ -689,7 +694,8 @@
           "All 10 screenshots saved in Module5_Screenshots folder"
         ]
       }
-    ]
+    ],
+    "canvasQuiz": "Take the <strong>Lab 5.1 Quiz</strong> in Canvas. Questions cover the vulnerability findings, CVSS scoring rationale, and risk-matrix decisions you documented. <strong>Keep your screenshots and notes handy while taking the quiz.</strong>"
   },
   "needHelp": {
     "channels": [

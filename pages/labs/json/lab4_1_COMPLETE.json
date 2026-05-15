@@ -13,12 +13,12 @@
   },
   "intro": {
     "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
-    "mentorQuote": {
-      "character": "Carmen Vega",
-      "title": "Junior Analyst (OSINT), NEXUS Security",
-      "headshot": "carmen-vega.png",
-      "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others &#8212; executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
-    },
+    "objectives": [
+      "Identify and analyze NTLM hash format characteristics",
+      "Execute wordlist attacks using John the Ripper",
+      "Execute GPU-accelerated attacks using Hashcat",
+      "Document your methodology and results for Lab 4.3"
+    ],
     "focusAreas": [
       "Password attack methodologies (dictionary, brute force, hybrid)",
       "NTLM hash format and Windows credential storage weaknesses",
@@ -26,12 +26,11 @@
       "Hashcat GPU-accelerated password recovery",
       "OSINT-informed wordlist generation"
     ],
-    "objectives": [
-      "Identify and analyze NTLM hash format characteristics",
-      "Execute wordlist attacks using John the Ripper",
-      "Execute GPU-accelerated attacks using Hashcat",
-      "Document your methodology and results for Lab 4.3"
-    ],
+    "clientContext": {
+      "client": "Alamo Industries",
+      "description": "San Antonio-based aerospace and defense manufacturer (2,500 employees, $340M revenue) pursuing CMMC Level 2 certification to maintain DoD contracts. This unit is internal training on password attacks and credential analysis; in Unit 3 you'll evaluate Alamo's authentication posture against CMMC requirements.",
+      "contacts": []
+    },
     "callouts": [
       {
         "type": "tip",
@@ -39,7 +38,13 @@
         "icon": "folder",
         "text": "This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 4.3 Engagement Packet in Unit 3."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Carmen Vega",
+      "title": "Junior Analyst (OSINT), NEXUS Security",
+      "headshot": "carmen-vega.png",
+      "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others &#8212; executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
+    }
   },
   "timeGuide": {
     "rows": [
@@ -747,10 +752,7 @@
         "title": "Screenshot Verification"
       }
     ],
-    "takeTheQuiz": {
-      "quizName": "Lab 4.1 Quiz",
-      "text": "The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. Keep your VM running so you can reference your results."
-    }
+    "canvasQuiz": "Take the <strong>Lab 4.1 Quiz</strong> in Canvas. The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. <strong>Keep your VM running so you can reference your results.</strong>"
   },
   "needHelp": {
     "channels": [

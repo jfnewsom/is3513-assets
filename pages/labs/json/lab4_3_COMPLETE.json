@@ -12,19 +12,6 @@
   },
   "intro": {
     "overview": "This is your Unit 3 Engagement Packet for Module 4. You’ve spent the last two units conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
-    "mentorQuote": {
-      "character": "Marcus Chen",
-      "title": "Founder & Principal, NEXUS Security",
-      "headshot": "marcus-chen.png",
-      "quote": "This report goes to two very different clients with very different concerns. Ray Jimenez at Brazos needs data to convince his board that current policies are inadequate. Bobby Alamo III needs CMMC evidence for his DoD contracts. Same technical work, different audiences. Your executive summary has to work for both."
-    },
-    "focusAreas": [
-      "Platform security comparison (NTLM vs SHA-512)",
-      "Professional security report writing",
-      "Executive-level risk communication",
-      "Prioritized remediation recommendations",
-      "OSINT-informed password analysis"
-    ],
     "objectives": [
       "Compile a professional security assessment report using work from Labs 4.1 and 4.2",
       "Compare Windows NTLM and Linux SHA-512 password security architectures",
@@ -32,6 +19,29 @@
       "Write an executive summary for non-technical stakeholders",
       "Document professional reflection on the engagement"
     ],
+    "focusAreas": [
+      "Platform security comparison (NTLM vs SHA-512)",
+      "Professional security report writing",
+      "Executive-level risk communication",
+      "Prioritized remediation recommendations",
+      "OSINT-informed password analysis"
+    ],
+    "clientContext": {
+      "client": "Brazos Financial Group & Alamo Industries",
+      "description": "This engagement packet spans two NEXUS clients: Brazos Financial Group (Dallas wealth management, SEC examination pending) and Alamo Industries (San Antonio aerospace/defense, CMMC Level 2 in progress). You'll deliver an authentication and access-control assessment that addresses both regulatory contexts.",
+      "contacts": [
+        {
+          "name": "Ray Jimenez",
+          "title": "CISO, Brazos Financial Group",
+          "quote": "The SEC examiners are going to ask how we handle privileged access. I need an answer that holds up."
+        },
+        {
+          "name": "Robert \"Bobby\" Alamo III",
+          "title": "CEO, Alamo Industries",
+          "quote": "We can&#8217;t afford a production-floor incident. Show me where the credential gaps are and what fixing them costs."
+        }
+      ]
+    },
     "callouts": [
       {
         "type": "error",
@@ -45,7 +55,13 @@
         "icon": "warning",
         "body": "Your Engagement Packet must include: all 12 required sections in order, 12+ screenshots embedded (6 from each Foundation Lab), VM hostname visible in every terminal screenshot, and a minimum of 10 references. Textbook chapters, RFCs, NIST documents, and man pages all count."
       }
-    ]
+    ],
+    "mentorQuote": {
+      "character": "Marcus Chen",
+      "title": "Founder & Principal, NEXUS Security",
+      "headshot": "marcus-chen.png",
+      "quote": "This report goes to two very different clients with very different concerns. Ray Jimenez at Brazos needs data to convince his board that current policies are inadequate. Bobby Alamo III needs CMMC evidence for his DoD contracts. Same technical work, different audiences. Your executive summary has to work for both."
+    }
   },
   "youAlreadyHave": {
     "intro": "This is NOT starting from scratch. You’ve been building this report for 3 units.",
@@ -646,7 +662,8 @@
         ]
       }
     ],
-    "intro": "Verify all requirements before submitting to Canvas:"
+    "intro": "Verify all requirements before submitting to Canvas:",
+    "canvasSubmission": "Submit your completed Engagement Packet as a single <code>.docx</code> file in Canvas. <strong>PDF submissions are not accepted.</strong> Verify your filename matches the required naming convention before submitting."
   },
   "gradingStandards": {
     "qualityLadder": {
