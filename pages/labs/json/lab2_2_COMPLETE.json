@@ -803,8 +803,7 @@
         }
       ]
     },
-    "connection": "The permission demonstration in Checkpoint 2 shows exactly what attackers look for: private keys accessible to unprivileged processes. In Module 3 you will analyze network captures where the attacker's first post-compromise action is harvesting SSH keys from world-readable files — the same misconfiguration you fixed today.",
-    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+    "connection": "The permission demonstration in Checkpoint 2 shows exactly what attackers look for: private keys accessible to unprivileged processes. In Module 3 you will analyze network captures where the attacker's first post-compromise action is harvesting SSH keys from world-readable files — the same misconfiguration you fixed today."
   },
   "finalChecklist": {
     "screenshotTable": [

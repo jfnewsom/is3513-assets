@@ -572,10 +572,41 @@
     }
   ],
   "purpleTeam": {
-    "redTeam": null,
-    "blueTeam": null,
-    "connection": "Comparing Windows NTLM and Linux SHA-512 cracking reveals how defensive architecture choices affect attacker timelines. A red-team analyst targeting an NTLM environment can crack credentials in seconds — the same weak password takes orders of magnitude longer on SHA-512. This doesn't mean Linux is invulnerable: weak passwords and shared accounts erode the protection that salting and key-stretching provide. The takeaway for defenders is that algorithm choice buys time, but only password quality and access controls close the gap entirely.",
-    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+    "redTeam": {
+      "type": "items",
+      "items": [
+        {
+          "label": "Salt Annoyance, Not Defense",
+          "text": "Per-user salts defeat rainbow tables but don&#8217;t stop targeted cracking &#8212; one weak password in a /etc/shadow dump is still one cracked credential, and OSINT-informed wordlists work as well on Linux as they do on Windows"
+        },
+        {
+          "label": "Service Account Hunting",
+          "text": "Shared accounts and service accounts are softer targets than user passwords &#8212; they&#8217;re rarely rotated, often shared by multiple admins, and frequently use passwords that match the function (jenkins, mysql, www-data)"
+        },
+        {
+          "label": "When SHA-512 Isn&#8217;t Slow Enough",
+          "text": "Time-per-hash matters more than algorithm name &#8212; a single weak password cracks in minutes regardless of SHA-512, while bcrypt or Argon2 with proper work factors push that to days or weeks"
+        }
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "items": [
+        {
+          "label": "Algorithm Buys Time",
+          "text": "SHA-512 with salt and rounds is a legitimate defensive win &#8212; same weak password that cracks in seconds on NTLM may take hours on Linux, giving detection systems room to catch credential exfiltration before damage spreads"
+        },
+        {
+          "label": "Shared Accounts Are Audit Findings",
+          "text": "Production-floor shared accounts and unrotated service accounts erode every other control &#8212; flag them as compliance findings and require either named accounts with audit trails or vaulted secrets with checkout logging"
+        },
+        {
+          "label": "Modernize Where It Matters",
+          "text": "SHA-512 is the Linux default but bcrypt, scrypt, and Argon2 are stronger &#8212; prioritize migration for systems handling privileged credentials, customer authentication, and anything subject to compliance review"
+        }
+      ]
+    },
+    "connection": "Comparing Windows NTLM and Linux SHA-512 cracking reveals how defensive architecture choices affect attacker timelines. A red-team analyst targeting an NTLM environment can crack credentials in seconds — the same weak password takes orders of magnitude longer on SHA-512. This doesn't mean Linux is invulnerable: weak passwords and shared accounts erode the protection that salting and key-stretching provide. The takeaway for defenders is that algorithm choice buys time, but only password quality and access controls close the gap entirely."
   },
   "finalChecklist": {
     "screenshotTable": [

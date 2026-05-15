@@ -725,8 +725,7 @@
         }
       ]
     },
-    "connection": "You generated keys and signed documents as a builder this unit. In Module 4 you will reverse that perspective — analyzing how attackers exploit weak key management and deprecated algorithms to compromise the same systems you are securing here.",
-    "_migrationNote": "purpleTeam was absent in v1 — needs to be written"
+    "connection": "You generated keys and signed documents as a builder this unit. In Module 4 you will reverse that perspective — analyzing how attackers exploit weak key management and deprecated algorithms to compromise the same systems you are securing here."
   },
   "finalChecklist": {
     "screenshotTable": [
