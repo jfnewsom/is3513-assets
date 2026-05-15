@@ -4,12 +4,10 @@
     "title": "Network Addressing Fundamentals",
     "labType": "foundation",
     "module": "Module 3: Networks, Cloud &amp; Defense",
-    "client": null,
     "chapters": [
       "Chapter 9 &#8212; Network Fundamentals",
       "Chapter 18 &#8212; Cloud Computing (introduction)"
-    ],
-    "screenshotStart": 1
+    ]
   },
   "intro": {
     "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation &#8212; the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.",
@@ -658,7 +656,6 @@
         },
         {
           "type": "callout",
-          "isFinal": true,
           "icon": "photo_camera",
           "title": "Screenshot",
           "text": "Export your completed topology diagram. Save as <code>06-topology-diagram.png</code> &#8212; this is your last screenshot for Lab 3.1!",
@@ -781,7 +778,6 @@
     "canvasQuiz": "Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration."
   },
   "needHelp": {
-    "nextModule": "Lab 3.2: Protocol Analysis Tools &#8212; Next unit you&#8217;ll install Wireshark and dive into packet capture using training PCAPs. The network fundamentals you learned today &#8212; CIDR, subnets, address boundaries &#8212; make capture filters and display filters precise tools instead of guesswork.",
     "channels": [
       {
         "detail": "#lab-help",

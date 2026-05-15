@@ -4,12 +4,10 @@
     "title": "Vulnerability Assessment & Risk Analysis",
     "labType": "foundation",
     "module": "Module 5: Infrastructure, Risk & Resilience",
-    "client": "LoneStar DevOps",
     "chapters": [
       "Chapter 10 — Infrastructure Security",
       "Chapter 20 — Risk Management"
-    ],
-    "screenshotStart": 1
+    ]
   },
   "intro": {
     "overview": "LoneStar DevOps has an enterprise prospect requiring a third-party security assessment. Their rapid growth has outpaced their security maturity, and with Series B funding on the horizon, they need to know exactly what vulnerabilities exist in their infrastructure — and which ones to fix first. This unit you'll deploy a local simulation of their environment, conduct comprehensive vulnerability discovery, and transform raw findings into a prioritized risk analysis that Amanda Nguyen can take to investors.",

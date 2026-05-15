@@ -4,13 +4,11 @@
     "title": "Protocol Analysis Tools",
     "labType": "foundation",
     "module": "Module 3: Networks, Cloud &amp; Defense",
-    "client": null,
     "chapters": [
       "Chapter 9 &#8212; Network Fundamentals",
       "Chapter 13 &#8212; IDS and Network Security (partial)",
       "Chapter 18 &#8212; Cloud Computing"
-    ],
-    "screenshotStart": 7
+    ]
   },
   "intro": {
     "overview": "This unit is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures &#8212; exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.",
@@ -716,7 +714,6 @@
         },
         {
           "type": "callout",
-          "isFinal": true,
           "icon": "photo_camera",
           "title": "Screenshot",
           "text": "Capture the security issue you discovered (TCP stream or packet details showing the problem). Save as <code>19-credential-finding.png</code> &#8212; this is your last screenshot for Lab 3.2!",
@@ -885,7 +882,6 @@
     "canvasQuiz": "Take the <strong>Lab 3.2 Quiz</strong> in Canvas. The quiz verifies you completed the hands-on work &#8212; questions will ask about specific outputs and findings from your Wireshark analysis. <strong>Keep Wireshark open while taking the quiz.</strong>"
   },
   "needHelp": {
-    "nextModule": "Lab 3.3: Network Analysis Engagement &#8212; Next unit you&#8217;ll connect to Gulf Coast Healthcare&#8217;s Azure-hosted patient portal, capture live traffic, and apply everything you learned here. The skills from this lab are non-negotiable for that assessment.",
     "channels": [
       {
         "detail": "#lab-help",

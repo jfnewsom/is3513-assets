@@ -4,13 +4,11 @@
     "title": "Network Analysis Engagement",
     "labType": "engagement",
     "module": "Module 3: Networks, Cloud &amp; Defense",
-    "client": "Gulf Coast Healthcare Partners",
     "chapters": [
       "Chapter 9 &#8212; Network Fundamentals",
       "Chapter 13 &#8212; IDS and Network Security (partial)",
       "Chapter 18 &#8212; Cloud Computing"
-    ],
-    "screenshotStart": 20
+    ]
   },
   "intro": {
     "overview": "This is it &#8212; your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1&#8211;2 to deliver a professional Engagement Packet.",
@@ -746,14 +744,6 @@
         "condition": "Per missing reference below minimum of 10"
       }
     ],
-    "autoZero": [
-      "No submission",
-      "AI-generated content",
-      "Fabricated screenshots",
-      "Shared work",
-      "Wrong format (PDF)",
-      "Academic integrity violation"
-    ],
     "bonus": {
       "amount": "+5%",
       "description": "NetworkMiner Analysis: Install NetworkMiner on Windows and analyze the same PCAP. Compare and contrast its capabilities with Wireshark in an additional section."
@@ -762,7 +752,6 @@
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
-    "nextModule": "Module 4: Threats &amp; Attacks begins next unit. You&#8217;ll shift focus to password security with Brazos Financial Group and Alamo Industries as clients.",
     "channels": [
       {
         "detail": "#lab-help",

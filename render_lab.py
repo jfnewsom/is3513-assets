@@ -114,6 +114,18 @@ def render_callout_block(block):
     cfg = CALLOUT_MAP.get(ct, ("nx-purple", "info", ""))
     css_class, default_icon, default_title = cfg
 
+    # For textbookReference callouts: prefix chapter info if present
+    if ct == "textbookReference" and block.get("chapter"):
+        chap = block["chapter"]
+        existing_text = block.get("text") or block.get("body") or ""
+        # Only prefix if the chapter isn't already mentioned in the text
+        if chap and chap not in existing_text:
+            prefixed = f"<strong>{chap}.</strong> {existing_text}" if existing_text else f"<strong>{chap}</strong>"
+            # Mutate a copy so we don't damage the caller's data
+            block = dict(block)
+            block["text"] = prefixed
+            block.pop("body", None)
+
     # characterQuote is special
     if ct == "characterQuote":
         return render_char_quote(block)
@@ -837,6 +849,24 @@ def render_need_help(data):
         'and other cited sources. You may NOT copy from others, use AI to complete '
         'the work, or share your work with classmates.</p>\n\n'
     )
+
+    # Authorized targets (e.g., Lab 1.2 — list of legal-to-scan hosts for recon labs)
+    targets = nh.get("authorizedTargets", [])
+    if targets:
+        target_items = []
+        for t in targets:
+            if isinstance(t, dict):
+                host = t.get("host", "")
+                purpose = t.get("purpose", "")
+                if host and purpose:
+                    target_items.append({"label": host, "text": purpose})
+                elif host:
+                    target_items.append(host)
+            else:
+                target_items.append(str(t))
+        if target_items:
+            inner += callout_ul("nx-red", "verified", "Authorized Targets Only",
+                                target_items)
 
     # Custom callouts
     for c_block in nh.get("customCallouts", []):

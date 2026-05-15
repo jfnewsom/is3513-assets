@@ -4,12 +4,10 @@
     "title": "Brazos Financial Reconnaissance Engagement",
     "labType": "engagement",
     "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
-    "client": "Brazos Financial Group",
     "chapters": [
       "Chapter 1 &#8212; Introduction to Security",
       "Chapter 2 &#8212; General Security Concepts"
-    ],
-    "screenshotStart": 14
+    ]
   },
   "intro": {
     "overview": "Congratulations &#8212; you&#8217;ve completed NEXUS reconnaissance training and you&#8217;re cleared for client work. Brazos Financial Group needs an external attack surface assessment. This unit you&#8217;ll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: timesheet showing all three units, your internal runbook documenting your methodology, and a professional client report for Ray Jimenez.",
@@ -279,8 +277,6 @@
           "icon": "photo_camera",
           "title": "Screenshots",
           "text": "Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.",
-          "rangeStart": 15,
-          "rangeEnd": 22,
           "calloutType": "screenshotRange"
         },
         {
@@ -491,7 +487,6 @@
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
-    "nextModule": "After submitting this engagement, you&#8217;ll begin Module 2: Cryptography &amp; Authentication with Lab 2.1 &#8212; Cryptographic Foundations.",
     "channels": [
       {
         "detail": "#lab-help",

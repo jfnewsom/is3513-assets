@@ -4,7 +4,6 @@
     "title": "Risk & Vulnerability Assessment Report",
     "labType": "engagement",
     "module": "Module 5: Infrastructure, Risk & Resilience",
-    "client": "LoneStar DevOps",
     "chapters": [
       "Chapter 10 — Infrastructure Security",
       "Chapter 20 — Risk Management"
@@ -566,7 +565,6 @@
       }
     ],
     "automaticZero": "No submission, AI-generated content, fabricated screenshots or tool outputs, work shared with or from another student, wrong file format (PDF instead of .docx), or academic integrity violation.",
-    "bonusOpportunity": null,
     "keyFlags": {
       "rubricDocument": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
       "note": "Full rubric available in Canvas."

@@ -4,7 +4,6 @@
     "title": "Password Security Assessment",
     "labType": "engagement",
     "module": "Module 4: Threats &#38; Attacks",
-    "client": "Brazos Financial Group & Alamo Industries",
     "chapters": [
       "Chapter 15 — Types of Attacks",
       "Chapter 16 — Security Assessment Tools"
@@ -718,7 +717,6 @@
       ],
       "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
     },
-    "academicIntegrity": "This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.",
     "whatsNext": {
       "title": "Module 5: Infrastructure, Risk & Resilience",
       "text": "Next module you’ll work with LoneStar DevOps on vulnerability assessment and risk prioritization. Lab 5.1 introduces vulnerability scanning methodology. Start reviewing Chapter 10 (Infrastructure Security) and Chapter 20 (Risk Management) to prepare."

@@ -4,12 +4,10 @@
     "title": "Reconnaissance Tool Exploration",
     "labType": "foundation",
     "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
-    "client": null,
     "chapters": [
       "Chapter 1 &#8212; Introduction to Security",
       "Chapter 2 &#8212; General Security Concepts"
-    ],
-    "screenshotStart": 7
+    ]
   },
   "intro": {
     "overview": "This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next unit, you'll apply these skills against a real client engagement.",
@@ -783,7 +781,6 @@
         "purpose": "localhost (all tools)"
       }
     ],
-    "nextModule": "After completing this lab, take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3 &#8212; Brazos Financial Reconnaissance Engagement where you&#8217;ll apply these skills against a real client target.",
     "channels": [
       {
         "detail": "#lab-help",

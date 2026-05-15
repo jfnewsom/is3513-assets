@@ -4,12 +4,10 @@
     "title": "Linux Password Cracking",
     "labType": "foundation",
     "module": "Module 4: Threats &#38; Attacks",
-    "client": null,
     "chapters": [
       "Chapter 15 &#8212; Types of Attacks",
       "Chapter 16 &#8212; Security Tools"
-    ],
-    "screenshotStart": 11
+    ]
   },
   "intro": {
     "overview": "After cracking Brazos Financial&#8217;s Windows passwords last unit, NEXUS Security now turns to Alamo Industries&#8217; Linux infrastructure. You&#8217;ll use the same tools &#8212; John the Ripper and Hashcat &#8212; but experience dramatically different results. Linux&#8217;s SHA-512 algorithm with salting creates significantly higher computational barriers. This lab demonstrates how defensive architecture choices directly impact attacker timelines.",
@@ -110,13 +108,11 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Download <code>alamo-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-hashes.txt\" target=\"_blank\" download>click here to download</a> &mdash; then move it to your <code>~/lab4</code> directory",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 2,
               "text": "Examine the hash file contents:",
               "command": "cat ~/lab4/alamo-hashes.txt",
               "whatThisDoes": {
@@ -137,7 +133,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 3,
               "text": "Isolate a single entry to analyze the format structure:",
               "command": "head -1 ~/lab4/alamo-hashes.txt",
               "whatThisDoes": {
@@ -215,7 +210,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Run John the Ripper against the SHA-512 hashes:",
               "command": "john --wordlist=/usr/share/wordlists/rockyou.txt ~/lab4/alamo-hashes.txt",
               "whatThisDoes": {
@@ -236,7 +230,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 2,
               "text": "Check progress while John is running:",
               "command": "john --status",
               "whatThisDoes": {
@@ -257,7 +250,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 3,
               "text": "Display all cracked passwords:",
               "command": "john --show ~/lab4/alamo-hashes.txt",
               "whatThisDoes": {
@@ -357,7 +349,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Run Hashcat against the SHA-512 hashes:",
               "command": "hashcat -m 1800 -a 0 -D 1 ~/lab4/alamo-hashes.txt /usr/share/wordlists/rockyou.txt",
               "whatThisDoes": {
@@ -378,7 +369,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 2,
               "text": "Display cracked results:",
               "command": "hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
               "whatThisDoes": {
@@ -481,7 +471,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Retrieve your final cracked results from both tools:",
               "command": "john --show ~/lab4/alamo-hashes.txt && echo '---' && hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
               "whatThisDoes": {
@@ -491,7 +480,6 @@
               }
             },
             {
-              "step": 2,
               "text": "Build your 8-account results table. Use <code>printf</code> to format it neatly in the terminal:",
               "command": "printf \"%-18s %-20s %-16s\\n\" \"Username\" \"Password\" \"Account Type\" && printf \"%-18s %-20s %-16s\\n\" \"------------------\" \"--------------------\" \"----------------\"",
               "whatThisDoes": {
@@ -501,7 +489,6 @@
               }
             },
             {
-              "step": 3,
               "text": "Below the header, add a row for each of the 8 accounts using the pattern:",
               "command": "printf \"%-18s %-20s %-16s\\n\" \"[username]\" \"[password or not cracked]\" \"[account type]\"",
               "whatThisDoes": {
@@ -511,7 +498,6 @@
               }
             },
             {
-              "step": 4,
               "text": "When your results table is complete and readable in the terminal, take Screenshot 20.",
               "command": null,
               "whatThisDoes": null

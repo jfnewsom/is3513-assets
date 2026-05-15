@@ -4,12 +4,10 @@
     "title": "Windows Password Cracking",
     "labType": "foundation",
     "module": "Module 4: Threats &#38; Attacks",
-    "client": null,
     "chapters": [
       "Chapter 15 &#8212; Types of Attacks",
       "Chapter 16 &#8212; Security Tools"
-    ],
-    "screenshotStart": 1
+    ]
   },
   "intro": {
     "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
@@ -89,25 +87,21 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Download <code>brazos-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-hashes.txt\" target=\"_blank\" download>click here to download</a>",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 2,
               "text": "Create a working directory:",
               "command": "mkdir ~/lab4 && cd ~/lab4",
               "whatThisDoes": null
             },
             {
-              "step": 3,
               "text": "Move the hash file to your working directory",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 4,
               "text": "Examine the file contents:",
               "command": "cat brazos-hashes.txt",
               "whatThisDoes": {
@@ -117,7 +111,6 @@
               }
             },
             {
-              "step": 5,
               "text": "Count the total hashes:",
               "command": "wc -l brazos-hashes.txt",
               "whatThisDoes": {
@@ -138,7 +131,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 6,
               "text": "Verify the rockyou.txt wordlist is available and check its size:",
               "command": "wc -l /usr/share/wordlists/rockyou.txt",
               "whatThisDoes": {
@@ -216,13 +208,11 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Navigate to your working directory:",
               "command": "cd ~/lab4",
               "whatThisDoes": null
             },
             {
-              "step": 2,
               "text": "Run John the Ripper with the rockyou wordlist against the NTLM hashes:",
               "command": "john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT brazos-hashes.txt",
               "whatThisDoes": {
@@ -232,7 +222,6 @@
               }
             },
             {
-              "step": 3,
               "text": "Check status if John is still running:",
               "command": "john --status",
               "whatThisDoes": {
@@ -253,7 +242,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 4,
               "text": "Display all cracked passwords:",
               "command": "john --show --format=NT brazos-hashes.txt",
               "whatThisDoes": {
@@ -274,7 +262,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 5,
               "text": "Examine John&#8217;s potfile to see how cracked passwords are stored:",
               "command": "cat ~/.john/john.pot",
               "whatThisDoes": {
@@ -344,7 +331,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Extract raw hashes for Hashcat (it needs raw hashes, not username:hash format):",
               "command": "cut -d':' -f2 brazos-hashes.txt > brazos-hashes-only.txt",
               "whatThisDoes": {
@@ -365,7 +351,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 2,
               "text": "Run Hashcat with a dictionary attack against the NTLM hashes:",
               "command": "hashcat -m 1000 -a 0 brazos-hashes-only.txt /usr/share/wordlists/rockyou.txt -D 1",
               "whatThisDoes": {
@@ -386,7 +371,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 3,
               "text": "Display all cracked results:",
               "command": "hashcat -m 1000 brazos-hashes-only.txt --show",
               "whatThisDoes": {
@@ -407,7 +391,6 @@
           "type": "steps",
           "steps": [
             {
-              "step": 4,
               "text": "Examine Hashcat&#8217;s potfile to compare storage format with John:",
               "command": "cat ~/.local/share/hashcat/hashcat.potfile",
               "whatThisDoes": {
@@ -487,37 +470,31 @@
           "type": "steps",
           "steps": [
             {
-              "step": 1,
               "text": "Create a results table documenting all 8 accounts (cracked or not)",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 2,
               "text": "For cracked passwords, note the plaintext and how long it took",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 3,
               "text": "For uncracked passwords, mark as &#8220;survived rockyou.txt&#8221;",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 4,
               "text": "Analyze patterns: What made the cracked passwords weak?",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 5,
               "text": "Document your tool comparison (John vs. Hashcat speeds)",
               "command": null,
               "whatThisDoes": null
             },
             {
-              "step": 6,
               "text": "Save all notes &#8212; you&#8217;ll need them for Lab 4.3",
               "command": null,
               "whatThisDoes": null

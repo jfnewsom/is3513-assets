@@ -4,12 +4,10 @@
     "title": "Kali Environment Setup",
     "labType": "foundation",
     "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
-    "client": null,
     "chapters": [
       "Chapter 1 — Introduction to Security",
       "Chapter 2 — General Security Concepts"
-    ],
-    "screenshotStart": 1
+    ]
   },
   "intro": {
     "overview": "Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.",
@@ -800,7 +798,6 @@
     "canvasQuiz": "Take the Lab 1.1 Quiz in Canvas. Questions will ask about specific outputs you should have seen. Keep your VM running while taking the quiz."
   },
   "needHelp": {
-    "nextModule": "Lab 1.2: Reconnaissance Tool Exploration — You'll use your new Kali environment to run your first security scans against the Brazos Financial training targets.",
     "channels": [
       {
         "detail": "#lab-help",

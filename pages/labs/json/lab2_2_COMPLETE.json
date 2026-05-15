@@ -4,12 +4,10 @@
     "title": "Authentication Systems",
     "labType": "foundation",
     "module": "Module 2: Cryptography &amp; Authentication",
-    "client": null,
     "chapters": [
       "Chapter 6 &#8212; Applied Cryptography",
       "Chapter 11 &#8212; Authentication and Remote Access"
-    ],
-    "screenshotStart": 10
+    ]
   },
   "intro": {
     "overview": "This unit continues your security training at NEXUS with a deep dive into authentication systems. You&#8217;ll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next unit &#8212; their infrastructure relies on certificate-based authentication.",
@@ -696,7 +694,6 @@
         {
           "type": "callout",
           "icon": "photo_camera",
-          "isFinal": true,
           "title": "Screenshot",
           "text": "Capture your successful MFA login showing both prompts and the <code>whoami</code> output. Save as <code>17-mfa-login.png</code> &#8212; this is your last screenshot for Lab 2.2!",
           "calloutType": "screenshot"
@@ -899,7 +896,6 @@
     "canvasQuiz": "Take the <strong>Lab 2.2 Quiz</strong> in Canvas. Questions will ask about specific outputs you should have seen. <strong>Keep your VM running while taking the quiz.</strong>"
   },
   "needHelp": {
-    "nextModule": "After completing this lab, take the <strong>Lab 2.2 Quiz</strong> in Canvas, then proceed to <strong>Lab 2.3: Gulf Coast Certificate Remediation</strong> &#8212; the Unit 3 engagement where you&#8217;ll apply your cryptography and authentication skills in a real client scenario.",
     "channels": [
       {
         "detail": "#lab-help",

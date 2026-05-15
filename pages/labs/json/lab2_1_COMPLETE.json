@@ -4,12 +4,10 @@
     "title": "Cryptographic Foundations",
     "labType": "foundation",
     "module": "Module 2: Cryptography &amp; Authentication",
-    "client": null,
     "chapters": [
       "Chapter 6 &#8212; Applied Cryptography",
       "Chapter 11 &#8212; Authentication and Remote Access"
-    ],
-    "screenshotStart": 1
+    ]
   },
   "intro": {
     "overview": "This unit begins your cryptography training at NEXUS Security. You&#8217;ll master the fundamental cryptographic operations that underpin modern security: hashing for integrity verification, symmetric encryption for data protection, asymmetric encryption for secure key exchange, and digital signatures for non-repudiation. These skills prepare you for the Gulf Coast Healthcare engagement in Unit 3, where you&#8217;ll remediate certificate issues on their patient portal.",
@@ -643,7 +641,6 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "isFinal": true,
           "text": "Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code> &#8212; this is your last screenshot for Lab 2.1!",
           "calloutType": "screenshot"
         },
@@ -834,7 +831,6 @@
         "text": "The keys and passwords you create in this lab are <strong>for training purposes only</strong>. Never use lab-generated keys in production systems."
       }
     ],
-    "nextModule": "After completing this lab, take the <strong>Lab 2.1 Quiz</strong> in Canvas, then proceed to <strong>Lab 2.2: Authentication Systems</strong> where you&#8217;ll learn SSH key management, certificate-based authentication, and MFA concepts.",
     "channels": [
       {
         "detail": "#lab-help",

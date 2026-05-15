@@ -4,12 +4,10 @@
     "title": "Gulf Coast Certificate Remediation",
     "labType": "engagement",
     "module": "Module 2: Cryptography &amp; Authentication",
-    "client": "Gulf Coast Healthcare Partners",
     "chapters": [
       "Chapter 6 &#8212; Applied Cryptography",
       "Chapter 7 &#8212; Public Key Infrastructure"
-    ],
-    "screenshotStart": 18
+    ]
   },
   "intro": {
     "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
@@ -795,14 +793,6 @@
         "condition": "Per missing reference below minimum of 10"
       }
     ],
-    "autoZero": [
-      "No submission",
-      "AI-generated content",
-      "Fabricated screenshots",
-      "Shared work",
-      "Wrong format (PDF submitted)",
-      "Academic integrity violation"
-    ],
     "bonus": null,
     "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
@@ -816,7 +806,6 @@
         "text": "After submitting, clean up the Docker container:<br><code>sudo docker stop gulfcoast-portal</code><br><code>sudo docker rm gulfcoast-portal</code>"
       }
     ],
-    "nextModule": "Module 3: Network Traffic Analysis &#8212; You&#8217;ll work with Gulf Coast again, analyzing network captures for anomalies.",
     "channels": [
       {
         "detail": "#lab-help",
