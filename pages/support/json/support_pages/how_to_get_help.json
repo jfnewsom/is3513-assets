@@ -33,7 +33,7 @@
       "color": "#5865F2",
       "label": "1. Ask on Discord (Fastest Response)",
       "paragraphs": [
-        "The class Discord is the fastest way to get help. Post your question in <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#5865F2;\">#lab-help</code> or <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#5865F2;\">#course-questions</code> and classmates or the instructor will respond—often within minutes."
+        "The class Discord is the fastest way to get help. Post your question in <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;\">#lab-help</code> or <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;\">#course-questions</code> and classmates or the instructor will respond—often within minutes."
       ],
       "subheading": "When asking questions:",
       "items": [
@@ -44,7 +44,7 @@
       ],
       "button": {
         "label": "View Discord Info →",
-        "href": "https://utsa.instructure.com/courses/69678/pages/discord-server",
+        "href": "Discord.html",
         "color": "#5865F2"
       }
     },

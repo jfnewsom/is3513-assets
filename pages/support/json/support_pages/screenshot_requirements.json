@@ -63,7 +63,7 @@
       "color": "#FF9F1C",
       "label": "Critical: VM Name Visibility",
       "paragraphs": [
-        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> and this name must be visible in every screenshot.",
+        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> and this name must be visible in every screenshot.",
         "Without your VM name, there&#8217;s no way to verify <em>you</em> ran the commands. Screenshots without identification could be copied from anywhere &#8212; and occasionally are."
       ]
     },
@@ -72,12 +72,12 @@
       "color": "#4169E1",
       "label": "Filename Convention",
       "paragraphs": [
-        "All screenshots follow this naming pattern: <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">##-description.png</code>"
+        "All screenshots follow this naming pattern: <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#4169E1;\">##-description.png</code>"
       ],
       "items": [
-        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">01-vm-settings.png</code> &#8212; First screenshot, VM configuration",
-        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">07-nmap-scan-results.png</code> &#8212; Seventh screenshot, nmap output",
-        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#4169E1;\">15-wireshark-tcp-stream.png</code> &#8212; Fifteenth screenshot, Wireshark analysis"
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#4169E1;\">01-vm-settings.png</code> &#8212; First screenshot, VM configuration",
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#4169E1;\">07-nmap-scan-results.png</code> &#8212; Seventh screenshot, nmap output",
+        "<code style=\"background:#1a1f2e;padding:2px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#4169E1;\">15-wireshark-tcp-stream.png</code> &#8212; Fifteenth screenshot, Wireshark analysis"
       ],
       "tip": "Two-digit numbers keep files sorted correctly (01, 02&#8230; not 1, 2, 10, 11). This matters when you&#8217;re compiling 20+ screenshots into a report."
     },
