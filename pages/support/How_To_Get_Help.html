@@ -25,59 +25,105 @@
   <!-- Main card -->
   <div class="nx-card nx-card--sym" style="--accent: #7B68EE;">
 
-  <p class="nx-support-intro">Stuck on a lab? Confused about a concept? Here’s how to get help. <strong style="color:#ffffff;">Try them in order</strong>—most questions get answered quickly through Discord.</p>
+  <p class="nx-support-intro">Stuck on a lab? Confused about a concept? Need an extension? Here’s how to get help. <strong style="color:#ffffff;">Pick the right tool for the situation</strong>:<br><br><strong style="color:#ffffff;">Public questions</strong> (technical, conceptual, “how does this work”) → AI first, Discord second.<br><strong style="color:#ffffff;">Personal asks</strong> (extensions, accommodations, grades, anything tied to your specific situation) → Email from your UTSA account, always.</p>
 
   <div class="nx-info-bar nx-info-bar--lg">
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #5865F2;">Fastest</div>
+        <div class="nx-info-stat__label" style="color: #7B68EE;">Step 1</div>
+        <div class="nx-info-stat__value nx-info-stat__value--lg">AI Tools</div>
+      </div>
+      <div class="nx-info-stat">
+        <div class="nx-info-stat__label" style="color: #5865F2;">Step 2</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">Discord</div>
       </div>
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #00D26A;">1-on-1</div>
+        <div class="nx-info-stat__label" style="color: #00D26A;">Step 3</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">Calendly</div>
       </div>
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label" style="color: #FF9F1C;">Private</div>
+        <div class="nx-info-stat__label" style="color: #FF9F1C;">Step 4</div>
         <div class="nx-info-stat__value nx-info-stat__value--lg">Email</div>
+      </div>
+      <div class="nx-info-stat">
+        <div class="nx-info-stat__label" style="color: #00BCD4;">Step 5</div>
+        <div class="nx-info-stat__value nx-info-stat__value--lg">Drop-In Zoom</div>
       </div>
   </div>
 
-  <div class="nx-named-section">
-    <div class="nx-section-label" style="--accent: #5865F2; color: #5865F2; border-bottom-color: #5865F2;">1. Ask on Discord (Fastest Response)</div>
-    <p class="nx-exam-body">The class Discord is the fastest way to get help. Post your question in <code style="background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;">#lab-help</code> or <code style="background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;">#course-questions</code> and classmates or the instructor will respond—often within minutes.</p>
-    <p class="nx-named-subheading">When asking questions:</p>
-    <ul class="nx-exam-tips">
-      <li>Describe what you’re trying to do</li>
-      <li>Share the error message (use code blocks!)</li>
-      <li>Include a screenshot if relevant</li>
-      <li>Be specific—“it doesn’t work” doesn’t help us help you</li>
-    </ul>
-    <a href="Discord.html" class="nx-btn" style="background: #5865F2; color: #ffffff;">View Discord Info →</a>
+  <div class="nx-client-ctx" style="--client-color: #FF9F1C; --client-rgb: 255, 159, 28;">
+    <span class="nx-client-ctx__label">The FERPA Rule:</span>
+    <span class="nx-client-ctx__body"> <strong>Don’t put personal information on Discord.</strong> Discord is a third-party platform UTSA doesn’t control. Grades, student IDs, personal circumstances, family information, medical or accommodation details — none of that goes on Discord, not even in a DM to me. Use your UTSA email (<code>john.newsom@utsa.edu</code>) for anything that touches PII. This protects both of us.</span>
   </div>
 
   <div class="nx-named-section">
-    <div class="nx-section-label" style="--accent: #00D26A; color: #00D26A; border-bottom-color: #00D26A;">2. Book an Appointment (One-on-One Help)</div>
-    <p class="nx-exam-body">Need dedicated one-on-one time? Book a 15-minute appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.</p>
-    <p class="nx-exam-body"><strong style="color:#ffffff;">Options:</strong> Zoom or in-person (NPB 470D)</p>
+    <div class="nx-section-label" style="--accent: #7B68EE; color: #7B68EE; border-bottom-color: #7B68EE;">1. Try AI First (For Syntax & Concepts)</div>
+    <p class="nx-exam-body">If your question is “what does this flag do?” or “why am I getting this error?” or “what does this concept mean?” — ask an AI tool first. ChatGPT, Claude, and Copilot are excellent for syntax, error messages, and concept explanations. You’ll usually get an answer in seconds.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Verify what AI tells you</strong> against tool documentation, man pages, or the textbook. See the <a href="GenAI_Policy.html" style="color:#7B68EE;">GenAI Policy</a> for what AI can and can’t help with.</p>
+    <p class="nx-named-subheading">AI is best for:</p>
+    <ul class="nx-exam-tips">
+      <li>Command syntax and flag explanations</li>
+      <li>Decoding cryptic error messages</li>
+      <li>Concept clarification (“explain ARP poisoning like I’m 12”)</li>
+      <li>Proofreading your writing</li>
+    </ul>
+    <p class="nx-named-tip"><strong style="color:#ffffff;">AI is NOT best for:</strong> course-specific questions (“do I need to cite this?”), policy questions (“can I get an extension?”), or anything that depends on context AI can’t see. Those go to Discord or email.</p>
+  </div>
+
+  <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #5865F2; color: #5865F2; border-bottom-color: #5865F2;">2. Ask on Discord (Fastest Response from Humans)</div>
+    <p class="nx-exam-body">When AI can’t help — or when you need a human who knows the course — Discord is the fastest path. Classmates, course alumni, and the instructor monitor the channels; questions usually get answered within a few hours.</p>
+    <p class="nx-named-subheading">Pick the right channel:</p>
+    <ul class="nx-exam-tips">
+      <li><strong style="color:#ffffff;">#module-1-help through #module-5-help</strong> — lab technical questions for that specific module</li>
+      <li><strong style="color:#ffffff;">#course-questions</strong> — policy, deadlines, grading questions</li>
+      <li><strong style="color:#ffffff;">#technical-questions</strong> — general technical questions not tied to a specific module</li>
+      <li><strong style="color:#ffffff;">#tools-and-resources</strong> — sharing useful tools, cheat sheets, finds</li>
+    </ul>
+    <p class="nx-named-tip"><strong style="color:#ffffff;">When asking questions:</strong> Describe what you’re trying to do. Share the error message in a code block. Include a screenshot if relevant — but <strong style="color:#ffffff;">use a real screen capture, not a phone photo of your monitor</strong>. Phone photos look unprofessional and are hard to read. Every OS has built-in screen-snipping tools (Windows: <code>Win+Shift+S</code>; macOS: <code>Cmd+Shift+4</code>); if you don’t know how to use them, AI does and will walk you through it. You need to know how to make clean screen captures anyway — you’ll use them in every Engagement Packet. Bring the same professional respect to your colleagues that you do to your clients.<br><br>Be specific — “it doesn’t work” doesn’t help us help you.</p>
+    <a href="Discord.html" class="nx-btn" style="background: #5865F2; color: #ffffff;">View Discord Info →</a>
+  </div>
+
+  <div class="nx-client-ctx" style="--client-color: #5865F2; --client-rgb: 88, 101, 242;">
+    <span class="nx-client-ctx__label">Post in public channels — not DMs.</span>
+    <span class="nx-client-ctx__body"> The whole point of the Discord server is peer learning. If you have a question, other students probably have it too. Asking in public means three things happen: you might get an answer from a classmate or alumnus faster than from me; everyone else with the same question gets the answer too; and the answer stays searchable for the next person who hits the same problem.<br><br>I check Discord frequently during the day, less so at night — I’m not a 24/7 lurker. If you post at 2 a.m., expect that I might not see it until the next afternoon. Give classmates a couple of hours to answer before DMing me directly. Only DM me if you’ve already posted publicly and didn’t get a usable response.</span>
+  </div>
+
+  <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #00D26A; color: #00D26A; border-bottom-color: #00D26A;">3. Book an Appointment (One-on-One Help)</div>
+    <p class="nx-exam-body">Need dedicated one-on-one time? Book a 15-minute Zoom appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Format:</strong> Zoom only. This is an asynchronous course — no fixed office hours, but Calendly is open for scheduled appointments throughout the term.</p>
     <a href="https://calendly.com/john-newsom-utsa/student-meeting" target="_blank" class="nx-btn" style="background: #00D26A; color: #0A0E17;">Book Appointment →</a>
   </div>
 
   <div class="nx-named-section">
-    <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">3. Email the Instructor (Private Matters Only)</div>
-    <p class="nx-exam-body">Email is best for private matters: grade questions, accommodations, personal circumstances, or anything you don’t want to discuss publicly.</p>
-    <p class="nx-named-tip"><strong style="color:#ffffff;">Pro tip:</strong> Include “IS3513” in the subject line so I can find your email quickly.</p>
+    <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">4. Email the Instructor (Private Matters Only)</div>
+    <p class="nx-exam-body">Email is the <strong style="color:#ffffff;">only</strong> channel for anything personal: grade questions, accommodations, extension requests, personal circumstances, or anything tied to your specific situation.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Use your UTSA email — not a personal Gmail/Yahoo/Hotmail account.</strong> If you email me from a personal account, the only response you’ll get is <em>“Please resend this email from your student account.”</em> FERPA only allows me to discuss personal matters over UTSA-owned services — I cannot send an email about your record to a personal address. Emails on the UTSA server are also archived, which protects both of us.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Help me help you.</strong> Lead every email with this information:</p>
+    <p class="nx-exam-body"><div style="background:#1a1f2e;padding:14px 16px;border-radius:6px;font-family:'Roboto Mono',monospace;font-size:13px;color:#B0B8C4;line-height:1.7;margin:8px 0;"><span style="color:#FF9F1C;">Subject:</span> IS3513 §[section] — [brief topic]<br><span style="color:#FF9F1C;">Body opener:</span> My name is [name], abc123, IS3513 §[section].</div></p>
+    <p class="nx-exam-body">I teach multiple courses with multiple sections, and emails that make me dig through five rosters to figure out who you are and what class you’re in get answered slower. If you’re asking for something — an extension, an exception, a recommendation — I’m also less inclined to grant it when the request shows up without context. The two seconds it takes to add this information buys you a faster, friendlier response.</p>
     <div class="nx-email-card">
       <a href="mailto:john.newsom@utsa.edu" class="nx-email-card__addr">john.newsom@utsa.edu</a>
       <div class="nx-email-card__note">Response time: Usually within 24–48 hours</div>
     </div>
   </div>
 
-  <div class="nx-client-ctx" style="--client-color: #E63946; --client-rgb: ;">
-    <span class="nx-client-ctx__label">Please Don’t:</span>
-    <span class="nx-client-ctx__body"> DM the instructor on Discord for questions that should be public (others probably have the same question). Don’t wait until the night before a deadline to ask for help. Don’t email technical questions—Discord gets faster responses.</span>
+  <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #00BCD4; color: #00BCD4; border-bottom-color: #00BCD4;">5. Weekly Drop-In Zoom (Open Office Hours)</div>
+    <p class="nx-exam-body">Once a week I host an open Zoom for anyone who wants to ask something live. It’s not course-specific and it’s not private — think of it as walk-in office hours over Zoom. No appointment needed; just show up.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">When:</strong> <strong style="color:#00BCD4;">Tuesdays at 6:00 p.m. CT</strong>, every week of the term — starting the first week of classes.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">How it works:</strong> I open the Zoom room at the scheduled time. If no one joins in the first five minutes, I close the room and move on with my day. If you show up, we talk.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Not recorded.</strong> Nothing is posted afterward. This is a real-time channel only.</p>
+    <p class="nx-named-tip">Personal/FERPA-touching questions still belong in email, not the open Zoom — anyone could be in the room.</p>
+    <a href="https://utsa.zoom.us/j/96542097913" target="_blank" class="nx-btn" style="background: #00BCD4; color: #0A0E17;">Join Drop-In Zoom →</a>
   </div>
 
-  <div class="nx-page-footer">No weekly Zoom — this is an asynchronous course. Discord and Calendly cover 99% of what you need.</div>
+  <div class="nx-client-ctx" style="--client-color: #E63946; --client-rgb: 230, 57, 70;">
+    <span class="nx-client-ctx__label">Please Don’t:</span>
+    <span class="nx-client-ctx__body"> DM me on Discord before posting publicly — you’re cutting off the peer-learning loop the server exists for. Email me from a personal Gmail/Yahoo/Hotmail account — you’ll just get redirected back to UTSA email anyway. Email questions about command syntax or error messages — those get faster answers in the public Discord channels. Wait until the night before a deadline to ask for help.</span>
+  </div>
+
+  <div class="nx-page-footer">AI, Discord, Calendly, email, and the weekly drop-in Zoom cover everything you need.</div>
 
   </div>
 

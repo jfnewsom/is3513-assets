@@ -3,45 +3,83 @@
   "title": "How To Get Help – IS3513",
   "htmlTitle": "How To Get Help – IS3513",
   "accentColor": "#7B68EE",
+  "headerKeyword": "how to",
+  "headerSecondary": "get help",
+  "headerSubtitle": "Support Resources & Channels",
   "sections": [
     {
       "type": "intro",
-      "html": "Stuck on a lab? Confused about a concept? Here’s how to get help. <strong style=\"color:#ffffff;\">Try them in order</strong>—most questions get answered quickly through Discord."
+      "html": "Stuck on a lab? Confused about a concept? Need an extension? Here’s how to get help. <strong style=\"color:#ffffff;\">Pick the right tool for the situation</strong>:<br><br><strong style=\"color:#ffffff;\">Public questions</strong> (technical, conceptual, “how does this work”) → AI first, Discord second.<br><strong style=\"color:#ffffff;\">Personal asks</strong> (extensions, accommodations, grades, anything tied to your specific situation) → Email from your UTSA account, always."
     },
     {
       "type": "stat_blocks",
       "blocks": [
         {
-          "label": "Fastest",
+          "label": "Step 1",
+          "labelColor": "#7B68EE",
+          "value": "AI Tools"
+        },
+        {
+          "label": "Step 2",
           "labelColor": "#5865F2",
           "value": "Discord"
         },
         {
-          "label": "1-on-1",
+          "label": "Step 3",
           "labelColor": "#00D26A",
           "value": "Calendly"
         },
         {
-          "label": "Private",
+          "label": "Step 4",
           "labelColor": "#FF9F1C",
           "value": "Email"
+        },
+        {
+          "label": "Step 5",
+          "labelColor": "#00BCD4",
+          "value": "Drop-In Zoom"
         }
       ]
     },
     {
+      "type": "callout_bar",
+      "color": "#FF9F1C",
+      "colorRgb": "255, 159, 28",
+      "label": "The FERPA Rule:",
+      "html": " <strong>Don’t put personal information on Discord.</strong> Discord is a third-party platform UTSA doesn’t control. Grades, student IDs, personal circumstances, family information, medical or accommodation details — none of that goes on Discord, not even in a DM to me. Use your UTSA email (<code>john.newsom@utsa.edu</code>) for anything that touches PII. This protects both of us."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "1. Try AI First (For Syntax & Concepts)",
+      "paragraphs": [
+        "If your question is “what does this flag do?” or “why am I getting this error?” or “what does this concept mean?” — ask an AI tool first. ChatGPT, Claude, and Copilot are excellent for syntax, error messages, and concept explanations. You’ll usually get an answer in seconds.",
+        "<strong style=\"color:#ffffff;\">Verify what AI tells you</strong> against tool documentation, man pages, or the textbook. See the <a href=\"GenAI_Policy.html\" style=\"color:#7B68EE;\">GenAI Policy</a> for what AI can and can’t help with."
+      ],
+      "subheading": "AI is best for:",
+      "items": [
+        "Command syntax and flag explanations",
+        "Decoding cryptic error messages",
+        "Concept clarification (“explain ARP poisoning like I’m 12”)",
+        "Proofreading your writing"
+      ],
+      "tip": "<strong style=\"color:#ffffff;\">AI is NOT best for:</strong> course-specific questions (“do I need to cite this?”), policy questions (“can I get an extension?”), or anything that depends on context AI can’t see. Those go to Discord or email."
+    },
+    {
       "type": "named_section",
       "color": "#5865F2",
-      "label": "1. Ask on Discord (Fastest Response)",
+      "label": "2. Ask on Discord (Fastest Response from Humans)",
       "paragraphs": [
-        "The class Discord is the fastest way to get help. Post your question in <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;\">#lab-help</code> or <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#5865F2;\">#course-questions</code> and classmates or the instructor will respond—often within minutes."
+        "When AI can’t help — or when you need a human who knows the course — Discord is the fastest path. Classmates, course alumni, and the instructor monitor the channels; questions usually get answered within a few hours."
       ],
-      "subheading": "When asking questions:",
+      "subheading": "Pick the right channel:",
       "items": [
-        "Describe what you’re trying to do",
-        "Share the error message (use code blocks!)",
-        "Include a screenshot if relevant",
-        "Be specific—“it doesn’t work” doesn’t help us help you"
+        "<strong style=\"color:#ffffff;\">#module-1-help through #module-5-help</strong> — lab technical questions for that specific module",
+        "<strong style=\"color:#ffffff;\">#course-questions</strong> — policy, deadlines, grading questions",
+        "<strong style=\"color:#ffffff;\">#technical-questions</strong> — general technical questions not tied to a specific module",
+        "<strong style=\"color:#ffffff;\">#tools-and-resources</strong> — sharing useful tools, cheat sheets, finds"
       ],
+      "tip": "<strong style=\"color:#ffffff;\">When asking questions:</strong> Describe what you’re trying to do. Share the error message in a code block. Include a screenshot if relevant — but <strong style=\"color:#ffffff;\">use a real screen capture, not a phone photo of your monitor</strong>. Phone photos look unprofessional and are hard to read. Every OS has built-in screen-snipping tools (Windows: <code>Win+Shift+S</code>; macOS: <code>Cmd+Shift+4</code>); if you don’t know how to use them, AI does and will walk you through it. You need to know how to make clean screen captures anyway — you’ll use them in every Engagement Packet. Bring the same professional respect to your colleagues that you do to your clients.<br><br>Be specific — “it doesn’t work” doesn’t help us help you.",
       "button": {
         "label": "View Discord Info →",
         "href": "Discord.html",
@@ -49,12 +87,19 @@
       }
     },
     {
+      "type": "callout_bar",
+      "color": "#5865F2",
+      "colorRgb": "88, 101, 242",
+      "label": "Post in public channels — not DMs.",
+      "html": " The whole point of the Discord server is peer learning. If you have a question, other students probably have it too. Asking in public means three things happen: you might get an answer from a classmate or alumnus faster than from me; everyone else with the same question gets the answer too; and the answer stays searchable for the next person who hits the same problem.<br><br>I check Discord frequently during the day, less so at night — I’m not a 24/7 lurker. If you post at 2 a.m., expect that I might not see it until the next afternoon. Give classmates a couple of hours to answer before DMing me directly. Only DM me if you’ve already posted publicly and didn’t get a usable response."
+    },
+    {
       "type": "named_section",
       "color": "#00D26A",
-      "label": "2. Book an Appointment (One-on-One Help)",
+      "label": "3. Book an Appointment (One-on-One Help)",
       "paragraphs": [
-        "Need dedicated one-on-one time? Book a 15-minute appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.",
-        "<strong style=\"color:#ffffff;\">Options:</strong> Zoom or in-person (NPB 470D)"
+        "Need dedicated one-on-one time? Book a 15-minute Zoom appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.",
+        "<strong style=\"color:#ffffff;\">Format:</strong> Zoom only. This is an asynchronous course — no fixed office hours, but Calendly is open for scheduled appointments throughout the term."
       ],
       "button": {
         "label": "Book Appointment →",
@@ -66,28 +111,47 @@
     {
       "type": "named_section",
       "color": "#FF9F1C",
-      "label": "3. Email the Instructor (Private Matters Only)",
+      "label": "4. Email the Instructor (Private Matters Only)",
       "paragraphs": [
-        "Email is best for private matters: grade questions, accommodations, personal circumstances, or anything you don’t want to discuss publicly."
+        "Email is the <strong style=\"color:#ffffff;\">only</strong> channel for anything personal: grade questions, accommodations, extension requests, personal circumstances, or anything tied to your specific situation.",
+        "<strong style=\"color:#ffffff;\">Use your UTSA email — not a personal Gmail/Yahoo/Hotmail account.</strong> If you email me from a personal account, the only response you’ll get is <em>“Please resend this email from your student account.”</em> FERPA only allows me to discuss personal matters over UTSA-owned services — I cannot send an email about your record to a personal address. Emails on the UTSA server are also archived, which protects both of us.",
+        "<strong style=\"color:#ffffff;\">Help me help you.</strong> Lead every email with this information:",
+        "<div style=\"background:#1a1f2e;padding:14px 16px;border-radius:6px;font-family:'Roboto Mono',monospace;font-size:13px;color:#B0B8C4;line-height:1.7;margin:8px 0;\"><span style=\"color:#FF9F1C;\">Subject:</span> IS3513 §[section] — [brief topic]<br><span style=\"color:#FF9F1C;\">Body opener:</span> My name is [name], abc123, IS3513 §[section].</div>",
+        "I teach multiple courses with multiple sections, and emails that make me dig through five rosters to figure out who you are and what class you’re in get answered slower. If you’re asking for something — an extension, an exception, a recommendation — I’m also less inclined to grant it when the request shows up without context. The two seconds it takes to add this information buys you a faster, friendlier response."
       ],
       "email_card": {
         "address": "john.newsom@utsa.edu",
         "note": "Response time: Usually within 24–48 hours"
-      },
-      "tip": "<strong style=\"color:#ffffff;\">Pro tip:</strong> Include “IS3513” in the subject line so I can find your email quickly."
+      }
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "5. Weekly Drop-In Zoom (Open Office Hours)",
+      "paragraphs": [
+        "Once a week I host an open Zoom for anyone who wants to ask something live. It’s not course-specific and it’s not private — think of it as walk-in office hours over Zoom. No appointment needed; just show up.",
+        "<strong style=\"color:#ffffff;\">When:</strong> <strong style=\"color:#00BCD4;\">Tuesdays at 6:00 p.m. CT</strong>, every week of the term — starting the first week of classes.",
+        "<strong style=\"color:#ffffff;\">How it works:</strong> I open the Zoom room at the scheduled time. If no one joins in the first five minutes, I close the room and move on with my day. If you show up, we talk.",
+        "<strong style=\"color:#ffffff;\">Not recorded.</strong> Nothing is posted afterward. This is a real-time channel only."
+      ],
+      "tip": "Personal/FERPA-touching questions still belong in email, not the open Zoom — anyone could be in the room.",
+      "button": {
+        "label": "Join Drop-In Zoom →",
+        "href": "https://utsa.zoom.us/j/96542097913",
+        "color": "#00BCD4",
+        "textColor": "#0A0E17"
+      }
     },
     {
       "type": "callout_bar",
       "color": "#E63946",
+      "colorRgb": "230, 57, 70",
       "label": "Please Don’t:",
-      "html": " DM the instructor on Discord for questions that should be public (others probably have the same question). Don’t wait until the night before a deadline to ask for help. Don’t email technical questions—Discord gets faster responses."
+      "html": " DM me on Discord before posting publicly — you’re cutting off the peer-learning loop the server exists for. Email me from a personal Gmail/Yahoo/Hotmail account — you’ll just get redirected back to UTSA email anyway. Email questions about command syntax or error messages — those get faster answers in the public Discord channels. Wait until the night before a deadline to ask for help."
     },
     {
       "type": "footer",
-      "html": "No weekly Zoom — this is an asynchronous course. Discord and Calendly cover 99% of what you need."
+      "html": "AI, Discord, Calendly, email, and the weekly drop-in Zoom cover everything you need."
     }
-  ],
-  "headerKeyword": "how to",
-  "headerSecondary": "get help",
-  "headerSubtitle": "Support Resources & Channels"
+  ]
 }
