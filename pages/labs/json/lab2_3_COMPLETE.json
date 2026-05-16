@@ -772,9 +772,7 @@
         "title": "References"
       }
     ],
-    "canvasSubmission": {
-      "text": "Submit your completed Engagement Packet to the <strong>Lab 2.3 Assignment</strong> in Canvas as a single .docx file."
-    },
+    "canvasSubmission": "Submit your completed Engagement Packet to the <strong>Lab 2.3 Assignment</strong> in Canvas as a single .docx file.",
     "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting."
   },
   "gradingStandards": {

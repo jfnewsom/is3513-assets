@@ -459,9 +459,7 @@
         ]
       }
     ],
-    "canvasSubmission": {
-      "text": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable."
-    }
+    "canvasSubmission": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable."
   },
   "gradingStandards": {
     "qualityLadder": {

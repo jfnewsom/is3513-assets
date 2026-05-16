@@ -723,9 +723,7 @@
         "title": "Submission Requirements"
       }
     ],
-    "canvasSubmission": {
-      "text": "Submit <code>LastName_Lab3.3_EngagementPacket.docx</code> to the Lab 3.3 assignment in Canvas before the deadline."
-    },
+    "canvasSubmission": "Submit <code>LastName_Lab3.3_EngagementPacket.docx</code> to the Lab 3.3 assignment in Canvas before the deadline.",
     "finalWarning": "PDF submissions receive an automatic zero. Submit <strong>.docx only</strong>."
   },
   "gradingStandards": {
