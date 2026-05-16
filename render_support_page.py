@@ -138,7 +138,15 @@ def render_named_section(sec):
         parts.append(f'    <ul class="nx-exam-tips">\n{items_html}    </ul>')
 
     if sec.get("code_block"):
-        parts.append(f'    <div class="nx-cmd">{sec["code_block"]}</div>')
+        # Multi-line blocks need <pre> to preserve newlines and whitespace.
+        # Single-line stays as a plain div so existing CSS (.nx-cmd) wraps cleanly on narrow viewports.
+        if "\n" in sec["code_block"]:
+            parts.append(
+                f'    <pre class="nx-cmd" style="white-space: pre; '
+                f'margin: 10px 0;">{sec["code_block"]}</pre>'
+            )
+        else:
+            parts.append(f'    <div class="nx-cmd">{sec["code_block"]}</div>')
 
     if sec.get("tip"):
         parts.append(f'    <p class="nx-named-tip">{sec["tip"]}</p>')
@@ -450,7 +458,6 @@ SUPPORT_FILENAME_MAP = {
     "genai_policy":           "GenAI_Policy.html",
     "grading_info":           "Grading_Info.html",
     "how_to_get_help":        "How_To_Get_Help.html",
-    "kali_vm_setup":          "Kali_VM_Setup.html",
     "meet_the_team":          "Meet_The_Team.html",
     "nexus_security":         "NEXUS_Security.html",
     "our_clients":            "Our_Clients.html",
