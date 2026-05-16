@@ -3,82 +3,94 @@
   "title": "GenAI Policy – IS3513",
   "htmlTitle": "GenAI Policy – IS3513",
   "accentColor": "#7B68EE",
+  "headerKeyword": "genai",
+  "headerSecondary": "policy",
+  "headerSubtitle": "Academic Integrity & AI Use",
   "sections": [
     {
       "type": "callout_bar",
       "color": "#7B68EE",
-      "label": "The Guiding Principle",
-      "html": "<div style=\"color:#ffffff;font-size:15px;font-style:italic;line-height:1.7;margin-top:8px;\">“AI can help you understand and improve your work, but the work itself must be yours. Think of AI like a tutor, not a ghostwriter.”</div>",
+      "label": "Are you here to learn this material, or are you here for a grade?",
+      "html": "<div style=\"color:#ffffff;font-size:15px;font-style:italic;line-height:1.7;margin-top:8px;\">Pick honestly. The rest of this policy depends on your answer.</div>",
       "headingStyle": true
     },
     {
       "type": "intro",
-      "html": "AI tools like ChatGPT, Claude, Copilot, and others are part of the modern cybersecurity landscape. This policy defines how you can use them <strong style=\"color:#ffffff;\">ethically and effectively</strong> in this course."
+      "html": "If you’re here to <strong style=\"color:#ffffff;\">learn</strong>, AI is one of the most powerful tools you’ll ever have. Used right, it’s a force-multiplier — it’ll accelerate your understanding, sharpen your writing, and help you produce work you couldn’t produce alone. You will leave this course better at security work AND better at working with AI. Both, at the same time.<br><br>If you’re here just for <strong style=\"color:#ffffff;\">a grade</strong>, AI can technically do most of this course for you. The catch is that we both know how that ends. You’ll get the grade. You won’t have the skills. And when a recruiter asks you to walk through a vulnerability scan you “completed” in IS3513, or to run an Nmap command in a live technical interview, you’ll be staring at a terminal you’ve never actually used. That’s the moment that decides whether you get a security career or not — and AI can’t be in the room with you."
+    },
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "The Question That Decides Everything:",
+      "html": " Before you submit any work, ask yourself one question: <em style=\"color:#ffffff;\">“Will I be able to do this work at my first job — without asking AI for help?”</em><br><br><strong style=\"color:#00D26A;\">If the answer is yes</strong>, you’ve used AI the right way. You learned something, validated it against your own knowledge, and produced work you can defend.<br><br><strong style=\"color:#E63946;\">If the answer is no</strong>, you probably won’t get that first job — and if you do, you won’t keep it. Interviews are how the industry filters out people who can’t do the work. AI can write you a great résumé. It can’t make you good at the live technical screen."
+    },
+    {
+      "type": "info_box",
+      "color": "#00BCD4",
+      "label": "Why Employers Care",
+      "paragraphs": [
+        "<strong style=\"color:#ffffff;\">Before you even get to the job, you have to get through the interview.</strong> Security interviews include live technical screens — code-along tests, capture-the-flag exercises, hands-on lab challenges. Recruiters specifically design these to filter out candidates who can talk about security but can’t do it. You can’t bring ChatGPT to a Zoom interview where the panel is watching your screen.",
+        "When you walk into your first cybersecurity job, your manager isn’t going to grade your work on a curve. They’re going to hand you a real problem with real stakes — a client’s network, a production system, an incident in progress — and expect you to know what to do. <strong style=\"color:#ffffff;\">They’ll assume you actually learned what your transcript says you learned.</strong>",
+        "In security work, your findings have to be <strong style=\"color:#ffffff;\">defensible and reproducible</strong>. If you tell a client they have a critical vulnerability, you need to prove it with evidence from tools you actually ran. AI-generated fabrications create false positives that waste client money, false negatives that miss real threats, and either one will damage your professional reputation fast.",
+        "The skills this course builds — running tools, interpreting output, documenting methodology, writing for clients — are exactly what employers and certifications test. AI accelerates the learning; it doesn’t replace it."
+      ]
     },
     {
       "type": "two_column",
       "style": "detailed",
       "left": {
         "color": "#00D26A",
-        "label": "✓ Permitted Use",
+        "label": "✓ Use AI Like This (you’re learning)",
         "items": [
           {
             "title": "Explaining command syntax",
-            "desc": "Ask AI to explain what a command does or how flags work"
+            "desc": "Ask what a flag does, then use it yourself"
           },
           {
             "title": "Troubleshooting errors",
-            "desc": "Paste an error message and ask for debugging help"
+            "desc": "Paste the error, get debugging help, verify the fix works"
           },
           {
             "title": "Understanding concepts",
-            "desc": "Ask AI to explain ideas from the textbook differently"
+            "desc": "Have AI explain an idea a different way until it clicks"
           },
           {
             "title": "Proofreading &amp; grammar",
-            "desc": "Have AI check your report writing for clarity"
+            "desc": "Refine your own writing for clarity"
           },
           {
             "title": "Suggesting structure",
-            "desc": "Ask for feedback on report organization"
+            "desc": "Get feedback on how to organize what you’ve already written and analyzed"
           }
         ]
       },
       "right": {
         "color": "#E63946",
-        "label": "✗ Prohibited Use",
+        "label": "✗ Don’t Use AI Like This (you’re cheating yourself)",
         "items": [
           {
-            "title": "Writing report sections",
-            "desc": "AI cannot write your executive summaries or findings"
+            "title": "Generating analysis you didn’t perform",
+            "desc": "AI cannot interpret your scan results for you"
+          },
+          {
+            "title": "Writing report sections that present findings as yours",
+            "desc": "Executive summaries, findings, and recommendations are your work product"
           },
           {
             "title": "Answering quiz questions",
-            "desc": "Quizzes verify you did the hands-on work"
+            "desc": "Quizzes verify YOU did the hands-on work"
           },
           {
-            "title": "Generating fake screenshots",
-            "desc": "All evidence must come from your actual VM"
+            "title": "Completing labs without doing them",
+            "desc": "You must actually run the tools on your own VM"
           },
           {
-            "title": "Completing labs for you",
-            "desc": "You must run the tools yourself"
-          },
-          {
-            "title": "Fabricating tool output",
-            "desc": "Real results only, even if they’re incomplete"
+            "title": "Substituting AI predictions for real evidence",
+            "desc": "If AI tells you what a tool would output, that doesn’t replace running the tool"
           }
         ]
       }
-    },
-    {
-      "type": "info_box",
-      "color": "#00BCD4",
-      "label": "Why This Matters in Cybersecurity",
-      "paragraphs": [
-        "In professional security work, your findings must be <strong style=\"color:#ffffff;\">defensible and reproducible</strong>. If you tell a client they have a critical vulnerability, you need to prove it. AI-generated fabrications could lead to false positives (wasting client resources) or false negatives (missing real threats).",
-        "The skills you build here—running tools, interpreting output, documenting methodology—are exactly what employers and certifications test. Shortcuts now create gaps that will hurt you later."
-      ]
     },
     {
       "type": "named_section",
@@ -89,34 +101,48 @@
           "color": "#00D26A",
           "label": "✓ OK to Ask",
           "items": [
-            "\"What does the -sV flag do in Nmap?\"",
-            "\"Why am I getting ‘permission denied’ when running this?\"",
-            "\"How should I organize my findings section?\""
+            "“What does the <code>-sV</code> flag do in Nmap?”",
+            "“Why am I getting ‘permission denied’ when running this?”",
+            "“How should I organize my findings section?” <em>(you’ve done the analysis; you’re asking how to present it)</em>",
+            "“Is this paragraph clear?” <em>(you wrote it; AI helps you refine it)</em>"
           ]
         },
         "notOk": {
           "color": "#E63946",
           "label": "✗ Not OK to Ask",
           "items": [
-            "\"Write an executive summary for my Nmap scan\"",
-            "\"Generate a vulnerability assessment report\"",
-            "\"What would Wireshark show if I captured DNS traffic?\""
+            "“Write an executive summary for my Nmap scan” <em>(the writing is your work product)</em>",
+            "“Generate a vulnerability assessment report” <em>(the analysis is what you’re being assessed on)</em>",
+            "“What would Wireshark show if I captured DNS traffic?” <em>(the answer is “go capture it and find out” — predicting tool output is how you avoid building the skill)</em>"
           ]
         }
       }
     },
     {
       "type": "callout_bar",
+      "color": "#4169E1",
+      "colorRgb": "65, 105, 225",
+      "label": "Tutor, Not Ghostwriter:",
+      "html": " Think of AI like a tutor — someone who explains, demonstrates, and helps you think clearly. Not a ghostwriter who hands you finished work to put your name on.<br><br><strong style=\"color:#ffffff;\">Tutors make you smarter. Ghostwriters make you fragile.</strong>"
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "AI in Engagement Packets",
+      "paragraphs": [
+        "Every Engagement Packet ends with one reflection question: <strong style=\"color:#ffffff;\">where AI helped you, and how you validated what it told you</strong>. This isn’t a confession box — it’s how you build a record of working methodology over the term. Strong answers describe specific moments of help and the verification step that followed (e.g., “I asked Claude to explain ARP poisoning; I confirmed the explanation against the textbook chapter and the Ettercap documentation before writing my section.”).",
+        "By Module 5, you should have a clear sense of where AI helps you and where it stops being useful. That’s the methodology employers want to see."
+      ]
+    },
+    {
+      "type": "callout_bar",
       "color": "#7B68EE",
       "label": "The Bottom Line:",
-      "html": " Use AI to <strong style=\"color:#00D26A;\">understand</strong> concepts and tools. Don’t use it to <strong style=\"color:#E63946;\">produce your deliverables</strong>. The goal is to make YOU a security professional, not to make you good at prompting AI."
+      "html": " The goal of this course is to make you a security professional with a working AI methodology — <strong style=\"color:#ffffff;\">both at the same time</strong>.<br><br>If you can defend the work as yours, AI helped you. If you can’t, it replaced you."
     },
     {
       "type": "footer",
-      "html": "Questions about what’s allowed? Ask in Discord or email."
+      "html": "Questions about what’s allowed? Ask in <strong>#course-questions</strong> on Discord, or email."
     }
-  ],
-  "headerKeyword": "genai",
-  "headerSecondary": "policy",
-  "headerSubtitle": "Academic Integrity & AI Use"
+  ]
 }
