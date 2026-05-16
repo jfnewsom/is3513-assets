@@ -289,7 +289,6 @@
       <div class="nav-dropdown">
         <div class="drop-label">Getting Started</div>
         ${link('Start Here',              S + '/StartHere.html',              'dd-green')}
-        ${link('Kali VM Setup',           S + '/Kali_VM_Setup.html',          'dd-green')}
         ${link('Course Schedule',         S + '/Course_Schedule.html',        'dd-green')}
         ${link('Textbook Info',           S + '/Textbook.html',               'dd-green')}
         <div class="drop-label">Policies</div>
