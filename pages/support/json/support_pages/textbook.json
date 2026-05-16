@@ -40,7 +40,7 @@
         },
         {
           "key": "Format",
-          "value": "Physical or digital (VitalSource / Connect)"
+          "value": "Physical or digital"
         }
       ]
     },
@@ -49,8 +49,7 @@
       "color": "#4169E1",
       "label": "How to Access",
       "items": [
-        "<strong style=\"color:#ffffff;\">UTSA Bookstore</strong> &#8212; Physical or digital; may be included in your course materials fee. Check with the bookstore.",
-        "<strong style=\"color:#ffffff;\">McGraw-Hill Connect</strong> &#8212; Digital access with interactive features. Check Canvas for the course-specific access link.",
+        "<strong style=\"color:#ffffff;\">UTSA Bookstore</strong> &#8212; Physical or digital copies available.",
         "<strong style=\"color:#ffffff;\">Amazon / Other Retailers</strong> &#8212; Search by ISBN for used copies or alternative retailers. Always verify you&#8217;re getting the 6th edition."
       ]
     },
