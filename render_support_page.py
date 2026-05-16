@@ -33,6 +33,34 @@ def section_label(text, color, extra_class=""):
 
 # ── Section renderers ──────────────────────────────────────────────────────────
 
+def render_image(image):
+    """Render an optional image dict. Returns empty string if image is None/falsy.
+
+    Image schema:
+      {
+        "src": "third-party/cover.jpg",      # relative to repo root
+        "alt": "Textbook cover",
+        "float": "right"|"left"|"none",      # default 'right'
+        "width": "180px"                      # default '180px'
+      }
+    """
+    if not image:
+        return ""
+    src = image.get("src", "")
+    if src.startswith("http"):
+        full_src = src
+    else:
+        full_src = f'{ASSETS}/{src.lstrip("/")}'
+    alt = image.get("alt", "")
+    flt = image.get("float", "right")
+    width = image.get("width", "180px")
+    css_class = f"nx-section-image nx-section-image--{flt}"
+    return (
+        f'    <img class="{css_class}" src="{full_src}" alt="{alt}" '
+        f'style="width: {width};">\n'
+    )
+
+
 def render_intro(sec):
     return f'  <p class="nx-support-intro">{sec["html"]}</p>'
 
@@ -158,6 +186,11 @@ def render_named_section(sec):
 
     lbl = section_label(label, color)
     parts.append(f'    {lbl}')
+
+    # Optional image — floated, must appear in DOM before the text it wraps around
+    img_html = render_image(sec.get("image"))
+    if img_html:
+        parts.append(img_html.rstrip())
 
     for p in sec.get("paragraphs", []):
         parts.append(f'    <p class="nx-exam-body">{p}</p>')
@@ -289,6 +322,7 @@ def render_platform_cards(sec):
 def render_two_col_specs(sec):
     color = sec["color"]
     label = sec["label"]
+    img_html = render_image(sec.get("image"))
 
     def specs(items):
         return "".join(
@@ -302,6 +336,7 @@ def render_two_col_specs(sec):
     return (
         f'  <div class="nx-named-section">\n'
         f'    {section_label(label, color)}\n'
+        f'{img_html}'
         f'    <div class="nx-two-col">\n'
         f'      <div class="nx-two-col__col">\n'
         f'        <div class="nx-spec-list">\n'
@@ -319,8 +354,8 @@ def render_two_col_specs(sec):
 
 
 def render_button_row(sec):
-    label       = sec["label"]
-    label_color = sec["labelColor"]
+    label       = sec.get("label")
+    label_color = sec.get("labelColor", "#ffffff")
     btns = ""
     for b in sec["buttons"]:
         text_color = b.get("textColor", "#ffffff")
@@ -329,9 +364,13 @@ def render_button_row(sec):
             f'      <a href="{b["href"]}"{_tgt} class="nx-btn" '
             f'style="background: {b["color"]}; color: {text_color};">{b["label"]}</a>\n'
         )
+    label_html = (
+        f'    <div class="nx-info-box__label" style="color: {label_color};">{label}</div>\n'
+        if label else ""
+    )
     return (
         f'  <div class="nx-info-box">\n'
-        f'    <div class="nx-info-box__label" style="color: {label_color};">{label}</div>\n'
+        f'{label_html}'
         f'    <div class="nx-btn-row">\n'
         f'{btns}'
         f'    </div>\n'

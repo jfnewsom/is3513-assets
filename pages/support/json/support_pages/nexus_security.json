@@ -75,8 +75,6 @@
     },
     {
       "type": "button_row",
-      "label": "Ready to Get Started?",
-      "labelColor": "#00BCD4",
       "buttons": [
         {
           "label": "Meet Your Team →",
@@ -88,18 +86,12 @@
           "href": "Our_Clients.html",
           "color": "#FF9F1C",
           "textColor": "#0A0E17"
-        },
-        {
-          "label": "Start Lab 1.1 →",
-          "href": "../labs/Lab1_1_Kali_Environment_Setup.html",
-          "color": "#00D26A",
-          "textColor": "#0A0E17"
         }
       ]
     },
     {
       "type": "footer",
-      "html": "Head to <strong>Module 1</strong> and begin your training. Your first client is waiting."
+      "html": "Head to <strong>Module 1</strong> and begin your training with <strong>Lab 1.1</strong>. Your first client is waiting."
     }
   ]
 }

@@ -334,6 +334,36 @@ summary {
 /* Group spacing when multiple expands are stacked */
 .nx-expand + .nx-expand { margin-top: 8px; }
 
+/* ── Section images (float in named_section / two_col_specs) ─ */
+.nx-section-image {
+  max-width: 220px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+.nx-section-image--right {
+  float: right;
+  margin: 4px 0 14px 20px;
+}
+.nx-section-image--left {
+  float: left;
+  margin: 4px 20px 14px 0;
+}
+.nx-section-image--none {
+  margin: 14px auto;
+  float: none;
+}
+/* Mobile: drop the float so the image stacks above the text */
+@media (max-width: 640px) {
+  .nx-section-image--right,
+  .nx-section-image--left {
+    float: none;
+    margin: 0 auto 14px auto;
+    max-width: 60%;
+  }
+}
+
 /* ── Character quote card ─────────────────────────────────── */
 /* ── Character quote / mentor callout (bubble style) ─────────── */
 .nx-quote { margin: 25px 0; }
