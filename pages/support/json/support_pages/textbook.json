@@ -9,7 +9,7 @@
   "sections": [
     {
       "type": "intro",
-      "html": "This course has a <strong style=\"color:#ffffff;\">recommended textbook</strong> that aligns with <strong style=\"color:#ffffff;\">CompTIA Security+ certification objectives</strong>. It is not required for course success &#8212; the lab work, NIST publications, OWASP guides, and vendor documentation linked from each lab carry the substance of the course. The textbook is useful as a single reference that organizes the field, and many students find it helpful as a study aid. If you already own a recent edition or have access through another program, that&#8217;s sufficient. If buying it would be a hardship, you can complete the course without it."
+      "html": "This course uses a required textbook that aligns with <strong style=\"color:#ffffff;\">CompTIA Security+ certification objectives</strong>. The hands-on labs bring the textbook concepts to life."
     },
     {
       "type": "two_col_specs",
@@ -72,11 +72,11 @@
         "<strong style=\"color:#ffffff;\">For reports:</strong> Cite the textbook when explaining methodology or referencing security principles. It counts toward your 10-citation requirement.",
         "<strong style=\"color:#ffffff;\">For exams:</strong> Module exams draw from both textbook content and lab experience."
       ],
-      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;If we don&#8217;t touch it in a lab, we don&#8217;t assign the reading.&rdquo; Every assigned chapter directly supports the hands-on work &#8212; but you don&#8217;t need to own the book to complete those labs successfully.</em>"
+      "tip": "<em style=\"color:#B0B8C4;\">&ldquo;If we don&#8217;t touch it in a lab, we don&#8217;t assign the reading.&rdquo; Every assigned chapter directly supports the hands-on work.</em>"
     },
     {
       "type": "footer",
-      "html": "The textbook is a useful reference, not a gatekeeper. The labs are where you learn."
+      "html": "The textbook is your reference manual. The labs are where you learn."
     }
   ]
 }
