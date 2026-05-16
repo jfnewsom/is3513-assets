@@ -117,11 +117,12 @@
         "<strong style=\"color:#ffffff;\">Use your UTSA email — not a personal Gmail/Yahoo/Hotmail account.</strong> If you email me from a personal account, the only response you’ll get is <em>“Please resend this email from your student account.”</em> FERPA only allows me to discuss personal matters over UTSA-owned services — I cannot send an email about your record to a personal address. Emails on the UTSA server are also archived, which protects both of us.",
         "<strong style=\"color:#ffffff;\">Help me help you.</strong> Lead every email with this information:",
         "<div style=\"background:#1a1f2e;padding:14px 16px;border-radius:6px;font-family:'Roboto Mono',monospace;font-size:13px;color:#B0B8C4;line-height:1.7;margin:8px 0;\"><span style=\"color:#FF9F1C;\">Subject:</span> IS3513 §[section] — [brief topic]<br><span style=\"color:#FF9F1C;\">Body opener:</span> My name is [name], abc123, IS3513 §[section].</div>",
-        "I teach multiple courses with multiple sections, and emails that make me dig through five rosters to figure out who you are and what class you’re in get answered slower. If you’re asking for something — an extension, an exception, a recommendation — I’m also less inclined to grant it when the request shows up without context. The two seconds it takes to add this information buys you a faster, friendlier response."
+        "I teach multiple courses with multiple sections, and emails that make me dig through five rosters to figure out who you are and what class you’re in get answered slower. If you’re asking for something — an extension, an exception, a recommendation — I’m also less inclined to grant it when the request shows up without context. The two seconds it takes to add this information buys you a faster, friendlier response.",
+        "<strong style=\"color:#ffffff;\">Response time:</strong> Within 24 hours Mon–Fri. Weekend or holiday emails: next business day."
       ],
       "email_card": {
         "address": "john.newsom@utsa.edu",
-        "note": "Response time: Usually within 24–48 hours"
+        "note": "Response time: Within 24 hours Mon–Fri. Weekend or holiday emails: next business day."
       }
     },
     {
