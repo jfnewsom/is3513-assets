@@ -16,7 +16,7 @@
       "color": "#4169E1",
       "label": "Category Weights",
       "paragraphs": [
-        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Category</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Weight</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Components</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Foundation Labs</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">30%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">9 Foundation Labs (quiz-verified)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Engagement Packets</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">45%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">5 Engagement Packets (manually graded)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Module Exams</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">25%</td><td style=\"color:#B0B8C4;padding:8px 12px;\">End-of-module exams (5 total)</td></tr></tbody></table>"
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Category</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Weight</th><th style=\"color:#4169E1;text-align:left;padding:8px 12px;border-bottom:2px solid #4169E1;\">Components</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Foundation Labs</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">30%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">9 Foundation Labs (quiz-verified)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Engagement Packets</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">45%</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">5 Engagement Packets (Lab X.3, manually graded)</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Module Exams</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">25%</td><td style=\"color:#B0B8C4;padding:8px 12px;\">End-of-module exams (5 total)</td></tr></tbody></table>"
       ]
     },
     {
@@ -36,6 +36,7 @@
         "items": [
           "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing citation (10 required; capped at &#8722;50%)",
           "<strong style=\"color:#E63946;\">&#8722;2.5%</strong> per missing screenshot (20 required; a screenshot without the VM name visible counts as missing; capped at &#8722;50%)",
+          "<em style=\"color:#B0B8C4;\">Citations must meet the source quality standard: NIST, OWASP, RFCs, tool documentation, man pages. Wikipedia, blogs, and tutorial sites do not count toward the 10. See the <a href=\"Citations.html\" style=\"color:#7B68EE;\">Citations page</a> for the full rule.</em>",
           "These are not optional. In professional security work, undocumented claims are worthless."
         ]
       },
@@ -61,7 +62,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Late Work Policy:",
-      "html": "<strong>No late work accepted.</strong> Use your drop &#8212; that&#8217;s what it&#8217;s for."
+      "html": "<strong>No late work accepted.</strong> If an emergency makes you miss a deadline, your one drop in that category absorbs it. Plan accordingly &#8212; drops are scarce, so save them for real emergencies."
     },
     {
       "type": "footer",
