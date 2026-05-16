@@ -43,6 +43,38 @@ def render_callout_bar(sec):
     label    = sec["label"]
     html     = sec["html"]
     heading  = sec.get("headingStyle", False)
+    icon     = sec.get("icon")
+
+    # If an icon is provided, emit the lab-style nx-callout markup so support pages
+    # match the visual treatment students see on lab pages (icon badge + body).
+    # The label becomes the callout title, and the html body becomes the prose.
+    if icon:
+        # Map hex color to the existing nx-* utility class so the title color and
+        # left-border color come from CSS variables, consistent with lab callouts.
+        color_class_map = {
+            "#00D26A": "nx-green",
+            "#FFF700": "nx-yellow",
+            "#00BCD4": "nx-cyan",
+            "#FF9F1C": "nx-orange",
+            "#E63946": "nx-red",
+            "#FF2641": "nx-red",
+            "#4169E1": "nx-blue",
+            "#7B68EE": "nx-purple",
+            "#5865F2": "nx-blue",  # Discord blurple maps to blue
+        }
+        css_class = color_class_map.get(color, "nx-blue")
+        return (
+            f'  <div class="nx-callout {css_class}">\n'
+            f'    <div class="nx-callout-icon"><span class="material-icons" '
+            f'aria-hidden="true">{icon}</span></div>\n'
+            f'    <div class="nx-callout-body">\n'
+            f'      <div class="nx-callout-title">{label.rstrip(":")}</div>\n'
+            f'      <p>{html.strip()}</p>\n'
+            f'    </div>\n'
+            f'  </div>'
+        )
+
+    # Legacy flat-bar markup (backwards-compatible — no icon, no title element)
     label_html = f'<span class="nx-client-ctx__label{"--heading" if heading else ""}">{label}</span>'
     return (
         f'  <div class="nx-client-ctx" style="--client-color: {color}; --client-rgb: {rgb};">\n'
@@ -362,6 +394,39 @@ def render_acknowledgment_box(sec):
     )
 
 
+def render_expandable_examples(sec):
+    """Render a list of collapsible good/bad/neutral examples.
+
+    Section schema:
+      {
+        "type": "expandable_examples",
+        "items": [
+          {"kind": "good"|"bad"|"neutral", "label": "...", "body": "<html>"}
+        ]
+      }
+    """
+    items = sec.get("items", [])
+    out = []
+    for item in items:
+        kind = item.get("kind", "neutral")
+        label = item.get("label", "")
+        body = item.get("body", "")
+        # Map kind -> css variant class + icon glyph
+        variants = {
+            "good": ("nx-expand--good", "\u2713"),
+            "bad":  ("nx-expand--bad",  "\u2717"),
+        }
+        klass, glyph = variants.get(kind, ("", ""))
+        glyph_html = f'<span aria-hidden="true">{glyph}</span> ' if glyph else ""
+        out.append(
+            f'  <details class="nx-expand {klass}">\n'
+            f'    <summary>{glyph_html}{label}</summary>\n'
+            f'    <div class="nx-expand-body">{body}</div>\n'
+            f'  </details>'
+        )
+    return "\n".join(out)
+
+
 def render_footer(sec):
     return f'  <div class="nx-page-footer">{sec["html"]}</div>'
 
@@ -380,6 +445,7 @@ SECTION_RENDERERS = {
     "button_row":       render_button_row,
     "rules_list":       render_rules_list,
     "acknowledgment_box": render_acknowledgment_box,
+    "expandable_examples": render_expandable_examples,
     "footer":           render_footer,
 }
 

@@ -82,6 +82,70 @@
     <p class="nx-exam-body">If you logged hours honestly as you went, this is a 10-minute fill-in. If you’re reconstructing it the night before, it’ll show — your scan dates, screenshot timestamps, and command history won’t line up with your claimed hours. The template includes a pre-built timesheet table; just fill in the cells.</p>
   </div>
 
+  <details class="nx-expand nx-expand--good">
+    <summary><span aria-hidden="true">✓</span> Good Example — Module 1 Timesheet</summary>
+    <div class="nx-expand-body"><p>A Module 1 (Brazos Financial) timesheet that gives leadership exactly what they need to bill the client and assess the engagement:</p>
+<pre>WEEK 1 — Internal Training (4.0 hours)
+• Kali VM installation, hostname configured to kali-abc123 ............... 1.5 hr
+• VirtualBox network configuration (host-only adapter for engagement) .... 0.5 hr
+• Lab 1.1 environment verification (uname -a, ip a, screenshot capture) .. 1.0 hr
+• Documentation setup (screenshot folder structure, runbook scaffolding) . 1.0 hr
+
+WEEK 2 — Internal Training (3.5 hours)
+• nmap deep dive: read man page, tested -sS / -sV / -O flags ............. 1.5 hr
+• dirb / nikto / enum4linux: practice runs against scanme.nmap.org ....... 1.0 hr
+• searchsploit workflow: paired CVE lookup with version output .......... 0.5 hr
+• Tool inventory documentation for runbook ............................. 0.5 hr
+
+WEEK 3 — Client Billable (6.0 hours)
+• Brazos Financial: full TCP scan, top-1000 ports ........................ 0.5 hr
+• Service version detection on open ports (-sV -sC --version-intensity 5) 1.0 hr
+• Web reconnaissance: dirb, nikto, manual inspection .................... 1.5 hr
+• SMB enumeration: enum4linux against discovered host ................... 0.5 hr
+• Vulnerability research: searchsploit + CVE lookups on discovered versions 1.5 hr
+• Client Deliverable: executive summary + 3 finding writeups + risk analysis 1.0 hr
+
+ENGAGEMENT TOTAL: 13.5 hours  |  Internal: 7.5 hr  |  Billable: 6.0 hr</pre>
+<div class="nx-expand-why">
+<strong>Why this works:</strong>
+<ul>
+<li>Every line ties to a specific activity, command, or output</li>
+<li>Times are realistic and reflect actual effort — not all 30-min round numbers</li>
+<li>Internal vs. billable categories are clearly distinguished</li>
+<li>A billing manager could justify the 6 client-billable hours from the listed activities</li>
+<li>The total aligns with what your screenshot timestamps and command history would show</li>
+</ul>
+</div></div>
+  </details>
+  <details class="nx-expand nx-expand--bad">
+    <summary><span aria-hidden="true">✗</span> Bad Example — Vague, Round-Number Timesheet</summary>
+    <div class="nx-expand-body"><p>A timesheet that fails the basic "could a manager bill the client from this" test:</p>
+<pre>Week 1 (3 hours)
+- Did the lab stuff
+- Set up VM
+
+Week 2 (2 hours)
+- Practiced with tools
+- Took some screenshots
+
+Week 3 (4 hours)
+- Scanned the client
+- Wrote report
+
+Total: 9 hours</pre>
+<div class="nx-expand-why">
+<strong>Why this fails:</strong>
+<ul>
+<li>"Did the lab stuff" tells leadership nothing — there's no way to justify the hours to a client</li>
+<li>No breakdown by specific tools or commands</li>
+<li>Times are suspiciously round (3, 2, 4) — real engagement work isn't billed in whole-hour chunks</li>
+<li>No internal vs. billable distinction — leadership can't tell which hours go on the client invoice</li>
+<li>The total (9 hr) is implausibly low for a three-week engagement — either you didn't do the work or didn't track it</li>
+<li>Would be rejected by any real consulting firm before reaching the client</li>
+</ul>
+</div></div>
+  </details>
+
   <div class="nx-named-section">
     <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">B. Internal Runbook</div>
     <p class="nx-exam-body"><strong style="color:#ffffff;">Audience:</strong> The next analyst who has to do this engagement next month.</p>
@@ -89,6 +153,72 @@
     <p class="nx-exam-body"><strong style="color:#ffffff;">Good runbook test:</strong> screenshots are paired with the command that produced them. Commands are in code blocks, not in prose. There’s enough context that a reader who wasn’t there can tell what was working and what wasn’t.</p>
     <p class="nx-exam-body">Foundation Labs 1–2 of each module produce most of the runbook material. Lab 3 (the client engagement) adds the engagement-specific portion.</p>
   </div>
+
+  <details class="nx-expand nx-expand--good">
+    <summary><span aria-hidden="true">✓</span> Good Example — nmap Service Detection Runbook Entry</summary>
+    <div class="nx-expand-body"><p>A runbook entry the next analyst can actually use without you. From a Module 1 engagement, documenting the nmap service detection pass:</p>
+<pre><strong>NMAP SERVICE VERSION DETECTION</strong>
+────────────────────────────────────────
+
+Purpose: Identify running services and their specific versions on target hosts.
+Version info is the bridge from "this port is open" to "this port has CVE-XXXX-XXXXX."
+
+Recommended flags:
+  -sV                       Service version detection
+  -sC                       Default scripts (safe recon — banner grabs, etc.)
+  --version-intensity 5     Thorough probing (1–9 scale, 5 = balanced)
+  -oN output.txt            Save to text file (human-readable)
+
+Full engagement command (as run on Brazos):
+  nmap -sV -sC --version-intensity 5 -oN brazos-svc.txt 10.0.0.0/24
+
+Sample output excerpt:
+  PORT      STATE  SERVICE    VERSION
+  22/tcp    open   ssh        OpenSSH 8.9p1 Ubuntu 3
+  80/tcp    open   http       Apache httpd 2.4.29        ← flag this version
+  3306/tcp  open   mysql      MySQL 5.7.42               ← EOL, research CVEs
+
+Next steps after scan:
+  1. Record every service version in your findings doc
+  2. Search NVD/CVE databases for each version
+  3. Flag any version that's EOL or has known CVEs
+  4. Cross-reference against searchsploit for available exploits
+
+Pitfalls observed during this engagement:
+  • --version-intensity 9 took ~3x longer than 5 and surfaced no extra info
+    on this target — stick with 5 unless you have a specific reason</pre>
+<div class="nx-expand-why">
+<strong>Why this works:</strong>
+<ul>
+<li>Purpose is stated in plain language — a junior analyst reading this knows <em>why</em> they're running it, not just what to type</li>
+<li>Every flag is explained — no magic incantations</li>
+<li>Sample output is annotated — the reader knows what to look at and why</li>
+<li>"Next steps" tells the reader what to do <em>with</em> the output, not just how to get it</li>
+<li>"Pitfalls observed" captures hard-won knowledge that would otherwise be lost</li>
+</ul>
+</div></div>
+  </details>
+  <details class="nx-expand nx-expand--bad">
+    <summary><span aria-hidden="true">✗</span> Bad Example — Journal-Style Runbook Entry</summary>
+    <div class="nx-expand-body"><p>A runbook entry that's technically a record of what you did, but won't help anyone reproduce it:</p>
+<pre>nmap
+
+I used nmap to scan the client. The command I used was nmap -sV -sC and it found
+some open ports including 22, 80, and 3306. I saved the output to a file.
+
+Then I looked up the versions on Google and found some vulnerabilities.</pre>
+<div class="nx-expand-why">
+<strong>Why this fails:</strong>
+<ul>
+<li>No target specified — the next analyst can't tell what subnet you scanned</li>
+<li>Command is incomplete — no <code>-oN</code> flag, no <code>--version-intensity</code>, no scope</li>
+<li>"Some open ports" and "some vulnerabilities" are useless — specifics are the whole point of a runbook</li>
+<li>"Looked up the versions on Google" gives no path the next analyst can follow — NVD? CVE Details? searchsploit?</li>
+<li>Reads like a journal entry, not professional documentation</li>
+<li>If your colleague picked up Brazos next quarter, this runbook would help them <em>nothing</em></li>
+</ul>
+</div></div>
+  </details>
 
   <div class="nx-named-section">
     <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">C. Analyst Reflection</div>
@@ -117,6 +247,73 @@
     <p class="nx-named-tip"><strong style="color:#ffffff;">This section is client-facing.</strong> Write like a consultant. No first-person. No “I was confused.” No AI references. No reflections. Recommendations-forward, evidence-backed, professional throughout.</p>
   </div>
 
+  <details class="nx-expand nx-expand--good">
+    <summary><span aria-hidden="true">✓</span> Good Example — Medium-Severity Finding (Apache CVE)</summary>
+    <div class="nx-expand-body"><p>A Medium-severity finding from a Module 1 Brazos Financial engagement. Note the structure: number, title, severity, description, evidence, impact, recommendation:</p>
+<pre><strong>FINDING 003 — Outdated Apache HTTP Server Exposes Multiple CVEs</strong>
+───────────────────────────────────────────────────────────────
+Severity:       Medium
+Affected Host:  brazos-external.local (10.0.0.50)
+Affected Port:  80/tcp
+
+Description:
+The Brazos Financial external web server is running Apache HTTP Server 2.4.29,
+released March 2018. Versions of Apache prior to 2.4.55 are affected by multiple
+publicly disclosed vulnerabilities, including CVE-2022-31813 (mod_proxy header
+mishandling) and CVE-2022-22720 (HTTP request smuggling). Exploit code for several
+of these issues is publicly available.
+
+Evidence:
+[See Figure 7 — nmap service-detection output showing "Apache httpd 2.4.29".]
+[See Appendix A.3 for the full nmap output excerpt.]
+
+Impact:
+An attacker who successfully exploits one of the disclosed Apache vulnerabilities
+could intercept or manipulate HTTP traffic to the Brazos external site, potentially
+exposing customer session data or enabling further attack chaining into Brazos's
+internal network.
+
+Recommendation:
+Upgrade Apache HTTP Server to version 2.4.58 or later. Apache project provides
+backported security fixes for the 2.4.x line. Estimated effort: low (1–2 hours
+for a standard deployment). Priority: complete within 30 days.
+
+Reference: Apache Security Advisories — https://httpd.apache.org/security/vulnerabilities_24.html</pre>
+<div class="nx-expand-why">
+<strong>Why this works:</strong>
+<ul>
+<li>Finding has a number (003) so the executive summary and risk table can reference it</li>
+<li>Severity is stated up front — a client reading only the first line knows the urgency</li>
+<li>Description names specific CVEs and version cutoffs, not vague "outdated software"</li>
+<li>Impact is in business terms ("customer session data," "further attack chaining") not technical jargon</li>
+<li>Recommendation includes effort estimate AND priority window — actionable on Monday</li>
+<li>Evidence references existing figures rather than embedding a 30-line scan output in the body</li>
+</ul>
+</div></div>
+  </details>
+  <details class="nx-expand nx-expand--bad">
+    <summary><span aria-hidden="true">✗</span> Bad Example — Vague, Unactionable Finding</summary>
+    <div class="nx-expand-body"><p>A finding that's technically present but won't help the client decide what to do:</p>
+<pre>FINDING: Apache is old.
+
+The Apache web server is running an old version. This is bad because old software
+has vulnerabilities. The version is 2.4.29.
+
+I recommend updating it.</pre>
+<div class="nx-expand-why">
+<strong>Why this fails:</strong>
+<ul>
+<li>No severity rating — client can't prioritize against other findings</li>
+<li>No finding number — can't be referenced in the executive summary or risk analysis</li>
+<li>"Old version" and "vulnerabilities" are not specific — which version cutoff? Which CVEs?</li>
+<li>"This is bad" is not an impact statement — what could an attacker actually do?</li>
+<li>"Update it" is not a recommendation — update to what? On what timeline? At what cost?</li>
+<li>No evidence reference — client has to take your word for it</li>
+<li>If the client's IT team has to triage this against 20 other findings, they have no way to decide whether this is finding #1 or finding #15</li>
+</ul>
+</div></div>
+  </details>
+
   <div class="nx-named-section">
     <div class="nx-section-label" style="--accent: #7B68EE; color: #7B68EE; border-bottom-color: #7B68EE;">The AI Methodology Reflection</div>
     <p class="nx-exam-body">Every Engagement Packet includes a brief AI Methodology Reflection in Part I.C. The prompt is simple:</p>
@@ -140,7 +337,7 @@
         </div>
       </div>
       <div class="nx-two-col__col">
-        <div class="nx-section-label" style="--accent: #E63946; color: #E63946; border-bottom-color: #E63946;">✗ Don’t copy this, I’ll notice</div>
+        <div class="nx-section-label" style="--accent: #E63946; color: #E63946; border-bottom-color: #E63946;">✗ Performative Reflection</div>
         <div class="nx-two-col__list">
           <div class="nx-two-col__item"><span class="nx-two-col__item-title">Generic, unverified, performative</span><span class="nx-two-col__item-desc"> — “I used AI to help me understand the concepts in this engagement. It was very helpful for explaining things and helped me to learn the material. I verified its responses by cross-checking with the textbook and online sources. AI is a powerful tool that I will continue to use in future engagements as I develop my skills as a security analyst.”</span></div>
         </div>

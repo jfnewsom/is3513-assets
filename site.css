@@ -247,6 +247,93 @@ summary {
 .nx-blue   { --callout-color: #4169E1; --callout-rgb: 65, 105, 225; }
 .nx-purple { --callout-color: #7B68EE; --callout-rgb: 123, 104, 238; }
 
+/* ── Expandable examples (good/bad collapsible patterns) ──── */
+.nx-expand {
+  margin: 12px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #11151f;
+}
+.nx-expand summary {
+  cursor: pointer;
+  padding: 12px 16px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+}
+.nx-expand summary::-webkit-details-marker { display: none; }
+.nx-expand summary::after {
+  content: '+';
+  margin-left: auto;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+.nx-expand[open] summary::after {
+  content: '\2013';
+  transform: none;
+}
+.nx-expand summary:hover { background: rgba(255, 255, 255, 0.04); }
+.nx-expand-body {
+  padding: 16px 20px;
+  background: #0f131c;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #B0B8C4;
+  line-height: 1.7;
+  font-size: 14px;
+}
+.nx-expand-body pre {
+  background: #1a1f2e;
+  padding: 14px 16px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #d4d4d4;
+  margin: 8px 0;
+  white-space: pre;
+}
+.nx-expand-body .nx-expand-why {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+}
+.nx-expand-body .nx-expand-why strong { color: #ffffff; }
+.nx-expand-body ul { margin: 6px 0 0 0; padding-left: 20px; line-height: 1.8; }
+
+/* Good variant */
+.nx-expand.nx-expand--good { border-left: 3px solid #00D26A; }
+.nx-expand.nx-expand--good summary {
+  background: linear-gradient(135deg, rgba(0, 210, 106, 0.18) 0%, rgba(0, 210, 106, 0.04) 100%);
+  color: #00D26A;
+}
+.nx-expand.nx-expand--good summary:hover {
+  background: linear-gradient(135deg, rgba(0, 210, 106, 0.24) 0%, rgba(0, 210, 106, 0.08) 100%);
+}
+
+/* Bad variant */
+.nx-expand.nx-expand--bad { border-left: 3px solid #E63946; }
+.nx-expand.nx-expand--bad summary {
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.18) 0%, rgba(230, 57, 70, 0.04) 100%);
+  color: #E63946;
+}
+.nx-expand.nx-expand--bad summary:hover {
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.24) 0%, rgba(230, 57, 70, 0.08) 100%);
+}
+
+/* Group spacing when multiple expands are stacked */
+.nx-expand + .nx-expand { margin-top: 8px; }
+
 /* ── Character quote card ─────────────────────────────────── */
 /* ── Character quote / mentor callout (bubble style) ─────────── */
 .nx-quote { margin: 25px 0; }
