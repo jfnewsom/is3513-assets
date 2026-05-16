@@ -709,7 +709,7 @@
           "title": "Common Pitfalls",
           "items": [
             "<strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero",
-            "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-lastname-studentID)",
+            "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-abc123)",
             "<strong>Fewer than 10 references:</strong> Man pages, RFCs, and textbook chapters all count"
           ],
           "calloutType": "commonPitfalls"
@@ -815,7 +815,7 @@
     ],
     "channels": [
       {
-        "detail": "#lab-help",
+        "detail": "#module-2-help",
         "label": "Discord"
       },
       {

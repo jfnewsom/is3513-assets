@@ -27,7 +27,7 @@
         "items": [
           {
             "title": "VM name in terminal prompt",
-            "desc": "kali-lastname-abc123 visible"
+            "desc": "kali-abc123 visible"
           },
           {
             "title": "VM name in window title bar",
@@ -63,7 +63,7 @@
       "color": "#FF9F1C",
       "label": "Critical: VM Name Visibility",
       "paragraphs": [
-        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> and this name must be visible in every screenshot.",
+        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-abc123</code> and this name must be visible in every screenshot.",
         "Without your VM name, there&#8217;s no way to verify <em>you</em> ran the commands. Screenshots without identification could be copied from anywhere &#8212; and occasionally are."
       ]
     },

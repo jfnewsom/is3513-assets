@@ -809,7 +809,7 @@
         "title": "Environment Verification",
         "items": [
           {
-            "check": "VM hostname (kali-lastname-studentID) visible in all screenshots"
+            "check": "VM hostname (kali-abc123) visible in all screenshots"
           },
           {
             "check": "All files created inside ~/lab2-crypto directory"
@@ -833,7 +833,7 @@
     ],
     "channels": [
       {
-        "detail": "#lab-help",
+        "detail": "#module-2-help",
         "label": "Discord"
       },
       {

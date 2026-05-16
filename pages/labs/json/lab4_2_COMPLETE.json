@@ -656,7 +656,7 @@
         "items": [
           "10 new screenshots (#11-#20) in Module4_Screenshots folder",
           "All follow naming convention: ##-description.png",
-          "VM name visible in screenshots (kali-lastname-studentID)",
+          "VM name visible in screenshots (kali-abc123)",
           "Speed/H/s rates visible in attack screenshots (#14, #18)"
         ],
         "title": "Screenshot Verification"
@@ -713,7 +713,7 @@
   "needHelp": {
     "channels": [
       {
-        "detail": "#lab-help",
+        "detail": "#module-4-help",
         "label": "Discord"
       },
       {

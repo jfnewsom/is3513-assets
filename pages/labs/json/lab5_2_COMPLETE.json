@@ -44,7 +44,7 @@
       {
         "type": "warning",
         "title": "Minimum Requirements",
-        "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-lastname-studentID). Use naming convention: ##-description.png."
+        "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-abc123). Use naming convention: ##-description.png."
       },
       {
         "type": "warning",
@@ -451,7 +451,7 @@
             "Section C: Risk matrix included and color coded",
             "Section C: Remediation roadmap with phased timelines",
             "All Lab 5.1 screenshots included as evidence",
-            "VM name visible in terminal screenshots (kali-lastname-studentID)",
+            "VM name visible in terminal screenshots (kali-abc123)",
             "Minimum 10 references included",
             "Document is .docx format (not PDF)",
             "Professional formatting and grammar throughout"
@@ -580,7 +580,7 @@
     "channels": [
       {
         "label": "Discord",
-        "detail": "#lab-help (fastest response)"
+        "detail": "#module-5-help (fastest response)"
       },
       {
         "label": "Office Hours",

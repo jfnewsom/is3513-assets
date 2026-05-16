@@ -16,14 +16,8 @@
       "color": "#00D26A",
       "label": "✓ 1. Read the Syllabus",
       "paragraphs": [
-        "The syllabus is your contract for grading, policies, and expectations. It covers late work policy, drop policies, academic integrity, and everything else that governs this course."
-      ],
-      "button": {
-        "label": "Read the Syllabus →",
-        "href": "https://utsa.instructure.com/courses/69678/assignments/syllabus",
-        "color": "#00D26A",
-        "textColor": "#0A0E17"
-      }
+        "The syllabus is your contract for grading, policies, and expectations. It covers late work policy, drop policies, academic integrity, and everything else that governs this course. <strong style=\"color:#ffffff;\">Find it in your Canvas course navigation</strong> (usually labeled “Syllabus” in the left sidebar)."
+      ]
     },
     {
       "type": "named_section",
@@ -58,17 +52,11 @@
     {
       "type": "named_section",
       "color": "#FF9F1C",
-      "label": "✓ 4. Set Up Your Kali VM",
+      "label": "✓ 4. Start Lab 1.1",
       "paragraphs": [
-        "Your Kali Linux VM is your security workstation for the entire semester. Every lab runs on it. Set it up now and name it correctly.",
-        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-lastname-studentID</code> (e.g., kali-newsom-abc123). This name must appear in every screenshot."
-      ],
-      "button": {
-        "label": "Kali VM Setup Guide →",
-        "href": "Kali_VM_Setup.html",
-        "color": "#FF9F1C",
-        "textColor": "#0A0E17"
-      }
+        "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong> &#8212; don’t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Find Lab 1.1 in your Canvas course modules.",
+        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-abc123</code>. Lab 1.1 explains why this name must appear in every screenshot from this lab onward."
+      ]
     },
     {
       "type": "two_column",

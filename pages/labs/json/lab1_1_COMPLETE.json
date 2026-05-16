@@ -269,7 +269,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Configure the VM name using this exact format: kali-lastname-studentID Example: kali-newsom-abc123",
+              "text": "Configure the VM name using this exact format: kali-abc123",
               "command": null,
               "whatThisDoes": null
             },
@@ -305,7 +305,7 @@
           "items": null,
           "type": "callout",
           "calloutType": "required",
-          "body": "Your VM name must follow the format kali-lastname-studentID. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots."
+          "body": "Your VM name must follow the format kali-abc123. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots."
         },
         {
           "title": "Screenshot",
@@ -318,7 +318,7 @@
           "title": "Common Pitfalls",
           "text": null,
           "items": [
-            "Wrong VM name format: Must be kali-lastname-studentID exactly — this appears in all your screenshots",
+            "Wrong VM name format: Must be kali-abc123 exactly — this appears in all your screenshots",
             "Too little RAM: 2GB minimum, 4GB recommended — less causes performance issues",
             "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
           ],
@@ -330,7 +330,7 @@
           "items": null,
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "body": "A VM entry in VirtualBox Manager with your name following the kali-lastname-studentID format, with the Kali ISO attached."
+          "body": "A VM entry in VirtualBox Manager with your name following the kali-abc123 format, with the Kali ISO attached."
         },
         {
           "title": "Textbook Reference",
@@ -384,7 +384,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Set hostname to match your VM name: kali-lastname-studentID",
+              "text": "Set hostname to match your VM name: kali-abc123",
               "command": null,
               "whatThisDoes": null
             },
@@ -594,7 +594,7 @@
               "text": "Display your hostname",
               "command": "hostname",
               "whatThisDoes": {
-                "output": "This should show kali-lastname-studentID. If it shows something else, you need to fix it before proceeding."
+                "output": "This should show kali-abc123. If it shows something else, you need to fix it before proceeding."
               }
             },
             {
@@ -787,7 +787,7 @@
       {
         "title": "Environment Verification",
         "items": [
-          "VM named exactly kali-lastname-studentID",
+          "VM named exactly kali-abc123",
           "Kali Linux boots to desktop",
           "Docker installed, running, and hello-world container executes",
           "All four screenshots saved to Module1_Screenshots folder"
@@ -806,7 +806,7 @@
   "needHelp": {
     "channels": [
       {
-        "detail": "#lab-help",
+        "detail": "#module-1-help",
         "label": "Discord"
       },
       {
