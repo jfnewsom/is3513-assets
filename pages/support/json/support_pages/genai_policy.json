@@ -12,7 +12,8 @@
       "color": "#7B68EE",
       "label": "Are you here to learn this material, or are you here for a grade?",
       "html": "<div style=\"color:#ffffff;font-size:15px;font-style:italic;line-height:1.7;margin-top:8px;\">Pick honestly. The rest of this policy depends on your answer.</div>",
-      "headingStyle": true
+      "headingStyle": true,
+      "icon": "psychology"
     },
     {
       "type": "intro",
@@ -23,7 +24,8 @@
       "color": "#00D26A",
       "colorRgb": "0, 210, 106",
       "label": "The Question That Decides Everything:",
-      "html": " Before you submit any work, ask yourself one question: <em style=\"color:#ffffff;\">“Will I be able to do this work at my first job — without asking AI for help?”</em><br><br><strong style=\"color:#00D26A;\">If the answer is yes</strong>, you’ve used AI the right way. You learned something, validated it against your own knowledge, and produced work you can defend.<br><br><strong style=\"color:#E63946;\">If the answer is no</strong>, you probably won’t get that first job — and if you do, you won’t keep it. Interviews are how the industry filters out people who can’t do the work. AI can write you a great résumé. It can’t make you good at the live technical screen."
+      "html": " Before you submit any work, ask yourself one question: <em style=\"color:#ffffff;\">“Will I be able to do this work at my first job — without asking AI for help?”</em><br><br><strong style=\"color:#00D26A;\">If the answer is yes</strong>, you’ve used AI the right way. You learned something, validated it against your own knowledge, and produced work you can defend.<br><br><strong style=\"color:#E63946;\">If the answer is no</strong>, you probably won’t get that first job — and if you do, you won’t keep it. Interviews are how the industry filters out people who can’t do the work. AI can write you a great résumé. It can’t make you good at the live technical screen.",
+      "icon": "help_outline"
     },
     {
       "type": "info_box",
@@ -123,7 +125,8 @@
       "color": "#4169E1",
       "colorRgb": "65, 105, 225",
       "label": "Tutor, Not Ghostwriter:",
-      "html": " Think of AI like a tutor — someone who explains, demonstrates, and helps you think clearly. Not a ghostwriter who hands you finished work to put your name on.<br><br><strong style=\"color:#ffffff;\">Tutors make you smarter. Ghostwriters make you fragile.</strong>"
+      "html": " Think of AI like a tutor — someone who explains, demonstrates, and helps you think clearly. Not a ghostwriter who hands you finished work to put your name on.<br><br><strong style=\"color:#ffffff;\">Tutors make you smarter. Ghostwriters make you fragile.</strong>",
+      "icon": "school"
     },
     {
       "type": "named_section",
@@ -138,7 +141,8 @@
       "type": "callout_bar",
       "color": "#7B68EE",
       "label": "The Bottom Line:",
-      "html": " The goal of this course is to make you a security professional with a working AI methodology — <strong style=\"color:#ffffff;\">both at the same time</strong>.<br><br>If you can defend the work as yours, AI helped you. If you can’t, it replaced you."
+      "html": " The goal of this course is to make you a security professional with a working AI methodology — <strong style=\"color:#ffffff;\">both at the same time</strong>.<br><br>If you can defend the work as yours, AI helped you. If you can’t, it replaced you.",
+      "icon": "summarize"
     },
     {
       "type": "footer",

@@ -56,14 +56,16 @@
       "color": "#00D26A",
       "colorRgb": "0, 210, 106",
       "label": "Think of drops as built-in sick days:",
-      "html": "Just like at work, sick days are not unlimited. Depending on how long you've been with the company, you get more &#8212; but in this class, you only have one per category. Take more than one day at work and it comes out of your check in the form of forfeited wages. Take more than one drop here and it comes out of your GPA in the form of forfeited grades."
+      "html": "Just like at work, sick days are not unlimited. Depending on how long you've been with the company, you get more &#8212; but in this class, you only have one per category. Take more than one day at work and it comes out of your check in the form of forfeited wages. Take more than one drop here and it comes out of your GPA in the form of forfeited grades.",
+      "icon": "medical_services"
     },
     {
       "type": "callout_bar",
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Late Work Policy:",
-      "html": "<strong>No late work accepted.</strong> If an emergency makes you miss a deadline, your one drop in that category absorbs it. Plan accordingly &#8212; drops are scarce, so save them for real emergencies."
+      "html": "<strong>No late work accepted.</strong> If an emergency makes you miss a deadline, your one drop in that category absorbs it. Plan accordingly &#8212; drops are scarce, so save them for real emergencies.",
+      "icon": "block"
     },
     {
       "type": "footer",

@@ -81,7 +81,8 @@
       "type": "callout_bar",
       "color": "#E63946",
       "label": "Enforcement:",
-      "html": " Minor rule violations may receive a warning. <strong style=\"color:#ffffff;\">Toxic, hostile, or disrespectful behavior results in immediate permanent removal without warning.</strong> Harassment, threats, or academic integrity violations will also be reported to UTSA Student Conduct. This server is a privilege, not a right — it exists because students before you built a helpful community. Don’t ruin it."
+      "html": " Minor rule violations may receive a warning. <strong style=\"color:#ffffff;\">Toxic, hostile, or disrespectful behavior results in immediate permanent removal without warning.</strong> Harassment, threats, or academic integrity violations will also be reported to UTSA Student Conduct. This server is a privilege, not a right — it exists because students before you built a helpful community. Don’t ruin it.",
+      "icon": "gavel"
     },
     {
       "type": "acknowledgment_box",

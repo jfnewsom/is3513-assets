@@ -16,7 +16,8 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per missing screenshot below the 20 required. A screenshot without the VM name visible counts as missing. Capped at &#8722;50%."
+      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per missing screenshot below the 20 required. A screenshot without the VM name visible counts as missing. Capped at &#8722;50%.",
+      "icon": "error"
     },
     {
       "type": "two_column",
@@ -119,7 +120,8 @@
       "color": "#00D26A",
       "colorRgb": "0, 210, 106",
       "label": "Pro Tip:",
-      "html": "<strong>Screenshot as you go.</strong> Don&#8217;t try to recreate screenshots after the fact. Take them in real-time as you work. Missing a screenshot means redoing the work &#8212; or taking the deduction."
+      "html": "<strong>Screenshot as you go.</strong> Don&#8217;t try to recreate screenshots after the fact. Take them in real-time as you work. Missing a screenshot means redoing the work &#8212; or taking the deduction.",
+      "icon": "lightbulb"
     },
     {
       "type": "footer",

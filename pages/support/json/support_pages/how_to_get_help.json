@@ -46,7 +46,8 @@
       "color": "#FF9F1C",
       "colorRgb": "255, 159, 28",
       "label": "The FERPA Rule:",
-      "html": " <strong>Don’t put personal information on Discord.</strong> Discord is a third-party platform UTSA doesn’t control. Grades, student IDs, personal circumstances, family information, medical or accommodation details — none of that goes on Discord, not even in a DM to me. Use your UTSA email (<code>john.newsom@utsa.edu</code>) for anything that touches PII. This protects both of us."
+      "html": " <strong>Don’t put personal information on Discord.</strong> Discord is a third-party platform UTSA doesn’t control. Grades, student IDs, personal circumstances, family information, medical or accommodation details — none of that goes on Discord, not even in a DM to me. Use your UTSA email (<code>john.newsom@utsa.edu</code>) for anything that touches PII. This protects both of us.",
+      "icon": "lock"
     },
     {
       "type": "named_section",
@@ -91,7 +92,8 @@
       "color": "#5865F2",
       "colorRgb": "88, 101, 242",
       "label": "Post in public channels — not DMs.",
-      "html": " The whole point of the Discord server is peer learning. If you have a question, other students probably have it too. Asking in public means three things happen: you might get an answer from a classmate or alumnus faster than from me; everyone else with the same question gets the answer too; and the answer stays searchable for the next person who hits the same problem.<br><br>I check Discord frequently during the day, less so at night — I’m not a 24/7 lurker. If you post at 2 a.m., expect that I might not see it until the next afternoon. Give classmates a couple of hours to answer before DMing me directly. Only DM me if you’ve already posted publicly and didn’t get a usable response."
+      "html": " The whole point of the Discord server is peer learning. If you have a question, other students probably have it too. Asking in public means three things happen: you might get an answer from a classmate or alumnus faster than from me; everyone else with the same question gets the answer too; and the answer stays searchable for the next person who hits the same problem.<br><br>I check Discord frequently during the day, less so at night — I’m not a 24/7 lurker. If you post at 2 a.m., expect that I might not see it until the next afternoon. Give classmates a couple of hours to answer before DMing me directly. Only DM me if you’ve already posted publicly and didn’t get a usable response.",
+      "icon": "forum"
     },
     {
       "type": "named_section",
@@ -148,7 +150,8 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Please Don’t:",
-      "html": " DM me on Discord before posting publicly — you’re cutting off the peer-learning loop the server exists for. Email me from a personal Gmail/Yahoo/Hotmail account — you’ll just get redirected back to UTSA email anyway. Email questions about command syntax or error messages — those get faster answers in the public Discord channels. Wait until the night before a deadline to ask for help."
+      "html": " DM me on Discord before posting publicly — you’re cutting off the peer-learning loop the server exists for. Email me from a personal Gmail/Yahoo/Hotmail account — you’ll just get redirected back to UTSA email anyway. Email questions about command syntax or error messages — those get faster answers in the public Discord channels. Wait until the night before a deadline to ask for help.",
+      "icon": "do_not_disturb"
     },
     {
       "type": "footer",

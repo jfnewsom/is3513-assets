@@ -13,7 +13,8 @@
       "colorRgb": "0, 188, 212",
       "label": "Welcome to NEXUS Security",
       "headingStyle": true,
-      "html": "You&#8217;ve just been hired as a <strong>Junior Security Analyst</strong>. NEXUS specializes in helping Texas businesses understand and improve their security posture. <strong style=\"color:#ffffff;\">Your first day starts now.</strong>"
+      "html": "You&#8217;ve just been hired as a <strong>Junior Security Analyst</strong>. NEXUS specializes in helping Texas businesses understand and improve their security posture. <strong style=\"color:#ffffff;\">Your first day starts now.</strong>",
+      "icon": "waving_hand"
     },
     {
       "type": "named_section",

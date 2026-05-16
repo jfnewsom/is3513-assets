@@ -41,21 +41,24 @@
       "color": "#7B68EE",
       "colorRgb": "123, 104, 238",
       "label": "The audience rule:",
-      "html": " <strong>Part I is for us. Part II is for them.</strong> The client never sees Part I — your timesheet, your runbook, your reflection on the engagement. That’s NEXUS internal documentation. The client only sees Part II — the Client Deliverable. Anything you’d be embarrassed to show the client (“I got stuck for two hours on this nmap flag,” “ChatGPT helped me figure out what the error meant”) belongs in Part I, not Part II. Keep the audience boundary clean and your writing becomes a lot easier."
+      "html": " <strong>Part I is for us. Part II is for them.</strong> The client never sees Part I — your timesheet, your runbook, your reflection on the engagement. That’s NEXUS internal documentation. The client only sees Part II — the Client Deliverable. Anything you’d be embarrassed to show the client (“I got stuck for two hours on this nmap flag,” “ChatGPT helped me figure out what the error meant”) belongs in Part I, not Part II. Keep the audience boundary clean and your writing becomes a lot easier.",
+      "icon": "groups"
     },
     {
       "type": "callout_bar",
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Required for every Engagement Packet:",
-      "html": " <strong>Submitted as .docx</strong> (no PDFs, no Google Docs links). <strong>20+ screenshots minimum</strong>, every one with your VM hostname (<code>kali-abc123</code>) visible in the terminal prompt. <strong>10+ references</strong> meeting the source quality standard — see the <a href=\"Citations.html\" style=\"color:#ffffff;text-decoration:underline;\">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part."
+      "html": " <strong>Submitted as .docx</strong> (no PDFs, no Google Docs links). <strong>20+ screenshots minimum</strong>, every one with your VM hostname (<code>kali-abc123</code>) visible in the terminal prompt. <strong>10+ references</strong> meeting the source quality standard — see the <a href=\"Citations.html\" style=\"color:#ffffff;text-decoration:underline;\">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part.",
+      "icon": "task_alt"
     },
     {
       "type": "callout_bar",
       "color": "#FF9F1C",
       "colorRgb": "255, 159, 28",
       "label": "Deadline Tip:",
-      "html": " Submit <strong>at least 10 minutes before the deadline</strong>, even if the packet isn’t perfect. Canvas accepts unlimited submissions until the deadline hits — you can keep uploading better versions right up to the cutoff. <strong>A 70 beats a zero every time.</strong>"
+      "html": " Submit <strong>at least 10 minutes before the deadline</strong>, even if the packet isn’t perfect. Canvas accepts unlimited submissions until the deadline hits — you can keep uploading better versions right up to the cutoff. <strong>A 70 beats a zero every time.</strong>",
+      "icon": "schedule"
     },
     {
       "type": "named_section",

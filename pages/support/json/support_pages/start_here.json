@@ -87,7 +87,8 @@
       "colorRgb": "0, 210, 106",
       "label": "What&#8217;s Next?",
       "headingStyle": true,
-      "html": "After completing all 4 checkpoints, head to <a href=\"Module_1.html\" style=\"color:#00D26A;text-decoration:underline;\"><strong>Module 1: Threat Intelligence &amp; Reconnaissance</strong></a> to begin your NEXUS journey."
+      "html": "After completing all 4 checkpoints, head to <a href=\"Module_1.html\" style=\"color:#00D26A;text-decoration:underline;\"><strong>Module 1: Threat Intelligence &amp; Reconnaissance</strong></a> to begin your NEXUS journey.",
+      "icon": "arrow_forward"
     },
     {
       "type": "footer",
