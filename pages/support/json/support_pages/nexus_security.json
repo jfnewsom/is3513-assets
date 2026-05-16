@@ -24,9 +24,18 @@
         "Every module follows the same consulting workflow. Internal training first, then a client engagement at the end."
       ],
       "items": [
-        "<strong style=\"color:#ffffff;\">Units 1&#8211;2 &#8212; Internal Training:</strong> Before touching a client system, you train on NEXUS&#8217;s methodology. Senior analysts guide you through tools, techniques, and documentation standards.",
-        "<strong style=\"color:#ffffff;\">Unit 3 &#8212; Client Engagement:</strong> You&#8217;re on the clock. Apply your training to a real client&#8217;s systems, document your findings, and deliver a professional report that goes to executives.",
-        "<strong style=\"color:#ffffff;\">Deliverable &#8212; Engagement Packet:</strong> Section A (Timesheet), Section B (Internal Runbook), Section C (Client Report). Format: .docx only."
+        "<strong style=\"color:#ffffff;\">Labs X.1–X.2 — Foundation Labs (Internal Training):</strong> Before touching a client system, you train on NEXUS’s methodology. Senior analysts guide you through tools, techniques, and documentation standards.",
+        "<strong style=\"color:#ffffff;\">Lab X.3 — Engagement Packet (Client Engagement):</strong> You’re on the clock. Apply your training to a real client’s systems, document your findings, and deliver a professional report that goes to executives.",
+        "<strong style=\"color:#ffffff;\">Deliverable — Engagement Packet:</strong> One <code>.docx</code> file, two parts. <strong style=\"color:#FF9F1C;\">Part I (Internal Packet):</strong> Timesheet + Runbook + Reflection. <strong style=\"color:#00BCD4;\">Part II (Client Deliverable):</strong> Cover, Executive Summary, Findings, Risk Analysis, Recommendations. The client only sees Part II. See the <a href=\"Engagement_Packet_Guide.html\" style=\"color:#7B68EE;\">Engagement Packet Guide</a> for details."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Red Team, Blue Team, Purple Team",
+      "paragraphs": [
+        "Real security work demands both offensive and defensive perspectives. <strong style=\"color:#ffffff;\">Red team thinking</strong> is the attacker’s mindset — what could go wrong, how would they get in, where are the gaps. <strong style=\"color:#ffffff;\">Blue team thinking</strong> is the defender’s — what controls catch this, how do we detect, how do we respond. The course rotates you through both.",
+        "<strong style=\"color:#7B68EE;\">Modules 2 and 5 sit in the middle</strong> — the purple team zone where you find the weakness AND recommend the fix. That’s the consulting sweet spot."
       ]
     },
     {
@@ -36,20 +45,20 @@
         "color": "#E63946",
         "label": "Red Team Thinking",
         "items": [
-          "How would an attacker approach this?",
-          "What would they find? What would they exploit?",
-          "What does the attack surface look like from the outside?",
-          "What&#8217;s the path to the crown jewels?"
+          "<strong style=\"color:#ffffff;\">Modules 1 &amp; 4</strong> — you operate from the attacker’s side.",
+          "How would an attacker approach this target?",
+          "What attack surface is exposed? What’s exploitable?",
+          "What’s the path from the outside in to the crown jewels?"
         ]
       },
       "right": {
         "color": "#4169E1",
         "label": "Blue Team Thinking",
         "items": [
-          "How do we detect this attack?",
-          "How do we prevent it?",
-          "What controls actually work in practice?",
-          "What does this look like in the logs?"
+          "<strong style=\"color:#ffffff;\">Module 3</strong> — you operate from the defender’s side.",
+          "How do we detect this attack in the logs?",
+          "How do we prevent it before it succeeds?",
+          "What controls actually work against a real adversary?"
         ]
       }
     },
@@ -61,7 +70,7 @@
         "<strong style=\"color:#ffffff;\">Track Your Time:</strong> Every hour is billable &#8212; internal training or client work. Your timesheet justifies NEXUS&#8217;s invoices.",
         "<strong style=\"color:#ffffff;\">Document Everything:</strong> If it&#8217;s not documented, it didn&#8217;t happen. Your runbooks help the next analyst; your reports go to executives.",
         "<strong style=\"color:#ffffff;\">Communicate Professionally:</strong> Clients aren&#8217;t always technical. Translate findings into business impact and make recommendations actionable.",
-        "<strong style=\"color:#ffffff;\">Learn Continuously:</strong> Every module builds on the last. Skills compound. By the end, you&#8217;ll have a portfolio of five real consulting engagements."
+        "<strong style=\"color:#ffffff;\">Learn Continuously:</strong> Every module builds on the last. Skills compound. By the end, you&#8217;ll have a portfolio of five professional engagement packets."
       ]
     },
     {
@@ -78,6 +87,12 @@
           "label": "Meet Your Clients →",
           "href": "Our_Clients.html",
           "color": "#FF9F1C",
+          "textColor": "#0A0E17"
+        },
+        {
+          "label": "Start Lab 1.1 →",
+          "href": "../labs/Lab1_1_Kali_Environment_Setup.html",
+          "color": "#00D26A",
           "textColor": "#0A0E17"
         }
       ]
