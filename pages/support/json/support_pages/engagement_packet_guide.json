@@ -36,7 +36,14 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Critical Requirements:",
-      "html": "Format: <strong>.docx only</strong> (no PDFs) &nbsp;&bull;&nbsp; File: <strong>LastName_Lab[X.Y]_EngagementPacket.docx</strong> &nbsp;&bull;&nbsp; Citations: <strong>10 minimum</strong> &nbsp;&bull;&nbsp; Screenshots: <strong>20 minimum, VM name visible in all</strong>"
+      "html": "Format: <strong>.docx only</strong> (no PDFs) &nbsp;&bull;&nbsp; Filename: <strong>doesn’t matter</strong> — Canvas renames on upload &nbsp;&bull;&nbsp; Citations: <strong>10 minimum</strong> &nbsp;&bull;&nbsp; Screenshots: <strong>20 minimum, VM name visible in all</strong>"
+    },
+    {
+      "type": "callout_bar",
+      "color": "#FF9F1C",
+      "colorRgb": "255, 159, 28",
+      "label": "Deadline Tip:",
+      "html": "Submit <strong>at least 10 minutes early</strong>, even if it’s not perfect. Submissions are unlimited — you can keep uploading better versions until the deadline. A <strong>70 beats a zero</strong> every time."
     },
     {
       "type": "named_section",
@@ -271,6 +278,16 @@
     },
     {
       "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Before You Submit: SOMETHING Beats NOTHING",
+      "paragraphs": [
+        "Every semester, students miss deadlines because they’re working to perfect their submission right up until the clock runs out. Don’t be that student.",
+        "<strong style=\"color:#ffffff;\">Submit something at least 10 minutes before the deadline</strong>, even if you don’t consider it finished. Canvas accepts unlimited submissions on Engagement Packets, so you can keep uploading improved versions right up to the deadline. The <strong style=\"color:#ffffff;\">last version submitted before the deadline is what gets graded</strong> — earlier versions are overwritten.",
+        "If your network drops, Canvas glitches, or Word crashes in the final five minutes and you have nothing submitted, your grade is a zero. If you submitted a 70%-quality version 10 minutes out and then never managed to upload your polished version, your grade is a 70. <strong style=\"color:#ffffff;\">A 70 is much better than a zero.</strong>"
+      ]
+    },
+    {
+      "type": "named_section",
       "color": "#00BCD4",
       "label": "Pre-Submission Checklist",
       "paragraphs": [
@@ -279,7 +296,6 @@
       "subheading": "Content Quality",
       "items": [
         "File saved as <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">.docx</code> &mdash; not PDF, not Pages, not Google Docs export",
-        "Filename: <code style=\"background:#1a1f2e;padding:2px 6px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;color:#00BCD4;\">LastName_LabX.3_EngagementPacket.docx</code>",
         "All three sections present: Section A Timesheet, Section B Runbook, Section C Client Report",
         "Table of contents included and auto-generated (not typed)",
         "Page numbers on all pages except the cover"

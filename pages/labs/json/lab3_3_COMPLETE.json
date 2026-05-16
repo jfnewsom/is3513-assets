@@ -46,6 +46,11 @@
         "title": "Minimum Requirements",
         "icon": "warning",
         "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this unit (20–30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, and textbook chapters all count."
+      },
+      {
+        "type": "warning",
+        "title": "Deadline Tip",
+        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
       }
     ],
     "clientContext": {
@@ -715,7 +720,6 @@
         "type": "checklist",
         "items": [
           "File format: .docx only (no PDFs)",
-          "Filename: LastName_Lab3.3_EngagementPacket.docx",
           "All screenshots embedded (not linked)",
           "Minimum 10 references",
           "Submitted before deadline"
@@ -723,8 +727,12 @@
         "title": "Submission Requirements"
       }
     ],
-    "canvasSubmission": "Submit <code>LastName_Lab3.3_EngagementPacket.docx</code> to the Lab 3.3 assignment in Canvas before the deadline.",
-    "finalWarning": "PDF submissions receive an automatic zero. Submit <strong>.docx only</strong>."
+    "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline.",
+    "finalWarning": "PDF submissions receive an automatic zero. Submit <strong>.docx only</strong>.",
+    "deadlineTip": {
+      "title": "Deadline Tip",
+      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    }
   },
   "gradingStandards": {
     "qualityLadder": {

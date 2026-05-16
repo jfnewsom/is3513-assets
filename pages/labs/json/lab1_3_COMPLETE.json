@@ -42,6 +42,11 @@
         "title": "Minimum Requirements",
         "icon": "warning",
         "body": "Minimum 22 screenshots (01&#8211;13 from Units 1&#8211;2, plus 14&#8211;22 from this unit). Minimum 10 references in APA format. All three report sections (A, B, C) must be present. Missing any of these results in automatic score penalties."
+      },
+      {
+        "type": "warning",
+        "title": "Deadline Tip",
+        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
       }
     ],
     "clientContext": {
@@ -459,7 +464,11 @@
         ]
       }
     ],
-    "canvasSubmission": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable."
+    "canvasSubmission": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable.",
+    "deadlineTip": {
+      "title": "Deadline Tip",
+      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    }
   },
   "gradingStandards": {
     "qualityLadder": {

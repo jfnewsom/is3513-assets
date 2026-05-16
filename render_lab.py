@@ -743,6 +743,13 @@ def render_final_checklist(data):
         canvas_text = canvas.get("text", canvas) if isinstance(canvas, dict) else canvas
         inner += callout_p("nx-cyan", "quiz", "Canvas Submission", canvas_text)
 
+    # Deadline tip callout (engagement packets) — SOMETHING beats NOTHING
+    tip = fc.get("deadlineTip")
+    if tip:
+        tip_text = tip.get("text", tip) if isinstance(tip, dict) else tip
+        tip_title = tip.get("title", "Deadline Tip") if isinstance(tip, dict) else "Deadline Tip"
+        inner += callout_p("nx-orange", "warning", tip_title, tip_text)
+
     # Canvas quiz callout (foundation labs)
     quiz = fc.get("canvasQuiz")
     if quiz:

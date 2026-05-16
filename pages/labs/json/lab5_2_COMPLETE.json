@@ -45,6 +45,11 @@
         "type": "warning",
         "title": "Minimum Requirements",
         "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-lastname-studentID). Use naming convention: ##-description.png."
+      },
+      {
+        "type": "warning",
+        "title": "Deadline Tip",
+        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
       }
     ],
     "mentorQuote": {
@@ -473,7 +478,7 @@
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A complete, polished Engagement Packet ready for submission: all sections finalized, updated Table of Contents with page numbers, all Lab 5.1 screenshots embedded with captions, VM name visible in every terminal screenshot, 10+ valid references listed, professional formatting and grammar reviewed, and the file saved as <code>IS3513_Lab52_Lastname_Firstname.docx</code>."
+          "text": "A complete, polished Engagement Packet ready for submission: all sections finalized, updated Table of Contents with page numbers, all Lab 5.1 screenshots embedded with captions, VM name visible in every terminal screenshot, 10+ valid references listed, professional formatting and grammar reviewed."
         },
         {
           "type": "callout",
@@ -540,13 +545,16 @@
         "title": "Submission Format",
         "items": [
           ".docx format (not PDF)",
-          "Filename: IS3513_Lab52_Lastname_Firstname.docx",
           "Professional formatting throughout",
           "Grammar and spelling checked"
         ]
       }
     ],
-    "canvasSubmission": "Submit your completed Engagement Packet as a single <code>.docx</code> file in Canvas. <strong>PDF submissions are not accepted.</strong> Verify your filename matches the required naming convention before submitting."
+    "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline. <strong>PDF submissions are not accepted.</strong>",
+    "deadlineTip": {
+      "title": "Deadline Tip",
+      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    }
   },
   "gradingStandards": {
     "qualityLadder": {

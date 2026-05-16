@@ -57,6 +57,11 @@
         "title": "Minimum Requirements",
         "icon": "warning",
         "body": "Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, and textbook chapters all count."
+      },
+      {
+        "type": "warning",
+        "title": "Deadline Tip",
+        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
       }
     ],
     "clientContext": {
@@ -773,7 +778,11 @@
       }
     ],
     "canvasSubmission": "Submit your completed Engagement Packet to the <strong>Lab 2.3 Assignment</strong> in Canvas as a single .docx file.",
-    "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting."
+    "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting.",
+    "deadlineTip": {
+      "title": "Deadline Tip",
+      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    }
   },
   "gradingStandards": {
     "qualityLadder": {
