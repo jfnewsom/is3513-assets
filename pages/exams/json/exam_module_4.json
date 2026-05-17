@@ -1,0 +1,22 @@
+{
+  "module": 4,
+  "moduleTitle": "Threats &amp; Attacks",
+  "stats": {
+    "questions": "30",
+    "timeLimit": "45 min",
+    "attempts": "1"
+  },
+  "chapters": [
+    { "number": "Chapter 15", "title": "Types of Attacks and Malicious Software" },
+    { "number": "Chapter 16", "title": "Security Tools and Techniques" }
+  ],
+  "allowed": "Textbook, personal notes, lab documentation, Kali VM, John the Ripper, Hashcat",
+  "notAllowed": "AI tools, collaboration, external websites",
+  "tips": [
+    "Review Labs 4.1&#8211;4.3 including your password-cracking results from both clients",
+    "Know the difference between NTLM and salted Linux hashes &#8212; and why it matters",
+    "Understand the major social-engineering attack types and how OSINT enables them"
+  ],
+  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+}

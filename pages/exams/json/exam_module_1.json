@@ -1,0 +1,22 @@
+{
+  "module": 1,
+  "moduleTitle": "Threat Intelligence &amp; Reconnaissance",
+  "stats": {
+    "questions": "30",
+    "timeLimit": "45 min",
+    "attempts": "1"
+  },
+  "chapters": [
+    { "number": "Chapter 1",  "title": "Introduction and Security Trends" },
+    { "number": "Chapter 2",  "title": "General Security Concepts" }
+  ],
+  "allowed": "Textbook, personal notes, lab documentation, Kali VM",
+  "notAllowed": "AI tools, collaboration, external websites",
+  "tips": [
+    "Review Labs 1.1&#8211;1.3 and your reconnaissance methodology",
+    "Know the CIA triad and how it applies to security decisions",
+    "Understand threat actor types and their motivations"
+  ],
+  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+}

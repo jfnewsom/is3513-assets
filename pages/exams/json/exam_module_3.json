@@ -1,0 +1,23 @@
+{
+  "module": 3,
+  "moduleTitle": "Network Security",
+  "stats": {
+    "questions": "30",
+    "timeLimit": "45 min",
+    "attempts": "1"
+  },
+  "chapters": [
+    { "number": "Chapter 9",  "title": "Network Fundamentals" },
+    { "number": "Chapter 13", "title": "IDS and Network Security (partial)" },
+    { "number": "Chapter 18", "title": "Cloud Computing" }
+  ],
+  "allowed": "Textbook, personal notes, lab documentation, Kali VM, Wireshark",
+  "notAllowed": "AI tools, collaboration, external websites",
+  "tips": [
+    "Review Labs 3.1&#8211;3.3 including your live Azure capture findings",
+    "Know CIDR, subnetting, and how to read Wireshark filters",
+    "Understand IDS detection models (signature vs. anomaly) and what each catches"
+  ],
+  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+}

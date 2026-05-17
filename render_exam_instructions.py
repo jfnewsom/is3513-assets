@@ -155,8 +155,8 @@ def main():
         print(f"Rendered: {dst}")
     else:
         base    = os.path.dirname(os.path.abspath(__file__))
-        src_dir = os.path.join(base, "pages", "support", "json", "exam_instructions")
-        out_dir = os.path.join(base, "pages", "support")
+        src_dir = os.path.join(base, "pages", "exams", "json")
+        out_dir = os.path.join(base, "pages", "exams")
         os.makedirs(out_dir, exist_ok=True)
         for src in sorted(glob.glob(os.path.join(src_dir, "exam_module_*.json"))):
             with open(src) as f:

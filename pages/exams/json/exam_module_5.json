@@ -1,0 +1,22 @@
+{
+  "module": 5,
+  "moduleTitle": "Infrastructure, Risk &amp; Resilience",
+  "stats": {
+    "questions": "30",
+    "timeLimit": "45 min",
+    "attempts": "1"
+  },
+  "chapters": [
+    { "number": "Chapter 10", "title": "Infrastructure Security" },
+    { "number": "Chapter 20", "title": "Risk Management" }
+  ],
+  "allowed": "Textbook, personal notes, lab documentation, Kali VM, your Lab 5.1 risk matrix",
+  "notAllowed": "AI tools, collaboration, external websites",
+  "tips": [
+    "Review Lab 5.1 (vulnerability assessment) and your Lab 5.2 Engagement Packet",
+    "Know CVSS 3.1 scoring and how technical severity differs from business priority",
+    "Understand the four risk treatment options and when each applies"
+  ],
+  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+}

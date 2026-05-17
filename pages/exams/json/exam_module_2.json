@@ -1,0 +1,22 @@
+{
+  "module": 2,
+  "moduleTitle": "Cryptography &amp; Authentication",
+  "stats": {
+    "questions": "30",
+    "timeLimit": "45 min",
+    "attempts": "1"
+  },
+  "chapters": [
+    { "number": "Chapter 6",  "title": "Applied Cryptography" },
+    { "number": "Chapter 11", "title": "Authentication and Remote Access" }
+  ],
+  "allowed": "Textbook, personal notes, lab documentation, Kali VM",
+  "notAllowed": "AI tools, collaboration, external websites",
+  "tips": [
+    "Review Labs 2.1&#8211;2.3 and your cryptography work with OpenSSL",
+    "Know symmetric vs. asymmetric crypto, key exchange, and hashing",
+    "Understand the chain of trust and how PKI authenticates parties"
+  ],
+  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+}
