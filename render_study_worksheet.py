@@ -193,22 +193,48 @@ def render_intro_callout(sec, accent):
   </div>"""
 
 
-def render_worksheet_section(sec, num, accent):
+def section_category_color(section_title, section_index, total_sections):
+    """Return the accent color for a worksheet section based on its semantic category.
+
+    Categories (consistent across all 5 modules):
+      Foundations         → blue   (#4169E1)   — always section 1
+      Content             → cyan   (#00BCD4)   — middle conceptual sections
+      Lab Knowledge       → green  (#00D26A)   — hands-on review
+      Professional App    → orange (#FF9F1C)   — ethics / communication
+      Concept Check       → purple (#7B68EE)   — capstone self-check
+    """
+    title_lower = section_title.lower()
+
+    # Specific category prefixes take priority
+    if title_lower.startswith("lab knowledge"):
+        return "#00D26A"  # green
+    if title_lower.startswith("professional application"):
+        return "#FF9F1C"  # orange
+    if title_lower.startswith("concept check"):
+        return "#7B68EE"  # purple
+
+    # Position-based: Section 1 is always Foundations
+    if section_index == 1:
+        return "#4169E1"  # blue
+
+    # Everything else is Content
+    return "#00BCD4"  # cyan
+
+
+def render_worksheet_section(sec, num, total, page_accent):
     """A numbered section: its own header + card with content blocks.
 
-    Auto-classifies as 'major' or 'checkpoint' based on section title.
-    Major sections (Lab Knowledge / Professional Application / Concept Check) get
-    a full-size header. Other sections get the compact checkpoint treatment.
+    All sections render at the compact checkpoint size; only the page header
+    is full-size. Each section's accent color is determined by its semantic
+    category, which is consistent across all 5 modules.
 
     An optional `subtitle` field renders as the gold sub-header bar (.nx-sub),
     which provides visual transition between the header and the card body.
-    """
-    # Auto-classify by title prefix (handles "Lab Knowledge — Networking" etc.)
-    title_lower = sec["title"].lower()
-    major_prefixes = ("lab knowledge", "professional application", "concept check")
-    is_major = any(title_lower.startswith(p) for p in major_prefixes)
 
-    header_class = "nx-header" if is_major else "nx-header nx-checkpoint"
+    The page_accent argument is preserved for backward compatibility but is
+    not used; per-section color comes from the category classifier.
+    """
+    accent = section_category_color(sec["title"], num, total)
 
     # Optional sub-bar between header and card body (gold by default)
     subtitle = sec.get("subtitle", "").strip()
@@ -216,7 +242,7 @@ def render_worksheet_section(sec, num, accent):
 
     content_html = render_content_blocks(sec.get("content", []))
     return f"""  <div class="nx-worksheet-section">
-    <div class="{header_class}" style="--accent: {accent};">
+    <div class="nx-header nx-checkpoint" style="--accent: {accent};">
       <div class="nx-header-top">
         <div class="nx-kw">{num}</div>
         <div class="nx-sec">{sec['title']}</div>
@@ -250,9 +276,12 @@ def render(data):
     if data.get("intro"):
         parts.append(render_intro_callout(data["intro"], accent))
 
-    # Numbered worksheet sections — uniform accent per worksheet (no per-section color)
-    for i, sec in enumerate(data.get("sections", []), start=1):
-        parts.append(render_worksheet_section(sec, i, accent))
+    # Numbered worksheet sections — each gets accent by semantic category
+    # (Foundations, Content, Lab Knowledge, Professional, Concept Check)
+    sections = data.get("sections", [])
+    total = len(sections)
+    for i, sec in enumerate(sections, start=1):
+        parts.append(render_worksheet_section(sec, i, total, accent))
 
     # Closing callout
     if data.get("closing"):
