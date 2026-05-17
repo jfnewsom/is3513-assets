@@ -7,7 +7,18 @@
   "chapters": "15 & 16",
   "client": "Brazos Financial + Alamo Industries",
   "clientColor": "#FF9F1C",
-  "logo": null,
+  "logo": [
+    {
+      "src": "branding/brazos-financial-dark.svg",
+      "alt": "Brazos Financial Group logo",
+      "cssClass": "nx-logo-glow"
+    },
+    {
+      "src": "branding/alamo-industries-dark.svg",
+      "alt": "Alamo Industries logo",
+      "cssClass": "nx-logo-glow"
+    }
+  ],
   "overview": "Module 4 is where you go on offense &#8212; carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Lab 4.1 focuses on Windows (NTLM) hashes from Brazos. Lab 4.2 moves to Linux (SHA-512) hashes from Alamo. Lab 4.3 you deliver a professional password security assessment to both clients.",
   "units_breakdown": [
     {

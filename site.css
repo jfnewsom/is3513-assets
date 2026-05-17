@@ -543,6 +543,19 @@ summary {
   float: right;
   margin: 4px 0 14px 24px;
 }
+/* Stacked logos (e.g. Module 4 dual-client): float the wrapper, not each img */
+.nx-module-logo-stack {
+  float: right;
+  margin: 4px 0 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.nx-module-logo-stack .nx-module-logo.nx-module-logo {
+  float: none;          /* parent handles the float */
+  margin: 0;            /* spacing controlled by parent gap */
+}
 .nx-stakeholder-quotes {
   display: flex;
   flex-direction: column;
@@ -556,6 +569,15 @@ summary {
     max-width: 110px;
     float: right;
     margin: 0 0 12px 16px;
+  }
+  .nx-module-logo-stack {
+    float: right;
+    margin: 0 0 12px 16px;
+    gap: 12px;
+  }
+  .nx-module-logo-stack .nx-module-logo.nx-module-logo {
+    width: 110px;
+    max-width: 110px;
   }
 }
 

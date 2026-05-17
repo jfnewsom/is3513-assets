@@ -66,27 +66,41 @@ ASSETS = "https://jfnewsom.github.io/is3513-assets"
 
 
 def render_client_logo(logo):
-    """Optional client logo, floated right of overview paragraph.
+    """Optional client logo(s), floated right of overview paragraph.
 
     Schema:
-      "logo": {
+      "logo": {                                  # single logo
         "src": "branding/brazos-financial-dark.svg",
         "alt": "Brazos Financial Group logo",
         "cssClass": "nx-logo-glow"   # optional
       }
+      OR
+      "logo": [ {...}, {...} ]                   # multiple logos, stacked vertically
     """
     if not logo:
         return ""
-    src = logo.get("src", "")
-    if src and not src.startswith("http"):
-        src = f"{ASSETS}/{src.lstrip('/')}"
-    alt = logo.get("alt", "")
-    cls = "nx-module-logo"
-    if logo.get("cssClass"):
-        cls += f" {logo['cssClass']}"
-    # width attribute is intentional: SVGs without intrinsic dimensions can
-    # otherwise render at the container's full width if CSS fails to load.
-    return f'<img class="{cls}" src="{src}" alt="{alt}" width="160" height="160" style="width:160px;height:auto;">'
+
+    # Normalize to list
+    logos = logo if isinstance(logo, list) else [logo]
+
+    def one(item):
+        src = item.get("src", "")
+        if src and not src.startswith("http"):
+            src = f"{ASSETS}/{src.lstrip('/')}"
+        alt = item.get("alt", "")
+        cls = "nx-module-logo"
+        if item.get("cssClass"):
+            cls += f" {item['cssClass']}"
+        # width attribute is intentional: SVGs without intrinsic dimensions can
+        # otherwise render at the container's full width if CSS fails to load.
+        return f'<img class="{cls}" src="{src}" alt="{alt}" width="160" height="160" style="width:160px;height:auto;">'
+
+    if len(logos) == 1:
+        return one(logos[0])
+
+    # Multiple logos: wrap in a floated stack container so they share one float column
+    inner = "".join(one(l) for l in logos)
+    return f'<div class="nx-module-logo-stack">{inner}</div>'
 
 
 def render_stakeholder_quote(s):
