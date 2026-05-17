@@ -1,7 +1,6 @@
 {
   "_notes_for_john": {
     "verify_before_publishing": [
-      "syllabusUrl is still pointing to Spring 2026 — update when Summer 2026 URL is live",
       "Phone number is confirmed correct as of May 2026"
     ]
   },
@@ -73,7 +72,7 @@
       "icon": "description",
       "color": "purple",
       "label": "Course Syllabus",
-      "href": "https://utsa.simplesyllabus.com/doc/dw263zc1k/Spring-2026-IS-3513-ON1-Information-Assurance-and-Security?mode=view",
+      "href": "https://utsa.simplesyllabus.com/doc/16cdx4gas/Summer-2026-IS-3513-ON1-Information-Assurance-and-Security?mode=view",
       "external": true
     },
     {
@@ -98,15 +97,16 @@
   ],
 
   "contact": [
-    { "label": "Email",        "value": "john.newsom@utsa.edu",                 "href": "mailto:john.newsom@utsa.edu" },
-    { "label": "Phone/Text",   "value": "(210) 533-5512" },
-    { "label": "Office Hours", "value": "Zoom by appointment via Calendly",     "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true },
-    { "label": "Schedule",     "value": "calendly.com/john-newsom-utsa",        "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true, "linkColor": "cyan" }
+    { "label": "Email",         "value": "john.newsom@utsa.edu",                 "href": "mailto:john.newsom@utsa.edu" },
+    { "label": "Phone/Text",    "value": "(210) 533-5512" },
+    { "label": "Student Hours", "value": "Tuesdays 6:00 PM via Zoom (drop-in)",  "href": "https://utsa.zoom.us/j/96542097913", "external": true },
+    { "label": "Office Hours",  "value": "By appointment via Calendly",          "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true },
+    { "label": "Schedule",      "value": "calendly.com/john-newsom-utsa",        "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true, "linkColor": "cyan" }
   ],
 
   "format": [
     { "label": "Delivery",      "value": "Asynchronous Online" },
-    { "label": "Live Sessions", "value": "None (work at your own pace)" },
+    { "label": "Live Sessions", "value": "Weekly Student Hours (Tuesdays 6 PM); otherwise asynchronous" },
     { "label": "Support",       "value": "Discord, Email, Calendly", "href": "How_To_Get_Help.html", "linkColor": "cyan" },
     { "label": "Textbook",      "value": "Conklin &amp; White, 6th Ed. (required)", "href": "Textbook.html", "linkColor": "purple" }
   ],
