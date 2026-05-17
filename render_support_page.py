@@ -7,7 +7,7 @@ No inline styles, no external SVG images.
 Section types handled:
   intro, callout_bar, stat_blocks, two_column, info_box,
   named_section, platform_cards, two_col_specs, button_row,
-  rules_list, acknowledgment_box, footer
+  rules_list, acknowledgment_box, client_card, mentor_card, footer
 
 Usage:
   python3 render_support_page.py                      # all support pages
@@ -561,6 +561,94 @@ def render_client_card(sec):
     )
 
 
+def render_mentor_card(sec):
+    """Two-column mentor showcase: portrait on left, facts on right, quote below.
+
+    Visual parity with client_card but for NEXUS staff mentors.
+
+    Schema:
+      {
+        "type": "mentor_card",
+        "color": "#4169E1",
+        "label": "Marcus Chen — Founder & Principal Consultant",
+        "portrait": {
+          "src": "headshots/marcus-chen.png",
+          "alt": "Marcus Chen portrait"
+        },
+        "tagline": "Strategic vision · Executive communication",   // optional one-liner
+        "modules": ["Module 1", "Module 5"],                        // optional list of module tags
+        "paragraphs": [ ... ],                                       // narrative
+        "quote": "The executive summary is the most important..."   // optional pull quote
+      }
+    """
+    color = sec["color"]
+    label = sec["label"]
+    portrait = sec.get("portrait", {})
+    tagline = sec.get("tagline", "")
+    modules = sec.get("modules", [])
+    paragraphs = sec.get("paragraphs", [])
+    quote = sec.get("quote", "")
+
+    # Portrait cell
+    portrait_src = portrait.get("src", "")
+    if portrait_src and not portrait_src.startswith("http"):
+        portrait_src = f'{ASSETS}/{portrait_src.lstrip("/")}'
+    portrait_alt = portrait.get("alt", "")
+    portrait_html = (
+        f'      <div class="nx-mentor-card__portrait-cell">\n'
+        f'        <img class="nx-mentor-card__portrait" src="{portrait_src}" alt="{portrait_alt}" style="border-color: {color};">\n'
+        f'      </div>\n'
+        if portrait_src else ''
+    )
+
+    # Module tags
+    tags_html = ""
+    if modules:
+        tag_items = "".join(
+            f'<span class="nx-mentor-card__tag" style="border-color: {color}; color: {color};">{m}</span>'
+            for m in modules
+        )
+        tags_html = f'        <div class="nx-mentor-card__tags">{tag_items}</div>\n'
+
+    # Tagline
+    tagline_html = (
+        f'        <div class="nx-mentor-card__tagline">{tagline}</div>\n'
+        if tagline else ''
+    )
+
+    # Facts cell (tagline + tags + paragraphs)
+    facts_paragraphs = "".join(
+        f'        <p class="nx-mentor-card__body">{p}</p>\n' for p in paragraphs
+    )
+    facts_html = (
+        f'      <div class="nx-mentor-card__facts-cell">\n'
+        f'{tagline_html}'
+        f'{tags_html}'
+        f'{facts_paragraphs}'
+        f'      </div>\n'
+    )
+
+    # Quote bubble (reuses .nx-quote-* pattern from lab pages)
+    quote_html = ""
+    if quote:
+        quote_html = (
+            f'    <div class="nx-mentor-card__quote" style="border-left-color: {color};">\n'
+            f'      <p>&ldquo;{quote}&rdquo;</p>\n'
+            f'    </div>\n'
+        )
+
+    return (
+        f'  <div class="nx-named-section nx-mentor-card">\n'
+        f'    {section_label(label, color)}\n'
+        f'    <div class="nx-mentor-card__grid">\n'
+        f'{portrait_html}'
+        f'{facts_html}'
+        f'    </div>\n'
+        f'{quote_html}'
+        f'  </div>'
+    )
+
+
 SECTION_RENDERERS = {
     "intro":            render_intro,
     "callout_bar":      render_callout_bar,
@@ -575,6 +663,7 @@ SECTION_RENDERERS = {
     "acknowledgment_box": render_acknowledgment_box,
     "expandable_examples": render_expandable_examples,
     "client_card":      render_client_card,
+    "mentor_card":      render_mentor_card,
     "footer":           render_footer,
 }
 

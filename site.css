@@ -433,6 +433,94 @@ summary {
   }
 }
 
+/* ── Mentor card (Meet the Team page) ─────────────────────── */
+.nx-mentor-card__grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 16px 0 18px;
+}
+.nx-mentor-card__portrait-cell {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+}
+.nx-mentor-card__portrait {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7B68EE;     /* overridden inline per mentor accent */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+.nx-mentor-card__facts-cell {
+  min-width: 0;
+}
+.nx-mentor-card__tagline {
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+  color: #B0B8C4;
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.nx-mentor-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.nx-mentor-card__tag {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid #7B68EE;    /* overridden inline per mentor accent */
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.nx-mentor-card__body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #B0B8C4;
+  margin: 0 0 12px 0;
+}
+.nx-mentor-card__quote {
+  margin: 8px 0 0 0;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid #7B68EE;  /* overridden inline per mentor accent */
+  border-radius: 0 6px 6px 0;
+  font-family: 'Roboto Slab', serif;
+  font-style: italic;
+  color: #d8dde6;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.nx-mentor-card__quote p { margin: 0; }
+/* Mobile: stack portrait above facts */
+@media (max-width: 700px) {
+  .nx-mentor-card__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+  }
+  .nx-mentor-card__portrait {
+    width: 140px;
+    height: 140px;
+  }
+  .nx-mentor-card__facts-cell {
+    width: 100%;
+  }
+}
+
 /* ── Logo glow utility (opt-in via class on <img>) ────────── */
 /* Default: subtle blue lift (Option C). Use on logos that sit on dark backgrounds. */
 .nx-logo-glow {
