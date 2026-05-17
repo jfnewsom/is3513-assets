@@ -12,67 +12,141 @@
       "html": "NEXUS Security serves Texas businesses across multiple industries. Each client has unique challenges, regulatory requirements, and stakeholders. You&#8217;ll work with all four over the course of the semester."
     },
     {
-      "type": "named_section",
+      "type": "client_card",
       "color": "#FF9F1C",
       "label": "Brazos Financial Group — Modules 1 &amp; 4",
+      "logo": {
+        "src": "branding/brazos-financial-dark.svg",
+        "alt": "Brazos Financial Group logo",
+        "cssClass": "nx-logo-glow"
+      },
       "paragraphs": [
-        "<strong style=\"color:#B0B8C4;\">Dallas, Texas &bull; Financial Services &bull; 450 employees</strong>",
-        "Wealth management firm managing $2.8B in assets. A recent merger brought legacy systems and compliance concerns. An SEC examination is scheduled in 6 months. Leadership knows they have problems but needs data to justify remediation budget.",
+        "<strong style=\"color:#B0B8C4;\">Dallas, Texas &bull; Financial Services &bull; 450 employees &bull; $2.8B AUM</strong>",
+        "Wealth management firm serving high-net-worth clients across Texas and the Southwest. A recent merger with a smaller Austin firm brought legacy systems and compliance concerns. New SEC cybersecurity rules require formal security programs, and an examination is on the horizon. Leadership knows they have gaps but needs data to justify remediation budget.",
         "<strong style=\"color:#ffffff;\">Environment:</strong> Windows Active Directory &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> SEC compliance"
       ],
-      "subheading": "Key Stakeholders:",
-      "items": [
-        "Ray Jimenez &#8212; CTO",
-        "Victoria Caldwell &#8212; CCO",
-        "Maggie Brazos-Chen &#8212; CEO"
+      "stakeholders": [
+        {
+          "name": "Ray Jimenez",
+          "title": "Chief Technology Officer",
+          "portrait": "headshots/ray-jimenez.png"
+        },
+        {
+          "name": "Victoria Caldwell",
+          "title": "Chief Compliance Officer",
+          "portrait": "headshots/victoria-caldwell.png"
+        },
+        {
+          "name": "Maggie Brazos-Chen",
+          "title": "CEO",
+          "portrait": "headshots/maggie-brazos-chen.png"
+        }
       ]
     },
     {
-      "type": "named_section",
+      "type": "client_card",
       "color": "#00BCD4",
       "label": "Gulf Coast Healthcare Partners — Modules 2 &amp; 3",
+      "logo": {
+        "src": "branding/gulf-coast-healthcare-dark.svg",
+        "alt": "Gulf Coast Healthcare Partners logo",
+        "cssClass": "nx-logo-glow"
+      },
       "paragraphs": [
-        "<strong style=\"color:#B0B8C4;\">Houston, Texas &bull; Healthcare &bull; 800+ employees</strong>",
-        "Multi-location healthcare network with 12 clinics across Greater Houston. The patient portal has certificate issues causing browser security warnings. HIPAA compliance is non-negotiable &#8212; patient trust is everything.",
-        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed (Linux servers) &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> HIPAA compliance, patient trust"
+        "<strong style=\"color:#B0B8C4;\">Houston, Texas &bull; Healthcare &bull; 12,000 employees</strong>",
+        "Regional healthcare system serving Greater Houston with acute care hospitals, specialty centers, and physician networks. A ransomware attack 18 months ago exposed significant security gaps. Since then they’ve invested heavily in security but need third-party validation. HIPAA compliance is non-negotiable — patient trust is everything.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed (Linux servers, legacy Windows on medical devices) &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> HIPAA compliance, post-incident validation"
       ],
-      "subheading": "Key Stakeholders:",
-      "items": [
-        "Dr. Michael Okonkwo &#8212; CMO",
-        "Jennifer Walsh &#8212; CISO",
-        "Thomas Kowalski &#8212; IT Manager"
+      "stakeholders": [
+        {
+          "name": "Jennifer Walsh",
+          "title": "Chief Information Security Officer",
+          "portrait": "headshots/jennifer-walsh.png"
+        },
+        {
+          "name": "Dr. Michael Okonkwo",
+          "title": "Chief Medical Information Officer",
+          "portrait": "headshots/michael-okonkwo.png"
+        },
+        {
+          "name": "Thomas Kowalski",
+          "title": "VP of Infrastructure",
+          "portrait": "headshots/thomas-kowalski.png"
+        },
+        {
+          "name": "Angela Washington",
+          "title": "Privacy Officer",
+          "portrait": "headshots/angela-washington.png"
+        }
       ]
     },
     {
-      "type": "named_section",
+      "type": "client_card",
       "color": "#00D26A",
       "label": "LoneStar DevOps — Modules 3 &amp; 5",
+      "logo": {
+        "src": "branding/lonestar-devops-dark.svg",
+        "alt": "LoneStar DevOps logo",
+        "cssClass": "nx-logo-glow"
+      },
       "paragraphs": [
-        "<strong style=\"color:#B0B8C4;\">Austin, Texas &bull; Technology &bull; 45 employees</strong>",
-        "Fast-growing DevOps startup seeking enterprise clients. Series B funding depends on passing enterprise security reviews. A &#8220;move fast, break things&#8221; culture is colliding with enterprise compliance requirements.",
-        "<strong style=\"color:#ffffff;\">Environment:</strong> Cloud-native, containers &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> Enterprise security review"
+        "<strong style=\"color:#B0B8C4;\">Austin, Texas &bull; Technology / SaaS &bull; 85 employees</strong>",
+        "Fast-growing DevOps consulting firm seeking enterprise clients. Series A is closed; Series B depends on passing enterprise security reviews from prospective customers. A \"move fast, break things\" culture is colliding with enterprise compliance requirements. They need help fast and they’re willing to learn.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Cloud-native, containers, CI/CD pipelines &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> Enterprise security review readiness"
       ],
-      "subheading": "Key Stakeholders:",
-      "items": [
-        "Amanda Nguyen &#8212; CEO",
-        "Sarah Martinez &#8212; DevOps Lead",
-        "Miguel Rodriguez &#8212; DevOps Engineer"
+      "stakeholders": [
+        {
+          "name": "Amanda Nguyen",
+          "title": "CEO & Co-Founder",
+          "portrait": "headshots/amanda-nguyen.png"
+        },
+        {
+          "name": "Sarah Martinez",
+          "title": "Senior DevOps Engineer",
+          "portrait": "headshots/sarah-martinez.png"
+        },
+        {
+          "name": "Miguel Rodriguez",
+          "title": "DevOps Engineer",
+          "portrait": "headshots/miguel-rodriguez.png"
+        }
       ]
     },
     {
-      "type": "named_section",
+      "type": "client_card",
       "color": "#E63946",
       "label": "Alamo Industries — Module 4",
+      "logo": {
+        "src": "branding/alamo-industries-dark.svg",
+        "alt": "Alamo Industries logo",
+        "cssClass": "nx-logo-glow"
+      },
       "paragraphs": [
         "<strong style=\"color:#B0B8C4;\">San Antonio, Texas &bull; Manufacturing &bull; 2,500 employees</strong>",
-        "Third-generation family manufacturing company with DoD contracts. CMMC Level 2 certification is required to keep federal business. Legacy OT systems haven&#8217;t been updated &#8220;since the Reagan administration.&#8221;",
-        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed IT/OT, Linux &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> CMMC certification"
+        "Third-generation family manufacturing company with significant DoD contracts. CMMC Level 2 certification is required to keep federal business. Legacy OT systems haven’t seen serious updates in decades. Bobby Alamo III values stability and tradition, but the contracts won’t wait.",
+        "<strong style=\"color:#ffffff;\">Environment:</strong> Mixed IT/OT, legacy systems, some Linux &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong style=\"color:#ffffff;\">Key Issue:</strong> CMMC Level 2 certification"
       ],
-      "subheading": "Key Stakeholders:",
-      "items": [
-        "Bobby Alamo III &#8212; CEO",
-        "Elena Vasquez &#8212; IT Manager",
-        "Frank Morrison &#8212; Plant Manager"
+      "stakeholders": [
+        {
+          "name": "Bobby Alamo III",
+          "title": "President & CEO",
+          "portrait": "headshots/bobby-alamo.png"
+        },
+        {
+          "name": "Elena Vasquez",
+          "title": "Director of Information Technology",
+          "portrait": "headshots/elena-vasquez.png"
+        },
+        {
+          "name": "Frank Morrison",
+          "title": "Plant Manager",
+          "portrait": "headshots/frank-morrison.png"
+        },
+        {
+          "name": "Captain David Park, USMC (Ret.)",
+          "title": "Contracts & Compliance",
+          "portrait": "headshots/david-park.png"
+        }
       ]
     },
     {

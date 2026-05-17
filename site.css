@@ -364,6 +364,93 @@ summary {
   }
 }
 
+/* ── Client card (Our Clients page) ─────────────────────── */
+.nx-client-card__grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  gap: 28px;
+  align-items: center;
+  margin: 16px 0 24px;
+}
+.nx-client-card__logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.nx-client-logo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+}
+.nx-stakeholders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 18px;
+}
+.nx-stakeholder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.nx-stakeholder__portrait {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+}
+.nx-stakeholder__info {
+  min-width: 0;
+  overflow: hidden;
+}
+.nx-stakeholder__name {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.nx-stakeholder__title {
+  color: #B0B8C4;
+  font-size: 12px;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+/* Mobile: stack logo above stakeholders, collapse grid to 1 col */
+@media (max-width: 700px) {
+  .nx-client-card__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .nx-client-card__logo-cell {
+    padding: 4px;
+  }
+  .nx-stakeholders-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Logo glow utility (opt-in via class on <img>) ────────── */
+/* Default: subtle blue lift (Option C). Use on logos that sit on dark backgrounds. */
+.nx-logo-glow {
+  filter: drop-shadow(0 0 24px rgba(100, 140, 220, 0.4));
+}
+/* Alternate variants for opt-in per logo: */
+.nx-logo-glow--white {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+.nx-logo-glow--cyan {
+  filter: drop-shadow(0 0 18px rgba(0, 188, 212, 0.55));
+}
+.nx-logo-glow--dual {
+  filter:
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.25))
+    drop-shadow(0 0 24px rgba(100, 140, 220, 0.4));
+}
+
 /* ── Character quote card ─────────────────────────────────── */
 /* ── Character quote / mentor callout (bubble style) ─────────── */
 .nx-quote { margin: 25px 0; }

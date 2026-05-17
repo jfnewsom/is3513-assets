@@ -41,7 +41,8 @@ def render_image(image):
         "src": "third-party/cover.jpg",      # relative to repo root
         "alt": "Textbook cover",
         "float": "right"|"left"|"none",      # default 'right'
-        "width": "180px"                      # default '180px'
+        "width": "180px",                     # default '180px'
+        "cssClass": "nx-logo-glow"            # optional: extra classes (e.g. glow utility)
       }
     """
     if not image:
@@ -54,7 +55,10 @@ def render_image(image):
     alt = image.get("alt", "")
     flt = image.get("float", "right")
     width = image.get("width", "180px")
+    extra_class = image.get("cssClass", "")
     css_class = f"nx-section-image nx-section-image--{flt}"
+    if extra_class:
+        css_class += f" {extra_class}"
     return (
         f'    <img class="{css_class}" src="{full_src}" alt="{alt}" '
         f'style="width: {width};">\n'
@@ -472,6 +476,91 @@ def render_footer(sec):
 
 # ── Dispatch ───────────────────────────────────────────────────────────────────
 
+def render_client_card(sec):
+    """Two-column client showcase: logo on left, stakeholder grid on right.
+
+    Schema:
+      {
+        "type": "client_card",
+        "color": "#FF9F1C",
+        "label": "Brazos Financial Group — Modules 1 & 4",
+        "logo": {
+          "src": "branding/brazos-financial-dark.svg",
+          "alt": "Brazos Financial Group logo",
+          "cssClass": "nx-logo-glow"     // optional
+        },
+        "paragraphs": [ ... ],              // narrative paragraphs after the two-column block
+        "stakeholders": [
+          { "name": "Victoria Caldwell",
+            "title": "Chief Compliance Officer",
+            "portrait": "headshots/victoria-caldwell.png" },
+          ...
+        ]
+      }
+    """
+    color = sec["color"]
+    label = sec["label"]
+    logo = sec.get("logo", {})
+    stakeholders = sec.get("stakeholders", [])
+    paragraphs = sec.get("paragraphs", [])
+
+    # Logo side
+    logo_src = logo.get("src", "")
+    if logo_src and not logo_src.startswith("http"):
+        logo_src = f'{ASSETS}/{logo_src.lstrip("/")}'
+    logo_alt = logo.get("alt", "")
+    logo_class = "nx-client-logo"
+    if logo.get("cssClass"):
+        logo_class += f" {logo['cssClass']}"
+
+    logo_html = (
+        f'      <div class="nx-client-card__logo-cell">\n'
+        f'        <img class="{logo_class}" src="{logo_src}" alt="{logo_alt}">\n'
+        f'      </div>\n'
+        if logo_src else ''
+    )
+
+    # Stakeholder grid
+    stakeholder_items = []
+    for s in stakeholders:
+        portrait_src = s.get("portrait", "")
+        if portrait_src and not portrait_src.startswith("http"):
+            portrait_src = f'{ASSETS}/{portrait_src.lstrip("/")}'
+        stakeholder_items.append(
+            f'        <div class="nx-stakeholder">\n'
+            f'          <img class="nx-stakeholder__portrait" src="{portrait_src}" alt="{s.get("name", "")} portrait">\n'
+            f'          <div class="nx-stakeholder__info">\n'
+            f'            <div class="nx-stakeholder__name">{s.get("name", "")}</div>\n'
+            f'            <div class="nx-stakeholder__title">{s.get("title", "")}</div>\n'
+            f'          </div>\n'
+            f'        </div>\n'
+        )
+    stakeholders_html = (
+        f'      <div class="nx-client-card__stakeholders-cell">\n'
+        f'        <div class="nx-stakeholders-grid">\n'
+        f'{"".join(stakeholder_items)}'
+        f'        </div>\n'
+        f'      </div>\n'
+        if stakeholders else ''
+    )
+
+    # Narrative paragraphs
+    paragraphs_html = "".join(
+        f'    <p class="nx-exam-body">{p}</p>\n' for p in paragraphs
+    )
+
+    return (
+        f'  <div class="nx-named-section nx-client-card">\n'
+        f'    {section_label(label, color)}\n'
+        f'    <div class="nx-client-card__grid">\n'
+        f'{logo_html}'
+        f'{stakeholders_html}'
+        f'    </div>\n'
+        f'{paragraphs_html}'
+        f'  </div>'
+    )
+
+
 SECTION_RENDERERS = {
     "intro":            render_intro,
     "callout_bar":      render_callout_bar,
@@ -485,6 +574,7 @@ SECTION_RENDERERS = {
     "rules_list":       render_rules_list,
     "acknowledgment_box": render_acknowledgment_box,
     "expandable_examples": render_expandable_examples,
+    "client_card":      render_client_card,
     "footer":           render_footer,
 }
 
