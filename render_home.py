@@ -23,18 +23,21 @@ def render_cta(cta):
 
 
 def render_narrative_intro(intro):
-    """NEXUS narrative intro: centered logo, tagline, descriptive paragraph.
+    """NEXUS narrative intro: left-justified tagline + body, with logo floated right.
 
-    Sits between the course header and the CTA / instructor section.
+    Sits between the CTA and the client showcase.
     Establishes the consulting-firm framing before any course mechanics.
+
+    Layout: tagline on top (full width, left-justified), then logo floats right
+    while body text wraps around it on the left.
 
     Triple-defense logo sizing (HTML attrs + inline style + doubled-specificity CSS)
     because SVGs without intrinsic dimensions can render at viewBox size otherwise.
     """
     logo_url = f'{ASSETS}/{intro["logo"]}'
     return f"""    <div class="nx-narrative-intro">
-      <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}" width="180" height="180" style="width:180px;height:auto;">
       <div class="nx-narrative-intro__tagline">{intro['tagline']}</div>
+      <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}" width="180" height="180" style="width:180px;height:auto;">
       <p class="nx-narrative-intro__body">{intro['body']}</p>
     </div>"""
 
