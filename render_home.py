@@ -53,12 +53,12 @@ def render_client_showcase(showcase):
         logo_url = f'{ASSETS}/{client["logo"]}'
         cards.append(
             f"""      <div class="nx-client-card" style="--client-color: {client['color']};">
-        <img class="nx-client-card__logo" src="{logo_url}" alt="{client['logoAlt']}" width="80" height="80" style="width:80px;height:auto;">
-        <div class="nx-client-card__body">
-          <div class="nx-client-card__name">{client['name']}</div>
-          <div class="nx-client-card__modules">{client['modules']}</div>
-          <p class="nx-client-card__engagement">{client['engagement']}</p>
+        <div class="nx-client-card__logo-frame">
+          <img class="nx-client-card__logo" src="{logo_url}" alt="{client['logoAlt']}">
         </div>
+        <div class="nx-client-card__name">{client['name']}</div>
+        <div class="nx-client-card__modules">{client['modules']}</div>
+        <p class="nx-client-card__engagement">{client['engagement']}</p>
       </div>"""
         )
     return f"""    <div class="nx-section-label nx-section-label--purple">{showcase['heading']}</div>

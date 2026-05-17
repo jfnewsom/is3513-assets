@@ -1616,7 +1616,10 @@ summary {
   .nx-narrative-intro__body { font-size: 13px; }
 }
 
-/* ── Client showcase (4-across row on Home page, stat-bar style) ─ */
+/* ── Client showcase (4-across row on Home page, stat-bar style) ─
+   Cards use fixed-height zones so logo bottoms, names, modules, and
+   engagement text all sit on the same horizontal baselines across the row.
+   Logos get centered within a reserved frame regardless of their aspect ratio. */
 .nx-client-grid {
   display: flex;
   justify-content: space-between;
@@ -1634,21 +1637,34 @@ summary {
   align-items: center;
   text-align: center;
 }
-.nx-client-card__logo.nx-client-card__logo {
-  width: 80px;
-  max-width: 80px;
-  height: auto;
-  margin-bottom: 12px;
-}
-.nx-client-card__body {
+/* Logo frame: fixed height, logo centered inside. Different aspect ratios
+   no longer push other content around. */
+.nx-client-card__logo-frame {
+  height: 100px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
 }
+.nx-client-card__logo.nx-client-card__logo {
+  max-width: 120px;
+  max-height: 90px;
+  width: auto;
+  height: auto;
+}
+/* Name + modules: fixed heights so the engagement paragraph
+   always starts at the same Y across all four cards. */
 .nx-client-card__name {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
   color: var(--client-color, #ffffff);
   font-size: 14px;
   line-height: 1.2;
+  min-height: 34px;       /* fits up to 2 lines */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 6px;
 }
 .nx-client-card__modules {
@@ -1657,6 +1673,7 @@ summary {
   color: #888;
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-height: 14px;
   margin-bottom: 10px;
 }
 .nx-client-card__engagement {
