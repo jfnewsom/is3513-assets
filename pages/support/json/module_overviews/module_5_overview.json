@@ -67,5 +67,9 @@
     "colorRgb": "123, 104, 238",
     "label": "&#127919; Capstone Module:",
     "body": "This is the complete engagement workflow in two labs: discover, score, prioritize, and report. You'll draw on skills from every previous module &#8212; reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness &#8212; and apply them to a real risk management deliverable."
-  }
+  },
+  "readings": [
+    10,
+    20
+  ]
 }

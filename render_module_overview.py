@@ -135,6 +135,79 @@ def render_stakeholder_quote(s):
       </div>"""
 
 
+def load_chapter_metadata(chapter_num, base_dir=None):
+    """Load reading metadata for a given chapter number from its JSON file.
+
+    Returns a dict with title, assignment, partial, or None if the chapter
+    JSON isn't found. Renderer is forgiving: missing chapters render as
+    "Ch.N — (not found)" rather than erroring.
+    """
+    if base_dir is None:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base_dir, "pages", "reading", "json", f"CH{chapter_num:02d}_reading.json")
+    if not os.path.isfile(path):
+        return None
+    with open(path) as f:
+        data = json.load(f)
+    return {
+        "title":      data.get("title", ""),
+        "assignment": data.get("assignment", ""),
+        "partial":    data.get("partial", False),
+    }
+
+
+def render_readings_block(chapter_nums, accent):
+    """Render the 'Reading Assignments' block between Client Context and Skills.
+
+    Each row links to the chapter's rendered reading page and shows:
+      Ch.N — Title · assignment string
+    Plus a 'partial' tag where applicable.
+
+    Schema in module overview JSON:
+      "readings": [9, 13, 18]
+    """
+    if not chapter_nums:
+        return ""
+
+    rows = []
+    for ch in chapter_nums:
+        meta = load_chapter_metadata(ch)
+        if meta is None:
+            # Graceful fallback when chapter JSON is missing
+            rows.append(
+                f"""      <div class="nx-reading-row">
+        <div class="nx-reading-row__chnum">Ch.{ch}</div>
+        <div class="nx-reading-row__body">
+          <div class="nx-reading-row__title">(reading not found)</div>
+        </div>
+      </div>"""
+            )
+            continue
+
+        title = meta["title"]
+        assignment = meta["assignment"]
+        partial = meta["partial"]
+        url = f"../reading/CH{ch:02d}-Reading.html"
+
+        partial_tag = ('<span class="nx-reading-row__tag">partial</span>'
+                       if partial else '')
+
+        rows.append(
+            f"""      <a class="nx-reading-row" href="{url}">
+        <div class="nx-reading-row__chnum">Ch.{ch}</div>
+        <div class="nx-reading-row__body">
+          <div class="nx-reading-row__title">{title}{partial_tag}</div>
+          <div class="nx-reading-row__assignment">{assignment}</div>
+        </div>
+      </a>"""
+        )
+
+    return f"""    <div class="nx-readings-block">
+      <div class="nx-section-label" style="--accent: {accent}; color: {accent}; border-bottom-color: {accent};">Reading Assignments</div>
+{chr(10).join(rows)}
+    </div>"""
+
+
 def render(data):
     accent       = data["accentColor"]
     client_color = data["clientColor"]
@@ -210,6 +283,9 @@ def render(data):
     else:
         client_ctx = client_ctx_prose
 
+    # Reading Assignments (between Client Context and Skills)
+    readings_section = render_readings_block(data.get("readings", []), accent)
+
     # Skills
     skills_left  = "\n          ".join(f"&bull; {s}<br>" for s in data["skills"]["left"])
     skills_right = "\n          ".join(f"&bull; {s}<br>" for s in data["skills"]["right"])
@@ -228,7 +304,7 @@ def render(data):
     # Footer
     footer = f'    <div class="nx-page-footer">{data["footer"]}</div>'
 
-    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, skills_section, footer]))
+    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, footer]))
     return shell(n, title, accent, body)
 
 

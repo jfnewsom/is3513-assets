@@ -64,5 +64,9 @@
     ]
   },
   "footer": "Start with Lab 1.1 in the Assignments section.",
-  "notice": null
+  "notice": null,
+  "readings": [
+    1,
+    2
+  ]
 }

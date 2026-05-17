@@ -82,5 +82,9 @@
     "colorRgb": "230, 57, 70",
     "label": "&#9888;&#65039; Offensive Techniques Module:",
     "body": "These skills are for authorized security assessments only. Never use password cracking tools without explicit written permission. Everything here is on NEXUS-authorized client systems."
-  }
+  },
+  "readings": [
+    15,
+    16
+  ]
 }
