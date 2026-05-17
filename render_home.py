@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""
+render_home.py
+Renders Home page JSON → class-based HTML using site.css.
+No inline styles, no external SVG images.
+
+Usage:
+  python3 render_home.py                       # uses default paths
+  python3 render_home.py <src.json> <out.html>
+
+Source:  pages/support/json/home.json
+Output:  pages/support/Home.html
+"""
+import json, sys, os
+
+CSS_PATH = "../../site.css"
+ASSETS   = "https://jfnewsom.github.io/is3513-assets"
+
+
+def render_cta(cta):
+    """Yellow CTA button at the top of the card."""
+    return f'    <a href="{cta["href"]}" class="nx-cta-btn">{cta["text"]}</a>'
+
+
+def render_instructor(inst, accent):
+    """Instructor block: photo + name + title + note."""
+    return f"""      <div class="nx-home-col">
+        <div class="nx-section-label" style="--accent: {accent};">Your Instructor</div>
+        <div class="nx-instructor">
+          <img class="nx-instructor__photo" src="{inst['photo']}" alt="{inst['name']}">
+          <div class="nx-instructor__bio">
+            <div class="nx-instructor__name">{inst['name']}</div>
+            <div class="nx-instructor__title">{inst['title']}</div>
+            <div class="nx-instructor__note">{inst['note']}</div>
+          </div>
+        </div>
+      </div>"""
+
+
+def render_quick_links(links):
+    """Quick Links column: icon + colored link + optional note."""
+    items = []
+    for link in links:
+        target = ' target="_blank"' if link.get("external") else ''
+        note = (f' <span class="nx-link-list__note">{link["note"]}</span>'
+                if link.get("note") else '')
+        items.append(
+            f"""          <div class="nx-link-list__item">
+            <span class="material-icons nx-inline-icon nx-inline-icon--{link['color']}">{link['icon']}</span>
+            <a href="{link['href']}"{target} class="nx-link--{link['color']}">{link['label']}</a>{note}
+          </div>"""
+        )
+    return f"""      <div class="nx-home-col">
+        <div class="nx-section-label" style="--accent: #7B68EE;">Quick Links</div>
+        <div class="nx-link-list">
+{chr(10).join(items)}
+        </div>
+      </div>"""
+
+
+def render_kv_list(items):
+    """Renders a list of {label, value, optional href} dicts."""
+    rows = []
+    for item in items:
+        if item.get("href"):
+            target = ' target="_blank"' if item.get("external") else ''
+            link_color = item.get("linkColor", "")
+            link_class = f' class="nx-link--{link_color}"' if link_color else ''
+            value = f'<a href="{item["href"]}"{target}{link_class}>{item["value"]}</a>'
+        else:
+            value = item["value"]
+        rows.append(
+            f'          <div class="nx-link-list__item"><strong>{item["label"]}:</strong> {value}</div>'
+        )
+    return "\n".join(rows)
+
+
+def render_contact(contact_items):
+    """Contact Details column."""
+    rows = render_kv_list(contact_items)
+    return f"""      <div class="nx-home-col">
+        <div class="nx-section-label nx-section-label--cyan">Contact Details</div>
+        <div class="nx-link-list">
+{rows}
+        </div>
+      </div>"""
+
+
+def render_format(format_items):
+    """Course Format column."""
+    rows = render_kv_list(format_items)
+    return f"""      <div class="nx-home-col">
+        <div class="nx-section-label nx-section-label--green">Course Format</div>
+        <div class="nx-link-list">
+{rows}
+        </div>
+      </div>"""
+
+
+def render_stats(stats):
+    """Stat bar: 4 large numeric stats."""
+    items = []
+    for s in stats:
+        items.append(
+            f"""      <div class="nx-info-stat">
+        <div class="nx-info-stat__label nx-info-stat__label--{s['color']}">{s['label']}</div>
+        <div class="nx-info-stat__value nx-info-stat__value--lg">{s['value']}</div>
+      </div>"""
+        )
+    return f"""    <div class="nx-stat-bar">
+{chr(10).join(items)}
+    </div>"""
+
+
+def render_cycle_callout(callout):
+    """Purple callout describing the Unit cycle."""
+    return f"""    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">{callout['title']}</div>
+        <p>{callout['body']}</p>
+      </div>
+    </div>"""
+
+
+def render_resource_cards(cards):
+    """4-card resource grid."""
+    cards_html = []
+    for card in cards:
+        links_html = "\n".join(
+            f'          <div><a href="{l["href"]}">{l["label"]}</a></div>'
+            for l in card["links"]
+        )
+        cards_html.append(
+            f"""      <div class="nx-resource-card">
+        <div class="nx-info-stat__label nx-info-stat__label--{card['color']}">{card['heading']}</div>
+        <div class="nx-resource-links">
+{links_html}
+        </div>
+      </div>"""
+        )
+    return f"""    <div class="nx-section-label nx-section-label--orange">Course Resources</div>
+    <div class="nx-resource-grid">
+{chr(10).join(cards_html)}
+    </div>"""
+
+
+def render_modules(modules, accent):
+    """Module cards row (5 small clickable cards)."""
+    cards = []
+    for m in modules:
+        cards.append(
+            f"""      <div class="nx-module-card">
+        <a href="{m['href']}">
+          <div class="nx-module-card__title">{m['number']}</div>
+          <div class="nx-info-stat__label">{m['title']}</div>
+        </a>
+      </div>"""
+        )
+    return f"""    <div class="nx-section-label" style="--accent: {accent};">Modules</div>
+    <div class="nx-module-row">
+{chr(10).join(cards)}
+    </div>"""
+
+
+def render(data):
+    accent      = data["accent"]
+    title       = data["title"]
+    course_code = data["courseCode"]
+    term        = data["term"]
+
+    parts = [
+        render_cta(data["cta"]),
+        f"""    <div class="nx-home-row">
+
+{render_instructor(data["instructor"], accent)}
+
+{render_quick_links(data["quickLinks"])}
+
+    </div>""",
+        f"""    <div class="nx-home-row">
+
+{render_contact(data["contact"])}
+
+{render_format(data["format"])}
+
+    </div>""",
+        render_stats(data["stats"]),
+        render_cycle_callout(data["cycleCallout"]),
+        render_resource_cards(data["resourceCards"]),
+        render_modules(data["modules"], accent),
+        f'    <div class="nx-page-footer">{data["footer"]}</div>',
+    ]
+
+    body = "\n\n".join(parts)
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="{ASSETS}/favicon.png">
+  <title>{course_code} - Information Assurance and Security</title>
+  <link rel="stylesheet" href="{CSS_PATH}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+<div class="nx-page">
+
+  <div class="nx-section nx-section--flush">
+    <div class="nx-header" style="--accent: {accent};">
+      <div class="nx-header-top">
+        <div class="nx-kw">{course_code}</div>
+        <div class="nx-sec">{title}</div>
+      </div>
+      <div class="nx-sub">{term}</div>
+    </div>
+  </div>
+
+  <div class="nx-card" style="--accent: {accent};">
+
+{body}
+
+  </div>
+
+</div>
+
+<script src="{ASSETS}/nav.js"></script>
+</body>
+</html>"""
+
+
+def main():
+    base = os.path.dirname(os.path.abspath(__file__))
+    if len(sys.argv) == 3:
+        src, dst = sys.argv[1], sys.argv[2]
+    else:
+        src = os.path.join(base, "pages", "support", "json", "home.json")
+        dst = os.path.join(base, "pages", "support", "Home.html")
+
+    with open(src) as f:
+        data = json.load(f)
+    html = render(data)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    with open(dst, "w") as f:
+        f.write(html)
+    print(f"Rendered: {dst}")
+
+
+if __name__ == "__main__":
+    main()

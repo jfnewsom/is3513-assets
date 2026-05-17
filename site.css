@@ -1573,6 +1573,42 @@ summary {
   font-size: 16px;
 }
 
+/* ── Home page CTA button ─────────────────────────────────── */
+.nx-cta-btn {
+  display: inline-block;
+  background: #FEC618;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  text-decoration: none;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  margin-bottom: 8px;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+}
+.nx-cta-btn:hover {
+  background: #FFD93D;
+  text-decoration: none;
+}
+.nx-cta-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+/* ── Color-classed link styles (replaces inline style="color:...") */
+.nx-link--blue    { color: #4169E1; }
+.nx-link--purple  { color: #7B68EE; }
+.nx-link--cyan    { color: #00BCD4; }
+.nx-link--green   { color: #00D26A; }
+.nx-link--orange  { color: #FF9F1C; }
+.nx-link--red     { color: #E63946; }
+.nx-link--gold    { color: #FEC618; }
+.nx-link--discord { color: #5865F2; }
+
 /* ── Callout with inline action button ────────────────────────── */
 /*  Extends .nx-callout for callouts that have a button on the right.
     <div class="nx-callout nx-orange nx-callout--action">
