@@ -1874,6 +1874,25 @@ summary {
 /* ── Study worksheets ─────────────────────────────────────── */
 .nx-worksheet-section { margin-bottom: 40px; }
 
+/* Compact checkpoint headers (worksheets only): smaller than page-header.
+   Major sections (Lab Knowledge / Professional Application / Concept Check)
+   keep the full nx-header size to signal a content shift. */
+.nx-worksheet-body .nx-header.nx-checkpoint .nx-header-top {
+  min-height: 44px;
+}
+.nx-worksheet-body .nx-header.nx-checkpoint .nx-kw {
+  font-size: 22px;
+  padding: 10px 16px;
+  text-transform: lowercase;
+}
+.nx-worksheet-body .nx-header.nx-checkpoint .nx-sec {
+  font-size: 22px;
+  padding: 10px 16px;
+}
+.nx-worksheet-body .nx-header.nx-checkpoint {
+  border-left-width: 3px;
+}
+
 /* Fill-in blank line */
 .nx-worksheet-blank {
   display: inline-block;

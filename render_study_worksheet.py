@@ -194,10 +194,22 @@ def render_intro_callout(sec, accent):
 
 
 def render_worksheet_section(sec, num, accent):
-    """A numbered section: its own header + card with content blocks."""
+    """A numbered section: its own header + card with content blocks.
+
+    Auto-classifies as 'major' or 'checkpoint' based on section title.
+    Major sections (Lab Knowledge / Professional Application / Concept Check) get
+    a full-size header. Other sections get the compact checkpoint treatment.
+    """
+    # Auto-classify by title prefix (handles "Lab Knowledge — Networking" etc.)
+    title_lower = sec["title"].lower()
+    major_prefixes = ("lab knowledge", "professional application", "concept check")
+    is_major = any(title_lower.startswith(p) for p in major_prefixes)
+
+    header_class = "nx-header" if is_major else "nx-header nx-checkpoint"
+
     content_html = render_content_blocks(sec.get("content", []))
     return f"""  <div class="nx-worksheet-section">
-    <div class="nx-header" style="--accent: {accent};">
+    <div class="{header_class}" style="--accent: {accent};">
       <div class="nx-header-top">
         <div class="nx-kw">{num}</div>
         <div class="nx-sec">{sec['title']}</div>
