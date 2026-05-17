@@ -81,10 +81,12 @@ def render_client_logo(logo):
     if src and not src.startswith("http"):
         src = f"{ASSETS}/{src.lstrip('/')}"
     alt = logo.get("alt", "")
-    cls = "nx-module-logo nx-section-image nx-section-image--right"
+    cls = "nx-module-logo"
     if logo.get("cssClass"):
         cls += f" {logo['cssClass']}"
-    return f'<img class="{cls}" src="{src}" alt="{alt}">'
+    # width attribute is intentional: SVGs without intrinsic dimensions can
+    # otherwise render at the container's full width if CSS fails to load.
+    return f'<img class="{cls}" src="{src}" alt="{alt}" width="160" height="160" style="width:160px;height:auto;">'
 
 
 def render_stakeholder_quote(s):
