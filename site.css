@@ -1573,6 +1573,41 @@ summary {
   font-size: 16px;
 }
 
+/* ── Home page NEXUS narrative intro ──────────────────────── */
+.nx-narrative-intro {
+  text-align: center;
+  padding: 8px 0 24px 0;
+  border-bottom: 1px solid #2a2f3e;
+  margin-bottom: 24px;
+}
+.nx-narrative-intro__logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px auto;
+}
+.nx-narrative-intro__tagline {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #FEC618;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.nx-narrative-intro__body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #B0B8C4;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .nx-narrative-intro__logo { width: 140px; }
+  .nx-narrative-intro__tagline { font-size: 16px; }
+  .nx-narrative-intro__body { font-size: 13px; }
+}
+
 /* ── Home page CTA button ─────────────────────────────────── */
 .nx-cta-btn {
   display: inline-block;

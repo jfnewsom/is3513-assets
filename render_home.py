@@ -22,6 +22,20 @@ def render_cta(cta):
     return f'    <a href="{cta["href"]}" class="nx-cta-btn">{cta["text"]}</a>'
 
 
+def render_narrative_intro(intro):
+    """NEXUS narrative intro: centered logo, tagline, descriptive paragraph.
+
+    Sits between the course header and the CTA / instructor section.
+    Establishes the consulting-firm framing before any course mechanics.
+    """
+    logo_url = f'{ASSETS}/{intro["logo"]}'
+    return f"""    <div class="nx-narrative-intro">
+      <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}">
+      <div class="nx-narrative-intro__tagline">{intro['tagline']}</div>
+      <p class="nx-narrative-intro__body">{intro['body']}</p>
+    </div>"""
+
+
 def render_instructor(inst, accent):
     """Instructor block: photo + name + title + note."""
     return f"""      <div class="nx-home-col">
@@ -170,6 +184,7 @@ def render(data):
     term        = data["term"]
 
     parts = [
+        render_narrative_intro(data["narrativeIntro"]),
         render_cta(data["cta"]),
         f"""    <div class="nx-home-row">
 

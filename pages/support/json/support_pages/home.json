@@ -16,6 +16,13 @@
     "href": "StartHere.html"
   },
 
+  "narrativeIntro": {
+    "logo": "branding/nexus-security-dark.svg",
+    "logoAlt": "NEXUS Security Consulting logo",
+    "tagline": "This course is structured as a year-long consulting engagement.",
+    "body": "You&rsquo;re a Junior Analyst at <strong>NEXUS Security</strong>, a fictional Texas-based cybersecurity consulting firm. Each module pairs you with a different client &mdash; Brazos Financial, Gulf Coast Healthcare, LoneStar DevOps, and Alamo Industries &mdash; and walks you through the kind of work analysts actually do: reconnaissance, cryptography, network analysis, threat assessment, and risk management. Learn more about <a href=\"NEXUS_Security.html\" class=\"nx-link--purple\">NEXUS Security</a> and <a href=\"Meet_The_Team.html\" class=\"nx-link--purple\">meet the team</a> you&rsquo;ll work with."
+  },
+
   "instructor": {
     "photo": "https://jfnewsom.github.io/is2053-assets/photos/john-newsom-headshot.jpg",
     "name": "John Newsom",
