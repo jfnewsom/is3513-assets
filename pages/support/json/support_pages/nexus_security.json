@@ -27,7 +27,14 @@
         "<strong style=\"color:#ffffff;\">Labs X.1–X.2 — Foundation Labs (Internal Training):</strong> Before touching a client system, you train on NEXUS’s methodology. Senior analysts guide you through tools, techniques, and documentation standards.",
         "<strong style=\"color:#ffffff;\">Lab X.3 — Engagement Packet (Client Engagement):</strong> You’re on the clock. Apply your training to a real client’s systems, document your findings, and deliver a professional report that goes to executives.",
         "<strong style=\"color:#ffffff;\">Deliverable — Engagement Packet:</strong> One <code>.docx</code> file, two parts. <strong style=\"color:#FF9F1C;\">Part I (Internal Packet):</strong> Timesheet + Runbook + Reflection. <strong style=\"color:#00BCD4;\">Part II (Client Deliverable):</strong> Cover, Executive Summary, Findings, Risk Analysis, Recommendations. The client only sees Part II. See the <a href=\"Engagement_Packet_Guide.html\" style=\"color:#7B68EE;\">Engagement Packet Guide</a> for details."
-      ]
+      ],
+      "image": {
+        "src": "branding/nexus-security-dark.svg",
+        "alt": "NEXUS Security Consulting logo",
+        "float": "right",
+        "width": "180px",
+        "cssClass": "nx-logo-glow"
+      }
     },
     {
       "type": "named_section",
