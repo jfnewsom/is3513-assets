@@ -38,7 +38,7 @@ def render_narrative_intro(intro):
     return f"""    <div class="nx-narrative-intro">
       <div class="nx-narrative-intro__tagline">{intro['tagline']}</div>
       <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}" width="180" height="180" style="width:180px;height:auto;">
-      <p class="nx-narrative-intro__body">{intro['body']}</p>
+      <div class="nx-narrative-intro__body">{intro['body']}</div>
     </div>"""
 
 

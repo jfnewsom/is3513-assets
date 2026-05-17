@@ -1606,6 +1606,12 @@ summary {
   margin: 0;
   text-align: left;
 }
+.nx-narrative-intro__body p {
+  margin: 0 0 12px 0;
+}
+.nx-narrative-intro__body p:last-child {
+  margin-bottom: 0;
+}
 @media (max-width: 640px) {
   .nx-narrative-intro__logo.nx-narrative-intro__logo {
     width: 120px;
@@ -1637,23 +1643,23 @@ summary {
   align-items: center;
   text-align: center;
 }
-/* Logo frame: fixed-size box. Logo is centered both horizontally and
-   vertically inside the frame, like a photo in a picture frame.
-   Logos preserve aspect ratio; whichever dimension hits the frame's
-   limit first stops growing. */
+/* Logo frame: fixed-size box. Logos fill the frame HEIGHT uniformly so
+   every logo appears at the same physical height regardless of natural
+   aspect ratio. This is what makes the row read as visually aligned —
+   when heights match, bottoms match, and the eye reads it as a clean row. */
 .nx-client-card__logo-frame {
-  height: 100px;
+  height: 90px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
+  overflow: hidden;
 }
 .nx-client-card__logo.nx-client-card__logo {
-  max-height: 100px;
-  max-width: 100%;
+  height: 90px;
   width: auto;
-  height: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 /* Name + modules: fixed heights so the engagement paragraph
