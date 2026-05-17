@@ -27,12 +27,40 @@ def render_narrative_intro(intro):
 
     Sits between the course header and the CTA / instructor section.
     Establishes the consulting-firm framing before any course mechanics.
+
+    Triple-defense logo sizing (HTML attrs + inline style + doubled-specificity CSS)
+    because SVGs without intrinsic dimensions can render at viewBox size otherwise.
     """
     logo_url = f'{ASSETS}/{intro["logo"]}'
     return f"""    <div class="nx-narrative-intro">
-      <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}">
+      <img class="nx-narrative-intro__logo nx-logo-glow" src="{logo_url}" alt="{intro['logoAlt']}" width="180" height="180" style="width:180px;height:auto;">
       <div class="nx-narrative-intro__tagline">{intro['tagline']}</div>
       <p class="nx-narrative-intro__body">{intro['body']}</p>
+    </div>"""
+
+
+def render_client_showcase(showcase):
+    """2x2 grid of client cards: logo + name + modules + engagement summary.
+
+    Each card uses the client's brand accent color (matches Module overviews).
+    Triple-defense logo sizing (HTML attrs + inline style + doubled-specificity CSS).
+    """
+    cards = []
+    for client in showcase["clients"]:
+        logo_url = f'{ASSETS}/{client["logo"]}'
+        cards.append(
+            f"""      <div class="nx-client-card" style="--client-color: {client['color']};">
+        <img class="nx-client-card__logo" src="{logo_url}" alt="{client['logoAlt']}" width="100" height="100" style="width:100px;height:auto;">
+        <div class="nx-client-card__body">
+          <div class="nx-client-card__name">{client['name']}</div>
+          <div class="nx-client-card__modules">{client['modules']}</div>
+          <p class="nx-client-card__engagement">{client['engagement']}</p>
+        </div>
+      </div>"""
+        )
+    return f"""    <div class="nx-section-label nx-section-label--purple">{showcase['heading']}</div>
+    <div class="nx-client-grid">
+{chr(10).join(cards)}
     </div>"""
 
 
@@ -184,8 +212,9 @@ def render(data):
     term        = data["term"]
 
     parts = [
-        render_narrative_intro(data["narrativeIntro"]),
         render_cta(data["cta"]),
+        render_narrative_intro(data["narrativeIntro"]),
+        render_client_showcase(data["clientShowcase"]),
         f"""    <div class="nx-home-row">
 
 {render_instructor(data["instructor"], accent)}

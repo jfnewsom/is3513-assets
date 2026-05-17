@@ -23,6 +23,44 @@
     "body": "You&rsquo;re a Junior Analyst at <strong>NEXUS Security</strong>, a fictional Texas-based cybersecurity consulting firm. Each module pairs you with a different client &mdash; Brazos Financial, Gulf Coast Healthcare, LoneStar DevOps, and Alamo Industries &mdash; and walks you through the kind of work analysts actually do: reconnaissance, cryptography, network analysis, threat assessment, and risk management. Learn more about <a href=\"NEXUS_Security.html\" class=\"nx-link--purple\">NEXUS Security</a> and <a href=\"Meet_The_Team.html\" class=\"nx-link--purple\">meet the team</a> you&rsquo;ll work with."
   },
 
+  "clientShowcase": {
+    "heading": "Your Clients",
+    "clients": [
+      {
+        "name": "Brazos Financial Group",
+        "logo": "branding/brazos-financial-dark.svg",
+        "logoAlt": "Brazos Financial Group logo",
+        "color": "#FF9F1C",
+        "modules": "Modules 1 &amp; 4",
+        "engagement": "External reconnaissance and password audit for a regional bank facing growing fraud pressure."
+      },
+      {
+        "name": "Gulf Coast Healthcare",
+        "logo": "branding/gulf-coast-healthcare-dark.svg",
+        "logoAlt": "Gulf Coast Healthcare logo",
+        "color": "#00BCD4",
+        "modules": "Modules 2 &amp; 3",
+        "engagement": "Certificate remediation and network analysis ahead of a HIPAA compliance audit."
+      },
+      {
+        "name": "Alamo Industries",
+        "logo": "branding/alamo-industries-dark.svg",
+        "logoAlt": "Alamo Industries logo",
+        "color": "#E63946",
+        "modules": "Module 4",
+        "engagement": "Active Directory password assessment for a defense-industry manufacturer modernizing its OT environment."
+      },
+      {
+        "name": "LoneStar DevOps",
+        "logo": "branding/lonestar-devops-dark.svg",
+        "logoAlt": "LoneStar DevOps logo",
+        "color": "#7B68EE",
+        "modules": "Module 5",
+        "engagement": "Vulnerability assessment and risk prioritization for a fast-growing startup&rsquo;s cloud infrastructure."
+      }
+    ]
+  },
+
   "instructor": {
     "photo": "https://jfnewsom.github.io/is2053-assets/photos/john-newsom-headshot.jpg",
     "name": "John Newsom",
