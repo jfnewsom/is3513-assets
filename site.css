@@ -1637,8 +1637,10 @@ summary {
   align-items: center;
   text-align: center;
 }
-/* Logo frame: fixed height, logo centered inside. Different aspect ratios
-   no longer push other content around. */
+/* Logo frame: fixed-size box. Logo is centered both horizontally and
+   vertically inside the frame, like a photo in a picture frame.
+   Logos preserve aspect ratio; whichever dimension hits the frame's
+   limit first stops growing. */
 .nx-client-card__logo-frame {
   height: 100px;
   width: 100%;
@@ -1648,13 +1650,15 @@ summary {
   margin-bottom: 14px;
 }
 .nx-client-card__logo.nx-client-card__logo {
-  max-width: 120px;
-  max-height: 90px;
+  max-height: 100px;
+  max-width: 100%;
   width: auto;
   height: auto;
+  object-fit: contain;
 }
 /* Name + modules: fixed heights so the engagement paragraph
-   always starts at the same Y across all four cards. */
+   always starts at the same Y across all four cards.
+   align-items: flex-start so 1-line and 2-line names share the same TOP baseline. */
 .nx-client-card__name {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
@@ -1663,7 +1667,7 @@ summary {
   line-height: 1.2;
   min-height: 34px;       /* fits up to 2 lines */
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   margin-bottom: 6px;
 }
