@@ -1,60 +1,74 @@
 {
   "type": "module_overview",
   "module": 3,
-  "title": "Network Security & Traffic Analysis",
+  "title": "Network Security",
   "accentColor": "#7B68EE",
-  "units": "1-3",
-  "chapters": "4 & 9",
-  "client": "LoneStar DevOps",
-  "clientColor": "#00D26A",
-  "overview": "Module 3 puts you inside the wire. You'll capture and analyze live network traffic, identify suspicious patterns, and understand how attackers move through networks—then investigate a real incident on a DevOps client's infrastructure.",
+  "units": "3 Labs",
+  "chapters": "9 & 18",
+  "client": "Gulf Coast Healthcare",
+  "clientColor": "#00BCD4",
+  "logo": {
+    "src": "branding/gulf-coast-healthcare-dark.svg",
+    "alt": "Gulf Coast Healthcare Partners logo",
+    "cssClass": "nx-logo-glow"
+  },
+  "overview": "Module 3 takes you onto the wire. You'll learn network addressing, capture and analyze packets with Wireshark, and then connect to a real Azure-hosted patient portal to perform a live network analysis &#8212; the same kind of work an OCR auditor would expect to see documented.",
   "units_breakdown": [
     {
-      "unitLabel": "UNIT 1",
+      "unitLabel": "LAB 3.1",
       "type": "foundation",
-      "labTitle": "Lab 3.1: Network Protocols & Packet Analysis",
-      "labDesc": "TCP/IP deep dive. Wireshark capture and analysis fundamentals.",
+      "labTitle": "Lab 3.1: Network Addressing Fundamentals",
+      "labDesc": "CIDR, subnetting, interface identification. Define your attack surface before you scan it.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "UNIT 2",
+      "unitLabel": "LAB 3.2",
       "type": "foundation",
-      "labTitle": "Lab 3.2: Intrusion Detection & Log Analysis",
-      "labDesc": "IDS/IPS concepts. Snort rules, log correlation, anomaly detection.",
+      "labTitle": "Lab 3.2: Protocol Analysis Tools",
+      "labDesc": "Wireshark deep dive on NEXUS training PCAPs. Display filters, TCP streams, endpoint statistics, IO graphs.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "UNIT 3",
+      "unitLabel": "LAB 3.3",
       "type": "engagement",
-      "labTitle": "Lab 3.3: LoneStar DevOps Network Investigation",
-      "labDesc": "Client engagement. Analyze suspicious traffic + incident report.",
+      "labTitle": "Lab 3.3: Network Analysis Engagement (Azure Live Capture)",
+      "labDesc": "Client engagement. Connect from Kali to the Gulf Coast patient portal in Azure, capture live traffic, and document tiered findings.",
       "badgeLabel": "Client Billable",
-      "badgeColor": "#00D26A"
+      "badgeColor": "#00BCD4"
     }
   ],
   "clientContext": {
-    "label": "Client Context: LoneStar DevOps",
-    "body": "Marcus Webb (CEO) reports anomalous traffic patterns during overnight deployments. The dev team noticed unexpected outbound connections from the CI/CD pipeline. Santiago Reyes needs a network traffic analysis to determine if there's been a breach."
+    "label": "Client Context: Gulf Coast Healthcare Partners",
+    "body": "Gulf Coast moved their patient portal to Azure (hosted by LoneStar DevOps) after the ransomware incident 18 months ago. With an OCR audit approaching, Jennifer Walsh (CISO) wants independent validation of the network traffic patterns to and from the portal. Thomas Kowalski (VP Infrastructure) made the call to move to cloud &#8212; he wants to see it was the right one."
   },
+  "stakeholders": [
+    {
+      "name": "Jennifer Walsh",
+      "title": "CISO, Gulf Coast Healthcare",
+      "portrait": "headshots/jennifer-walsh.png",
+      "concern": "The OCR auditors will ask about our cloud traffic. I need evidence that we know what&#8217;s flowing to Azure &#8212; not assumptions, evidence."
+    },
+    {
+      "name": "Thomas Kowalski",
+      "title": "VP Infrastructure, Gulf Coast Healthcare",
+      "portrait": "headshots/thomas-kowalski.png",
+      "concern": "After the ransomware, I moved everything I could to cloud. Tell me it was the right call &#8212; and tell me what I should be watching."
+    }
+  ],
   "skills": {
     "left": [
+      "CIDR and network addressing",
       "Packet capture with Wireshark",
-      "TCP/IP protocol analysis",
-      "Network traffic interpretation"
+      "Protocol analysis (TCP, HTTP, DNS, TLS)"
     ],
     "right": [
-      "IDS rule writing",
-      "Log analysis and correlation",
-      "Incident documentation"
+      "Live traffic capture against cloud targets",
+      "Tiered finding documentation",
+      "Network analysis reporting"
     ]
   },
   "footer": "Start with Lab 3.1 in the Assignments section.",
-  "notice": {
-    "color": "#FF9F1C",
-    "colorRgb": "255, 159, 28",
-    "label": "⚠️ Spring Break follows this module (March 9–14).",
-    "body": "Plan accordingly—don't leave the Unit 3 engagement until the last minute."
-  }
+  "notice": null
 }

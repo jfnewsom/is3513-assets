@@ -3,33 +3,52 @@
   "module": 5,
   "title": "Infrastructure, Risk & Resilience",
   "accentColor": "#7B68EE",
-  "units": "1-2",
+  "units": "2 Labs",
   "chapters": "10 & 20",
   "client": "LoneStar DevOps",
   "clientColor": "#7B68EE",
-  "overview": "Module 5 brings the full assessment lifecycle together. You'll deploy a simulated client environment, discover and score vulnerabilities, build a risk matrix, and compile everything into a professional Engagement Packet — the same deliverable a real security consultant hands to a client.",
+  "logo": {
+    "src": "branding/lonestar-devops-dark.svg",
+    "alt": "LoneStar DevOps logo",
+    "cssClass": "nx-logo-glow"
+  },
+  "overview": "Module 5 brings the full assessment lifecycle together. You'll deploy a simulated client environment, discover and score vulnerabilities, build a risk matrix, and compile everything into a professional Engagement Packet &#8212; the same deliverable a real security consultant hands to a client.",
   "units_breakdown": [
     {
-      "unitLabel": "UNIT 1",
+      "unitLabel": "LAB 5.1",
       "type": "foundation",
-      "labTitle": "Lab 5.1: Vulnerability Assessment & Risk Analysis",
+      "labTitle": "Lab 5.1: Vulnerability Assessment & Risk Analysis (merged)",
       "labDesc": "Deploy LoneStar DevOps infrastructure, conduct vulnerability scanning, score top 10 findings with CVSS 3.1, build risk matrix and remediation roadmap.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "UNIT 2",
+      "unitLabel": "LAB 5.2",
       "type": "engagement",
-      "labTitle": "Lab 5.2: LoneStar DevOps Engagement",
+      "labTitle": "Lab 5.2: Risk & Vulnerability Assessment Report",
       "labDesc": "Compile findings into a professional Engagement Packet. Executive summary for Amanda Nguyen (investors), technical runbook and remediation roadmap for Sarah Martinez.",
       "badgeLabel": "Client Billable",
-      "badgeColor": "#FF9F1C"
+      "badgeColor": "#7B68EE"
     }
   ],
   "clientContext": {
     "label": "Client Context: LoneStar DevOps (Austin, TX)",
-    "body": "LoneStar is an 85-person SaaS startup with $12M ARR and a Series B on the horizon. Their infrastructure was set up by a developer who left six months ago. An enterprise prospect requires a third-party security assessment before signing. Amanda Nguyen (CEO) needs a report she can hand to Longhorn Ventures investors. Sarah Martinez (Lead DevOps) needs a roadmap she can actually execute with two engineers and no staging environment."
+    "body": "LoneStar is an 85-person SaaS startup with $12M ARR and a Series B on the horizon. Their infrastructure was set up by a developer who left six months ago. An enterprise prospect requires a third-party security assessment before signing. Amanda Nguyen (CEO) needs a report she can hand to Longhorn Ventures investors. Sarah Martinez (Senior DevOps) needs a roadmap she can actually execute with two engineers and no staging environment."
   },
+  "stakeholders": [
+    {
+      "name": "Amanda Nguyen",
+      "title": "CEO & Co-Founder, LoneStar DevOps",
+      "portrait": "headshots/amanda-nguyen.png",
+      "concern": "Longhorn Ventures wants a security report before they wire the Series B. I need confidence statements and timeframes I can actually defend in a board meeting &#8212; not a list of CVEs."
+    },
+    {
+      "name": "Sarah Martinez",
+      "title": "Senior DevOps Engineer, LoneStar DevOps",
+      "portrait": "headshots/sarah-martinez.png",
+      "concern": "I&#8217;ve got two engineers, no staging environment, and a developer who left six months ago took half the institutional knowledge with him. Give me a remediation roadmap I can actually execute."
+    }
+  ],
   "skills": {
     "left": [
       "Docker container deployment",
@@ -47,6 +66,6 @@
     "color": "#7B68EE",
     "colorRgb": "123, 104, 238",
     "label": "&#127919; Capstone Module:",
-    "body": "This is the complete engagement workflow in two units: discover, score, prioritize, and report. You'll draw on skills from every previous module — reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness — and apply them to a real risk management deliverable."
+    "body": "This is the complete engagement workflow in two labs: discover, score, prioritize, and report. You'll draw on skills from every previous module &#8212; reconnaissance methodology, network scanning, cryptographic concepts, and attack awareness &#8212; and apply them to a real risk management deliverable."
   }
 }

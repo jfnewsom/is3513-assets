@@ -521,6 +521,36 @@ summary {
   }
 }
 
+/* ── Module overview: floated client logo + stakeholder bubbles ─── */
+.nx-module-overview-block {
+  /* Float-containment so the floated logo doesn't bleed into the next section */
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.nx-module-overview-block::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.nx-module-logo {
+  max-width: 200px;
+  background: transparent;
+  box-shadow: none;          /* override .nx-section-image shadow — logos sit clean */
+  border-radius: 0;
+}
+.nx-stakeholder-quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0 20px 0;
+}
+/* Mobile: shrink the floated logo */
+@media (max-width: 640px) {
+  .nx-module-logo {
+    max-width: 50%;
+  }
+}
+
 /* ── Logo glow utility (opt-in via class on <img>) ────────── */
 /* Default: subtle blue lift (Option C). Use on logos that sit on dark backgrounds. */
 .nx-logo-glow {

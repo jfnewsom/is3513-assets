@@ -3,14 +3,15 @@
   "module": 4,
   "title": "Threats & Attacks",
   "accentColor": "#7B68EE",
-  "units": "1-3",
+  "units": "3 Labs",
   "chapters": "15 & 16",
   "client": "Brazos Financial + Alamo Industries",
   "clientColor": "#FF9F1C",
-  "overview": "Module 4 is where you go on offense — carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Unit 1 focuses on Windows (NTLM), Unit 2 on Linux (SHA-512), and Unit 3 you deliver a professional password security assessment to two clients.",
+  "logo": null,
+  "overview": "Module 4 is where you go on offense &#8212; carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Lab 4.1 focuses on Windows (NTLM) hashes from Brazos. Lab 4.2 moves to Linux (SHA-512) hashes from Alamo. Lab 4.3 you deliver a professional password security assessment to both clients.",
   "units_breakdown": [
     {
-      "unitLabel": "UNIT 1",
+      "unitLabel": "LAB 4.1",
       "type": "foundation",
       "labTitle": "Lab 4.1: Windows Password Cracking",
       "labDesc": "Crack NTLM hashes from Brazos Financial using John the Ripper and Hashcat. Learn why unsalted hashes are a structural weakness.",
@@ -18,15 +19,15 @@
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "UNIT 2",
+      "unitLabel": "LAB 4.2",
       "type": "foundation",
       "labTitle": "Lab 4.2: Linux Password Cracking",
-      "labDesc": "Crack SHA-512 hashes from Alamo Industries. Compare salted Linux hashes to NTLM — the difference is dramatic.",
+      "labDesc": "Crack SHA-512 hashes from Alamo Industries. Compare salted Linux hashes to NTLM &#8212; the difference is dramatic.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "UNIT 3",
+      "unitLabel": "LAB 4.3",
       "type": "engagement",
       "labTitle": "Lab 4.3: Password Security Assessment",
       "labDesc": "Client engagement. Compile your findings into a professional password security report for both clients.",
@@ -38,6 +39,20 @@
     "label": "Client Context: Brazos Financial + Alamo Industries",
     "body": "Ray Jimenez (CTO, Brazos) needs ammunition for a budget conversation about credential security. Bobby Alamo III (CEO, Alamo Industries) is preparing for CMMC certification and has shared accounts on the production floor that haven't been audited in years. Your cracking results tell both clients exactly where they stand."
   },
+  "stakeholders": [
+    {
+      "name": "Ray Jimenez",
+      "title": "CTO, Brazos Financial Group",
+      "portrait": "headshots/ray-jimenez.png",
+      "concern": "Two phishing clicks last month. I need to know how bad it would have been if those credentials had been weak &#8212; and which accounts to harden first."
+    },
+    {
+      "name": "Bobby Alamo III",
+      "title": "President & CEO, Alamo Industries",
+      "portrait": "headshots/bobby-alamo.png",
+      "concern": "CMMC auditors are going to ask about our password policies. We&#8217;ve got shop floor accounts older than some of our employees. Show me what we&#8217;re actually working with."
+    }
+  ],
   "skills": {
     "left": [
       "NTLM hash cracking (Windows)",
@@ -54,7 +69,7 @@
   "notice": {
     "color": "#E63946",
     "colorRgb": "230, 57, 70",
-    "label": "⚠️ Offensive Techniques Module:",
+    "label": "&#9888;&#65039; Offensive Techniques Module:",
     "body": "These skills are for authorized security assessments only. Never use password cracking tools without explicit written permission. Everything here is on NEXUS-authorized client systems."
   }
 }

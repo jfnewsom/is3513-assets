@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module 3: Network Security & Traffic Analysis &#8211; IS3513</title>
+  <title>Module 3: Network Security &#8211; IS3513</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
@@ -19,7 +19,7 @@
       <div class="nx-kw">module</div>
       <div class="nx-sec">3</div>
     </div>
-    <div class="nx-sub">Network Security & Traffic Analysis</div>
+    <div class="nx-sub">Network Security</div>
   </div>
 
   <!-- Main card -->
@@ -27,71 +27,89 @@
 
     <div class="nx-info-bar">
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label">Units</div>
-        <div class="nx-info-stat__value">1-3</div>
+        <div class="nx-info-stat__label">Labs</div>
+        <div class="nx-info-stat__value">3 Labs</div>
       </div>
       <div class="nx-info-stat">
         <div class="nx-info-stat__label">Chapters</div>
-        <div class="nx-info-stat__value">4 & 9</div>
+        <div class="nx-info-stat__value">9 & 18</div>
       </div>
-      <div class="nx-info-stat" style="--client-color: #00D26A;">
+      <div class="nx-info-stat" style="--client-color: #00BCD4;">
         <div class="nx-info-stat__label">Client</div>
-        <div class="nx-info-stat__value nx-info-stat__value--client">LoneStar DevOps</div>
+        <div class="nx-info-stat__value nx-info-stat__value--client">Gulf Coast Healthcare</div>
       </div>
     </div>
 
-    <p>Module 3 puts you inside the wire. You'll capture and analyze live network traffic, identify suspicious patterns, and understand how attackers move through networks—then investigate a real incident on a DevOps client's infrastructure.</p>
-
-    <div class="nx-client-ctx" style="--client-color: #FF9F1C; --client-rgb: 255, 159, 28;">
-      <span class="nx-client-ctx__label">⚠️ Spring Break follows this module (March 9–14).</span>
-      <span class="nx-client-ctx__body"> Plan accordingly—don't leave the Unit 3 engagement until the last minute.</span>
-    </div>
+    <div class="nx-module-overview-block"><img class="nx-module-logo nx-section-image nx-section-image--right nx-logo-glow" src="https://jfnewsom.github.io/is3513-assets/branding/gulf-coast-healthcare-dark.svg" alt="Gulf Coast Healthcare Partners logo"><p>Module 3 takes you onto the wire. You'll learn network addressing, capture and analyze packets with Wireshark, and then connect to a real Azure-hosted patient portal to perform a live network analysis &#8212; the same kind of work an OCR auditor would expect to see documented.</p></div>
 
     <div class="nx-week-list">
       <div class="nx-section-label">This Module</div>
       <div class="nx-week-row" style="--badge-color: #00D26A; --badge-text: #0A0E17;">
-        <div class="nx-week-badge">UNIT 1</div>
+        <div class="nx-week-badge">LAB 3.1</div>
         <div class="nx-week-info">
-          <div class="nx-week-title">Lab 3.1: Network Protocols & Packet Analysis</div>
-          <div class="nx-week-desc">TCP/IP deep dive. Wireshark capture and analysis fundamentals.</div>
+          <div class="nx-week-title">Lab 3.1: Network Addressing Fundamentals</div>
+          <div class="nx-week-desc">CIDR, subnetting, interface identification. Define your attack surface before you scan it.</div>
         </div>
         <div class="nx-week-type">Internal Training</div>
       </div>
       <div class="nx-week-row" style="--badge-color: #00D26A; --badge-text: #0A0E17;">
-        <div class="nx-week-badge">UNIT 2</div>
+        <div class="nx-week-badge">LAB 3.2</div>
         <div class="nx-week-info">
-          <div class="nx-week-title">Lab 3.2: Intrusion Detection & Log Analysis</div>
-          <div class="nx-week-desc">IDS/IPS concepts. Snort rules, log correlation, anomaly detection.</div>
+          <div class="nx-week-title">Lab 3.2: Protocol Analysis Tools</div>
+          <div class="nx-week-desc">Wireshark deep dive on NEXUS training PCAPs. Display filters, TCP streams, endpoint statistics, IO graphs.</div>
         </div>
         <div class="nx-week-type">Internal Training</div>
       </div>
-      <div class="nx-week-row" style="--badge-color: #00D26A; --badge-text: #ffffff;">
-        <div class="nx-week-badge">UNIT 3</div>
+      <div class="nx-week-row" style="--badge-color: #00BCD4; --badge-text: #ffffff;">
+        <div class="nx-week-badge">LAB 3.3</div>
         <div class="nx-week-info">
-          <div class="nx-week-title">Lab 3.3: LoneStar DevOps Network Investigation</div>
-          <div class="nx-week-desc">Client engagement. Analyze suspicious traffic + incident report.</div>
+          <div class="nx-week-title">Lab 3.3: Network Analysis Engagement (Azure Live Capture)</div>
+          <div class="nx-week-desc">Client engagement. Connect from Kali to the Gulf Coast patient portal in Azure, capture live traffic, and document tiered findings.</div>
         </div>
         <div class="nx-week-type">Client Billable</div>
       </div>
     </div>
 
-    <div class="nx-client-ctx" style="--client-color: #00D26A; --client-rgb: 0, 210, 106;">
-      <div class="nx-client-ctx__label">Client Context: LoneStar DevOps</div>
-      <div class="nx-client-ctx__body">Marcus Webb (CEO) reports anomalous traffic patterns during overnight deployments. The dev team noticed unexpected outbound connections from the CI/CD pipeline. Santiago Reyes needs a network traffic analysis to determine if there's been a breach.</div>
+    <div class="nx-client-ctx" style="--client-color: #00BCD4; --client-rgb: 0, 188, 212;">
+      <div class="nx-client-ctx__label">Client Context: Gulf Coast Healthcare Partners</div>
+      <div class="nx-client-ctx__body">Gulf Coast moved their patient portal to Azure (hosted by LoneStar DevOps) after the ransomware incident 18 months ago. With an OCR audit approaching, Jennifer Walsh (CISO) wants independent validation of the network traffic patterns to and from the portal. Thomas Kowalski (VP Infrastructure) made the call to move to cloud &#8212; he wants to see it was the right one.</div>
+    </div>
+
+    <div class="nx-stakeholder-quotes">
+      <div class="nx-quote">
+        <div class="nx-quote-main">
+          <div class="nx-quote-avatar"><img src="https://jfnewsom.github.io/is3513-assets/headshots/jennifer-walsh.png" alt="Jennifer Walsh portrait"></div>
+          <div class="nx-quote-bubble"><p>&ldquo;The OCR auditors will ask about our cloud traffic. I need evidence that we know what&#8217;s flowing to Azure &#8212; not assumptions, evidence.&rdquo;</p></div>
+        </div>
+        <div class="nx-quote-attribution">
+          <div class="nx-quote-name">Jennifer Walsh</div>
+          <div class="nx-quote-title">CISO, Gulf Coast Healthcare</div>
+        </div>
+      </div>
+      <div class="nx-quote">
+        <div class="nx-quote-main">
+          <div class="nx-quote-avatar"><img src="https://jfnewsom.github.io/is3513-assets/headshots/thomas-kowalski.png" alt="Thomas Kowalski portrait"></div>
+          <div class="nx-quote-bubble"><p>&ldquo;After the ransomware, I moved everything I could to cloud. Tell me it was the right call &#8212; and tell me what I should be watching.&rdquo;</p></div>
+        </div>
+        <div class="nx-quote-attribution">
+          <div class="nx-quote-name">Thomas Kowalski</div>
+          <div class="nx-quote-title">VP Infrastructure, Gulf Coast Healthcare</div>
+        </div>
+      </div>
     </div>
 
     <div>
       <div class="nx-section-label nx-section-label--green">Skills You&#8217;ll Build</div>
       <div class="nx-skills">
         <div class="nx-skills-col">
+          &bull; CIDR and network addressing<br>
           &bull; Packet capture with Wireshark<br>
-          &bull; TCP/IP protocol analysis<br>
-          &bull; Network traffic interpretation<br>
+          &bull; Protocol analysis (TCP, HTTP, DNS, TLS)<br>
         </div>
         <div class="nx-skills-col">
-          &bull; IDS rule writing<br>
-          &bull; Log analysis and correlation<br>
-          &bull; Incident documentation<br>
+          &bull; Live traffic capture against cloud targets<br>
+          &bull; Tiered finding documentation<br>
+          &bull; Network analysis reporting<br>
         </div>
       </div>
     </div>

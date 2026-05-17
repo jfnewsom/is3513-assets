@@ -62,6 +62,60 @@ def shell(module_num, title, accent, body):
 </html>"""
 
 
+ASSETS = "https://jfnewsom.github.io/is3513-assets"
+
+
+def render_client_logo(logo):
+    """Optional client logo, floated right of overview paragraph.
+
+    Schema:
+      "logo": {
+        "src": "branding/brazos-financial-dark.svg",
+        "alt": "Brazos Financial Group logo",
+        "cssClass": "nx-logo-glow"   # optional
+      }
+    """
+    if not logo:
+        return ""
+    src = logo.get("src", "")
+    if src and not src.startswith("http"):
+        src = f"{ASSETS}/{src.lstrip('/')}"
+    alt = logo.get("alt", "")
+    cls = "nx-module-logo nx-section-image nx-section-image--right"
+    if logo.get("cssClass"):
+        cls += f" {logo['cssClass']}"
+    return f'<img class="{cls}" src="{src}" alt="{alt}">'
+
+
+def render_stakeholder_quote(s):
+    """One stakeholder concern bubble (reuses .nx-quote-* lab pattern).
+
+    Schema:
+      {
+        "name": "Ray Jimenez",
+        "title": "CTO, Brazos Financial",
+        "portrait": "headshots/ray-jimenez.png",
+        "concern": "I need ammunition for my budget presentation to the board."
+      }
+    """
+    portrait = s.get("portrait", "")
+    if portrait and not portrait.startswith("http"):
+        portrait = f"{ASSETS}/{portrait.lstrip('/')}"
+    name = s.get("name", "")
+    title = s.get("title", "")
+    concern = s.get("concern", "")
+    return f"""      <div class="nx-quote">
+        <div class="nx-quote-main">
+          <div class="nx-quote-avatar"><img src="{portrait}" alt="{name} portrait"></div>
+          <div class="nx-quote-bubble"><p>&ldquo;{concern}&rdquo;</p></div>
+        </div>
+        <div class="nx-quote-attribution">
+          <div class="nx-quote-name">{name}</div>
+          <div class="nx-quote-title">{title}</div>
+        </div>
+      </div>"""
+
+
 def render(data):
     accent       = data["accentColor"]
     client_color = data["clientColor"]
@@ -69,10 +123,10 @@ def render(data):
     n            = data["module"]
     title        = data["title"]
 
-    # Info bar
+    # Info bar (now "Labs" instead of "Units")
     info_bar = f"""    <div class="nx-info-bar">
       <div class="nx-info-stat">
-        <div class="nx-info-stat__label">Units</div>
+        <div class="nx-info-stat__label">Labs</div>
         <div class="nx-info-stat__value">{data['units']}</div>
       </div>
       <div class="nx-info-stat">
@@ -85,8 +139,9 @@ def render(data):
       </div>
     </div>"""
 
-    # Overview
-    overview = f"    <p>{data['overview']}</p>"
+    # Overview with optional floated logo
+    logo_html = render_client_logo(data.get("logo"))
+    overview = f'    <div class="nx-module-overview-block">{logo_html}<p>{data["overview"]}</p></div>'
 
     # Notice (optional)
     notice_html = ""
@@ -97,7 +152,8 @@ def render(data):
       <span class="nx-client-ctx__body"> {notice['body']}</span>
     </div>"""
 
-    # Unit breakdown
+    # Lab breakdown (field name in JSON remains units_breakdown for backward compat;
+    # the unitLabel values now say "LAB X.1" etc.)
     week_rows = []
     for week in data["units_breakdown"]:
         badge_color = week["badgeColor"]
@@ -118,12 +174,22 @@ def render(data):
 {chr(10).join(week_rows)}
     </div>"""
 
-    # Client context
+    # Client context (prose) + optional stakeholder bubbles below
     ctx = data["clientContext"]
-    client_ctx = f"""    <div class="nx-client-ctx" style="--client-color: {client_color}; --client-rgb: {client_rgb};">
+    client_ctx_prose = f"""    <div class="nx-client-ctx" style="--client-color: {client_color}; --client-rgb: {client_rgb};">
       <div class="nx-client-ctx__label">{ctx['label']}</div>
       <div class="nx-client-ctx__body">{ctx['body']}</div>
     </div>"""
+
+    stakeholders = data.get("stakeholders", [])
+    if stakeholders:
+        bubbles = "\n".join(render_stakeholder_quote(s) for s in stakeholders)
+        client_ctx_bubbles = f"""    <div class="nx-stakeholder-quotes">
+{bubbles}
+    </div>"""
+        client_ctx = client_ctx_prose + "\n\n" + client_ctx_bubbles
+    else:
+        client_ctx = client_ctx_prose
 
     # Skills
     skills_left  = "\n          ".join(f"&bull; {s}<br>" for s in data["skills"]["left"])
