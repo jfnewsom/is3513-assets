@@ -1575,7 +1575,7 @@ summary {
 
 /* ── Home page NEXUS narrative intro ──────────────────────── */
 .nx-narrative-intro {
-  text-align: center;
+  text-align: right;
   padding: 8px 0 24px 0;
   border-bottom: 1px solid #2a2f3e;
   margin-bottom: 24px;
@@ -1586,7 +1586,7 @@ summary {
   max-width: 180px;
   height: auto;
   display: block;
-  margin: 0 auto 16px auto;
+  margin: 0 0 16px auto;
 }
 .nx-narrative-intro__tagline {
   font-family: 'Roboto Slab', serif;
@@ -1602,7 +1602,7 @@ summary {
   color: #B0B8C4;
   line-height: 1.6;
   max-width: 720px;
-  margin: 0 auto;
+  margin: 0 0 0 auto;
 }
 @media (max-width: 640px) {
   .nx-narrative-intro__logo.nx-narrative-intro__logo {
@@ -1613,62 +1613,69 @@ summary {
   .nx-narrative-intro__body { font-size: 13px; }
 }
 
-/* ── Client showcase (2x2 grid on Home page) ────────────────── */
+/* ── Client showcase (4-across row on Home page, stat-bar style) ─ */
 .nx-client-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 12px 0 24px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 12px 0 25px 0;
 }
 .nx-client-card {
+  flex: 1;
+  background: #1a1f2e;
+  border-radius: 6px;
+  padding: 16px 12px;
+  border-top: 3px solid var(--client-color, #7B68EE);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  background: #11151f;
-  border-left: 4px solid var(--client-color, #7B68EE);
-  border-radius: 0 4px 4px 0;
-  padding: 16px;
+  text-align: center;
 }
 .nx-client-card__logo.nx-client-card__logo {
-  width: 100px;
-  max-width: 100px;
+  width: 80px;
+  max-width: 80px;
   height: auto;
-  flex-shrink: 0;
+  margin-bottom: 12px;
 }
 .nx-client-card__body {
-  flex-grow: 1;
-  min-width: 0;
+  width: 100%;
 }
 .nx-client-card__name {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;
   color: var(--client-color, #ffffff);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.2;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .nx-client-card__modules {
   font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
+  font-size: 10px;
   color: #888;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .nx-client-card__engagement {
   font-family: 'Roboto', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: #B0B8C4;
-  line-height: 1.45;
+  line-height: 1.4;
   margin: 0;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .nx-client-grid {
-    grid-template-columns: 1fr;
+    flex-wrap: wrap;
   }
-  .nx-client-card__logo.nx-client-card__logo {
-    width: 80px;
-    max-width: 80px;
+  .nx-client-card {
+    flex: 1 1 calc(50% - 8px);
+    min-width: calc(50% - 8px);
+  }
+}
+@media (max-width: 500px) {
+  .nx-client-card {
+    flex: 1 1 100%;
+    min-width: 100%;
   }
 }
 
