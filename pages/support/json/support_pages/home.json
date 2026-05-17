@@ -108,7 +108,7 @@
     { "label": "Delivery",      "value": "Asynchronous Online" },
     { "label": "Live Sessions", "value": "None (work at your own pace)" },
     { "label": "Support",       "value": "Discord, Email, Calendly", "href": "How_To_Get_Help.html", "linkColor": "cyan" },
-    { "label": "Textbook",      "value": "Conklin &amp; White, 6th Ed. (recommended)", "href": "Textbook.html", "linkColor": "purple" }
+    { "label": "Textbook",      "value": "Conklin &amp; White, 6th Ed. (required)", "href": "Textbook.html", "linkColor": "purple" }
   ],
 
   "stats": [
