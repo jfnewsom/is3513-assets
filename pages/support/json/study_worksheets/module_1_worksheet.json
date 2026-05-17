@@ -59,7 +59,8 @@
             "Accounting &mdash; logging what you did"
           ]
         }
-      ]
+      ],
+      "subtitle": "Core terms every analyst must know"
     },
     {
       "title": "Know Your Adversaries",
@@ -105,7 +106,8 @@
             "Insider attack vs. outsider attack"
           ]
         }
-      ]
+      ],
+      "subtitle": "Who attacks, and why"
     },
     {
       "title": "Malware &amp; Attack Types",
@@ -156,7 +158,8 @@
             "Watering hole attack &mdash; compromising sites your target visits"
           ]
         }
-      ]
+      ],
+      "subtitle": "How the bad guys deliver payloads"
     },
     {
       "title": "Security Principles",
@@ -195,7 +198,8 @@
           "blanks": 3,
           "sep": " + "
         }
-      ]
+      ],
+      "subtitle": "The design rules behind every defense"
     },
     {
       "title": "Security Models &amp; Frameworks",
@@ -251,7 +255,8 @@
             "Diamond Model &mdash; adversary, capability, infrastructure, victim"
           ]
         }
-      ]
+      ],
+      "subtitle": "Models, controls, and the frameworks that tie them together"
     },
     {
       "title": "Reconnaissance Concepts",
@@ -298,7 +303,8 @@
             "Attack surface &mdash; all points where attacker can try to enter"
           ]
         }
-      ]
+      ],
+      "subtitle": "Passive and active info-gathering techniques"
     },
     {
       "title": "Lab Knowledge",
@@ -398,7 +404,8 @@
             "enum4linux"
           ]
         }
-      ]
+      ],
+      "subtitle": "Commands, flags, and findings from your hands-on work"
     },
     {
       "title": "Professional Application",
@@ -446,7 +453,8 @@
             "How can the same reconnaissance tools serve both attackers and defenders?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Ethics, communication, and the purple-team mindset"
     },
     {
       "title": "Concept Check",
@@ -471,7 +479,8 @@
             "Why is security through obscurity unreliable as a primary defense?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Final self-assessment before the exam"
     }
   ],
   "closing": {

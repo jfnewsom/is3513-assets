@@ -56,7 +56,8 @@
             "Qualitative and quantitative approaches both have value"
           ]
         }
-      ]
+      ],
+      "subtitle": "Threat, vulnerability, risk, and how they relate"
     },
     {
       "title": "Quantitative Risk Analysis",
@@ -98,7 +99,8 @@
           "type": "answer_line",
           "prompt": "<strong>A server farm has 5 servers. If 2 fail in an incident, what is the Exposure Factor?</strong><br>Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "ALE, SLE, ARO, and the math that drives risk decisions"
     },
     {
       "title": "Qualitative Risk Analysis",
@@ -133,7 +135,8 @@
             "Inherent risk &mdash; risk before any controls"
           ]
         }
-      ]
+      ],
+      "subtitle": "Likelihood, impact, and risk-matrix construction"
     },
     {
       "title": "Risk Treatment Strategies",
@@ -165,7 +168,8 @@
             "Cyber insurance &mdash; example of risk transfer"
           ]
         }
-      ]
+      ],
+      "subtitle": "Mitigate, transfer, accept, avoid — and when each applies"
     },
     {
       "title": "Vulnerability Management",
@@ -211,7 +215,8 @@
             "False negative &mdash; missed actual vulnerability"
           ]
         }
-      ]
+      ],
+      "subtitle": "CVE, CVSS, and the scan-and-remediate cycle"
     },
     {
       "title": "Infrastructure Security",
@@ -272,7 +277,8 @@
             "DNS poisoning &mdash; corrupting DNS cache"
           ]
         }
-      ]
+      ],
+      "subtitle": "Network devices, data protection, and virtualization defenses"
     },
     {
       "title": "Lab Knowledge &mdash; Vulnerability Scanning",
@@ -333,7 +339,8 @@
           "type": "answer_line",
           "prompt": "<strong>What command searches Exploit-DB for Apache vulnerabilities?</strong><br>Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "Nmap NSE, scan output, and finding what matters"
     },
     {
       "title": "Lab Knowledge &mdash; Risk Assessment",
@@ -371,7 +378,8 @@
           "type": "answer_line",
           "prompt": "<strong>In a qualitative risk matrix, what two factors determine where a risk is plotted?</strong><br>Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "CVSS scoring practice and risk-matrix construction"
     },
     {
       "title": "Professional Application",
@@ -402,7 +410,8 @@
             "A client has no vulnerability management program. Red team: why is this organization an easy target? Blue team: what process do you recommend?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Communicating risk to executives and engineers alike"
     },
     {
       "title": "Concept Check",
@@ -427,7 +436,8 @@
             "Why is business context important when prioritizing vulnerabilities?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Final self-assessment before the exam"
     }
   ],
   "closing": {

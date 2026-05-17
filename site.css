@@ -1889,6 +1889,10 @@ summary {
   font-size: 22px;
   padding: 10px 16px;
 }
+.nx-worksheet-body .nx-header.nx-checkpoint .nx-sub {
+  font-size: 14px;
+  padding: 8px 16px;
+}
 .nx-worksheet-body .nx-header.nx-checkpoint {
   border-left-width: 3px;
 }

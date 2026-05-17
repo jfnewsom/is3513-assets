@@ -44,7 +44,8 @@
             "Caller ID spoofing &mdash; falsifying phone number"
           ]
         }
-      ]
+      ],
+      "subtitle": "Categories of attack and the spoofing playbook"
     },
     {
       "title": "Malware",
@@ -86,7 +87,8 @@
             "Shimming &mdash; inserting code between driver and OS"
           ]
         }
-      ]
+      ],
+      "subtitle": "Types of malware and how they evade detection"
     },
     {
       "title": "Social Engineering",
@@ -140,7 +142,8 @@
             "Trust &mdash; exploiting established relationships"
           ]
         }
-      ]
+      ],
+      "subtitle": "Phishing variants and the psychology behind them"
     },
     {
       "title": "Application Attacks",
@@ -191,7 +194,8 @@
             "Resource exhaustion &mdash; consuming all available resources"
           ]
         }
-      ]
+      ],
+      "subtitle": "Injection, memory, and other code-level exploits"
     },
     {
       "title": "Denial of Service",
@@ -214,7 +218,8 @@
             "Slowloris &mdash; holding connections open slowly"
           ]
         }
-      ]
+      ],
+      "subtitle": "Volumetric, protocol, and application-layer DoS"
     },
     {
       "title": "Change Management",
@@ -268,7 +273,8 @@
             "Level 5: Optimizing &mdash; continuous improvement"
           ]
         }
-      ]
+      ],
+      "subtitle": "Why mature shops require change tickets for everything"
     },
     {
       "title": "Lab Knowledge &mdash; Password Cracking",
@@ -361,7 +367,8 @@
           "type": "answer_line",
           "prompt": "<strong>What is the primary purpose of salt in password hashing?</strong><br>Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "NTLM vs SHA-512, wordlists, John, and Hashcat"
     },
     {
       "title": "Professional Application",
@@ -392,7 +399,8 @@
             "A client&rsquo;s web application has no rate limiting on login attempts. Red team: how do you exploit this? Blue team: what controls are needed?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Authorization, ethics, and the responsible-disclosure playbook"
     },
     {
       "title": "Concept Check",
@@ -417,7 +425,8 @@
             "What is shimming and why is it a concern?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Final self-assessment before the exam"
     }
   ],
   "closing": {

@@ -86,7 +86,8 @@
             "Class C &mdash; /24, 254 hosts"
           ]
         }
-      ]
+      ],
+      "subtitle": "OSI, TCP/UDP, addressing, and core protocols"
     },
     {
       "title": "Network Devices",
@@ -140,7 +141,8 @@
             "VPN concentrator &mdash; handles VPN connections"
           ]
         }
-      ]
+      ],
+      "subtitle": "What lives at Layers 1, 2, and 3"
     },
     {
       "title": "Network Architecture",
@@ -200,7 +202,8 @@
             "Air gap &mdash; complete physical isolation"
           ]
         }
-      ]
+      ],
+      "subtitle": "Topologies, zones, and segmentation"
     },
     {
       "title": "Intrusion Detection &amp; Prevention",
@@ -269,7 +272,8 @@
             "Encrypted traffic limitation &mdash; NIDS cannot inspect encrypted payloads"
           ]
         }
-      ]
+      ],
+      "subtitle": "How IDS/IPS systems see attacks coming"
     },
     {
       "title": "Cloud &amp; Virtualization",
@@ -327,7 +331,8 @@
             "Data sovereignty &mdash; data subject to laws of country where stored"
           ]
         }
-      ]
+      ],
+      "subtitle": "Service models, deployment models, and the shared responsibility line"
     },
     {
       "title": "Lab Knowledge &mdash; Networking",
@@ -390,7 +395,8 @@
             "Display ARP cache"
           ]
         }
-      ]
+      ],
+      "subtitle": "Subnetting, binary, and the Linux commands you used"
     },
     {
       "title": "Lab Knowledge &mdash; Wireshark",
@@ -450,7 +456,8 @@
           "type": "answer_line",
           "prompt": "<strong>Protocol names in display filters must be: UPPERCASE / lowercase</strong><br>\n      Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "Filters, captures, and protocol analysis"
     },
     {
       "title": "Network Attacks",
@@ -469,7 +476,8 @@
             "Amplification attack &mdash; using protocols to magnify DoS traffic"
           ]
         }
-      ]
+      ],
+      "subtitle": "MITM, spoofing, and the rest of the wire-level threat list"
     },
     {
       "title": "Professional Application",
@@ -500,7 +508,8 @@
             "A client&rsquo;s DMZ allows direct database connections from the internet. Red team: why is this attractive? Blue team: what architecture change is needed?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Communicating network findings under audit pressure"
     },
     {
       "title": "Concept Check",
@@ -525,7 +534,8 @@
             "Why is Snort called the &ldquo;de facto standard&rdquo; for open-source IDS?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Final self-assessment before the exam"
     }
   ],
   "closing": {

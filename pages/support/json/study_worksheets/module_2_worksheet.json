@@ -95,7 +95,8 @@
             "ECB (Electronic Codebook) &mdash; insecure, patterns visible"
           ]
         }
-      ]
+      ],
+      "subtitle": "Symmetric, asymmetric, and the data states they protect"
     },
     {
       "title": "Hashing",
@@ -155,7 +156,8 @@
             "Brute force &mdash; trying all possible combinations"
           ]
         }
-      ]
+      ],
+      "subtitle": "Integrity, password storage, and known attacks"
     },
     {
       "title": "Digital Signatures &amp; PKI",
@@ -201,7 +203,8 @@
             "SAN certificate &mdash; Subject Alternative Name, multiple domains"
           ]
         }
-      ]
+      ],
+      "subtitle": "How trust gets established across the internet"
     },
     {
       "title": "Authentication",
@@ -298,7 +301,8 @@
             "Federation &mdash; trust between different organizations"
           ]
         }
-      ]
+      ],
+      "subtitle": "Factors, MFA, and the protocols behind login"
     },
     {
       "title": "Secure Protocols",
@@ -344,7 +348,8 @@
             "S/MIME &mdash; secure email"
           ]
         }
-      ]
+      ],
+      "subtitle": "SSH, TLS, and the rest of the secure-channel toolkit"
     },
     {
       "title": "Lab Knowledge",
@@ -452,7 +457,8 @@
           "type": "answer_line",
           "prompt": "<strong>What limitation exists with self-signed certificates compared to CA-signed?</strong><br>Answer: ___"
         }
-      ]
+      ],
+      "subtitle": "OpenSSL output, hash lengths, SSH keys, cipher suites"
     },
     {
       "title": "Cryptographic Attacks",
@@ -469,7 +475,8 @@
             "Pass-the-hash &mdash; using stolen hash without cracking it"
           ]
         }
-      ]
+      ],
+      "subtitle": "How attackers break weak crypto"
     },
     {
       "title": "Professional Application",
@@ -500,7 +507,8 @@
             "A client&rsquo;s SSH server accepts password authentication. Red team perspective: why is this a target? Blue team: what should change?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Communicating crypto findings to non-technical clients"
     },
     {
       "title": "Concept Check",
@@ -525,7 +533,8 @@
             "Why would using ECB mode for encryption be a security risk?"
           ]
         }
-      ]
+      ],
+      "subtitle": "Final self-assessment before the exam"
     }
   ],
   "closing": {

@@ -199,6 +199,9 @@ def render_worksheet_section(sec, num, accent):
     Auto-classifies as 'major' or 'checkpoint' based on section title.
     Major sections (Lab Knowledge / Professional Application / Concept Check) get
     a full-size header. Other sections get the compact checkpoint treatment.
+
+    An optional `subtitle` field renders as the gold sub-header bar (.nx-sub),
+    which provides visual transition between the header and the card body.
     """
     # Auto-classify by title prefix (handles "Lab Knowledge — Networking" etc.)
     title_lower = sec["title"].lower()
@@ -207,13 +210,17 @@ def render_worksheet_section(sec, num, accent):
 
     header_class = "nx-header" if is_major else "nx-header nx-checkpoint"
 
+    # Optional sub-bar between header and card body (gold by default)
+    subtitle = sec.get("subtitle", "").strip()
+    sub_html = f'\n      <div class="nx-sub">{subtitle}</div>' if subtitle else ""
+
     content_html = render_content_blocks(sec.get("content", []))
     return f"""  <div class="nx-worksheet-section">
     <div class="{header_class}" style="--accent: {accent};">
       <div class="nx-header-top">
         <div class="nx-kw">{num}</div>
         <div class="nx-sec">{sec['title']}</div>
-      </div>
+      </div>{sub_html}
     </div>
     <div class="nx-card nx-worksheet-card" style="--accent: {accent};">
 
