@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1 Study Guide – IS3513</title>
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <link rel="stylesheet" href="../../site.css">
+</head>
+<body class="nx-worksheet-body">
+
+<div class="nx-page">
+
+<div class="nx-section">
+
+  <!-- Page header: 'study guide' / N / subtitle -->
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">study guide</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">Module 1: Threat Intelligence & Reconnaissance • Chapters 1 & 2</div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-card nx-card--sym" style="--accent: #7B68EE;">
+      <div class="nx-callout nx-blue" style="--callout-color:#7B68EE; --callout-rgb:65,105,225;">
+        <div class="nx-callout-icon"><span class="material-icons">school</span></div>
+        <div class="nx-callout-body">
+          <div class="nx-callout-title">How to Use This Worksheet</div>
+          <p>This worksheet covers everything you need for the Module 1 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">1</div>
+        <div class="nx-sec">The Foundations</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <p class="nx-worksheet-intro">Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough.</p>
+
+      <h3>The CIA Triad</h3>
+
+      <ul>
+        <li>Confidentiality</li>
+        <li>Integrity</li>
+        <li>Availability</li>
+        <li>Non-repudiation (the unofficial fourth pillar)</li>
+      </ul>
+
+      <h3>Core Security Concepts</h3>
+
+      <ul>
+        <li>Threat</li>
+        <li>Vulnerability</li>
+        <li>Risk</li>
+        <li>Exploit</li>
+        <li>Zero-day attack</li>
+        <li>Attack surface</li>
+        <li>Attack vector vs. threat vector</li>
+        <li>Indicators of Compromise (IoCs)</li>
+      </ul>
+
+      <h3>AAA Framework</h3>
+
+      <ul>
+        <li>Authentication &mdash; proving who you are</li>
+        <li>Authorization &mdash; what you&rsquo;re allowed to do</li>
+        <li>Accounting &mdash; logging what you did</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">2</div>
+        <div class="nx-sec">Know Your Adversaries</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <h3>Threat Actor Types</h3>
+
+      <ul>
+        <li>Script kiddie &mdash; motivation, capability, typical attacks</li>
+        <li>Hacktivist &mdash; motivation, typical targets</li>
+        <li>Organized crime &mdash; motivation, business model</li>
+        <li>Nation-state actor / Advanced Persistent Threat (APT) &mdash; characteristics, dwell time</li>
+        <li>Insider threat &mdash; why it&rsquo;s harder to detect than external threats</li>
+        <li>Competitor &mdash; corporate espionage motivations</li>
+      </ul>
+
+      <h3>Hacker Classifications</h3>
+
+      <ul>
+        <li>White hat &mdash; authorized, ethical</li>
+        <li>Black hat &mdash; malicious, unauthorized</li>
+        <li>Gray hat &mdash; unauthorized but not malicious; ethical ambiguity</li>
+        <li>Bug bounty programs &mdash; how they fit in</li>
+        <li>Responsible disclosure vs. full disclosure</li>
+      </ul>
+
+      <h3>Attack Categories</h3>
+
+      <ul>
+        <li>Target of opportunity vs. targeted attack &mdash; what&rsquo;s the difference?</li>
+        <li>Active attack vs. passive attack</li>
+        <li>Insider attack vs. outsider attack</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">3</div>
+        <div class="nx-sec">Malware &amp; Attack Types</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <h3>Malware Categories</h3>
+
+      <ul>
+        <li>Virus &mdash; requires host file, user action to spread</li>
+        <li>Worm &mdash; self-replicating, no user action needed</li>
+        <li>Trojan &mdash; disguised as legitimate software</li>
+        <li>Ransomware &mdash; encryption, extortion, why modern versions are hard to reverse</li>
+        <li>Rootkit &mdash; hides at OS/kernel level</li>
+        <li>Spyware &mdash; monitors user activity</li>
+        <li>Keylogger &mdash; captures keystrokes</li>
+        <li>RAT (Remote Access Trojan) &mdash; persistent backdoor</li>
+        <li>Botnet &mdash; network of compromised systems</li>
+        <li>Logic bomb &mdash; triggered by condition</li>
+        <li>Fileless malware &mdash; lives in memory, no files on disk</li>
+      </ul>
+
+      <div class="nx-worksheet-key"><strong>Key question:</strong> What is the PRIMARY difference between a virus and a worm?</div>
+
+      <h3>Social Engineering Attacks</h3>
+
+      <ul>
+        <li>Phishing &mdash; mass email, generic targets</li>
+        <li>Spear phishing &mdash; targeted at specific individual</li>
+        <li>Whaling &mdash; targeting executives</li>
+        <li>Business Email Compromise (BEC) &mdash; impersonating CEO, wire fraud</li>
+        <li>Vishing &mdash; voice phishing (phone calls)</li>
+        <li>Smishing &mdash; SMS phishing</li>
+        <li>Pretexting &mdash; fabricated scenario to extract info</li>
+        <li>Baiting &mdash; leaving infected USB drives</li>
+        <li>Tailgating / piggybacking &mdash; following through secure doors</li>
+        <li>Shoulder surfing &mdash; watching someone enter credentials</li>
+        <li>Dumpster diving &mdash; searching trash for sensitive info</li>
+        <li>Watering hole attack &mdash; compromising sites your target visits</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">4</div>
+        <div class="nx-sec">Security Principles</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <p class="nx-worksheet-intro">These aren&rsquo;t just definitions &mdash; understand WHY each principle matters.</p>
+
+      <h3>Core Principles</h3>
+
+      <ul>
+        <li>Least privilege &mdash; minimum access necessary</li>
+        <li>Separation of duties &mdash; no single person controls entire process</li>
+        <li>Defense in depth / layered security &mdash; multiple overlapping controls</li>
+        <li>Need to know &mdash; access based on job requirements</li>
+        <li>Implicit deny / default deny &mdash; if not explicitly allowed, it&rsquo;s denied</li>
+        <li>Zero Trust &mdash; never trust, always verify; validate every request</li>
+        <li>Open design &mdash; security shouldn&rsquo;t depend on secrecy of mechanism</li>
+        <li>Security through obscurity &mdash; why it fails as primary defense</li>
+        <li>Fail-safe / fail-secure &mdash; system fails to secure state</li>
+        <li>Due diligence &mdash; research before acting</li>
+        <li>Due care &mdash; acting responsibly with what you know</li>
+      </ul>
+
+      <h3>The Protection Equation</h3>
+
+      <p>Protection = <span class="nx-worksheet-blank">&nbsp;</span> + <span class="nx-worksheet-blank">&nbsp;</span> + <span class="nx-worksheet-blank">&nbsp;</span></p>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">5</div>
+        <div class="nx-sec">Security Models &amp; Frameworks</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <h3>Access Control Models</h3>
+
+      <ul>
+        <li>Bell-LaPadula &mdash; confidentiality focused
+          <br><em>Rules: &ldquo;No read <span class="ws-blank" style="min-width:80px;">&nbsp;</span>, no write <span class="ws-blank" style="min-width:80px;">&nbsp;</span>&rdquo;</em></li>
+        <li>Biba &mdash; integrity focused
+          <br><em>Which CIA element does Biba primarily protect? <span class="ws-blank" style="min-width:120px;">&nbsp;</span></em></li>
+        <li>Clark-Wilson &mdash; integrity through well-formed transactions</li>
+      </ul>
+
+      <h3>Security Controls — By Function</h3>
+
+      <ul>
+        <li>Preventive &mdash; stops attacks before they happen</li>
+        <li>Detective &mdash; identifies attacks in progress or after</li>
+        <li>Corrective &mdash; fixes damage after attack</li>
+        <li>Deterrent &mdash; discourages attacks</li>
+        <li>Compensating &mdash; alternative when primary control isn&rsquo;t feasible</li>
+      </ul>
+
+      <h3>Security Controls — By Category</h3>
+
+      <ul>
+        <li>Administrative / managerial &mdash; policies, procedures, training</li>
+        <li>Technical / logical &mdash; firewalls, encryption, access controls</li>
+        <li>Physical &mdash; locks, guards, cameras, fences</li>
+      </ul>
+
+      <h3>Frameworks</h3>
+
+      <ul>
+        <li>Kill chain &mdash; sequential steps from recon to objective</li>
+        <li>MITRE ATT&amp;CK &mdash; knowledge base of adversary tactics and techniques</li>
+        <li>NIST Cybersecurity Framework &mdash; five core functions:
+          <br><span style="font-size:14px;">1. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          2. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          3. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          4. <span class="ws-blank" style="min-width:90px;">&nbsp;</span>
+          5. <span class="ws-blank" style="min-width:90px;">&nbsp;</span></span></li>
+        <li>Diamond Model &mdash; adversary, capability, infrastructure, victim</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">6</div>
+        <div class="nx-sec">Reconnaissance Concepts</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <h3>Types of Reconnaissance</h3>
+
+      <ul>
+        <li>Passive reconnaissance &mdash; no direct interaction with target</li>
+        <li>Active reconnaissance &mdash; direct interaction, detectable</li>
+        <li>Footprinting &mdash; gathering info about target organization</li>
+        <li>Enumeration &mdash; extracting specific info (users, shares, services)</li>
+        <li>Banner grabbing &mdash; identifying service versions</li>
+        <li>OSINT (Open Source Intelligence) &mdash; publicly available info</li>
+      </ul>
+
+      <h3>Reconnaissance Techniques</h3>
+
+      <ul>
+        <li>WHOIS lookups &mdash; domain registration info</li>
+        <li>DNS reconnaissance &mdash; zone transfers, record enumeration</li>
+        <li>Google dorking &mdash; advanced search operators to find exposed info</li>
+        <li>Shodan &mdash; search engine for internet-connected devices</li>
+        <li>Metadata analysis &mdash; extracting info from document properties</li>
+        <li>Social media mining &mdash; OSINT from public profiles</li>
+      </ul>
+
+      <h3>Key Terms</h3>
+
+      <ul>
+        <li>CVE (Common Vulnerabilities and Exposures) &mdash; standardized vulnerability IDs</li>
+        <li>Exploit-DB &mdash; database of public exploits</li>
+        <li>Attack surface &mdash; all points where attacker can try to enter</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">7</div>
+        <div class="nx-sec">Lab Knowledge</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <p class="nx-worksheet-intro">If you did the labs, you know this. If you didn&rsquo;t, good luck.</p>
+
+      <h3>Linux System Commands</h3>
+
+      <table class="nx-worksheet-table">
+        <thead><tr><th>What You Need</th><th>Command</th></tr></thead>
+        <tbody>
+          <tr><td>Kernel version only</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Kernel version + release + architecture</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Distribution release info</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Network interfaces and IP addresses</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Default gateway</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>DNS server configuration file</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>VirtualBox NAT default gateway IP</td><td class="nx-worksheet-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Nmap Flags</h3>
+
+      <table class="nx-worksheet-table">
+        <thead><tr><th>Purpose</th><th>Flag</th></tr></thead>
+        <tbody>
+          <tr><td>Service version detection</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Default NSE scripts</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Aggressive scan (OS + version + scripts + traceroute)</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>What does &ldquo;filtered&rdquo; port status mean?</td><td class="nx-worksheet-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>scanme.nmap.org Results</h3>
+
+      <p class="nx-worksheet-intro">Record your actual findings from Lab 1.2:</p>
+
+      <table class="nx-worksheet-table">
+        <thead><tr><th>Finding</th><th>Your Result</th></tr></thead>
+        <tbody>
+          <tr><td>SSH version (port 22)</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Apache version (port 80)</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>nping-echo port number</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>HTTP page title (script scan)</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Service on port 31337</td><td class="nx-worksheet-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Other Tools</h3>
+
+      <table class="nx-worksheet-table">
+        <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>DIRB default wordlist path</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Words in common.txt</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>enum4linux flag for RID cycling</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Purpose of banner grabbing</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Searchsploit database queries</td><td class="nx-worksheet-answer-cell"></td></tr>
+          <tr><td>Difference: active vs. passive recon</td><td class="nx-worksheet-answer-cell"></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Tool Versions (Your System)</h3>
+
+      <div class="nx-worksheet-tool-versions">
+        <div class="nx-worksheet-tool-version-item"><code>nmap</code> <span class="nx-worksheet-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="nx-worksheet-tool-version-item"><code>nikto</code> <span class="nx-worksheet-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="nx-worksheet-tool-version-item"><code>dirb</code> <span class="nx-worksheet-blank" style="min-width:100px;">&nbsp;</span></div>
+        <div class="nx-worksheet-tool-version-item"><code>enum4linux</code> <span class="nx-worksheet-blank" style="min-width:100px;">&nbsp;</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">8</div>
+        <div class="nx-sec">Professional Application</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <p class="nx-worksheet-intro">Ethics, communication, and judgment matter as much as technical skills.</p>
+
+      <h3>Professional Ethics</h3>
+
+      <div class="nx-worksheet-concept-q"><strong>1.</strong> What must you verify FIRST before conducting any reconnaissance against a target?</div>
+      <div class="nx-worksheet-concept-q"><strong>2.</strong> True or False: You may exceed your authorized scope if you discover critical vulnerabilities. Explain.</div>
+      <div class="nx-worksheet-concept-q"><strong>3.</strong> You discover exposed customer PII during an engagement. What&rsquo;s the appropriate action?</div>
+      <div class="nx-worksheet-concept-q"><strong>4.</strong> What&rsquo;s the difference between responsible disclosure and full disclosure?</div>
+
+      <h3>Communication</h3>
+
+      <div class="nx-worksheet-concept-q"><strong>5.</strong> How would you explain an outdated Apache vulnerability to a non-technical CTO?</div>
+      <div class="nx-worksheet-concept-q"><strong>6.</strong> A client can only fix 2 of 5 findings this quarter. What criteria help prioritize?</div>
+
+      <h3>Purple Team Thinking</h3>
+
+      <div class="nx-worksheet-concept-q"><strong>7.</strong> You find an outdated web server. Red team perspective: how would you exploit it? Blue team: what&rsquo;s the fix?</div>
+      <div class="nx-worksheet-concept-q"><strong>8.</strong> A website reveals employee email format and leadership names. Red: how is this useful? Blue: what should change?</div>
+      <div class="nx-worksheet-concept-q"><strong>9.</strong> How can the same reconnaissance tools serve both attackers and defenders?</div>
+
+    </div>
+  </div>
+
+  <div class="nx-worksheet-section">
+    <div class="nx-header" style="--accent: #7B68EE;">
+      <div class="nx-header-top">
+        <div class="nx-kw">9</div>
+        <div class="nx-sec">Concept Check</div>
+      </div>
+    </div>
+    <div class="nx-card nx-worksheet-card" style="--accent: #7B68EE;">
+
+      <p class="nx-worksheet-intro">If you can answer these, you understand the material. If not, go back and review.</p>
+
+      <div class="nx-worksheet-concept-q"><strong>1.</strong> Explain the relationship between threats, vulnerabilities, and risks.</div>
+      <div class="nx-worksheet-concept-q"><strong>2.</strong> Why is data typically more valuable than the hardware storing it?</div>
+      <div class="nx-worksheet-concept-q"><strong>3.</strong> What makes APTs more dangerous than script kiddies? (Think: resources, patience, sophistication)</div>
+      <div class="nx-worksheet-concept-q"><strong>4.</strong> Why are insider threats harder to detect than external threats?</div>
+      <div class="nx-worksheet-concept-q"><strong>5.</strong> A bank requires two employees to authorize large transfers. What principle? Why effective?</div>
+      <div class="nx-worksheet-concept-q"><strong>6.</strong> In Bell-LaPadula, can a Secret user read Top Secret? Write to Unclassified? Why?</div>
+      <div class="nx-worksheet-concept-q"><strong>7.</strong> What is Zero Trust and why does it matter in modern networks?</div>
+      <div class="nx-worksheet-concept-q"><strong>8.</strong> What are the five NIST CSF core functions?</div>
+      <div class="nx-worksheet-concept-q"><strong>9.</strong> What&rsquo;s the primary difference between a virus and a worm?</div>
+      <div class="nx-worksheet-concept-q"><strong>10.</strong> Why is security through obscurity unreliable as a primary defense?</div>
+
+    </div>
+  </div>
+
+    <div class="nx-page-footer" style="--accent: #7B68EE;"><strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,
+        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 1 Exam
+        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your
+        choice. The exam will reveal which group you&rsquo;re in.</div>
+
+</div>
+
+</div>
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>
