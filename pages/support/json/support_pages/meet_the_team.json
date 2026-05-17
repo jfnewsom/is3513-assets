@@ -37,7 +37,7 @@
       "image": {
         "src": "headshots/maya-rodriguez.png",
         "alt": "Maya Rodriguez portrait",
-        "float": "left",
+        "float": "right",
         "width": "140px"
       }
     },
@@ -67,7 +67,7 @@
       "image": {
         "src": "headshots/derek-mitchell.png",
         "alt": "Derek Mitchell portrait",
-        "float": "left",
+        "float": "right",
         "width": "140px"
       }
     },
