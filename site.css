@@ -1643,10 +1643,9 @@ summary {
   align-items: center;
   text-align: center;
 }
-/* Logo frame: fixed-size box. Logos fill the frame HEIGHT uniformly so
-   every logo appears at the same physical height regardless of natural
-   aspect ratio. This is what makes the row read as visually aligned —
-   when heights match, bottoms match, and the eye reads it as a clean row. */
+/* Logo frame: fixed-size box. Logo fills the frame and uses object-fit:contain
+   to preserve aspect ratio within the frame's bounds. This is the standard
+   pattern for displaying logos of varying aspect ratios at uniform visual height. */
 .nx-client-card__logo-frame {
   height: 90px;
   width: 100%;
@@ -1657,10 +1656,10 @@ summary {
   overflow: hidden;
 }
 .nx-client-card__logo.nx-client-card__logo {
+  width: 100%;
   height: 90px;
-  width: auto;
-  max-width: 100%;
   object-fit: contain;
+  display: block;
 }
 /* Name + modules: fixed heights so the engagement paragraph
    always starts at the same Y across all four cards.
