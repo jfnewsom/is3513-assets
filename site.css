@@ -1870,3 +1870,250 @@ summary {
 @media (max-width: 600px) {
   .nx-shortcut-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Study worksheets ─────────────────────────────────────── */
+.nx-worksheet-section { margin-bottom: 40px; }
+
+/* Fill-in blank line */
+.nx-worksheet-blank {
+  display: inline-block;
+  border-bottom: 2px solid #4a5568;
+  min-width: 140px;
+  height: 20px;
+  vertical-align: bottom;
+}
+
+/* Yellow key-question callout (brand citrus #FEC52E) */
+.nx-worksheet-key {
+  border-left: 4px solid #FEC52E;
+  background: rgba(254, 197, 46, 0.08);
+  padding: 10px 16px;
+  margin: 14px 0;
+  color: #B0B8C4;
+  font-style: italic;
+}
+.nx-worksheet-key strong { color: #FEC52E; font-style: normal; }
+
+/* Section intro paragraph (italic, accent-bordered) */
+.nx-worksheet-intro {
+  color: #B0B8C4;
+  font-style: italic;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+  border-left: 3px solid #2a2f3e;
+  padding-left: 12px;
+}
+
+/* Numbered concept question rows */
+.nx-worksheet-concept-q {
+  border-bottom: 1px solid #2a2f3e;
+  padding: 10px 0;
+  color: #B0B8C4;
+  min-height: 56px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.nx-worksheet-concept-q strong { color: #ffffff; }
+
+/* Fill table (question | blank answer cell) */
+.nx-worksheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 12px 0 20px 0;
+}
+.nx-worksheet-table th {
+  background: #1a1f2e;
+  color: #ffffff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+.nx-worksheet-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #2a2f3e;
+  color: #B0B8C4;
+  vertical-align: top;
+}
+.nx-worksheet-table tr:last-child td { border-bottom: none; }
+.nx-worksheet-table .nx-worksheet-answer-cell {
+  min-width: 160px;
+  border-left: 1px solid #2a2f3e;
+}
+.nx-worksheet-table code {
+  background: #1a1f2e;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #00D26A;
+}
+
+/* Tool-versions row (flex layout: tool name + blank line) */
+.nx-worksheet-tool-versions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+  color: #B0B8C4;
+  font-size: 14px;
+}
+.nx-worksheet-tool-version-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nx-worksheet-tool-version-item code {
+  background: #1a1f2e;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #00D26A;
+}
+
+/* H3 subheading inside worksheet card */
+.nx-worksheet-card h3 {
+  color: #ffffff;
+  font-size: 15px;
+  margin: 20px 0 10px 0;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+}
+.nx-worksheet-card h3:first-child { margin-top: 4px; }
+
+/* ── Worksheet print styles ───────────────────────────────── */
+@media print {
+  #nexus-nav,
+  .site-footer { display: none !important; }
+
+  body.nx-worksheet-body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    padding: 0 !important;
+  }
+
+  /* Header block in print */
+  .nx-worksheet-body .nx-header {
+    border-left: 4pt solid #000 !important;
+    page-break-inside: avoid;
+    margin-bottom: 12pt !important;
+  }
+  .nx-worksheet-body .nx-kw {
+    background: #000 !important;
+    color: #fff !important;
+    font-size: 22pt !important;
+    padding: 10pt 14pt !important;
+  }
+  .nx-worksheet-body .nx-sec {
+    background: #333 !important;
+    color: #fff !important;
+    font-size: 22pt !important;
+    padding: 10pt 14pt !important;
+  }
+  .nx-worksheet-body .nx-sub {
+    background: #eee !important;
+    color: #000 !important;
+    font-size: 13pt !important;
+    padding: 7pt 14pt !important;
+  }
+
+  /* Card block in print */
+  .nx-worksheet-body .nx-card {
+    background: #fff !important;
+    border-left: 3pt solid #000 !important;
+    border-bottom: 3pt solid #000 !important;
+    border-radius: 0 !important;
+    padding: 12pt 14pt 12pt 18pt !important;
+    page-break-inside: avoid;
+  }
+  .nx-worksheet-body .nx-card h3 {
+    color: #000 !important;
+    font-size: 10pt !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    background: #eee;
+    padding: 3pt 6pt !important;
+    margin: 10pt 0 5pt 0 !important;
+  }
+  .nx-worksheet-body .nx-card p,
+  .nx-worksheet-body .nx-card li,
+  .nx-worksheet-body .nx-card ul,
+  .nx-worksheet-body .nx-card ol,
+  .nx-worksheet-body .nx-card strong { color: #000 !important; }
+  .nx-worksheet-body .nx-card code {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+    font-size: 9pt !important;
+    padding: 1pt 4pt !important;
+  }
+
+  /* Section */
+  .nx-worksheet-section {
+    page-break-inside: avoid;
+    margin-bottom: 16pt !important;
+  }
+
+  /* Fill-in blanks */
+  .nx-worksheet-blank {
+    border-bottom: 1.5pt solid #000 !important;
+    min-width: 120pt !important;
+    height: 13pt !important;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  /* Key question */
+  .nx-worksheet-key {
+    border-left: 3pt solid #333 !important;
+    background: #f5f5f5 !important;
+    padding: 6pt 10pt !important;
+    margin: 8pt 0 !important;
+    color: #000 !important;
+  }
+  .nx-worksheet-key strong { color: #000 !important; }
+
+  /* Section intro */
+  .nx-worksheet-intro {
+    color: #444 !important;
+    border-left: 2pt solid #999 !important;
+  }
+
+  /* Concept question */
+  .nx-worksheet-concept-q {
+    color: #000 !important;
+    border-bottom: 1pt solid #ccc !important;
+    min-height: 42pt;
+  }
+
+  /* Fill table */
+  .nx-worksheet-table { font-size: 9.5pt !important; }
+  .nx-worksheet-table th {
+    background: #ddd !important;
+    color: #000 !important;
+    border: 1pt solid #999 !important;
+    padding: 5pt 8pt !important;
+  }
+  .nx-worksheet-table td {
+    color: #000 !important;
+    border: 1pt solid #ccc !important;
+    padding: 5pt 8pt !important;
+  }
+  .nx-worksheet-table .nx-worksheet-answer-cell {
+    border-left: 1pt solid #ccc !important;
+  }
+  .nx-worksheet-table code {
+    background: #eee !important;
+    color: #000 !important;
+    font-size: 8.5pt !important;
+  }
+
+  /* Tool versions */
+  .nx-worksheet-tool-versions { color: #000 !important; }
+  .nx-worksheet-tool-version-item code {
+    background: #eee !important;
+    color: #000 !important;
+  }
+}

@@ -6,8 +6,11 @@ No inline styles, no external SVG images.
 Header generated via .nx-header CSS classes (same as labs).
 
 Usage:
-  python3 render_module_overview.py                          # all 5 modules
-  python3 render_module_overview.py <src.json> <out.html>   # single file
+  python3 render_module_overview.py                                  # all 5 modules
+  python3 render_module_overview.py <src.json> <out.html>            # single file
+
+Source filename convention: module_N_overview.json
+Output filename convention: Module_N.html
 """
 import json, sys, os, glob
 
@@ -242,7 +245,7 @@ def main():
         src_dir = os.path.join(base, "pages", "support", "json", "module_overviews")
         out_dir = os.path.join(base, "pages", "support")
         os.makedirs(out_dir, exist_ok=True)
-        for src in sorted(glob.glob(os.path.join(src_dir, "module_*.json"))):
+        for src in sorted(glob.glob(os.path.join(src_dir, "module_*_overview.json"))):
             with open(src) as f:
                 data = json.load(f)
             n   = data["module"]

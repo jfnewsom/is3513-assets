@@ -1,0 +1,534 @@
+{
+  "type": "study_worksheet",
+  "module": 3,
+  "accentColor": "#7B68EE",
+  "title": "Module 3: Network Security • Chapters 9 & 18",
+  "htmlTitle": "Module 3 Study Guide – IS3513",
+  "subtitle": "Module 3: Network Security • Chapters 9 & 18",
+  "intro": {
+    "title": "How to Use This Worksheet",
+    "body": "This worksheet covers everything you need for the Module 3 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call."
+  },
+  "sections": [
+    {
+      "title": "Network Fundamentals",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough."
+        },
+        {
+          "type": "subheading",
+          "text": "The OSI Model"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Layer 7 &mdash; Application (HTTP, FTP, SMTP)",
+            "Layer 6 &mdash; Presentation (encryption, compression)",
+            "Layer 5 &mdash; Session (session management)",
+            "Layer 4 &mdash; Transport (TCP, UDP)",
+            "Layer 3 &mdash; Network (IP, routing)",
+            "Layer 2 &mdash; Data Link (MAC addresses, switches)",
+            "Layer 1 &mdash; Physical (cables, hubs)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "TCP vs. UDP"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "TCP &mdash; connection-oriented, reliable, three-way handshake (SYN, SYN/ACK, ACK)",
+            "UDP &mdash; connectionless, unreliable, no handshake, faster",
+            "TCP ports &mdash; HTTP (80), HTTPS (443), SSH (22), FTP (21), Telnet (23), SMTP (25)",
+            "UDP ports &mdash; DNS (53), DHCP (67/68), TFTP (69), SNMP (161)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Network Protocols"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "ICMP &mdash; Internet Control Message Protocol, used by ping and traceroute",
+            "ARP &mdash; Address Resolution Protocol, maps IP to MAC addresses",
+            "DHCP &mdash; Dynamic Host Configuration Protocol, assigns IP addresses",
+            "DNS &mdash; Domain Name System, resolves names to IP addresses",
+            "SLAAC &mdash; Stateless Address Autoconfiguration, IPv6 auto-config"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "IP Addressing"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "IPv4 &mdash; 32 bits, dotted decimal (192.168.1.1)",
+            "IPv6 &mdash; 128 bits, hexadecimal with colons",
+            "Private IP ranges &mdash; 10.x.x.x, 172.16&ndash;31.x.x, 192.168.x.x",
+            "Loopback &mdash; 127.0.0.1 (IPv4), ::1 (IPv6)",
+            "CIDR notation &mdash; /24 = 255.255.255.0"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Network Classes (Legacy)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Class A &mdash; /8, 16 million hosts",
+            "Class B &mdash; /16, 65,534 hosts",
+            "Class C &mdash; /24, 254 hosts"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Network Devices",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Layer 1 Devices"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Hub &mdash; broadcasts to all ports, shared collision domain",
+            "Repeater &mdash; regenerates signal to extend distance"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Layer 2 Devices"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Switch &mdash; forwards based on MAC address, separate collision domains per port",
+            "Bridge &mdash; connects network segments at Layer 2",
+            "WAP (Wireless Access Point) &mdash; connects wireless clients to wired network"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Layer 3 Devices"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Router &mdash; forwards based on IP address, separates broadcast domains",
+            "Layer 3 switch &mdash; switch with routing capabilities"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Security Devices"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Firewall &mdash; filters traffic based on rules",
+            "IDS (Intrusion Detection System) &mdash; monitors and alerts",
+            "IPS (Intrusion Prevention System) &mdash; monitors and blocks",
+            "Proxy &mdash; intermediary that filters/caches traffic",
+            "Load balancer &mdash; distributes traffic across servers",
+            "VPN concentrator &mdash; handles VPN connections"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Network Architecture",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Network Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "LAN &mdash; Local Area Network, single location",
+            "WAN &mdash; Wide Area Network, geographically dispersed",
+            "WLAN &mdash; Wireless LAN",
+            "MAN &mdash; Metropolitan Area Network",
+            "PAN &mdash; Personal Area Network (Bluetooth)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Network Zones"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Intranet &mdash; internal network, trusted zone",
+            "Extranet &mdash; extended access to partners",
+            "DMZ &mdash; Demilitarized Zone, buffer between internal and external",
+            "Internet &mdash; public, untrusted network"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Topologies"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Star &mdash; all devices connect to central point (most common)",
+            "Bus &mdash; single cable, all devices attached",
+            "Ring &mdash; devices connected in a circle",
+            "Mesh &mdash; every device connected to every other device",
+            "Hybrid &mdash; combination of topologies"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Segmentation"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "VLAN &mdash; Virtual LAN, logical segmentation",
+            "Subnetting &mdash; dividing networks into smaller segments",
+            "NAT &mdash; Network Address Translation, hides internal IPs",
+            "PAT &mdash; Port Address Translation, multiple internal IPs share one external",
+            "Air gap &mdash; complete physical isolation"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Intrusion Detection &amp; Prevention",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "IDS Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "NIDS &mdash; Network-based, monitors network traffic",
+            "HIDS &mdash; Host-based, monitors single system (files, processes, logs)",
+            "Wireless IDS &mdash; monitors wireless networks"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Detection Methods"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Signature-based &mdash; compares against known attack patterns (signature database)",
+            "Anomaly-based &mdash; compares against baseline of normal behavior",
+            "Heuristic &mdash; uses rules and algorithms to identify suspicious activity"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "IDS Outcomes"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "True positive &mdash; correctly identified attack",
+            "True negative &mdash; correctly identified normal traffic",
+            "False positive &mdash; alert on legitimate traffic (not actually malicious)",
+            "False negative &mdash; missed actual attack (malicious goes undetected)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "IDS/IPS Tools"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Snort &mdash; open-source IDS since 1998, de facto standard",
+            "Suricata &mdash; high-performance alternative to Snort",
+            "OSSEC &mdash; host-based IDS",
+            "Zeek (formerly Bro) &mdash; network analysis framework"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Key Concepts"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Promiscuous mode &mdash; NIC captures all traffic, not just addressed to it",
+            "Inline vs. passive &mdash; IPS inline (can block), IDS passive (monitor only)",
+            "Correlation &mdash; connecting related events from multiple sources",
+            "SIEM &mdash; Security Information and Event Management",
+            "Encrypted traffic limitation &mdash; NIDS cannot inspect encrypted payloads"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cloud &amp; Virtualization",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Cloud Service Models"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "IaaS &mdash; Infrastructure as a Service (VMs, storage, networking)",
+            "PaaS &mdash; Platform as a Service (development environment)",
+            "SaaS &mdash; Software as a Service (applications via browser)",
+            "XaaS &mdash; Anything as a Service"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Cloud Deployment Models"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Public cloud &mdash; shared infrastructure, third-party operated",
+            "Private cloud &mdash; dedicated to single organization",
+            "Hybrid cloud &mdash; combination of public and private",
+            "Community cloud &mdash; shared by organizations with common concerns"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Virtualization"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Hypervisor &mdash; software layer between VMs and hardware",
+            "Type 1 (bare metal) &mdash; runs directly on hardware (VMware ESXi, Hyper-V)",
+            "Type 2 (hosted) &mdash; runs on host OS (VirtualBox, VMware Workstation)",
+            "VM sprawl &mdash; uncontrolled proliferation of virtual machines",
+            "VM escape &mdash; attack breaks out of VM to host",
+            "Snapshot &mdash; saved state of VM at point in time"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Cloud Security"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Shared responsibility model &mdash; cloud provider vs. customer responsibilities",
+            "CASB &mdash; Cloud Access Security Broker",
+            "Data sovereignty &mdash; data subject to laws of country where stored"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge &mdash; Networking",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you did the labs, you know this. If you didn&rsquo;t, good luck."
+        },
+        {
+          "type": "subheading",
+          "text": "Binary &amp; Hex Conversion"
+        },
+        {
+          "type": "paragraph",
+          "text": "8-bit place values: 128, 64, 32, 16, 8, 4, 2, 1"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Conversion",
+            "Answer"
+          ],
+          "rows": [
+            "Binary 11000000 to decimal",
+            "Decimal 252 to hexadecimal",
+            "Hex 2B to decimal"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Subnetting"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Question",
+            "Answer"
+          ],
+          "rows": [
+            "Subnet mask for /24",
+            "Network 192.168.1.0/24 broadcast address",
+            "Network 192.168.0.0/24 first usable host",
+            "Usable hosts in /24 (formula: 2^n &minus; 2)",
+            "Subnets created by borrowing 2 bits"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Linux Network Commands"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Purpose",
+            "Command"
+          ],
+          "rows": [
+            "Display IP addresses",
+            "Display routing table",
+            "Display ARP cache"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge &mdash; Wireshark",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Filter Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Capture filters &mdash; BPF syntax, applied during capture",
+            "Display filters &mdash; Wireshark syntax, applied after capture"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Capture and display filters use the same syntax: TRUE / FALSE</strong><br>\n      Answer: ___"
+        },
+        {
+          "type": "subheading",
+          "text": "Display Filter Syntax"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Filter for&hellip;",
+            "Syntax"
+          ],
+          "rows": [
+            "DNS traffic",
+            "HTTP traffic",
+            "Traffic to/from 192.168.1.100",
+            "Traffic on TCP port 443",
+            "Equality operator"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Wireshark Basics"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Question",
+            "Answer"
+          ],
+          "rows": [
+            "Standard capture file extension",
+            "Mode to capture all traffic on segment",
+            "Color when filter syntax is valid",
+            "Windows capture driver",
+            "Feature to view entire TCP conversation"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Protocol names in display filters must be: UPPERCASE / lowercase</strong><br>\n      Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Network Attacks",
+      "content": [
+        {
+          "type": "bullet_list",
+          "items": [
+            "ARP poisoning/spoofing &mdash; falsifying ARP responses to redirect traffic",
+            "MAC flooding &mdash; overwhelming switch CAM table to force hub behavior",
+            "VLAN hopping &mdash; gaining access to other VLANs",
+            "DNS poisoning &mdash; corrupting DNS cache with false records",
+            "DHCP starvation &mdash; exhausting DHCP address pool",
+            "Rogue DHCP &mdash; unauthorized DHCP server assigning malicious settings",
+            "Man-in-the-Middle &mdash; intercepting communication between two parties",
+            "Replay attack &mdash; capturing and retransmitting valid traffic",
+            "Amplification attack &mdash; using protocols to magnify DoS traffic"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Professional Application",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Ethics, communication, and judgment matter as much as technical skills."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "Your IDS is generating hundreds of alerts per day, most of which are false positives. How do you approach tuning it?",
+            "A client asks whether they should use signature-based or anomaly-based detection. What factors influence your recommendation?",
+            "You capture network traffic and find unencrypted credentials. How do you report this finding?",
+            "A client&rsquo;s network has no segmentation&mdash;everything is on one flat network. Explain the risk in business terms."
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Purple Team Thinking"
+        },
+        {
+          "type": "concept_questions",
+          "start": 5,
+          "items": [
+            "You discover a switch with no port security. Red team: what attack does this enable? Blue team: what&rsquo;s the mitigation?",
+            "A client&rsquo;s DMZ allows direct database connections from the internet. Red team: why is this attractive? Blue team: what architecture change is needed?"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concept Check",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you can answer these, you understand the material. If not, go back and review."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "Explain the TCP three-way handshake. Why doesn&rsquo;t UDP need one?",
+            "What&rsquo;s the difference between a switch and a hub? Why does it matter for security?",
+            "What is the purpose of a DMZ? What types of systems belong there?",
+            "Compare NIDS and HIDS&mdash;advantages and disadvantages of each.",
+            "What is a false positive? A false negative? Which is more dangerous?",
+            "Why can&rsquo;t a network IDS inspect encrypted traffic? What&rsquo;s the workaround?",
+            "Explain the difference between IaaS, PaaS, and SaaS with examples.",
+            "What&rsquo;s the difference between Type 1 and Type 2 hypervisors?",
+            "What does NAT do and why is it considered a security benefit?",
+            "Why is Snort called the &ldquo;de facto standard&rdquo; for open-source IDS?"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": {
+    "body": "<strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,\n        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 3 Exam\n        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your\n        choice. The exam will reveal which group you&rsquo;re in."
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "type": "study_worksheet",
+  "module": 5,
+  "accentColor": "#7B68EE",
+  "title": "Module 5: Infrastructure, Risk & Resilience • Chapters 10 & 20",
+  "htmlTitle": "Module 5 Study Guide – IS3513",
+  "subtitle": "Module 5: Infrastructure, Risk & Resilience • Chapters 10 & 20",
+  "intro": {
+    "title": "How to Use This Worksheet",
+    "body": "This worksheet covers everything you need for the Module 5 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call."
+  },
+  "sections": [
+    {
+      "title": "Risk Management Fundamentals",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough."
+        },
+        {
+          "type": "subheading",
+          "text": "Core Risk Concepts"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Risk &mdash; possibility of suffering harm or loss",
+            "Threat &mdash; potential cause of unwanted incident",
+            "Vulnerability &mdash; weakness that can be exploited",
+            "Asset &mdash; anything of value to organization",
+            "Impact &mdash; actual damage when threat exploits vulnerability",
+            "Likelihood &mdash; probability threat will exploit vulnerability",
+            "Attack vector &mdash; path attacker uses to reach target",
+            "Threat vector &mdash; method threat uses to gain access"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Risk Relationships"
+        },
+        {
+          "type": "key_question",
+          "label": "Risk = Threat &times; Vulnerability &times; Impact",
+          "text": "<br>or simplified: <strong>Risk = Likelihood &times; Impact</strong>"
+        },
+        {
+          "type": "subheading",
+          "text": "Risk Truths"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Risk cannot be completely eliminated &mdash; it&rsquo;s absolute",
+            "Not every risk needs to be mitigated",
+            "Risk management must balance cost vs. benefit",
+            "Qualitative and quantitative approaches both have value"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Quantitative Risk Analysis",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Key Formulas"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "SLE (Single Loss Expectancy) = AV &times; EF",
+            "ALE (Annualized Loss Expectancy) = SLE &times; ARO",
+            "AV = Asset Value",
+            "EF = Exposure Factor (percentage of asset lost)",
+            "ARO = Annualized Rate of Occurrence"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Quantitative Metrics"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "TCO (Total Cost of Ownership) &mdash; all costs over asset lifetime",
+            "ROI (Return on Investment) &mdash; benefit vs. cost ratio",
+            "MTBF (Mean Time Between Failures) &mdash; average time before failure",
+            "MTTR (Mean Time to Repair) &mdash; average time to restore",
+            "RTO (Recovery Time Objective) &mdash; maximum acceptable downtime",
+            "RPO (Recovery Point Objective) &mdash; maximum acceptable data loss"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Practice Problem"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>A server farm has 5 servers. If 2 fail in an incident, what is the Exposure Factor?</strong><br>Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Qualitative Risk Analysis",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Qualitative Approach"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Uses professional judgment and experience",
+            "Categorizes risks as High/Medium/Low",
+            "Risk matrix &mdash; plots likelihood vs. impact",
+            "5&times;5 matrix &mdash; more granular than 3&times;3",
+            "Faster than quantitative, less precise",
+            "Subjective but valuable for prioritization"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Risk Documentation"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Risk register &mdash; documented list of identified risks",
+            "Risk owner &mdash; person accountable for managing specific risk",
+            "Risk appetite &mdash; level of risk organization willing to accept",
+            "Risk tolerance &mdash; acceptable deviation from risk appetite",
+            "Residual risk &mdash; risk remaining after controls implemented",
+            "Inherent risk &mdash; risk before any controls"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Risk Treatment Strategies",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "The Four Treatment Options"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Mitigate/Reduce &mdash; implement controls to reduce likelihood or impact",
+            "Transfer &mdash; shift risk to third party (insurance, outsourcing)",
+            "Accept &mdash; acknowledge risk and continue without action",
+            "Avoid &mdash; eliminate risk by discontinuing activity"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Treatment Decisions"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Cost of control should not exceed potential loss",
+            "Accept when control costs exceed risk impact",
+            "Transfer when risk is outside core competency",
+            "Avoid when risk is unacceptable and no reasonable control exists",
+            "Cyber insurance &mdash; example of risk transfer"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Vulnerability Management",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Vulnerability Sources"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "CVE (Common Vulnerabilities and Exposures) &mdash; standardized IDs",
+            "NVD (National Vulnerability Database) &mdash; NIST-maintained database",
+            "Exploit-DB &mdash; public exploit database",
+            "Vendor advisories &mdash; Microsoft, Cisco, etc.",
+            "Bug bounty programs &mdash; crowdsourced vulnerability discovery"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "CVSS (Common Vulnerability Scoring System)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Version 3.1 is current standard",
+            "Scores range 0.0 to 10.0",
+            "None: 0.0 &bull; Low: 0.1&ndash;3.9 &bull; Medium: 4.0&ndash;6.9 &bull; High: 7.0&ndash;8.9 &bull; Critical: 9.0&ndash;10.0"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Vulnerability Scanning"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Credentialed scan &mdash; authenticates to target, more thorough",
+            "Non-credentialed scan &mdash; external perspective only",
+            "Active scanning &mdash; sends probes to target",
+            "Passive scanning &mdash; observes traffic without probing",
+            "False positive &mdash; reported vulnerability that doesn&rsquo;t exist",
+            "False negative &mdash; missed actual vulnerability"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure Security",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Network Security Devices"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Firewall &mdash; implicit deny, rule-based filtering",
+            "Next-gen firewall (NGFW) &mdash; application awareness, IPS, deep inspection",
+            "WAF (Web Application Firewall) &mdash; protects web apps",
+            "UTM (Unified Threat Management) &mdash; multiple security functions",
+            "NAC (Network Access Control) &mdash; verifies device compliance"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Data Protection"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "DLP (Data Loss Prevention) &mdash; prevents unauthorized data transfer",
+            "Encryption at rest &mdash; stored data encrypted",
+            "Encryption in transit &mdash; data encrypted during transmission",
+            "Data classification &mdash; categorizing data by sensitivity",
+            "Data masking &mdash; obscuring sensitive data",
+            "Tokenization &mdash; replacing sensitive data with tokens"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Virtualization Security"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Hypervisor &mdash; Type 1 (bare metal) vs. Type 2 (hosted)",
+            "VM escape &mdash; breaking out of VM to host",
+            "VM sprawl &mdash; uncontrolled VM proliferation",
+            "Snapshot &mdash; point-in-time VM state",
+            "Resource isolation &mdash; preventing VMs from affecting each other"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Network Attacks (Review)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "ARP poisoning &mdash; falsifying ARP responses",
+            "MAC flooding &mdash; overwhelming switch CAM table",
+            "VLAN hopping &mdash; gaining access to other VLANs",
+            "DNS poisoning &mdash; corrupting DNS cache"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge &mdash; Vulnerability Scanning",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you did the labs, you know this. If you didn&rsquo;t, good luck."
+        },
+        {
+          "type": "subheading",
+          "text": "Nmap for Vulnerability Detection"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Purpose",
+            "Flag/Command"
+          ],
+          "rows": [
+            "SYN scan (stealth)",
+            "TCP connect scan (full handshake)",
+            "Service version detection",
+            "Aggressive scan (OS + version + scripts)",
+            "Scan all 65,535 ports",
+            "Run vulnerability scripts"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>How many NSE scripts does Nmap include?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Why is service version detection (<code>-sV</code>) important before running vuln scripts?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>A SYN scan (<code>-sS</code>) completes the full TCP three-way handshake: TRUE / FALSE</strong><br>Answer: ___"
+        },
+        {
+          "type": "subheading",
+          "text": "Other Scanning Tools"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Tool",
+            "Purpose"
+          ],
+          "rows": [
+            "searchsploit",
+            "Nikto",
+            "WPScan",
+            "npm audit"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>What command searches Exploit-DB for Apache vulnerabilities?</strong><br>Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge &mdash; Risk Assessment",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "CVSS Classification Practice"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "CVSS Score",
+            "Severity Rating"
+          ],
+          "rows": [
+            "6.5",
+            "7.5",
+            "9.5",
+            "3.2"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Who maintains the National Vulnerability Database (NVD)?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Why might a lower CVSS score be prioritized over a higher one?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Business context is irrelevant when prioritizing vulnerabilities: TRUE / FALSE</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>In a qualitative risk matrix, what two factors determine where a risk is plotted?</strong><br>Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Professional Application",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Ethics, communication, and judgment matter as much as technical skills."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "Your vulnerability scan shows 500+ findings. How do you prioritize what the client should fix first?",
+            "A client asks why they should pay for cyber insurance when they already have security controls. How do you explain?",
+            "Leadership wants to know the ROI of a proposed security investment. What metrics would you use?",
+            "A critical vulnerability exists in a system that cannot be patched due to vendor support issues. What risk treatment options exist?"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Purple Team Thinking"
+        },
+        {
+          "type": "concept_questions",
+          "start": 5,
+          "items": [
+            "You find an unpatched Apache server with a known exploit. Red team: what&rsquo;s your attack path? Blue team: what&rsquo;s the remediation?",
+            "A client has no vulnerability management program. Red team: why is this organization an easy target? Blue team: what process do you recommend?"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concept Check",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you can answer these, you understand the material. If not, go back and review."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "Explain the relationship between threat, vulnerability, and risk.",
+            "Calculate ALE given: Asset Value = $100,000, Exposure Factor = 40%, ARO = 2",
+            "When should an organization choose to accept a risk rather than mitigate it?",
+            "What&rsquo;s the difference between quantitative and qualitative risk analysis?",
+            "Explain what residual risk is and why it matters.",
+            "What is the purpose of CVSS scoring?",
+            "Why might a CVSS 6.5 vulnerability be fixed before a CVSS 9.0?",
+            "What are the four risk treatment strategies?",
+            "What&rsquo;s the difference between a SYN scan and a TCP connect scan?",
+            "Why is business context important when prioritizing vulnerabilities?"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": {
+    "body": "<strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,\n        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 5 Exam\n        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your\n        choice. The exam will reveal which group you&rsquo;re in."
+  }
+}

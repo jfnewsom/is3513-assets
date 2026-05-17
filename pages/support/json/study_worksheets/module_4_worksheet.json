@@ -1,0 +1,426 @@
+{
+  "type": "study_worksheet",
+  "module": 4,
+  "accentColor": "#7B68EE",
+  "title": "Module 4: Threats & Attacks • Chapters 15 & 16",
+  "htmlTitle": "Module 4 Study Guide – IS3513",
+  "subtitle": "Module 4: Threats & Attacks • Chapters 15 & 16",
+  "intro": {
+    "title": "How to Use This Worksheet",
+    "body": "This worksheet covers everything you need for the Module 4 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call."
+  },
+  "sections": [
+    {
+      "title": "Attack Fundamentals",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough."
+        },
+        {
+          "type": "subheading",
+          "text": "Attack Categories"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Target of opportunity &mdash; any vulnerable system found",
+            "Targeted attack &mdash; specific organization chosen deliberately",
+            "Active attack &mdash; modifies data or systems",
+            "Passive attack &mdash; observes without modification"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Spoofing &amp; Impersonation"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Spoofing &mdash; making traffic appear from different source",
+            "IP spoofing &mdash; falsifying source IP address",
+            "MAC spoofing &mdash; falsifying MAC address",
+            "Email spoofing &mdash; forging sender address",
+            "Caller ID spoofing &mdash; falsifying phone number"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Malware",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Malware Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Virus &mdash; requires host file, user action to spread",
+            "Worm &mdash; self-replicating, no user action needed",
+            "Trojan &mdash; disguised as legitimate software",
+            "RAT (Remote Access Trojan) &mdash; provides backdoor access",
+            "Rootkit &mdash; hides at OS/kernel level, very difficult to detect",
+            "Bootkit &mdash; rootkit that infects boot process",
+            "Ransomware &mdash; encrypts files, demands payment",
+            "Spyware &mdash; monitors user activity",
+            "Keylogger &mdash; captures keystrokes",
+            "Adware &mdash; displays unwanted advertisements",
+            "Botnet &mdash; network of compromised systems (zombies)",
+            "Logic bomb &mdash; triggers on specific condition or date",
+            "Fileless malware &mdash; lives in memory only",
+            "PUP (Potentially Unwanted Program) &mdash; gray area software"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Malware Techniques"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Polymorphic &mdash; changes code to avoid detection",
+            "Metamorphic &mdash; completely rewrites itself",
+            "Armored &mdash; makes analysis difficult",
+            "Packing &mdash; compresses/encrypts to hide signatures",
+            "Shimming &mdash; inserting code between driver and OS"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Social Engineering",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Phishing Variants"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Phishing &mdash; mass email attack, generic targets",
+            "Spear phishing &mdash; targeted at specific individual",
+            "Whaling &mdash; targeting executives",
+            "BEC (Business Email Compromise) &mdash; impersonating CEO for wire transfer",
+            "Vishing &mdash; voice phishing via phone",
+            "Smishing &mdash; SMS phishing",
+            "Pharming &mdash; redirecting to fake website via DNS"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Social Engineering Techniques"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Pretexting &mdash; fabricated scenario to extract information",
+            "Baiting &mdash; leaving infected media (USB drives)",
+            "Quid pro quo &mdash; offering something in exchange for info",
+            "Tailgating/Piggybacking &mdash; following through secure doors",
+            "Shoulder surfing &mdash; watching someone enter credentials",
+            "Dumpster diving &mdash; searching trash for sensitive info",
+            "Watering hole &mdash; compromising sites target visits",
+            "Typosquatting &mdash; registering misspelled domain names",
+            "Impersonation &mdash; pretending to be someone else"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Social Engineering Principles"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Authority &mdash; people obey authority figures",
+            "Urgency &mdash; pressure to act quickly bypasses thinking",
+            "Intimidation &mdash; fear causes compliance",
+            "Consensus/Social proof &mdash; people follow the crowd",
+            "Scarcity &mdash; limited availability increases desire",
+            "Trust &mdash; exploiting established relationships"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Application Attacks",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Injection Attacks"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "SQL injection &mdash; inserting SQL commands into input fields",
+            "Command injection &mdash; executing OS commands through application",
+            "LDAP injection &mdash; manipulating LDAP queries",
+            "XML injection &mdash; inserting malicious XML",
+            "XSS (Cross-Site Scripting) &mdash; injecting client-side scripts",
+            "Stored XSS &mdash; script saved on server",
+            "Reflected XSS &mdash; script in URL, reflected back",
+            "DOM-based XSS &mdash; script manipulates page DOM"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Memory Attacks"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Buffer overflow &mdash; writing beyond allocated memory",
+            "Integer overflow &mdash; exceeding integer size limits",
+            "Memory leak &mdash; failing to release unused memory",
+            "Use after free &mdash; accessing memory after deallocation",
+            "Heap spray &mdash; filling heap with malicious code"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Other Application Attacks"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "CSRF (Cross-Site Request Forgery) &mdash; forging requests from authenticated user",
+            "Directory traversal &mdash; accessing files outside web root (../)",
+            "Race condition &mdash; exploiting timing between operations",
+            "TOCTOU (Time of Check to Time of Use) &mdash; state change between check and use",
+            "API abuse &mdash; exploiting poorly secured APIs",
+            "Resource exhaustion &mdash; consuming all available resources"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Denial of Service",
+      "content": [
+        {
+          "type": "bullet_list",
+          "items": [
+            "DoS &mdash; Denial of Service, single source",
+            "DDoS &mdash; Distributed DoS, multiple sources (botnet)",
+            "SYN flood &mdash; exhausting connections with incomplete handshakes",
+            "Ping flood &mdash; overwhelming with ICMP echo requests",
+            "Ping of death &mdash; malformed ping packets",
+            "Smurf attack &mdash; ICMP amplification using broadcast",
+            "Fraggle attack &mdash; UDP amplification",
+            "Teardrop &mdash; overlapping IP fragments",
+            "Amplification attack &mdash; using protocols to magnify traffic",
+            "NTP amplification &mdash; abusing NTP monlist command",
+            "DNS amplification &mdash; abusing open DNS resolvers",
+            "Application layer DoS &mdash; targeting specific application",
+            "Slowloris &mdash; holding connections open slowly"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Change Management",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Change Management Concepts"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Change management &mdash; controlled process for system modifications",
+            "Baseline &mdash; documented starting configuration",
+            "Configuration management &mdash; maintaining system state",
+            "Change Advisory Board (CAB) &mdash; oversees change process",
+            "Standard change &mdash; pre-approved, low-risk, routine",
+            "Normal change &mdash; requires CAB approval",
+            "Emergency change &mdash; urgent, expedited approval",
+            "Backout plan &mdash; reverting if change fails"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Environments"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Development &mdash; where code is written",
+            "Test/QA &mdash; where code is verified",
+            "Staging &mdash; mirrors production for final validation",
+            "Production &mdash; live systems with real data",
+            "Sandbox &mdash; isolated testing environment"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Key Principles"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Separation of duties &mdash; developers shouldn&rsquo;t deploy to production",
+            "Incident management &mdash; restoring service after unplanned interruption",
+            "Problem management &mdash; identifying root causes",
+            "CMMI (Capability Maturity Model Integration) &mdash; process maturity levels",
+            "Level 1: Initial &mdash; ad hoc, chaotic",
+            "Level 2: Managed &mdash; project-level processes",
+            "Level 3: Defined &mdash; organization-wide processes",
+            "Level 4: Quantitatively Managed &mdash; metrics-driven",
+            "Level 5: Optimizing &mdash; continuous improvement"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge &mdash; Password Cracking",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you did the labs, you know this. If you didn&rsquo;t, good luck."
+        },
+        {
+          "type": "subheading",
+          "text": "Password Attack Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Dictionary attack &mdash; trying words from a wordlist",
+            "Brute force &mdash; trying all possible combinations",
+            "Hybrid attack &mdash; dictionary + modifications (rules)",
+            "Rainbow table &mdash; precomputed hash lookup",
+            "Pass-the-hash &mdash; using hash without cracking",
+            "Credential stuffing &mdash; using leaked credentials on other sites",
+            "Password spraying &mdash; few passwords against many accounts"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Windows Password Hashing"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "NTLM &mdash; NT LAN Manager, uses MD4",
+            "NTLM is unsalted &mdash; identical passwords = identical hashes",
+            "Vulnerable to rainbow tables because unsalted",
+            "Stored in SAM database or Active Directory"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Linux Password Hashing"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "<code>$1$</code> &mdash; MD5 crypt (weak)",
+            "<code>$5$</code> &mdash; SHA-256 crypt",
+            "<code>$6$</code> &mdash; SHA-512 crypt (current default)",
+            "Salt stored between second and third $ symbols",
+            "Key stretching &mdash; 5,000+ iterations by default",
+            "Stored in <code>/etc/shadow</code>",
+            "Much slower to crack than NTLM due to salting and iterations"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Cracking Tools"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Question",
+            "Answer"
+          ],
+          "rows": [
+            "rockyou.txt location on Kali",
+            "Command to extract compressed rockyou.txt",
+            "Hashcat attack mode for dictionary (-a)",
+            "Hashcat mode for NTLM (-m)",
+            "Hashcat mode for SHA-512 crypt (-m)",
+            "Hashcat option to show cracked passwords",
+            "John the Ripper format for NTLM",
+            "John the Ripper format for SHA-512",
+            "Where John stores cracked passwords",
+            "Command to show John&rsquo;s cracked passwords"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Why is NTLM considered cryptographically weak?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Why are Linux SHA-512 hashes slower to crack than NTLM?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>Why can Hashcat use GPU while some algorithms are CPU-only?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>What is the primary purpose of salt in password hashing?</strong><br>Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Professional Application",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Ethics, communication, and judgment matter as much as technical skills."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "You successfully crack 70% of a client&rsquo;s Windows passwords in under an hour using a common wordlist. How do you present this finding to leadership?",
+            "A client&rsquo;s users are falling for phishing emails despite training. What additional controls would you recommend?",
+            "You discover a client has no change management process&mdash;developers push directly to production. Explain the risk in business terms.",
+            "A penetration test reveals a buffer overflow vulnerability in a custom application. The development team says fixing it would take months. How do you advise the client?"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Purple Team Thinking"
+        },
+        {
+          "type": "concept_questions",
+          "start": 5,
+          "items": [
+            "You find unsalted password hashes in a database. Red team: what&rsquo;s your attack plan? Blue team: what&rsquo;s the remediation?",
+            "A client&rsquo;s web application has no rate limiting on login attempts. Red team: how do you exploit this? Blue team: what controls are needed?"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concept Check",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you can answer these, you understand the material. If not, go back and review."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "What&rsquo;s the difference between a virus and a worm?",
+            "Explain how a rootkit differs from other malware types.",
+            "What makes a SYN flood attack effective?",
+            "Why is phishing still the most successful attack vector?",
+            "Explain the purpose of a Change Advisory Board.",
+            "Why should developers not have access to deploy to production?",
+            "What&rsquo;s the difference between dictionary and brute force attacks?",
+            "Why does salting prevent rainbow table attacks?",
+            "Compare NTLM and SHA-512 crypt for password security.",
+            "What is shimming and why is it a concern?"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": {
+    "body": "<strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,\n        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 4 Exam\n        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your\n        choice. The exam will reveal which group you&rsquo;re in."
+  }
+}

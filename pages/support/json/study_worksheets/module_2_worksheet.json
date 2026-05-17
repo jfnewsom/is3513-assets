@@ -1,0 +1,534 @@
+{
+  "type": "study_worksheet",
+  "module": 2,
+  "accentColor": "#7B68EE",
+  "title": "Module 2: Cryptography & Authentication • Chapters 6 & 11",
+  "htmlTitle": "Module 2 Study Guide – IS3513",
+  "subtitle": "Module 2: Cryptography & Authentication • Chapters 6 & 11",
+  "intro": {
+    "title": "How to Use This Worksheet",
+    "body": "This worksheet covers everything you need for the Module 2 Exam&mdash;plus additional Security+ concepts that will serve you well beyond this course. If you work through this honestly, you&rsquo;ll be prepared. If you skip it, you&rsquo;re gambling. Your call."
+  },
+  "sections": [
+    {
+      "title": "Cryptographic Foundations",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Define each term. If you can&rsquo;t explain it simply, you don&rsquo;t understand it well enough."
+        },
+        {
+          "type": "subheading",
+          "text": "Core Cryptographic Goals"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Confidentiality &mdash; keeping data secret",
+            "Integrity &mdash; ensuring data hasn&rsquo;t been altered",
+            "Authentication &mdash; verifying identity",
+            "Non-repudiation &mdash; proof of origin that cannot be denied"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Data States"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Data at rest &mdash; stored on disk, database, backup",
+            "Data in transit &mdash; moving across network",
+            "Data in use &mdash; currently being processed by CPU"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Encryption Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Symmetric encryption &mdash; same key encrypts and decrypts",
+            "Asymmetric encryption &mdash; public key encrypts, private key decrypts (or vice versa for signing)",
+            "Stream cipher &mdash; encrypts one bit/byte at a time",
+            "Block cipher &mdash; encrypts fixed-size blocks"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Symmetric Algorithms"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "AES (Advanced Encryption Standard) &mdash; current NIST standard, 128/192/256-bit keys",
+            "DES (Data Encryption Standard) &mdash; obsolete, 56-bit key",
+            "3DES (Triple DES) &mdash; legacy, applies DES three times",
+            "Blowfish / Twofish &mdash; alternative symmetric ciphers",
+            "RC4 &mdash; stream cipher, considered weak"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Asymmetric Algorithms"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "RSA &mdash; most common, used for encryption and digital signatures",
+            "Diffie-Hellman &mdash; key exchange only, not encryption",
+            "ECC (Elliptic Curve Cryptography) &mdash; smaller keys, equivalent security",
+            "DSA (Digital Signature Algorithm) &mdash; signatures only",
+            "Ed25519 &mdash; modern elliptic curve for SSH keys"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Cipher Modes"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "CBC (Cipher Block Chaining) &mdash; each block XORed with previous",
+            "GCM (Galois/Counter Mode) &mdash; provides authentication + encryption",
+            "ECB (Electronic Codebook) &mdash; insecure, patterns visible"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hashing",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Hash Function Properties"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "One-way function &mdash; cannot reverse hash to get input",
+            "Deterministic &mdash; same input always produces same output",
+            "Collision resistance &mdash; two different inputs should not produce same hash",
+            "Avalanche effect &mdash; small input change causes drastically different output",
+            "Fixed output length &mdash; regardless of input size"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Hash Algorithms"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "MD5 &mdash; 128-bit (32 hex chars), broken, do NOT use for security",
+            "SHA-1 &mdash; 160-bit (40 hex chars), deprecated, vulnerable to collisions",
+            "SHA-256 &mdash; 256-bit (64 hex chars), current standard",
+            "SHA-512 &mdash; 512-bit (128 hex chars), stronger variant",
+            "SHA-3 &mdash; newest SHA family, different internal structure"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Password Hashing"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Salting &mdash; random data added before hashing to prevent rainbow tables",
+            "Key stretching &mdash; running hash algorithm many times to slow cracking",
+            "bcrypt &mdash; adaptive password hashing with built-in salt",
+            "PBKDF2 &mdash; key derivation function with configurable iterations",
+            "Argon2 &mdash; modern password hashing, memory-hard"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Attacks on Hashing"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Rainbow table attack &mdash; precomputed hash lookup table",
+            "Birthday attack &mdash; exploits collision probability mathematics",
+            "Dictionary attack &mdash; trying common passwords",
+            "Brute force &mdash; trying all possible combinations"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Digital Signatures &amp; PKI",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Digital Signatures"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Created with sender&rsquo;s private key",
+            "Verified with sender&rsquo;s public key",
+            "Provides authentication, integrity, and non-repudiation",
+            "Process: hash message &rarr; encrypt hash with private key"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Public Key Infrastructure (PKI)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Certificate Authority (CA) &mdash; trusted third party that issues certificates",
+            "Digital certificate &mdash; binds public key to identity",
+            "Certificate chain &mdash; hierarchy from root CA to end certificate",
+            "Certificate revocation &mdash; invalidating compromised certificates",
+            "CRL (Certificate Revocation List) &mdash; list of revoked certificates",
+            "OCSP (Online Certificate Status Protocol) &mdash; real-time revocation checking"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Certificate Types"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Self-signed certificate &mdash; signed by own private key, not trusted by browsers",
+            "CA-signed certificate &mdash; signed by trusted CA, browser-trusted",
+            "Wildcard certificate &mdash; covers all subdomains (*.example.com)",
+            "SAN certificate &mdash; Subject Alternative Name, multiple domains"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Authentication",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "Authentication Factors"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Something you know &mdash; password, PIN, security questions",
+            "Something you have &mdash; smart card, token, phone (SMS/app)",
+            "Something you are &mdash; fingerprint, facial recognition, iris scan",
+            "Somewhere you are &mdash; geolocation, IP-based",
+            "Something you do &mdash; typing patterns, gait analysis"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Multi-Factor Authentication (MFA)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Combines two or more different factor types",
+            "Password + SMS code = 2FA (but SMS is weak)",
+            "Password + authenticator app = stronger 2FA",
+            "TOTP (Time-based One-Time Password) &mdash; changes every 30 seconds",
+            "HOTP (HMAC-based One-Time Password) &mdash; counter-based"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Authentication Protocols"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "PAP (Password Authentication Protocol) &mdash; cleartext, insecure",
+            "CHAP (Challenge-Handshake Authentication Protocol) &mdash; challenge-response, more secure",
+            "EAP (Extensible Authentication Protocol) &mdash; framework for various methods",
+            "Kerberos &mdash; ticket-based, uses KDC (Key Distribution Center)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "AAA Framework"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Authentication &mdash; proving who you are",
+            "Authorization &mdash; what you&rsquo;re allowed to do",
+            "Accounting &mdash; logging what you did"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "AAA Protocols"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "RADIUS &mdash; UDP, encrypts only password, common for network access",
+            "TACACS+ &mdash; TCP, encrypts entire payload, Cisco-developed",
+            "802.1X &mdash; port-based network access control using EAP"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Access Control Models"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "DAC (Discretionary Access Control) &mdash; owner controls access",
+            "MAC (Mandatory Access Control) &mdash; system-enforced labels",
+            "RBAC (Role-Based Access Control) &mdash; permissions based on job role",
+            "ABAC (Attribute-Based Access Control) &mdash; policies based on attributes"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Single Sign-On (SSO)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Authenticate once, access multiple applications",
+            "SAML &mdash; XML-based, enterprise SSO",
+            "OAuth &mdash; authorization framework (not authentication)",
+            "OpenID Connect &mdash; authentication layer on top of OAuth",
+            "Federation &mdash; trust between different organizations"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Secure Protocols",
+      "content": [
+        {
+          "type": "subheading",
+          "text": "SSH (Secure Shell)"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "Encrypted remote access &mdash; replaces Telnet",
+            "Port 22 by default",
+            "Supports password and key-based authentication",
+            "Key-based auth stronger than passwords"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "TLS/SSL"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "TLS (Transport Layer Security) &mdash; current standard, replaced SSL",
+            "SSL (Secure Sockets Layer) &mdash; deprecated, do not use",
+            "HTTPS &mdash; HTTP over TLS (port 443)",
+            "Cipher suite &mdash; combination of key exchange, encryption, and hash algorithms",
+            "Perfect Forward Secrecy &mdash; compromised key doesn&rsquo;t expose past sessions"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Other Secure Protocols"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "SFTP &mdash; SSH File Transfer Protocol",
+            "FTPS &mdash; FTP over TLS",
+            "LDAPS &mdash; LDAP over TLS",
+            "DNSSEC &mdash; DNS Security Extensions",
+            "S/MIME &mdash; secure email"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lab Knowledge",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you did the labs, you know this. If you didn&rsquo;t, good luck."
+        },
+        {
+          "type": "subheading",
+          "text": "Hash Output Lengths"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Algorithm",
+            "Hex Characters"
+          ],
+          "rows": [
+            "MD5",
+            "SHA-256",
+            "SHA-512"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "OpenSSL Commands"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Purpose",
+            "Command"
+          ],
+          "rows": [
+            "Check OpenSSL version",
+            "Generate RSA private key",
+            "Extract public key from private key",
+            "Create digital signature",
+            "Verify digital signature",
+            "Encrypt file with AES-256-CBC",
+            "Decrypt file (flag for decryption)",
+            "Calculate SHA-256 hash",
+            "Test TLS connection to server"
+          ]
+        },
+        {
+          "type": "section_intro",
+          "text": "What message does OpenSSL display when signature verification succeeds?"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "Answer: ___"
+        },
+        {
+          "type": "subheading",
+          "text": "SSH Key Management"
+        },
+        {
+          "type": "fill_table",
+          "headers": [
+            "Question",
+            "Answer"
+          ],
+          "rows": [
+            "Default SSH key directory",
+            "Command to generate 4096-bit RSA key",
+            "Command to generate Ed25519 key",
+            "Correct permissions for private key",
+            "Typical permissions for public key",
+            "File storing authorized public keys",
+            "Command to display key fingerprint",
+            "Default hash algorithm for fingerprints"
+          ]
+        },
+        {
+          "type": "section_intro",
+          "text": "Why would SSH refuse to use a private key with permissions 644?"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "Answer: ___"
+        },
+        {
+          "type": "subheading",
+          "text": "TLS Cipher Suites"
+        },
+        {
+          "type": "paragraph",
+          "text": "In <code>TLS_AES_256_GCM_SHA384</code>:"
+        },
+        {
+          "type": "bullet_list",
+          "items": [
+            "AES_256 = <span class=\"ws-blank\">&nbsp;</span>",
+            "GCM = <span class=\"ws-blank\">&nbsp;</span>",
+            "SHA384 = <span class=\"ws-blank\">&nbsp;</span>"
+          ]
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>What cipher suite was negotiated in YOUR TLS connection test?</strong><br>Answer: ___"
+        },
+        {
+          "type": "answer_line",
+          "prompt": "<strong>What limitation exists with self-signed certificates compared to CA-signed?</strong><br>Answer: ___"
+        }
+      ]
+    },
+    {
+      "title": "Cryptographic Attacks",
+      "content": [
+        {
+          "type": "bullet_list",
+          "items": [
+            "Man-in-the-Middle (MITM) &mdash; attacker intercepts and possibly modifies communication",
+            "Replay attack &mdash; capturing and retransmitting valid data",
+            "Downgrade attack &mdash; forcing use of weaker encryption",
+            "Side-channel attack &mdash; exploiting implementation (timing, power analysis)",
+            "Known plaintext attack &mdash; attacker has plaintext and ciphertext pairs",
+            "Chosen plaintext attack &mdash; attacker can encrypt arbitrary plaintexts",
+            "Pass-the-hash &mdash; using stolen hash without cracking it"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Professional Application",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "Ethics, communication, and judgment matter as much as technical skills."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "A healthcare organization asks you to audit their certificate management. Their certificates expired last month. How do you communicate this risk to non-technical leadership?",
+            "Your client is using MD5 to hash passwords. They say &ldquo;it&rsquo;s worked fine for years.&rdquo; How do you explain why they need to change?",
+            "A client wants to implement MFA but says SMS-based codes are &ldquo;good enough.&rdquo; What&rsquo;s your response?",
+            "You discover a client is storing passwords in plaintext in their database. What&rsquo;s your immediate recommendation and why?"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Purple Team Thinking"
+        },
+        {
+          "type": "concept_questions",
+          "start": 5,
+          "items": [
+            "You find a web server using TLS 1.0. Red team: how could this be exploited? Blue team: what&rsquo;s the fix?",
+            "A client&rsquo;s SSH server accepts password authentication. Red team perspective: why is this a target? Blue team: what should change?"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Concept Check",
+      "content": [
+        {
+          "type": "section_intro",
+          "text": "If you can answer these, you understand the material. If not, go back and review."
+        },
+        {
+          "type": "concept_questions",
+          "start": 1,
+          "items": [
+            "Explain the difference between symmetric and asymmetric encryption. When would you use each?",
+            "How does a digital signature provide non-repudiation?",
+            "Why is salting essential for password storage? What attack does it prevent?",
+            "What is the avalanche effect and why is it important for hash functions?",
+            "Compare RADIUS and TACACS+ &mdash; what&rsquo;s the key difference?",
+            "Why is MD5 considered insecure but still widely used for file integrity checks?",
+            "Explain why SSH key-based authentication is more secure than password authentication.",
+            "What are the three authentication factors? Give an example of each.",
+            "What does 802.1X provide and where is it typically used?",
+            "Why would using ECB mode for encryption be a security risk?"
+          ]
+        }
+      ]
+    }
+  ],
+  "closing": {
+    "body": "<strong>That&rsquo;s everything.</strong> If you worked through this worksheet honestly&mdash;defining terms,\n        answering questions, recording your lab results&mdash;you&rsquo;re prepared for the Module 2 Exam\n        and you&rsquo;ve built a foundation for Security+. If you skimmed it or skipped it, that&rsquo;s your\n        choice. The exam will reveal which group you&rsquo;re in."
+  }
+}
