@@ -283,7 +283,7 @@ def main():
     if len(sys.argv) == 3:
         src, dst = sys.argv[1], sys.argv[2]
     else:
-        src = os.path.join(base, "pages", "support", "json", "home.json")
+        src = os.path.join(base, "pages", "support", "json", "support_pages", "home.json")
         dst = os.path.join(base, "pages", "support", "Home.html")
 
     with open(src) as f:
