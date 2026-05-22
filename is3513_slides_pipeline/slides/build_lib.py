@@ -75,7 +75,7 @@ from pptx.util import Inches
 LIB_DIR = Path(__file__).resolve().parent
 REPO_ROOT = LIB_DIR.parent
 TOOLS_DIR = REPO_ROOT / 'tools'
-DEFAULT_TEMPLATE = REPO_ROOT / 'ppt' / 'IS3513_Template_v6.pptx'
+DEFAULT_TEMPLATE = REPO_ROOT / 'ppt' / 'IS3513_Template_v7.pptx'
 
 # Make the renderer importable
 sys.path.insert(0, str(TOOLS_DIR))
@@ -117,7 +117,7 @@ PH = {
     'title': {
         'course_id':    'IS3513',
         'course_name':  'Information Assurance and Security',
-        'subtitle':     'Welcome \u2014 NEXUS Security Operations',
+        'subtitle':     'Welcome: NEXUS Security Operations',
         'attribution':  'PROF. JOHN NEWSOM   \u00b7   SUMMER 2026   \u00b7   SECTION 0XX',
     },
     'concept': {
@@ -125,13 +125,13 @@ PH = {
         'title':          'Slide Title Goes Here',
         'subhead':        'Subhead or context line in the yellow band',
         'section_kicker': 'SECTION KICKER (H3 / UPPERCASE / ACCENT)',
-        'card_heading':   'Card heading \u2014 short and direct',
+        'card_heading':   'Card heading: short and direct',
         'lead':           "Lead paragraph. One or two sentences setting up what this slide is about. Body text uses Roboto in the muted gray that matches the site's body color on dark cards.",
         'bullets': [
-            'Bullet point one \u2014 concise, action-oriented phrasing',
-            'Bullet point two \u2014 student-facing language, conversational where it fits',
-            'Bullet point three \u2014 keep each bullet to about one line at this size',
-            'Bullet point four \u2014 break into a second slide when you hit five or six items',
+            'Bullet point one: concise, action-oriented phrasing',
+            'Bullet point two: student-facing language, conversational where it fits',
+            'Bullet point three: keep each bullet to about one line at this size',
+            'Bullet point four: break into a second slide when you hit five or six items',
         ],
     },
     'two_col': {
@@ -166,7 +166,7 @@ PH = {
         'facts': [
             'Title / position / affiliation',
             'Background or experience point',
-            'Course role \u2014 what they teach or coach',
+            'Course role: what they teach or coach',
             'Reach: how students contact them',
         ],
         # The pull-quote contains entity-encoded smart quotes in v6's XML.
@@ -197,11 +197,11 @@ PH = {
             ('FOUNDATION LABS',     '9'),
             ('ENGAGEMENT PACKETS',  '5'),
         ],
-        'lead':           "Use this layout when the slide's job is to anchor a quantitative claim \u2014 course structure, grading weights, time commitment.",
+        'lead':           "Use this layout when the slide's job is to anchor a quantitative claim: course structure, grading weights, time commitment.",
         'bullets': [
             'Each stat sits in its own bordered tile with centered content',
             'Values use Roboto Slab in the slide accent color',
-            'Keep to 3 or 4 stats \u2014 more crowds the row',
+            'Keep to 3 or 4 stats: more crowds the row',
         ],
     },
     'structure': {
@@ -221,16 +221,16 @@ PH = {
     'warning': {
         'kicker':       'warning',
         'title':        'Warning / Hard-Truth Slide',
-        'subhead':      'Use sparingly \u2014 when weight matters',
+        'subhead':      'Use sparingly: when weight matters',
         'banner':       'READ THIS TWICE',
         'banner_line':  'A statement that needs to land',
         'rule_kicker':  'THE RULE',
         'rule_oneliner':'Stated in one sentence, no softening.',
         'rule_body':    "Explanation of the rule, the rationale, and what happens if it's ignored. Body text stays calm even when the topic is sharp.",
         'bullets': [
-            'Supporting point one \u2014 concrete consequence or example',
-            'Supporting point two \u2014 what the safety net looks like',
-            'Supporting point three \u2014 what counts as the line',
+            'Supporting point one: concrete consequence or example',
+            'Supporting point two: what the safety net looks like',
+            'Supporting point three: what counts as the line',
         ],
     },
     'support': {
@@ -256,7 +256,7 @@ PH = {
         'chap_value':   'Ch X & Y',
         'client_label': 'CLIENT',
         'client_value': 'Client Name',
-        'overview':     'Module overview \u2014 one or two sentences setting up what this module covers and how it connects to the client engagement at the end.',
+        'overview':     'Module overview: one or two sentences setting up what this module covers and how it connects to the client engagement at the end.',
         'labs': [
             ('LAB X.1', 'Foundation lab title goes here', 'Internal Training'),
             ('LAB X.2', 'Foundation lab title goes here', 'Internal Training'),
@@ -337,6 +337,30 @@ def _replace_first(xml, old_plain, new_plain):
     if count == 0:
         raise ValueError(f'Placeholder not found in slide XML: {old_plain!r}')
     return new_xml
+
+
+def _inject_extra_bullet(xml, text):
+    """Inject a 5th bullet paragraph into the concept-slide bullet text-body.
+
+    The concept slide stores all 4 bullets as <a:p> paragraphs inside a single
+    <p:txBody>. We locate the last (4th) bullet paragraph and append a clone of
+    it immediately after, with the placeholder text swapped for the supplied
+    text. The new paragraph inherits the formatting of bullet 4.
+
+    Used by add_concept_slide(extra_bullet=...). Standard concept slides have
+    4 bullets; this is an explicit exception for slides that genuinely need 5.
+    """
+    bullet4_ph = PH['concept']['bullets'][3]
+    pattern = re.compile(
+        r'(<a:p>(?:(?!</a:p>).)*?' + re.escape(_xml_escape(bullet4_ph)) + r'</a:t>(?:(?!</a:p>).)*?</a:p>)',
+        flags=re.DOTALL,
+    )
+    m = pattern.search(xml)
+    if not m:
+        raise ValueError('Could not locate bullet-4 paragraph for extra_bullet injection.')
+    bullet4_block = m.group(1)
+    new_block = bullet4_block.replace(_xml_escape(bullet4_ph), _xml_escape(text))
+    return xml.replace(bullet4_block, bullet4_block + new_block)
 
 
 # =============================================================================
@@ -462,11 +486,21 @@ class DeckBuilder:
         self.slides.append({'xml_file': fn, 'notes': notes, 'png': None, 'is_png_slide': False})
 
     def add_concept_slide(self, kicker, title, subhead, section_kicker,
-                          card_heading, lead, bullets, notes=''):
+                          card_heading, lead, bullets, extra_bullet=None, notes=''):
         """Concept slide: header keyword + title + yellow subhead + card with
-        kicker/heading/lead and up to 4 bullets."""
+        kicker/heading/lead and 4 bullets.
+
+        Standard concept slides take exactly 4 bullets. The layout is sized for 4.
+
+        extra_bullet (str, optional): exception parameter for the rare slide that
+        genuinely needs a 5th item. When provided, a 5th paragraph is injected
+        into the bullet text-body after the standard 4. Use this sparingly and
+        only when none of the 5 items can be cut without losing meaning. The
+        per-deck script should comment on why the exception applies.
+        """
         if len(bullets) > 4:
-            raise ValueError(f'Concept slide accepts up to 4 bullets, got {len(bullets)}.')
+            raise ValueError(f'Concept slide accepts up to 4 standard bullets, got {len(bullets)}. '
+                             f'For a 5th item, use extra_bullet=...')
         bullets = list(bullets) + [''] * (4 - len(bullets))
 
         fn = self._duplicate('concept')
@@ -477,6 +511,12 @@ class DeckBuilder:
         xml = _replace_text(xml, PH['concept']['section_kicker'], section_kicker)
         xml = _replace_text(xml, PH['concept']['card_heading'],   card_heading)
         xml = _replace_text(xml, PH['concept']['lead'],           lead)
+        # Inject the 5th bullet first, while the bullet-4 placeholder anchor is
+        # still present in the XML. After this, the standard 4-bullet replacement
+        # below will overwrite the 4th placeholder text and leave the new 5th
+        # paragraph (which contains its own non-placeholder text) untouched.
+        if extra_bullet:
+            xml = _inject_extra_bullet(xml, extra_bullet)
         for ph, bullet in zip(PH['concept']['bullets'], bullets):
             xml = _replace_text(xml, ph, bullet)
         self._write(fn, xml)
