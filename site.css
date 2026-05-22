@@ -2120,38 +2120,40 @@ summary {
 /* ── Study worksheets ─────────────────────────────────────── */
 .nx-worksheet-section { margin-bottom: 40px; }
 
-/* ── Copy / print button bar (top of worksheet, below header) ─
+/* ── Copy / print button bar (bottom of "How to Use" callout) ─
    Three buttons: Copy as Rich Text, Copy as Plain Text, Print.
-   Handler logic lives in worksheet-copy.js. */
+   Handler logic lives in worksheet-copy.js. Sits inside the
+   .nx-callout-body so it inherits the callout's tinted bg. */
 .nx-worksheet-copy-bar {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 0 0 24px 0;
-  padding: 14px 0;
-  border-bottom: 1px solid #2a2f3e;
+  margin: 18px 0 0 0;
 }
 .nx-worksheet-copy-btn {
-  background: #1a1f2e;
-  border: 2px solid #2a2f3e;
-  color: #B0B8C4;
+  background: transparent;
+  border: 2px solid #7B68EE;
+  color: #7B68EE;
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.2px;
   padding: 8px 16px;
   cursor: pointer;
   transition: border-color 0.12s, color 0.12s, background 0.12s;
 }
 .nx-worksheet-copy-btn:hover {
-  border-color: #00BCD4;
+  background: #7B68EE;
   color: #ffffff;
 }
 .nx-worksheet-copy-btn:active {
-  background: #222838;
+  background: #6B58DE;
+  border-color: #6B58DE;
 }
 .nx-worksheet-copy-btn.nx-worksheet-copy-btn--success {
+  background: #00D26A;
   border-color: #00D26A;
-  color: #00D26A;
+  color: #ffffff;
 }
 
 /* Compact checkpoint headers (worksheets only): smaller than page-header.

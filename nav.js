@@ -2,11 +2,18 @@
  * nav.js — IS3513 Information Assurance & Security
  * Top horizontal navigation bar with dropdown menus.
  *
- * Context is determined by the ?context= query parameter in the URL:
+ * Context is determined by the ?context= query parameter and whether
+ * the page is being viewed inside a Canvas iframe:
  *
- *   No parameter (direct open)   → full nav
- *   ?context=module              → nav suppressed (Canvas iframe embed)
- *   ?context=lab                 → reference sidebar only (no full nav)
+ *   No parameter, direct open            → full nav (all dropdowns)
+ *   ?context=support in Canvas iframe    → slim nav (Course + NEXUS + Reading)
+ *   No parameter in Canvas iframe        → no nav (assignment iframes)
+ *   ?context=lab                         → lab reference sidebar only
+ *
+ * The slim nav propagates ?context=support through all internal links
+ * so navigation stays in iframe-friendly mode as students click around.
+ * Canvas iframe embeds for support pages must include the param, e.g.:
+ *   <iframe src=".../Home.html?context=support" ...>
  */
 
 (function () {
@@ -17,10 +24,14 @@
   const params   = new URLSearchParams(window.location.search);
   const ctx      = params.get('context');
 
-  if (inIframe && ctx !== 'lab') return;
+  // Canvas iframe without ?context=support (and not lab) → silent exit.
+  // Labs/readings/exams don't load nav.js anyway; this guards against
+  // any other page being embedded without explicit slim-nav opt-in.
+  if (inIframe && ctx !== 'support' && ctx !== 'lab') return;
 
-  const showFull = !inIframe && ctx !== 'lab';
+  const showFull = !inIframe && ctx !== 'lab';   // direct open, full menu
   const isLab    = ctx === 'lab';
+  const suffix   = (inIframe && ctx === 'support') ? '?context=support' : '';
 
   /* ── Base URLs ──────────────────────────────────────────── */
   const BASE = 'https://jfnewsom.github.io/is3513-assets';
@@ -279,11 +290,16 @@
   /* ── Helper: dropdown link ──────────────────────────────── */
   function link(label, url, color, external) {
     const target = external ? ' target="_blank" rel="noopener"' : '';
-    return `<a href="${url}"${target}><span class="drop-dot ${color}"></span>${label}</a>`;
+    // Slim-mode (iframe + ?context=support): propagate suffix to internal
+    // links so the next page stays in slim-nav mode. Skip if URL already
+    // has a query string or is external.
+    const needsSuffix = !external && suffix && !url.includes('?');
+    const finalUrl = needsSuffix ? url + suffix : url;
+    return `<a href="${finalUrl}"${target}><span class="drop-dot ${color}"></span>${label}</a>`;
   }
 
   /* ── Course dropdown ────────────────────────────────────── */
-  const courseDropdown = showFull ? `
+  const courseDropdown = `
     <div class="nav-item">
       <div class="nav-trigger">Course <span class="nav-caret">&#9660;</span></div>
       <div class="nav-dropdown">
@@ -300,10 +316,10 @@
         ${link('Screenshot Requirements', S + '/Screenshot_Requirements.html','dd-cyan')}
         ${link('Citations',               S + '/Citations.html',              'dd-cyan')}
       </div>
-    </div>` : '';
+    </div>`;
 
   /* ── NEXUS dropdown ─────────────────────────────────────── */
-  const nexusDropdown = showFull ? `
+  const nexusDropdown = `
     <div class="nav-item">
       <div class="nav-trigger">NEXUS <span class="nav-caret">&#9660;</span></div>
       <div class="nav-dropdown">
@@ -312,7 +328,7 @@
         ${link('Meet the Team',  S + '/Meet_The_Team.html',  'dd-purple')}
         ${link('Our Clients',    S + '/Our_Clients.html',    'dd-purple')}
       </div>
-    </div>` : '';
+    </div>`;
 
   /* ── Modules dropdown ───────────────────────────────────── */
   const modulesDropdown = showFull ? `
@@ -365,7 +381,7 @@
     </div>` : '';
 
   /* ── Reading dropdown ───────────────────────────────────── */
-  const readingDropdown = showFull ? `
+  const readingDropdown = `
     <div class="nav-item">
       <div class="nav-trigger">Reading <span class="nav-caret">&#9660;</span></div>
       <div class="nav-dropdown">
@@ -386,7 +402,7 @@
         ${link('Chapter 10 &mdash; Infrastructure Security',            R + '/CH10-Reading.html', 'dd-yellow')}
         ${link('Chapter 20 &mdash; Risk Management',                    R + '/CH20-Reading.html', 'dd-yellow')}
       </div>
-    </div>` : '';
+    </div>`;
 
   /* ── Nav HTML ───────────────────────────────────────────── */
   let navHTML = '';
@@ -407,7 +423,7 @@
   } else {
     navHTML = `
       <div class="nav-inner">
-        <a class="nav-logo" href="${S}/Home.html">
+        <a class="nav-logo" href="${S}/Home.html${suffix}">
           <span class="nav-logo-label">IS3513</span>
         </a>
 
@@ -419,7 +435,7 @@
           ${readingDropdown}
         </div>
 
-        <a class="nav-discord" href="${S}/Discord.html">Discord</a>
+        <a class="nav-discord" href="${S}/Discord.html${suffix}">Discord</a>
       </div>`;
   }
 

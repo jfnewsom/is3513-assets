@@ -51,13 +51,6 @@ def shell(html_title, module_num, module_label, accent, subtitle, body):
     <div class="nx-sub">{subtitle}</div>
   </div>
 
-  <!-- Copy / print button bar (handlers in worksheet-copy.js) -->
-  <div class="nx-worksheet-copy-bar">
-    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="rich">Copy as Rich Text</button>
-    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="plain">Copy as Plain Text</button>
-    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="print">Print</button>
-  </div>
-
 {body}
 
 </div>
@@ -187,7 +180,17 @@ def render_content_blocks(blocks):
 # ── Section-level renderers ────────────────────────────────────────────────────
 
 def render_intro_callout(sec, accent):
-    """The 'How to Use This Worksheet' block at the top, before numbered sections."""
+    """The 'How to Use This Worksheet' block at the top, before numbered sections.
+
+    The copy/print button bar lives at the bottom of this callout (handlers in
+    worksheet-copy.js). A second paragraph is auto-appended that tells students
+    about the copy buttons — wording is centralized here so it stays consistent
+    across all 5 modules.
+    """
+    copy_paste_sentence = (
+        "Print and fill it in by hand, or use the buttons below to copy the worksheet "
+        "into Word, Google Docs, or any text editor and type your answers there."
+    )
     return f"""  <div class="nx-worksheet-section">
     <div class="nx-card nx-card--sym" style="--accent: {accent};">
       <div class="nx-callout nx-blue" style="--callout-color:{accent}; --callout-rgb:{sec.get('accentRgb', '65,105,225')};">
@@ -195,6 +198,12 @@ def render_intro_callout(sec, accent):
         <div class="nx-callout-body">
           <div class="nx-callout-title">{sec.get('title', 'How to Use This Worksheet')}</div>
           <p>{sec['body']}</p>
+          <p>{copy_paste_sentence}</p>
+          <div class="nx-worksheet-copy-bar">
+            <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="rich">Copy as Rich Text</button>
+            <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="plain">Copy as Plain Text</button>
+            <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="print">Print</button>
+          </div>
         </div>
       </div>
     </div>
