@@ -2120,6 +2120,40 @@ summary {
 /* ── Study worksheets ─────────────────────────────────────── */
 .nx-worksheet-section { margin-bottom: 40px; }
 
+/* ── Copy / print button bar (top of worksheet, below header) ─
+   Three buttons: Copy as Rich Text, Copy as Plain Text, Print.
+   Handler logic lives in worksheet-copy.js. */
+.nx-worksheet-copy-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 24px 0;
+  padding: 14px 0;
+  border-bottom: 1px solid #2a2f3e;
+}
+.nx-worksheet-copy-btn {
+  background: #1a1f2e;
+  border: 2px solid #2a2f3e;
+  color: #B0B8C4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+.nx-worksheet-copy-btn:hover {
+  border-color: #00BCD4;
+  color: #ffffff;
+}
+.nx-worksheet-copy-btn:active {
+  background: #222838;
+}
+.nx-worksheet-copy-btn.nx-worksheet-copy-btn--success {
+  border-color: #00D26A;
+  color: #00D26A;
+}
+
 /* Compact checkpoint headers (worksheets only): smaller than page-header.
    Major sections (Lab Knowledge / Professional Application / Concept Check)
    keep the full nx-header size to signal a content shift. */
@@ -2254,7 +2288,8 @@ summary {
 /* ── Worksheet print styles ───────────────────────────────── */
 @media print {
   #nexus-nav,
-  .site-footer { display: none !important; }
+  .site-footer,
+  .nx-worksheet-copy-bar { display: none !important; }
 
   body.nx-worksheet-body {
     background: #ffffff !important;

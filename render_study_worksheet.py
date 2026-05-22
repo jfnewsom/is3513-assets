@@ -51,12 +51,20 @@ def shell(html_title, module_num, module_label, accent, subtitle, body):
     <div class="nx-sub">{subtitle}</div>
   </div>
 
+  <!-- Copy / print button bar (handlers in worksheet-copy.js) -->
+  <div class="nx-worksheet-copy-bar">
+    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="rich">Copy as Rich Text</button>
+    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="plain">Copy as Plain Text</button>
+    <button type="button" class="nx-worksheet-copy-btn" data-ws-copy="print">Print</button>
+  </div>
+
 {body}
 
 </div>
 
 </div>
 <script src="{ASSETS}/nav.js"></script>
+<script src="{ASSETS}/worksheet-copy.js"></script>
 </body>
 </html>"""
 
