@@ -743,7 +743,7 @@
     "penalties": [
       {
         "penalty": "-2.5%",
-        "condition": "Per missing screenshot below minimum of 20 (a screenshot without the VM hostname visible counts as missing)"
+        "condition": "Per required screenshot that is missing or unverifiable (hostname not visible, wrong content, or illegible). Capped at -50%."
       },
       {
         "penalty": "-5%",

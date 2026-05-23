@@ -34,7 +34,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing citation (10 required). Capped at <strong style=\"color:#E63946;\">&#8722;50%</strong>. This requirement is non-negotiable.",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;10%</strong> per missing citation (10 required). Combined with other documentation deductions, the cap is <strong style=\"color:#E63946;\">&#8722;100%</strong>. This requirement is non-negotiable.",
       "icon": "error"
     },
     {

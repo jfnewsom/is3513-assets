@@ -215,13 +215,18 @@
       "color": "#E63946",
       "label": "What Gets Penalized",
       "paragraphs": [
-        "Two mechanical deduction categories, both capped at −50%:"
+        "Documentation deductions are calibrated to the severity of each failure in a real engagement. Combined deductions cap at &#8722;100%."
       ],
       "items": [
-        "<strong style=\"color:#ffffff;\">−2.5% per missing screenshot</strong> below the 20-screenshot minimum. A screenshot without your VM hostname (<code>kali-abc123</code>) visible counts as missing.",
-        "<strong style=\"color:#ffffff;\">−5% per missing reference</strong> below the 10-reference minimum. References must meet the source quality standard — see the <a href=\"Citations.html\" style=\"color:#7B68EE;\">Citations</a> page. Wikipedia, the textbook, and tutorial sites do not count."
+        "<strong style=\"color:#ffffff;\">&#8722;5% per missing screenshot</strong> below the 20-screenshot minimum (Modules 1&#8211;4). Module 5&#8217;s floor is set by the compressed lab structure and published in the Module 5 lab body. A screenshot without your VM hostname (<code>kali-abc123</code>) visible counts as missing.",
+        "<strong style=\"color:#ffffff;\">&#8722;10% per missing reference</strong> below the 10-reference minimum. References must meet the source quality standard &#8212; see the <a href=\"Citations.html\" style=\"color:#7B68EE;\">Citations</a> page. Wikipedia, the textbook, and tutorial sites do not count.",
+        "<strong style=\"color:#ffffff;\">&#8722;20% if the Appendix is missing.</strong> The appendix is the audit trail &#8212; without it, your findings can&#8217;t be verified.",
+        "<strong style=\"color:#ffffff;\">&#8722;10% if the Executive Summary exceeds one page.</strong> The one-page limit is a hard limit, not a guideline.",
+        "<strong style=\"color:#ffffff;\">&#8722;5% if the Cover Page is missing.</strong>",
+        "<strong style=\"color:#ffffff;\">&#8722;5% if the Table of Contents is missing or hand-typed</strong> (not generated from heading styles).",
+        "<strong style=\"color:#ffffff;\">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting."
       ],
-      "tip": "<strong style=\"color:#ffffff;\">These penalties are pre-curve and transparent.</strong> If you turn in 17 screenshots, that’s −7.5%. If you turn in 6 quality references, that’s −20%. No subjectivity, no negotiation, no surprises."
+      "tip": "<strong style=\"color:#ffffff;\">These penalties are pre-curve and transparent.</strong> If you turn in 17 screenshots, that&#8217;s &#8722;15%. If you turn in 6 quality references, that&#8217;s &#8722;40%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them."
     },
     {
       "type": "named_section",

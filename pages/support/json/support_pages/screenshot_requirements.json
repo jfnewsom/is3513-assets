@@ -16,7 +16,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per missing screenshot below the 20 required. A screenshot without the VM name visible counts as missing. Capped at &#8722;50%.",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing screenshot below the 20 required (Modules 1&#8211;4). Module 5 is compressed to two labs; its required screenshot count is published in the Module 5 lab body. A screenshot without the VM name (<code>kali-abc123</code>) visible counts as missing. Combined with other documentation deductions, the cap is &#8722;100%.",
       "icon": "error"
     },
     {

@@ -34,6 +34,12 @@
     },
     "callouts": [
       {
+        "type": "warning",
+        "title": "Your Authorized Targets",
+        "icon": "warning",
+        "text": "Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and <strong>testphp.vulnweb.com</strong> (Acunetix's intentionally vulnerable demo site). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first — the cost of asking is five minutes."
+      },
+      {
         "type": "tip",
         "title": "Save For Lab 1.3",
         "icon": "folder",
