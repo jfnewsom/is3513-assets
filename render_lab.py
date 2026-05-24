@@ -770,7 +770,11 @@ def render_grading_standards(data):
     gs = data.get("gradingStandards")
     if not gs:
         return ""
-    accent = "#FFF700"
+    # Purple (#7B68EE) is the "Assessment" semantic in the Gold Standard palette,
+    # and visually signals "this section is different" between the green Final
+    # Checklist and the blue Need Help section that follow it.
+    # Previously #FFF700 (bright yellow) — failed white-on-yellow contrast in .nx-kw.
+    accent = "#7B68EE"
     inner = ""
 
     ql = gs.get("qualityLadder", {})
