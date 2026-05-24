@@ -743,18 +743,6 @@
     ],
     "sections": [
       {
-        "title": "Screenshots (7 Required)",
-        "items": [
-          "07-nmap-version.png &#8212; nmap -sV scan results",
-          "08-nmap-scripts.png &#8212; nmap -sC scan results",
-          "09-netcat-banner.png &#8212; SSH banner capture via netcat",
-          "10-dirb-results.png &#8212; dirb discovered directories",
-          "11-nikto-results.png &#8212; nikto vulnerability scan output",
-          "12-enum4linux-help.png &#8212; enum4linux help output",
-          "13-searchsploit-apache.png &#8212; searchsploit Apache results"
-        ]
-      },
-      {
         "title": "Screenshot Verification",
         "items": [
           "Hostname (kali-abc123) visible in terminal screenshots",

@@ -762,17 +762,6 @@
           "Network topology diagram completed"
         ],
         "title": "Exercises Completed"
-      },
-      {
-        "items": [
-          "01-number-conversions.png",
-          "02-flat-network-analysis.png",
-          "03-subnet-table.png",
-          "04-mxtoolbox-verification.png",
-          "05-host-kali-config.png",
-          "06-topology-diagram.png"
-        ],
-        "title": "Screenshots Saved"
       }
     ],
     "canvasQuiz": "Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration."

@@ -776,15 +776,6 @@
     ],
     "sections": [
       {
-        "title": "Screenshots (4 Required)",
-        "items": [
-          "01-vm-settings.png &#8212; VM configuration window showing name, RAM, and CPU count",
-          "02-kali-desktop.png &#8212; Kali desktop after first login",
-          "03-docker-version.png &#8212; docker --version and hello-world output",
-          "04-system-verification.png &#8212; hostname visible in verification commands output"
-        ]
-      },
-      {
         "title": "Environment Verification",
         "items": [
           "VM named exactly kali-abc123",

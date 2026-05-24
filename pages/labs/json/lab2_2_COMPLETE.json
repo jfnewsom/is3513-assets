@@ -839,43 +839,6 @@
     ],
     "sections": [
       {
-        "title": "Screenshots (8 Required)",
-        "items": [
-          {
-            "filename": "10-keygen-rsa.png",
-            "description": "RSA key generation showing randomart and file listing"
-          },
-          {
-            "filename": "11-keygen-ed25519.png",
-            "description": "ED25519 generation and wc -c size comparison between key types"
-          },
-          {
-            "filename": "12-permission-error.png",
-            "description": "nobody user successfully reading the private key (vulnerability demonstration)"
-          },
-          {
-            "filename": "13-permission-fixed.png",
-            "description": "Permission denied output after chmod 600, plus stat confirming originals are secure"
-          },
-          {
-            "filename": "14-authorized-keys.png",
-            "description": "~/.ssh directory listing and authorized_keys content"
-          },
-          {
-            "filename": "15-ssh-keyauth.png",
-            "description": "Successful key-based SSH connection to localhost showing whoami output"
-          },
-          {
-            "filename": "16-ssh-config.png",
-            "description": "SSH config file contents and successful connection using the labserver alias"
-          },
-          {
-            "filename": "17-mfa-login.png",
-            "description": "MFA login showing both key passphrase and password prompts, plus whoami confirmation"
-          }
-        ]
-      },
-      {
         "title": "Environment Verification",
         "items": [
           {

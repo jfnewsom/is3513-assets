@@ -337,7 +337,7 @@
             },
             {
               "label": "Part II: Client Deliverable (60% of grade)",
-              "description": "Cover Page + TOC (3%). Executive Summary (12%) — one page MAX but fleshed out: risk posture, findings by severity, top 2-3 recommendations with business framing. The “money page” for Ray. Methodology (7%) — client-facing narrative of your approach. Findings (20%) — numbered, severity-ordered, with evidence and impact. Risk Analysis (8%) — business context layered on findings. Recommendations (8%) — prioritized (Monday vs. next quarter). Appendix (2%) — raw outputs, additional screenshots, references."
+              "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) — one page MAX but fleshed out: risk posture, findings by severity, top 2-3 recommendations with business framing. The “money page” for Ray. Methodology (7%) — client-facing narrative of your approach. Findings (22%) — numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) — business context layered on findings. Recommendations (8%) — prioritized (Monday vs. next quarter)."
             }
           ]
         },
@@ -511,32 +511,52 @@
       "partII_client": {
         "weight": "60%",
         "components": {
-          "coverAndTOC": "3%",
           "executiveSummary": "12%",
           "methodology": "7%",
-          "findings": "20%",
-          "riskAnalysis": "8%",
-          "recommendations": "8%",
-          "appendix": "2%"
-        }
+          "findings": "22%",
+          "riskAnalysis": "11%",
+          "recommendations": "8%"
+        },
+        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
       }
     },
     "penalties": [
       {
-        "penalty": "-2.5%",
-        "condition": "Per required screenshot that is missing or unverifiable (hostname not visible, wrong content, or illegible). Capped at -50%."
+        "penalty": "-5%",
+        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+      },
+      {
+        "penalty": "-20%",
+        "condition": "Appendix missing from Part II Client Deliverable."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Executive Summary exceeds one page."
       },
       {
         "penalty": "-5%",
-        "condition": "Per missing reference below minimum of 10"
+        "condition": "Cover Page missing."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
       }
     ],
+    "penaltyCap": "Combined deductions cap at -100%.",
+    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "bonus": {
       "title": "Bonus Opportunity (+5%)",
       "description": "Additional Recon Tool: Document one reconnaissance tool not covered in Lab 1.2 and demonstrate it against the training targets. Include purpose, syntax, example output, and when to use it."
     },
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.",
-    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>"
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
     "channels": [

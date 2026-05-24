@@ -765,47 +765,6 @@
     ],
     "sections": [
       {
-        "title": "Screenshots (9 Required)",
-        "items": [
-          {
-            "filename": "01-hash-sha256.png",
-            "description": "SHA-256 hash generation showing patient.txt hash value"
-          },
-          {
-            "filename": "02-hash-comparison.png",
-            "description": "Side-by-side hash comparison demonstrating the avalanche effect"
-          },
-          {
-            "filename": "03-symmetric-encrypt.png",
-            "description": "AES-256-CBC encryption command and encrypted file listing"
-          },
-          {
-            "filename": "04-symmetric-decrypt.png",
-            "description": "AES-256-CBC decryption with plaintext confirmation"
-          },
-          {
-            "filename": "05-rsa-keypair.png",
-            "description": "RSA keypair generation showing both key files"
-          },
-          {
-            "filename": "06-rsa-encrypt.png",
-            "description": "RSA public-key encryption of test data"
-          },
-          {
-            "filename": "07-rsa-decrypt.png",
-            "description": "RSA private-key decryption confirming original plaintext"
-          },
-          {
-            "filename": "08-signature-create.png",
-            "description": "Digital signature creation showing signature file"
-          },
-          {
-            "filename": "09-signature-verify.png",
-            "description": "Signature verification showing 'Verified OK' output"
-          }
-        ]
-      },
-      {
         "title": "Environment Verification",
         "items": [
           {

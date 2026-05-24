@@ -660,52 +660,6 @@
           "Speed/H/s rates visible in attack screenshots (#14, #18)"
         ],
         "title": "Screenshot Verification"
-      },
-      {
-        "type": "screenshotTable",
-        "items": [
-          {
-            "number": "11",
-            "description": "Hash file showing $6$ format with salt visible"
-          },
-          {
-            "number": "12",
-            "description": "Single hash entry with algorithm, salt, and hash labeled"
-          },
-          {
-            "number": "13",
-            "description": "John load message with auto-detected format and salt count"
-          },
-          {
-            "number": "14",
-            "description": "John attack in progress showing H/s speed"
-          },
-          {
-            "number": "15",
-            "description": "john --show output with cracked passwords"
-          },
-          {
-            "number": "16",
-            "description": "man 5 shadow output showing format description"
-          },
-          {
-            "number": "17",
-            "description": "man 5 crypt output with hash algorithm identifiers"
-          },
-          {
-            "number": "18",
-            "description": "Hashcat attack showing H/s speed"
-          },
-          {
-            "number": "19",
-            "description": "hashcat --show output with cracked passwords"
-          },
-          {
-            "number": "20",
-            "description": "Completed results table for all 8 accounts"
-          }
-        ],
-        "title": "Screenshots Required"
       }
     ],
     "canvasQuiz": "Take the <strong>Lab 4.2 Quiz</strong> in Canvas. The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. <strong>Keep your VM running so you can reference your results.</strong>"

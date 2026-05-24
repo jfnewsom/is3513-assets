@@ -65,7 +65,7 @@
       <li><strong>Certificate Signing Requests:</strong> Generating a CSR from an existing private key — the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain.</li>
       <li><strong>CA Signing Operations:</strong> Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window — the chain of trust in practice.</li>
       <li><strong>Before/After Evidence:</strong> Documenting the broken state before making changes — auditors require proof of the problem, not just proof of the fix.</li>
-      <li><strong>Engagement Packet Compilation:</strong> Assembling three units of work into a single professional deliverable — the Section A/B/C structure used by NEXUS Security for all client engagements.</li>
+      <li><strong>Engagement Packet Compilation:</strong> Assembling three units of work into a single professional deliverable — the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements.</li>
     </ul>
     <div class="nx-callout nx-red">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
@@ -169,7 +169,7 @@
       </tbody>
     </table>
 
-    <p>Unit 3 is your first client-billable unit. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in Section A of your NEXUS Timesheet. Units 1 and 2 were internal training and are NOT client billable.</p>
+    <p>Unit 3 is your first client-billable unit. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable.</p>
   </div>
 </div>
 
@@ -567,37 +567,52 @@
     <div class="nx-callout nx-red">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">One Document, Three Sections</div>
-        <p>Your Engagement Packet is <strong>one .docx file</strong> containing all three sections in order. Do not submit separate files.</p>
+        <div class="nx-callout-title">One Document, Two Parts</div>
+        <p>Your Engagement Packet is <strong>one .docx file</strong> containing both parts in this order: Part I (Internal Packet) followed by Part II (Client Deliverable). Do not submit separate files.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">description</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Report Sections</div>
-        <p><strong>Section A: NEXUS Timesheet:</strong> A table showing your hours across all 3 units. Units 1&#8211;2: Internal training (not client billable) &#8212; Lab 2.1 and Lab 2.2 work. Unit 3: Client billable hours &#8212; Gulf Coast certificate remediation. Include dates, activities, and hours per task.</p>
-        <p><strong>Section B: Internal Runbook:</strong> &#8220;Here&#8217;s how to do this for the next analyst.&#8221; Cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (from Lab 2.3). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work.</p>
-        <p><strong>Section C: Client Report:</strong> The professional deliverable for Jennifer Walsh. Uses the report structure defined below.</p>
+        <p><strong>Part I: Internal Packet (40% of grade):</strong> Timesheet (5%) &#8212; hours across all 3 units, split Internal Training vs. Client Billable. Units 1&#8211;2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%) &#8212; man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work. Analyst Reflection (15%) &#8212; honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A.</p>
+        <p><strong>Part II: Client Deliverable (60% of grade):</strong> Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) &#8212; one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%) &#8212; client-facing narrative of your approach. Findings (22%) &#8212; certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) &#8212; HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%) &#8212; prioritized (immediate fixes vs. longer-term hardening).</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Report Structure (Section C)</div>
+        <div class="nx-callout-title">Full Engagement Packet Structure</div>
         <ul>
-          <li>Title Page</li>
-          <li>Executive Summary (1 page max, non-technical)</li>
+          <li>PART I (Internal Packet)</li>
+          <li>Timesheet</li>
+          <li>Runbook (man-page style)</li>
+          <li>Analyst Reflection</li>
+          <li>PART II (Client Deliverable)</li>
+          <li>Cover Page</li>
+          <li>Executive Summary (1 page)</li>
           <li>Table of Contents</li>
-          <li>Environment Specifications (from Lab 2.1)</li>
-          <li>Cryptographic Foundations (from Lab 2.1)</li>
-          <li>Authentication Systems (from Lab 2.2)</li>
-          <li>Certificate Remediation Findings (NEW)</li>
-          <li>Risk Analysis (NEW)</li>
-          <li>Recommendations (NEW)</li>
-          <li>Professional Reflection (NEW)</li>
+          <li>Methodology</li>
+          <li>Findings (numbered, severity-ordered)</li>
+          <li>Risk Analysis</li>
+          <li>Recommendations (prioritized)</li>
+          <li>Appendix (raw outputs, additional screenshots)</li>
           <li>References (minimum 10)</li>
-          <li>Appendix</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Runbook Format: Like a Man Page</div>
+        <p>Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you&#8217;d reach for it). <strong>Switches used</strong> (each flag you used on Gulf Coast with a one-line explanation). <strong>Switches for future use</strong> (flags you didn&#8217;t use this time but should know). <strong>How you used it</strong> (your actual command). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Analyst Reflection: Honest, Not Performative</div>
+        <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit &#8212; even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
       </div>
     </div>
     <div class="nx-callout nx-cyan">
@@ -742,15 +757,33 @@
   </div>
   <div class="nx-card" style="--accent: #FFF700;">
     <h2 class="nx-accent">The Quality Ladder</h2>
-    <p><strong>Assignment Objectives (40%):</strong> Did you complete all checkpoints with evidence?</p>
-    <p><strong>Technical Documentation (40%):</strong> Could another student reproduce your work?</p>
-    <p><strong>Professional Communication (20%):</strong> Is this report client-ready?</p>
+    <h3>Part I: Internal Packet (40%)</h3>
+    <ul>
+      <li><strong>Timesheet (5%):</strong></li>
+      <li><strong>Runbook (20%):</strong></li>
+      <li><strong>Analyst Reflection (15%):</strong></li>
+    </ul>
+    <h3>Part II: Client Deliverable (60%)</h3>
+    <ul>
+      <li><strong>Executive Summary (12%):</strong></li>
+      <li><strong>Methodology (7%):</strong></li>
+      <li><strong>Findings (22%):</strong></li>
+      <li><strong>Risk Analysis (11%):</strong></li>
+      <li><strong>Recommendations (8%):</strong></li>
+    </ul>
+    <p><em>Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale.</em></p>
 
     <h2 class="nx-accent">Penalties</h2>
     <ul>
-      <li><strong>-2.5%</strong> Per missing screenshot below minimum of 20 (a screenshot without the VM hostname visible counts as missing)</li>
-      <li><strong>-5%</strong> Per missing reference below minimum of 10</li>
+      <li><strong>-5%</strong> Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4.</li>
+      <li><strong>-10%</strong> Per reference missing below the 10-reference minimum. References must meet the source quality standard.</li>
+      <li><strong>-20%</strong> Appendix missing from Part II Client Deliverable.</li>
+      <li><strong>-10%</strong> Executive Summary exceeds one page.</li>
+      <li><strong>-5%</strong> Cover Page missing.</li>
+      <li><strong>-5%</strong> Table of Contents missing or hand-typed (must be auto-generated from heading styles).</li>
+      <li><strong>-5%</strong> Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers).</li>
     </ul>
+    <p><em>Combined deductions cap at -100%.</em></p>
 
     <h2 class="nx-accent">Automatic Zero</h2>
     <p>No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.</p>
@@ -759,7 +792,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">description</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Full Rubric</div>
-        <p>Full grading rubric: <a href="../support/Grading_Info.html">Grading Info</a></p>
+        <p>Full grading rubric and per-section level descriptors: <a href="../support/Grading_Info.html">Grading Info</a></p>
       </div>
     </div>
   </div>

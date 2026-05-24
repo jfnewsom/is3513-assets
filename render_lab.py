@@ -776,9 +776,28 @@ def render_grading_standards(data):
     ql = gs.get("qualityLadder", {})
     if ql:
         inner += f'    <h2 class="nx-accent">The Quality Ladder</h2>\n'
-        inner += f'    <p><strong>Assignment Objectives ({h(ql.get("assignmentObjectives","40%"))}):</strong> Did you complete all checkpoints with evidence?</p>\n'
-        inner += f'    <p><strong>Technical Documentation ({h(ql.get("technicalDocumentation","40%"))}):</strong> Could another student reproduce your work?</p>\n'
-        inner += f'    <p><strong>Professional Communication ({h(ql.get("professionalCommunication","20%"))}):</strong> Is this report client-ready?</p>\n\n'
+        # v1.5 structure (Part I / Part II with sub-weighted sections)
+        if "partI_internal" in ql or "partII_client" in ql:
+            import re as _re
+            def _camel_to_label(s):
+                r = _re.sub(r'(?<!^)(?=[A-Z])', ' ', s)
+                return (r[0].upper() + r[1:]) if r else s
+            for part_key, part_label in [("partI_internal", "Part I: Internal Packet"), ("partII_client", "Part II: Client Deliverable")]:
+                part = ql.get(part_key)
+                if not part:
+                    continue
+                weight = h(part.get("weight", ""))
+                inner += f'    <h3>{part_label} ({weight})</h3>\n    <ul>\n'
+                for k, v in (part.get("components") or {}).items():
+                    inner += f'      <li><strong>{h(_camel_to_label(k))} ({h(v)}):</strong></li>\n'
+                inner += '    </ul>\n'
+                if "note" in part:
+                    inner += f'    <p><em>{h(part["note"])}</em></p>\n\n'
+        else:
+            # Legacy AO/TD/PC fallback
+            inner += f'    <p><strong>Assignment Objectives ({h(ql.get("assignmentObjectives","40%"))}):</strong> Did you complete all checkpoints with evidence?</p>\n'
+            inner += f'    <p><strong>Technical Documentation ({h(ql.get("technicalDocumentation","40%"))}):</strong> Could another student reproduce your work?</p>\n'
+            inner += f'    <p><strong>Professional Communication ({h(ql.get("professionalCommunication","20%"))}):</strong> Is this report client-ready?</p>\n\n'
 
     penalties = gs.get("penalties", [])
     if penalties:
@@ -790,7 +809,12 @@ def render_grading_standards(data):
                 amount = h(p.get("amount", p.get("penalty", "")))
                 desc   = h(p.get("description", p.get("condition", "")))
                 inner += f'      <li><strong>{amount}</strong> {desc}</li>\n'
-        inner += '    </ul>\n\n'
+        inner += '    </ul>\n'
+        penalty_cap = gs.get("penaltyCap")
+        if penalty_cap:
+            inner += f'    <p><em>{h(penalty_cap)}</em></p>\n\n'
+        else:
+            inner += '\n'
 
     auto_zero = gs.get("automaticZero", "")
     if auto_zero:
@@ -798,7 +822,12 @@ def render_grading_standards(data):
 
     bonus = gs.get("bonus")
     if bonus:
-        inner += f'    <h2 class="nx-accent">Bonus Opportunity</h2>\n    <p>{h(bonus)}</p>\n\n'
+        if isinstance(bonus, dict):
+            btitle = bonus.get("title", "Bonus Opportunity")
+            bdesc = bonus.get("description", "")
+            inner += f'    <h2 class="nx-accent">{h(btitle)}</h2>\n    <p>{h(bdesc)}</p>\n\n'
+        else:
+            inner += f'    <h2 class="nx-accent">Bonus Opportunity</h2>\n    <p>{h(bonus)}</p>\n\n'
 
     rubric = gs.get("rubricCallout") or gs.get("fullRubricCallout")
     if not rubric:

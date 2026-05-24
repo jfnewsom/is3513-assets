@@ -94,11 +94,11 @@
       {
         "title": "NEW This Unit",
         "items": [
-          "Title Page, Table of Contents, Executive Summary",
-          "NEXUS Timesheet (Section A) with all 3 units",
-          "Platform Comparison Analysis (NTLM vs SHA-512)",
-          "Client-Specific Recommendations (Brazos + Alamo)",
-          "Professional Reflection, References, Appendix"
+          "Part II: Cover Page, Executive Summary, Methodology",
+          "Part I: Timesheet with all 3 units, plus Analyst Reflection",
+          "Part II: Platform Comparison Analysis (NTLM vs SHA-512) as Findings",
+          "Part II: Client-Specific Recommendations (Brazos + Alamo)",
+          "Part II: Risk Analysis, Recommendations, Appendix with references"
         ],
         "badge": "NEW"
       }
@@ -674,26 +674,63 @@
   },
   "gradingStandards": {
     "qualityLadder": {
-      "assignmentObjectives": "40%",
-      "technicalDocumentation": "40%",
-      "professionalCommunication": "20%"
+      "partI_internal": {
+        "weight": "40%",
+        "components": {
+          "timesheet": "5%",
+          "runbook": "20%",
+          "analystReflection": "15%"
+        }
+      },
+      "partII_client": {
+        "weight": "60%",
+        "components": {
+          "executiveSummary": "12%",
+          "methodology": "7%",
+          "findings": "22%",
+          "riskAnalysis": "11%",
+          "recommendations": "8%"
+        },
+        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+      }
     },
     "penalties": [
       {
-        "penalty": "-2.5%",
-        "condition": "Per required screenshot that is missing or unverifiable (hostname not visible, wrong content, or illegible). Capped at -50%."
+        "penalty": "-5%",
+        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+      },
+      {
+        "penalty": "-20%",
+        "condition": "Appendix missing from Part II Client Deliverable."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Executive Summary exceeds one page."
       },
       {
         "penalty": "-5%",
-        "condition": "Per missing reference below minimum of 10"
+        "condition": "Cover Page missing."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
       }
     ],
+    "penaltyCap": "Combined deductions cap at -100%.",
+    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "bonus": {
       "title": "Bonus Opportunity (+5%)",
       "description": "OSINT Wordlist: Research TV show characters to create a custom wordlist. Document your research methodology, sources used, and demonstrate improved crack rates against the character hashes."
     },
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.",
-    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>"
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
     "channels": [

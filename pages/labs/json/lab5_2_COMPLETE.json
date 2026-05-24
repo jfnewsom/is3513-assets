@@ -82,7 +82,7 @@
         "badge": "NEW",
         "items": [
           "Title Page, Table of Contents, Executive Summary",
-          "NEXUS Timesheet (Section A)",
+          "Timesheet (Part I.A)",
           "Finalized Remediation Roadmap with phased timelines",
           "Long-term Security Recommendations",
           "Professional Reflection, References, Appendix"
@@ -101,12 +101,12 @@
     "rows": [
       {
         "checkpoint": "CP1",
-        "task": "Timesheet documentation (Section A)",
+        "task": "Timesheet documentation (Part I.A)",
         "time": "15&#8211;20 min"
       },
       {
         "checkpoint": "CP2",
-        "task": "Runbook compilation (Section B)",
+        "task": "Runbook compilation (Part I.B)",
         "time": "45&#8211;60 min"
       },
       {
@@ -149,7 +149,7 @@
         },
         {
           "type": "includeList",
-          "title": "Include in Section A",
+          "title": "Include in Part I.A (Timesheet)",
           "items": [
             "Unit-by-unit hour breakdown (Lab 5.1 and Lab 5.2)",
             "Internal vs. client-billable hour split",
@@ -162,7 +162,7 @@
           "calloutType": "textbookReference",
           "title": "Textbook Reference",
           "icon": "book",
-          "text": "Chapter 10 covers infrastructure security and the consulting engagement lifecycle. Your Section A timesheet documents exactly the billable activity pattern described in Chapter 10&#8217;s coverage of security assessment engagements."
+          "text": "Chapter 10 covers infrastructure security and the consulting engagement lifecycle. Your Part I timesheet documents exactly the billable activity pattern described in Chapter 10&#8217;s coverage of security assessment engagements."
         },
         {
           "type": "callout",
@@ -200,7 +200,7 @@
         },
         {
           "type": "includeList",
-          "title": "Include in Section B",
+          "title": "Include in Part I.B (Runbook)",
           "items": [
             "Environment specifications and target system details (Docker architecture, container IPs, services)",
             "Scanning commands with exact parameters used (nmap flags, WPScan options)",
@@ -444,12 +444,13 @@
           "type": "checklist",
           "title": "Final Assembly Checklist",
           "items": [
-            "Section A: Timesheet complete with hour justifications for both units",
-            "Section B: Runbook is reproducible by another analyst",
-            "Section C: Executive summary fits on one page",
-            "Section C: Top 10 vulnerabilities documented with CVSS scores",
-            "Section C: Risk matrix included and color coded",
-            "Section C: Remediation roadmap with phased timelines",
+            "Part I.A (Timesheet) complete with hour justifications for both units",
+            "Part I.B (Runbook) is reproducible by another analyst",
+            "Part I.C (Analyst Reflection) answers the reflection prompts honestly",
+            "Part II Executive Summary fits on one page",
+            "Part II Findings: Top 10 vulnerabilities documented with CVSS scores",
+            "Part II Risk Analysis: risk matrix included and color coded",
+            "Part II Recommendations: roadmap with phased timelines",
             "All Lab 5.1 screenshots included as evidence",
             "VM name visible in terminal screenshots (kali-abc123)",
             "Minimum 10 references included",
@@ -521,15 +522,20 @@
       {
         "title": "Report Sections",
         "items": [
-          "Title Page",
+          "PART I (Internal Packet)",
+          "Timesheet",
+          "Runbook",
+          "Analyst Reflection",
+          "PART II (Client Deliverable)",
+          "Cover Page",
+          "Executive Summary (1 page)",
           "Table of Contents",
-          "Executive Summary",
-          "Section A &#8212; NEXUS Timesheet",
-          "Section B &#8212; Internal Runbook",
-          "Section C &#8212; Client Report",
-          "Professional Reflection",
-          "References (minimum 10)",
-          "Appendix"
+          "Methodology",
+          "Findings (vulnerabilities, severity-ordered)",
+          "Risk Analysis",
+          "Recommendations (prioritized roadmap)",
+          "Appendix",
+          "References (minimum 10)"
         ]
       },
       {
@@ -558,23 +564,60 @@
   },
   "gradingStandards": {
     "qualityLadder": {
-      "assignmentObjectives": "40%",
-      "technicalDocumentation": "40%",
-      "professionalCommunication": "20%"
+      "partI_internal": {
+        "weight": "40%",
+        "components": {
+          "timesheet": "5%",
+          "runbook": "20%",
+          "analystReflection": "15%"
+        }
+      },
+      "partII_client": {
+        "weight": "60%",
+        "components": {
+          "executiveSummary": "12%",
+          "methodology": "7%",
+          "findings": "22%",
+          "riskAnalysis": "11%",
+          "recommendations": "8%"
+        },
+        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+      }
     },
     "penalties": [
       {
-        "penalty": "-2.5%",
-        "condition": "Per required screenshot that is missing or unverifiable (hostname not visible, wrong content, or illegible). Capped at -50%."
+        "penalty": "-5%",
+        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+      },
+      {
+        "penalty": "-20%",
+        "condition": "Appendix missing from Part II Client Deliverable."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Executive Summary exceeds one page."
       },
       {
         "penalty": "-5%",
-        "condition": "Per missing reference below minimum of 10"
+        "condition": "Cover Page missing."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
       }
     ],
+    "penaltyCap": "Combined deductions cap at -100%.",
+    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
     "bonus": null,
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation.",
-    "rubricCallout": "Full grading rubric: <a href=\"../support/Grading_Info.html\">Grading Info</a>"
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
   },
   "needHelp": {
     "channels": [
