@@ -441,6 +441,16 @@
           "whyItMatters": "Typos and formatting errors undermine credibility. Longhorn Ventures is evaluating LoneStar &#8212; and by extension, NEXUS. Your report reflects on both."
         },
         {
+          "type": "includeList",
+          "title": "Include in Part I.C (Analyst Reflection)",
+          "items": [
+            "<strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (an obscure CVE lookup, CVSS calculator confusion, troubleshooting a scan) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?",
+            "<strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this vulnerability assessment for LoneStar again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d prioritize the WordPress vectors first&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;",
+            "<strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a CVSS vector string; I confirmed against the FIRST.org calculator before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.",
+            "No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t."
+          ]
+        },
+        {
           "type": "checklist",
           "title": "Final Assembly Checklist",
           "items": [

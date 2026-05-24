@@ -144,6 +144,39 @@
           "whyItMatters": "Professional security reports follow consistent structures. The 12-section format we use mirrors real engagement deliverables. Starting with proper organization makes the analysis sections flow naturally."
         },
         {
+          "type": "includeList",
+          "title": "Include in Part I.A (Timesheet)",
+          "items": [
+            "Hours per unit: Lab 4.1 (internal training), Lab 4.2 (internal training), Lab 4.3 (client billable to Brazos Financial and Alamo Industries)",
+            "Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)",
+            "Internal vs. client-billable split clearly indicated",
+            "Justification narrative for any unusual entries (very high or very low hours on a task)",
+            "Total hours at the bottom"
+          ]
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part I.B (Runbook)",
+          "items": [
+            "One man-page-style entry per tool used across Labs 4.1, 4.2, and 4.3 (John the Ripper, Hashcat, etc.)",
+            "For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing",
+            "How you used the tool on the engagement (the actual command, including hash mode and attack mode)",
+            "What output came back (with screenshot reference, including cracked passwords or session statistics)",
+            "What you did with the result (how it fed into your platform comparison or Findings)",
+            "Bar: a colleague picking this up in 3 months should be able to reproduce your engagement"
+          ]
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part I.C (Analyst Reflection)",
+          "items": [
+            "<strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (a hash mode that wouldn&#8217;t crack, attack mode selection, troubleshooting a Hashcat error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?",
+            "<strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this password security assessment for Brazos and Alamo again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d benchmark rules-based attacks before brute force&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;",
+            "<strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain Hashcat mask syntax; I confirmed against the Hashcat documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.",
+            "No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t."
+          ]
+        },
+        {
           "type": "callout",
           "calloutType": "digDeeper",
           "text": "How should organizations respond to a password breach? Research incident response procedures for compromised credentials."
