@@ -252,13 +252,25 @@
         },
         {
           "type": "includeList",
-          "title": "Include in Executive Summary",
+          "title": "Include in Part II &#8212; Executive Summary",
           "items": [
-            "Assessment scope and timeline",
-            "Key findings summary (plain language &#8212; no CVE numbers)",
-            "Business risk statement (what this means for LoneStar&#8217;s operations and Series B)",
-            "High-level remediation plan overview",
-            "Clear recommendation and proposed next steps"
+            "<strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)",
+            "Overall risk posture in 1&#8211;2 sentences (suitable for Longhorn Ventures investor review)",
+            "Count of findings by severity (e.g., &#8220;3 Critical, 5 High, 8 Medium&#8221;) &#8212; plain language, no CVE numbers here",
+            "Top 2&#8211;3 recommendations with business framing tied to LoneStar&#8217;s Series B trajectory",
+            "Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive",
+            "The &#8220;money page&#8221; for Amanda &#8212; every line should tie to operational continuity or investor-facing risk"
+          ]
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part II &#8212; Methodology",
+          "items": [
+            "3&#8211;4 paragraph narrative of your engagement approach",
+            "Phases of the engagement (e.g., reconnaissance &#8594; service enumeration &#8594; vulnerability identification &#8594; CVSS scoring &#8594; risk prioritization)",
+            "Scope and limitations: what was in scope (LoneStar infrastructure), what was not",
+            "Tools used at a high level (per-flag detail belongs in your Runbook, not here)",
+            "Written for the client, not for security peers &#8212; this is client-facing"
           ]
         },
         {
@@ -317,14 +329,29 @@
         },
         {
           "type": "includeList",
-          "title": "Include in Technical Findings",
+          "title": "Include in Part II &#8212; Findings",
           "items": [
-            "Your top 10 vulnerabilities with selection rationale",
-            "CVSS 3.1 scores and severity ratings for each finding",
-            "Business impact statement for each critical/high finding",
-            "5&#215;5 risk matrix with findings plotted",
-            "Evidence screenshots from Lab 5.1",
-            "CVE reference numbers where applicable"
+            "Number each finding sequentially (Finding 1, Finding 2, ...)",
+            "Descriptive title for each (e.g., &#8220;Unpatched WordPress Core Exposes Admin Functions&#8221;)",
+            "Severity rating (Critical / High / Medium / Low / Informational) backed by CVSS 3.1 scoring",
+            "Affected host(s) or service(s) from your Lab 5.1 enumeration",
+            "Description, including specific CVE identifiers and the CVSS vector string",
+            "Evidence: reference to your Lab 5.1 screenshots or scanner output (e.g., &#8220;See Figure 4 in Appendix&#8221;)",
+            "Impact statement in business terms (what could happen to LoneStar operations or Series B posture)",
+            "Per-finding recommendation summary (one line &#8212; full remediation lives in the Remediation Roadmap)",
+            "Order findings by severity, highest first. Top 10 with explicit selection rationale."
+          ]
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part II &#8212; Risk Analysis",
+          "items": [
+            "Per-finding likelihood &#215; impact analysis",
+            "5&#215;5 risk matrix with all findings plotted (visualizes severity distribution)",
+            "Business context for LoneStar specifically: SaaS startup, Series B due diligence, infrastructure dependency",
+            "Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Amanda and the LoneStar team",
+            "Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)",
+            "Reference an authoritative risk framework where helpful (NIST SP 800-30, FAIR, OWASP risk rating)"
           ]
         },
         {
@@ -381,14 +408,18 @@
         },
         {
           "type": "includeList",
-          "title": "Include in Remediation Roadmap",
+          "title": "Include in Part II &#8212; Recommendations (the Remediation Roadmap)",
           "items": [
-            "Phase 1 (Week 1) &#8212; Quick wins and critical vulnerabilities (disable jdavis, change default credentials)",
-            "Phase 2 (Weeks 2&#8211;3) &#8212; High-priority remediations",
-            "Phase 3 (Week 4+) &#8212; Medium-priority and hardening measures",
-            "Specific remediation actions for each finding",
+            "Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)",
+            "<strong>Phase 1 (Week 1).</strong> Quick wins and critical vulnerabilities (e.g., disable jdavis, change default credentials)",
+            "<strong>Phase 2 (Weeks 2&#8211;3).</strong> High-priority remediations",
+            "<strong>Phase 3 (Week 4+).</strong> Medium-priority remediations and hardening measures",
+            "Each recommendation specific: what to do, what effort required, what priority window",
+            "Aligned with findings (each recommendation maps to one or more findings)",
+            "Acknowledge client constraints &#8212; Sarah has two engineers and limited budget; recommendations must be feasible",
             "Testing and validation steps after each remediation",
-            "Downtime and maintenance window considerations"
+            "Downtime and maintenance window considerations",
+            "Where applicable, indicate which control framework the recommendation aligns with (CIS Controls v8, NIST SP 800-53, NIST CSF)"
           ]
         },
         {

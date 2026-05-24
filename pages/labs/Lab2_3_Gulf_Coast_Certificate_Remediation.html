@@ -582,39 +582,24 @@
     <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Include in Part I.A (Timesheet)</div>
+        <div class="nx-callout-title">Include in Part I (Internal Packet)</div>
         <ul>
-          <li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li>
-          <li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li>
-          <li>Internal vs. client-billable split clearly indicated</li>
-          <li>Justification narrative for any unusual entries (very high or very low hours on a task)</li>
-          <li>Total hours at the bottom</li>
+          <li><strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul></li>
+          <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul></li>
+          <li><strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul></li>
         </ul>
       </div>
     </div>
     <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Include in Part I.B (Runbook)</div>
+        <div class="nx-callout-title">Include in Part II (Client Deliverable)</div>
         <ul>
-          <li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li>
-          <li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li>
-          <li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li>
-          <li>What output came back (with screenshot reference)</li>
-          <li>What you did with the result (how it fed into your remediation steps or findings)</li>
-          <li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li>
-        </ul>
-      </div>
-    </div>
-    <div class="nx-callout nx-purple">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">info</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Include in Part I.C (Analyst Reflection)</div>
-        <ul>
-          <li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li>
-          <li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li>
-          <li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li>
-          <li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li>
+          <li><strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul></li>
+          <li><strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul></li>
+          <li><strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul></li>
+          <li><strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul></li>
+          <li><strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul></li>
         </ul>
       </div>
     </div>
