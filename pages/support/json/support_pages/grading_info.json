@@ -62,6 +62,14 @@
     },
     {
       "type": "callout_bar",
+      "color": "#FEC618",
+      "colorRgb": "254, 198, 24",
+      "label": "Engagement Packet Bonus (Tier 3):",
+      "html": "Up to <strong style=\"color:#ffffff;\">+10%</strong> for work that exceeds the spec. Examples: a non-required tool documented to runbook standard, a finding that shows analyst-level judgment beyond what the lab scenario requires, or documentation craftsmanship that materially improves the deliverable. Bonuses are awarded sparingly and never as compensation for Tier 1 quality gaps.",
+      "icon": "star"
+    },
+    {
+      "type": "callout_bar",
       "color": "#00D26A",
       "colorRgb": "0, 210, 106",
       "label": "Think of drops as built-in sick days:",
