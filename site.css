@@ -2423,3 +2423,100 @@ summary {
     color: #000 !important;
   }
 }
+
+/* ============================================================
+   VIDEO STORY — TV-news-style welcome video teaser
+   Used on:
+     - Home.html (between CTA and narrative intro)
+     - StartHere.html (first section, above the 4 checkpoints)
+
+   Structure:
+     <div class="nx-video-story">
+       <div class="nx-video-story__kicker">…</div>
+       <h1 class="nx-video-story__headline">…</h1>
+       <p class="nx-video-story__dek">…</p>
+       <div class="nx-video-embed">
+         <iframe class="nx-video-embed__iframe" …></iframe>
+       </div>
+       <p class="nx-video-story__caption">…</p>
+     </div>
+   ============================================================ */
+
+.nx-video-story {
+  margin: 0 0 32px 0;
+  padding: 24px;
+  background: #0E1320;
+  border-left: 4px solid var(--accent, #4169E1);
+  border-radius: 0 4px 4px 0;
+}
+
+.nx-video-story__kicker {
+  color: var(--accent, #4169E1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+}
+
+.nx-video-story__headline {
+  color: #ffffff;
+  font-family: 'Roboto Slab', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+}
+
+.nx-video-story__dek {
+  color: #B0B8C4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+.nx-video-story__caption {
+  color: #B0B8C4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 18px 0 0 0;
+}
+
+/* 16:9 responsive embed wrapper.
+   padding-bottom: 56.25% holds aspect ratio while the iframe is
+   absolute-positioned to fill it. */
+.nx-video-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background: #000000;
+}
+
+.nx-video-embed__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #464646;
+  box-sizing: border-box;
+}
+
+/* Mobile: tighten padding and shrink headline. */
+@media (max-width: 600px) {
+  .nx-video-story {
+    padding: 18px;
+  }
+  .nx-video-story__headline {
+    font-size: 22px;
+  }
+  .nx-video-story__dek {
+    font-size: 15px;
+  }
+}

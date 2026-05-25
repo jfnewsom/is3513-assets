@@ -5,7 +5,7 @@ Renders Support Page JSON → class-based HTML using site.css.
 No inline styles, no external SVG images.
 
 Section types handled:
-  intro, callout_bar, stat_blocks, two_column, info_box,
+  intro, video_story, callout_bar, stat_blocks, two_column, info_box,
   named_section, platform_cards, two_col_specs, button_row,
   rules_list, acknowledgment_box, client_card, mentor_card, footer
 
@@ -63,6 +63,30 @@ def render_image(image):
         f'    <img class="{css_class}" src="{full_src}" alt="{alt}" '
         f'style="width: {width};">\n'
     )
+
+
+def render_video_story(sec):
+    """TV-news-style welcome video teaser.
+
+    Renders as the first section of StartHere (and reused on Home via
+    render_home.py). Headline + dek above the 16:9 embed; caption below.
+    The iframe markup itself lives in the JSON so the embed code can be
+    regenerated/replaced from Panopto without touching this renderer.
+    """
+    kicker   = sec["kicker"]
+    headline = sec["headline"]
+    dek      = sec["dek"]
+    embed    = sec["embed"]
+    caption  = sec["caption"]
+    return f"""  <div class="nx-video-story">
+    <div class="nx-video-story__kicker">{kicker}</div>
+    <h1 class="nx-video-story__headline">{headline}</h1>
+    <p class="nx-video-story__dek">{dek}</p>
+    <div class="nx-video-embed">
+      {embed}
+    </div>
+    <p class="nx-video-story__caption">{caption}</p>
+  </div>"""
 
 
 def render_intro(sec):
@@ -651,6 +675,7 @@ def render_mentor_card(sec):
 
 SECTION_RENDERERS = {
     "intro":            render_intro,
+    "video_story":      render_video_story,
     "callout_bar":      render_callout_bar,
     "stat_blocks":      render_stat_blocks,
     "two_column":       render_two_column,

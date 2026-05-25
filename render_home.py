@@ -22,6 +22,26 @@ def render_cta(cta):
     return f'    <a href="{cta["href"]}" class="nx-cta-btn">{cta["text"]}</a>'
 
 
+def render_video_story(story):
+    """TV-news-style welcome video teaser.
+
+    Sits between the CTA and the narrative intro on Home, and at the top
+    of StartHere. Headline + dek above the 16:9 embed; caption below.
+    The iframe markup itself is authored in the JSON (with the
+    nx-video-embed__iframe class already applied) so the embed code can
+    be regenerated/replaced from Panopto without touching the renderer.
+    """
+    return f"""    <div class="nx-video-story">
+      <div class="nx-video-story__kicker">{story['kicker']}</div>
+      <h1 class="nx-video-story__headline">{story['headline']}</h1>
+      <p class="nx-video-story__dek">{story['dek']}</p>
+      <div class="nx-video-embed">
+        {story['embed']}
+      </div>
+      <p class="nx-video-story__caption">{story['caption']}</p>
+    </div>"""
+
+
 def render_narrative_intro(intro):
     """NEXUS narrative intro: left-justified tagline + body, with logo floated right.
 
@@ -216,6 +236,7 @@ def render(data):
 
     parts = [
         render_cta(data["cta"]),
+        render_video_story(data["videoStory"]),
         render_narrative_intro(data["narrativeIntro"]),
         render_client_showcase(data["clientShowcase"]),
         f"""    <div class="nx-home-row">

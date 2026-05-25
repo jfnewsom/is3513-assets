@@ -8,6 +8,14 @@
   "headerSubtitle": "Complete these 4 checkpoints before starting any labs",
   "sections": [
     {
+      "type": "video_story",
+      "kicker": "Welcome to IS3513",
+      "headline": "Welcome to NEXUS Security. You&#8217;re the new analyst.",
+      "dek": "A 15-slide tour of how the course works, who you&#8217;ll be working with, and what&#8217;s due in your first 72 hours.",
+      "embed": "<iframe class=\"nx-video-embed__iframe\" src=\"https://utsa.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=df5f67b7-89de-43c8-b5f6-b455014dce86&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all\" allowfullscreen allow=\"autoplay\" aria-label=\"Panopto Embedded Video Player\" aria-description=\"Summer Welcome\"></iframe>",
+      "caption": "I&#8217;m John Newsom. This is the Summer 2026 section of Information Assurance and Security. Watch this before you touch a lab &#8212; it covers the two questions that drive every assignment in this course, the four Texas clients you&#8217;ll work with, how a module is structured, and where to get help."
+    },
+    {
       "type": "intro",
       "html": "Complete these 4 checkpoints <strong style=\"color:#ffffff;\">in order</strong> before diving into assignments. Each step ensures you&#8217;re set up for success."
     },
