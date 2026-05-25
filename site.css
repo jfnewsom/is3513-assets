@@ -2430,24 +2430,45 @@ summary {
      - Home.html (between CTA and narrative intro)
      - StartHere.html (first section, above the 4 checkpoints)
 
+   Layout: two columns. Video left (~25% of card width), text right.
+   Stacks vertically on mobile.
+
    Structure:
      <div class="nx-video-story">
-       <div class="nx-video-story__kicker">…</div>
-       <h1 class="nx-video-story__headline">…</h1>
-       <p class="nx-video-story__dek">…</p>
-       <div class="nx-video-embed">
-         <iframe class="nx-video-embed__iframe" …></iframe>
+       <div class="nx-video-story__media">
+         <div class="nx-video-embed">
+           <iframe class="nx-video-embed__iframe" …></iframe>
+         </div>
        </div>
-       <p class="nx-video-story__caption">…</p>
+       <div class="nx-video-story__text">
+         <div class="nx-video-story__kicker">…</div>
+         <h1 class="nx-video-story__headline">…</h1>
+         <p class="nx-video-story__dek">…</p>
+         <p class="nx-video-story__caption">…</p>
+       </div>
      </div>
    ============================================================ */
 
 .nx-video-story {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
   margin: 0 0 32px 0;
   padding: 24px;
   background: #0E1320;
   border-left: 4px solid var(--accent, #4169E1);
   border-radius: 0 4px 4px 0;
+}
+
+.nx-video-story__media {
+  flex: 0 0 25%;
+  min-width: 0;
+}
+
+.nx-video-story__text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .nx-video-story__kicker {
@@ -2457,26 +2478,26 @@ summary {
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
 }
 
 .nx-video-story__headline {
   color: #ffffff;
   font-family: 'Roboto Slab', serif;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
 }
 
 .nx-video-story__dek {
   color: #B0B8C4;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   font-style: italic;
   line-height: 1.5;
-  margin: 0 0 20px 0;
+  margin: 0 0 14px 0;
 }
 
 .nx-video-story__caption {
@@ -2484,7 +2505,7 @@ summary {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 1.7;
-  margin: 18px 0 0 0;
+  margin: 0;
 }
 
 /* 16:9 responsive embed wrapper.
@@ -2508,15 +2529,20 @@ summary {
   box-sizing: border-box;
 }
 
-/* Mobile: tighten padding and shrink headline. */
-@media (max-width: 600px) {
+/* Mobile: stack vertically. A 25% video on a 380px screen would be
+   ~85px wide which is unwatchable, so the video goes full-width on top
+   and the text flows below. */
+@media (max-width: 700px) {
   .nx-video-story {
+    flex-direction: column;
     padding: 18px;
+    gap: 16px;
+  }
+  .nx-video-story__media {
+    flex-basis: auto;
+    width: 100%;
   }
   .nx-video-story__headline {
     font-size: 22px;
-  }
-  .nx-video-story__dek {
-    font-size: 15px;
   }
 }

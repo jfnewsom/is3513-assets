@@ -25,20 +25,24 @@ def render_cta(cta):
 def render_video_story(story):
     """TV-news-style welcome video teaser.
 
-    Sits between the CTA and the narrative intro on Home, and at the top
-    of StartHere. Headline + dek above the 16:9 embed; caption below.
-    The iframe markup itself is authored in the JSON (with the
-    nx-video-embed__iframe class already applied) so the embed code can
-    be regenerated/replaced from Panopto without touching the renderer.
+    Two-column layout: video on the left (~25% width), text on the right.
+    Stacks on mobile. The iframe markup itself is authored in the JSON
+    (with the nx-video-embed__iframe class already applied) so the embed
+    code can be regenerated/replaced from Panopto without touching the
+    renderer.
     """
     return f"""    <div class="nx-video-story">
-      <div class="nx-video-story__kicker">{story['kicker']}</div>
-      <h1 class="nx-video-story__headline">{story['headline']}</h1>
-      <p class="nx-video-story__dek">{story['dek']}</p>
-      <div class="nx-video-embed">
-        {story['embed']}
+      <div class="nx-video-story__media">
+        <div class="nx-video-embed">
+          {story['embed']}
+        </div>
       </div>
-      <p class="nx-video-story__caption">{story['caption']}</p>
+      <div class="nx-video-story__text">
+        <div class="nx-video-story__kicker">{story['kicker']}</div>
+        <h1 class="nx-video-story__headline">{story['headline']}</h1>
+        <p class="nx-video-story__dek">{story['dek']}</p>
+        <p class="nx-video-story__caption">{story['caption']}</p>
+      </div>
     </div>"""
 
 

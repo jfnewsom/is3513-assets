@@ -68,10 +68,11 @@ def render_image(image):
 def render_video_story(sec):
     """TV-news-style welcome video teaser.
 
-    Renders as the first section of StartHere (and reused on Home via
-    render_home.py). Headline + dek above the 16:9 embed; caption below.
-    The iframe markup itself lives in the JSON so the embed code can be
-    regenerated/replaced from Panopto without touching this renderer.
+    Two-column layout: video on the left (~25% width), text on the right.
+    Stacks on mobile. Used as the first section of StartHere (and reused
+    on Home via render_home.py). The iframe markup itself lives in the
+    JSON so the embed code can be regenerated/replaced from Panopto
+    without touching this renderer.
     """
     kicker   = sec["kicker"]
     headline = sec["headline"]
@@ -79,13 +80,17 @@ def render_video_story(sec):
     embed    = sec["embed"]
     caption  = sec["caption"]
     return f"""  <div class="nx-video-story">
-    <div class="nx-video-story__kicker">{kicker}</div>
-    <h1 class="nx-video-story__headline">{headline}</h1>
-    <p class="nx-video-story__dek">{dek}</p>
-    <div class="nx-video-embed">
-      {embed}
+    <div class="nx-video-story__media">
+      <div class="nx-video-embed">
+        {embed}
+      </div>
     </div>
-    <p class="nx-video-story__caption">{caption}</p>
+    <div class="nx-video-story__text">
+      <div class="nx-video-story__kicker">{kicker}</div>
+      <h1 class="nx-video-story__headline">{headline}</h1>
+      <p class="nx-video-story__dek">{dek}</p>
+      <p class="nx-video-story__caption">{caption}</p>
+    </div>
   </div>"""
 
 
