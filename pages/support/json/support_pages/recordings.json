@@ -2,10 +2,9 @@
   "_meta": {
     "purpose": "Single source of truth for Panopto recording links across IS3513. Drives the Recordings section on Home.html (aggregated, all 5 modules) and on each Module_N.html (just that module's rows). Set chapter_notes_url and lab_walkthrough_url to the Panopto Viewer URL when a recording is posted; leave null for placeholders.",
     "lastEdited": "2026-05-28",
-    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column — the slot renders as an invisible placeholder for vertical alignment, matching the IS2053 pattern."
+    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column at all — the final lab in each module is compilation/client-facing, not new chapter content. Only foundation labs (X.1, X.2, and 5.1) get a chapter overview slot. Each module has a themeColor that tints its header and engagement row for at-a-glance differentiation in the aggregated Home view."
   },
 
-  "intro_html": "<p>Recordings are posted here as they&rsquo;re produced. Same buttons live on each module overview page.</p>",
   "homeIntro_html": "<p>Recordings are posted here as they&rsquo;re produced. Same buttons live on each module overview page.</p>",
   "moduleIntro_html": "<p>Recordings for this module are posted here as they&rsquo;re produced.</p>",
 
@@ -13,6 +12,7 @@
     {
       "num": 1,
       "title": "Threat Intelligence &amp; Reconnaissance",
+      "themeColor": "#FEC52E",
       "rows": [
         {
           "labLabel": "Lab 1.1",
@@ -34,8 +34,6 @@
           "labLabel": "Lab 1.3",
           "labTitle": "Brazos Engagement",
           "type": "engagement",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
           "lab_walkthrough_url": null
         }
       ]
@@ -44,6 +42,7 @@
     {
       "num": 2,
       "title": "Cryptography &amp; Authentication",
+      "themeColor": "#00BCD4",
       "rows": [
         {
           "labLabel": "Lab 2.1",
@@ -65,8 +64,6 @@
           "labLabel": "Lab 2.3",
           "labTitle": "Gulf Coast Engagement",
           "type": "engagement",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
           "lab_walkthrough_url": null
         }
       ]
@@ -75,6 +72,7 @@
     {
       "num": 3,
       "title": "Network Security",
+      "themeColor": "#00D26A",
       "rows": [
         {
           "labLabel": "Lab 3.1",
@@ -96,8 +94,6 @@
           "labLabel": "Lab 3.3",
           "labTitle": "Azure Live Capture",
           "type": "engagement",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
           "lab_walkthrough_url": null
         }
       ]
@@ -106,6 +102,7 @@
     {
       "num": 4,
       "title": "Threats &amp; Attacks",
+      "themeColor": "#E63946",
       "rows": [
         {
           "labLabel": "Lab 4.1",
@@ -127,8 +124,6 @@
           "labLabel": "Lab 4.3",
           "labTitle": "Password Security Assessment",
           "type": "engagement",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
           "lab_walkthrough_url": null
         }
       ]
@@ -137,6 +132,7 @@
     {
       "num": 5,
       "title": "Infrastructure, Risk &amp; Resilience",
+      "themeColor": "#7B68EE",
       "rows": [
         {
           "labLabel": "Lab 5.1",
@@ -150,8 +146,6 @@
           "labLabel": "Lab 5.2",
           "labTitle": "Risk &amp; Vulnerability Report",
           "type": "engagement",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
           "lab_walkthrough_url": null
         }
       ]
