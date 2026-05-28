@@ -19,4 +19,8 @@ echo "Re-rendering module overviews..."
 python3 render_module_overview.py && echo "  ✓ all module overviews"
 
 echo ""
+echo "Re-rendering home page..."
+python3 render_home.py && echo "  ✓ Home.html"
+
+echo ""
 echo "Done. Push via GitHub Desktop."

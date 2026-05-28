@@ -637,6 +637,125 @@ summary {
   .nx-reading-row__chnum { width: 44px; font-size: 12px; padding: 4px 0; }
   .nx-reading-row__title { font-size: 13px; }
 }
+
+/* ── Recordings block (Home + Module Overview) ─────────────────
+   Two buttons per lab row: Chapter Notes + Lab Walkthrough.
+   Active state has the orange NEXUS accent; placeholder is muted
+   with a dashed border so students can tell at a glance whether a
+   button is clickable. Engagement rows (Lab X.3, Lab 5.2) have an
+   invisible Chapter Notes slot so the Lab Walkthrough column aligns
+   vertically across all rows in a module — treating the rows like
+   a table where the engagement row has an intentionally empty cell.
+   ───────────────────────────────────────────────────────────── */
+.nx-recordings-block {
+  margin: 18px 0 28px 0;
+}
+.nx-recordings-block .nx-section-label {
+  margin-bottom: 12px;
+}
+.nx-recordings-block__intro {
+  color: #B0B8C4;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+}
+.nx-rec-mod-label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #FEC52E;
+  background: rgba(254, 197, 46, 0.08);
+  border-left: 3px solid #FEC52E;
+  padding: 6px 10px;
+  margin: 18px 0 10px 0;
+  border-radius: 0 3px 3px 0;
+}
+.nx-rec-mod-label:first-child { margin-top: 0; }
+.nx-rec-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #11151f;
+  border-left: 3px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.nx-rec-lab-label {
+  flex-shrink: 0;
+  min-width: 220px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.3;
+}
+.nx-rec-lab-label__sub {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #B0B8C4;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.nx-rec-btn {
+  background: #0A0E17;
+  border: 2px solid #2a2f3a;
+  padding: 7px 14px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #555c68;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 3px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.nx-rec-btn__icon {
+  font-size: 14px !important;
+  line-height: 1;
+}
+.nx-rec-btn--active {
+  border-color: #FF9F1C;
+  color: #ffffff;
+  background: rgba(255, 159, 28, 0.06);
+}
+.nx-rec-btn--active:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 159, 28, 0.12);
+  text-decoration: none;
+}
+.nx-rec-btn--placeholder {
+  border-style: dashed;
+  border-color: #2a2f3a;
+  color: #555c68;
+  cursor: not-allowed;
+}
+.nx-rec-btn--placeholder:hover {
+  border-color: #2a2f3a;
+  color: #555c68;
+}
+/* Engagement labs (Lab X.3, Lab 5.2) don't introduce a new chapter, so
+   their Chapter Notes column is intentionally blank. The span still
+   occupies layout space so the Lab Walkthrough column aligns vertically
+   across foundation + engagement rows. */
+.nx-rec-btn--empty {
+  visibility: hidden;
+}
+@media (max-width: 640px) {
+  .nx-rec-row { gap: 8px; padding: 10px 12px; }
+  .nx-rec-lab-label { min-width: 100%; }
+  .nx-rec-btn { font-size: 10px; padding: 6px 10px; }
+}
+
 /* Mobile: shrink the floated logo */
 @media (max-width: 640px) {
   .nx-module-logo.nx-module-logo {

@@ -12,6 +12,7 @@ Source:  pages/support/json/home.json
 Output:  pages/support/Home.html
 """
 import json, sys, os
+from render_recordings import render_home_recordings_block
 
 CSS_PATH = "../../site.css"
 ASSETS   = "https://jfnewsom.github.io/is3513-assets"
@@ -261,10 +262,11 @@ def render(data):
         render_cycle_callout(data["cycleCallout"]),
         render_resource_cards(data["resourceCards"]),
         render_modules(data["modules"], accent),
+        render_home_recordings_block(),
         f'    <div class="nx-page-footer">{data["footer"]}</div>',
     ]
 
-    body = "\n\n".join(parts)
+    body = "\n\n".join(filter(None, parts))
 
     return f"""<!DOCTYPE html>
 <html lang="en">

@@ -13,6 +13,7 @@ Source filename convention: module_N_overview.json
 Output filename convention: Module_N.html
 """
 import json, sys, os, glob
+from render_recordings import render_module_recordings_block
 
 CSS_PATH = "../../site.css"   # relative from pages/support/ to repo root
 
@@ -34,6 +35,7 @@ def shell(module_num, title, accent, body):
   <title>Module {module_num}: {title} &#8211; IS3513</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="{CSS_PATH}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 
@@ -304,7 +306,10 @@ def render(data):
     # Footer
     footer = f'    <div class="nx-page-footer">{data["footer"]}</div>'
 
-    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, footer]))
+    # Recordings (after Skills, before footer)
+    recordings_section = render_module_recordings_block(n, accent)
+
+    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, recordings_section, footer]))
     return shell(n, title, accent, body)
 
 
