@@ -66,7 +66,6 @@
    "label": "Start Here: Download &amp; Set Up the Template",
    "paragraphs": [
     "Don&#8217;t format an Engagement Packet by hand. Download the NEXUS template and fill it in &#8212; the cover, both parts, every section heading, the running header, and the auto-generating Table of Contents are already built. The demo content inside (a sample timesheet, a runbook entry, and a finding) shows you exactly what &#8220;good&#8221; looks like; replace it with your own work.",
-    "<strong style=\"color:#ffffff;\">Module 1 template:</strong> <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx\">EP_M1_Brazos.docx</a>",
     "<strong style=\"color:#ffffff;\">Two things you set once, and they fill in everywhere.</strong> The cover meta-table, the running header, and the title all read from Word&#8217;s document properties, so you enter them a single time instead of typing them on every page:"
    ],
    "code_block": "1. Open the template in Microsoft Word (not Google Docs — it breaks the\n   fields and the auto Table of Contents).\n2. File → Info. Set two properties:\n     • Author      → your name\n     • abc123      → your VM identifier (the custom property near the\n                     bottom of the properties list)\n3. Your abc123 MUST match the kali-abc123 hostname shown in your\n   screenshots. It is the key we use to tie this packet to your VM.\n4. Press Ctrl+A then F9. This refreshes every field — cover, header,\n   and the Table of Contents — so they show your real values.\n5. Do step 4 again as the LAST thing before you submit, so the Table\n   of Contents page numbers are current.",
@@ -74,6 +73,54 @@
     "<strong style=\"color:#ffffff;\">Client is already filled in.</strong> This is the Brazos Financial engagement, so the client name is pre-set &#8212; you don&#8217;t enter it.",
     "<strong style=\"color:#ffffff;\">Keep the structure.</strong> Don&#8217;t rename or reorder the sections. The grading script and the rubric both expect the headings exactly as they ship.",
     "<strong style=\"color:#ffffff;\">Delete the demo content</strong> (the sample timesheet rows, the nmap runbook entry, and Finding 003) once you&#8217;ve replaced it with your own &#8212; don&#8217;t submit the examples."
+   ]
+  },
+  {
+   "type": "template_cards",
+   "color": "#C00000",
+   "label": "Download Your Template",
+   "intro": "Every module has a ready-to-use template &#8212; cover page, both packet parts, all section headings, and an auto-generating Table of Contents already built. Pick your module:",
+   "cards": [
+    {
+     "badge": "Module 1",
+     "title": "Reconnaissance",
+     "client": "Brazos Financial",
+     "accent": "#184D3A",
+     "file": "EP_M1_Brazos.docx",
+     "href": "https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx"
+    },
+    {
+     "badge": "Module 2",
+     "title": "Cryptographic Assessment",
+     "client": "Gulf Coast Healthcare",
+     "accent": "#0B7A75",
+     "file": "EP_M2_GulfCoast.docx",
+     "href": "https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx"
+    },
+    {
+     "badge": "Module 3",
+     "title": "Network Traffic Analysis",
+     "client": "Gulf Coast Healthcare",
+     "accent": "#0B7A75",
+     "file": "EP_M3_GulfCoast.docx",
+     "href": "https://jfnewsom.github.io/is3513-assets/templates/EP_M3_GulfCoast.docx"
+    },
+    {
+     "badge": "Module 4",
+     "title": "Password Security",
+     "client": "Internal contribution (Brazos / Alamo)",
+     "accent": "#454F5E",
+     "file": "EP_M4_Password_Audit.docx",
+     "href": "https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx"
+    },
+    {
+     "badge": "Module 5",
+     "title": "Risk &amp; Vulnerability",
+     "client": "LoneStar DevOps",
+     "accent": "#0F172A",
+     "file": "EP_M5_LoneStar.docx",
+     "href": "https://jfnewsom.github.io/is3513-assets/templates/EP_M5_LoneStar.docx"
+    }
    ]
   },
   {

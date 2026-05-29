@@ -6,7 +6,7 @@ No inline styles, no external SVG images.
 
 Section types handled:
   intro, video_story, callout_bar, stat_blocks, two_column, info_box,
-  named_section, platform_cards, two_col_specs, button_row,
+  named_section, platform_cards, two_col_specs, button_row, template_cards,
   rules_list, acknowledgment_box, client_card, mentor_card, footer
 
 Usage:
@@ -386,6 +386,35 @@ def render_two_col_specs(sec):
     )
 
 
+def render_template_cards(sec):
+    color = sec.get("color", "#2E75B6")
+    label = sec.get("label", "")
+    intro = sec.get("intro", "")
+    cards_html = ""
+    for c in sec["cards"]:
+        accent = c["accent"]
+        _tgt = ' target="_blank"' if c["href"].startswith("http") else ""
+        cards_html += (
+            f'      <a href="{c["href"]}"{_tgt} class="nx-tpl-card" '
+            f'style="border-top: 4px solid {accent};">\n'
+            f'        <div class="nx-tpl-card__badge" style="background: {accent};">{c["badge"]}</div>\n'
+            f'        <div class="nx-tpl-card__title">{c["title"]}</div>\n'
+            f'        <div class="nx-tpl-card__client">{c["client"]}</div>\n'
+            f'        <div class="nx-tpl-card__file">&#11015; {c["file"]}</div>\n'
+            f'      </a>\n'
+        )
+    intro_html = f'    <p class="nx-exam-body">{intro}</p>\n' if intro else ""
+    return (
+        f'  <div class="nx-named-section">\n'
+        f'    {section_label(label, color)}\n'
+        f'{intro_html}'
+        f'    <div class="nx-tpl-cards">\n'
+        f'{cards_html}'
+        f'    </div>\n'
+        f'  </div>'
+    )
+
+
 def render_button_row(sec):
     label       = sec.get("label")
     label_color = sec.get("labelColor", "#ffffff")
@@ -689,6 +718,7 @@ SECTION_RENDERERS = {
     "platform_cards":   render_platform_cards,
     "two_col_specs":    render_two_col_specs,
     "button_row":       render_button_row,
+    "template_cards":   render_template_cards,
     "rules_list":       render_rules_list,
     "acknowledgment_box": render_acknowledgment_box,
     "expandable_examples": render_expandable_examples,
