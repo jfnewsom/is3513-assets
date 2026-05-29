@@ -46,7 +46,7 @@
     "type": "required",
     "title": "Required: Use the Engagement Packet Template",
     "icon": "error",
-    "text": "Submit as <strong>.docx (Microsoft Word) only</strong>. PDF submissions will not be accepted.",
+    "text": "Don&#8217;t build this from a blank page. This module is an internal contribution &#8212; your findings get folded into the larger client deliverable. Download the pre-formatted NEXUS template (cover, section headings, and auto-generating Table of Contents already set up): <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx\">EP_M4_Password_Audit.docx</a>. Full instructions are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
     "pinTop": true
    },
    {
@@ -59,13 +59,6 @@
     "type": "warning",
     "title": "Deadline Tip",
     "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-   },
-   {
-    "type": "tip",
-    "icon": "description",
-    "title": "Use the Engagement Packet Template",
-    "text": "Don&#8217;t build this from a blank page. This module is an internal contribution &#8212; your findings get folded into the larger client deliverable. Download the pre-formatted NEXUS template (cover, section headings, and auto-generating Table of Contents already set up): <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx\">EP_M4_Password_Audit.docx</a>. Full instructions are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.",
-    "pinTop": true
    }
   ],
   "mentorQuote": {
