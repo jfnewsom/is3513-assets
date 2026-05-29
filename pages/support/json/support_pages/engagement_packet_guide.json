@@ -1,274 +1,319 @@
 {
-  "type": "support_page",
-  "title": "Engagement Packet Guide – IS3513",
-  "htmlTitle": "Engagement Packet Guide – IS3513",
-  "accentColor": "#7B68EE",
-  "headerKeyword": "engagement",
-  "headerSecondary": "packet guide",
-  "headerSubtitle": "Two Audiences, One Document, Every Module",
-  "sections": [
+ "type": "support_page",
+ "title": "Engagement Packet Guide – IS3513",
+ "htmlTitle": "Engagement Packet Guide – IS3513",
+ "accentColor": "#7B68EE",
+ "headerKeyword": "engagement",
+ "headerSecondary": "packet guide",
+ "headerSubtitle": "Two Audiences, One Document, Every Module",
+ "sections": [
+  {
+   "type": "intro",
+   "html": "Every module ends with an <strong style=\"color:#ffffff;\">Engagement Packet</strong> — the work product that wraps up your client engagement. A real security engagement produces two distinct artifacts: documentation that stays inside the firm, and a deliverable that goes to the client. Your Engagement Packet mirrors that reality.<br><br><strong style=\"color:#ffffff;\">One .docx file submitted to Canvas, two parts inside it:</strong>"
+  },
+  {
+   "type": "stat_blocks",
+   "blocks": [
     {
-      "type": "intro",
-      "html": "Every module ends with an <strong style=\"color:#ffffff;\">Engagement Packet</strong> — the work product that wraps up your client engagement. A real security engagement produces two distinct artifacts: documentation that stays inside the firm, and a deliverable that goes to the client. Your Engagement Packet mirrors that reality.<br><br><strong style=\"color:#ffffff;\">One .docx file submitted to Canvas, two parts inside it:</strong>"
+     "label": "Part I",
+     "labelColor": "#FF9F1C",
+     "value": "Internal"
     },
     {
-      "type": "stat_blocks",
-      "blocks": [
-        {
-          "label": "Part I",
-          "labelColor": "#FF9F1C",
-          "value": "Internal"
-        },
-        {
-          "label": "Part II",
-          "labelColor": "#00BCD4",
-          "value": "Client"
-        },
-        {
-          "label": "Weighting",
-          "labelColor": "#7B68EE",
-          "value": "40 / 60"
-        },
-        {
-          "label": "Format",
-          "labelColor": "#5865F2",
-          "value": ".docx"
-        }
-      ]
+     "label": "Part II",
+     "labelColor": "#00BCD4",
+     "value": "Client"
     },
     {
-      "type": "callout_bar",
-      "color": "#7B68EE",
-      "colorRgb": "123, 104, 238",
-      "label": "The audience rule:",
-      "html": " <strong>Part I is for us. Part II is for them.</strong> The client never sees Part I — your timesheet, your runbook, your reflection on the engagement. That’s NEXUS internal documentation. The client only sees Part II — the Client Deliverable. Anything you’d be embarrassed to show the client (“I got stuck for two hours on this nmap flag,” “ChatGPT helped me figure out what the error meant”) belongs in Part I, not Part II. Keep the audience boundary clean and your writing becomes a lot easier.",
-      "icon": "groups"
+     "label": "Weighting",
+     "labelColor": "#7B68EE",
+     "value": "40 / 60"
     },
     {
-      "type": "callout_bar",
-      "color": "#E63946",
-      "colorRgb": "230, 57, 70",
-      "label": "Required for every Engagement Packet:",
-      "html": " <strong>Submitted as .docx</strong> (no PDFs, no Google Docs links). <strong>20+ screenshots minimum</strong>, every one with your VM hostname (<code>kali-abc123</code>) visible in the terminal prompt. <strong>10+ references</strong> meeting the source quality standard — see the <a href=\"Citations.html\" style=\"color:#ffffff;text-decoration:underline;\">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part.",
-      "icon": "task_alt"
-    },
-    {
-      "type": "callout_bar",
-      "color": "#FF9F1C",
-      "colorRgb": "255, 159, 28",
-      "label": "Deadline Tip:",
-      "html": " Submit <strong>at least 10 minutes before the deadline</strong>, even if the packet isn’t perfect. Canvas accepts unlimited submissions until the deadline hits — you can keep uploading better versions right up to the cutoff. <strong>A 70 beats a zero every time.</strong>",
-      "icon": "schedule"
-    },
-    {
-      "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "Part I: The Internal Packet",
-      "paragraphs": [
-        "Part I is what NEXUS keeps in the engagement file. Three components, all internal:"
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "A. NEXUS Timesheet",
-      "paragraphs": [
-        "<strong style=\"color:#ffffff;\">Audience:</strong> NEXUS leadership / billing.",
-        "Where did your hours go? Hours broken out by unit, split between <em style=\"color:#FF9F1C;\">internal training</em> (Units 1–2, non-billable) and <em style=\"color:#00BCD4;\">client billable</em> (Unit 3 fieldwork). Justify any unusually high or low hour count with a one-line note (“spent 4 hours debugging tool installation”).",
-        "If you logged hours honestly as you went, this is a 10-minute fill-in. If you’re reconstructing it the night before, it’ll show — your scan dates, screenshot timestamps, and command history won’t line up with your claimed hours. The template includes a pre-built timesheet table; just fill in the cells."
-      ]
-    },
-    {
-      "type": "expandable_examples",
-      "items": [
-        {
-          "kind": "good",
-          "label": "Good Example — Module 1 Timesheet",
-          "body": "<p>A Module 1 (Brazos Financial) timesheet that gives leadership exactly what they need to bill the client and assess the engagement:</p>\n<pre>WEEK 1 — Internal Training (4.0 hours)\n• Kali VM installation, hostname configured to kali-abc123 ............... 1.5 hr\n• VirtualBox network configuration (host-only adapter for engagement) .... 0.5 hr\n• Lab 1.1 environment verification (uname -a, ip a, screenshot capture) .. 1.0 hr\n• Documentation setup (screenshot folder structure, runbook scaffolding) . 1.0 hr\n\nWEEK 2 — Internal Training (3.5 hours)\n• nmap deep dive: read man page, tested -sS / -sV / -O flags ............. 1.5 hr\n• dirb / nikto / enum4linux: practice runs against scanme.nmap.org ....... 1.0 hr\n• searchsploit workflow: paired CVE lookup with version output .......... 0.5 hr\n• Tool inventory documentation for runbook ............................. 0.5 hr\n\nWEEK 3 — Client Billable (6.0 hours)\n• Brazos Financial: full TCP scan, top-1000 ports ........................ 0.5 hr\n• Service version detection on open ports (-sV -sC --version-intensity 5) 1.0 hr\n• Web reconnaissance: dirb, nikto, manual inspection .................... 1.5 hr\n• SMB enumeration: enum4linux against discovered host ................... 0.5 hr\n• Vulnerability research: searchsploit + CVE lookups on discovered versions 1.5 hr\n• Client Deliverable: executive summary + 3 finding writeups + risk analysis 1.0 hr\n\nENGAGEMENT TOTAL: 13.5 hours  |  Internal: 7.5 hr  |  Billable: 6.0 hr</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Every line ties to a specific activity, command, or output</li>\n<li>Times are realistic and reflect actual effort — not all 30-min round numbers</li>\n<li>Internal vs. billable categories are clearly distinguished</li>\n<li>A billing manager could justify the 6 client-billable hours from the listed activities</li>\n<li>The total aligns with what your screenshot timestamps and command history would show</li>\n</ul>\n</div>"
-        },
-        {
-          "kind": "bad",
-          "label": "Bad Example — Vague, Round-Number Timesheet",
-          "body": "<p>A timesheet that fails the basic \"could a manager bill the client from this\" test:</p>\n<pre>Unit 1 (3 hours)\n- Did the lab stuff\n- Set up VM\n\nUnit 2 (2 hours)\n- Practiced with tools\n- Took some screenshots\n\nUnit 3 (4 hours)\n- Scanned the client\n- Wrote report\n\nTotal: 9 hours</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>\"Did the lab stuff\" tells leadership nothing — there's no way to justify the hours to a client</li>\n<li>No breakdown by specific tools or commands</li>\n<li>Times are suspiciously round (3, 2, 4) — real engagement work isn't billed in whole-hour chunks</li>\n<li>No internal vs. billable distinction — leadership can't tell which hours go on the client invoice</li>\n<li>The total (9 hr) is implausibly low for a three-unit engagement — either you didn't do the work or didn't track it</li>\n<li>Would be rejected by any real consulting firm before reaching the client</li>\n</ul>\n</div>"
-        }
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "B. Internal Runbook",
-      "paragraphs": [
-        "<strong style=\"color:#ffffff;\">Audience:</strong> The next analyst who has to do this engagement next month.",
-        "If a colleague picked up this client next quarter, could they reproduce what you did from your runbook alone? Environment setup, tools you used (and which versions), the exact commands you ran, what the expected output looks like, and where you got stuck and how you got unstuck. This is the document that prevents the firm from re-learning the same things every engagement.",
-        "<strong style=\"color:#ffffff;\">Good runbook test:</strong> screenshots are paired with the command that produced them. Commands are in code blocks, not in prose. There’s enough context that a reader who wasn’t there can tell what was working and what wasn’t.",
-        "Foundation Labs 1–2 of each module produce most of the runbook material. Lab 3 (the client engagement) adds the engagement-specific portion."
-      ]
-    },
-    {
-      "type": "expandable_examples",
-      "items": [
-        {
-          "kind": "good",
-          "label": "Good Example — nmap Service Detection Runbook Entry",
-          "body": "<p>A runbook entry the next analyst can actually use without you. From a Module 1 engagement, documenting the nmap service detection pass:</p>\n<pre><strong>NMAP SERVICE VERSION DETECTION</strong>\n────────────────────────────────────────\n\nPurpose: Identify running services and their specific versions on target hosts.\nVersion info is the bridge from \"this port is open\" to \"this port has CVE-XXXX-XXXXX.\"\n\nRecommended flags:\n  -sV                       Service version detection\n  -sC                       Default scripts (safe recon — banner grabs, etc.)\n  --version-intensity 5     Thorough probing (1–9 scale, 5 = balanced)\n  -oN output.txt            Save to text file (human-readable)\n\nFull engagement command (as run on Brazos):\n  nmap -sV -sC --version-intensity 5 -oN brazos-svc.txt 10.0.0.0/24\n\nSample output excerpt:\n  PORT      STATE  SERVICE    VERSION\n  22/tcp    open   ssh        OpenSSH 8.9p1 Ubuntu 3\n  80/tcp    open   http       Apache httpd 2.4.29        ← flag this version\n  3306/tcp  open   mysql      MySQL 5.7.42               ← EOL, research CVEs\n\nNext steps after scan:\n  1. Record every service version in your findings doc\n  2. Search NVD/CVE databases for each version\n  3. Flag any version that's EOL or has known CVEs\n  4. Cross-reference against searchsploit for available exploits\n\nPitfalls observed during this engagement:\n  • --version-intensity 9 took ~3x longer than 5 and surfaced no extra info\n    on this target — stick with 5 unless you have a specific reason</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Purpose is stated in plain language — a junior analyst reading this knows <em>why</em> they're running it, not just what to type</li>\n<li>Every flag is explained — no magic incantations</li>\n<li>Sample output is annotated — the reader knows what to look at and why</li>\n<li>\"Next steps\" tells the reader what to do <em>with</em> the output, not just how to get it</li>\n<li>\"Pitfalls observed\" captures hard-won knowledge that would otherwise be lost</li>\n</ul>\n</div>"
-        },
-        {
-          "kind": "bad",
-          "label": "Bad Example — Journal-Style Runbook Entry",
-          "body": "<p>A runbook entry that's technically a record of what you did, but won't help anyone reproduce it:</p>\n<pre>nmap\n\nI used nmap to scan the client. The command I used was nmap -sV -sC and it found\nsome open ports including 22, 80, and 3306. I saved the output to a file.\n\nThen I looked up the versions on Google and found some vulnerabilities.</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>No target specified — the next analyst can't tell what subnet you scanned</li>\n<li>Command is incomplete — no <code>-oN</code> flag, no <code>--version-intensity</code>, no scope</li>\n<li>\"Some open ports\" and \"some vulnerabilities\" are useless — specifics are the whole point of a runbook</li>\n<li>\"Looked up the versions on Google\" gives no path the next analyst can follow — NVD? CVE Details? searchsploit?</li>\n<li>Reads like a journal entry, not professional documentation</li>\n<li>If your colleague picked up Brazos next quarter, this runbook would help them <em>nothing</em></li>\n</ul>\n</div>"
-        }
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "C. Analyst Reflection",
-      "paragraphs": [
-        "<strong style=\"color:#ffffff;\">Audience:</strong> You + your instructor. This is the section where the learning lives.",
-        "Three prompts to answer:"
-      ],
-      "items": [
-        "<strong style=\"color:#ffffff;\">Timesheet Self-Audit.</strong> Looking at your timesheet for this engagement: was there a task or section that took disproportionately long compared to the others? Describe what made it slow — unfamiliar tool, unclear instructions, a tangent you went down, troubleshooting an error — and what you’d do differently next time to handle a similar task more efficiently. Then total your hours across the three weeks: if Maya Rodriguez reviewed this timesheet alongside the deliverable you’re submitting, what conclusion would she draw about your efficiency on this engagement? Be candid — this is a professional self-audit, not a grade defense.",
-        "<strong style=\"color:#ffffff;\">Professional Reflection.</strong> What worked? What didn’t? If you ran this engagement again next semester with what you know now, what would you do differently? Be specific — “I’d communicate findings to the client earlier” is more useful than “I’d be more organized.”",
-        "<strong style=\"color:#ffffff;\">AI Methodology Reflection.</strong> Where did AI help on this engagement? How did you verify what it told you? And honestly: did you really need it, or were you using it as a shortcut? (See the dedicated AI reflection section below.)"
-      ],
-      "tip": "<strong style=\"color:#ffffff;\">This section is internal.</strong> The client never reads it. Write candidly. “I got stuck on tool X for two hours” is fine here. “I learned that the client’s naming convention was confusing” is fine here. The point of the section is honest reflection, not polish."
-    },
-    {
-      "type": "named_section",
-      "color": "#00BCD4",
-      "label": "Part II: The Client Deliverable",
-      "paragraphs": [
-        "Part II is the document you hand the client. The structure follows professional penetration-test reporting conventions — the client should be able to read the executive summary alone and know what to do.",
-        "The Word template defines the exact section order and required headings. Use the template; don’t invent your own structure. At a high level, Part II contains:"
-      ],
-      "items": [
-        "<strong style=\"color:#ffffff;\">Cover Page</strong> — client name, engagement title, your name (as NEXUS analyst), date",
-        "<strong style=\"color:#ffffff;\">Executive Summary</strong> — one page maximum, board-readable, what we found and what to do",
-        "<strong style=\"color:#ffffff;\">Methodology</strong> — brief overview of how the engagement was conducted; client doesn’t need command-by-command detail (that’s in your runbook)",
-        "<strong style=\"color:#ffffff;\">Findings</strong> — organized by severity, highest first; each finding has a finding number, title, description, evidence (screenshot), and impact",
-        "<strong style=\"color:#ffffff;\">Risk Analysis</strong> — likelihood × impact for each finding",
-        "<strong style=\"color:#ffffff;\">Recommendations</strong> — prioritized; what to do Monday vs. what to plan for the next budget cycle",
-        "<strong style=\"color:#ffffff;\">Appendix</strong> — references, supporting evidence, scrubbed scan output"
-      ],
-      "tip": "<strong style=\"color:#ffffff;\">This section is client-facing.</strong> Write like a consultant. No first-person. No “I was confused.” No AI references. No reflections. Recommendations-forward, evidence-backed, professional throughout."
-    },
-    {
-      "type": "expandable_examples",
-      "items": [
-        {
-          "kind": "good",
-          "label": "Good Example — Medium-Severity Finding (Apache CVE)",
-          "body": "<p>A Medium-severity finding from a Module 1 Brazos Financial engagement. Note the structure: number, title, severity, description, evidence, impact, recommendation:</p>\n<pre><strong>FINDING 003 — Outdated Apache HTTP Server Exposes Multiple CVEs</strong>\n───────────────────────────────────────────────────────────────\nSeverity:       Medium\nAffected Host:  brazos-external.local (10.0.0.50)\nAffected Port:  80/tcp\n\nDescription:\nThe Brazos Financial external web server is running Apache HTTP Server 2.4.29,\nreleased March 2018. Versions of Apache prior to 2.4.55 are affected by multiple\npublicly disclosed vulnerabilities, including CVE-2022-31813 (mod_proxy header\nmishandling) and CVE-2022-22720 (HTTP request smuggling). Exploit code for several\nof these issues is publicly available.\n\nEvidence:\n[See Figure 7 — nmap service-detection output showing \"Apache httpd 2.4.29\".]\n[See Appendix A.3 for the full nmap output excerpt.]\n\nImpact:\nAn attacker who successfully exploits one of the disclosed Apache vulnerabilities\ncould intercept or manipulate HTTP traffic to the Brazos external site, potentially\nexposing customer session data or enabling further attack chaining into Brazos's\ninternal network.\n\nRecommendation:\nUpgrade Apache HTTP Server to version 2.4.58 or later. Apache project provides\nbackported security fixes for the 2.4.x line. Estimated effort: low (1–2 hours\nfor a standard deployment). Priority: complete within 30 days.\n\nReference: Apache Security Advisories — https://httpd.apache.org/security/vulnerabilities_24.html</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Finding has a number (003) so the executive summary and risk table can reference it</li>\n<li>Severity is stated up front — a client reading only the first line knows the urgency</li>\n<li>Description names specific CVEs and version cutoffs, not vague \"outdated software\"</li>\n<li>Impact is in business terms (\"customer session data,\" \"further attack chaining\") not technical jargon</li>\n<li>Recommendation includes effort estimate AND priority window — actionable on Monday</li>\n<li>Evidence references existing figures rather than embedding a 30-line scan output in the body</li>\n</ul>\n</div>"
-        },
-        {
-          "kind": "bad",
-          "label": "Bad Example — Vague, Unactionable Finding",
-          "body": "<p>A finding that's technically present but won't help the client decide what to do:</p>\n<pre>FINDING: Apache is old.\n\nThe Apache web server is running an old version. This is bad because old software\nhas vulnerabilities. The version is 2.4.29.\n\nI recommend updating it.</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>No severity rating — client can't prioritize against other findings</li>\n<li>No finding number — can't be referenced in the executive summary or risk analysis</li>\n<li>\"Old version\" and \"vulnerabilities\" are not specific — which version cutoff? Which CVEs?</li>\n<li>\"This is bad\" is not an impact statement — what could an attacker actually do?</li>\n<li>\"Update it\" is not a recommendation — update to what? On what timeline? At what cost?</li>\n<li>No evidence reference — client has to take your word for it</li>\n<li>If the client's IT team has to triage this against 20 other findings, they have no way to decide whether this is finding #1 or finding #15</li>\n</ul>\n</div>"
-        }
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#7B68EE",
-      "label": "The AI Methodology Reflection",
-      "paragraphs": [
-        "Every Engagement Packet includes a brief AI Methodology Reflection in Part I.C. The prompt is simple:",
-        "<em style=\"color:#ffffff;font-size:16px;\">“Where did AI help you on this engagement, how did you verify what it told you, and did you really need it?”</em>",
-        "There’s no minimum word count — just answer the question honestly. <strong style=\"color:#ffffff;\">“I didn’t use AI on this engagement (N/A)” is a perfectly acceptable answer</strong> if it’s true. But it had better be true — don’t claim N/A if your runbook is full of AI-generated explanations."
-      ],
-      "subheading": "A good reflection covers:",
-      "items": [
-        "<strong style=\"color:#ffffff;\">What you asked AI for</strong> — specific tasks, not “it helped me understand things”",
-        "<strong style=\"color:#ffffff;\">How you verified the answer</strong> — man page, official docs, NIST publication, your own testing",
-        "<strong style=\"color:#ffffff;\">What you learned that you didn’t know before</strong> — the actual knowledge transfer",
-        "<strong style=\"color:#ffffff;\">An honest take on whether you needed AI</strong> — or whether you used it because it was faster than reading the documentation"
-      ],
-      "tip": "The reflection isn’t a gotcha. Using AI well is a skill. Using AI poorly is a tell. The reflection lets you show me which one you’re doing. See the <a href=\"GenAI_Policy.html\" style=\"color:#7B68EE;\">GenAI Policy</a> page for the full framework."
-    },
-    {
-      "type": "two_column",
-      "style": "detailed",
-      "left": {
-        "color": "#00D26A",
-        "label": "✓ Authentic Reflection",
-        "items": [
-          {
-            "title": "Specific, verified, honest",
-            "desc": "“I asked Claude to explain what the -sS flag does in nmap. The response said it was a SYN-scan that doesn’t complete the TCP handshake. I verified this against the nmap man page (man nmap, lines 124–138) and confirmed it. I could have read the man page first — in hindsight that would have been faster, since I had to read it anyway to verify. For Module 2 I’m going to try man page first, AI second.”"
-          }
-        ]
-      },
-      "right": {
-        "color": "#E63946",
-        "label": "✗ Performative Reflection",
-        "items": [
-          {
-            "title": "Generic, unverified, performative",
-            "desc": "“I used AI to help me understand the concepts in this engagement. It was very helpful for explaining things and helped me to learn the material. I verified its responses by cross-checking with the textbook and online sources. AI is a powerful tool that I will continue to use in future engagements as I develop my skills as a security analyst.”"
-          }
-        ]
-      }
-    },
-    {
-      "type": "named_section",
-      "color": "#E63946",
-      "label": "What Gets Penalized",
-      "paragraphs": [
-        "Documentation deductions are calibrated to the severity of each failure in a real engagement. Combined deductions cap at &#8722;100%."
-      ],
-      "items": [
-        "<strong style=\"color:#ffffff;\">&#8722;5% per missing screenshot</strong> below the 20-screenshot minimum (Modules 1&#8211;4). Module 5&#8217;s floor is set by the compressed lab structure and published in the Module 5 lab body. A screenshot without your VM hostname (<code>kali-abc123</code>) visible counts as missing.",
-        "<strong style=\"color:#ffffff;\">&#8722;10% per missing reference</strong> below the 10-reference minimum. References must meet the source quality standard &#8212; see the <a href=\"Citations.html\" style=\"color:#7B68EE;\">Citations</a> page. Wikipedia, the textbook, and tutorial sites do not count.",
-        "<strong style=\"color:#ffffff;\">&#8722;20% if the Appendix is missing.</strong> The appendix is the audit trail &#8212; without it, your findings can&#8217;t be verified.",
-        "<strong style=\"color:#ffffff;\">&#8722;10% if the Executive Summary exceeds one page.</strong> The one-page limit is a hard limit, not a guideline.",
-        "<strong style=\"color:#ffffff;\">&#8722;5% if the Cover Page is missing.</strong>",
-        "<strong style=\"color:#ffffff;\">&#8722;5% if the Table of Contents is missing or hand-typed</strong> (not generated from heading styles).",
-        "<strong style=\"color:#ffffff;\">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting."
-      ],
-      "tip": "<strong style=\"color:#ffffff;\">These penalties are pre-curve and transparent.</strong> If you turn in 17 screenshots, that&#8217;s &#8722;15%. If you turn in 6 quality references, that&#8217;s &#8722;40%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them."
-    },
-    {
-      "type": "named_section",
-      "color": "#00BCD4",
-      "label": "Word Automation Quick Reference",
-      "paragraphs": [
-        "Don’t hand-format. Word can generate everything you need from your structure — use it. The template is set up to support all of these:"
-      ],
-      "items": [
-        "<strong style=\"color:#ffffff;\">Table of Contents:</strong> References tab → Insert Table of Contents (uses your heading styles)",
-        "<strong style=\"color:#ffffff;\">Bibliography:</strong> References tab → Insert Citation, then → Bibliography. Auto-generates from your inserted citations.",
-        "<strong style=\"color:#ffffff;\">Figure captions:</strong> References tab → Insert Caption (auto-numbers screenshots as Figure 1, Figure 2, etc.)",
-        "<strong style=\"color:#ffffff;\">Cross-references:</strong> References tab → Cross-reference (live links to figure numbers, won’t break if you reorder)",
-        "<strong style=\"color:#ffffff;\">Update everything before submission:</strong> Ctrl+A to select all, then F9 to update all fields. Do this last."
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "Before You Submit: Something Beats Nothing",
-      "paragraphs": [
-        "If you’re approaching the deadline and you don’t feel ready, submit anyway. Late work isn’t accepted — a partial submission is graded as partial; a non-submission is graded as zero. <strong style=\"color:#ffffff;\">70 beats zero. 50 beats zero. 30 beats zero.</strong>",
-        "Canvas accepts unlimited submissions until the deadline. Upload what you have an hour before the deadline. Then keep working. Upload again 30 minutes before. Then once more right before time runs out. Your final upload is the one that gets graded."
-      ]
-    },
-    {
-      "type": "named_section",
-      "color": "#00D26A",
-      "label": "Pre-Submission Checklist",
-      "subheading": "Part I (Internal Packet):",
-      "items": [
-        "Timesheet table filled in with hours by week",
-        "Runbook covers environment, tools, commands, expected outputs",
-        "Timesheet Self-Audit answered honestly (specific task that took long + total-hours efficiency read)",
-        "Professional Reflection answered honestly (specific, not generic)",
-        "AI Methodology Reflection answered honestly (or N/A if true)"
-      ],
-      "tip": "<strong style=\"color:#ffffff;\">Part II (Client Deliverable):</strong><ul style=\"margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;\"><li>Cover page complete (client name, engagement title, date)</li><li>Executive Summary is one page or less, board-readable</li><li>Findings ordered by severity, each with finding number / title / description / evidence / impact</li><li>Recommendations prioritized (Monday vs. next quarter)</li><li>20+ screenshots embedded inline, every one with <code style=\"color:#00BCD4;\">kali-abc123</code> visible</li><li>Screenshot filenames: <code style=\"color:#00BCD4;\">##-description.png</code></li><li>10+ quality references in Appendix; auto-generated bibliography</li><li>Figure captions auto-numbered; cross-references live</li></ul><strong style=\"color:#ffffff;\">Both parts:</strong><ul style=\"margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;\"><li>Submitted as <code style=\"color:#00BCD4;\">.docx</code> (no PDFs)</li><li>Filename: <code style=\"color:#00BCD4;\">LastName_LabX.3_EngagementPacket.docx</code></li><li>Ctrl+A → F9 to update all fields (TOC, captions, cross-references, bibliography)</li></ul>"
-    },
-    {
-      "type": "footer",
-      "html": "Questions about what belongs in Part I vs. Part II? Ask in <strong>#course-questions</strong> on Discord. Questions about your specific grade? Email."
+     "label": "Format",
+     "labelColor": "#5865F2",
+     "value": ".docx"
     }
-  ]
+   ]
+  },
+  {
+   "type": "callout_bar",
+   "color": "#7B68EE",
+   "colorRgb": "123, 104, 238",
+   "label": "The audience rule:",
+   "html": " <strong>Part I is for us. Part II is for them.</strong> The client never sees Part I — your timesheet, your runbook, your reflection on the engagement. That’s NEXUS internal documentation. The client only sees Part II — the Client Deliverable. Anything you’d be embarrassed to show the client (“I got stuck for two hours on this nmap flag,” “ChatGPT helped me figure out what the error meant”) belongs in Part I, not Part II. Keep the audience boundary clean and your writing becomes a lot easier.",
+   "icon": "groups"
+  },
+  {
+   "type": "callout_bar",
+   "color": "#E63946",
+   "colorRgb": "230, 57, 70",
+   "label": "Required for every Engagement Packet:",
+   "html": " <strong>Submitted as .docx</strong> (no PDFs, no Google Docs links). <strong>20+ screenshots minimum</strong>, every one with your VM hostname (<code>kali-abc123</code>) visible in the terminal prompt. <strong>10+ references</strong> meeting the source quality standard — see the <a href=\"Citations.html\" style=\"color:#ffffff;text-decoration:underline;\">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part.",
+   "icon": "task_alt"
+  },
+  {
+   "type": "callout_bar",
+   "color": "#FF9F1C",
+   "colorRgb": "255, 159, 28",
+   "label": "Deadline Tip:",
+   "html": " Submit <strong>at least 10 minutes before the deadline</strong>, even if the packet isn’t perfect. Canvas accepts unlimited submissions until the deadline hits — you can keep uploading better versions right up to the cutoff. <strong>A 70 beats a zero every time.</strong>",
+   "icon": "schedule"
+  },
+  {
+   "type": "named_section",
+   "color": "#2E75B6",
+   "label": "Start Here: Download &amp; Set Up the Template",
+   "paragraphs": [
+    "Don&#8217;t format an Engagement Packet by hand. Download the NEXUS template and fill it in &#8212; the cover, both parts, every section heading, the running header, and the auto-generating Table of Contents are already built. The demo content inside (a sample timesheet, a runbook entry, and a finding) shows you exactly what &#8220;good&#8221; looks like; replace it with your own work.",
+    "<strong style=\"color:#ffffff;\">Module 1 template:</strong> <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx\">EP_M1_Brazos.docx</a>",
+    "<strong style=\"color:#ffffff;\">Two things you set once, and they fill in everywhere.</strong> The cover meta-table, the running header, and the title all read from Word&#8217;s document properties, so you enter them a single time instead of typing them on every page:"
+   ],
+   "code_block": "1. Open the template in Microsoft Word (not Google Docs — it breaks the\n   fields and the auto Table of Contents).\n2. File → Info. Set two properties:\n     • Author      → your name\n     • abc123      → your VM identifier (the custom property near the\n                     bottom of the properties list)\n3. Your abc123 MUST match the kali-abc123 hostname shown in your\n   screenshots. It is the key we use to tie this packet to your VM.\n4. Press Ctrl+A then F9. This refreshes every field — cover, header,\n   and the Table of Contents — so they show your real values.\n5. Do step 4 again as the LAST thing before you submit, so the Table\n   of Contents page numbers are current.",
+   "items": [
+    "<strong style=\"color:#ffffff;\">Client is already filled in.</strong> This is the Brazos Financial engagement, so the client name is pre-set &#8212; you don&#8217;t enter it.",
+    "<strong style=\"color:#ffffff;\">Keep the structure.</strong> Don&#8217;t rename or reorder the sections. The grading script and the rubric both expect the headings exactly as they ship.",
+    "<strong style=\"color:#ffffff;\">Delete the demo content</strong> (the sample timesheet rows, the nmap runbook entry, and Finding 003) once you&#8217;ve replaced it with your own &#8212; don&#8217;t submit the examples."
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#2E75B6",
+   "label": "What Goes in Every Section",
+   "paragraphs": [
+    "A section-by-section map of the template. Part&nbsp;I is internal (NEXUS leadership and the next analyst); Part&nbsp;II is the client deliverable (Brazos leadership, mostly non-technical). Write each section for its audience."
+   ],
+   "items": [
+    "<strong style=\"color:#ffffff;\">Part I &middot; Timesheet:</strong> Log your hours across all three units, split Internal Training (Units 1&#8211;2) vs. Client Billable (Unit 3). Replace the demo rows; total the columns yourself. If you logged honestly as you went, this is a 10-minute fill-in.",
+    "<strong style=\"color:#ffffff;\">Part I &middot; Runbook:</strong> A man-page style entry for each tool or step &#8212; purpose, switches, the exact command you ran, sample output, next steps, pitfalls. Test: could the next analyst reproduce your work from this alone? Pair each screenshot with the command that produced it.",
+    "<strong style=\"color:#ffffff;\">Part I &middot; Analyst Reflection:</strong> Three honest prompts &#8212; a timesheet self-audit, a professional reflection, and the AI methodology reflection. No word floor. &#8220;I didn&#8217;t use AI (N/A)&#8221; is fine if it&#8217;s true.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Executive Summary:</strong> One page maximum, board-readable. What you did, what you found, what to do &#8212; in plain language a non-technical executive can act on.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Methodology:</strong> A high-level overview of scope, approach, and tools. Command-by-command detail belongs in your runbook, not here.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Findings:</strong> Ordered highest severity first. Each finding keeps every field: number, title, severity, affected host/port, description, evidence (screenshot reference), impact, recommendation. Finding&nbsp;003 in the template is your model.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Risk Analysis:</strong> Likelihood &times; impact per finding, consistent with your severity labels.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Recommendations:</strong> Prioritized &#8212; what to do this week vs. this quarter &#8212; each tied back to a finding number.",
+    "<strong style=\"color:#ffffff;\">Part II &middot; Appendix:</strong> Raw (scrubbed) tool output, extra screenshots, and your references."
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#2E75B6",
+   "label": "Screenshots &amp; References",
+   "items": [
+    "<strong style=\"color:#ffffff;\">Screenshot naming:</strong> Use the ##-description.png convention (e.g. 07-nmap-service-scan.png) so they sort in order and are easy to reference.",
+    "<strong style=\"color:#ffffff;\">VM hostname visible:</strong> kali-abc123 must be visible in every screenshot. A screenshot missing it counts as missing (&minus;5% each, floor of 20 for Modules&nbsp;1&#8211;4).",
+    "<strong style=\"color:#ffffff;\">Reference minimum:</strong> At least 10 properly-formatted references (&minus;10% for each one below 10). CVE entries, vendor advisories, NIST publications, and tool documentation all count. Use Word&#8217;s References tab &rarr; Insert Citation, then generate the bibliography &#8212; don&#8217;t hand-type it."
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#FF9F1C",
+   "label": "Part I: The Internal Packet",
+   "paragraphs": [
+    "Part I is what NEXUS keeps in the engagement file. Three components, all internal:"
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#FF9F1C",
+   "label": "A. NEXUS Timesheet",
+   "paragraphs": [
+    "<strong style=\"color:#ffffff;\">Audience:</strong> NEXUS leadership / billing.",
+    "Where did your hours go? Hours broken out by unit, split between <em style=\"color:#FF9F1C;\">internal training</em> (Units 1–2, non-billable) and <em style=\"color:#00BCD4;\">client billable</em> (Unit 3 fieldwork). Justify any unusually high or low hour count with a one-line note (“spent 4 hours debugging tool installation”).",
+    "If you logged hours honestly as you went, this is a 10-minute fill-in. If you’re reconstructing it the night before, it’ll show — your scan dates, screenshot timestamps, and command history won’t line up with your claimed hours. The template includes a pre-built timesheet table; just fill in the cells."
+   ]
+  },
+  {
+   "type": "expandable_examples",
+   "items": [
+    {
+     "kind": "good",
+     "label": "Good Example — Module 1 Timesheet",
+     "body": "<p>A Module 1 (Brazos Financial) timesheet that gives leadership exactly what they need to bill the client and assess the engagement:</p>\n<pre>WEEK 1 — Internal Training (4.0 hours)\n• Kali VM installation, hostname configured to kali-abc123 ............... 1.5 hr\n• VirtualBox network configuration (host-only adapter for engagement) .... 0.5 hr\n• Lab 1.1 environment verification (uname -a, ip a, screenshot capture) .. 1.0 hr\n• Documentation setup (screenshot folder structure, runbook scaffolding) . 1.0 hr\n\nWEEK 2 — Internal Training (3.5 hours)\n• nmap deep dive: read man page, tested -sS / -sV / -O flags ............. 1.5 hr\n• dirb / nikto / enum4linux: practice runs against scanme.nmap.org ....... 1.0 hr\n• searchsploit workflow: paired CVE lookup with version output .......... 0.5 hr\n• Tool inventory documentation for runbook ............................. 0.5 hr\n\nWEEK 3 — Client Billable (6.0 hours)\n• Brazos Financial: full TCP scan, top-1000 ports ........................ 0.5 hr\n• Service version detection on open ports (-sV -sC --version-intensity 5) 1.0 hr\n• Web reconnaissance: dirb, nikto, manual inspection .................... 1.5 hr\n• SMB enumeration: enum4linux against discovered host ................... 0.5 hr\n• Vulnerability research: searchsploit + CVE lookups on discovered versions 1.5 hr\n• Client Deliverable: executive summary + 3 finding writeups + risk analysis 1.0 hr\n\nENGAGEMENT TOTAL: 13.5 hours  |  Internal: 7.5 hr  |  Billable: 6.0 hr</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Every line ties to a specific activity, command, or output</li>\n<li>Times are realistic and reflect actual effort — not all 30-min round numbers</li>\n<li>Internal vs. billable categories are clearly distinguished</li>\n<li>A billing manager could justify the 6 client-billable hours from the listed activities</li>\n<li>The total aligns with what your screenshot timestamps and command history would show</li>\n</ul>\n</div>"
+    },
+    {
+     "kind": "bad",
+     "label": "Bad Example — Vague, Round-Number Timesheet",
+     "body": "<p>A timesheet that fails the basic \"could a manager bill the client from this\" test:</p>\n<pre>Unit 1 (3 hours)\n- Did the lab stuff\n- Set up VM\n\nUnit 2 (2 hours)\n- Practiced with tools\n- Took some screenshots\n\nUnit 3 (4 hours)\n- Scanned the client\n- Wrote report\n\nTotal: 9 hours</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>\"Did the lab stuff\" tells leadership nothing — there's no way to justify the hours to a client</li>\n<li>No breakdown by specific tools or commands</li>\n<li>Times are suspiciously round (3, 2, 4) — real engagement work isn't billed in whole-hour chunks</li>\n<li>No internal vs. billable distinction — leadership can't tell which hours go on the client invoice</li>\n<li>The total (9 hr) is implausibly low for a three-unit engagement — either you didn't do the work or didn't track it</li>\n<li>Would be rejected by any real consulting firm before reaching the client</li>\n</ul>\n</div>"
+    }
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#FF9F1C",
+   "label": "B. Internal Runbook",
+   "paragraphs": [
+    "<strong style=\"color:#ffffff;\">Audience:</strong> The next analyst who has to do this engagement next month.",
+    "If a colleague picked up this client next quarter, could they reproduce what you did from your runbook alone? Environment setup, tools you used (and which versions), the exact commands you ran, what the expected output looks like, and where you got stuck and how you got unstuck. This is the document that prevents the firm from re-learning the same things every engagement.",
+    "<strong style=\"color:#ffffff;\">Good runbook test:</strong> screenshots are paired with the command that produced them. Commands are in code blocks, not in prose. There’s enough context that a reader who wasn’t there can tell what was working and what wasn’t.",
+    "Foundation Labs 1–2 of each module produce most of the runbook material. Lab 3 (the client engagement) adds the engagement-specific portion."
+   ]
+  },
+  {
+   "type": "expandable_examples",
+   "items": [
+    {
+     "kind": "good",
+     "label": "Good Example — nmap Service Detection Runbook Entry",
+     "body": "<p>A runbook entry the next analyst can actually use without you. From a Module 1 engagement, documenting the nmap service detection pass:</p>\n<pre><strong>NMAP SERVICE VERSION DETECTION</strong>\n────────────────────────────────────────\n\nPurpose: Identify running services and their specific versions on target hosts.\nVersion info is the bridge from \"this port is open\" to \"this port has CVE-XXXX-XXXXX.\"\n\nRecommended flags:\n  -sV                       Service version detection\n  -sC                       Default scripts (safe recon — banner grabs, etc.)\n  --version-intensity 5     Thorough probing (1–9 scale, 5 = balanced)\n  -oN output.txt            Save to text file (human-readable)\n\nFull engagement command (as run on Brazos):\n  nmap -sV -sC --version-intensity 5 -oN brazos-svc.txt 10.0.0.0/24\n\nSample output excerpt:\n  PORT      STATE  SERVICE    VERSION\n  22/tcp    open   ssh        OpenSSH 8.9p1 Ubuntu 3\n  80/tcp    open   http       Apache httpd 2.4.29        ← flag this version\n  3306/tcp  open   mysql      MySQL 5.7.42               ← EOL, research CVEs\n\nNext steps after scan:\n  1. Record every service version in your findings doc\n  2. Search NVD/CVE databases for each version\n  3. Flag any version that's EOL or has known CVEs\n  4. Cross-reference against searchsploit for available exploits\n\nPitfalls observed during this engagement:\n  • --version-intensity 9 took ~3x longer than 5 and surfaced no extra info\n    on this target — stick with 5 unless you have a specific reason</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Purpose is stated in plain language — a junior analyst reading this knows <em>why</em> they're running it, not just what to type</li>\n<li>Every flag is explained — no magic incantations</li>\n<li>Sample output is annotated — the reader knows what to look at and why</li>\n<li>\"Next steps\" tells the reader what to do <em>with</em> the output, not just how to get it</li>\n<li>\"Pitfalls observed\" captures hard-won knowledge that would otherwise be lost</li>\n</ul>\n</div>"
+    },
+    {
+     "kind": "bad",
+     "label": "Bad Example — Journal-Style Runbook Entry",
+     "body": "<p>A runbook entry that's technically a record of what you did, but won't help anyone reproduce it:</p>\n<pre>nmap\n\nI used nmap to scan the client. The command I used was nmap -sV -sC and it found\nsome open ports including 22, 80, and 3306. I saved the output to a file.\n\nThen I looked up the versions on Google and found some vulnerabilities.</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>No target specified — the next analyst can't tell what subnet you scanned</li>\n<li>Command is incomplete — no <code>-oN</code> flag, no <code>--version-intensity</code>, no scope</li>\n<li>\"Some open ports\" and \"some vulnerabilities\" are useless — specifics are the whole point of a runbook</li>\n<li>\"Looked up the versions on Google\" gives no path the next analyst can follow — NVD? CVE Details? searchsploit?</li>\n<li>Reads like a journal entry, not professional documentation</li>\n<li>If your colleague picked up Brazos next quarter, this runbook would help them <em>nothing</em></li>\n</ul>\n</div>"
+    }
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#FF9F1C",
+   "label": "C. Analyst Reflection",
+   "paragraphs": [
+    "<strong style=\"color:#ffffff;\">Audience:</strong> You + your instructor. This is the section where the learning lives.",
+    "Three prompts to answer:"
+   ],
+   "items": [
+    "<strong style=\"color:#ffffff;\">Timesheet Self-Audit.</strong> Looking at your timesheet for this engagement: was there a task or section that took disproportionately long compared to the others? Describe what made it slow — unfamiliar tool, unclear instructions, a tangent you went down, troubleshooting an error — and what you’d do differently next time to handle a similar task more efficiently. Then total your hours across the three weeks: if Maya Rodriguez reviewed this timesheet alongside the deliverable you’re submitting, what conclusion would she draw about your efficiency on this engagement? Be candid — this is a professional self-audit, not a grade defense.",
+    "<strong style=\"color:#ffffff;\">Professional Reflection.</strong> What worked? What didn’t? If you ran this engagement again next semester with what you know now, what would you do differently? Be specific — “I’d communicate findings to the client earlier” is more useful than “I’d be more organized.”",
+    "<strong style=\"color:#ffffff;\">AI Methodology Reflection.</strong> Where did AI help on this engagement? How did you verify what it told you? And honestly: did you really need it, or were you using it as a shortcut? (See the dedicated AI reflection section below.)"
+   ],
+   "tip": "<strong style=\"color:#ffffff;\">This section is internal.</strong> The client never reads it. Write candidly. “I got stuck on tool X for two hours” is fine here. “I learned that the client’s naming convention was confusing” is fine here. The point of the section is honest reflection, not polish."
+  },
+  {
+   "type": "named_section",
+   "color": "#00BCD4",
+   "label": "Part II: The Client Deliverable",
+   "paragraphs": [
+    "Part II is the document you hand the client. The structure follows professional penetration-test reporting conventions — the client should be able to read the executive summary alone and know what to do.",
+    "The Word template defines the exact section order and required headings. Use the template; don’t invent your own structure. At a high level, Part II contains:"
+   ],
+   "items": [
+    "<strong style=\"color:#ffffff;\">Cover Page</strong> — client name, engagement title, your name (as NEXUS analyst), date",
+    "<strong style=\"color:#ffffff;\">Executive Summary</strong> — one page maximum, board-readable, what we found and what to do",
+    "<strong style=\"color:#ffffff;\">Methodology</strong> — brief overview of how the engagement was conducted; client doesn’t need command-by-command detail (that’s in your runbook)",
+    "<strong style=\"color:#ffffff;\">Findings</strong> — organized by severity, highest first; each finding has a finding number, title, description, evidence (screenshot), and impact",
+    "<strong style=\"color:#ffffff;\">Risk Analysis</strong> — likelihood × impact for each finding",
+    "<strong style=\"color:#ffffff;\">Recommendations</strong> — prioritized; what to do Monday vs. what to plan for the next budget cycle",
+    "<strong style=\"color:#ffffff;\">Appendix</strong> — references, supporting evidence, scrubbed scan output"
+   ],
+   "tip": "<strong style=\"color:#ffffff;\">This section is client-facing.</strong> Write like a consultant. No first-person. No “I was confused.” No AI references. No reflections. Recommendations-forward, evidence-backed, professional throughout."
+  },
+  {
+   "type": "expandable_examples",
+   "items": [
+    {
+     "kind": "good",
+     "label": "Good Example — Medium-Severity Finding (Apache CVE)",
+     "body": "<p>A Medium-severity finding from a Module 1 Brazos Financial engagement. Note the structure: number, title, severity, description, evidence, impact, recommendation:</p>\n<pre><strong>FINDING 003 — Outdated Apache HTTP Server Exposes Multiple CVEs</strong>\n───────────────────────────────────────────────────────────────\nSeverity:       Medium\nAffected Host:  brazos-external.local (10.0.0.50)\nAffected Port:  80/tcp\n\nDescription:\nThe Brazos Financial external web server is running Apache HTTP Server 2.4.29,\nreleased March 2018. Versions of Apache prior to 2.4.55 are affected by multiple\npublicly disclosed vulnerabilities, including CVE-2022-31813 (mod_proxy header\nmishandling) and CVE-2022-22720 (HTTP request smuggling). Exploit code for several\nof these issues is publicly available.\n\nEvidence:\n[See Figure 7 — nmap service-detection output showing \"Apache httpd 2.4.29\".]\n[See Appendix A.3 for the full nmap output excerpt.]\n\nImpact:\nAn attacker who successfully exploits one of the disclosed Apache vulnerabilities\ncould intercept or manipulate HTTP traffic to the Brazos external site, potentially\nexposing customer session data or enabling further attack chaining into Brazos's\ninternal network.\n\nRecommendation:\nUpgrade Apache HTTP Server to version 2.4.58 or later. Apache project provides\nbackported security fixes for the 2.4.x line. Estimated effort: low (1–2 hours\nfor a standard deployment). Priority: complete within 30 days.\n\nReference: Apache Security Advisories — https://httpd.apache.org/security/vulnerabilities_24.html</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this works:</strong>\n<ul>\n<li>Finding has a number (003) so the executive summary and risk table can reference it</li>\n<li>Severity is stated up front — a client reading only the first line knows the urgency</li>\n<li>Description names specific CVEs and version cutoffs, not vague \"outdated software\"</li>\n<li>Impact is in business terms (\"customer session data,\" \"further attack chaining\") not technical jargon</li>\n<li>Recommendation includes effort estimate AND priority window — actionable on Monday</li>\n<li>Evidence references existing figures rather than embedding a 30-line scan output in the body</li>\n</ul>\n</div>"
+    },
+    {
+     "kind": "bad",
+     "label": "Bad Example — Vague, Unactionable Finding",
+     "body": "<p>A finding that's technically present but won't help the client decide what to do:</p>\n<pre>FINDING: Apache is old.\n\nThe Apache web server is running an old version. This is bad because old software\nhas vulnerabilities. The version is 2.4.29.\n\nI recommend updating it.</pre>\n<div class=\"nx-expand-why\">\n<strong>Why this fails:</strong>\n<ul>\n<li>No severity rating — client can't prioritize against other findings</li>\n<li>No finding number — can't be referenced in the executive summary or risk analysis</li>\n<li>\"Old version\" and \"vulnerabilities\" are not specific — which version cutoff? Which CVEs?</li>\n<li>\"This is bad\" is not an impact statement — what could an attacker actually do?</li>\n<li>\"Update it\" is not a recommendation — update to what? On what timeline? At what cost?</li>\n<li>No evidence reference — client has to take your word for it</li>\n<li>If the client's IT team has to triage this against 20 other findings, they have no way to decide whether this is finding #1 or finding #15</li>\n</ul>\n</div>"
+    }
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#7B68EE",
+   "label": "The AI Methodology Reflection",
+   "paragraphs": [
+    "Every Engagement Packet includes a brief AI Methodology Reflection in Part I.C. The prompt is simple:",
+    "<em style=\"color:#ffffff;font-size:16px;\">“Where did AI help you on this engagement, how did you verify what it told you, and did you really need it?”</em>",
+    "There’s no minimum word count — just answer the question honestly. <strong style=\"color:#ffffff;\">“I didn’t use AI on this engagement (N/A)” is a perfectly acceptable answer</strong> if it’s true. But it had better be true — don’t claim N/A if your runbook is full of AI-generated explanations."
+   ],
+   "subheading": "A good reflection covers:",
+   "items": [
+    "<strong style=\"color:#ffffff;\">What you asked AI for</strong> — specific tasks, not “it helped me understand things”",
+    "<strong style=\"color:#ffffff;\">How you verified the answer</strong> — man page, official docs, NIST publication, your own testing",
+    "<strong style=\"color:#ffffff;\">What you learned that you didn’t know before</strong> — the actual knowledge transfer",
+    "<strong style=\"color:#ffffff;\">An honest take on whether you needed AI</strong> — or whether you used it because it was faster than reading the documentation"
+   ],
+   "tip": "The reflection isn’t a gotcha. Using AI well is a skill. Using AI poorly is a tell. The reflection lets you show me which one you’re doing. See the <a href=\"GenAI_Policy.html\" style=\"color:#7B68EE;\">GenAI Policy</a> page for the full framework."
+  },
+  {
+   "type": "two_column",
+   "style": "detailed",
+   "left": {
+    "color": "#00D26A",
+    "label": "✓ Authentic Reflection",
+    "items": [
+     {
+      "title": "Specific, verified, honest",
+      "desc": "“I asked Claude to explain what the -sS flag does in nmap. The response said it was a SYN-scan that doesn’t complete the TCP handshake. I verified this against the nmap man page (man nmap, lines 124–138) and confirmed it. I could have read the man page first — in hindsight that would have been faster, since I had to read it anyway to verify. For Module 2 I’m going to try man page first, AI second.”"
+     }
+    ]
+   },
+   "right": {
+    "color": "#E63946",
+    "label": "✗ Performative Reflection",
+    "items": [
+     {
+      "title": "Generic, unverified, performative",
+      "desc": "“I used AI to help me understand the concepts in this engagement. It was very helpful for explaining things and helped me to learn the material. I verified its responses by cross-checking with the textbook and online sources. AI is a powerful tool that I will continue to use in future engagements as I develop my skills as a security analyst.”"
+     }
+    ]
+   }
+  },
+  {
+   "type": "named_section",
+   "color": "#E63946",
+   "label": "What Gets Penalized",
+   "paragraphs": [
+    "Documentation deductions are calibrated to the severity of each failure in a real engagement. Combined deductions cap at &#8722;100%."
+   ],
+   "items": [
+    "<strong style=\"color:#ffffff;\">&#8722;5% per missing screenshot</strong> below the 20-screenshot minimum (Modules 1&#8211;4). Module 5&#8217;s floor is set by the compressed lab structure and published in the Module 5 lab body. A screenshot without your VM hostname (<code>kali-abc123</code>) visible counts as missing.",
+    "<strong style=\"color:#ffffff;\">&#8722;10% per missing reference</strong> below the 10-reference minimum. References must meet the source quality standard &#8212; see the <a href=\"Citations.html\" style=\"color:#7B68EE;\">Citations</a> page. Wikipedia, the textbook, and tutorial sites do not count.",
+    "<strong style=\"color:#ffffff;\">&#8722;20% if the Appendix is missing.</strong> The appendix is the audit trail &#8212; without it, your findings can&#8217;t be verified.",
+    "<strong style=\"color:#ffffff;\">&#8722;10% if the Executive Summary exceeds one page.</strong> The one-page limit is a hard limit, not a guideline.",
+    "<strong style=\"color:#ffffff;\">&#8722;5% if the Cover Page is missing.</strong>",
+    "<strong style=\"color:#ffffff;\">&#8722;5% if the Table of Contents is missing or hand-typed</strong> (not generated from heading styles).",
+    "<strong style=\"color:#ffffff;\">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting."
+   ],
+   "tip": "<strong style=\"color:#ffffff;\">These penalties are pre-curve and transparent.</strong> If you turn in 17 screenshots, that&#8217;s &#8722;15%. If you turn in 6 quality references, that&#8217;s &#8722;40%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them."
+  },
+  {
+   "type": "named_section",
+   "color": "#00BCD4",
+   "label": "Word Automation Quick Reference",
+   "paragraphs": [
+    "Don’t hand-format. Word can generate everything you need from your structure — use it. The template is set up to support all of these:"
+   ],
+   "items": [
+    "<strong style=\"color:#ffffff;\">Table of Contents:</strong> References tab → Insert Table of Contents (uses your heading styles)",
+    "<strong style=\"color:#ffffff;\">Bibliography:</strong> References tab → Insert Citation, then → Bibliography. Auto-generates from your inserted citations.",
+    "<strong style=\"color:#ffffff;\">Figure captions:</strong> References tab → Insert Caption (auto-numbers screenshots as Figure 1, Figure 2, etc.)",
+    "<strong style=\"color:#ffffff;\">Cross-references:</strong> References tab → Cross-reference (live links to figure numbers, won’t break if you reorder)",
+    "<strong style=\"color:#ffffff;\">Update everything before submission:</strong> Ctrl+A to select all, then F9 to update all fields. Do this last."
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#FF9F1C",
+   "label": "Before You Submit: Something Beats Nothing",
+   "paragraphs": [
+    "If you’re approaching the deadline and you don’t feel ready, submit anyway. Late work isn’t accepted — a partial submission is graded as partial; a non-submission is graded as zero. <strong style=\"color:#ffffff;\">70 beats zero. 50 beats zero. 30 beats zero.</strong>",
+    "Canvas accepts unlimited submissions until the deadline. Upload what you have an hour before the deadline. Then keep working. Upload again 30 minutes before. Then once more right before time runs out. Your final upload is the one that gets graded."
+   ]
+  },
+  {
+   "type": "named_section",
+   "color": "#00D26A",
+   "label": "Pre-Submission Checklist",
+   "subheading": "Part I (Internal Packet):",
+   "items": [
+    "Timesheet table filled in with hours by week",
+    "Runbook covers environment, tools, commands, expected outputs",
+    "Timesheet Self-Audit answered honestly (specific task that took long + total-hours efficiency read)",
+    "Professional Reflection answered honestly (specific, not generic)",
+    "AI Methodology Reflection answered honestly (or N/A if true)"
+   ],
+   "tip": "<strong style=\"color:#ffffff;\">Part II (Client Deliverable):</strong><ul style=\"margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;\"><li>Cover page complete (client name, engagement title, date)</li><li>Executive Summary is one page or less, board-readable</li><li>Findings ordered by severity, each with finding number / title / description / evidence / impact</li><li>Recommendations prioritized (Monday vs. next quarter)</li><li>20+ screenshots embedded inline, every one with <code style=\"color:#00BCD4;\">kali-abc123</code> visible</li><li>Screenshot filenames: <code style=\"color:#00BCD4;\">##-description.png</code></li><li>10+ quality references in Appendix; auto-generated bibliography</li><li>Figure captions auto-numbered; cross-references live</li></ul><strong style=\"color:#ffffff;\">Both parts:</strong><ul style=\"margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;\"><li>Submitted as <code style=\"color:#00BCD4;\">.docx</code> (no PDFs)</li><li>Filename: <code style=\"color:#00BCD4;\">LastName_LabX.3_EngagementPacket.docx</code></li><li>Ctrl+A → F9 to update all fields (TOC, captions, cross-references, bibliography)</li></ul>"
+  },
+  {
+   "type": "footer",
+   "html": "Questions about what belongs in Part I vs. Part II? Ask in <strong>#course-questions</strong> on Discord. Questions about your specific grade? Email."
+  }
+ ]
 }

@@ -71,6 +71,55 @@
   </div>
 
   <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #2E75B6; color: #2E75B6; border-bottom-color: #2E75B6;">Start Here: Download &amp; Set Up the Template</div>
+    <p class="nx-exam-body">Don&#8217;t format an Engagement Packet by hand. Download the NEXUS template and fill it in &#8212; the cover, both parts, every section heading, the running header, and the auto-generating Table of Contents are already built. The demo content inside (a sample timesheet, a runbook entry, and a finding) shows you exactly what &#8220;good&#8221; looks like; replace it with your own work.</p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Module 1 template:</strong> <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx">EP_M1_Brazos.docx</a></p>
+    <p class="nx-exam-body"><strong style="color:#ffffff;">Two things you set once, and they fill in everywhere.</strong> The cover meta-table, the running header, and the title all read from Word&#8217;s document properties, so you enter them a single time instead of typing them on every page:</p>
+    <ul class="nx-exam-tips">
+      <li><strong style="color:#ffffff;">Client is already filled in.</strong> This is the Brazos Financial engagement, so the client name is pre-set &#8212; you don&#8217;t enter it.</li>
+      <li><strong style="color:#ffffff;">Keep the structure.</strong> Don&#8217;t rename or reorder the sections. The grading script and the rubric both expect the headings exactly as they ship.</li>
+      <li><strong style="color:#ffffff;">Delete the demo content</strong> (the sample timesheet rows, the nmap runbook entry, and Finding 003) once you&#8217;ve replaced it with your own &#8212; don&#8217;t submit the examples.</li>
+    </ul>
+    <pre class="nx-cmd" style="white-space: pre; margin: 10px 0;">1. Open the template in Microsoft Word (not Google Docs — it breaks the
+   fields and the auto Table of Contents).
+2. File → Info. Set two properties:
+     • Author      → your name
+     • abc123      → your VM identifier (the custom property near the
+                     bottom of the properties list)
+3. Your abc123 MUST match the kali-abc123 hostname shown in your
+   screenshots. It is the key we use to tie this packet to your VM.
+4. Press Ctrl+A then F9. This refreshes every field — cover, header,
+   and the Table of Contents — so they show your real values.
+5. Do step 4 again as the LAST thing before you submit, so the Table
+   of Contents page numbers are current.</pre>
+  </div>
+
+  <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #2E75B6; color: #2E75B6; border-bottom-color: #2E75B6;">What Goes in Every Section</div>
+    <p class="nx-exam-body">A section-by-section map of the template. Part&nbsp;I is internal (NEXUS leadership and the next analyst); Part&nbsp;II is the client deliverable (Brazos leadership, mostly non-technical). Write each section for its audience.</p>
+    <ul class="nx-exam-tips">
+      <li><strong style="color:#ffffff;">Part I &middot; Timesheet:</strong> Log your hours across all three units, split Internal Training (Units 1&#8211;2) vs. Client Billable (Unit 3). Replace the demo rows; total the columns yourself. If you logged honestly as you went, this is a 10-minute fill-in.</li>
+      <li><strong style="color:#ffffff;">Part I &middot; Runbook:</strong> A man-page style entry for each tool or step &#8212; purpose, switches, the exact command you ran, sample output, next steps, pitfalls. Test: could the next analyst reproduce your work from this alone? Pair each screenshot with the command that produced it.</li>
+      <li><strong style="color:#ffffff;">Part I &middot; Analyst Reflection:</strong> Three honest prompts &#8212; a timesheet self-audit, a professional reflection, and the AI methodology reflection. No word floor. &#8220;I didn&#8217;t use AI (N/A)&#8221; is fine if it&#8217;s true.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Executive Summary:</strong> One page maximum, board-readable. What you did, what you found, what to do &#8212; in plain language a non-technical executive can act on.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Methodology:</strong> A high-level overview of scope, approach, and tools. Command-by-command detail belongs in your runbook, not here.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Findings:</strong> Ordered highest severity first. Each finding keeps every field: number, title, severity, affected host/port, description, evidence (screenshot reference), impact, recommendation. Finding&nbsp;003 in the template is your model.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Risk Analysis:</strong> Likelihood &times; impact per finding, consistent with your severity labels.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Recommendations:</strong> Prioritized &#8212; what to do this week vs. this quarter &#8212; each tied back to a finding number.</li>
+      <li><strong style="color:#ffffff;">Part II &middot; Appendix:</strong> Raw (scrubbed) tool output, extra screenshots, and your references.</li>
+    </ul>
+  </div>
+
+  <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #2E75B6; color: #2E75B6; border-bottom-color: #2E75B6;">Screenshots &amp; References</div>
+    <ul class="nx-exam-tips">
+      <li><strong style="color:#ffffff;">Screenshot naming:</strong> Use the ##-description.png convention (e.g. 07-nmap-service-scan.png) so they sort in order and are easy to reference.</li>
+      <li><strong style="color:#ffffff;">VM hostname visible:</strong> kali-abc123 must be visible in every screenshot. A screenshot missing it counts as missing (&minus;5% each, floor of 20 for Modules&nbsp;1&#8211;4).</li>
+      <li><strong style="color:#ffffff;">Reference minimum:</strong> At least 10 properly-formatted references (&minus;10% for each one below 10). CVE entries, vendor advisories, NIST publications, and tool documentation all count. Use Word&#8217;s References tab &rarr; Insert Citation, then generate the bibliography &#8212; don&#8217;t hand-type it.</li>
+    </ul>
+  </div>
+
+  <div class="nx-named-section">
     <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">Part I: The Internal Packet</div>
     <p class="nx-exam-body">Part I is what NEXUS keeps in the engagement file. Three components, all internal:</p>
   </div>

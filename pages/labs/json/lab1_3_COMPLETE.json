@@ -1,618 +1,624 @@
 {
-  "meta": {
-    "labId": "1_3",
-    "title": "Brazos Financial Reconnaissance Engagement",
-    "labType": "engagement",
-    "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
-    "chapters": [
-      "Chapter 1 &#8212; Introduction to Security",
-      "Chapter 2 &#8212; General Security Concepts"
-    ]
+ "meta": {
+  "labId": "1_3",
+  "title": "Brazos Financial Reconnaissance Engagement",
+  "labType": "engagement",
+  "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
+  "chapters": [
+   "Chapter 1 &#8212; Introduction to Security",
+   "Chapter 2 &#8212; General Security Concepts"
+  ]
+ },
+ "intro": {
+  "overview": "Congratulations — you’ve completed NEXUS reconnaissance training and you’re cleared for client work. Brazos Financial Group needs an external attack surface assessment. This unit you’ll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: <strong>Part I (Internal Packet)</strong> containing your timesheet, runbook, and analyst reflection, plus <strong>Part II (Client Deliverable)</strong> containing the report Ray Jimenez will read. Both parts go in one Word document.",
+  "mentorQuote": {
+   "character": "Maya Rodriguez",
+   "title": "Senior Penetration Tester, NEXUS Security",
+   "headshot": "maya-rodriguez.png",
+   "quote": "This is your first real engagement. Everything you practiced in training applies here. Document everything like your professional reputation depends on it &#8212; because it does. Ray Jimenez is expecting a report he can take to the board. Show him exactly what an attacker would see when they look at Brazos Financial from the outside."
   },
-  "intro": {
-    "overview": "Congratulations — you’ve completed NEXUS reconnaissance training and you’re cleared for client work. Brazos Financial Group needs an external attack surface assessment. This unit you’ll conduct a full reconnaissance engagement against their simulated infrastructure, then compile your Engagement Packet: <strong>Part I (Internal Packet)</strong> containing your timesheet, runbook, and analyst reflection, plus <strong>Part II (Client Deliverable)</strong> containing the report Ray Jimenez will read. Both parts go in one Word document.",
-    "mentorQuote": {
-      "character": "Maya Rodriguez",
-      "title": "Senior Penetration Tester, NEXUS Security",
-      "headshot": "maya-rodriguez.png",
-      "quote": "This is your first real engagement. Everything you practiced in training applies here. Document everything like your professional reputation depends on it &#8212; because it does. Ray Jimenez is expecting a report he can take to the board. Show him exactly what an attacker would see when they look at Brazos Financial from the outside."
-    },
-    "focusAreas": [
-      "Full reconnaissance workflow against authorized client infrastructure",
-      "CVE research and risk analysis from discovered service versions",
-      "Professional report writing: Executive Summary, risk ratings, recommendations",
-      "NEXUS Engagement Packet assembly: Timesheet, Runbook, and Client Report"
-    ],
-    "objectives": [
-      "Deploy the Brazos Financial Docker container",
-      "Conduct full reconnaissance using all six tools from training",
-      "Document findings with CVE research and risk analysis",
-      "Compile Part I (Internal Packet): Timesheet, Runbook, Analyst Reflection",
-      "Compile Part II (Client Deliverable): Cover, Executive Summary, Methodology, Findings, Risk, Recommendations, Appendix",
-      "Deliver professional client report suitable for executive audience"
-    ],
-    "callouts": [
-      {
-        "type": "error",
-        "title": "Required: DOCX Format",
-        "icon": "error",
-        "text": "Submit as .docx (Microsoft Word) only. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations."
-      },
-      {
-        "type": "warning",
-        "title": "Minimum Requirements",
-        "icon": "warning",
-        "body": "Minimum 22 screenshots (01&#8211;13 from Units 1&#8211;2, plus 14&#8211;22 from this unit). Minimum 10 references in APA format. All three report sections (A, B, C) must be present. Missing any of these results in automatic score penalties."
-      },
-      {
-        "type": "warning",
-        "title": "Deadline Tip",
-        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-      }
-    ],
-    "clientContext": {
-      "client": "Brazos Financial Group",
-      "contacts": [
-        {
-          "name": "Raymond \"Ray\" Jimenez",
-          "title": "Chief Technology Officer, Brazos Financial Group",
-          "headshot": "ray-jimenez.png",
-          "quote": "I've got a list of 50 things to fix and budget for 10. Help me pick the right 10."
-        }
-      ]
-    }
-  },
-  "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units. If you followed the Unit 1-2 instructions, most of your report is already written.",
-    "sections": [
-      {
-        "title": "From Unit 1 (Lab 1.1 — Kali Environment Setup)",
-        "items": [
-          "Screenshots 01-04: Environment setup documentation",
-          "VM configuration, Docker installation verification",
-          "Timesheet hours: Internal training (environment setup)"
-        ]
-      },
-      {
-        "title": "From Unit 2 (Lab 1.2 — Reconnaissance Tool Exploration)",
-        "items": [
-          "Screenshots 07-13: Tool exploration documentation",
-          "nmap, netcat, dirb, nikto, enum4linux, searchsploit methodology",
-          "Research notes on tool capabilities and flags",
-          "Timesheet hours: Internal training (tool certification)"
-        ]
-      },
-      {
-        "title": "NEW This Unit",
-        "badge": "NEW",
-        "items": [
-          "Brazos container deployment (CP1) + reconnaissance against Brazos (CP2)",
-          "Part I (Internal): Timesheet, Runbook, Analyst Reflection",
-          "Part II (Client Deliverable): Cover, Executive Summary, Methodology, Findings, Risk, Recommendations, Appendix",
-          "CVE research for discovered versions"
-        ]
-      }
-    ],
-    "callouts": [
-      {
-        "type": "tip",
-        "icon": "lightbulb",
-        "title": "You&#8217;re Already 60-70% Done",
-        "text": "This unit is about compilation and analysis, not starting over. Your Lab 1.1 and 1.2 work feeds directly into Part I (Runbook + Timesheet) of your Engagement Packet. The new work this unit is the Brazos engagement itself plus the Part II Client Deliverable for Ray. CP3 is packaging, not writing from scratch."
-      }
-    ]
-  },
-  "timeGuide": {
-    "rows": [
-      {
-        "task": "Read instructions and review Unit 1-2 materials",
-        "time": "15 min"
-      },
-      {
-        "task": "Checkpoint 1: Deploy Brazos container",
-        "time": "15 min"
-      },
-      {
-        "task": "Checkpoint 2: Full reconnaissance workflow",
-        "time": "90 min"
-      },
-      {
-        "task": "Checkpoint 3: Compile Engagement Packet",
-        "time": "120 min"
-      },
-      {
-        "task": "Final review and submission",
-        "time": "30 min"
-      }
-    ],
-    "totalRow": {
-      "label": "Total Estimated Time",
-      "time": "4-5 hours"
-    },
-    "timesheetNote": "Report compilation takes the most time. Don&#8217;t rush the Executive Summary &#8212; Ray Jimenez will read it first, and it sets the tone for your entire report."
-  },
-  "checkpoints": [
-    {
-      "number": 1,
-      "title": "Deploy Brazos Container",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.",
-          "whyItMatters": "Real penetration tests begin with scope definition and authorized target deployment. The Brazos container represents their actual exposed services &#8212; the same ports and configurations an external attacker would see."
-        },
-        {
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Pull the Brazos container image:",
-              "command": "docker pull jfnewsom/brazos-financial:latest",
-              "whatThisDoes": {
-                "concept": "docker pull downloads a container image from Docker Hub. This image contains Brazos Financial&#8217;s simulated environment &#8212; a pre-configured system with intentional vulnerabilities for you to discover. The :latest tag ensures you get the current version.",
-                "output": null
-              }
-            },
-            {
-              "text": "Run the container with all required ports:",
-              "command": "docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest",
-              "whatThisDoes": {
-                "concept": "docker run creates and starts a container. The -d flag runs it in the background (detached). Each -p flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 445 (SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan &#8212; Brazos Financial&#8217;s exposed attack surface.",
-                "output": null
-              }
-            },
-            {
-              "text": "Verify the container is running:",
-              "command": "docker ps",
-              "whatThisDoes": {
-                "concept": null,
-                "output": "You should see a table with the brazos container listed as &#8220;Up.&#8221; Verify all five port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed &#8212; check the Common Pitfalls below."
-              }
-            },
-            {
-              "text": "Note the container IP (usually localhost or 127.0.0.1)",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture docker ps showing Brazos container running. Save as 14-brazos-container.png",
-          "calloutType": "screenshot"
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "Port conflicts: If ports are in use, stop other containers first with docker stop",
-            "Docker not running: Start Docker daemon with sudo systemctl start docker",
-            "Pull fails: Check network connectivity and Docker Hub status"
-          ],
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "Running Brazos container with all ports accessible at localhost. Test by visiting http://localhost in a browser.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "body": "Chapter 1 introduces the concept of scope in security engagements. Every authorized penetration test begins with a defined target &#8212; the Brazos container represents exactly that. Documenting your target environment is the first step in any professional assessment."
-        }
-      ]
-    },
-    {
-      "number": 2,
-      "title": "Full Reconnaissance Workflow",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.",
-          "whyItMatters": "This is the core of your engagement. A thorough reconnaissance reveals everything an attacker would discover about Brazos Financial&#8217;s external attack surface. Your findings drive the entire client report."
-        },
-        {
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Run comprehensive nmap scan:",
-              "command": "nmap -sV -sC -A localhost",
-              "whatThisDoes": {
-                "concept": "This combines all three Nmap techniques from Lab 1.2: version detection (-sV), default scripts (-sC), and aggressive mode (-A adds OS detection and traceroute). This is your primary reconnaissance scan &#8212; document every open port, service, and version in your report.",
-                "output": null
-              }
-            },
-            {
-              "text": "Perform banner grabbing with netcat on discovered ports",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Run dirb against the web services:",
-              "command": "dirb http://localhost",
-              "whatThisDoes": {
-                "concept": "Brute-forces directory names on Brazos Financial&#8217;s web server. Look for admin panels, backup files, or configuration directories that shouldn&#8217;t be publicly accessible. Each finding is a potential vulnerability for your report.",
-                "output": null
-              }
-            },
-            {
-              "text": "Execute nikto vulnerability scan:",
-              "command": "nikto -h http://localhost",
-              "whatThisDoes": {
-                "concept": "Scans Brazos Financial&#8217;s web server for known misconfigurations, outdated software, and dangerous files. The findings from nikto complement your dirb results &#8212; nikto checks for specific vulnerabilities while dirb discovers hidden paths.",
-                "output": null
-              }
-            },
-            {
-              "text": "Enumerate SMB with enum4linux:",
-              "command": "enum4linux -a localhost",
-              "whatThisDoes": {
-                "concept": "The -a flag runs all enumeration checks: users, shares, groups, password policies, OS info. In Lab 1.2 you reviewed the help &#8212; now you&#8217;re running it for real against Brazos Financial&#8217;s SMB service on port 445. Document any discovered usernames, file shares, or policy weaknesses.",
-                "output": null
-              }
-            },
-            {
-              "text": "Research vulnerabilities for discovered versions using searchsploit",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "Document ALL findings with screenshots",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "search",
-          "title": "Go Beyond the Basics",
-          "text": "The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. The more you find, the more impressive your report.",
-          "calloutType": "goBeyond"
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshots",
-          "text": "Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.",
-          "calloutType": "screenshotRange"
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "Incomplete coverage: Run ALL six tools &#8212; missing a tool means missing findings",
-            "Stopping too early: Some scans take 5-10 minutes. Let them complete",
-            "Only documenting vulnerabilities: Services and versions matter too &#8212; document everything"
-          ],
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "body": "Chapter 2 covers reconnaissance as the foundation of security assessment. The reconnaissance workflow you&#8217;re executing &#8212; port scanning, banner grabbing, directory discovery, vulnerability scanning, SMB enumeration, and exploit research &#8212; maps directly to the information-gathering phase described in your reading. Your findings become the evidence base for your risk analysis."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Compile Engagement Packet",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Assembling your complete Engagement Packet: combining Unit 1-2 documentation with this unit’s findings into a professional deliverable with two parts — Part I (Internal Packet) and Part II (Client Deliverable).",
-          "whyItMatters": "Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations."
-        },
-        {
-          "type": "callout",
-          "icon": "error",
-          "title": "One Document, Two Parts",
-          "text": "Your Engagement Packet is one .docx file containing both parts in this order: Part I (Internal Packet) followed by Part II (Client Deliverable). Do not submit separate files.",
-          "calloutType": "required"
-        },
-        {
-          "type": "callout",
-          "calloutType": "reportSections",
-          "sections": [
-            {
-              "label": "Part I: Internal Packet (40% of grade)",
-              "description": "Timesheet (5%) — hours across all three units, split Internal Training vs. Client Billable. Runbook (20%) — man-page-style entries for each tool used: name, switches used and why, how you used it on Brazos, what came back. Analyst Reflection (15%) — honest answers to: what you took from this, expectations vs. reality, how it changed your thinking, how it applies to the field, what will serve you in the future. If you used AI, describe where and how you validated; if not, write N/A."
-            },
-            {
-              "label": "Part II: Client Deliverable (60% of grade)",
-              "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) — one page MAX but fleshed out: risk posture, findings by severity, top 2-3 recommendations with business framing. The “money page” for Ray. Methodology (7%) — client-facing narrative of your approach. Findings (22%) — numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) — business context layered on findings. Recommendations (8%) — prioritized (Monday vs. next quarter)."
-            }
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I (Internal Packet)",
-          "items": [
-            "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 1.1 (internal training), Lab 1.2 (internal training), Lab 1.3 (client billable to Brazos Financial)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
-            "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 1.1, 1.2, and 1.3 (nmap, dirb, nikto, gobuster, whatweb, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Brazos engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
-            "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, unclear instructions, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this reconnaissance engagement against Brazos again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d communicate findings earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a service banner; I confirmed against the vendor documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II (Client Deliverable)",
-          "items": [
-            "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;3 Critical, 5 High, 8 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Ray Jimenez &#8212; every line should tie to business risk or financial exposure</li></ul>",
-            "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., passive recon &#8594; active scanning &#8594; service enumeration &#8594; vulnerability identification)</li><li>Scope and limitations: what was in scope (authorized targets), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
-            "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;SSH Service Exposes Outdated Software Version&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s) or service(s)</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or tool output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Brazos if this is exploited)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
-            "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Brazos specifically: financial services, regulatory exposure (SOC 2, PCI DSS where applicable), recent industry incidents</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Ray&#8217;s business</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, OWASP risk rating, FAIR)</li></ul>",
-            "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; &#8220;Ray has budget for 10 fixes, not 50; these are the top 10&#8221;</li><li>Where applicable, indicate which control framework the recommendation aligns with (CIS Controls, NIST CSF, etc.)</li></ul>"
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Full Engagement Packet Structure",
-          "calloutType": "reportStructure",
-          "items": [
-            "PART I (Internal Packet)",
-            "Timesheet",
-            "Runbook (man-page style)",
-            "Analyst Reflection",
-            "PART II (Client Deliverable)",
-            "Cover Page",
-            "Executive Summary (1 page)",
-            "Table of Contents",
-            "Methodology",
-            "Findings (numbered, severity-ordered)",
-            "Risk Analysis",
-            "Recommendations (prioritized)",
-            "Appendix (raw outputs, additional screenshots)",
-            "References (minimum 10)"
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Runbook Format: Like a Man Page",
-          "body": "Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you’d reach for it). <strong>Switches used</strong> (each flag you used on Brazos with a one-line explanation). <strong>Switches for future use</strong> (flags you didn’t use this time but should know). <strong>How you used it</strong> (your actual command against Brazos). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.",
-          "calloutType": "tip"
-        },
-        {
-          "type": "callout",
-          "icon": "psychology",
-          "title": "Analyst Reflection: Honest, Not Performative",
-          "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit — even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about reconnaissance, consulting, or security?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
-          "calloutType": "tip"
-        },
-        {
-          "type": "callout",
-          "icon": "error",
-          "title": "Minimum 10 References",
-          "text": "Man pages count! Your textbook, tool documentation, CVE entries, and NIST guidelines are all valid references. Use APA format.",
-          "calloutType": "required"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "Complete .docx file with all sections, auto-generated Table of Contents, embedded screenshots, and APA-formatted references. Professional enough to present to a client.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "body": "Chapter 1 and Chapter 2 both emphasize that security work is only complete when it’s documented. Your Engagement Packet is the professional artifact that transforms raw reconnaissance data into actionable intelligence. Part I (Timesheet + Runbook + Analyst Reflection) justifies your time and enables reproducibility. Part II (the Client Deliverable) communicates risk to a non-technical audience."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "title": "Common Pitfalls",
-          "items": [
-            {
-              "label": "Starting from scratch",
-              "text": "Your report is 60&#8211;70% complete from Units 1 and 2. Import your existing screenshots and documentation &#8212; don&#8217;t rewrite what you already have."
-            },
-            {
-              "label": "PDF submission",
-              "text": "Canvas will not accept PDF. Submit .docx only. Convert to PDF after grading if you want a personal copy."
-            },
-            {
-              "label": "Weak Executive Summary",
-              "text": "Ray Jimenez reads the Executive Summary first. Write it for a non-technical audience: what did you find, what does it mean, what should Brazos do about it."
-            },
-            {
-              "label": "Missing references",
-              "text": "10 references minimum. Man pages count. Your textbook counts. CVE entries, tool documentation, and NIST guidelines are all valid. Use APA format."
-            }
-          ]
-        }
-      ]
-    }
+  "focusAreas": [
+   "Full reconnaissance workflow against authorized client infrastructure",
+   "CVE research and risk analysis from discovered service versions",
+   "Professional report writing: Executive Summary, risk ratings, recommendations",
+   "NEXUS Engagement Packet assembly: Timesheet, Runbook, and Client Report"
   ],
-  "purpleTeam": {
-    "redTeam": {
-      "type": "items",
-      "items": [
-        {
-          "label": "",
-          "text": "Open ports and service versions are your attack blueprint. Banner grabbing reveals exact software without triggering IDS. Directory discovery exposes admin panels and backup files that defenders forgot existed. SMB enumeration hands you a username list for credential attacks &#8212; before you&#8217;ve touched a single login form."
-        }
-      ]
-    },
-    "blueTeam": {
-      "type": "items",
-      "items": [
-        {
-          "label": "",
-          "text": "Your recon results are a defender&#8217;s punch list. Suppress version banners. Close ports that shouldn&#8217;t be public. Require authentication on SMB shares. Monitor for nmap, dirb, and nikto signatures in your logs &#8212; if you ran these tools undetected, so can an attacker."
-        }
-      ]
-    },
-    "connection": "Brazos Financial&#8217;s legacy systems and poor configuration hygiene are blue team failures that created every finding in your report. You discovered the attack surface as a red teamer &#8212; now your recommendations make you the blue teamer. Ray Jimenez hired NEXUS for someone who sees both sides."
-  },
-  "finalChecklist": {
-    "screenshotTable": null,
-    "sections": [
-      {
-        "title": "Document Requirements",
-        "items": [
-          "Submitted as .docx (not PDF)",
-          "Title page with your name and date",
-          "Auto-generated Table of Contents",
-          "Professional formatting throughout"
-        ]
-      },
-      {
-        "title": "Part I (Internal Packet)",
-        "items": [
-          "Timesheet: hours logged across all 3 units, split Internal Training / Client Billable",
-          "Runbook: man-page style entry for each tool (name, switches, usage, results)",
-          "Analyst Reflection: honest answers to the reflection prompts (no word floor)"
-        ]
-      },
-      {
-        "title": "Part II (Client Deliverable)",
-        "items": [
-          "Cover Page + auto-generated Table of Contents",
-          "Executive Summary: one page maximum, fleshed out for non-technical audience",
-          "Methodology, Findings, Risk Analysis, Recommendations all present",
-          "Appendix with raw outputs, additional screenshots, and minimum 10 references (APA format)"
-        ]
-      },
-      {
-        "title": "Screenshots",
-        "items": [
-          "All Unit 1-2 screenshots included (01-04 from Lab 1.1, 07-13 from Lab 1.2)",
-          "Unit 3 screenshots per the lab body (CP1 + CP2 minimum 8 from recon workflow)",
-          "Hostname (kali-abc123) visible in every terminal screenshot",
-          "Screenshots are clear and readable"
-        ]
-      },
-      {
-        "title": "Quality Check",
-        "items": [
-          "Executive Summary readable by non-technical audience",
-          "Recommendations are actionable and prioritized (Monday vs. next quarter)",
-          "Professional tone throughout",
-          "TOC and bibliography updated (Ctrl+A then F9 in Word)"
-        ]
-      }
-    ],
-    "canvasSubmission": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable.",
-    "deadlineTip": {
-      "title": "Deadline Tip",
-      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  "objectives": [
+   "Deploy the Brazos Financial Docker container",
+   "Conduct full reconnaissance using all six tools from training",
+   "Document findings with CVE research and risk analysis",
+   "Compile Part I (Internal Packet): Timesheet, Runbook, Analyst Reflection",
+   "Compile Part II (Client Deliverable): Cover, Executive Summary, Methodology, Findings, Risk, Recommendations, Appendix",
+   "Deliver professional client report suitable for executive audience"
+  ],
+  "callouts": [
+   {
+    "type": "error",
+    "title": "Required: DOCX Format",
+    "icon": "error",
+    "text": "Submit as .docx (Microsoft Word) only. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations."
+   },
+   {
+    "type": "warning",
+    "title": "Minimum Requirements",
+    "icon": "warning",
+    "body": "Minimum 22 screenshots (01&#8211;13 from Units 1&#8211;2, plus 14&#8211;22 from this unit). Minimum 10 references in APA format. All three report sections (A, B, C) must be present. Missing any of these results in automatic score penalties."
+   },
+   {
+    "type": "warning",
+    "title": "Deadline Tip",
+    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+   },
+   {
+    "type": "tip",
+    "icon": "description",
+    "title": "Use the Engagement Packet Template",
+    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx\">EP_M1_Brazos.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>."
+   }
+  ],
+  "clientContext": {
+   "client": "Brazos Financial Group",
+   "contacts": [
+    {
+     "name": "Raymond \"Ray\" Jimenez",
+     "title": "Chief Technology Officer, Brazos Financial Group",
+     "headshot": "ray-jimenez.png",
+     "quote": "I've got a list of 50 things to fix and budget for 10. Help me pick the right 10."
     }
-  },
-  "gradingStandards": {
-    "qualityLadder": {
-      "partI_internal": {
-        "weight": "40%",
-        "components": {
-          "timesheet": "5%",
-          "runbook": "20%",
-          "analystReflection": "15%"
-        }
-      },
-      "partII_client": {
-        "weight": "60%",
-        "components": {
-          "executiveSummary": "12%",
-          "methodology": "7%",
-          "findings": "22%",
-          "riskAnalysis": "11%",
-          "recommendations": "8%"
-        },
-        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
-      }
-    },
-    "penalties": [
-      {
-        "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
-      },
-      {
-        "penalty": "-20%",
-        "condition": "Appendix missing from Part II Client Deliverable."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Executive Summary exceeds one page."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Cover Page missing."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
-      }
-    ],
-    "penaltyCap": "Combined deductions cap at -100%.",
-    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-    "bonus": {
-      "title": "Bonus Opportunity (+5%)",
-      "description": "Additional Recon Tool: Document one reconnaissance tool not covered in Lab 1.2 and demonstrate it against the training targets. Include purpose, syntax, example output, and when to use it."
-    },
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
-  },
-  "needHelp": {
-    "channels": [
-      {
-        "detail": "#lab-help",
-        "label": "Discord"
-      },
-      {
-        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
-        "label": "Office Hours"
-      },
-      {
-        "detail": "john.newsom@utsa.edu (private matters only)",
-        "label": "Email"
-      }
-    ],
-    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
-    "genAI": {
-      "permitted": [
-        "Explain command syntax and tool functionality",
-        "Troubleshoot errors and technical issues",
-        "Understand concepts from assigned readings",
-        "Proofread and grammar check",
-        "Suggest report structure improvements"
-      ],
-      "prohibited": [
-        "Write entire sections of reports",
-        "Answer quiz questions directly",
-        "Generate fake screenshots or outputs",
-        "Complete hands-on exercises on your behalf"
-      ],
-      "principle": "AI is a tutor, not a ghostwriter."
-    },
-    "whatsNext": {
-      "type": "nextModule",
-      "text": "After submitting this engagement, you&#8217;ll begin Module 2: Cryptography &#38; Authentication with Lab 2.1 &#8212; Cryptographic Foundations."
-    }
+   ]
   }
+ },
+ "youAlreadyHave": {
+  "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units. If you followed the Unit 1-2 instructions, most of your report is already written.",
+  "sections": [
+   {
+    "title": "From Unit 1 (Lab 1.1 — Kali Environment Setup)",
+    "items": [
+     "Screenshots 01-04: Environment setup documentation",
+     "VM configuration, Docker installation verification",
+     "Timesheet hours: Internal training (environment setup)"
+    ]
+   },
+   {
+    "title": "From Unit 2 (Lab 1.2 — Reconnaissance Tool Exploration)",
+    "items": [
+     "Screenshots 07-13: Tool exploration documentation",
+     "nmap, netcat, dirb, nikto, enum4linux, searchsploit methodology",
+     "Research notes on tool capabilities and flags",
+     "Timesheet hours: Internal training (tool certification)"
+    ]
+   },
+   {
+    "title": "NEW This Unit",
+    "badge": "NEW",
+    "items": [
+     "Brazos container deployment (CP1) + reconnaissance against Brazos (CP2)",
+     "Part I (Internal): Timesheet, Runbook, Analyst Reflection",
+     "Part II (Client Deliverable): Cover, Executive Summary, Methodology, Findings, Risk, Recommendations, Appendix",
+     "CVE research for discovered versions"
+    ]
+   }
+  ],
+  "callouts": [
+   {
+    "type": "tip",
+    "icon": "lightbulb",
+    "title": "You&#8217;re Already 60-70% Done",
+    "text": "This unit is about compilation and analysis, not starting over. Your Lab 1.1 and 1.2 work feeds directly into Part I (Runbook + Timesheet) of your Engagement Packet. The new work this unit is the Brazos engagement itself plus the Part II Client Deliverable for Ray. CP3 is packaging, not writing from scratch."
+   }
+  ]
+ },
+ "timeGuide": {
+  "rows": [
+   {
+    "task": "Read instructions and review Unit 1-2 materials",
+    "time": "15 min"
+   },
+   {
+    "task": "Checkpoint 1: Deploy Brazos container",
+    "time": "15 min"
+   },
+   {
+    "task": "Checkpoint 2: Full reconnaissance workflow",
+    "time": "90 min"
+   },
+   {
+    "task": "Checkpoint 3: Compile Engagement Packet",
+    "time": "120 min"
+   },
+   {
+    "task": "Final review and submission",
+    "time": "30 min"
+   }
+  ],
+  "totalRow": {
+   "label": "Total Estimated Time",
+   "time": "4-5 hours"
+  },
+  "timesheetNote": "Report compilation takes the most time. Don&#8217;t rush the Executive Summary &#8212; Ray Jimenez will read it first, and it sets the tone for your entire report."
+ },
+ "checkpoints": [
+  {
+   "number": 1,
+   "title": "Deploy Brazos Container",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.",
+     "whyItMatters": "Real penetration tests begin with scope definition and authorized target deployment. The Brazos container represents their actual exposed services &#8212; the same ports and configurations an external attacker would see."
+    },
+    {
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Pull the Brazos container image:",
+       "command": "docker pull jfnewsom/brazos-financial:latest",
+       "whatThisDoes": {
+        "concept": "docker pull downloads a container image from Docker Hub. This image contains Brazos Financial&#8217;s simulated environment &#8212; a pre-configured system with intentional vulnerabilities for you to discover. The :latest tag ensures you get the current version.",
+        "output": null
+       }
+      },
+      {
+       "text": "Run the container with all required ports:",
+       "command": "docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest",
+       "whatThisDoes": {
+        "concept": "docker run creates and starts a container. The -d flag runs it in the background (detached). Each -p flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 445 (SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan &#8212; Brazos Financial&#8217;s exposed attack surface.",
+        "output": null
+       }
+      },
+      {
+       "text": "Verify the container is running:",
+       "command": "docker ps",
+       "whatThisDoes": {
+        "concept": null,
+        "output": "You should see a table with the brazos container listed as &#8220;Up.&#8221; Verify all five port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed &#8212; check the Common Pitfalls below."
+       }
+      },
+      {
+       "text": "Note the container IP (usually localhost or 127.0.0.1)",
+       "command": null,
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture docker ps showing Brazos container running. Save as 14-brazos-container.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "Port conflicts: If ports are in use, stop other containers first with docker stop",
+      "Docker not running: Start Docker daemon with sudo systemctl start docker",
+      "Pull fails: Check network connectivity and Docker Hub status"
+     ],
+     "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "Running Brazos container with all ports accessible at localhost. Test by visiting http://localhost in a browser.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "body": "Chapter 1 introduces the concept of scope in security engagements. Every authorized penetration test begins with a defined target &#8212; the Brazos container represents exactly that. Documenting your target environment is the first step in any professional assessment."
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "title": "Full Reconnaissance Workflow",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.",
+     "whyItMatters": "This is the core of your engagement. A thorough reconnaissance reveals everything an attacker would discover about Brazos Financial&#8217;s external attack surface. Your findings drive the entire client report."
+    },
+    {
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Run comprehensive nmap scan:",
+       "command": "nmap -sV -sC -A localhost",
+       "whatThisDoes": {
+        "concept": "This combines all three Nmap techniques from Lab 1.2: version detection (-sV), default scripts (-sC), and aggressive mode (-A adds OS detection and traceroute). This is your primary reconnaissance scan &#8212; document every open port, service, and version in your report.",
+        "output": null
+       }
+      },
+      {
+       "text": "Perform banner grabbing with netcat on discovered ports",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "Run dirb against the web services:",
+       "command": "dirb http://localhost",
+       "whatThisDoes": {
+        "concept": "Brute-forces directory names on Brazos Financial&#8217;s web server. Look for admin panels, backup files, or configuration directories that shouldn&#8217;t be publicly accessible. Each finding is a potential vulnerability for your report.",
+        "output": null
+       }
+      },
+      {
+       "text": "Execute nikto vulnerability scan:",
+       "command": "nikto -h http://localhost",
+       "whatThisDoes": {
+        "concept": "Scans Brazos Financial&#8217;s web server for known misconfigurations, outdated software, and dangerous files. The findings from nikto complement your dirb results &#8212; nikto checks for specific vulnerabilities while dirb discovers hidden paths.",
+        "output": null
+       }
+      },
+      {
+       "text": "Enumerate SMB with enum4linux:",
+       "command": "enum4linux -a localhost",
+       "whatThisDoes": {
+        "concept": "The -a flag runs all enumeration checks: users, shares, groups, password policies, OS info. In Lab 1.2 you reviewed the help &#8212; now you&#8217;re running it for real against Brazos Financial&#8217;s SMB service on port 445. Document any discovered usernames, file shares, or policy weaknesses.",
+        "output": null
+       }
+      },
+      {
+       "text": "Research vulnerabilities for discovered versions using searchsploit",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "Document ALL findings with screenshots",
+       "command": null,
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "search",
+     "title": "Go Beyond the Basics",
+     "text": "The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. The more you find, the more impressive your report.",
+     "calloutType": "goBeyond"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshots",
+     "text": "Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.",
+     "calloutType": "screenshotRange"
+    },
+    {
+     "type": "callout",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "Incomplete coverage: Run ALL six tools &#8212; missing a tool means missing findings",
+      "Stopping too early: Some scans take 5-10 minutes. Let them complete",
+      "Only documenting vulnerabilities: Services and versions matter too &#8212; document everything"
+     ],
+     "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "body": "Chapter 2 covers reconnaissance as the foundation of security assessment. The reconnaissance workflow you&#8217;re executing &#8212; port scanning, banner grabbing, directory discovery, vulnerability scanning, SMB enumeration, and exploit research &#8212; maps directly to the information-gathering phase described in your reading. Your findings become the evidence base for your risk analysis."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "title": "Compile Engagement Packet",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Assembling your complete Engagement Packet: combining Unit 1-2 documentation with this unit’s findings into a professional deliverable with two parts — Part I (Internal Packet) and Part II (Client Deliverable).",
+     "whyItMatters": "Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations."
+    },
+    {
+     "type": "callout",
+     "icon": "error",
+     "title": "One Document, Two Parts",
+     "text": "Your Engagement Packet is one .docx file containing both parts in this order: Part I (Internal Packet) followed by Part II (Client Deliverable). Do not submit separate files.",
+     "calloutType": "required"
+    },
+    {
+     "type": "callout",
+     "calloutType": "reportSections",
+     "sections": [
+      {
+       "label": "Part I: Internal Packet (40% of grade)",
+       "description": "Timesheet (5%) — hours across all three units, split Internal Training vs. Client Billable. Runbook (20%) — man-page-style entries for each tool used: name, switches used and why, how you used it on Brazos, what came back. Analyst Reflection (15%) — honest answers to: what you took from this, expectations vs. reality, how it changed your thinking, how it applies to the field, what will serve you in the future. If you used AI, describe where and how you validated; if not, write N/A."
+      },
+      {
+       "label": "Part II: Client Deliverable (60% of grade)",
+       "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) — one page MAX but fleshed out: risk posture, findings by severity, top 2-3 recommendations with business framing. The “money page” for Ray. Methodology (7%) — client-facing narrative of your approach. Findings (22%) — numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) — business context layered on findings. Recommendations (8%) — prioritized (Monday vs. next quarter)."
+      }
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I (Internal Packet)",
+     "items": [
+      "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 1.1 (internal training), Lab 1.2 (internal training), Lab 1.3 (client billable to Brazos Financial)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
+      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 1.1, 1.2, and 1.3 (nmap, dirb, nikto, gobuster, whatweb, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Brazos engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
+      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, unclear instructions, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this reconnaissance engagement against Brazos again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d communicate findings earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a service banner; I confirmed against the vendor documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II (Client Deliverable)",
+     "items": [
+      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;3 Critical, 5 High, 8 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Ray Jimenez &#8212; every line should tie to business risk or financial exposure</li></ul>",
+      "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., passive recon &#8594; active scanning &#8594; service enumeration &#8594; vulnerability identification)</li><li>Scope and limitations: what was in scope (authorized targets), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
+      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;SSH Service Exposes Outdated Software Version&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s) or service(s)</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or tool output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Brazos if this is exploited)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Brazos specifically: financial services, regulatory exposure (SOC 2, PCI DSS where applicable), recent industry incidents</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Ray&#8217;s business</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, OWASP risk rating, FAIR)</li></ul>",
+      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; &#8220;Ray has budget for 10 fixes, not 50; these are the top 10&#8221;</li><li>Where applicable, indicate which control framework the recommendation aligns with (CIS Controls, NIST CSF, etc.)</li></ul>"
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Full Engagement Packet Structure",
+     "calloutType": "reportStructure",
+     "items": [
+      "PART I (Internal Packet)",
+      "Timesheet",
+      "Runbook (man-page style)",
+      "Analyst Reflection",
+      "PART II (Client Deliverable)",
+      "Cover Page",
+      "Executive Summary (1 page)",
+      "Table of Contents",
+      "Methodology",
+      "Findings (numbered, severity-ordered)",
+      "Risk Analysis",
+      "Recommendations (prioritized)",
+      "Appendix (raw outputs, additional screenshots)",
+      "References (minimum 10)"
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Runbook Format: Like a Man Page",
+     "body": "Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you’d reach for it). <strong>Switches used</strong> (each flag you used on Brazos with a one-line explanation). <strong>Switches for future use</strong> (flags you didn’t use this time but should know). <strong>How you used it</strong> (your actual command against Brazos). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.",
+     "calloutType": "tip"
+    },
+    {
+     "type": "callout",
+     "icon": "psychology",
+     "title": "Analyst Reflection: Honest, Not Performative",
+     "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit — even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about reconnaissance, consulting, or security?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
+     "calloutType": "tip"
+    },
+    {
+     "type": "callout",
+     "icon": "error",
+     "title": "Minimum 10 References",
+     "text": "Man pages count! Your textbook, tool documentation, CVE entries, and NIST guidelines are all valid references. Use APA format.",
+     "calloutType": "required"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "Complete .docx file with all sections, auto-generated Table of Contents, embedded screenshots, and APA-formatted references. Professional enough to present to a client.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "body": "Chapter 1 and Chapter 2 both emphasize that security work is only complete when it’s documented. Your Engagement Packet is the professional artifact that transforms raw reconnaissance data into actionable intelligence. Part I (Timesheet + Runbook + Analyst Reflection) justifies your time and enables reproducibility. Part II (the Client Deliverable) communicates risk to a non-technical audience."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "title": "Common Pitfalls",
+     "items": [
+      {
+       "label": "Starting from scratch",
+       "text": "Your report is 60&#8211;70% complete from Units 1 and 2. Import your existing screenshots and documentation &#8212; don&#8217;t rewrite what you already have."
+      },
+      {
+       "label": "PDF submission",
+       "text": "Canvas will not accept PDF. Submit .docx only. Convert to PDF after grading if you want a personal copy."
+      },
+      {
+       "label": "Weak Executive Summary",
+       "text": "Ray Jimenez reads the Executive Summary first. Write it for a non-technical audience: what did you find, what does it mean, what should Brazos do about it."
+      },
+      {
+       "label": "Missing references",
+       "text": "10 references minimum. Man pages count. Your textbook counts. CVE entries, tool documentation, and NIST guidelines are all valid. Use APA format."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "purpleTeam": {
+  "redTeam": {
+   "type": "items",
+   "items": [
+    {
+     "label": "",
+     "text": "Open ports and service versions are your attack blueprint. Banner grabbing reveals exact software without triggering IDS. Directory discovery exposes admin panels and backup files that defenders forgot existed. SMB enumeration hands you a username list for credential attacks &#8212; before you&#8217;ve touched a single login form."
+    }
+   ]
+  },
+  "blueTeam": {
+   "type": "items",
+   "items": [
+    {
+     "label": "",
+     "text": "Your recon results are a defender&#8217;s punch list. Suppress version banners. Close ports that shouldn&#8217;t be public. Require authentication on SMB shares. Monitor for nmap, dirb, and nikto signatures in your logs &#8212; if you ran these tools undetected, so can an attacker."
+    }
+   ]
+  },
+  "connection": "Brazos Financial&#8217;s legacy systems and poor configuration hygiene are blue team failures that created every finding in your report. You discovered the attack surface as a red teamer &#8212; now your recommendations make you the blue teamer. Ray Jimenez hired NEXUS for someone who sees both sides."
+ },
+ "finalChecklist": {
+  "screenshotTable": null,
+  "sections": [
+   {
+    "title": "Document Requirements",
+    "items": [
+     "Submitted as .docx (not PDF)",
+     "Title page with your name and date",
+     "Auto-generated Table of Contents",
+     "Professional formatting throughout"
+    ]
+   },
+   {
+    "title": "Part I (Internal Packet)",
+    "items": [
+     "Timesheet: hours logged across all 3 units, split Internal Training / Client Billable",
+     "Runbook: man-page style entry for each tool (name, switches, usage, results)",
+     "Analyst Reflection: honest answers to the reflection prompts (no word floor)"
+    ]
+   },
+   {
+    "title": "Part II (Client Deliverable)",
+    "items": [
+     "Cover Page + auto-generated Table of Contents",
+     "Executive Summary: one page maximum, fleshed out for non-technical audience",
+     "Methodology, Findings, Risk Analysis, Recommendations all present",
+     "Appendix with raw outputs, additional screenshots, and minimum 10 references (APA format)"
+    ]
+   },
+   {
+    "title": "Screenshots",
+    "items": [
+     "All Unit 1-2 screenshots included (01-04 from Lab 1.1, 07-13 from Lab 1.2)",
+     "Unit 3 screenshots per the lab body (CP1 + CP2 minimum 8 from recon workflow)",
+     "Hostname (kali-abc123) visible in every terminal screenshot",
+     "Screenshots are clear and readable"
+    ]
+   },
+   {
+    "title": "Quality Check",
+    "items": [
+     "Executive Summary readable by non-technical audience",
+     "Recommendations are actionable and prioritized (Monday vs. next quarter)",
+     "Professional tone throughout",
+     "TOC and bibliography updated (Ctrl+A then F9 in Word)"
+    ]
+   }
+  ],
+  "canvasSubmission": "Upload your .docx file to the Lab 1.3 assignment in Canvas. No quiz for this lab &#8212; your report is the deliverable.",
+  "deadlineTip": {
+   "title": "Deadline Tip",
+   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  }
+ },
+ "gradingStandards": {
+  "qualityLadder": {
+   "partI_internal": {
+    "weight": "40%",
+    "components": {
+     "timesheet": "5%",
+     "runbook": "20%",
+     "analystReflection": "15%"
+    }
+   },
+   "partII_client": {
+    "weight": "60%",
+    "components": {
+     "executiveSummary": "12%",
+     "methodology": "7%",
+     "findings": "22%",
+     "riskAnalysis": "11%",
+     "recommendations": "8%"
+    },
+    "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+   }
+  },
+  "penalties": [
+   {
+    "penalty": "-5%",
+    "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+   },
+   {
+    "penalty": "-20%",
+    "condition": "Appendix missing from Part II Client Deliverable."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Executive Summary exceeds one page."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Cover Page missing."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
+   }
+  ],
+  "penaltyCap": "Combined deductions cap at -100%.",
+  "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+  "bonus": {
+   "title": "Bonus Opportunity (+5%)",
+   "description": "Additional Recon Tool: Document one reconnaissance tool not covered in Lab 1.2 and demonstrate it against the training targets. Include purpose, syntax, example output, and when to use it."
+  },
+  "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
+ },
+ "needHelp": {
+  "channels": [
+   {
+    "detail": "#lab-help",
+    "label": "Discord"
+   },
+   {
+    "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+    "label": "Office Hours"
+   },
+   {
+    "detail": "john.newsom@utsa.edu (private matters only)",
+    "label": "Email"
+   }
+  ],
+  "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+  "genAI": {
+   "permitted": [
+    "Explain command syntax and tool functionality",
+    "Troubleshoot errors and technical issues",
+    "Understand concepts from assigned readings",
+    "Proofread and grammar check",
+    "Suggest report structure improvements"
+   ],
+   "prohibited": [
+    "Write entire sections of reports",
+    "Answer quiz questions directly",
+    "Generate fake screenshots or outputs",
+    "Complete hands-on exercises on your behalf"
+   ],
+   "principle": "AI is a tutor, not a ghostwriter."
+  },
+  "whatsNext": {
+   "type": "nextModule",
+   "text": "After submitting this engagement, you&#8217;ll begin Module 2: Cryptography &#38; Authentication with Lab 2.1 &#8212; Cryptographic Foundations."
+  }
+ }
 }
