@@ -480,6 +480,13 @@
               }
             },
             {
+              "text": "Upgrade all installed packages to current versions",
+              "command": "sudo apt full-upgrade -y",
+              "whatThisDoes": {
+                "concept": "full-upgrade installs the newest versions of everything already on the system. Kali is a rolling release, so your ISO is a snapshot frozen at build time — this step brings your tools up to current. Use full-upgrade rather than plain upgrade: full-upgrade is allowed to add or remove packages to resolve dependency changes, so nothing gets held back. This is why your tool versions will match what the labs and quizzes expect."
+              }
+            },
+            {
               "text": "Install Docker and Docker Compose",
               "command": "sudo apt install -y docker.io docker-compose",
               "whatThisDoes": {
