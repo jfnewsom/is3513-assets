@@ -395,12 +395,12 @@ def render_template_cards(sec):
         accent = c["accent"]
         _tgt = ' target="_blank"' if c["href"].startswith("http") else ""
         cards_html += (
-            f'      <a href="{c["href"]}"{_tgt} class="nx-tpl-card" '
-            f'style="border-top: 4px solid {accent};">\n'
-            f'        <div class="nx-tpl-card__badge" style="background: {accent};">{c["badge"]}</div>\n'
-            f'        <div class="nx-tpl-card__title">{c["title"]}</div>\n'
-            f'        <div class="nx-tpl-card__client">{c["client"]}</div>\n'
-            f'        <div class="nx-tpl-card__file">&#11015; {c["file"]}</div>\n'
+            f'      <a href="{c["href"]}"{_tgt} class="nx-info-stat nx-tpl-card" '
+            f'style="border-top: 4px solid {accent}; text-decoration: none; display: block;">\n'
+            f'        <div class="nx-info-stat__label" style="color: {accent};">{c["badge"]}</div>\n'
+            f'        <div class="nx-info-stat__value" style="font-size: 15px; margin-top: 6px;">{c["title"]}</div>\n'
+            f'        <div class="nx-tpl-card__client" style="color: #B0B8C4; font-size: 12px; margin-top: 4px;">{c["client"]}</div>\n'
+            f'        <div class="nx-tpl-card__file" style="color: #7B68EE; font-size: 12px; font-weight: 600; margin-top: 10px;">&#11015; {c["file"]}</div>\n'
             f'      </a>\n'
         )
     intro_html = f'    <p class="nx-exam-body">{intro}</p>\n' if intro else ""
@@ -408,7 +408,7 @@ def render_template_cards(sec):
         f'  <div class="nx-named-section">\n'
         f'    {section_label(label, color)}\n'
         f'{intro_html}'
-        f'    <div class="nx-tpl-cards">\n'
+        f'    <div class="nx-info-bar nx-tpl-cards">\n'
         f'{cards_html}'
         f'    </div>\n'
         f'  </div>'

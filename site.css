@@ -1377,62 +1377,27 @@ summary {
   margin-top: 10px;
 }
 
-/* ── Template cards (downloadable EP templates, decorated links) ── */
+/* ── Template cards (downloadable EP templates) ──────────── */
+/* Built on .nx-info-bar / .nx-info-stat so they render even if this
+   block is missing; these rules just add wrap + hover polish. */
 .nx-tpl-cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  margin-top: 14px;
+  flex-wrap: wrap;
 }
-.nx-tpl-card {
-  display: block;
-  background: #1a1f2e;
-  border-radius: 10px;
-  padding: 16px 14px 14px;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+.nx-tpl-cards .nx-tpl-card {
+  flex: 1 1 0;
+  min-width: 150px;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .nx-tpl-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
-.nx-tpl-card__badge {
-  display: inline-block;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-.nx-tpl-card__title {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.3;
-  margin-bottom: 6px;
-}
-.nx-tpl-card__client {
-  color: #B0B8C4;
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-.nx-tpl-card__file {
-  color: #7B68EE;
-  font-size: 12px;
-  font-weight: 600;
-  word-break: break-all;
-}
 .nx-tpl-card:hover .nx-tpl-card__file { color: #9d8cff; }
-@media (max-width: 900px) {
-  .nx-tpl-cards { grid-template-columns: 1fr 1fr; }
+@media (max-width: 768px) {
+  .nx-tpl-cards .nx-tpl-card { flex: 1 1 40%; }
 }
 @media (max-width: 480px) {
-  .nx-tpl-cards { grid-template-columns: 1fr; }
+  .nx-tpl-cards .nx-tpl-card { flex: 1 1 100%; }
 }
 
 /* ── Spec list (two-col key:value) ───────────────────────── */
