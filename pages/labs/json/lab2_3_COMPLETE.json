@@ -1,920 +1,928 @@
 {
-  "meta": {
-    "labId": "2_3",
-    "title": "Gulf Coast Certificate Remediation",
-    "labType": "engagement",
-    "module": "Module 2: Cryptography &amp; Authentication",
-    "chapters": [
-      "Chapter 6 &#8212; Applied Cryptography",
-      "Chapter 7 &#8212; Public Key Infrastructure"
-    ]
+ "meta": {
+  "labId": "2_3",
+  "title": "Gulf Coast Certificate Remediation",
+  "labType": "engagement",
+  "module": "Module 2: Cryptography &amp; Authentication",
+  "chapters": [
+   "Chapter 6 &#8212; Applied Cryptography",
+   "Chapter 7 &#8212; Public Key Infrastructure"
+  ]
+ },
+ "intro": {
+  "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
+  "mentorQuote": {
+   "character": "Maria Delgado, PhD",
+   "title": "Security Compliance Specialist, NEXUS Security",
+   "headshot": "maria-delgado.png",
+   "quote": "Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story &#8212; the story of due diligence, proper procedures, and professional remediation."
   },
-  "intro": {
-    "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
-    "mentorQuote": {
-      "character": "Maria Delgado, PhD",
-      "title": "Security Compliance Specialist, NEXUS Security",
-      "headshot": "maria-delgado.png",
-      "quote": "Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story &#8212; the story of due diligence, proper procedures, and professional remediation."
-    },
-    "focusAreas": [
-      {
-        "title": "Certificate Lifecycle",
-        "description": "X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure — not just a browser warning."
-      },
-      {
-        "title": "Certificate Signing Requests",
-        "description": "Generating a CSR from an existing private key — the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain."
-      },
-      {
-        "title": "CA Signing Operations",
-        "description": "Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window — the chain of trust in practice."
-      },
-      {
-        "title": "Before/After Evidence",
-        "description": "Documenting the broken state before making changes — auditors require proof of the problem, not just proof of the fix."
-      },
-      {
-        "title": "Engagement Packet Compilation",
-        "description": "Assembling three units of work into a single professional deliverable — the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements."
-      }
-    ],
-    "objectives": [
-      "Deploy the Gulf Coast patient portal Docker container and diagnose the certificate issue",
-      "Generate a new Certificate Signing Request (CSR) and sign it with the existing CA",
-      "Install the new certificate and verify HTTPS functionality is restored",
-      "Compile all Module 2 work into a professional Engagement Packet"
-    ],
-    "callouts": [
-      {
-        "type": "error",
-        "title": "Required: DOCX Format",
-        "icon": "error",
-        "text": "Submit as <strong>.docx (Microsoft Word) only</strong>. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations."
-      },
-      {
-        "type": "warning",
-        "title": "Minimum Requirements",
-        "icon": "warning",
-        "body": "Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, and textbook chapters all count."
-      },
-      {
-        "type": "warning",
-        "title": "Deadline Tip",
-        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-      }
-    ],
-    "clientContext": {
-      "client": "Gulf Coast Healthcare Partners",
-      "description": "A regional healthcare network headquartered in Houston, Texas. Two years ago, they suffered a ransomware attack that forced a complete infrastructure rebuild.",
-      "contacts": [
-        {
-          "name": "Jennifer Walsh",
-          "title": "CISO",
-          "quote": "The OCR audit is in 6 weeks. I need this portal working and documented before they arrive."
-        },
-        {
-          "name": "Thomas Kowalski",
-          "title": "VP Infrastructure",
-          "quote": "I set this up five years ago when we were half this size. I know it needs updating."
-        },
-        {
-          "name": "Angela Washington",
-          "title": "Privacy Officer",
-          "quote": "If PHI travels over that portal unencrypted, we have a reportable breach."
-        }
-      ]
-    }
-  },
-  "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.",
-    "sections": [
-      {
-        "title": "From Unit 1 — Lab 2.1: Cryptographic Foundations",
-        "items": [
-          "Hash function demonstrations (SHA-256 comparison showing avalanche effect)",
-          "Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)",
-          "Asymmetric encryption with RSA keypairs",
-          "Digital signature creation and verification",
-          "9 screenshots (01-hash-sha256.png through 09-signature-verify.png)"
-        ]
-      },
-      {
-        "title": "From Unit 2 — Lab 2.2: Authentication Systems",
-        "items": [
-          "SSH key generation — RSA and ED25519 comparison",
-          "File permission security demonstration (break/fix cycle)",
-          "SSH authorized_keys and config file setup",
-          "Multi-factor authentication configuration and verification",
-          "8 screenshots (10-keygen-rsa.png through 17-mfa-login.png)"
-        ]
-      },
-      {
-        "title": "New This Unit — Lab 2.3",
-        "items": [
-          "Title Page, Table of Contents, Executive Summary",
-          "Certificate diagnosis and remediation documentation",
-          "Risk analysis and HIPAA compliance recommendations",
-          "Professional Reflection, References, Appendix"
-        ],
-        "badge": "NEW"
-      }
-    ],
-    "callouts": [
-      {
-        "type": "callout",
-        "calloutType": "tip",
-        "title": "You're Already 60–70% Done",
-        "body": "If you followed the Unit 1–2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
-      },
-      {
-        "type": "tip",
-        "icon": "check_circle",
-        "title": "You&#8217;re Already 60&#8211;70% Done",
-        "text": "If you followed the Unit 1&#8211;2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
-      }
-    ]
-  },
-  "timeGuide": {
-    "rows": [
-      {
-        "task": "Checkpoint 1: Deploy Container and Diagnose",
-        "time": "30-45 min"
-      },
-      {
-        "task": "Checkpoint 2: Certificate Remediation",
-        "time": "45-60 min"
-      },
-      {
-        "task": "Checkpoint 3: Verification and Bonus Findings",
-        "time": "20-30 min"
-      },
-      {
-        "task": "Checkpoint 4: Compile Engagement Packet",
-        "time": "120-150 min"
-      }
-    ],
-    "totalRow": {
-      "label": "Total Estimated Time",
-      "time": "4-5 hours"
-    },
-    "timesheetNote": "Unit 3 is your first client-billable unit. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable."
-  },
-  "checkpoints": [
-    {
-      "number": 1,
-      "title": "Deploy Container and Diagnose",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Deploying the Gulf Coast patient portal container and documenting the broken state before making any changes.",
-          "whyItMatters": "HIPAA requires documentation of security incidents and remediation. &#8220;Before&#8221; evidence proves due diligence for auditors. If you fix it first and document after, you have no proof of what the original problem was."
-        },
-        {
-          "part": "Part A: Deploy the Gulf Coast portal container",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Create a working directory for this engagement:",
-              "command": "mkdir -p ~/lab2-gulfcoast",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Change into your working directory:",
-              "command": "cd ~/lab2-gulfcoast",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Pull and start the Gulf Coast patient portal container:",
-              "command": "sudo docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal jfnewsom/gulfcoast-portal",
-              "whatThisDoes": {
-                "concept": "This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal &#8212; an Apache web server with a deliberately expired SSL certificate.",
-                "output": null,
-                "flags": [
-                  {
-                    "flag": "-d",
-                    "description": "Run in background (detached mode)"
-                  },
-                  {
-                    "flag": "-p 443:443",
-                    "description": "Map HTTPS port from container to host"
-                  },
-                  {
-                    "flag": "-p 2222:22",
-                    "description": "Map SSH to port 2222 so it doesn&#8217;t conflict with your Kali SSH service"
-                  },
-                  {
-                    "flag": "--name gulfcoast-portal",
-                    "description": "Assign a friendly name for later docker commands"
-                  },
-                  {
-                    "flag": "jfnewsom/gulfcoast-portal",
-                    "description": "The Docker Hub image to pull"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "part": "Part B: Document the broken state",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Open Firefox and navigate to <code>https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the browser certificate error. Save as <code>gulfcoast-01-initial-error.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": null,
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Check the certificate dates from your Kali terminal:",
-              "command": "openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates",
-              "whatThisDoes": {
-                "concept": "This connects to the HTTPS server like a browser would, grabs the certificate, and displays its validity dates. The <code>notBefore</code> and <code>notAfter</code> dates tell you when the certificate was issued and when it expired.",
-                "output": "The <code>notAfter</code> date should be in the past, confirming the certificate has expired.",
-                "flags": [
-                  {
-                    "flag": "2>/dev/null",
-                    "description": "Suppresses noisy connection info"
-                  },
-                  {
-                    "flag": "-noout",
-                    "description": "Prevents printing the raw certificate"
-                  },
-                  {
-                    "flag": "-dates",
-                    "description": "Shows only the validity period"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the openssl output showing the expired certificate dates. Save as <code>gulfcoast-02-cert-expired.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "<strong>Port conflict:</strong> Stop other containers using ports 443 or 2222 before running this command",
-            "<strong>Docker not running:</strong> If you get a &#8220;permission denied&#8221; error, make sure Docker is running and try adding <code>sudo</code>",
-            "<strong>Take screenshots NOW:</strong> You cannot recreate &#8220;before&#8221; evidence after fixing the certificate"
-          ],
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "Gulf Coast portal container running and accessible. Screenshots documenting the initial broken state: browser warning and expired certificate dates from openssl. These &#8220;before&#8221; screenshots are critical audit evidence.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Textbook Reference",
-          "text": null,
-          "calloutType": "textbookReference",
-          "body": "Chapter 6 covers Secure Protocols and cipher suites, including how TLS certificates authenticate servers and establish encrypted connections. The expired certificate warning you&#8217;re documenting is what happens when certificate management fails &#8212; a gap between cryptographic intent and operational reality that Chapter 6&#8217;s coverage of secure protocol use cases makes concrete."
-        },
-        {
-          "type": "callout",
-          "icon": "search",
-          "title": "Dig Deeper",
-          "text": "What is a self-signed certificate and when is it appropriate to use one? Research the trust implications of self-signed vs. CA-signed certificates.",
-          "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Chapter 7 discusses certificate types and PKI hierarchy. Let&#8217;s Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/",
-          "calloutType": "thatsAReference"
-        }
-      ]
-    },
-    {
-      "number": 2,
-      "title": "Certificate Remediation",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.",
-          "whyItMatters": "Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow &#8212; using the existing private key to generate a new request, then signing with the CA &#8212; ensures continuity without regenerating keys."
-        },
-        {
-          "character": "Maria Delgado, PhD",
-          "headshot": "maria-delgado.png",
-          "type": "callout",
-          "calloutType": "characterQuote",
-          "title": "Security Compliance Specialist, NEXUS Security",
-          "quote": "The README in the PKI directory is your roadmap. Real infrastructure always has documentation &#8212; sometimes outdated, sometimes incomplete &#8212; but always your starting point. Read it before you touch anything."
-        },
-        {
-          "part": "Part A: SSH into the container and explore the PKI structure",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "SSH into the Gulf Coast portal container (password: <code>nexus2026</code>):",
-              "command": "ssh -p 2222 student@localhost",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Navigate to the PKI directory and read the documentation:",
-              "command": "cd /opt/gulfcoast-pki",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Read the README left by the previous administrator:",
-              "command": "cat README.txt",
-              "whatThisDoes": null
-            },
-            {
-              "text": "Explore the directory structure:",
-              "command": "ls -la CA/ certs/ csr/",
-              "whatThisDoes": {
-                "concept": "You&#8217;re mapping the PKI infrastructure before making changes. The <code>CA/</code> directory holds the root Certificate Authority (<code>ca.crt</code> and <code>ca.key</code>). The <code>certs/</code> directory holds the server certificates including the expired <code>portal.crt</code>. The <code>csr/</code> directory is your working space for new certificate signing requests.",
-                "output": "Note the file permissions &#8212; the CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.",
-                "flags": null
-              }
-            }
-          ]
-        },
-        {
-          "part": "Part B: Generate a new Certificate Signing Request (CSR)",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Generate a new CSR using the existing private key:",
-              "command": "openssl req -new -key certs/portal.key -out csr/portal-new.csr -subj \"/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local\"",
-              "whatThisDoes": {
-                "concept": "A Certificate Signing Request (CSR) is a formal application for a new certificate. It contains your public key and identity information, signed with your private key to prove ownership. The CA uses this to issue a new certificate without ever needing your private key.",
-                "output": null,
-                "flags": [
-                  {
-                    "flag": "req -new",
-                    "description": "Create a new CSR"
-                  },
-                  {
-                    "flag": "-key certs/portal.key",
-                    "description": "Use the existing private key (no need to regenerate)"
-                  },
-                  {
-                    "flag": "-out csr/portal-new.csr",
-                    "description": "Output file for the CSR"
-                  },
-                  {
-                    "flag": "-subj",
-                    "description": "Provides identity fields inline (C=country, ST=state, L=locality, O=organization, CN=common name)"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the CSR generation command and output. Save as <code>gulfcoast-03-csr-generation.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": "Part C: Sign the CSR with the Certificate Authority",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Sign the CSR using the CA certificate and key (requires sudo because the CA key is root-owned):",
-              "command": "sudo openssl x509 -req -in csr/portal-new.csr -CA CA/ca.crt -CAkey CA/ca.key -CAcreateserial -out certs/portal-new.crt -days 365 -sha256",
-              "whatThisDoes": {
-                "concept": "The CA &#8220;signs&#8221; your CSR by combining your identity and public key with the CA&#8217;s digital signature. Anyone who trusts the CA can now verify your certificate is legitimate. This is the chain of trust in action.",
-                "output": "You&#8217;ll see &#8220;Certificate request self-signature ok&#8221; followed by the subject line. The sudo password is <code>nexus2026</code>.",
-                "flags": [
-                  {
-                    "flag": "x509 -req",
-                    "description": "Process a CSR into a signed certificate"
-                  },
-                  {
-                    "flag": "-CA / -CAkey",
-                    "description": "Specify the signing Certificate Authority and its key"
-                  },
-                  {
-                    "flag": "-CAcreateserial",
-                    "description": "Generate a unique serial number for this certificate"
-                  },
-                  {
-                    "flag": "-days 365",
-                    "description": "Set one-year validity period"
-                  },
-                  {
-                    "flag": "-sha256",
-                    "description": "Use modern hashing algorithm for the signature"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>gulfcoast-04-cert-signing.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": "Part D: Install the new certificate",
-          "role": "cleanup",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Copy the new certificate into Apache&#8217;s SSL directory:",
-              "command": "sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt",
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the certificate installation command. Save as <code>gulfcoast-05-cert-installation.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "<strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code> &#8212; confirm with <code>ls -la</code>",
-            "<strong>Permission denied on CA key:</strong> The CA private key is root-owned. You need <code>sudo</code> for the signing step",
-            "<strong>Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate"
-          ],
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "A new signed certificate installed in place of the expired one. Screenshots documenting the CSR generation, CA signing process, and certificate installation.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Textbook Reference",
-          "text": null,
-          "calloutType": "textbookReference",
-          "body": "Chapter 6 covers applied cryptography in practice, including asymmetric key pairs and how they underpin the certificate signing workflow. The CSR you generate reuses the existing private key while the public component travels through the signing process &#8212; exactly the asymmetric key management pattern Chapter 6 describes."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Verification and Bonus Findings",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.",
-          "whyItMatters": "Verification proves the fix worked. Combined with your &#8220;before&#8221; screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success."
-        },
-        {
-          "part": "Part A: Restart Apache and verify the fix",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Restart Apache to load the new certificate:",
-              "command": "sudo service apache2 restart",
-              "whatThisDoes": {
-                "concept": null,
-                "output": "Restarting Apache inside the Docker container will close your SSH connection. You&#8217;ll see &#8220;Connection to localhost closed by remote host.&#8221; This is normal. The container may also stop.",
-                "flags": null
-              }
-            },
-            {
-              "text": "From your Kali terminal, restart the container if needed:",
-              "command": "sudo docker start gulfcoast-portal",
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the Apache restart and container restart. Save as <code>gulfcoast-06-apache-restart.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": null,
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "From your Kali terminal (not inside the container), verify the new certificate dates:",
-              "command": "openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates",
-              "whatThisDoes": {
-                "concept": null,
-                "output": "The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.",
-                "flags": null
-              }
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the new certificate dates showing future expiration. Save as <code>gulfcoast-07-cert-valid.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": null,
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "Refresh <code>https://localhost</code> in Firefox &#8212; the expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "photo_camera",
-          "title": "Screenshot",
-          "text": "Capture the browser showing the portal without an expired certificate warning. Save as <code>gulfcoast-08-browser-success.png</code>",
-          "calloutType": "screenshot"
-        },
-        {
-          "part": "Part B: Bonus &#8212; Hunt for additional findings",
-          "role": "optional",
-          "start": 1,
-          "type": "steps",
-          "steps": [
-            {
-              "text": "SSH back into the container and investigate the following areas. Document anything concerning in your report:",
-              "command": "ssh -p 2222 student@localhost",
-              "whatThisDoes": null
-            },
-            {
-              "text": "What permissions does the portal private key have? Are they appropriate?",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "What signature algorithm does the CA certificate use? Is it still considered secure?",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "When does the CA certificate itself expire?",
-              "command": null,
-              "whatThisDoes": null
-            },
-            {
-              "text": "What TLS protocol versions does the Apache configuration allow?",
-              "command": null,
-              "whatThisDoes": null
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "search",
-          "title": "Bonus Discovery",
-          "text": "SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client.",
-          "calloutType": "goBeyond"
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "SSH session disconnects on Apache restart — this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal",
-            "Certificate change not reflected — if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.",
-            "Self-signed trust warning persists in browser — this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.",
-            "Missing 'before' screenshots — you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report."
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The &#8220;after&#8221; evidence combined with your &#8220;before&#8221; screenshots creates a complete remediation audit trail.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Textbook Reference",
-          "text": null,
-          "calloutType": "textbookReference",
-          "body": "Chapter 6 covers cryptographic attacks and cipher suite weaknesses, including how obsolete algorithms remain negotiable on misconfigured servers. Beyond the expired certificate, any weak cipher findings represent the attack surface Chapter 6&#8217;s &#8220;Cryptographic Attacks&#8221; section describes &#8212; exploitable not through the algorithm itself but through how it&#8217;s deployed."
-        }
-      ]
-    },
-    {
-      "number": 4,
-      "title": "Compile Engagement Packet",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Compiling all three units of Module 2 work into a professional Engagement Packet.",
-          "whyItMatters": "This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
-        },
-        {
-          "type": "callout",
-          "icon": "error",
-          "title": "One Document, Two Parts",
-          "text": "Your Engagement Packet is <strong>one .docx file</strong> containing both parts in this order: Part I (Internal Packet) followed by Part II (Client Deliverable). Do not submit separate files.",
-          "calloutType": "required"
-        },
-        {
-          "sections": [
-            {
-              "label": "Part I: Internal Packet (40% of grade)",
-              "description": "Timesheet (5%) &#8212; hours across all 3 units, split Internal Training vs. Client Billable. Units 1&#8211;2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%) &#8212; man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work. Analyst Reflection (15%) &#8212; honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A."
-            },
-            {
-              "label": "Part II: Client Deliverable (60% of grade)",
-              "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) &#8212; one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%) &#8212; client-facing narrative of your approach. Findings (22%) &#8212; certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) &#8212; HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%) &#8212; prioritized (immediate fixes vs. longer-term hardening)."
-            }
-          ],
-          "type": "callout",
-          "calloutType": "reportSections"
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I (Internal Packet)",
-          "items": [
-            "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
-            "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
-            "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II (Client Deliverable)",
-          "items": [
-            "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
-            "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
-            "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
-            "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul>",
-            "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul>"
-          ]
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Full Engagement Packet Structure",
-          "items": [
-            "PART I (Internal Packet)",
-            "Timesheet",
-            "Runbook (man-page style)",
-            "Analyst Reflection",
-            "PART II (Client Deliverable)",
-            "Cover Page",
-            "Executive Summary (1 page)",
-            "Table of Contents",
-            "Methodology",
-            "Findings (numbered, severity-ordered)",
-            "Risk Analysis",
-            "Recommendations (prioritized)",
-            "Appendix (raw outputs, additional screenshots)",
-            "References (minimum 10)"
-          ],
-          "calloutType": "reportStructure"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Runbook Format: Like a Man Page",
-          "body": "Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you&#8217;d reach for it). <strong>Switches used</strong> (each flag you used on Gulf Coast with a one-line explanation). <strong>Switches for future use</strong> (flags you didn&#8217;t use this time but should know). <strong>How you used it</strong> (your actual command). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.",
-          "calloutType": "tip"
-        },
-        {
-          "type": "callout",
-          "icon": "psychology",
-          "title": "Analyst Reflection: Honest, Not Performative",
-          "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit &#8212; even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
-          "calloutType": "tip"
-        },
-        {
-          "type": "callout",
-          "icon": "lightbulb",
-          "title": "Executive Summary Tips",
-          "text": "Write for Jennifer Walsh (CISO), not technical staff. Lead with finding and fix, not methodology.",
-          "calloutType": "tip"
-        },
-        {
-          "type": "callout",
-          "icon": "warning",
-          "title": "Common Pitfalls",
-          "items": [
-            "<strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero",
-            "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-abc123)",
-            "<strong>Fewer than 10 references:</strong> Man pages, RFCs, and textbook chapters all count"
-          ],
-          "calloutType": "commonPitfalls"
-        },
-        {
-          "type": "callout",
-          "icon": "check_circle",
-          "title": "What You Should Have",
-          "text": "A complete Engagement Packet in .docx format containing all 12 required sections, 25+ screenshots, and minimum 10 references.",
-          "calloutType": "whatYouShouldHave"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "Textbook Reference",
-          "text": "Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.",
-          "calloutType": "textbookReference",
-          "body": "Chapter 11&#8217;s &#8220;Cloud vs. On-premises Requirements&#8221; section is directly relevant here: Gulf Coast&#8217;s patient portal runs in a container now, but the authentication and compliance controls you&#8217;re documenting must account for where systems will live. Chapter 11 explains how authentication requirements shift between on-premises and cloud environments &#8212; a distinction that belongs in your professional recommendations for a healthcare client with a cloud migration ahead."
-        }
-      ]
-    }
+  "focusAreas": [
+   {
+    "title": "Certificate Lifecycle",
+    "description": "X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure — not just a browser warning."
+   },
+   {
+    "title": "Certificate Signing Requests",
+    "description": "Generating a CSR from an existing private key — the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain."
+   },
+   {
+    "title": "CA Signing Operations",
+    "description": "Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window — the chain of trust in practice."
+   },
+   {
+    "title": "Before/After Evidence",
+    "description": "Documenting the broken state before making changes — auditors require proof of the problem, not just proof of the fix."
+   },
+   {
+    "title": "Engagement Packet Compilation",
+    "description": "Assembling three units of work into a single professional deliverable — the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements."
+   }
   ],
-  "purpleTeam": {
-    "redTeam": {
-      "type": "items",
-      "label": "What Red Team Learns",
-      "items": [
-        "Expired certificates are reconnaissance gold",
-        "Users trained to click through warnings make phishing easier",
-        "SHA-1 signatures reveal old infrastructure"
-      ]
+  "objectives": [
+   "Deploy the Gulf Coast patient portal Docker container and diagnose the certificate issue",
+   "Generate a new Certificate Signing Request (CSR) and sign it with the existing CA",
+   "Install the new certificate and verify HTTPS functionality is restored",
+   "Compile all Module 2 work into a professional Engagement Packet"
+  ],
+  "callouts": [
+   {
+    "type": "required",
+    "title": "Required: Use the Engagement Packet Template",
+    "icon": "error",
+    "text": "Submit as <strong>.docx (Microsoft Word) only</strong>. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
+    "pinTop": true
+   },
+   {
+    "type": "warning",
+    "title": "Minimum Requirements",
+    "icon": "warning",
+    "body": "Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, and textbook chapters all count."
+   },
+   {
+    "type": "warning",
+    "title": "Deadline Tip",
+    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+   },
+   {
+    "type": "tip",
+    "icon": "description",
+    "title": "Use the Engagement Packet Template",
+    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx\">EP_M2_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.",
+    "pinTop": true
+   }
+  ],
+  "clientContext": {
+   "client": "Gulf Coast Healthcare Partners",
+   "description": "A regional healthcare network headquartered in Houston, Texas. Two years ago, they suffered a ransomware attack that forced a complete infrastructure rebuild.",
+   "contacts": [
+    {
+     "name": "Jennifer Walsh",
+     "title": "CISO",
+     "quote": "The OCR audit is in 6 weeks. I need this portal working and documented before they arrive."
     },
-    "blueTeam": {
-      "type": "items",
-      "label": "What Blue Team Learns",
-      "items": [
-        "Certificate lifecycle is a visibility problem",
-        "Defenders implement monitoring, automated renewal (ACME), and inventory management"
-      ]
+    {
+     "name": "Thomas Kowalski",
+     "title": "VP Infrastructure",
+     "quote": "I set this up five years ago when we were half this size. I know it needs updating."
     },
-    "connection": "You&#8217;re fixing an expired cert (blue) while hunting for additional findings (red). Jennifer Walsh hired NEXUS for someone who sees the whole picture."
-  },
-  "finalChecklist": {
-    "screenshotTable": null,
-    "sections": [
-      {
-        "items": [
-          "All 12 required sections in correct order",
-          "File saved as .docx (NOT PDF)",
-          "Spell-checked and proofread"
-        ],
-        "title": "Document Requirements"
-      },
-      {
-        "items": [
-          "25+ screenshots total (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3)",
-          "VM hostname visible in every screenshot"
-        ],
-        "title": "Screenshots"
-      },
-      {
-        "items": [
-          "Minimum 10 references (man pages count!)"
-        ],
-        "title": "References"
-      }
-    ],
-    "canvasSubmission": "Submit your completed Engagement Packet to the <strong>Lab 2.3 Assignment</strong> in Canvas as a single .docx file.",
-    "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting.",
-    "deadlineTip": {
-      "title": "Deadline Tip",
-      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    {
+     "name": "Angela Washington",
+     "title": "Privacy Officer",
+     "quote": "If PHI travels over that portal unencrypted, we have a reportable breach."
     }
-  },
-  "gradingStandards": {
-    "qualityLadder": {
-      "partI_internal": {
-        "weight": "40%",
-        "components": {
-          "timesheet": "5%",
-          "runbook": "20%",
-          "analystReflection": "15%"
-        }
-      },
-      "partII_client": {
-        "weight": "60%",
-        "components": {
-          "executiveSummary": "12%",
-          "methodology": "7%",
-          "findings": "22%",
-          "riskAnalysis": "11%",
-          "recommendations": "8%"
-        },
-        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
-      }
-    },
-    "penalties": [
-      {
-        "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
-      },
-      {
-        "penalty": "-20%",
-        "condition": "Appendix missing from Part II Client Deliverable."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Executive Summary exceeds one page."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Cover Page missing."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
-      }
-    ],
-    "penaltyCap": "Combined deductions cap at -100%.",
-    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-    "bonus": null,
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
-  },
-  "needHelp": {
-    "customCallouts": [
-      {
-        "type": "tip",
-        "icon": "cleaning_services",
-        "title": "Cleanup After Submitting",
-        "text": "After submitting, clean up the Docker container:<br><code>sudo docker stop gulfcoast-portal</code><br><code>sudo docker rm gulfcoast-portal</code>"
-      }
-    ],
-    "channels": [
-      {
-        "detail": "#module-2-help",
-        "label": "Discord"
-      },
-      {
-        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
-        "label": "Office Hours"
-      },
-      {
-        "detail": "john.newsom@utsa.edu (private matters only)",
-        "label": "Email"
-      }
-    ],
-    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
-    "genAI": {
-      "permitted": [
-        "Explain command syntax and tool functionality",
-        "Troubleshoot errors and technical issues",
-        "Understand concepts from assigned readings",
-        "Proofread and grammar check",
-        "Suggest report structure improvements"
-      ],
-      "prohibited": [
-        "Write entire sections of reports",
-        "Answer quiz questions directly",
-        "Generate fake screenshots or outputs",
-        "Complete hands-on exercises on your behalf"
-      ],
-      "principle": "AI is a tutor, not a ghostwriter."
-    },
-    "whatsNext": {
-      "text": "Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data."
-    }
+   ]
   }
+ },
+ "youAlreadyHave": {
+  "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.",
+  "sections": [
+   {
+    "title": "From Unit 1 — Lab 2.1: Cryptographic Foundations",
+    "items": [
+     "Hash function demonstrations (SHA-256 comparison showing avalanche effect)",
+     "Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)",
+     "Asymmetric encryption with RSA keypairs",
+     "Digital signature creation and verification",
+     "9 screenshots (01-hash-sha256.png through 09-signature-verify.png)"
+    ]
+   },
+   {
+    "title": "From Unit 2 — Lab 2.2: Authentication Systems",
+    "items": [
+     "SSH key generation — RSA and ED25519 comparison",
+     "File permission security demonstration (break/fix cycle)",
+     "SSH authorized_keys and config file setup",
+     "Multi-factor authentication configuration and verification",
+     "8 screenshots (10-keygen-rsa.png through 17-mfa-login.png)"
+    ]
+   },
+   {
+    "title": "New This Unit — Lab 2.3",
+    "items": [
+     "Title Page, Table of Contents, Executive Summary",
+     "Certificate diagnosis and remediation documentation",
+     "Risk analysis and HIPAA compliance recommendations",
+     "Professional Reflection, References, Appendix"
+    ],
+    "badge": "NEW"
+   }
+  ],
+  "callouts": [
+   {
+    "type": "callout",
+    "calloutType": "tip",
+    "title": "You're Already 60–70% Done",
+    "body": "If you followed the Unit 1–2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+   },
+   {
+    "type": "tip",
+    "icon": "check_circle",
+    "title": "You&#8217;re Already 60&#8211;70% Done",
+    "text": "If you followed the Unit 1&#8211;2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+   }
+  ]
+ },
+ "timeGuide": {
+  "rows": [
+   {
+    "task": "Checkpoint 1: Deploy Container and Diagnose",
+    "time": "30-45 min"
+   },
+   {
+    "task": "Checkpoint 2: Certificate Remediation",
+    "time": "45-60 min"
+   },
+   {
+    "task": "Checkpoint 3: Verification and Bonus Findings",
+    "time": "20-30 min"
+   },
+   {
+    "task": "Checkpoint 4: Compile Engagement Packet",
+    "time": "120-150 min"
+   }
+  ],
+  "totalRow": {
+   "label": "Total Estimated Time",
+   "time": "4-5 hours"
+  },
+  "timesheetNote": "Unit 3 is your first client-billable unit. Checkpoint 1–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 4 (Engagement Packet compilation) is billable time as well — document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable."
+ },
+ "checkpoints": [
+  {
+   "number": 1,
+   "title": "Deploy Container and Diagnose",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Deploying the Gulf Coast patient portal container and documenting the broken state before making any changes.",
+     "whyItMatters": "HIPAA requires documentation of security incidents and remediation. &#8220;Before&#8221; evidence proves due diligence for auditors. If you fix it first and document after, you have no proof of what the original problem was."
+    },
+    {
+     "part": "Part A: Deploy the Gulf Coast portal container",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Create a working directory for this engagement:",
+       "command": "mkdir -p ~/lab2-gulfcoast",
+       "whatThisDoes": null
+      },
+      {
+       "text": "Change into your working directory:",
+       "command": "cd ~/lab2-gulfcoast",
+       "whatThisDoes": null
+      },
+      {
+       "text": "Pull and start the Gulf Coast patient portal container:",
+       "command": "sudo docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal jfnewsom/gulfcoast-portal",
+       "whatThisDoes": {
+        "concept": "This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal &#8212; an Apache web server with a deliberately expired SSL certificate.",
+        "output": null,
+        "flags": [
+         {
+          "flag": "-d",
+          "description": "Run in background (detached mode)"
+         },
+         {
+          "flag": "-p 443:443",
+          "description": "Map HTTPS port from container to host"
+         },
+         {
+          "flag": "-p 2222:22",
+          "description": "Map SSH to port 2222 so it doesn&#8217;t conflict with your Kali SSH service"
+         },
+         {
+          "flag": "--name gulfcoast-portal",
+          "description": "Assign a friendly name for later docker commands"
+         },
+         {
+          "flag": "jfnewsom/gulfcoast-portal",
+          "description": "The Docker Hub image to pull"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "part": "Part B: Document the broken state",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Open Firefox and navigate to <code>https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.",
+       "command": null,
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the browser certificate error. Save as <code>gulfcoast-01-initial-error.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": null,
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Check the certificate dates from your Kali terminal:",
+       "command": "openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates",
+       "whatThisDoes": {
+        "concept": "This connects to the HTTPS server like a browser would, grabs the certificate, and displays its validity dates. The <code>notBefore</code> and <code>notAfter</code> dates tell you when the certificate was issued and when it expired.",
+        "output": "The <code>notAfter</code> date should be in the past, confirming the certificate has expired.",
+        "flags": [
+         {
+          "flag": "2>/dev/null",
+          "description": "Suppresses noisy connection info"
+         },
+         {
+          "flag": "-noout",
+          "description": "Prevents printing the raw certificate"
+         },
+         {
+          "flag": "-dates",
+          "description": "Shows only the validity period"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the openssl output showing the expired certificate dates. Save as <code>gulfcoast-02-cert-expired.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "<strong>Port conflict:</strong> Stop other containers using ports 443 or 2222 before running this command",
+      "<strong>Docker not running:</strong> If you get a &#8220;permission denied&#8221; error, make sure Docker is running and try adding <code>sudo</code>",
+      "<strong>Take screenshots NOW:</strong> You cannot recreate &#8220;before&#8221; evidence after fixing the certificate"
+     ],
+     "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "Gulf Coast portal container running and accessible. Screenshots documenting the initial broken state: browser warning and expired certificate dates from openssl. These &#8220;before&#8221; screenshots are critical audit evidence.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Textbook Reference",
+     "text": null,
+     "calloutType": "textbookReference",
+     "body": "Chapter 6 covers Secure Protocols and cipher suites, including how TLS certificates authenticate servers and establish encrypted connections. The expired certificate warning you&#8217;re documenting is what happens when certificate management fails &#8212; a gap between cryptographic intent and operational reality that Chapter 6&#8217;s coverage of secure protocol use cases makes concrete."
+    },
+    {
+     "type": "callout",
+     "icon": "search",
+     "title": "Dig Deeper",
+     "text": "What is a self-signed certificate and when is it appropriate to use one? Research the trust implications of self-signed vs. CA-signed certificates.",
+     "calloutType": "digDeeper"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "That&#8217;s a Reference!",
+     "text": "Chapter 7 discusses certificate types and PKI hierarchy. Let&#8217;s Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/",
+     "calloutType": "thatsAReference"
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "title": "Certificate Remediation",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.",
+     "whyItMatters": "Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow &#8212; using the existing private key to generate a new request, then signing with the CA &#8212; ensures continuity without regenerating keys."
+    },
+    {
+     "character": "Maria Delgado, PhD",
+     "headshot": "maria-delgado.png",
+     "type": "callout",
+     "calloutType": "characterQuote",
+     "title": "Security Compliance Specialist, NEXUS Security",
+     "quote": "The README in the PKI directory is your roadmap. Real infrastructure always has documentation &#8212; sometimes outdated, sometimes incomplete &#8212; but always your starting point. Read it before you touch anything."
+    },
+    {
+     "part": "Part A: SSH into the container and explore the PKI structure",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "SSH into the Gulf Coast portal container (password: <code>nexus2026</code>):",
+       "command": "ssh -p 2222 student@localhost",
+       "whatThisDoes": null
+      },
+      {
+       "text": "Navigate to the PKI directory and read the documentation:",
+       "command": "cd /opt/gulfcoast-pki",
+       "whatThisDoes": null
+      },
+      {
+       "text": "Read the README left by the previous administrator:",
+       "command": "cat README.txt",
+       "whatThisDoes": null
+      },
+      {
+       "text": "Explore the directory structure:",
+       "command": "ls -la CA/ certs/ csr/",
+       "whatThisDoes": {
+        "concept": "You&#8217;re mapping the PKI infrastructure before making changes. The <code>CA/</code> directory holds the root Certificate Authority (<code>ca.crt</code> and <code>ca.key</code>). The <code>certs/</code> directory holds the server certificates including the expired <code>portal.crt</code>. The <code>csr/</code> directory is your working space for new certificate signing requests.",
+        "output": "Note the file permissions &#8212; the CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.",
+        "flags": null
+       }
+      }
+     ]
+    },
+    {
+     "part": "Part B: Generate a new Certificate Signing Request (CSR)",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Generate a new CSR using the existing private key:",
+       "command": "openssl req -new -key certs/portal.key -out csr/portal-new.csr -subj \"/C=US/ST=Texas/L=Houston/O=Gulf Coast Healthcare Partners/CN=portal.gulfcoast.local\"",
+       "whatThisDoes": {
+        "concept": "A Certificate Signing Request (CSR) is a formal application for a new certificate. It contains your public key and identity information, signed with your private key to prove ownership. The CA uses this to issue a new certificate without ever needing your private key.",
+        "output": null,
+        "flags": [
+         {
+          "flag": "req -new",
+          "description": "Create a new CSR"
+         },
+         {
+          "flag": "-key certs/portal.key",
+          "description": "Use the existing private key (no need to regenerate)"
+         },
+         {
+          "flag": "-out csr/portal-new.csr",
+          "description": "Output file for the CSR"
+         },
+         {
+          "flag": "-subj",
+          "description": "Provides identity fields inline (C=country, ST=state, L=locality, O=organization, CN=common name)"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the CSR generation command and output. Save as <code>gulfcoast-03-csr-generation.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": "Part C: Sign the CSR with the Certificate Authority",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Sign the CSR using the CA certificate and key (requires sudo because the CA key is root-owned):",
+       "command": "sudo openssl x509 -req -in csr/portal-new.csr -CA CA/ca.crt -CAkey CA/ca.key -CAcreateserial -out certs/portal-new.crt -days 365 -sha256",
+       "whatThisDoes": {
+        "concept": "The CA &#8220;signs&#8221; your CSR by combining your identity and public key with the CA&#8217;s digital signature. Anyone who trusts the CA can now verify your certificate is legitimate. This is the chain of trust in action.",
+        "output": "You&#8217;ll see &#8220;Certificate request self-signature ok&#8221; followed by the subject line. The sudo password is <code>nexus2026</code>.",
+        "flags": [
+         {
+          "flag": "x509 -req",
+          "description": "Process a CSR into a signed certificate"
+         },
+         {
+          "flag": "-CA / -CAkey",
+          "description": "Specify the signing Certificate Authority and its key"
+         },
+         {
+          "flag": "-CAcreateserial",
+          "description": "Generate a unique serial number for this certificate"
+         },
+         {
+          "flag": "-days 365",
+          "description": "Set one-year validity period"
+         },
+         {
+          "flag": "-sha256",
+          "description": "Use modern hashing algorithm for the signature"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>gulfcoast-04-cert-signing.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": "Part D: Install the new certificate",
+     "role": "cleanup",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Copy the new certificate into Apache&#8217;s SSL directory:",
+       "command": "sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt",
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the certificate installation command. Save as <code>gulfcoast-05-cert-installation.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "<strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code> &#8212; confirm with <code>ls -la</code>",
+      "<strong>Permission denied on CA key:</strong> The CA private key is root-owned. You need <code>sudo</code> for the signing step",
+      "<strong>Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate"
+     ],
+     "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "A new signed certificate installed in place of the expired one. Screenshots documenting the CSR generation, CA signing process, and certificate installation.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Textbook Reference",
+     "text": null,
+     "calloutType": "textbookReference",
+     "body": "Chapter 6 covers applied cryptography in practice, including asymmetric key pairs and how they underpin the certificate signing workflow. The CSR you generate reuses the existing private key while the public component travels through the signing process &#8212; exactly the asymmetric key management pattern Chapter 6 describes."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "title": "Verification and Bonus Findings",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.",
+     "whyItMatters": "Verification proves the fix worked. Combined with your &#8220;before&#8221; screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success."
+    },
+    {
+     "part": "Part A: Restart Apache and verify the fix",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Restart Apache to load the new certificate:",
+       "command": "sudo service apache2 restart",
+       "whatThisDoes": {
+        "concept": null,
+        "output": "Restarting Apache inside the Docker container will close your SSH connection. You&#8217;ll see &#8220;Connection to localhost closed by remote host.&#8221; This is normal. The container may also stop.",
+        "flags": null
+       }
+      },
+      {
+       "text": "From your Kali terminal, restart the container if needed:",
+       "command": "sudo docker start gulfcoast-portal",
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the Apache restart and container restart. Save as <code>gulfcoast-06-apache-restart.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": null,
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "From your Kali terminal (not inside the container), verify the new certificate dates:",
+       "command": "openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates",
+       "whatThisDoes": {
+        "concept": null,
+        "output": "The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.",
+        "flags": null
+       }
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the new certificate dates showing future expiration. Save as <code>gulfcoast-07-cert-valid.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": null,
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "Refresh <code>https://localhost</code> in Firefox &#8212; the expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).",
+       "command": null,
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture the browser showing the portal without an expired certificate warning. Save as <code>gulfcoast-08-browser-success.png</code>",
+     "calloutType": "screenshot"
+    },
+    {
+     "part": "Part B: Bonus &#8212; Hunt for additional findings",
+     "role": "optional",
+     "start": 1,
+     "type": "steps",
+     "steps": [
+      {
+       "text": "SSH back into the container and investigate the following areas. Document anything concerning in your report:",
+       "command": "ssh -p 2222 student@localhost",
+       "whatThisDoes": null
+      },
+      {
+       "text": "What permissions does the portal private key have? Are they appropriate?",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "What signature algorithm does the CA certificate use? Is it still considered secure?",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "When does the CA certificate itself expire?",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "What TLS protocol versions does the Apache configuration allow?",
+       "command": null,
+       "whatThisDoes": null
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "search",
+     "title": "Bonus Discovery",
+     "text": "SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client.",
+     "calloutType": "goBeyond"
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "SSH session disconnects on Apache restart — this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal",
+      "Certificate change not reflected — if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.",
+      "Self-signed trust warning persists in browser — this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.",
+      "Missing 'before' screenshots — you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report."
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The &#8220;after&#8221; evidence combined with your &#8220;before&#8221; screenshots creates a complete remediation audit trail.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Textbook Reference",
+     "text": null,
+     "calloutType": "textbookReference",
+     "body": "Chapter 6 covers cryptographic attacks and cipher suite weaknesses, including how obsolete algorithms remain negotiable on misconfigured servers. Beyond the expired certificate, any weak cipher findings represent the attack surface Chapter 6&#8217;s &#8220;Cryptographic Attacks&#8221; section describes &#8212; exploitable not through the algorithm itself but through how it&#8217;s deployed."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "title": "Compile Engagement Packet",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Compiling all three units of Module 2 work into a professional Engagement Packet.",
+     "whyItMatters": "This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
+    },
+    {
+     "type": "callout",
+     "icon": "error",
+     "title": "One Document, Two Parts",
+     "text": "Your Engagement Packet is <strong>one .docx file</strong> containing both parts in this order: Part I (Internal Packet) followed by Part II (Client Deliverable). Do not submit separate files.",
+     "calloutType": "required"
+    },
+    {
+     "sections": [
+      {
+       "label": "Part I: Internal Packet (40% of grade)",
+       "description": "Timesheet (5%) &#8212; hours across all 3 units, split Internal Training vs. Client Billable. Units 1&#8211;2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%) &#8212; man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work. Analyst Reflection (15%) &#8212; honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A."
+      },
+      {
+       "label": "Part II: Client Deliverable (60% of grade)",
+       "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) &#8212; one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%) &#8212; client-facing narrative of your approach. Findings (22%) &#8212; certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) &#8212; HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%) &#8212; prioritized (immediate fixes vs. longer-term hardening)."
+      }
+     ],
+     "type": "callout",
+     "calloutType": "reportSections"
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I (Internal Packet)",
+     "items": [
+      "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
+      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
+      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II (Client Deliverable)",
+     "items": [
+      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
+      "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
+      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul>",
+      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul>"
+     ]
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Full Engagement Packet Structure",
+     "items": [
+      "PART I (Internal Packet)",
+      "Timesheet",
+      "Runbook (man-page style)",
+      "Analyst Reflection",
+      "PART II (Client Deliverable)",
+      "Cover Page",
+      "Executive Summary (1 page)",
+      "Table of Contents",
+      "Methodology",
+      "Findings (numbered, severity-ordered)",
+      "Risk Analysis",
+      "Recommendations (prioritized)",
+      "Appendix (raw outputs, additional screenshots)",
+      "References (minimum 10)"
+     ],
+     "calloutType": "reportStructure"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Runbook Format: Like a Man Page",
+     "body": "Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you&#8217;d reach for it). <strong>Switches used</strong> (each flag you used on Gulf Coast with a one-line explanation). <strong>Switches for future use</strong> (flags you didn&#8217;t use this time but should know). <strong>How you used it</strong> (your actual command). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.",
+     "calloutType": "tip"
+    },
+    {
+     "type": "callout",
+     "icon": "psychology",
+     "title": "Analyst Reflection: Honest, Not Performative",
+     "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit &#8212; even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
+     "calloutType": "tip"
+    },
+    {
+     "type": "callout",
+     "icon": "lightbulb",
+     "title": "Executive Summary Tips",
+     "text": "Write for Jennifer Walsh (CISO), not technical staff. Lead with finding and fix, not methodology.",
+     "calloutType": "tip"
+    },
+    {
+     "type": "callout",
+     "icon": "warning",
+     "title": "Common Pitfalls",
+     "items": [
+      "<strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero",
+      "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-abc123)",
+      "<strong>Fewer than 10 references:</strong> Man pages, RFCs, and textbook chapters all count"
+     ],
+     "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "callout",
+     "icon": "check_circle",
+     "title": "What You Should Have",
+     "text": "A complete Engagement Packet in .docx format containing all 12 required sections, 25+ screenshots, and minimum 10 references.",
+     "calloutType": "whatYouShouldHave"
+    },
+    {
+     "type": "callout",
+     "icon": "menu_book",
+     "title": "Textbook Reference",
+     "text": "Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.",
+     "calloutType": "textbookReference",
+     "body": "Chapter 11&#8217;s &#8220;Cloud vs. On-premises Requirements&#8221; section is directly relevant here: Gulf Coast&#8217;s patient portal runs in a container now, but the authentication and compliance controls you&#8217;re documenting must account for where systems will live. Chapter 11 explains how authentication requirements shift between on-premises and cloud environments &#8212; a distinction that belongs in your professional recommendations for a healthcare client with a cloud migration ahead."
+    }
+   ]
+  }
+ ],
+ "purpleTeam": {
+  "redTeam": {
+   "type": "items",
+   "label": "What Red Team Learns",
+   "items": [
+    "Expired certificates are reconnaissance gold",
+    "Users trained to click through warnings make phishing easier",
+    "SHA-1 signatures reveal old infrastructure"
+   ]
+  },
+  "blueTeam": {
+   "type": "items",
+   "label": "What Blue Team Learns",
+   "items": [
+    "Certificate lifecycle is a visibility problem",
+    "Defenders implement monitoring, automated renewal (ACME), and inventory management"
+   ]
+  },
+  "connection": "You&#8217;re fixing an expired cert (blue) while hunting for additional findings (red). Jennifer Walsh hired NEXUS for someone who sees the whole picture."
+ },
+ "finalChecklist": {
+  "screenshotTable": null,
+  "sections": [
+   {
+    "items": [
+     "All 12 required sections in correct order",
+     "File saved as .docx (NOT PDF)",
+     "Spell-checked and proofread"
+    ],
+    "title": "Document Requirements"
+   },
+   {
+    "items": [
+     "25+ screenshots total (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3)",
+     "VM hostname visible in every screenshot"
+    ],
+    "title": "Screenshots"
+   },
+   {
+    "items": [
+     "Minimum 10 references (man pages count!)"
+    ],
+    "title": "References"
+   }
+  ],
+  "canvasSubmission": "Submit your completed Engagement Packet to the <strong>Lab 2.3 Assignment</strong> in Canvas as a single .docx file.",
+  "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting.",
+  "deadlineTip": {
+   "title": "Deadline Tip",
+   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  }
+ },
+ "gradingStandards": {
+  "qualityLadder": {
+   "partI_internal": {
+    "weight": "40%",
+    "components": {
+     "timesheet": "5%",
+     "runbook": "20%",
+     "analystReflection": "15%"
+    }
+   },
+   "partII_client": {
+    "weight": "60%",
+    "components": {
+     "executiveSummary": "12%",
+     "methodology": "7%",
+     "findings": "22%",
+     "riskAnalysis": "11%",
+     "recommendations": "8%"
+    },
+    "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+   }
+  },
+  "penalties": [
+   {
+    "penalty": "-5%",
+    "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+   },
+   {
+    "penalty": "-20%",
+    "condition": "Appendix missing from Part II Client Deliverable."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Executive Summary exceeds one page."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Cover Page missing."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
+   }
+  ],
+  "penaltyCap": "Combined deductions cap at -100%.",
+  "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+  "bonus": null,
+  "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
+ },
+ "needHelp": {
+  "customCallouts": [
+   {
+    "type": "tip",
+    "icon": "cleaning_services",
+    "title": "Cleanup After Submitting",
+    "text": "After submitting, clean up the Docker container:<br><code>sudo docker stop gulfcoast-portal</code><br><code>sudo docker rm gulfcoast-portal</code>"
+   }
+  ],
+  "channels": [
+   {
+    "detail": "#module-2-help",
+    "label": "Discord"
+   },
+   {
+    "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+    "label": "Office Hours"
+   },
+   {
+    "detail": "john.newsom@utsa.edu (private matters only)",
+    "label": "Email"
+   }
+  ],
+  "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+  "genAI": {
+   "permitted": [
+    "Explain command syntax and tool functionality",
+    "Troubleshoot errors and technical issues",
+    "Understand concepts from assigned readings",
+    "Proofread and grammar check",
+    "Suggest report structure improvements"
+   ],
+   "prohibited": [
+    "Write entire sections of reports",
+    "Answer quiz questions directly",
+    "Generate fake screenshots or outputs",
+    "Complete hands-on exercises on your behalf"
+   ],
+   "principle": "AI is a tutor, not a ghostwriter."
+  },
+  "whatsNext": {
+   "text": "Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data."
+  }
+ }
 }

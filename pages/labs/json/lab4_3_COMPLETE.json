@@ -1,789 +1,797 @@
 {
-  "meta": {
-    "labId": "4_3",
-    "title": "Password Security Assessment",
-    "labType": "engagement",
-    "module": "Module 4: Threats &#38; Attacks",
-    "chapters": [
-      "Chapter 15 — Types of Attacks",
-      "Chapter 16 — Security Assessment Tools"
-    ]
-  },
-  "intro": {
-    "overview": "This is your Unit 3 Engagement Packet for Module 4. You’ve spent the last two units conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
-    "objectives": [
-      "Compile a professional security assessment report using work from Labs 4.1 and 4.2",
-      "Compare Windows NTLM and Linux SHA-512 password security architectures",
-      "Develop client-specific, prioritized remediation recommendations",
-      "Write an executive summary for non-technical stakeholders",
-      "Document professional reflection on the engagement"
-    ],
-    "focusAreas": [
-      "Platform security comparison (NTLM vs SHA-512)",
-      "Professional security report writing",
-      "Executive-level risk communication",
-      "Prioritized remediation recommendations",
-      "OSINT-informed password analysis"
-    ],
-    "clientContext": {
-      "client": "Brazos Financial Group & Alamo Industries",
-      "description": "This engagement packet spans two NEXUS clients: Brazos Financial Group (Dallas wealth management, SEC examination pending) and Alamo Industries (San Antonio aerospace/defense, CMMC Level 2 in progress). You'll deliver an authentication and access-control assessment that addresses both regulatory contexts.",
-      "contacts": [
-        {
-          "name": "Ray Jimenez",
-          "title": "CISO, Brazos Financial Group",
-          "quote": "The SEC examiners are going to ask how we handle privileged access. I need an answer that holds up."
-        },
-        {
-          "name": "Robert \"Bobby\" Alamo III",
-          "title": "CEO, Alamo Industries",
-          "quote": "We can&#8217;t afford a production-floor incident. Show me where the credential gaps are and what fixing them costs."
-        }
-      ]
-    },
-    "callouts": [
-      {
-        "type": "error",
-        "title": "Required: DOCX Format",
-        "icon": "error",
-        "text": "Submit as <strong>.docx (Microsoft Word) only</strong>. PDF submissions will not be accepted."
-      },
-      {
-        "type": "warning",
-        "title": "Minimum Requirements",
-        "icon": "warning",
-        "body": "Your Engagement Packet must include: all 12 required sections in order, 12+ screenshots embedded (6 from each Foundation Lab), VM hostname visible in every terminal screenshot, and a minimum of 10 references. Textbook chapters, RFCs, NIST documents, and man pages all count."
-      },
-      {
-        "type": "warning",
-        "title": "Deadline Tip",
-        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-      }
-    ],
-    "mentorQuote": {
-      "character": "Marcus Chen",
-      "title": "Founder & Principal, NEXUS Security",
-      "headshot": "marcus-chen.png",
-      "quote": "This report goes to two very different clients with very different concerns. Ray Jimenez at Brazos needs data to convince his board that current policies are inadequate. Bobby Alamo III needs CMMC evidence for his DoD contracts. Same technical work, different audiences. Your executive summary has to work for both."
-    }
-  },
-  "youAlreadyHave": {
-    "intro": "This is NOT starting from scratch. You’ve been building this report for 3 units.",
-    "sections": [
-      {
-        "title": "From Unit 1 (Lab 4.1 — Windows Password Cracking)",
-        "items": [
-          "Brazos Financial NTLM hash extraction methodology",
-          "John the Ripper execution and results (Windows)",
-          "Hashcat execution and results (Windows)",
-          "Cracked passwords table with timestamps",
-          "Screenshots of Windows cracking process"
-        ]
-      },
-      {
-        "title": "From Unit 2 (Lab 4.2 — Linux Password Cracking)",
-        "items": [
-          "Alamo Industries SHA-512 hash extraction methodology",
-          "John the Ripper execution and results (Linux)",
-          "Hashcat execution and results (Linux)",
-          "Cracked passwords table with timestamps",
-          "Screenshots of Linux cracking process",
-          "Performance comparison notes (NTLM vs SHA-512)"
-        ]
-      },
-      {
-        "title": "NEW This Unit",
-        "items": [
-          "Part II: Cover Page, Executive Summary, Methodology",
-          "Part I: Timesheet with all 3 units, plus Analyst Reflection",
-          "Part II: Platform Comparison Analysis (NTLM vs SHA-512) as Findings",
-          "Part II: Client-Specific Recommendations (Brazos + Alamo)",
-          "Part II: Risk Analysis, Recommendations, Appendix with references"
-        ],
-        "badge": "NEW"
-      }
-    ]
-  },
-  "timeGuide": {
-    "rows": [
-      {
-        "task": "Checkpoint 1: Report Setup & Unit 1-2 Compilation",
-        "time": "45–60 min"
-      },
-      {
-        "task": "Checkpoint 2: Platform Comparison Analysis",
-        "time": "60–90 min"
-      },
-      {
-        "task": "Checkpoint 3: Client Recommendations",
-        "time": "45–60 min"
-      },
-      {
-        "task": "Checkpoint 4: Executive Summary & Final Polish",
-        "time": "45–60 min"
-      }
-    ],
-    "totalRow": {
-      "label": "TOTAL",
-      "time": "3–4.5 hours"
-    },
-    "timesheetNote": "This is Unit 3 of a 3-unit module &#8212; your first Engagement Packet with <em>two</em> clients. All time this unit is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3&#8211;4.5 hours &#8212; Password Security Assessment</em>. You should already have 20 screenshots from Labs 4.1 and 4.2 in your <code>Module4_Screenshots</code> folder &#8212; verify the count before you begin.",
-    "tipCallout": {
-      "title": "You’re Already 60–70% Done",
-      "text": "If you followed the Unit 1-2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
-    }
-  },
-  "checkpoints": [
-    {
-      "number": 1,
-      "title": "Report Setup & Unit 1-2 Compilation",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "The foundation of your Engagement Packet — creating the document structure and importing all your existing work from Labs 4.1 and 4.2.",
-          "whyItMatters": "Professional security reports follow consistent structures. The 12-section format we use mirrors real engagement deliverables. Starting with proper organization makes the analysis sections flow naturally."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I (Internal Packet)",
-          "items": [
-            "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 4.1 (internal training), Lab 4.2 (internal training), Lab 4.3 (client billable to Brazos Financial and Alamo Industries)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
-            "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 4.1, 4.2, and 4.3 (John the Ripper, Hashcat, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the engagement (the actual command, including hash mode and attack mode)</li><li>What output came back (with screenshot reference, including cracked passwords or session statistics)</li><li>What you did with the result (how it fed into your platform comparison or Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
-            "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (a hash mode that wouldn&#8217;t crack, attack mode selection, troubleshooting a Hashcat error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this password security assessment for Brazos and Alamo again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d benchmark rules-based attacks before brute force&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain Hashcat mask syntax; I confirmed against the Hashcat documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II (Client Deliverable)",
-          "items": [
-            "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences (cover both Brazos and Alamo)</li><li>Count of cracked credentials by platform (e.g., &#8220;Windows: 47% of hashes cracked &#8212; Linux: 12%&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing for each client</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Ray Jimenez and Bobby Alamo III &#8212; every line should tie to credential risk and business impact</li></ul>",
-            "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach across both platforms</li><li>Phases of the engagement (e.g., hash extraction &#8594; identification &#8594; attack mode selection &#8594; cracking &#8594; cross-platform analysis)</li><li>Scope and limitations: what was in scope, what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
-            "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Domain Administrators Using Easily-Cracked Passwords&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected platform (Windows NTLM / Linux SHA-512) and client (Brazos / Alamo)</li><li>Description, including hash type, crack time, and attack method that succeeded</li><li>Evidence: reference to your screenshot(s) or session output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (lateral movement risk, credential reuse, regulatory exposure)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
-            "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context per client: Brazos (financial services, regulatory exposure) vs. Alamo (manufacturing, IP and operational continuity)</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to each business</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-63B Digital Identity Guidelines, CIS Controls)</li></ul>",
-            "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Differentiated by client (some recs apply only to Brazos&#8217;s Windows environment, others to Alamo&#8217;s Linux environment)</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-63B, CIS Controls v8, NIST CSF)</li></ul>"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "How should organizations respond to a password breach? Research incident response procedures for compromised credentials."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "NIST SP 800-61 Rev. 2 - Computer Security Incident Handling Guide. Available at: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Create a new Word document.",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create your Title Page with the following information:",
-              "whatThisDoes": null,
-              "substeps": [
-                "Report title: \"Password Security Assessment: Platform Comparison Report\"",
-                "Clients: Brazos Financial Group & Alamo Industries",
-                "Your name, course info, and date"
-              ]
-            },
-            {
-              "text": "Set up section headers for all 12 required sections (see table below)",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Environment Specifications from Lab 4.1",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Tool Documentation (John & Hashcat) from Labs 4.1 and 4.2",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Assessment Results (cracking outputs) from both labs",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import all 12 screenshots into appropriate sections",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create placeholder Table of Contents (Word will auto-generate from headings)",
-              "whatThisDoes": null,
-              "substeps": null
-            }
-          ]
-        },
-        {
-          "type": "table",
-          "title": "Required Report Sections",
-          "rows": [
-            [
-              "1",
-              "Title Page",
-              "NEW"
-            ],
-            [
-              "2",
-              "Executive Summary",
-              "NEW (Checkpoint 4)"
-            ],
-            [
-              "3",
-              "Table of Contents",
-              "NEW"
-            ],
-            [
-              "4",
-              "Environment Specifications",
-              "Lab 4.1"
-            ],
-            [
-              "5",
-              "Tool Documentation",
-              "Labs 4.1 & 4.2"
-            ],
-            [
-              "6",
-              "Assessment Results",
-              "Labs 4.1 & 4.2"
-            ],
-            [
-              "7",
-              "Platform Comparison",
-              "NEW (Checkpoint 2)"
-            ],
-            [
-              "8",
-              "Risk Analysis",
-              "NEW (Checkpoint 3)"
-            ],
-            [
-              "9",
-              "Recommendations",
-              "NEW (Checkpoint 3)"
-            ],
-            [
-              "10",
-              "Professional Reflection",
-              "NEW (Checkpoint 4)"
-            ],
-            [
-              "11",
-              "References",
-              "NEW (10 minimum)"
-            ],
-            [
-              "12",
-              "Appendix",
-              "Raw outputs from labs"
-            ]
-          ],
-          "columns": [
-            "#",
-            "Section",
-            "Source"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Missing screenshots",
-              "text": "Check your Lab4-Screenshots folder BEFORE starting. Count them."
-            },
-            {
-              "label": "Inconsistent headings",
-              "text": "Use Word’s built-in heading styles for proper Table of Contents generation."
-            },
-            {
-              "label": "Copy/paste formatting",
-              "text": "Use “Paste Special > Unformatted Text” to avoid carrying over weird formatting."
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 16: Security Assessment Tools",
-          "text": null,
-          "body": "Chapter 16 covers security assessment methodology, including how penetration test findings are structured for reporting. Your Engagement Packet follows the same workflow Chapter 16 describes: document the tools used, record the methodology applied, and organize findings in a format the client can act on."
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A Word document with all 12 section headers, imported content from Units 1-2, all 12 screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
-        }
-      ]
-    },
-    {
-      "number": 2,
-      "title": "Platform Comparison Analysis",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "The core analytical work of your report — comparing Windows NTLM and Linux SHA-512 password security architectures using your own cracking data.",
-          "whyItMatters": "This is THE teaching moment of Module 4. You have empirical evidence showing that the same password cracks thousands of times faster on Windows than Linux. The difference isn’t password complexity — it’s defensive architecture. This is why security professionals argue about platform choices."
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Create a speed comparison table using your actual data:",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Answer these four analysis questions in your report:",
-              "whatThisDoes": null,
-              "substeps": [
-                "Why did NTLM hashes crack faster than SHA-512?",
-                "What defensive mechanisms does Linux use that Windows NTLM lacks?",
-                "Which client faces greater credential risk? Why?",
-                "What would you recommend each client prioritize?"
-              ]
-            },
-            {
-              "text": "Explain the technical reasons for speed differences:",
-              "whatThisDoes": null,
-              "substeps": [
-                "NTLM: Single-pass MD4, no salt, no iterations",
-                "SHA-512: Salted, 5000+ rounds of key derivation"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "Why does Windows still use NTLM? Research backward compatibility requirements and Active Directory authentication. Microsoft has been trying to deprecate NTLM for over a decade — why is it still everywhere?"
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "If you research NTLM architecture, add it to your references: Microsoft Docs — NTLM Overview. Also add: Linux crypt(3) man page for SHA-512 implementation details."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Generic comparisons",
-              "text": "Use YOUR actual H/s data, not hypotheticals."
-            },
-            {
-              "label": "Missing the “why”",
-              "text": "Don’t just say “SHA-512 is slower” — explain salting and key stretching."
-            },
-            {
-              "label": "Forgetting business context",
-              "text": "Connect technical findings to each client’s situation."
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "chapter": "Chapter 15: Types of Attacks",
-          "text": null,
-          "body": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section covers brute force, dictionary attacks, and rainbow tables &#8212; the techniques you applied hands-on in Labs 4.1 and 4.2. Your platform comparison analysis translates Chapter 15&#8217;s theory into observed results: why NTLM without salting falls to rainbow tables while SHA-512 with per-user salts demands targeted, slower attacks."
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A completed Platform Comparison section with a data table showing your actual H/s metrics, calculated differences (e.g., “NTLM cracked 8,500x faster”), and thoughtful answers to all four analysis questions with technical explanations."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Client Recommendations",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Tailored, prioritized remediation recommendations for both Brazos Financial and Alamo Industries based on your findings and their specific business contexts.",
-          "whyItMatters": "Security findings without actionable recommendations are just bad news. Clients hire consultants for solutions, not just problems. Your recommendations need to be specific, prioritized, and consider each client’s unique constraints and objectives."
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "What is credential stuffing and how does it differ from password spraying? Research how attackers use breached credential databases."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "OWASP Credential Stuffing Prevention Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
-        },
-        {
-          "type": "callout",
-          "calloutType": "characterQuote",
-          "character": "Ray Jimenez",
-          "title": "CTO, Brazos Financial Group",
-          "headshot": "ray-jimenez.png",
-          "quote": "I need ammunition for the board. They’ve been resistant to stricter password policies because ‘nothing has happened.’ Show me the data that proves our current approach is inadequate. Give me numbers I can put in a PowerPoint."
-        },
-        {
-          "type": "callout",
-          "calloutType": "characterQuote",
-          "character": "Bobby Alamo III",
-          "title": "CEO, Alamo Industries",
-          "headshot": "bobby-alamo.png",
-          "quote": "We’re working toward CMMC certification for our DoD contracts. I need documentation showing we’re addressing credential security. Elena keeps telling me the shared supervisor account is a problem — Frank keeps blocking changes. Give me evidence to settle this."
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Brazos Financial Recommendations (address NTLM weaknesses):",
-              "whatThisDoes": null,
-              "substeps": [
-                "Consider Active Directory migration path away from NTLM",
-                "Implement password complexity AND length requirements",
-                "Deploy MFA for all privileged accounts immediately",
-                "Establish password rotation policy with breach monitoring"
-              ]
-            },
-            {
-              "text": "Alamo Industries Recommendations (address shared accounts):",
-              "whatThisDoes": null,
-              "substeps": [
-                "Eliminate shared supervisor account (CMMC requirement)",
-                "Implement individual accountability for all access",
-                "Strengthen already-good SHA-512 implementation",
-                "Document controls for CMMC evidence package"
-              ]
-            },
-            {
-              "text": "Prioritize each recommendation using High / Medium / Low based on three factors:",
-              "whatThisDoes": null,
-              "substeps": [
-                "Risk severity — what happens if we don’t fix it?",
-                "Implementation complexity — how hard is this?",
-                "Business impact — does this affect operations?"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "icon": "book",
-          "text": "Chapter 15 covers password attack types including dictionary, hybrid, and OSINT-informed attacks. Your client-specific recommendations are grounded in the attack patterns described there. Chapter 16's coverage of security assessment methodology frames how your findings translate into prioritized, actionable guidance."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Generic recommendations",
-              "text": "“Use stronger passwords” isn’t actionable. Be specific."
-            },
-            {
-              "label": "Ignoring client context",
-              "text": "Brazos needs board ammunition; Alamo needs CMMC evidence."
-            },
-            {
-              "label": "Missing prioritization",
-              "text": "Not everything is “Critical” — rank your recommendations."
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "Completed Risk Analysis and Recommendations sections with client-specific, prioritized remediation steps. Each recommendation should include what to do, why it matters, and priority level. Connect technical findings to each client’s specific business needs."
-        }
-      ]
-    },
-    {
-      "number": 4,
-      "title": "Executive Summary & Final Polish",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "The executive-facing components of your report: a 1-page summary for non-technical readers, your professional reflection, and final quality checks.",
-          "whyItMatters": "Executives don’t read 20-page technical reports — they read the executive summary. If your summary doesn’t communicate the key findings and recommendations clearly, the entire report fails. This is where technical work becomes business communication."
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "text": "How do organizations enforce password policies at the system level? Research PAM (Pluggable Authentication Modules) configuration for password requirements."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "The pam_pwquality(8) man page explains password quality requirements. Linux-PAM documentation: http://www.linux-pam.org/"
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Write Executive Summary (1 page max):",
-              "whatThisDoes": null,
-              "substeps": [
-                "Engagement overview (who, what, why)",
-                "Key finding: Platform architecture dramatically affects password security",
-                "Top 3 risks (one sentence each)",
-                "Top 3 recommendations (one sentence each)",
-                "No jargon — a business executive should understand every word"
-              ]
-            },
-            {
-              "text": "Write Professional Reflection:",
-              "whatThisDoes": null,
-              "substeps": [
-                "What did you learn about password security that surprised you?",
-                "How would you approach a similar engagement differently?",
-                "What tools or techniques do you want to explore further?"
-              ]
-            },
-            {
-              "text": "Verify References (minimum 10):",
-              "whatThisDoes": null,
-              "substeps": [
-                "Textbook chapters cited correctly",
-                "NIST/OWASP/vendor documentation included",
-                "All URLs verified as accessible"
-              ]
-            },
-            {
-              "text": "Final Quality Checks:",
-              "whatThisDoes": null,
-              "substeps": [
-                "Update Table of Contents",
-                "Check page numbers throughout",
-                "Grammar and spelling review",
-                "Screenshot quality and captions"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "icon": "book",
-          "text": "Chapters 15 and 16 together provide the technical foundation for your executive summary. Chapter 15 explains why NTLM is architecturally weak (no salt, no key stretching). Chapter 16 covers security assessment reporting standards &#8212; the professional communication skills you're practicing here mirror real-world penetration test deliverables."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Executive Summary too technical",
-              "text": "Avoid jargon; write for non-technical readers."
-            },
-            {
-              "label": "Last-minute rushing",
-              "text": "Budget time for quality checks; they matter."
-            },
-            {
-              "label": "Missing references",
-              "text": "10 minimum is required; this is a straightforward requirement to meet."
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A complete, polished report with executive summary, professional reflection, 10+ references, and all 12 sections finalized. The document should be ready for submission with proper formatting, updated Table of Contents, and verified screenshot quality."
-        }
-      ]
-    }
+ "meta": {
+  "labId": "4_3",
+  "title": "Password Security Assessment",
+  "labType": "engagement",
+  "module": "Module 4: Threats &#38; Attacks",
+  "chapters": [
+   "Chapter 15 — Types of Attacks",
+   "Chapter 16 — Security Assessment Tools"
+  ]
+ },
+ "intro": {
+  "overview": "This is your Unit 3 Engagement Packet for Module 4. You’ve spent the last two units conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
+  "objectives": [
+   "Compile a professional security assessment report using work from Labs 4.1 and 4.2",
+   "Compare Windows NTLM and Linux SHA-512 password security architectures",
+   "Develop client-specific, prioritized remediation recommendations",
+   "Write an executive summary for non-technical stakeholders",
+   "Document professional reflection on the engagement"
   ],
-  "purpleTeam": {
-    "redTeam": {
-      "type": "items",
-      "label": "What Red Team Learns",
-      "items": [
-        {
-          "label": "Target Prioritization",
-          "text": "NTLM environments yield credentials faster — attack Windows AD before Linux systems."
-        },
-        {
-          "label": "OSINT Integration",
-          "text": "Character dossiers demonstrate how social media reconnaissance improves password attacks."
-        },
-        {
-          "label": "Report Writing",
-          "text": "Professional deliverables are part of the job — pentesters who can’t write don’t get promoted."
-        }
-      ]
+  "focusAreas": [
+   "Platform security comparison (NTLM vs SHA-512)",
+   "Professional security report writing",
+   "Executive-level risk communication",
+   "Prioritized remediation recommendations",
+   "OSINT-informed password analysis"
+  ],
+  "clientContext": {
+   "client": "Brazos Financial Group & Alamo Industries",
+   "description": "This engagement packet spans two NEXUS clients: Brazos Financial Group (Dallas wealth management, SEC examination pending) and Alamo Industries (San Antonio aerospace/defense, CMMC Level 2 in progress). You'll deliver an authentication and access-control assessment that addresses both regulatory contexts.",
+   "contacts": [
+    {
+     "name": "Ray Jimenez",
+     "title": "CISO, Brazos Financial Group",
+     "quote": "The SEC examiners are going to ask how we handle privileged access. I need an answer that holds up."
     },
-    "blueTeam": {
-      "type": "items",
-      "label": "What Blue Team Learns",
-      "items": [
-        {
-          "label": "Architecture Matters",
-          "text": "Password policy alone doesn’t fix NTLM — the hash algorithm is fundamentally weak."
-        },
-        {
-          "label": "Shared Accounts = No Accountability",
-          "text": "The shift_supervisor problem exists everywhere in OT environments."
-        },
-        {
-          "label": "Defense in Depth",
-          "text": "MFA, privileged access management, and credential monitoring compensate for weak hashes."
-        }
-      ]
-    },
-    "connection": "This module bridges attack and defense perspectives. You’ve used offensive tools (John the Ripper, Hashcat) to generate defensive intelligence (platform comparison, risk recommendations). This is purple team thinking: use attacker methodology to inform defender priorities."
-  },
-  "finalChecklist": {
-    "screenshotTable": null,
-    "sections": [
-      {
-        "title": "Report Sections (All 12 Required)",
-        "type": "checklist",
-        "items": [
-          "Title Page with report title, clients, your name, date",
-          "Executive Summary (1 page, non-technical language)",
-          "Table of Contents (auto-generated, updated)",
-          "Environment Specifications (from Lab 4.1)",
-          "Tool Documentation (John & Hashcat from Labs 4.1–4.2)",
-          "Assessment Results (cracking outputs from both clients)",
-          "Platform Comparison (NTLM vs SHA-512 with YOUR data)",
-          "Risk Analysis (business impact for each client)",
-          "Recommendations (prioritized, client-specific)",
-          "Professional Reflection",
-          "References (minimum 10)",
-          "Appendix (raw outputs)"
-        ]
-      },
-      {
-        "title": "Documentation Verification",
-        "type": "checklist",
-        "items": [
-          "12+ screenshots embedded (6 from each Foundation Lab)",
-          "VM name visible in all terminal screenshots",
-          "All screenshots captioned appropriately",
-          "10+ valid references listed"
-        ]
-      },
-      {
-        "title": "Submission Format",
-        "type": "checklist",
-        "items": [
-          "File format: .docx (NOT PDF)",
-          "Professional formatting throughout",
-          "Grammar and spelling checked"
-        ]
-      }
-    ],
-    "intro": "Verify all requirements before submitting to Canvas:",
-    "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline. <strong>PDF submissions are not accepted.</strong>",
-    "deadlineTip": {
-      "title": "Deadline Tip",
-      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    {
+     "name": "Robert \"Bobby\" Alamo III",
+     "title": "CEO, Alamo Industries",
+     "quote": "We can&#8217;t afford a production-floor incident. Show me where the credential gaps are and what fixing them costs."
     }
+   ]
   },
-  "gradingStandards": {
-    "qualityLadder": {
-      "partI_internal": {
-        "weight": "40%",
-        "components": {
-          "timesheet": "5%",
-          "runbook": "20%",
-          "analystReflection": "15%"
-        }
-      },
-      "partII_client": {
-        "weight": "60%",
-        "components": {
-          "executiveSummary": "12%",
-          "methodology": "7%",
-          "findings": "22%",
-          "riskAnalysis": "11%",
-          "recommendations": "8%"
-        },
-        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
-      }
-    },
-    "penalties": [
-      {
-        "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
-      },
-      {
-        "penalty": "-20%",
-        "condition": "Appendix missing from Part II Client Deliverable."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Executive Summary exceeds one page."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Cover Page missing."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
-      }
-    ],
-    "penaltyCap": "Combined deductions cap at -100%.",
-    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-    "bonus": {
-      "title": "Bonus Opportunity (+5%)",
-      "description": "OSINT Wordlist: Research TV show characters to create a custom wordlist. Document your research methodology, sources used, and demonstrate improved crack rates against the character hashes."
-    },
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
-  },
-  "needHelp": {
-    "channels": [
-      {
-        "label": "Discord",
-        "detail": "Post in #lab-help for technical issues (fastest response)"
-      },
-      {
-        "label": "Office Hours",
-        "detail": "calendly.com/john-newsom-utsa/student-meeting"
-      },
-      {
-        "label": "Email",
-        "detail": "john.newsom@utsa.edu (for private matters only)"
-      }
-    ],
-    "lateWorkPolicy": "Late submissions are not accepted. The course drop policy (1 lowest Engagement Packet dropped) exists for emergencies. This lab is eligible to be dropped, but incomplete or low-effort submissions should not be turned in with the intent to use the drop policy as a shield against academic standards.",
-    "genAI": {
-      "permitted": [
-        "Explain command syntax and tool functionality",
-        "Proofread and grammar check your writing",
-        "Suggest report structure improvements"
-      ],
-      "prohibited": [
-        "Write entire sections of your report",
-        "Generate analysis or recommendations",
-        "Create fake screenshots or outputs"
-      ],
-      "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
-    },
-    "whatsNext": {
-      "title": "Module 5: Infrastructure, Risk & Resilience",
-      "text": "Next module you’ll work with LoneStar DevOps on vulnerability assessment and risk prioritization. Lab 5.1 introduces vulnerability scanning methodology. Start reviewing Chapter 10 (Infrastructure Security) and Chapter 20 (Risk Management) to prepare."
-    }
+  "callouts": [
+   {
+    "type": "required",
+    "title": "Required: Use the Engagement Packet Template",
+    "icon": "error",
+    "text": "Submit as <strong>.docx (Microsoft Word) only</strong>. PDF submissions will not be accepted.",
+    "pinTop": true
+   },
+   {
+    "type": "warning",
+    "title": "Minimum Requirements",
+    "icon": "warning",
+    "body": "Your Engagement Packet must include: all 12 required sections in order, 12+ screenshots embedded (6 from each Foundation Lab), VM hostname visible in every terminal screenshot, and a minimum of 10 references. Textbook chapters, RFCs, NIST documents, and man pages all count."
+   },
+   {
+    "type": "warning",
+    "title": "Deadline Tip",
+    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+   },
+   {
+    "type": "tip",
+    "icon": "description",
+    "title": "Use the Engagement Packet Template",
+    "text": "Don&#8217;t build this from a blank page. This module is an internal contribution &#8212; your findings get folded into the larger client deliverable. Download the pre-formatted NEXUS template (cover, section headings, and auto-generating Table of Contents already set up): <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx\">EP_M4_Password_Audit.docx</a>. Full instructions are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.",
+    "pinTop": true
+   }
+  ],
+  "mentorQuote": {
+   "character": "Marcus Chen",
+   "title": "Founder & Principal, NEXUS Security",
+   "headshot": "marcus-chen.png",
+   "quote": "This report goes to two very different clients with very different concerns. Ray Jimenez at Brazos needs data to convince his board that current policies are inadequate. Bobby Alamo III needs CMMC evidence for his DoD contracts. Same technical work, different audiences. Your executive summary has to work for both."
   }
+ },
+ "youAlreadyHave": {
+  "intro": "This is NOT starting from scratch. You’ve been building this report for 3 units.",
+  "sections": [
+   {
+    "title": "From Unit 1 (Lab 4.1 — Windows Password Cracking)",
+    "items": [
+     "Brazos Financial NTLM hash extraction methodology",
+     "John the Ripper execution and results (Windows)",
+     "Hashcat execution and results (Windows)",
+     "Cracked passwords table with timestamps",
+     "Screenshots of Windows cracking process"
+    ]
+   },
+   {
+    "title": "From Unit 2 (Lab 4.2 — Linux Password Cracking)",
+    "items": [
+     "Alamo Industries SHA-512 hash extraction methodology",
+     "John the Ripper execution and results (Linux)",
+     "Hashcat execution and results (Linux)",
+     "Cracked passwords table with timestamps",
+     "Screenshots of Linux cracking process",
+     "Performance comparison notes (NTLM vs SHA-512)"
+    ]
+   },
+   {
+    "title": "NEW This Unit",
+    "items": [
+     "Part II: Cover Page, Executive Summary, Methodology",
+     "Part I: Timesheet with all 3 units, plus Analyst Reflection",
+     "Part II: Platform Comparison Analysis (NTLM vs SHA-512) as Findings",
+     "Part II: Client-Specific Recommendations (Brazos + Alamo)",
+     "Part II: Risk Analysis, Recommendations, Appendix with references"
+    ],
+    "badge": "NEW"
+   }
+  ]
+ },
+ "timeGuide": {
+  "rows": [
+   {
+    "task": "Checkpoint 1: Report Setup & Unit 1-2 Compilation",
+    "time": "45–60 min"
+   },
+   {
+    "task": "Checkpoint 2: Platform Comparison Analysis",
+    "time": "60–90 min"
+   },
+   {
+    "task": "Checkpoint 3: Client Recommendations",
+    "time": "45–60 min"
+   },
+   {
+    "task": "Checkpoint 4: Executive Summary & Final Polish",
+    "time": "45–60 min"
+   }
+  ],
+  "totalRow": {
+   "label": "TOTAL",
+   "time": "3–4.5 hours"
+  },
+  "timesheetNote": "This is Unit 3 of a 3-unit module &#8212; your first Engagement Packet with <em>two</em> clients. All time this unit is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3&#8211;4.5 hours &#8212; Password Security Assessment</em>. You should already have 20 screenshots from Labs 4.1 and 4.2 in your <code>Module4_Screenshots</code> folder &#8212; verify the count before you begin.",
+  "tipCallout": {
+   "title": "You’re Already 60–70% Done",
+   "text": "If you followed the Unit 1-2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+  }
+ },
+ "checkpoints": [
+  {
+   "number": 1,
+   "title": "Report Setup & Unit 1-2 Compilation",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "The foundation of your Engagement Packet — creating the document structure and importing all your existing work from Labs 4.1 and 4.2.",
+     "whyItMatters": "Professional security reports follow consistent structures. The 12-section format we use mirrors real engagement deliverables. Starting with proper organization makes the analysis sections flow naturally."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I (Internal Packet)",
+     "items": [
+      "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 4.1 (internal training), Lab 4.2 (internal training), Lab 4.3 (client billable to Brazos Financial and Alamo Industries)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
+      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 4.1, 4.2, and 4.3 (John the Ripper, Hashcat, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the engagement (the actual command, including hash mode and attack mode)</li><li>What output came back (with screenshot reference, including cracked passwords or session statistics)</li><li>What you did with the result (how it fed into your platform comparison or Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
+      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (a hash mode that wouldn&#8217;t crack, attack mode selection, troubleshooting a Hashcat error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this password security assessment for Brazos and Alamo again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d benchmark rules-based attacks before brute force&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain Hashcat mask syntax; I confirmed against the Hashcat documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II (Client Deliverable)",
+     "items": [
+      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences (cover both Brazos and Alamo)</li><li>Count of cracked credentials by platform (e.g., &#8220;Windows: 47% of hashes cracked &#8212; Linux: 12%&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing for each client</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Ray Jimenez and Bobby Alamo III &#8212; every line should tie to credential risk and business impact</li></ul>",
+      "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach across both platforms</li><li>Phases of the engagement (e.g., hash extraction &#8594; identification &#8594; attack mode selection &#8594; cracking &#8594; cross-platform analysis)</li><li>Scope and limitations: what was in scope, what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
+      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Domain Administrators Using Easily-Cracked Passwords&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected platform (Windows NTLM / Linux SHA-512) and client (Brazos / Alamo)</li><li>Description, including hash type, crack time, and attack method that succeeded</li><li>Evidence: reference to your screenshot(s) or session output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (lateral movement risk, credential reuse, regulatory exposure)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context per client: Brazos (financial services, regulatory exposure) vs. Alamo (manufacturing, IP and operational continuity)</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to each business</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-63B Digital Identity Guidelines, CIS Controls)</li></ul>",
+      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Differentiated by client (some recs apply only to Brazos&#8217;s Windows environment, others to Alamo&#8217;s Linux environment)</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-63B, CIS Controls v8, NIST CSF)</li></ul>"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "text": "How should organizations respond to a password breach? Research incident response procedures for compromised credentials."
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "text": "NIST SP 800-61 Rev. 2 - Computer Security Incident Handling Guide. Available at: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
+    },
+    {
+     "type": "steps",
+     "role": null,
+     "steps": [
+      {
+       "text": "Create a new Word document.",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Create your Title Page with the following information:",
+       "whatThisDoes": null,
+       "substeps": [
+        "Report title: \"Password Security Assessment: Platform Comparison Report\"",
+        "Clients: Brazos Financial Group & Alamo Industries",
+        "Your name, course info, and date"
+       ]
+      },
+      {
+       "text": "Set up section headers for all 12 required sections (see table below)",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Import your Environment Specifications from Lab 4.1",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Import your Tool Documentation (John & Hashcat) from Labs 4.1 and 4.2",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Import your Assessment Results (cracking outputs) from both labs",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Import all 12 screenshots into appropriate sections",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Create placeholder Table of Contents (Word will auto-generate from headings)",
+       "whatThisDoes": null,
+       "substeps": null
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "title": "Required Report Sections",
+     "rows": [
+      [
+       "1",
+       "Title Page",
+       "NEW"
+      ],
+      [
+       "2",
+       "Executive Summary",
+       "NEW (Checkpoint 4)"
+      ],
+      [
+       "3",
+       "Table of Contents",
+       "NEW"
+      ],
+      [
+       "4",
+       "Environment Specifications",
+       "Lab 4.1"
+      ],
+      [
+       "5",
+       "Tool Documentation",
+       "Labs 4.1 & 4.2"
+      ],
+      [
+       "6",
+       "Assessment Results",
+       "Labs 4.1 & 4.2"
+      ],
+      [
+       "7",
+       "Platform Comparison",
+       "NEW (Checkpoint 2)"
+      ],
+      [
+       "8",
+       "Risk Analysis",
+       "NEW (Checkpoint 3)"
+      ],
+      [
+       "9",
+       "Recommendations",
+       "NEW (Checkpoint 3)"
+      ],
+      [
+       "10",
+       "Professional Reflection",
+       "NEW (Checkpoint 4)"
+      ],
+      [
+       "11",
+       "References",
+       "NEW (10 minimum)"
+      ],
+      [
+       "12",
+       "Appendix",
+       "Raw outputs from labs"
+      ]
+     ],
+     "columns": [
+      "#",
+      "Section",
+      "Source"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Missing screenshots",
+       "text": "Check your Lab4-Screenshots folder BEFORE starting. Count them."
+      },
+      {
+       "label": "Inconsistent headings",
+       "text": "Use Word’s built-in heading styles for proper Table of Contents generation."
+      },
+      {
+       "label": "Copy/paste formatting",
+       "text": "Use “Paste Special > Unformatted Text” to avoid carrying over weird formatting."
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "chapter": "Chapter 16: Security Assessment Tools",
+     "text": null,
+     "body": "Chapter 16 covers security assessment methodology, including how penetration test findings are structured for reporting. Your Engagement Packet follows the same workflow Chapter 16 describes: document the tools used, record the methodology applied, and organize findings in a format the client can act on."
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A Word document with all 12 section headers, imported content from Units 1-2, all 12 screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "title": "Platform Comparison Analysis",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "The core analytical work of your report — comparing Windows NTLM and Linux SHA-512 password security architectures using your own cracking data.",
+     "whyItMatters": "This is THE teaching moment of Module 4. You have empirical evidence showing that the same password cracks thousands of times faster on Windows than Linux. The difference isn’t password complexity — it’s defensive architecture. This is why security professionals argue about platform choices."
+    },
+    {
+     "type": "steps",
+     "role": null,
+     "steps": [
+      {
+       "text": "Create a speed comparison table using your actual data:",
+       "whatThisDoes": null,
+       "substeps": null
+      },
+      {
+       "text": "Answer these four analysis questions in your report:",
+       "whatThisDoes": null,
+       "substeps": [
+        "Why did NTLM hashes crack faster than SHA-512?",
+        "What defensive mechanisms does Linux use that Windows NTLM lacks?",
+        "Which client faces greater credential risk? Why?",
+        "What would you recommend each client prioritize?"
+       ]
+      },
+      {
+       "text": "Explain the technical reasons for speed differences:",
+       "whatThisDoes": null,
+       "substeps": [
+        "NTLM: Single-pass MD4, no salt, no iterations",
+        "SHA-512: Salted, 5000+ rounds of key derivation"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "text": "Why does Windows still use NTLM? Research backward compatibility requirements and Active Directory authentication. Microsoft has been trying to deprecate NTLM for over a decade — why is it still everywhere?"
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "text": "If you research NTLM architecture, add it to your references: Microsoft Docs — NTLM Overview. Also add: Linux crypt(3) man page for SHA-512 implementation details."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Generic comparisons",
+       "text": "Use YOUR actual H/s data, not hypotheticals."
+      },
+      {
+       "label": "Missing the “why”",
+       "text": "Don’t just say “SHA-512 is slower” — explain salting and key stretching."
+      },
+      {
+       "label": "Forgetting business context",
+       "text": "Connect technical findings to each client’s situation."
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "chapter": "Chapter 15: Types of Attacks",
+     "text": null,
+     "body": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section covers brute force, dictionary attacks, and rainbow tables &#8212; the techniques you applied hands-on in Labs 4.1 and 4.2. Your platform comparison analysis translates Chapter 15&#8217;s theory into observed results: why NTLM without salting falls to rainbow tables while SHA-512 with per-user salts demands targeted, slower attacks."
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A completed Platform Comparison section with a data table showing your actual H/s metrics, calculated differences (e.g., “NTLM cracked 8,500x faster”), and thoughtful answers to all four analysis questions with technical explanations."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "title": "Client Recommendations",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Tailored, prioritized remediation recommendations for both Brazos Financial and Alamo Industries based on your findings and their specific business contexts.",
+     "whyItMatters": "Security findings without actionable recommendations are just bad news. Clients hire consultants for solutions, not just problems. Your recommendations need to be specific, prioritized, and consider each client’s unique constraints and objectives."
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "text": "What is credential stuffing and how does it differ from password spraying? Research how attackers use breached credential databases."
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "text": "OWASP Credential Stuffing Prevention Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html"
+    },
+    {
+     "type": "callout",
+     "calloutType": "characterQuote",
+     "character": "Ray Jimenez",
+     "title": "CTO, Brazos Financial Group",
+     "headshot": "ray-jimenez.png",
+     "quote": "I need ammunition for the board. They’ve been resistant to stricter password policies because ‘nothing has happened.’ Show me the data that proves our current approach is inadequate. Give me numbers I can put in a PowerPoint."
+    },
+    {
+     "type": "callout",
+     "calloutType": "characterQuote",
+     "character": "Bobby Alamo III",
+     "title": "CEO, Alamo Industries",
+     "headshot": "bobby-alamo.png",
+     "quote": "We’re working toward CMMC certification for our DoD contracts. I need documentation showing we’re addressing credential security. Elena keeps telling me the shared supervisor account is a problem — Frank keeps blocking changes. Give me evidence to settle this."
+    },
+    {
+     "type": "steps",
+     "role": null,
+     "steps": [
+      {
+       "text": "Brazos Financial Recommendations (address NTLM weaknesses):",
+       "whatThisDoes": null,
+       "substeps": [
+        "Consider Active Directory migration path away from NTLM",
+        "Implement password complexity AND length requirements",
+        "Deploy MFA for all privileged accounts immediately",
+        "Establish password rotation policy with breach monitoring"
+       ]
+      },
+      {
+       "text": "Alamo Industries Recommendations (address shared accounts):",
+       "whatThisDoes": null,
+       "substeps": [
+        "Eliminate shared supervisor account (CMMC requirement)",
+        "Implement individual accountability for all access",
+        "Strengthen already-good SHA-512 implementation",
+        "Document controls for CMMC evidence package"
+       ]
+      },
+      {
+       "text": "Prioritize each recommendation using High / Medium / Low based on three factors:",
+       "whatThisDoes": null,
+       "substeps": [
+        "Risk severity — what happens if we don’t fix it?",
+        "Implementation complexity — how hard is this?",
+        "Business impact — does this affect operations?"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "icon": "book",
+     "text": "Chapter 15 covers password attack types including dictionary, hybrid, and OSINT-informed attacks. Your client-specific recommendations are grounded in the attack patterns described there. Chapter 16's coverage of security assessment methodology frames how your findings translate into prioritized, actionable guidance."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Generic recommendations",
+       "text": "“Use stronger passwords” isn’t actionable. Be specific."
+      },
+      {
+       "label": "Ignoring client context",
+       "text": "Brazos needs board ammunition; Alamo needs CMMC evidence."
+      },
+      {
+       "label": "Missing prioritization",
+       "text": "Not everything is “Critical” — rank your recommendations."
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "Completed Risk Analysis and Recommendations sections with client-specific, prioritized remediation steps. Each recommendation should include what to do, why it matters, and priority level. Connect technical findings to each client’s specific business needs."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "title": "Executive Summary & Final Polish",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "The executive-facing components of your report: a 1-page summary for non-technical readers, your professional reflection, and final quality checks.",
+     "whyItMatters": "Executives don’t read 20-page technical reports — they read the executive summary. If your summary doesn’t communicate the key findings and recommendations clearly, the entire report fails. This is where technical work becomes business communication."
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "text": "How do organizations enforce password policies at the system level? Research PAM (Pluggable Authentication Modules) configuration for password requirements."
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "text": "The pam_pwquality(8) man page explains password quality requirements. Linux-PAM documentation: http://www.linux-pam.org/"
+    },
+    {
+     "type": "steps",
+     "role": null,
+     "steps": [
+      {
+       "text": "Write Executive Summary (1 page max):",
+       "whatThisDoes": null,
+       "substeps": [
+        "Engagement overview (who, what, why)",
+        "Key finding: Platform architecture dramatically affects password security",
+        "Top 3 risks (one sentence each)",
+        "Top 3 recommendations (one sentence each)",
+        "No jargon — a business executive should understand every word"
+       ]
+      },
+      {
+       "text": "Write Professional Reflection:",
+       "whatThisDoes": null,
+       "substeps": [
+        "What did you learn about password security that surprised you?",
+        "How would you approach a similar engagement differently?",
+        "What tools or techniques do you want to explore further?"
+       ]
+      },
+      {
+       "text": "Verify References (minimum 10):",
+       "whatThisDoes": null,
+       "substeps": [
+        "Textbook chapters cited correctly",
+        "NIST/OWASP/vendor documentation included",
+        "All URLs verified as accessible"
+       ]
+      },
+      {
+       "text": "Final Quality Checks:",
+       "whatThisDoes": null,
+       "substeps": [
+        "Update Table of Contents",
+        "Check page numbers throughout",
+        "Grammar and spelling review",
+        "Screenshot quality and captions"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "icon": "book",
+     "text": "Chapters 15 and 16 together provide the technical foundation for your executive summary. Chapter 15 explains why NTLM is architecturally weak (no salt, no key stretching). Chapter 16 covers security assessment reporting standards &#8212; the professional communication skills you're practicing here mirror real-world penetration test deliverables."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Executive Summary too technical",
+       "text": "Avoid jargon; write for non-technical readers."
+      },
+      {
+       "label": "Last-minute rushing",
+       "text": "Budget time for quality checks; they matter."
+      },
+      {
+       "label": "Missing references",
+       "text": "10 minimum is required; this is a straightforward requirement to meet."
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A complete, polished report with executive summary, professional reflection, 10+ references, and all 12 sections finalized. The document should be ready for submission with proper formatting, updated Table of Contents, and verified screenshot quality."
+    }
+   ]
+  }
+ ],
+ "purpleTeam": {
+  "redTeam": {
+   "type": "items",
+   "label": "What Red Team Learns",
+   "items": [
+    {
+     "label": "Target Prioritization",
+     "text": "NTLM environments yield credentials faster — attack Windows AD before Linux systems."
+    },
+    {
+     "label": "OSINT Integration",
+     "text": "Character dossiers demonstrate how social media reconnaissance improves password attacks."
+    },
+    {
+     "label": "Report Writing",
+     "text": "Professional deliverables are part of the job — pentesters who can’t write don’t get promoted."
+    }
+   ]
+  },
+  "blueTeam": {
+   "type": "items",
+   "label": "What Blue Team Learns",
+   "items": [
+    {
+     "label": "Architecture Matters",
+     "text": "Password policy alone doesn’t fix NTLM — the hash algorithm is fundamentally weak."
+    },
+    {
+     "label": "Shared Accounts = No Accountability",
+     "text": "The shift_supervisor problem exists everywhere in OT environments."
+    },
+    {
+     "label": "Defense in Depth",
+     "text": "MFA, privileged access management, and credential monitoring compensate for weak hashes."
+    }
+   ]
+  },
+  "connection": "This module bridges attack and defense perspectives. You’ve used offensive tools (John the Ripper, Hashcat) to generate defensive intelligence (platform comparison, risk recommendations). This is purple team thinking: use attacker methodology to inform defender priorities."
+ },
+ "finalChecklist": {
+  "screenshotTable": null,
+  "sections": [
+   {
+    "title": "Report Sections (All 12 Required)",
+    "type": "checklist",
+    "items": [
+     "Title Page with report title, clients, your name, date",
+     "Executive Summary (1 page, non-technical language)",
+     "Table of Contents (auto-generated, updated)",
+     "Environment Specifications (from Lab 4.1)",
+     "Tool Documentation (John & Hashcat from Labs 4.1–4.2)",
+     "Assessment Results (cracking outputs from both clients)",
+     "Platform Comparison (NTLM vs SHA-512 with YOUR data)",
+     "Risk Analysis (business impact for each client)",
+     "Recommendations (prioritized, client-specific)",
+     "Professional Reflection",
+     "References (minimum 10)",
+     "Appendix (raw outputs)"
+    ]
+   },
+   {
+    "title": "Documentation Verification",
+    "type": "checklist",
+    "items": [
+     "12+ screenshots embedded (6 from each Foundation Lab)",
+     "VM name visible in all terminal screenshots",
+     "All screenshots captioned appropriately",
+     "10+ valid references listed"
+    ]
+   },
+   {
+    "title": "Submission Format",
+    "type": "checklist",
+    "items": [
+     "File format: .docx (NOT PDF)",
+     "Professional formatting throughout",
+     "Grammar and spelling checked"
+    ]
+   }
+  ],
+  "intro": "Verify all requirements before submitting to Canvas:",
+  "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline. <strong>PDF submissions are not accepted.</strong>",
+  "deadlineTip": {
+   "title": "Deadline Tip",
+   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  }
+ },
+ "gradingStandards": {
+  "qualityLadder": {
+   "partI_internal": {
+    "weight": "40%",
+    "components": {
+     "timesheet": "5%",
+     "runbook": "20%",
+     "analystReflection": "15%"
+    }
+   },
+   "partII_client": {
+    "weight": "60%",
+    "components": {
+     "executiveSummary": "12%",
+     "methodology": "7%",
+     "findings": "22%",
+     "riskAnalysis": "11%",
+     "recommendations": "8%"
+    },
+    "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+   }
+  },
+  "penalties": [
+   {
+    "penalty": "-5%",
+    "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+   },
+   {
+    "penalty": "-20%",
+    "condition": "Appendix missing from Part II Client Deliverable."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Executive Summary exceeds one page."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Cover Page missing."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
+   }
+  ],
+  "penaltyCap": "Combined deductions cap at -100%.",
+  "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+  "bonus": {
+   "title": "Bonus Opportunity (+5%)",
+   "description": "OSINT Wordlist: Research TV show characters to create a custom wordlist. Document your research methodology, sources used, and demonstrate improved crack rates against the character hashes."
+  },
+  "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
+ },
+ "needHelp": {
+  "channels": [
+   {
+    "label": "Discord",
+    "detail": "Post in #lab-help for technical issues (fastest response)"
+   },
+   {
+    "label": "Office Hours",
+    "detail": "calendly.com/john-newsom-utsa/student-meeting"
+   },
+   {
+    "label": "Email",
+    "detail": "john.newsom@utsa.edu (for private matters only)"
+   }
+  ],
+  "lateWorkPolicy": "Late submissions are not accepted. The course drop policy (1 lowest Engagement Packet dropped) exists for emergencies. This lab is eligible to be dropped, but incomplete or low-effort submissions should not be turned in with the intent to use the drop policy as a shield against academic standards.",
+  "genAI": {
+   "permitted": [
+    "Explain command syntax and tool functionality",
+    "Proofread and grammar check your writing",
+    "Suggest report structure improvements"
+   ],
+   "prohibited": [
+    "Write entire sections of your report",
+    "Generate analysis or recommendations",
+    "Create fake screenshots or outputs"
+   ],
+   "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
+  },
+  "whatsNext": {
+   "title": "Module 5: Infrastructure, Risk & Resilience",
+   "text": "Next module you’ll work with LoneStar DevOps on vulnerability assessment and risk prioritization. Lab 5.1 introduces vulnerability scanning methodology. Start reviewing Chapter 10 (Infrastructure Security) and Chapter 20 (Risk Management) to prepare."
+  }
+ }
 }

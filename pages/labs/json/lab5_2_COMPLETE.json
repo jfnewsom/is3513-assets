@@ -1,698 +1,705 @@
 {
-  "meta": {
-    "labId": "5_2",
-    "title": "Risk & Vulnerability Assessment Report",
-    "labType": "engagement",
-    "module": "Module 5: Infrastructure, Risk & Resilience",
-    "chapters": [
-      "Chapter 10 — Infrastructure Security",
-      "Chapter 20 — Risk Management"
-    ]
-  },
-  "intro": {
-    "overview": "Culmination of the two-unit LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one unit; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this unit is about assembling it into a professional deliverable that serves both audiences.",
-    "objectives": [
-      "Compile vulnerability findings and risk analysis from Lab 5.1 into a cohesive report",
-      "Write an executive summary suitable for investor presentation",
-      "Develop a prioritized remediation roadmap aligned to LoneStar&#8217;s 4-week constraint",
-      "Provide actionable recommendations Sarah&#8217;s team can implement"
-    ],
-    "focusAreas": [
-      "Professional security report compilation",
-      "Executive summary writing for non-technical audiences",
-      "Prioritized remediation roadmap development",
-      "Multi-audience communication (executives vs. technical staff)",
-      "Business constraint integration in security recommendations"
-    ],
-    "clientContext": {
-      "client": "LoneStar DevOps",
-      "description": "LoneStar DevOps requires a written vulnerability and risk assessment deliverable before their Fortune 500 prospect will sign. This engagement packet is the formal report and internal runbook covering the findings you discovered in Lab 5.1 — CEO Amanda Nguyen needs a client-ready document, and Head of Engineering needs an internal playbook for the remediation team.",
-      "contacts": [
-        {
-          "name": "Amanda Nguyen",
-          "title": "CEO & Co-Founder, LoneStar DevOps",
-          "quote": "Our enterprise prospect won&#8217;t sign without this assessment. I need a document I can hand to their security team without rewriting it."
-        }
-      ]
-    },
-    "callouts": [
-      {
-        "type": "error",
-        "title": ".docx Format Required",
-        "body": "PDF submissions receive an automatic zero. If you drafted in Google Docs, export to .docx before submitting."
-      },
-      {
-        "type": "warning",
-        "title": "Minimum Requirements",
-        "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-abc123). Use naming convention: ##-description.png."
-      },
-      {
-        "type": "warning",
-        "title": "Deadline Tip",
-        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-      }
-    ],
-    "mentorQuote": {
-      "character": "Marcus Chen",
-      "title": "Founder, NEXUS Security",
-      "headshot": "marcus-chen.png",
-      "quote": "The executive summary is the most important page in the report. Amanda will hand it to investors who won't read the rest. One page, clear language, no jargon. If you can't explain the risk in plain English, you don't understand it well enough yet."
-    }
-  },
-  "youAlreadyHave": {
-    "subtitle": "Two-Unit Engagement Model",
-    "intro": "This is NOT starting from scratch. You&#8217;ve been building this report all unit in Lab 5.1.",
-    "sections": [
-      {
-        "title": "From Lab 5.1 &#8212; Vulnerability Assessment &amp; Risk Analysis",
-        "items": [
-          "Environment specifications (LoneStar DevOps target systems and Docker architecture)",
-          "Nmap scanning methodology and combined -sV -sC results",
-          "WPScan findings from the WordPress portal",
-          "MySQL and SSH credential testing results",
-          "Top 10 vulnerabilities selected and documented with rationale",
-          "CVSS 3.1 scores and severity ratings for all 10 findings",
-          "5&#215;5 risk matrix with findings plotted and color coded",
-          "Prioritized remediation roadmap draft",
-          "10 screenshots documenting your full methodology"
-        ]
-      },
-      {
-        "title": "NEW This Unit",
-        "badge": "NEW",
-        "items": [
-          "Title Page, Table of Contents, Executive Summary",
-          "Timesheet (Part I.A)",
-          "Finalized Remediation Roadmap with phased timelines",
-          "Long-term Security Recommendations",
-          "Professional Reflection, References, Appendix"
-        ]
-      }
-    ],
-    "callouts": [
-      {
-        "type": "tip",
-        "title": "You&#8217;re Already 50&#8211;60% Done",
-        "body": "Your vulnerability inventory, CVSS table, risk matrix, and roadmap draft are done. This unit is compilation, executive summary, and professional polish &#8212; not starting over."
-      }
-    ]
-  },
-  "timeGuide": {
-    "rows": [
-      {
-        "checkpoint": "CP1",
-        "task": "Timesheet documentation (Part I.A)",
-        "time": "15&#8211;20 min"
-      },
-      {
-        "checkpoint": "CP2",
-        "task": "Runbook compilation (Part I.B)",
-        "time": "45&#8211;60 min"
-      },
-      {
-        "checkpoint": "CP3",
-        "task": "Executive Summary (new work)",
-        "time": "45&#8211;60 min"
-      },
-      {
-        "checkpoint": "CP4",
-        "task": "Findings &amp; risk analysis compilation",
-        "time": "60&#8211;90 min"
-      },
-      {
-        "checkpoint": "CP5",
-        "task": "Remediation roadmap (new work)",
-        "time": "45&#8211;60 min"
-      },
-      {
-        "checkpoint": "CP6",
-        "task": "Final review &amp; formatting",
-        "time": "30&#8211;45 min"
-      }
-    ],
-    "totalRow": {
-      "label": "Total Estimated Time",
-      "time": "4&#8211;6 hours"
-    },
-    "timesheetNote": "Time estimates assume you completed Lab 5.1 thoroughly. If your earlier documentation is sparse, budget additional time.",
-    "introText": "This lab focuses on report compilation and new analysis. Most content comes from Lab 5.1."
-  },
-  "checkpoints": [
-    {
-      "number": 1,
-      "title": "Timesheet Documentation",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Billing justification &#8212; document all hours across the 2-unit assessment.",
-          "whyItMatters": "Consulting engagements require time accountability. Clients and firm management need to verify that billed hours match actual work performed."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I.A (Timesheet)",
-          "items": [
-            "Unit-by-unit hour breakdown (Lab 5.1 and Lab 5.2)",
-            "Internal vs. client-billable hour split",
-            "Total hours across both units",
-            "Justification narrative for each line item"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "icon": "book",
-          "text": "Chapter 10 covers infrastructure security and the consulting engagement lifecycle. Your Part I timesheet documents exactly the billable activity pattern described in Chapter 10&#8217;s coverage of security assessment engagements."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Generic descriptions",
-              "text": "&#8220;Did lab&#8221; is not a billable line item. Use specific activity names (e.g., &#8220;Nmap service enumeration and NSE vulnerability scanning&#8221;)"
-            },
-            {
-              "label": "Unrealistic time entries",
-              "text": "Entries that don&#8217;t reflect actual work raise flags in a real consulting environment"
-            },
-            {
-              "label": "Missing internal training hours",
-              "text": "Your Lab 5.1 scanning and analysis work counts as internal training hours &#8212; those belong on the timesheet"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A complete timesheet showing 7&#8211;10 hours distributed across both units, with specific justifications for each entry."
-        }
-      ]
-    },
-    {
-      "number": 2,
-      "title": "Internal Runbook",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Document the assessment methodology so another NEXUS analyst could reproduce the entire engagement.",
-          "whyItMatters": "NEXUS builds institutional knowledge through runbooks. If you leave the firm tomorrow, another analyst needs to be able to repeat your work for follow-up engagements."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I.B (Runbook)",
-          "items": [
-            "Environment specifications and target system details (Docker architecture, container IPs, services)",
-            "Scanning commands with exact parameters used (nmap flags, WPScan options)",
-            "CVSS scoring methodology and selection rationale for your top 10",
-            "Risk matrix framework and scoring criteria",
-            "Lessons learned and recommendations for future assessments"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "icon": "book",
-          "text": "Chapter 10 discusses vulnerability assessment methodology and how analysts document reproducible procedures. Your runbook is precisely this kind of institutional knowledge transfer. Reference Chapter 10&#8217;s sections on assessment documentation standards when describing your methodology."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Copy-pasting lab instructions",
-              "text": "Document what you actually did, not what the lab told you to do. There&#8217;s a difference"
-            },
-            {
-              "label": "Missing context",
-              "text": "Commands without explanation of why you ran them aren&#8217;t reproducible documentation"
-            },
-            {
-              "label": "No screenshots",
-              "text": "Your Lab 5.1 screenshots belong in the runbook as evidence that the steps produce the expected output"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A reproducible runbook another NEXUS analyst could follow to repeat the LoneStar DevOps vulnerability assessment from scratch."
-        }
-      ]
-    },
-    {
-      "number": 3,
-      "title": "Executive Summary",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Write a one-page summary Amanda can hand directly to Longhorn Ventures investors &#8212; no jargon, no technical detail.",
-          "whyItMatters": "Investors don&#8217;t read full security reports. Amanda&#8217;s credibility with Longhorn Ventures depends entirely on this single page."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II &#8212; Executive Summary",
-          "items": [
-            "<strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)",
-            "Overall risk posture in 1&#8211;2 sentences (suitable for Longhorn Ventures investor review)",
-            "Count of findings by severity (e.g., &#8220;3 Critical, 5 High, 8 Medium&#8221;) &#8212; plain language, no CVE numbers here",
-            "Top 2&#8211;3 recommendations with business framing tied to LoneStar&#8217;s Series B trajectory",
-            "Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive",
-            "The &#8220;money page&#8221; for Amanda &#8212; every line should tie to operational continuity or investor-facing risk"
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II &#8212; Methodology",
-          "items": [
-            "3&#8211;4 paragraph narrative of your engagement approach",
-            "Phases of the engagement (e.g., reconnaissance &#8594; service enumeration &#8594; vulnerability identification &#8594; CVSS scoring &#8594; risk prioritization)",
-            "Scope and limitations: what was in scope (LoneStar infrastructure), what was not",
-            "Tools used at a high level (per-flag detail belongs in your Runbook, not here)",
-            "Written for the client, not for security peers &#8212; this is client-facing"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "body": "NIST SP 800-30 &#8212; Guide for Conducting Risk Assessments. Cite this when describing your risk communication approach."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "title": "Textbook Reference",
-          "icon": "book",
-          "text": "Chapter 20 covers risk management reporting and stakeholder communication &#8212; the same non-technical framing your executive summary requires. NIST SP 800-30 provides the risk communication framework that informed your executive summary structure."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Too technical",
-              "text": "If you mention CVSS or CVE IDs, rewrite the sentence in plain English"
-            },
-            {
-              "label": "Too long",
-              "text": "One page maximum, no exceptions"
-            },
-            {
-              "label": "No clear recommendation",
-              "text": "Executives need to know what to do next. End with a specific action"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A one-page executive summary a non-technical CEO can read and understand in three minutes."
-        }
-      ]
-    },
-    {
-      "number": 4,
-      "title": "Technical Findings",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Compile your top 10 vulnerability findings and risk analysis from Lab 5.1 into client report format.",
-          "whyItMatters": "Sarah needs technical details to fix the vulnerabilities. This section tells LoneStar exactly what was found, how it was scored, and why it matters to their business."
-        },
-        {
-          "type": "callout",
-          "calloutType": "characterQuote",
-          "character": "Sarah Martinez",
-          "title": "Lead DevOps Engineer, LoneStar DevOps",
-          "headshot": "sarah-martinez.png",
-          "quote": "Give me actionable steps. Tell me the order, the testing required, the downtime implications. I can&#8217;t fix what I don&#8217;t understand."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II &#8212; Findings",
-          "items": [
-            "Number each finding sequentially (Finding 1, Finding 2, ...)",
-            "Descriptive title for each (e.g., &#8220;Unpatched WordPress Core Exposes Admin Functions&#8221;)",
-            "Severity rating (Critical / High / Medium / Low / Informational) backed by CVSS 3.1 scoring",
-            "Affected host(s) or service(s) from your Lab 5.1 enumeration",
-            "Description, including specific CVE identifiers and the CVSS vector string",
-            "Evidence: reference to your Lab 5.1 screenshots or scanner output (e.g., &#8220;See Figure 4 in Appendix&#8221;)",
-            "Impact statement in business terms (what could happen to LoneStar operations or Series B posture)",
-            "Per-finding recommendation summary (one line &#8212; full remediation lives in the Remediation Roadmap)",
-            "Order findings by severity, highest first. Top 10 with explicit selection rationale."
-          ]
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II &#8212; Risk Analysis",
-          "items": [
-            "Per-finding likelihood &#215; impact analysis",
-            "5&#215;5 risk matrix with all findings plotted (visualizes severity distribution)",
-            "Business context for LoneStar specifically: SaaS startup, Series B due diligence, infrastructure dependency",
-            "Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Amanda and the LoneStar team",
-            "Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)",
-            "Reference an authoritative risk framework where helpful (NIST SP 800-30, FAIR, OWASP risk rating)"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "body": "What is the difference between a vulnerability assessment and a penetration test? Your report is the former &#8212; understanding the distinction matters for setting client expectations."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "items": [
-            "PTES &#8212; Penetration Testing Execution Standard: http://www.pentest-standard.org/",
-            "NIST SP 800-115 &#8212; Technical Guide to Information Security Testing and Assessment"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "body": "Chapter 10 covers infrastructure security assessment methodology &#8212; how analysts document devices, services, and vulnerabilities in a structured, reproducible format. Chapter 20&#8217;s Business Risks and Qualitatively Assessing Risk sections provide the framework for your CVSS scores and risk matrix. Both should appear in your reference list."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Raw scanner output pasted directly",
-              "text": "Format findings for a client audience &#8212; terminal dumps belong in the appendix, not the findings section"
-            },
-            {
-              "label": "Missing evidence",
-              "text": "Every finding needs a supporting screenshot from Lab 5.1"
-            },
-            {
-              "label": "Inconsistent severity ratings",
-              "text": "Your written severity labels must match your CVSS scores"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A complete technical findings section with your top 10 vulnerabilities, CVSS scores, business impact statements, and risk matrix visualization."
-        }
-      ]
-    },
-    {
-      "number": 5,
-      "title": "Remediation Roadmap",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Expand the remediation roadmap draft from Lab 5.1 into a complete phased plan with timelines, specific actions, and realistic recommendations.",
-          "whyItMatters": "Sarah needs a realistic plan she can actually execute with two engineers and a limited budget in four units. A list of fixes is not a roadmap."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part II &#8212; Recommendations (the Remediation Roadmap)",
-          "items": [
-            "Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)",
-            "<strong>Phase 1 (Week 1).</strong> Quick wins and critical vulnerabilities (e.g., disable jdavis, change default credentials)",
-            "<strong>Phase 2 (Weeks 2&#8211;3).</strong> High-priority remediations",
-            "<strong>Phase 3 (Week 4+).</strong> Medium-priority remediations and hardening measures",
-            "Each recommendation specific: what to do, what effort required, what priority window",
-            "Aligned with findings (each recommendation maps to one or more findings)",
-            "Acknowledge client constraints &#8212; Sarah has two engineers and limited budget; recommendations must be feasible",
-            "Testing and validation steps after each remediation",
-            "Downtime and maintenance window considerations",
-            "Where applicable, indicate which control framework the recommendation aligns with (CIS Controls v8, NIST SP 800-53, NIST CSF)"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "digDeeper",
-          "body": "What is a vulnerability management program? Remediation isn&#8217;t a one-time event &#8212; it&#8217;s a continuous cycle of discover, assess, prioritize, remediate, and verify."
-        },
-        {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "body": "NIST SP 800-40 Rev. 4 &#8212; Guide to Enterprise Patch Management Planning. Directly applicable to LoneStar&#8217;s remediation strategy."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "body": "Chapter 20 &#8212; Risk Mitigation Strategies covers change management, change control processes, and rollback procedures. These apply directly to your remediation phases."
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "No phases",
-              "text": "A flat list of fixes is not a roadmap. Sequence matters"
-            },
-            {
-              "label": "Ignoring constraints",
-              "text": "2 engineers, limited budget, 4-week window, zero-downtime requirement. Your roadmap must work within these"
-            },
-            {
-              "label": "Missing quick wins",
-              "text": "Phase 1 should show early progress. Disabling the jdavis account takes five minutes and eliminates a critical risk"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A phased remediation roadmap with realistic timelines that respects LoneStar&#8217;s resource and time constraints."
-        }
-      ]
-    },
-    {
-      "number": 6,
-      "title": "Final Assembly",
-      "content": [
-        {
-          "type": "narrative",
-          "whatYoureDoing": "Complete a final quality review of the entire report before submission.",
-          "whyItMatters": "Typos and formatting errors undermine credibility. Longhorn Ventures is evaluating LoneStar &#8212; and by extension, NEXUS. Your report reflects on both."
-        },
-        {
-          "type": "includeList",
-          "title": "Include in Part I.C (Analyst Reflection)",
-          "items": [
-            "<strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (an obscure CVE lookup, CVSS calculator confusion, troubleshooting a scan) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?",
-            "<strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this vulnerability assessment for LoneStar again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d prioritize the WordPress vectors first&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;",
-            "<strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a CVSS vector string; I confirmed against the FIRST.org calculator before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.",
-            "No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t."
-          ]
-        },
-        {
-          "type": "checklist",
-          "title": "Final Assembly Checklist",
-          "items": [
-            "Part I.A (Timesheet) complete with hour justifications for both units",
-            "Part I.B (Runbook) is reproducible by another analyst",
-            "Part I.C (Analyst Reflection) answers the reflection prompts honestly",
-            "Part II Executive Summary fits on one page",
-            "Part II Findings: Top 10 vulnerabilities documented with CVSS scores",
-            "Part II Risk Analysis: risk matrix included and color coded",
-            "Part II Recommendations: roadmap with phased timelines",
-            "All Lab 5.1 screenshots included as evidence",
-            "VM name visible in terminal screenshots (kali-abc123)",
-            "Minimum 10 references included",
-            "Document is .docx format (not PDF)",
-            "Professional formatting and grammar throughout"
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "commonPitfalls",
-          "items": [
-            {
-              "label": "Inconsistent formatting",
-              "text": "Sections compiled from different sources often have mismatched fonts, heading sizes, and spacing &#8212; do a final formatting pass"
-            },
-            {
-              "label": "Missing page numbers",
-              "text": "A multi-section professional report needs page numbers"
-            },
-            {
-              "label": "Weak references",
-              "text": "&#8220;Google.com&#8221; is not a valid citation. Every reference needs author, title, organization, URL, and access date"
-            }
-          ]
-        },
-        {
-          "type": "callout",
-          "calloutType": "whatYouShouldHave",
-          "text": "A complete, polished Engagement Packet ready for submission: all sections finalized, updated Table of Contents with page numbers, all Lab 5.1 screenshots embedded with captions, VM name visible in every terminal screenshot, 10+ valid references listed, professional formatting and grammar reviewed."
-        },
-        {
-          "type": "callout",
-          "calloutType": "textbookReference",
-          "icon": "book",
-          "text": "Chapters 10 and 20 together span the full arc of this module: Chapter 10 covers infrastructure security and vulnerability assessment methodology; Chapter 20 covers risk management, business impact analysis, and remediation planning. Both should appear in your final reference list."
-        },
-        {
-          "type": "callout",
-          "calloutType": "canvasSubmission",
-          "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one unit of the due date."
-        }
-      ]
-    }
+ "meta": {
+  "labId": "5_2",
+  "title": "Risk & Vulnerability Assessment Report",
+  "labType": "engagement",
+  "module": "Module 5: Infrastructure, Risk & Resilience",
+  "chapters": [
+   "Chapter 10 — Infrastructure Security",
+   "Chapter 20 — Risk Management"
+  ]
+ },
+ "intro": {
+  "overview": "Culmination of the two-unit LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one unit; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1 — this unit is about assembling it into a professional deliverable that serves both audiences.",
+  "objectives": [
+   "Compile vulnerability findings and risk analysis from Lab 5.1 into a cohesive report",
+   "Write an executive summary suitable for investor presentation",
+   "Develop a prioritized remediation roadmap aligned to LoneStar&#8217;s 4-week constraint",
+   "Provide actionable recommendations Sarah&#8217;s team can implement"
   ],
-  "purpleTeam": {
-    "redTeam": {
-      "type": "items",
-      "items": [
-        {
-          "label": "",
-          "text": "Vulnerability discovery informs attack planning. Understanding how defenders prioritize helps attackers identify overlooked vectors. The jdavis account is the kind of finding real pentesters love &#8212; technical teams often miss human factors."
-        }
-      ]
-    },
-    "blueTeam": {
-      "type": "items",
-      "items": [
-        {
-          "label": "",
-          "text": "Risk assessment and remediation planning are core defensive skills. Your report serves two audiences &#8212; executives who approve budgets and engineers who implement fixes. Both need to leave with a clear picture of what happens next."
-        }
-      ]
-    },
-    "connection": "Both perspectives inform the complete risk picture. Discovery serves both attack planning AND asset inventory. Risk assessment considers exploitability AND business impact. The roadmap addresses offensive findings AND defensive priorities. Your report should help Amanda (business view) AND Sarah (technical view) &#8212; that&#8217;s purple team thinking in action."
-  },
-  "finalChecklist": {
-    "screenshotTable": null,
-    "sections": [
-      {
-        "title": "Report Sections",
-        "items": [
-          "PART I (Internal Packet)",
-          "Timesheet",
-          "Runbook",
-          "Analyst Reflection",
-          "PART II (Client Deliverable)",
-          "Cover Page",
-          "Executive Summary (1 page)",
-          "Table of Contents",
-          "Methodology",
-          "Findings (vulnerabilities, severity-ordered)",
-          "Risk Analysis",
-          "Recommendations (prioritized roadmap)",
-          "Appendix",
-          "References (minimum 10)"
-        ]
-      },
-      {
-        "title": "Documentation Verification",
-        "items": [
-          "All Lab 5.1 screenshots embedded as evidence",
-          "VM name visible in all terminal screenshots",
-          "Captions present on all screenshots",
-          "10+ valid references included"
-        ]
-      },
-      {
-        "title": "Submission Format",
-        "items": [
-          ".docx format (not PDF)",
-          "Professional formatting throughout",
-          "Grammar and spelling checked"
-        ]
-      }
-    ],
-    "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline. <strong>PDF submissions are not accepted.</strong>",
-    "deadlineTip": {
-      "title": "Deadline Tip",
-      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  "focusAreas": [
+   "Professional security report compilation",
+   "Executive summary writing for non-technical audiences",
+   "Prioritized remediation roadmap development",
+   "Multi-audience communication (executives vs. technical staff)",
+   "Business constraint integration in security recommendations"
+  ],
+  "clientContext": {
+   "client": "LoneStar DevOps",
+   "description": "LoneStar DevOps requires a written vulnerability and risk assessment deliverable before their Fortune 500 prospect will sign. This engagement packet is the formal report and internal runbook covering the findings you discovered in Lab 5.1 — CEO Amanda Nguyen needs a client-ready document, and Head of Engineering needs an internal playbook for the remediation team.",
+   "contacts": [
+    {
+     "name": "Amanda Nguyen",
+     "title": "CEO & Co-Founder, LoneStar DevOps",
+     "quote": "Our enterprise prospect won&#8217;t sign without this assessment. I need a document I can hand to their security team without rewriting it."
     }
+   ]
   },
-  "gradingStandards": {
-    "qualityLadder": {
-      "partI_internal": {
-        "weight": "40%",
-        "components": {
-          "timesheet": "5%",
-          "runbook": "20%",
-          "analystReflection": "15%"
-        }
-      },
-      "partII_client": {
-        "weight": "60%",
-        "components": {
-          "executiveSummary": "12%",
-          "methodology": "7%",
-          "findings": "22%",
-          "riskAnalysis": "11%",
-          "recommendations": "8%"
-        },
-        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
-      }
-    },
-    "penalties": [
-      {
-        "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
-      },
-      {
-        "penalty": "-20%",
-        "condition": "Appendix missing from Part II Client Deliverable."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Executive Summary exceeds one page."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Cover Page missing."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
-      },
-      {
-        "penalty": "-5%",
-        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
-      }
-    ],
-    "penaltyCap": "Combined deductions cap at -100%.",
-    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-    "bonus": null,
-    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
-  },
-  "needHelp": {
-    "channels": [
-      {
-        "label": "Discord",
-        "detail": "#module-5-help (fastest response)"
-      },
-      {
-        "label": "Office Hours",
-        "detail": "calendly.com/john-newsom-utsa/student-meeting"
-      },
-      {
-        "label": "Email",
-        "detail": "john.newsom@utsa.edu (private matters only)"
-      }
-    ],
-    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies. This Engagement Packet is eligible to be your one dropped score.",
-    "genAI": {
-      "permitted": [
-        "Proofread and grammar check your writing",
-        "Suggest report structure improvements",
-        "Explain technical concepts to verify your accuracy"
-      ],
-      "prohibited": [
-        "Write entire report sections",
-        "Generate vulnerability analysis or findings",
-        "Create fake screenshots or tool outputs"
-      ],
-      "principle": "AI is a tutor, not a ghostwriter."
-    },
-    "whatsNext": {
-      "type": "moduleComplete",
-      "title": "Module 5 Complete!",
-      "body": "You&#8217;ve completed the full security assessment lifecycle &#8212; from vulnerability discovery through risk analysis to professional reporting. These are the same skills NEXUS uses with real clients. Complete the Module 5 Exam covering Chapters 10 and 20 to finish the module."
-    }
+  "callouts": [
+   {
+    "type": "required",
+    "icon": "error",
+    "title": "Required: Use the Engagement Packet Template",
+    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M5_LoneStar.docx\">EP_M5_LoneStar.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.",
+    "pinTop": true
+   },
+   {
+    "type": "error",
+    "title": ".docx Format Required",
+    "body": "PDF submissions receive an automatic zero. If you drafted in Google Docs, export to .docx before submitting."
+   },
+   {
+    "type": "warning",
+    "title": "Minimum Requirements",
+    "body": "10+ references required. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-abc123). Use naming convention: ##-description.png."
+   },
+   {
+    "type": "warning",
+    "title": "Deadline Tip",
+    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+   }
+  ],
+  "mentorQuote": {
+   "character": "Marcus Chen",
+   "title": "Founder, NEXUS Security",
+   "headshot": "marcus-chen.png",
+   "quote": "The executive summary is the most important page in the report. Amanda will hand it to investors who won't read the rest. One page, clear language, no jargon. If you can't explain the risk in plain English, you don't understand it well enough yet."
   }
+ },
+ "youAlreadyHave": {
+  "subtitle": "Two-Unit Engagement Model",
+  "intro": "This is NOT starting from scratch. You&#8217;ve been building this report all unit in Lab 5.1.",
+  "sections": [
+   {
+    "title": "From Lab 5.1 &#8212; Vulnerability Assessment &amp; Risk Analysis",
+    "items": [
+     "Environment specifications (LoneStar DevOps target systems and Docker architecture)",
+     "Nmap scanning methodology and combined -sV -sC results",
+     "WPScan findings from the WordPress portal",
+     "MySQL and SSH credential testing results",
+     "Top 10 vulnerabilities selected and documented with rationale",
+     "CVSS 3.1 scores and severity ratings for all 10 findings",
+     "5&#215;5 risk matrix with findings plotted and color coded",
+     "Prioritized remediation roadmap draft",
+     "10 screenshots documenting your full methodology"
+    ]
+   },
+   {
+    "title": "NEW This Unit",
+    "badge": "NEW",
+    "items": [
+     "Title Page, Table of Contents, Executive Summary",
+     "Timesheet (Part I.A)",
+     "Finalized Remediation Roadmap with phased timelines",
+     "Long-term Security Recommendations",
+     "Professional Reflection, References, Appendix"
+    ]
+   }
+  ],
+  "callouts": [
+   {
+    "type": "tip",
+    "title": "You&#8217;re Already 50&#8211;60% Done",
+    "body": "Your vulnerability inventory, CVSS table, risk matrix, and roadmap draft are done. This unit is compilation, executive summary, and professional polish &#8212; not starting over."
+   }
+  ]
+ },
+ "timeGuide": {
+  "rows": [
+   {
+    "checkpoint": "CP1",
+    "task": "Timesheet documentation (Part I.A)",
+    "time": "15&#8211;20 min"
+   },
+   {
+    "checkpoint": "CP2",
+    "task": "Runbook compilation (Part I.B)",
+    "time": "45&#8211;60 min"
+   },
+   {
+    "checkpoint": "CP3",
+    "task": "Executive Summary (new work)",
+    "time": "45&#8211;60 min"
+   },
+   {
+    "checkpoint": "CP4",
+    "task": "Findings &amp; risk analysis compilation",
+    "time": "60&#8211;90 min"
+   },
+   {
+    "checkpoint": "CP5",
+    "task": "Remediation roadmap (new work)",
+    "time": "45&#8211;60 min"
+   },
+   {
+    "checkpoint": "CP6",
+    "task": "Final review &amp; formatting",
+    "time": "30&#8211;45 min"
+   }
+  ],
+  "totalRow": {
+   "label": "Total Estimated Time",
+   "time": "4&#8211;6 hours"
+  },
+  "timesheetNote": "Time estimates assume you completed Lab 5.1 thoroughly. If your earlier documentation is sparse, budget additional time.",
+  "introText": "This lab focuses on report compilation and new analysis. Most content comes from Lab 5.1."
+ },
+ "checkpoints": [
+  {
+   "number": 1,
+   "title": "Timesheet Documentation",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Billing justification &#8212; document all hours across the 2-unit assessment.",
+     "whyItMatters": "Consulting engagements require time accountability. Clients and firm management need to verify that billed hours match actual work performed."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I.A (Timesheet)",
+     "items": [
+      "Unit-by-unit hour breakdown (Lab 5.1 and Lab 5.2)",
+      "Internal vs. client-billable hour split",
+      "Total hours across both units",
+      "Justification narrative for each line item"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "icon": "book",
+     "text": "Chapter 10 covers infrastructure security and the consulting engagement lifecycle. Your Part I timesheet documents exactly the billable activity pattern described in Chapter 10&#8217;s coverage of security assessment engagements."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Generic descriptions",
+       "text": "&#8220;Did lab&#8221; is not a billable line item. Use specific activity names (e.g., &#8220;Nmap service enumeration and NSE vulnerability scanning&#8221;)"
+      },
+      {
+       "label": "Unrealistic time entries",
+       "text": "Entries that don&#8217;t reflect actual work raise flags in a real consulting environment"
+      },
+      {
+       "label": "Missing internal training hours",
+       "text": "Your Lab 5.1 scanning and analysis work counts as internal training hours &#8212; those belong on the timesheet"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A complete timesheet showing 7&#8211;10 hours distributed across both units, with specific justifications for each entry."
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "title": "Internal Runbook",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Document the assessment methodology so another NEXUS analyst could reproduce the entire engagement.",
+     "whyItMatters": "NEXUS builds institutional knowledge through runbooks. If you leave the firm tomorrow, another analyst needs to be able to repeat your work for follow-up engagements."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I.B (Runbook)",
+     "items": [
+      "Environment specifications and target system details (Docker architecture, container IPs, services)",
+      "Scanning commands with exact parameters used (nmap flags, WPScan options)",
+      "CVSS scoring methodology and selection rationale for your top 10",
+      "Risk matrix framework and scoring criteria",
+      "Lessons learned and recommendations for future assessments"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "icon": "book",
+     "text": "Chapter 10 discusses vulnerability assessment methodology and how analysts document reproducible procedures. Your runbook is precisely this kind of institutional knowledge transfer. Reference Chapter 10&#8217;s sections on assessment documentation standards when describing your methodology."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Copy-pasting lab instructions",
+       "text": "Document what you actually did, not what the lab told you to do. There&#8217;s a difference"
+      },
+      {
+       "label": "Missing context",
+       "text": "Commands without explanation of why you ran them aren&#8217;t reproducible documentation"
+      },
+      {
+       "label": "No screenshots",
+       "text": "Your Lab 5.1 screenshots belong in the runbook as evidence that the steps produce the expected output"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A reproducible runbook another NEXUS analyst could follow to repeat the LoneStar DevOps vulnerability assessment from scratch."
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "title": "Executive Summary",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Write a one-page summary Amanda can hand directly to Longhorn Ventures investors &#8212; no jargon, no technical detail.",
+     "whyItMatters": "Investors don&#8217;t read full security reports. Amanda&#8217;s credibility with Longhorn Ventures depends entirely on this single page."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II &#8212; Executive Summary",
+     "items": [
+      "<strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)",
+      "Overall risk posture in 1&#8211;2 sentences (suitable for Longhorn Ventures investor review)",
+      "Count of findings by severity (e.g., &#8220;3 Critical, 5 High, 8 Medium&#8221;) &#8212; plain language, no CVE numbers here",
+      "Top 2&#8211;3 recommendations with business framing tied to LoneStar&#8217;s Series B trajectory",
+      "Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive",
+      "The &#8220;money page&#8221; for Amanda &#8212; every line should tie to operational continuity or investor-facing risk"
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II &#8212; Methodology",
+     "items": [
+      "3&#8211;4 paragraph narrative of your engagement approach",
+      "Phases of the engagement (e.g., reconnaissance &#8594; service enumeration &#8594; vulnerability identification &#8594; CVSS scoring &#8594; risk prioritization)",
+      "Scope and limitations: what was in scope (LoneStar infrastructure), what was not",
+      "Tools used at a high level (per-flag detail belongs in your Runbook, not here)",
+      "Written for the client, not for security peers &#8212; this is client-facing"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "body": "NIST SP 800-30 &#8212; Guide for Conducting Risk Assessments. Cite this when describing your risk communication approach."
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "title": "Textbook Reference",
+     "icon": "book",
+     "text": "Chapter 20 covers risk management reporting and stakeholder communication &#8212; the same non-technical framing your executive summary requires. NIST SP 800-30 provides the risk communication framework that informed your executive summary structure."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Too technical",
+       "text": "If you mention CVSS or CVE IDs, rewrite the sentence in plain English"
+      },
+      {
+       "label": "Too long",
+       "text": "One page maximum, no exceptions"
+      },
+      {
+       "label": "No clear recommendation",
+       "text": "Executives need to know what to do next. End with a specific action"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A one-page executive summary a non-technical CEO can read and understand in three minutes."
+    }
+   ]
+  },
+  {
+   "number": 4,
+   "title": "Technical Findings",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Compile your top 10 vulnerability findings and risk analysis from Lab 5.1 into client report format.",
+     "whyItMatters": "Sarah needs technical details to fix the vulnerabilities. This section tells LoneStar exactly what was found, how it was scored, and why it matters to their business."
+    },
+    {
+     "type": "callout",
+     "calloutType": "characterQuote",
+     "character": "Sarah Martinez",
+     "title": "Lead DevOps Engineer, LoneStar DevOps",
+     "headshot": "sarah-martinez.png",
+     "quote": "Give me actionable steps. Tell me the order, the testing required, the downtime implications. I can&#8217;t fix what I don&#8217;t understand."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II &#8212; Findings",
+     "items": [
+      "Number each finding sequentially (Finding 1, Finding 2, ...)",
+      "Descriptive title for each (e.g., &#8220;Unpatched WordPress Core Exposes Admin Functions&#8221;)",
+      "Severity rating (Critical / High / Medium / Low / Informational) backed by CVSS 3.1 scoring",
+      "Affected host(s) or service(s) from your Lab 5.1 enumeration",
+      "Description, including specific CVE identifiers and the CVSS vector string",
+      "Evidence: reference to your Lab 5.1 screenshots or scanner output (e.g., &#8220;See Figure 4 in Appendix&#8221;)",
+      "Impact statement in business terms (what could happen to LoneStar operations or Series B posture)",
+      "Per-finding recommendation summary (one line &#8212; full remediation lives in the Remediation Roadmap)",
+      "Order findings by severity, highest first. Top 10 with explicit selection rationale."
+     ]
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II &#8212; Risk Analysis",
+     "items": [
+      "Per-finding likelihood &#215; impact analysis",
+      "5&#215;5 risk matrix with all findings plotted (visualizes severity distribution)",
+      "Business context for LoneStar specifically: SaaS startup, Series B due diligence, infrastructure dependency",
+      "Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Amanda and the LoneStar team",
+      "Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)",
+      "Reference an authoritative risk framework where helpful (NIST SP 800-30, FAIR, OWASP risk rating)"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "body": "What is the difference between a vulnerability assessment and a penetration test? Your report is the former &#8212; understanding the distinction matters for setting client expectations."
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "items": [
+      "PTES &#8212; Penetration Testing Execution Standard: http://www.pentest-standard.org/",
+      "NIST SP 800-115 &#8212; Technical Guide to Information Security Testing and Assessment"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "body": "Chapter 10 covers infrastructure security assessment methodology &#8212; how analysts document devices, services, and vulnerabilities in a structured, reproducible format. Chapter 20&#8217;s Business Risks and Qualitatively Assessing Risk sections provide the framework for your CVSS scores and risk matrix. Both should appear in your reference list."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Raw scanner output pasted directly",
+       "text": "Format findings for a client audience &#8212; terminal dumps belong in the appendix, not the findings section"
+      },
+      {
+       "label": "Missing evidence",
+       "text": "Every finding needs a supporting screenshot from Lab 5.1"
+      },
+      {
+       "label": "Inconsistent severity ratings",
+       "text": "Your written severity labels must match your CVSS scores"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A complete technical findings section with your top 10 vulnerabilities, CVSS scores, business impact statements, and risk matrix visualization."
+    }
+   ]
+  },
+  {
+   "number": 5,
+   "title": "Remediation Roadmap",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Expand the remediation roadmap draft from Lab 5.1 into a complete phased plan with timelines, specific actions, and realistic recommendations.",
+     "whyItMatters": "Sarah needs a realistic plan she can actually execute with two engineers and a limited budget in four units. A list of fixes is not a roadmap."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part II &#8212; Recommendations (the Remediation Roadmap)",
+     "items": [
+      "Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)",
+      "<strong>Phase 1 (Week 1).</strong> Quick wins and critical vulnerabilities (e.g., disable jdavis, change default credentials)",
+      "<strong>Phase 2 (Weeks 2&#8211;3).</strong> High-priority remediations",
+      "<strong>Phase 3 (Week 4+).</strong> Medium-priority remediations and hardening measures",
+      "Each recommendation specific: what to do, what effort required, what priority window",
+      "Aligned with findings (each recommendation maps to one or more findings)",
+      "Acknowledge client constraints &#8212; Sarah has two engineers and limited budget; recommendations must be feasible",
+      "Testing and validation steps after each remediation",
+      "Downtime and maintenance window considerations",
+      "Where applicable, indicate which control framework the recommendation aligns with (CIS Controls v8, NIST SP 800-53, NIST CSF)"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "digDeeper",
+     "body": "What is a vulnerability management program? Remediation isn&#8217;t a one-time event &#8212; it&#8217;s a continuous cycle of discover, assess, prioritize, remediate, and verify."
+    },
+    {
+     "type": "callout",
+     "calloutType": "thatsAReference",
+     "body": "NIST SP 800-40 Rev. 4 &#8212; Guide to Enterprise Patch Management Planning. Directly applicable to LoneStar&#8217;s remediation strategy."
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "body": "Chapter 20 &#8212; Risk Mitigation Strategies covers change management, change control processes, and rollback procedures. These apply directly to your remediation phases."
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "No phases",
+       "text": "A flat list of fixes is not a roadmap. Sequence matters"
+      },
+      {
+       "label": "Ignoring constraints",
+       "text": "2 engineers, limited budget, 4-week window, zero-downtime requirement. Your roadmap must work within these"
+      },
+      {
+       "label": "Missing quick wins",
+       "text": "Phase 1 should show early progress. Disabling the jdavis account takes five minutes and eliminates a critical risk"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A phased remediation roadmap with realistic timelines that respects LoneStar&#8217;s resource and time constraints."
+    }
+   ]
+  },
+  {
+   "number": 6,
+   "title": "Final Assembly",
+   "content": [
+    {
+     "type": "narrative",
+     "whatYoureDoing": "Complete a final quality review of the entire report before submission.",
+     "whyItMatters": "Typos and formatting errors undermine credibility. Longhorn Ventures is evaluating LoneStar &#8212; and by extension, NEXUS. Your report reflects on both."
+    },
+    {
+     "type": "includeList",
+     "title": "Include in Part I.C (Analyst Reflection)",
+     "items": [
+      "<strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (an obscure CVE lookup, CVSS calculator confusion, troubleshooting a scan) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?",
+      "<strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this vulnerability assessment for LoneStar again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d prioritize the WordPress vectors first&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;",
+      "<strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a CVSS vector string; I confirmed against the FIRST.org calculator before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.",
+      "No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t."
+     ]
+    },
+    {
+     "type": "checklist",
+     "title": "Final Assembly Checklist",
+     "items": [
+      "Part I.A (Timesheet) complete with hour justifications for both units",
+      "Part I.B (Runbook) is reproducible by another analyst",
+      "Part I.C (Analyst Reflection) answers the reflection prompts honestly",
+      "Part II Executive Summary fits on one page",
+      "Part II Findings: Top 10 vulnerabilities documented with CVSS scores",
+      "Part II Risk Analysis: risk matrix included and color coded",
+      "Part II Recommendations: roadmap with phased timelines",
+      "All Lab 5.1 screenshots included as evidence",
+      "VM name visible in terminal screenshots (kali-abc123)",
+      "Minimum 10 references included",
+      "Document is .docx format (not PDF)",
+      "Professional formatting and grammar throughout"
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "commonPitfalls",
+     "items": [
+      {
+       "label": "Inconsistent formatting",
+       "text": "Sections compiled from different sources often have mismatched fonts, heading sizes, and spacing &#8212; do a final formatting pass"
+      },
+      {
+       "label": "Missing page numbers",
+       "text": "A multi-section professional report needs page numbers"
+      },
+      {
+       "label": "Weak references",
+       "text": "&#8220;Google.com&#8221; is not a valid citation. Every reference needs author, title, organization, URL, and access date"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "whatYouShouldHave",
+     "text": "A complete, polished Engagement Packet ready for submission: all sections finalized, updated Table of Contents with page numbers, all Lab 5.1 screenshots embedded with captions, VM name visible in every terminal screenshot, 10+ valid references listed, professional formatting and grammar reviewed."
+    },
+    {
+     "type": "callout",
+     "calloutType": "textbookReference",
+     "icon": "book",
+     "text": "Chapters 10 and 20 together span the full arc of this module: Chapter 10 covers infrastructure security and vulnerability assessment methodology; Chapter 20 covers risk management, business impact analysis, and remediation planning. Both should appear in your final reference list."
+    },
+    {
+     "type": "callout",
+     "calloutType": "canvasSubmission",
+     "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one unit of the due date."
+    }
+   ]
+  }
+ ],
+ "purpleTeam": {
+  "redTeam": {
+   "type": "items",
+   "items": [
+    {
+     "label": "",
+     "text": "Vulnerability discovery informs attack planning. Understanding how defenders prioritize helps attackers identify overlooked vectors. The jdavis account is the kind of finding real pentesters love &#8212; technical teams often miss human factors."
+    }
+   ]
+  },
+  "blueTeam": {
+   "type": "items",
+   "items": [
+    {
+     "label": "",
+     "text": "Risk assessment and remediation planning are core defensive skills. Your report serves two audiences &#8212; executives who approve budgets and engineers who implement fixes. Both need to leave with a clear picture of what happens next."
+    }
+   ]
+  },
+  "connection": "Both perspectives inform the complete risk picture. Discovery serves both attack planning AND asset inventory. Risk assessment considers exploitability AND business impact. The roadmap addresses offensive findings AND defensive priorities. Your report should help Amanda (business view) AND Sarah (technical view) &#8212; that&#8217;s purple team thinking in action."
+ },
+ "finalChecklist": {
+  "screenshotTable": null,
+  "sections": [
+   {
+    "title": "Report Sections",
+    "items": [
+     "PART I (Internal Packet)",
+     "Timesheet",
+     "Runbook",
+     "Analyst Reflection",
+     "PART II (Client Deliverable)",
+     "Cover Page",
+     "Executive Summary (1 page)",
+     "Table of Contents",
+     "Methodology",
+     "Findings (vulnerabilities, severity-ordered)",
+     "Risk Analysis",
+     "Recommendations (prioritized roadmap)",
+     "Appendix",
+     "References (minimum 10)"
+    ]
+   },
+   {
+    "title": "Documentation Verification",
+    "items": [
+     "All Lab 5.1 screenshots embedded as evidence",
+     "VM name visible in all terminal screenshots",
+     "Captions present on all screenshots",
+     "10+ valid references included"
+    ]
+   },
+   {
+    "title": "Submission Format",
+    "items": [
+     ".docx format (not PDF)",
+     "Professional formatting throughout",
+     "Grammar and spelling checked"
+    ]
+   }
+  ],
+  "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline. <strong>PDF submissions are not accepted.</strong>",
+  "deadlineTip": {
+   "title": "Deadline Tip",
+   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+  }
+ },
+ "gradingStandards": {
+  "qualityLadder": {
+   "partI_internal": {
+    "weight": "40%",
+    "components": {
+     "timesheet": "5%",
+     "runbook": "20%",
+     "analystReflection": "15%"
+    }
+   },
+   "partII_client": {
+    "weight": "60%",
+    "components": {
+     "executiveSummary": "12%",
+     "methodology": "7%",
+     "findings": "22%",
+     "riskAnalysis": "11%",
+     "recommendations": "8%"
+    },
+    "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+   }
+  },
+  "penalties": [
+   {
+    "penalty": "-5%",
+    "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+   },
+   {
+    "penalty": "-20%",
+    "condition": "Appendix missing from Part II Client Deliverable."
+   },
+   {
+    "penalty": "-10%",
+    "condition": "Executive Summary exceeds one page."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Cover Page missing."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+   },
+   {
+    "penalty": "-5%",
+    "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
+   }
+  ],
+  "penaltyCap": "Combined deductions cap at -100%.",
+  "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+  "bonus": null,
+  "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
+ },
+ "needHelp": {
+  "channels": [
+   {
+    "label": "Discord",
+    "detail": "#module-5-help (fastest response)"
+   },
+   {
+    "label": "Office Hours",
+    "detail": "calendly.com/john-newsom-utsa/student-meeting"
+   },
+   {
+    "label": "Email",
+    "detail": "john.newsom@utsa.edu (private matters only)"
+   }
+  ],
+  "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies. This Engagement Packet is eligible to be your one dropped score.",
+  "genAI": {
+   "permitted": [
+    "Proofread and grammar check your writing",
+    "Suggest report structure improvements",
+    "Explain technical concepts to verify your accuracy"
+   ],
+   "prohibited": [
+    "Write entire report sections",
+    "Generate vulnerability analysis or findings",
+    "Create fake screenshots or tool outputs"
+   ],
+   "principle": "AI is a tutor, not a ghostwriter."
+  },
+  "whatsNext": {
+   "type": "moduleComplete",
+   "title": "Module 5 Complete!",
+   "body": "You&#8217;ve completed the full security assessment lifecycle &#8212; from vulnerability discovery through risk analysis to professional reporting. These are the same skills NEXUS uses with real clients. Complete the Module 5 Exam covering Chapters 10 and 20 to finish the module."
+  }
+ }
 }

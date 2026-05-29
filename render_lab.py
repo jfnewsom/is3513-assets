@@ -490,6 +490,24 @@ def render_intro(data):
     nav_src = f'{ASSETS}/nav.js'
 
     inner = f'    <p class="nx-module-label">{h(meta["module"])}</p>\n\n'
+
+    # Pinned-to-top callouts (e.g. the Required template banner) render
+    # before the Overview so they're the first thing students see.
+    def render_callout_block(c_block):
+        ct = c_block.get("type", "")
+        if ct == "characterQuote":
+            return render_char_quote(c_block)
+        cfg = CALLOUT_MAP.get(ct, ("nx-red", "error", ""))
+        css_cls, default_icon, default_title = cfg
+        icon  = c_block.get("icon", default_icon)
+        title = c_block.get("title", default_title)
+        text  = c_block.get("text", c_block.get("body", ""))
+        return callout_p(css_cls, icon, title, text)
+
+    for c_block in intro.get("callouts", []):
+        if c_block.get("pinTop"):
+            inner += render_callout_block(c_block)
+
     inner += f'    <h2>Overview</h2>\n    <p>{h(intro["overview"])}</p>\n\n'
 
     # Mentor quote
@@ -552,18 +570,11 @@ def render_intro(data):
                 inner += f'      <li>{h(f)}</li>\n'
         inner += '    </ul>\n'
 
-    # Callouts (error banners etc.)
+    # Callouts (error banners etc.) — pinTop ones already rendered above
     for c_block in intro.get("callouts", []):
-        ct = c_block.get("type", "")
-        if ct == "characterQuote":
-            inner += render_char_quote(c_block)
+        if c_block.get("pinTop"):
             continue
-        cfg = CALLOUT_MAP.get(ct, ("nx-red", "error", ""))
-        css_cls, default_icon, default_title = cfg
-        icon  = c_block.get("icon", default_icon)
-        title = c_block.get("title", default_title)
-        text  = c_block.get("text", c_block.get("body", ""))
-        inner += callout_p(css_cls, icon, title, text)
+        inner += render_callout_block(c_block)
 
     hdr  = header(kw_text, sec_text, h(meta["title"]), accent)
     body = card(inner, accent)

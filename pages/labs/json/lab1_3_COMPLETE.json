@@ -33,10 +33,11 @@
   ],
   "callouts": [
    {
-    "type": "error",
-    "title": "Required: DOCX Format",
+    "type": "required",
+    "title": "Required: Use the Engagement Packet Template",
     "icon": "error",
-    "text": "Submit as .docx (Microsoft Word) only. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations."
+    "text": "Submit as .docx (Microsoft Word) only. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
+    "pinTop": true
    },
    {
     "type": "warning",
@@ -53,7 +54,8 @@
     "type": "tip",
     "icon": "description",
     "title": "Use the Engagement Packet Template",
-    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx\">EP_M1_Brazos.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>."
+    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M1_Brazos.docx\">EP_M1_Brazos.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.",
+    "pinTop": true
    }
   ],
   "clientContext": {
