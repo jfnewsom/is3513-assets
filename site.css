@@ -2719,6 +2719,18 @@ summary {
   box-sizing: border-box;
 }
 
+/* Static image variant of the media slot (used when a story supplies an
+   "image" instead of a Panopto "embed"). Matches the iframe's 16:9 framing
+   and border so an image-based story lines up with the video story. */
+.nx-video-story__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid #464646;
+  box-sizing: border-box;
+}
+
 /* Mobile: stack vertically. A 25% video on a 380px screen would be
    ~85px wide which is unwatchable, so the video goes full-width on top
    and the text flows below. */

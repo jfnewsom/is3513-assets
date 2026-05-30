@@ -32,11 +32,24 @@ def render_video_story(story):
     code can be regenerated/replaced from Panopto without touching the
     renderer.
     """
+    # Media slot: prefer the Panopto embed; otherwise fall back to a static
+    # image (optionally wrapped in a link). Image path is relative to repo root.
+    embed = story.get("embed", "")
+    image = story.get("image", "")
+    link  = story.get("link", "")
+    if embed:
+        media_inner = f"""<div class="nx-video-embed">
+          {embed}
+        </div>"""
+    elif image:
+        img_src = image if image.startswith("http") else f'{ASSETS}/{image.lstrip("/")}'
+        img_tag = f'<img class="nx-video-story__image" src="{img_src}" alt="{story["headline"]}">'
+        media_inner = f'<a href="{link}">{img_tag}</a>' if link else img_tag
+    else:
+        media_inner = ""
     return f"""    <div class="nx-video-story">
       <div class="nx-video-story__media">
-        <div class="nx-video-embed">
-          {story['embed']}
-        </div>
+        {media_inner}
       </div>
       <div class="nx-video-story__text">
         <div class="nx-video-story__kicker">{story['kicker']}</div>
@@ -241,6 +254,7 @@ def render(data):
 
     parts = [
         render_cta(data["cta"]),
+        render_video_story(data["epStory"]),
         render_video_story(data["videoStory"]),
         render_narrative_intro(data["narrativeIntro"]),
         render_client_showcase(data["clientShowcase"]),

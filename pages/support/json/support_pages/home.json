@@ -4,17 +4,22 @@
       "Phone number is confirmed correct as of May 2026"
     ]
   },
-
   "title": "Information Assurance &amp; Security",
   "courseCode": "IS3513",
   "term": "UT San Antonio &mdash; Summer 2026 &mdash; John Newsom",
   "accent": "#4169E1",
-
   "cta": {
     "text": "New to the course? Complete Start Here first &rarr;",
     "href": "StartHere.html"
   },
-
+  "epStory": {
+    "kicker": "The Engagement Packet",
+    "headline": "From training to trusted deliverable.",
+    "dek": "The artifact you hand a client &mdash; and the one worth showing in an interview.",
+    "image": "images/ep-story.png",
+    "link": "https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html",
+    "caption": "Every module at NEXUS ends the way real consulting work does: with something you hand to a client. The Engagement Packet is where your reconnaissance, analysis, and testing stops being scratch work and becomes a professional record &mdash; an internal runbook the next analyst can follow, and a client-ready report that stands on its own. Justify your hours, document your process so it&rsquo;s reproducible, and write findings a non-technical client can act on. <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">See the Engagement Packets &rarr;</a>"
+  },
   "videoStory": {
     "kicker": "Welcome to IS3513",
     "headline": "Welcome to NEXUS Security. You&rsquo;re the new analyst.",
@@ -22,14 +27,12 @@
     "embed": "<iframe class=\"nx-video-embed__iframe\" src=\"https://utsa.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=df5f67b7-89de-43c8-b5f6-b455014dce86&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all\" allowfullscreen allow=\"autoplay\" aria-label=\"Panopto Embedded Video Player\" aria-description=\"Summer Welcome\"></iframe>",
     "caption": "I&rsquo;m John Newsom. This is the Summer 2026 section of Information Assurance and Security. Watch this before you touch a lab &mdash; it covers the two questions that drive every assignment in this course, the four Texas clients you&rsquo;ll work with, how a module is structured, and where to get help."
   },
-
   "narrativeIntro": {
     "logo": "branding/nexus-security-dark.svg",
     "logoAlt": "NEXUS Security Consulting logo",
     "tagline": "This course is structured as a year-long consulting engagement.",
     "body": "<p>You&rsquo;re a Junior Analyst at <strong>NEXUS Security</strong>, a fictional Texas-based cybersecurity consulting firm. Over five modules you&rsquo;ll work four real-world client engagements &mdash; Brazos Financial, Gulf Coast Healthcare, Alamo Industries, and LoneStar DevOps &mdash; spanning the full breadth of analyst work: reconnaissance, cryptography, network analysis, threat assessment, and risk management.</p><p>Every module produces an <strong>Engagement Packet</strong> &mdash; the same kind of deliverable a real consulting firm bills a client for. You&rsquo;ll track your hours, document your methodology, and write client-facing reports backed by primary sources. The work is graded on the standard professional deliverables are held to, not on busywork.</p><p>This is a <strong>purple team</strong> course. You&rsquo;ll learn offensive techniques (how attackers find weaknesses) and defensive thinking (how organizations close them) in parallel. The tools, frameworks, and reporting practices you build here are the same ones used in the field &mdash; and the same ones evaluated by UTSA&rsquo;s cybersecurity competition teams. Learn more about <a href=\"NEXUS_Security.html\" class=\"nx-link--purple\">NEXUS Security</a> and <a href=\"Meet_The_Team.html\" class=\"nx-link--purple\">meet the team</a> you&rsquo;ll work with.</p>"
   },
-
   "clientShowcase": {
     "heading": "Your Clients",
     "clients": [
@@ -67,14 +70,12 @@
       }
     ]
   },
-
   "instructor": {
     "photo": "https://jfnewsom.github.io/is2053-assets/photos/john-newsom-headshot.jpg",
     "name": "John Newsom",
     "title": "Assistant Professor of Practice",
     "note": "San Antonio native &bull; UTSA alum &bull; Air Force veteran &bull; Former radio DJ"
   },
-
   "quickLinks": [
     {
       "icon": "description",
@@ -103,79 +104,180 @@
       "note": "(read terms first)"
     }
   ],
-
   "contact": [
-    { "label": "Email",         "value": "john.newsom@utsa.edu",                 "href": "mailto:john.newsom@utsa.edu" },
-    { "label": "Phone/Text",    "value": "(210) 533-5512" },
-    { "label": "Student Hours", "value": "Tuesdays 6:00 PM via Zoom (drop-in)",  "href": "https://utsa.zoom.us/j/96542097913", "external": true },
-    { "label": "Office Hours",  "value": "By appointment via Calendly",          "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true },
-    { "label": "Schedule",      "value": "calendly.com/john-newsom-utsa",        "href": "https://calendly.com/john-newsom-utsa/student-meeting", "external": true, "linkColor": "cyan" }
+    {
+      "label": "Email",
+      "value": "john.newsom@utsa.edu",
+      "href": "mailto:john.newsom@utsa.edu"
+    },
+    {
+      "label": "Phone/Text",
+      "value": "(210) 533-5512"
+    },
+    {
+      "label": "Student Hours",
+      "value": "Tuesdays 6:00 PM via Zoom (drop-in)",
+      "href": "https://utsa.zoom.us/j/96542097913",
+      "external": true
+    },
+    {
+      "label": "Office Hours",
+      "value": "By appointment via Calendly",
+      "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+      "external": true
+    },
+    {
+      "label": "Schedule",
+      "value": "calendly.com/john-newsom-utsa",
+      "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+      "external": true,
+      "linkColor": "cyan"
+    }
   ],
-
   "format": [
-    { "label": "Delivery",      "value": "Asynchronous Online" },
-    { "label": "Live Sessions", "value": "Weekly Student Hours (Tuesdays 6 PM); otherwise asynchronous" },
-    { "label": "Support",       "value": "Discord, Email, Calendly", "href": "How_To_Get_Help.html", "linkColor": "cyan" },
-    { "label": "Textbook",      "value": "Conklin &amp; White, 6th Ed. (required)", "href": "Textbook.html", "linkColor": "purple" }
+    {
+      "label": "Delivery",
+      "value": "Asynchronous Online"
+    },
+    {
+      "label": "Live Sessions",
+      "value": "Weekly Student Hours (Tuesdays 6 PM); otherwise asynchronous"
+    },
+    {
+      "label": "Support",
+      "value": "Discord, Email, Calendly",
+      "href": "How_To_Get_Help.html",
+      "linkColor": "cyan"
+    },
+    {
+      "label": "Textbook",
+      "value": "Conklin &amp; White, 6th Ed. (required)",
+      "href": "Textbook.html",
+      "linkColor": "purple"
+    }
   ],
-
   "stats": [
-    { "label": "Modules",            "value": "5", "color": "purple" },
-    { "label": "Foundation Labs",    "value": "9", "color": "green"  },
-    { "label": "Engagement Packets", "value": "5", "color": "orange" },
-    { "label": "Module Exams",       "value": "5", "color": "red"    }
+    {
+      "label": "Modules",
+      "value": "5",
+      "color": "purple"
+    },
+    {
+      "label": "Foundation Labs",
+      "value": "9",
+      "color": "green"
+    },
+    {
+      "label": "Engagement Packets",
+      "value": "5",
+      "color": "orange"
+    },
+    {
+      "label": "Module Exams",
+      "value": "5",
+      "color": "red"
+    }
   ],
-
   "cycleCallout": {
     "title": "Module Structure",
     "body": "Each module is structured as three Units. <strong>Unit 1 (Training)</strong> and <strong>Unit 2 (Training+)</strong> house the Foundation Labs; <strong>Unit 3 (Engagement)</strong> is where you deliver the Engagement Packet to the client. See <a href=\"Grading_Info.html\">Grading Info</a> for details."
   },
-
   "resourceCards": [
     {
       "heading": "Getting Started",
       "color": "green",
       "links": [
-        { "label": "Start Here",       "href": "StartHere.html" },
-        { "label": "Course Schedule",  "href": "Course_Schedule.html" }
+        {
+          "label": "Start Here",
+          "href": "StartHere.html"
+        },
+        {
+          "label": "Course Schedule",
+          "href": "Course_Schedule.html"
+        }
       ]
     },
     {
       "heading": "Policies &amp; Grading",
       "color": "gold",
       "links": [
-        { "label": "Grading Info",     "href": "Grading_Info.html" },
-        { "label": "GenAI Policy",     "href": "GenAI_Policy.html" },
-        { "label": "How to Get Help",  "href": "How_To_Get_Help.html" }
+        {
+          "label": "Grading Info",
+          "href": "Grading_Info.html"
+        },
+        {
+          "label": "GenAI Policy",
+          "href": "GenAI_Policy.html"
+        },
+        {
+          "label": "How to Get Help",
+          "href": "How_To_Get_Help.html"
+        }
       ]
     },
     {
       "heading": "Documentation",
       "color": "cyan",
       "links": [
-        { "label": "Report Guide",         "href": "Engagement_Packet_Guide.html" },
-        { "label": "Screenshot Guide",     "href": "Screenshot_Requirements.html" },
-        { "label": "Citations",            "href": "Citations.html" }
+        {
+          "label": "Report Guide",
+          "href": "Engagement_Packet_Guide.html"
+        },
+        {
+          "label": "Screenshot Guide",
+          "href": "Screenshot_Requirements.html"
+        },
+        {
+          "label": "Citations",
+          "href": "Citations.html"
+        }
       ]
     },
     {
       "heading": "NEXUS World",
       "color": "purple",
       "links": [
-        { "label": "NEXUS Security",  "href": "NEXUS_Security.html" },
-        { "label": "Meet the Team",   "href": "Meet_The_Team.html" },
-        { "label": "Our Clients",     "href": "Our_Clients.html" }
+        {
+          "label": "NEXUS Security",
+          "href": "NEXUS_Security.html"
+        },
+        {
+          "label": "Meet the Team",
+          "href": "Meet_The_Team.html"
+        },
+        {
+          "label": "Our Clients",
+          "href": "Our_Clients.html"
+        }
       ]
     }
   ],
-
   "modules": [
-    { "number": "Module 1", "title": "Reconnaissance",   "href": "Module_1.html" },
-    { "number": "Module 2", "title": "Crypto &amp; Auth", "href": "Module_2.html" },
-    { "number": "Module 3", "title": "Network Security", "href": "Module_3.html" },
-    { "number": "Module 4", "title": "Threats",          "href": "Module_4.html" },
-    { "number": "Module 5", "title": "Risk Mgmt",        "href": "Module_5.html" }
+    {
+      "number": "Module 1",
+      "title": "Reconnaissance",
+      "href": "Module_1.html"
+    },
+    {
+      "number": "Module 2",
+      "title": "Crypto &amp; Auth",
+      "href": "Module_2.html"
+    },
+    {
+      "number": "Module 3",
+      "title": "Network Security",
+      "href": "Module_3.html"
+    },
+    {
+      "number": "Module 4",
+      "title": "Threats",
+      "href": "Module_4.html"
+    },
+    {
+      "number": "Module 5",
+      "title": "Risk Mgmt",
+      "href": "Module_5.html"
+    }
   ],
-
   "footer": "Questions? Ask in <a href=\"Discord.html\" class=\"nx-link--discord\">Discord</a> or <a href=\"https://calendly.com/john-newsom-utsa/student-meeting\" target=\"_blank\" class=\"nx-link--cyan\">schedule office hours</a>."
 }
