@@ -74,7 +74,7 @@
       "items": [
         "<strong style=\"color:#ffffff;\">Before each module:</strong> Read the assigned chapters to understand the concepts you&#8217;ll be practicing in the labs.",
         "<strong style=\"color:#ffffff;\">During labs:</strong> Reference specific sections when you need deeper explanation of a technique or tool.",
-        "<strong style=\"color:#ffffff;\">For reports:</strong> Cite the textbook when explaining methodology or referencing security principles. It counts toward your 10-citation requirement.",
+        "<strong style=\"color:#ffffff;\">For reports:</strong> Use the textbook to identify the <em>primary</em> source behind a concept &#8212; the NIST publication, RFC, or vendor documentation &#8212; then cite that. The textbook itself does NOT count toward your 10-reference requirement. See the <a href=\"Citations.html\">Citations page</a>.",
         "<strong style=\"color:#ffffff;\">For exams:</strong> Module exams draw from both textbook content and lab experience."
       ],
       "tip": "<em style=\"color:#B0B8C4;\">&ldquo;If we don&#8217;t touch it in a lab, we don&#8217;t assign the reading.&rdquo; Every assigned chapter directly supports the hands-on work.</em>"

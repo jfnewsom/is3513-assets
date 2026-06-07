@@ -1,854 +1,854 @@
 {
- "meta": {
-  "labId": "3_3",
-  "title": "Network Analysis Engagement",
-  "labType": "engagement",
-  "module": "Module 3: Networks, Cloud &amp; Defense",
-  "chapters": [
-   "Chapter 9 &#8212; Network Fundamentals",
-   "Chapter 13 &#8212; IDS and Network Security (partial)",
-   "Chapter 18 &#8212; Cloud Computing"
-  ]
- },
- "intro": {
-  "overview": "This is it &#8212; your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1&#8211;2 to deliver a professional Engagement Packet.",
-  "mentorQuote": {
-   "character": "Derek Mitchell",
-   "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
-   "headshot": "derek-mitchell.png",
-   "quote": "Gulf Coast&#8217;s been paranoid since the ransomware hit. Jennifer&#8217;s team flagged some anomalous patterns but can&#8217;t determine if it&#8217;s malicious or just unusual clinical activity. Your job is to analyze the traffic and give her a confident answer. Every packet tells a story. This is what we&#8217;ve been training you for."
+  "meta": {
+    "labId": "3_3",
+    "title": "Network Analysis Engagement",
+    "labType": "engagement",
+    "module": "Module 3: Networks, Cloud &amp; Defense",
+    "chapters": [
+      "Chapter 9 &#8212; Network Fundamentals",
+      "Chapter 13 &#8212; IDS and Network Security (partial)",
+      "Chapter 18 &#8212; Cloud Computing"
+    ]
   },
-  "focusAreas": [
-   "Cloud infrastructure interaction — SSH into Azure-hosted patient portal",
-   "Live Wireshark capture against real cloud infrastructure",
-   "All five Lab 3.2 analysis techniques applied to live traffic",
-   "Tiered discovery classification (Critical / High / Medium / Low)",
-   "Professional Engagement Packet — three-section structure (Timesheet, Runbook, Client Report)",
-   "Executive summary writing for a non-technical client audience"
-  ],
-  "objectives": [
-   "Connect to Azure-hosted Gulf Coast patient portal via SSH",
-   "Capture live network traffic using Wireshark on your host",
-   "Apply ALL analysis techniques from Lab 3.2 to live capture",
-   "Document findings with tiered discovery classification",
-   "Compile three units of work into professional Engagement Packet",
-   "Write executive summary addressing Jennifer Walsh&#8217;s concerns"
-  ],
-  "callouts": [
-   {
-    "type": "required",
-    "icon": "error",
-    "title": "Required: Use the Engagement Packet Template",
-    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M3_GulfCoast.docx\">EP_M3_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
-    "pinTop": true
-   },
-   {
-    "type": "warning",
-    "title": "Minimum Requirements",
-    "icon": "warning",
-    "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this unit (20–30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, and textbook chapters all count."
-   },
-   {
-    "type": "warning",
-    "title": "Deadline Tip",
-    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-   }
-  ],
-  "clientContext": {
-   "client": "Gulf Coast Healthcare Partners",
-   "description": "Regional healthcare system (Houston, TX) with 3 hospitals, 15 clinics, and 2.1 million patient records. Experienced a ransomware attack 18 months ago; has since rebuilt their security program under CISO Jennifer Walsh. Hosting Provider: <strong>LoneStar DevOps</strong> (Austin, TX) &#8212; SaaS provider hosting Gulf Coast&#8217;s patient portal in Microsoft Azure; under security review as part of Gulf Coast&#8217;s vendor assessment program.",
-   "contacts": [
-    {
-     "name": "Jennifer Walsh",
-     "title": "CISO, Gulf Coast Healthcare Partners",
-     "quote": "We can&#8217;t secure what we can&#8217;t see. Your analysis helps us see what&#8217;s happening on our network."
-    }
-   ]
-  }
- },
- "youAlreadyHave": {
-  "intro": "If you followed directions in Labs 3.1 and 3.2, you already have most of the technical foundation for this Engagement Packet.",
-  "sections": [
-   {
-    "title": "From Unit 1 — Lab 3.1: Network Addressing Fundamentals",
-    "items": [
-     "IP configuration screenshots (<code>ip addr</code>, <code>ip route</code>)",
-     "Network interface documentation",
-     "Subnet calculation practice",
-     "OSI model reference notes",
-     "TCP/IP fundamentals understanding"
-    ]
-   },
-   {
-    "title": "From Unit 2 — Lab 3.2: Protocol Analysis Tools",
-    "items": [
-     "Wireshark installation and configuration notes",
-     "Capture filter documentation",
-     "Display filter reference",
-     "Protocol catalog (TCP, UDP, HTTP, HTTPS, DNS, ICMP)",
-     "Training PCAP analysis notes",
-     "TCP stream reconstruction experience",
-     "Endpoint statistics methodology",
-     "IO Graph and Flow Graph examples"
-    ]
-   },
-   {
-    "title": "New This Unit — Lab 3.3",
-    "items": [
-     "Azure SSH connection and live capture",
-     "Live traffic analysis with tiered discoveries",
-     "Title page, executive summary, table of contents",
-     "Risk analysis and recommendations",
-     "Professional reflection",
-     "Final reference compilation"
+  "intro": {
+    "overview": "This is it &#8212; your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1&#8211;2 to deliver a professional Engagement Packet.",
+    "mentorQuote": {
+      "character": "Derek Mitchell",
+      "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
+      "headshot": "derek-mitchell.png",
+      "quote": "Gulf Coast&#8217;s been paranoid since the ransomware hit. Jennifer&#8217;s team flagged some anomalous patterns but can&#8217;t determine if it&#8217;s malicious or just unusual clinical activity. Your job is to analyze the traffic and give her a confident answer. Every packet tells a story. This is what we&#8217;ve been training you for."
+    },
+    "focusAreas": [
+      "Cloud infrastructure interaction — SSH into Azure-hosted patient portal",
+      "Live Wireshark capture against real cloud infrastructure",
+      "All five Lab 3.2 analysis techniques applied to live traffic",
+      "Tiered discovery classification (Critical / High / Medium / Low)",
+      "Professional Engagement Packet — three-section structure (Timesheet, Runbook, Client Report)",
+      "Executive summary writing for a non-technical client audience"
     ],
-    "badge": "NEW"
-   }
-  ],
-  "callouts": [
-   {
-    "type": "tip",
-    "title": "You&#8217;re Already 60&#8211;70% Done",
-    "text": "If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This unit is about applying those skills to a live engagement and wrapping it in professional packaging. Gather your <code>Lab3-Screenshots</code> folder and your notes &#8212; the hard work is already done."
-   }
-  ]
- },
- "timeGuide": {
-  "rows": [
-   {
-    "task": "Checkpoint 1: Azure Connection &amp; Live Capture",
-    "time": "45-60 min"
-   },
-   {
-    "task": "Checkpoint 2: Traffic Analysis &amp; Finding Documentation",
-    "time": "90-120 min"
-   },
-   {
-    "task": "Checkpoint 3: Report Compilation &amp; Delivery",
-    "time": "120-150 min"
-   }
-  ],
-  "totalRow": {
-   "label": "Total Estimated Time",
-   "time": "4&#8211;5.5 hours"
-  },
-  "timesheetNote": "This is a client engagement &#8212; <strong>all time this unit is billable to the client</strong> (Gulf Coast Healthcare Partners + LoneStar DevOps). This is significantly more than Foundation Labs because you&#8217;re delivering a complete professional report."
- },
- "checkpoints": [
-  {
-   "number": 1,
-   "title": "Azure Connection &amp; Live Capture",
-   "content": [
-    {
-     "type": "narrative",
-     "whatYoureDoing": "Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.",
-     "whyItMatters": "This is your first interaction with real cloud infrastructure. Unlike training PCAPs, this is live traffic to a production-like environment. The skills you practiced in Lab 3.2 now apply to actual client systems. Jennifer Walsh is counting on your analysis to determine if the anomalous traffic her team flagged represents a genuine threat."
-    },
-    {
-     "part": "Step 1: Prepare Your Capture Environment",
-     "start": 1,
-     "type": "steps",
-     "steps": [
+    "objectives": [
+      "Connect to Azure-hosted Gulf Coast patient portal via SSH",
+      "Capture live network traffic using Wireshark on your host",
+      "Apply ALL analysis techniques from Lab 3.2 to live capture",
+      "Document findings with tiered discovery classification",
+      "Compile three units of work into professional Engagement Packet",
+      "Write executive summary addressing Jennifer Walsh&#8217;s concerns"
+    ],
+    "callouts": [
       {
-       "text": "Open Wireshark on your <strong>host machine</strong> (not inside the Kali VM).",
-       "command": null,
-       "whatThisDoes": null
+        "type": "required",
+        "icon": "error",
+        "title": "Required: Use the Engagement Packet Template",
+        "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M3_GulfCoast.docx\">EP_M3_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
+        "pinTop": true
       },
       {
-       "text": "Identify your active network interface (Wi-Fi or Ethernet).",
-       "command": null,
-       "whatThisDoes": null
+        "type": "warning",
+        "title": "Minimum Requirements",
+        "icon": "warning",
+        "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this unit (20–30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page."
       },
       {
-       "text": "Resolve the server&#8217;s IP address from a terminal on your host:",
-       "command": "nslookup gulfcoast-portal.southcentralus.azurecontainer.io",
-       "whatThisDoes": {
-        "concept": "nslookup queries the Domain Name System (DNS) to translate a hostname into an IP address &#8212; the same process your browser performs behind the scenes every time you visit a website.",
-        "output": "Look for a line showing <code>Address:</code> followed by an IP (e.g., 52.248.39.180). This is the IP you&#8217;ll use in your Wireshark capture filter.",
-        "flags": null
-       }
-      },
-      {
-       "text": "Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 52.248.39.180</code><br><em>(replace with the IP nslookup returned)</em>",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": null,
-       "command": null,
-       "whatThisDoes": {
-        "concept": "Wireshark&#8217;s capture filters (BPF filters) resolve hostnames once at capture start and can silently fail. Using the IP directly is more reliable and is standard professional practice. You&#8217;ll still use the FQDN for SSH and browser connections &#8212; only the capture filter needs the IP.",
-        "output": null,
-        "flags": null
-       }
+        "type": "warning",
+        "title": "Deadline Tip",
+        "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
       }
-     ]
-    },
-    {
-     "part": "Step 2: Connect to Azure VM",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "Open a terminal in your Kali VM.",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "SSH to the Gulf Coast portal:",
-       "command": "ssh student@gulfcoast-portal.southcentralus.azurecontainer.io",
-       "whatThisDoes": {
-        "concept": "SSH (Secure Shell) creates an encrypted tunnel between your Kali VM and the remote server. All traffic within the tunnel is encrypted, which is why Wireshark will show SSH packets but cannot read their contents.",
-        "output": "You&#8217;ll be asked to accept the host key fingerprint (type <code>yes</code>), then prompted for a password. After successful login, you&#8217;ll see a welcome banner identifying the Gulf Coast Healthcare Partners portal server.",
-        "flags": [
-         {
-          "flag": "student",
-          "description": "The username to authenticate as on the remote server"
-         },
-         {
-          "flag": "@",
-          "description": "Separates the username from the hostname"
-         },
-         {
-          "flag": "gulfcoast-portal...azurecontainer.io",
-          "description": "The FQDN (Fully Qualified Domain Name) of the Azure-hosted server"
-         }
-        ]
-       }
-      },
-      {
-       "text": "Password: <code>NEXUSanalyst2026!</code> (case-sensitive). Accept the host key fingerprint when prompted.",
-       "command": null,
-       "whatThisDoes": null
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt. Save as <code>20-azure-ssh-connection.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "part": "Step 3 &#8212; Activity A: Browse via HTTPS",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "Accept the certificate warning when prompted &#8212; this is a <strong>finding you will document</strong>.",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "Interact with the page (click links, explore).",
-       "command": null,
-       "whatThisDoes": null
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding. Save as <code>21-certificate-warning.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "part": "Step 3 &#8212; Activity B: Browse via HTTP",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "Notice anything different about how the site responds? Document your observation.",
-       "command": null,
-       "whatThisDoes": null
-      }
-     ]
-    },
-    {
-     "part": "Step 3 &#8212; Activity C: Reconnaissance from Kali",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:",
-       "command": "curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io",
-       "whatThisDoes": {
-        "concept": "curl is a command-line tool for making HTTP requests. In security assessments, it&#8217;s preferred over a browser because it shows the raw server response without client-side rendering or caching. Examining response headers is one of the first steps in web application reconnaissance.",
-        "output": "You&#8217;ll see headers like <code>Server:</code>, <code>Content-Type:</code>, and others. Pay close attention &#8212; what information is the server revealing about itself that an attacker could use?",
-        "flags": [
-         {
-          "flag": "-I",
-          "description": "HEAD request &#8212; retrieves only the response headers, not the page content. Less noisy than a full GET request and reveals server configuration details."
-         }
-        ]
-       }
-      },
-      {
-       "text": "Now request the HTTPS headers for comparison:",
-       "command": "curl -k -I https://gulfcoast-portal.southcentralus.azurecontainer.io",
-       "whatThisDoes": {
-        "concept": "The same request but over HTTPS (encrypted). Comparing HTTP and HTTPS responses side-by-side can reveal configuration differences &#8212; servers sometimes expose different headers depending on the protocol.",
-        "output": "Compare this response carefully to the HTTP version. Do you see any headers here that were not present in the HTTP response? Any differences are potential security findings.",
-        "flags": [
-         {
-          "flag": "-k",
-          "description": "Insecure mode &#8212; tells curl to skip certificate verification. Required here because the server uses a self-signed certificate not trusted by default."
-         },
-         {
-          "flag": "-I",
-          "description": "HEAD request &#8212; headers only, same as before."
-         }
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses. Save as <code>22-curl-header-comparison.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "part": "Step 3 &#8212; Activity D: Server Exploration via SSH",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "In your SSH session, list the web server&#8217;s document root:",
-       "command": "ls /var/www/",
-       "whatThisDoes": {
-        "concept": "<code>/var/www/</code> is the default web root on Linux servers. Listing its contents shows what web applications and directories the server hosts.",
-        "output": "You should see one or more directories. Note the names &#8212; do any suggest older or legacy systems that might have weaker security controls?",
-        "flags": null
-       }
-      },
-      {
-       "text": "Check for Gulf Coast application files:",
-       "command": "ls /opt/gulfcoast-*",
-       "whatThisDoes": {
-        "concept": "<code>/opt/</code> is where third-party and custom applications are typically installed. The wildcard (<code>*</code>) matches any file or directory starting with <code>gulfcoast-</code>.",
-        "output": "Any files or directories here represent installed Gulf Coast applications. Explore their contents for configuration files, logs, or other artifacts.",
-        "flags": null
-       }
-      },
-      {
-       "text": "Examine the web server configuration:",
-       "command": "cat /etc/nginx/sites-enabled/*",
-       "whatThisDoes": {
-        "concept": "<code>/etc/nginx/sites-enabled/</code> contains active site configurations for the nginx web server. Reading these files reveals how the server is configured: ports, SSL/TLS settings, served locations, and security headers (or lack thereof).",
-        "output": "This is a goldmine for your assessment. Read carefully &#8212; look for SSL protocol versions, enabled locations, header settings, and misconfigurations. Many findings you&#8217;ll document in your report can be confirmed right here.",
-        "flags": null
-       }
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture the nginx configuration output showing the server setup. Save as <code>23-nginx-server-config.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "part": "Step 4: Verify Your Capture",
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "In Wireshark, go to Statistics &#8594; Protocol Hierarchy.",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "Verify you have at minimum: <strong>SSH</strong> (from terminal session), <strong>HTTP</strong> (from unencrypted browsing), <strong>TLS</strong> (from HTTPS browsing).",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "If you only see one protocol, complete the activities you missed before stopping.",
-       "command": null,
-       "whatThisDoes": null
-      },
-      {
-       "text": "Once verified, stop the capture and save as <code>gulfcoast-live-capture.pcap</code>.",
-       "command": null,
-       "whatThisDoes": null
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture the Protocol Hierarchy window (Statistics &#8594; Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present. Save as <code>24-protocol-hierarchy-verification.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "icon": "warning",
-     "title": "Common Pitfalls",
-     "items": [
-      "<strong>VPN blocking SSH:</strong> If you can&#8217;t connect, disable any VPN on your host machine first. Some campus networks also block outbound port 22 &#8212; try from a mobile hotspot.",
-      "<strong>Wrong interface:</strong> Wireshark runs on your HOST machine &#8212; all other activities (browsing, SSH, curl) happen inside your Kali VM",
-      "<strong>Firewall issues:</strong> Some campus networks block outbound SSH (port 22) &#8212; try from a mobile hotspot",
-      "<strong>Password typo:</strong> Password is case-sensitive: <code>NEXUSanalyst2026!</code>"
-     ],
-     "calloutType": "commonPitfalls"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "Textbook Reference",
-     "text": "Chapter 18 covers cloud security fundamentals including virtual networks, shared responsibility models, and Azure-specific considerations.",
-     "calloutType": "textbookReference"
-    },
-    {
-     "type": "callout",
-     "icon": "check_circle",
-     "title": "What You Should Have",
-     "text": "Successful SSH connection to Azure-hosted patient portal. PCAP file with SSH, HTTP, and TLS traffic (verified via Protocol Hierarchy). Screenshots #20&#8211;24 captured inline with each activity.",
-     "calloutType": "whatYouShouldHave"
-    }
-   ]
-  },
-  {
-   "number": 2,
-   "title": "Traffic Analysis &amp; Finding Documentation",
-   "content": [
-    {
-     "type": "narrative",
-     "whatYoureDoing": "A comprehensive analysis of the live traffic capture using all the Wireshark techniques you learned in Lab 3.2, with findings documented for Jennifer Walsh&#8217;s review.",
-     "whyItMatters": "This is where your training pays off. Every technique you practiced with training PCAPs now applies to live client data. Jennifer needs to know: Is this traffic normal? Are there indicators of compromise? Should she escalate or stand down?"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "Use Your Runbook",
-     "text": "You learned all five of these techniques in Lab 3.2. If you need a refresher on any workflow, open the runbook you built during that lab &#8212; that&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.",
-     "calloutType": "tip"
-    },
-    {
-     "part": null,
-     "start": 1,
-     "type": "steps",
-     "steps": [
-      {
-       "text": "Apply ALL Lab 3.2 techniques to your live capture. Take a screenshot after each technique &#8212; these will form the evidence section of your Engagement Packet.",
-       "command": null,
-       "whatThisDoes": null
-      }
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Technique 1: Protocol Distribution",
-     "text": "Statistics &#8594; Protocol Hierarchy &#8212; shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here. Save as <code>25-protocol-distribution.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Technique 2: Endpoint Statistics",
-     "text": "Statistics &#8594; Endpoints &#8212; shows every IP address and port that appeared in the capture. Look for unexpected endpoints. Save as <code>26-endpoint-statistics.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Technique 3: TCP Stream Reconstruction",
-     "text": "Right-click an HTTP packet &#8594; Follow &#8594; TCP Stream &#8212; reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text. Save as <code>27-tcp-stream.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Technique 4: IO Graph",
-     "text": "Statistics &#8594; IO Graphs &#8212; visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity. Save as <code>28-io-graph.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Technique 5: Flow Graph",
-     "text": "Statistics &#8594; Flow Graph &#8212; shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing. Save as <code>29-flow-graph.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "title": "Tiered Discovery Classification",
-     "subtitle": "Classify each finding you document using this framework:",
-     "columns": [
-      "Tier",
-      "Classification",
-      "Description"
-     ],
-     "rows": [
-      [
-       "Critical",
-       "Immediate Action",
-       "Active compromise, data exfiltration, malware C2"
-      ],
-      [
-       "High",
-       "Significant Risk",
-       "Exposed credentials, unencrypted data"
-      ],
-      [
-       "Medium",
-       "Notable Concern",
-       "Unusual patterns, misconfigurations"
-      ],
-      [
-       "Low",
-       "Informational",
-       "Expected patterns, baseline documentation"
+    ],
+    "clientContext": {
+      "client": "Gulf Coast Healthcare Partners",
+      "description": "Regional healthcare system (Houston, TX) with 3 hospitals, 15 clinics, and 2.1 million patient records. Experienced a ransomware attack 18 months ago; has since rebuilt their security program under CISO Jennifer Walsh. Hosting Provider: <strong>LoneStar DevOps</strong> (Austin, TX) &#8212; SaaS provider hosting Gulf Coast&#8217;s patient portal in Microsoft Azure; under security review as part of Gulf Coast&#8217;s vendor assessment program.",
+      "contacts": [
+        {
+          "name": "Jennifer Walsh",
+          "title": "CISO, Gulf Coast Healthcare Partners",
+          "quote": "We can&#8217;t secure what we can&#8217;t see. Your analysis helps us see what&#8217;s happening on our network."
+        }
       ]
-     ],
-     "note": null,
-     "type": "table"
-    },
-    {
-     "type": "callout",
-     "icon": "photo_camera",
-     "title": "Screenshot",
-     "text": "Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding. Save as <code>30-notable-finding.png</code>",
-     "calloutType": "screenshot"
-    },
-    {
-     "type": "callout",
-     "calloutType": "commonPitfalls",
-     "title": "Common Pitfalls",
-     "icon": "warning",
-     "items": [
-      "<strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.",
-      "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
-      "<strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully."
-     ]
-    },
-    {
-     "type": "callout",
-     "calloutType": "textbookReference",
-     "title": "Textbook Reference",
-     "icon": "book",
-     "text": "Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this unit put Chapter 18 concepts into practice — cite it in your client report."
-    },
-    {
-     "type": "callout",
-     "icon": "check_circle",
-     "title": "What You Should Have",
-     "text": "Comprehensive analysis using all 5 Wireshark techniques. Tiered classification for each finding. Screenshots #25&#8211;30 captured inline. A clear answer to Jennifer&#8217;s question: escalate or stand down?",
-     "calloutType": "whatYouShouldHave"
     }
-   ]
   },
-  {
-   "number": 3,
-   "title": "Report Compilation &amp; Delivery",
-   "content": [
-    {
-     "type": "narrative",
-     "whatYoureDoing": "Compile your three units of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.",
-     "whyItMatters": "Technical skills are only half the job. The ability to communicate findings clearly, professionally, and actionably is what separates good analysts from great ones. Jennifer Walsh doesn&#8217;t need raw data &#8212; she needs a report she can present to her board."
-    },
-    {
-     "character": "Jennifer Walsh",
-     "headshot": "jennifer-walsh.png",
-     "type": "callout",
-     "calloutType": "characterQuote",
-     "title": "CISO, Gulf Coast Healthcare Partners",
-     "quote": "We can&#8217;t secure what we can&#8217;t see. Your analysis helps us see what&#8217;s happening on our network. Give me clear findings I can present to my board &#8212; they don&#8217;t understand packet captures, but they understand business risk."
-    },
-    {
-     "sections": [
+  "youAlreadyHave": {
+    "intro": "If you followed directions in Labs 3.1 and 3.2, you already have most of the technical foundation for this Engagement Packet.",
+    "sections": [
       {
-       "label": "Title Page",
-       "description": "Engagement title, client name, your name, date"
+        "title": "From Unit 1 — Lab 3.1: Network Addressing Fundamentals",
+        "items": [
+          "IP configuration screenshots (<code>ip addr</code>, <code>ip route</code>)",
+          "Network interface documentation",
+          "Subnet calculation practice",
+          "OSI model reference notes",
+          "TCP/IP fundamentals understanding"
+        ]
       },
       {
-       "label": "Executive Summary",
-       "description": "1-page non-technical overview"
+        "title": "From Unit 2 — Lab 3.2: Protocol Analysis Tools",
+        "items": [
+          "Wireshark installation and configuration notes",
+          "Capture filter documentation",
+          "Display filter reference",
+          "Protocol catalog (TCP, UDP, HTTP, HTTPS, DNS, ICMP)",
+          "Training PCAP analysis notes",
+          "TCP stream reconstruction experience",
+          "Endpoint statistics methodology",
+          "IO Graph and Flow Graph examples"
+        ]
       },
       {
-       "label": "Table of Contents",
-       "description": "Auto-generated with page numbers"
-      },
-      {
-       "label": "Assessment Results",
-       "description": "Tiered findings with evidence"
-      },
-      {
-       "label": "Risk Analysis",
-       "description": "Business impact assessment"
-      },
-      {
-       "label": "Recommendations",
-       "description": "Prioritized actions"
-      },
-      {
-       "label": "Professional Reflection",
-       "description": "What you learned"
-      },
-      {
-       "label": "References",
-       "description": "Minimum 10 valid references"
-      },
-      {
-       "label": "Appendix",
-       "description": "Raw outputs, additional screenshots"
+        "title": "New This Unit — Lab 3.3",
+        "items": [
+          "Azure SSH connection and live capture",
+          "Live traffic analysis with tiered discoveries",
+          "Title page, executive summary, table of contents",
+          "Risk analysis and recommendations",
+          "Professional reflection",
+          "Final reference compilation"
+        ],
+        "badge": "NEW"
       }
-     ],
-     "type": "callout",
-     "calloutType": "reportSections"
-    },
-    {
-     "type": "includeList",
-     "title": "Include in Part I (Internal Packet)",
-     "items": [
-      "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 3.1 (internal training), Lab 3.2 (internal training), Lab 3.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
-      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 3.1, 3.2, and 3.3 (tcpdump, Wireshark, tshark, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command or filter you applied)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
-      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar protocol, Wireshark filter complexity, troubleshooting a capture) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this network analysis engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d filter for suspicious DNS traffic earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a TCP retransmission pattern; I confirmed against the Wireshark documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
-     ]
-    },
-    {
-     "type": "includeList",
-     "title": "Include in Part II (Client Deliverable)",
-     "items": [
-      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
-      "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., capture setup &#8594; filtering &#8594; protocol analysis &#8594; anomaly identification)</li><li>Scope and limitations: what was in scope (Gulf Coast network segments), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
-      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Unencrypted Patient Data Transmitted Over Internal Network&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or network segment</li><li>Description, including specific protocol details and packet evidence</li><li>Evidence: reference to your screenshot(s) or pcap excerpt (e.g., &#8220;See Figure 4 in Appendix &#8212; packet #1247&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
-      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule, NIST CSF)</li></ul>",
-      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-53, HIPAA Security Rule, NIST CSF)</li></ul>"
-     ]
-    },
-    {
-     "type": "callout",
-     "icon": "warning",
-     "title": "Common Pitfalls",
-     "items": [
-      "<strong>Forgetting Units 1&#8211;2:</strong> Include Labs 3.1 and 3.2 work",
-      "<strong>Technical jargon:</strong> Executive summary must be non-technical",
-      "<strong>Missing references:</strong> 10 minimum &#8212; man pages count!",
-      "<strong>PDF submission:</strong> Must be DOCX format"
-     ],
-     "calloutType": "commonPitfalls"
-    },
-    {
-     "type": "callout",
-     "calloutType": "textbookReference",
-     "title": "Textbook Reference",
-     "icon": "book",
-     "text": "Chapter 9 covers network protocol fundamentals — the same protocols you cataloged in Lab 3.2 now appear in your live capture. Chapter 13 discusses IDS/IPS and anomaly detection; your protocol distribution analysis and endpoint statistics are exactly the techniques defenders use for network monitoring."
-    },
-    {
-     "type": "callout",
-     "icon": "check_circle",
-     "title": "What You Should Have",
-     "text": "Complete Engagement Packet with all sections. Executive summary answering Jennifer&#8217;s question. Minimum 10 references. Professional formatting ready for client delivery.",
-     "calloutType": "whatYouShouldHave"
-    }
-   ]
-  }
- ],
- "purpleTeam": {
-  "redTeam": {
-   "type": "items",
-   "label": "What Red Team Learns",
-   "items": [
-    "Your analysis revealed protocol distribution, active endpoints, and exposed services",
-    "An attacker conducting reconnaissance would use these same techniques to map the attack surface",
-    "The cleartext HTTP traffic and server header leakage you documented are exactly the footholds red teams exploit"
-   ]
-  },
-  "blueTeam": {
-   "type": "items",
-   "label": "What Blue Team Learns",
-   "items": [
-    "Your protocol hierarchy analysis establishes baseline &#8220;normal&#8221; traffic",
-    "Anomaly detection requires knowing what&#8217;s expected &#8212; then anything outside that pattern becomes an alert candidate",
-    "The self-signed certificate and missing security headers you found are exactly what defenders audit for"
-   ]
-  },
-  "connection": "The Gulf Coast scenario demonstrates purple team value: your analysis serves both offensive reconnaissance (what can an attacker learn?) and defensive assessment (what should we monitor?). This dual perspective is exactly what NEXUS delivers to Jennifer Walsh."
- },
- "finalChecklist": {
-  "screenshotTable": null,
-  "sections": [
-   {
-    "type": "screenshotTable",
-    "items": [
-     {
-      "number": "20",
-      "description": "Successful SSH connection to Azure VM"
-     },
-     {
-      "number": "21",
-      "description": "Firefox certificate warning (self-signed cert finding)"
-     },
-     {
-      "number": "22",
-      "description": "curl header comparison (HTTP vs HTTPS)"
-     },
-     {
-      "number": "23",
-      "description": "nginx server configuration"
-     },
-     {
-      "number": "24",
-      "description": "Protocol Hierarchy verification"
-     },
-     {
-      "number": "25",
-      "description": "Protocol Distribution analysis"
-     },
-     {
-      "number": "26",
-      "description": "Endpoint Statistics"
-     },
-     {
-      "number": "27",
-      "description": "TCP Stream reconstruction"
-     },
-     {
-      "number": "28",
-      "description": "IO Graph"
-     },
-     {
-      "number": "29",
-      "description": "Flow Graph"
-     },
-     {
-      "number": "30",
-      "description": "Notable security finding with evidence"
-     }
     ],
-    "title": "Screenshots Required (This Unit)"
-   },
-   {
-    "type": "checklist",
-    "items": [
-     "File format: .docx only (no PDFs)",
-     "All screenshots embedded (not linked)",
-     "Minimum 10 references",
-     "Submitted before deadline"
+    "callouts": [
+      {
+        "type": "tip",
+        "title": "You&#8217;re Already 60&#8211;70% Done",
+        "text": "If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This unit is about applying those skills to a live engagement and wrapping it in professional packaging. Gather your <code>Lab3-Screenshots</code> folder and your notes &#8212; the hard work is already done."
+      }
+    ]
+  },
+  "timeGuide": {
+    "rows": [
+      {
+        "task": "Checkpoint 1: Azure Connection &amp; Live Capture",
+        "time": "45-60 min"
+      },
+      {
+        "task": "Checkpoint 2: Traffic Analysis &amp; Finding Documentation",
+        "time": "90-120 min"
+      },
+      {
+        "task": "Checkpoint 3: Report Compilation &amp; Delivery",
+        "time": "120-150 min"
+      }
     ],
-    "title": "Submission Requirements"
-   }
-  ],
-  "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline.",
-  "finalWarning": "PDF submissions receive an automatic zero. Submit <strong>.docx only</strong>.",
-  "deadlineTip": {
-   "title": "Deadline Tip",
-   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
-  }
- },
- "gradingStandards": {
-  "qualityLadder": {
-   "partI_internal": {
-    "weight": "40%",
-    "components": {
-     "timesheet": "5%",
-     "runbook": "20%",
-     "analystReflection": "15%"
-    }
-   },
-   "partII_client": {
-    "weight": "60%",
-    "components": {
-     "executiveSummary": "12%",
-     "methodology": "7%",
-     "findings": "22%",
-     "riskAnalysis": "11%",
-     "recommendations": "8%"
+    "totalRow": {
+      "label": "Total Estimated Time",
+      "time": "4&#8211;5.5 hours"
     },
-    "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
-   }
+    "timesheetNote": "This is a client engagement &#8212; <strong>all time this unit is billable to the client</strong> (Gulf Coast Healthcare Partners + LoneStar DevOps). This is significantly more than Foundation Labs because you&#8217;re delivering a complete professional report."
   },
-  "penalties": [
-   {
-    "penalty": "-5%",
-    "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
-   },
-   {
-    "penalty": "-10%",
-    "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
-   },
-   {
-    "penalty": "-20%",
-    "condition": "Appendix missing from Part II Client Deliverable."
-   },
-   {
-    "penalty": "-10%",
-    "condition": "Executive Summary exceeds one page."
-   },
-   {
-    "penalty": "-5%",
-    "condition": "Cover Page missing."
-   },
-   {
-    "penalty": "-5%",
-    "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
-   },
-   {
-    "penalty": "-5%",
-    "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
-   }
+  "checkpoints": [
+    {
+      "number": 1,
+      "title": "Azure Connection &amp; Live Capture",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.",
+          "whyItMatters": "This is your first interaction with real cloud infrastructure. Unlike training PCAPs, this is live traffic to a production-like environment. The skills you practiced in Lab 3.2 now apply to actual client systems. Jennifer Walsh is counting on your analysis to determine if the anomalous traffic her team flagged represents a genuine threat."
+        },
+        {
+          "part": "Step 1: Prepare Your Capture Environment",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open Wireshark on your <strong>host machine</strong> (not inside the Kali VM).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Identify your active network interface (Wi-Fi or Ethernet).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Resolve the server&#8217;s IP address from a terminal on your host:",
+              "command": "nslookup gulfcoast-portal.southcentralus.azurecontainer.io",
+              "whatThisDoes": {
+                "concept": "nslookup queries the Domain Name System (DNS) to translate a hostname into an IP address &#8212; the same process your browser performs behind the scenes every time you visit a website.",
+                "output": "Look for a line showing <code>Address:</code> followed by an IP (e.g., 52.248.39.180). This is the IP you&#8217;ll use in your Wireshark capture filter.",
+                "flags": null
+              }
+            },
+            {
+              "text": "Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 52.248.39.180</code><br><em>(replace with the IP nslookup returned)</em>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": null,
+              "command": null,
+              "whatThisDoes": {
+                "concept": "Wireshark&#8217;s capture filters (BPF filters) resolve hostnames once at capture start and can silently fail. Using the IP directly is more reliable and is standard professional practice. You&#8217;ll still use the FQDN for SSH and browser connections &#8212; only the capture filter needs the IP.",
+                "output": null,
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "part": "Step 2: Connect to Azure VM",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open a terminal in your Kali VM.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "SSH to the Gulf Coast portal:",
+              "command": "ssh student@gulfcoast-portal.southcentralus.azurecontainer.io",
+              "whatThisDoes": {
+                "concept": "SSH (Secure Shell) creates an encrypted tunnel between your Kali VM and the remote server. All traffic within the tunnel is encrypted, which is why Wireshark will show SSH packets but cannot read their contents.",
+                "output": "You&#8217;ll be asked to accept the host key fingerprint (type <code>yes</code>), then prompted for a password. After successful login, you&#8217;ll see a welcome banner identifying the Gulf Coast Healthcare Partners portal server.",
+                "flags": [
+                  {
+                    "flag": "student",
+                    "description": "The username to authenticate as on the remote server"
+                  },
+                  {
+                    "flag": "@",
+                    "description": "Separates the username from the hostname"
+                  },
+                  {
+                    "flag": "gulfcoast-portal...azurecontainer.io",
+                    "description": "The FQDN (Fully Qualified Domain Name) of the Azure-hosted server"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Password: <code>NEXUSanalyst2026!</code> (case-sensitive). Accept the host key fingerprint when prompted.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt. Save as <code>20-azure-ssh-connection.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Step 3 &#8212; Activity A: Browse via HTTPS",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Accept the certificate warning when prompted &#8212; this is a <strong>finding you will document</strong>.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Interact with the page (click links, explore).",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding. Save as <code>21-certificate-warning.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Step 3 &#8212; Activity B: Browse via HTTP",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Notice anything different about how the site responds? Document your observation.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "part": "Step 3 &#8212; Activity C: Reconnaissance from Kali",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:",
+              "command": "curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io",
+              "whatThisDoes": {
+                "concept": "curl is a command-line tool for making HTTP requests. In security assessments, it&#8217;s preferred over a browser because it shows the raw server response without client-side rendering or caching. Examining response headers is one of the first steps in web application reconnaissance.",
+                "output": "You&#8217;ll see headers like <code>Server:</code>, <code>Content-Type:</code>, and others. Pay close attention &#8212; what information is the server revealing about itself that an attacker could use?",
+                "flags": [
+                  {
+                    "flag": "-I",
+                    "description": "HEAD request &#8212; retrieves only the response headers, not the page content. Less noisy than a full GET request and reveals server configuration details."
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Now request the HTTPS headers for comparison:",
+              "command": "curl -k -I https://gulfcoast-portal.southcentralus.azurecontainer.io",
+              "whatThisDoes": {
+                "concept": "The same request but over HTTPS (encrypted). Comparing HTTP and HTTPS responses side-by-side can reveal configuration differences &#8212; servers sometimes expose different headers depending on the protocol.",
+                "output": "Compare this response carefully to the HTTP version. Do you see any headers here that were not present in the HTTP response? Any differences are potential security findings.",
+                "flags": [
+                  {
+                    "flag": "-k",
+                    "description": "Insecure mode &#8212; tells curl to skip certificate verification. Required here because the server uses a self-signed certificate not trusted by default."
+                  },
+                  {
+                    "flag": "-I",
+                    "description": "HEAD request &#8212; headers only, same as before."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses. Save as <code>22-curl-header-comparison.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Step 3 &#8212; Activity D: Server Exploration via SSH",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "In your SSH session, list the web server&#8217;s document root:",
+              "command": "ls /var/www/",
+              "whatThisDoes": {
+                "concept": "<code>/var/www/</code> is the default web root on Linux servers. Listing its contents shows what web applications and directories the server hosts.",
+                "output": "You should see one or more directories. Note the names &#8212; do any suggest older or legacy systems that might have weaker security controls?",
+                "flags": null
+              }
+            },
+            {
+              "text": "Check for Gulf Coast application files:",
+              "command": "ls /opt/gulfcoast-*",
+              "whatThisDoes": {
+                "concept": "<code>/opt/</code> is where third-party and custom applications are typically installed. The wildcard (<code>*</code>) matches any file or directory starting with <code>gulfcoast-</code>.",
+                "output": "Any files or directories here represent installed Gulf Coast applications. Explore their contents for configuration files, logs, or other artifacts.",
+                "flags": null
+              }
+            },
+            {
+              "text": "Examine the web server configuration:",
+              "command": "cat /etc/nginx/sites-enabled/*",
+              "whatThisDoes": {
+                "concept": "<code>/etc/nginx/sites-enabled/</code> contains active site configurations for the nginx web server. Reading these files reveals how the server is configured: ports, SSL/TLS settings, served locations, and security headers (or lack thereof).",
+                "output": "This is a goldmine for your assessment. Read carefully &#8212; look for SSL protocol versions, enabled locations, header settings, and misconfigurations. Many findings you&#8217;ll document in your report can be confirmed right here.",
+                "flags": null
+              }
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the nginx configuration output showing the server setup. Save as <code>23-nginx-server-config.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "part": "Step 4: Verify Your Capture",
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "In Wireshark, go to Statistics &#8594; Protocol Hierarchy.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Verify you have at minimum: <strong>SSH</strong> (from terminal session), <strong>HTTP</strong> (from unencrypted browsing), <strong>TLS</strong> (from HTTPS browsing).",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "If you only see one protocol, complete the activities you missed before stopping.",
+              "command": null,
+              "whatThisDoes": null
+            },
+            {
+              "text": "Once verified, stop the capture and save as <code>gulfcoast-live-capture.pcap</code>.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the Protocol Hierarchy window (Statistics &#8594; Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present. Save as <code>24-protocol-hierarchy-verification.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>VPN blocking SSH:</strong> If you can&#8217;t connect, disable any VPN on your host machine first. Some campus networks also block outbound port 22 &#8212; try from a mobile hotspot.",
+            "<strong>Wrong interface:</strong> Wireshark runs on your HOST machine &#8212; all other activities (browsing, SSH, curl) happen inside your Kali VM",
+            "<strong>Firewall issues:</strong> Some campus networks block outbound SSH (port 22) &#8212; try from a mobile hotspot",
+            "<strong>Password typo:</strong> Password is case-sensitive: <code>NEXUSanalyst2026!</code>"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Textbook Reference",
+          "text": "Chapter 18 covers cloud security fundamentals including virtual networks, shared responsibility models, and Azure-specific considerations.",
+          "calloutType": "textbookReference"
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Successful SSH connection to Azure-hosted patient portal. PCAP file with SSH, HTTP, and TLS traffic (verified via Protocol Hierarchy). Screenshots #20&#8211;24 captured inline with each activity.",
+          "calloutType": "whatYouShouldHave"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Traffic Analysis &amp; Finding Documentation",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "A comprehensive analysis of the live traffic capture using all the Wireshark techniques you learned in Lab 3.2, with findings documented for Jennifer Walsh&#8217;s review.",
+          "whyItMatters": "This is where your training pays off. Every technique you practiced with training PCAPs now applies to live client data. Jennifer needs to know: Is this traffic normal? Are there indicators of compromise? Should she escalate or stand down?"
+        },
+        {
+          "type": "callout",
+          "icon": "menu_book",
+          "title": "Use Your Runbook",
+          "text": "You learned all five of these techniques in Lab 3.2. If you need a refresher on any workflow, open the runbook you built during that lab &#8212; that&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.",
+          "calloutType": "tip"
+        },
+        {
+          "part": null,
+          "start": 1,
+          "type": "steps",
+          "steps": [
+            {
+              "text": "Apply ALL Lab 3.2 techniques to your live capture. Take a screenshot after each technique &#8212; these will form the evidence section of your Engagement Packet.",
+              "command": null,
+              "whatThisDoes": null
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Technique 1: Protocol Distribution",
+          "text": "Statistics &#8594; Protocol Hierarchy &#8212; shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here. Save as <code>25-protocol-distribution.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Technique 2: Endpoint Statistics",
+          "text": "Statistics &#8594; Endpoints &#8212; shows every IP address and port that appeared in the capture. Look for unexpected endpoints. Save as <code>26-endpoint-statistics.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Technique 3: TCP Stream Reconstruction",
+          "text": "Right-click an HTTP packet &#8594; Follow &#8594; TCP Stream &#8212; reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text. Save as <code>27-tcp-stream.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Technique 4: IO Graph",
+          "text": "Statistics &#8594; IO Graphs &#8212; visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity. Save as <code>28-io-graph.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Technique 5: Flow Graph",
+          "text": "Statistics &#8594; Flow Graph &#8212; shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing. Save as <code>29-flow-graph.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "title": "Tiered Discovery Classification",
+          "subtitle": "Classify each finding you document using this framework:",
+          "columns": [
+            "Tier",
+            "Classification",
+            "Description"
+          ],
+          "rows": [
+            [
+              "Critical",
+              "Immediate Action",
+              "Active compromise, data exfiltration, malware C2"
+            ],
+            [
+              "High",
+              "Significant Risk",
+              "Exposed credentials, unencrypted data"
+            ],
+            [
+              "Medium",
+              "Notable Concern",
+              "Unusual patterns, misconfigurations"
+            ],
+            [
+              "Low",
+              "Informational",
+              "Expected patterns, baseline documentation"
+            ]
+          ],
+          "note": null,
+          "type": "table"
+        },
+        {
+          "type": "callout",
+          "icon": "photo_camera",
+          "title": "Screenshot",
+          "text": "Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding. Save as <code>30-notable-finding.png</code>",
+          "calloutType": "screenshot"
+        },
+        {
+          "type": "callout",
+          "calloutType": "commonPitfalls",
+          "title": "Common Pitfalls",
+          "icon": "warning",
+          "items": [
+            "<strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali — Wireshark on the host captures all of it.",
+            "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
+            "<strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report — document them carefully."
+          ]
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this unit put Chapter 18 concepts into practice — cite it in your client report."
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Comprehensive analysis using all 5 Wireshark techniques. Tiered classification for each finding. Screenshots #25&#8211;30 captured inline. A clear answer to Jennifer&#8217;s question: escalate or stand down?",
+          "calloutType": "whatYouShouldHave"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Report Compilation &amp; Delivery",
+      "content": [
+        {
+          "type": "narrative",
+          "whatYoureDoing": "Compile your three units of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.",
+          "whyItMatters": "Technical skills are only half the job. The ability to communicate findings clearly, professionally, and actionably is what separates good analysts from great ones. Jennifer Walsh doesn&#8217;t need raw data &#8212; she needs a report she can present to her board."
+        },
+        {
+          "character": "Jennifer Walsh",
+          "headshot": "jennifer-walsh.png",
+          "type": "callout",
+          "calloutType": "characterQuote",
+          "title": "CISO, Gulf Coast Healthcare Partners",
+          "quote": "We can&#8217;t secure what we can&#8217;t see. Your analysis helps us see what&#8217;s happening on our network. Give me clear findings I can present to my board &#8212; they don&#8217;t understand packet captures, but they understand business risk."
+        },
+        {
+          "sections": [
+            {
+              "label": "Title Page",
+              "description": "Engagement title, client name, your name, date"
+            },
+            {
+              "label": "Executive Summary",
+              "description": "1-page non-technical overview"
+            },
+            {
+              "label": "Table of Contents",
+              "description": "Auto-generated with page numbers"
+            },
+            {
+              "label": "Assessment Results",
+              "description": "Tiered findings with evidence"
+            },
+            {
+              "label": "Risk Analysis",
+              "description": "Business impact assessment"
+            },
+            {
+              "label": "Recommendations",
+              "description": "Prioritized actions"
+            },
+            {
+              "label": "Professional Reflection",
+              "description": "What you learned"
+            },
+            {
+              "label": "References",
+              "description": "Minimum 10 valid references"
+            },
+            {
+              "label": "Appendix",
+              "description": "Raw outputs, additional screenshots"
+            }
+          ],
+          "type": "callout",
+          "calloutType": "reportSections"
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part I (Internal Packet)",
+          "items": [
+            "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 3.1 (internal training), Lab 3.2 (internal training), Lab 3.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
+            "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 3.1, 3.2, and 3.3 (tcpdump, Wireshark, tshark, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command or filter you applied)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
+            "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar protocol, Wireshark filter complexity, troubleshooting a capture) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this network analysis engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d filter for suspicious DNS traffic earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a TCP retransmission pattern; I confirmed against the Wireshark documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
+          ]
+        },
+        {
+          "type": "includeList",
+          "title": "Include in Part II (Client Deliverable)",
+          "items": [
+            "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
+            "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., capture setup &#8594; filtering &#8594; protocol analysis &#8594; anomaly identification)</li><li>Scope and limitations: what was in scope (Gulf Coast network segments), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
+            "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Unencrypted Patient Data Transmitted Over Internal Network&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or network segment</li><li>Description, including specific protocol details and packet evidence</li><li>Evidence: reference to your screenshot(s) or pcap excerpt (e.g., &#8220;See Figure 4 in Appendix &#8212; packet #1247&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+            "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule, NIST CSF)</li></ul>",
+            "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-53, HIPAA Security Rule, NIST CSF)</li></ul>"
+          ]
+        },
+        {
+          "type": "callout",
+          "icon": "warning",
+          "title": "Common Pitfalls",
+          "items": [
+            "<strong>Forgetting Units 1&#8211;2:</strong> Include Labs 3.1 and 3.2 work",
+            "<strong>Technical jargon:</strong> Executive summary must be non-technical",
+            "<strong>Missing references:</strong> 10 minimum &#8212; man pages count!",
+            "<strong>PDF submission:</strong> Must be DOCX format"
+          ],
+          "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "callout",
+          "calloutType": "textbookReference",
+          "title": "Textbook Reference",
+          "icon": "book",
+          "text": "Chapter 9 covers network protocol fundamentals — the same protocols you cataloged in Lab 3.2 now appear in your live capture. Chapter 13 discusses IDS/IPS and anomaly detection; your protocol distribution analysis and endpoint statistics are exactly the techniques defenders use for network monitoring."
+        },
+        {
+          "type": "callout",
+          "icon": "check_circle",
+          "title": "What You Should Have",
+          "text": "Complete Engagement Packet with all sections. Executive summary answering Jennifer&#8217;s question. Minimum 10 references. Professional formatting ready for client delivery.",
+          "calloutType": "whatYouShouldHave"
+        }
+      ]
+    }
   ],
-  "penaltyCap": "Combined deductions cap at -100%.",
-  "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
-  "bonus": {
-   "title": "Bonus Opportunity (+5%)",
-   "description": "NetworkMiner Analysis: Install NetworkMiner on Windows and analyze the same PCAP. Compare and contrast its capabilities with Wireshark in an additional section."
+  "purpleTeam": {
+    "redTeam": {
+      "type": "items",
+      "label": "What Red Team Learns",
+      "items": [
+        "Your analysis revealed protocol distribution, active endpoints, and exposed services",
+        "An attacker conducting reconnaissance would use these same techniques to map the attack surface",
+        "The cleartext HTTP traffic and server header leakage you documented are exactly the footholds red teams exploit"
+      ]
+    },
+    "blueTeam": {
+      "type": "items",
+      "label": "What Blue Team Learns",
+      "items": [
+        "Your protocol hierarchy analysis establishes baseline &#8220;normal&#8221; traffic",
+        "Anomaly detection requires knowing what&#8217;s expected &#8212; then anything outside that pattern becomes an alert candidate",
+        "The self-signed certificate and missing security headers you found are exactly what defenders audit for"
+      ]
+    },
+    "connection": "The Gulf Coast scenario demonstrates purple team value: your analysis serves both offensive reconnaissance (what can an attacker learn?) and defensive assessment (what should we monitor?). This dual perspective is exactly what NEXUS delivers to Jennifer Walsh."
   },
-  "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
- },
- "needHelp": {
-  "channels": [
-   {
-    "detail": "#lab-help",
-    "label": "Discord"
-   },
-   {
-    "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
-    "label": "Office Hours"
-   },
-   {
-    "detail": "john.newsom@utsa.edu (private matters only)",
-    "label": "Email"
-   }
-  ],
-  "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
-  "genAI": {
-   "permitted": [
-    "Explain command syntax and tool functionality",
-    "Troubleshoot errors and technical issues",
-    "Understand concepts from assigned readings",
-    "Proofread and grammar check",
-    "Suggest report structure improvements"
-   ],
-   "prohibited": [
-    "Write entire sections of reports",
-    "Answer quiz questions directly",
-    "Generate fake screenshots or outputs",
-    "Complete hands-on exercises on your behalf"
-   ],
-   "principle": "AI is a tutor, not a ghostwriter."
+  "finalChecklist": {
+    "screenshotTable": null,
+    "sections": [
+      {
+        "type": "screenshotTable",
+        "items": [
+          {
+            "number": "20",
+            "description": "Successful SSH connection to Azure VM"
+          },
+          {
+            "number": "21",
+            "description": "Firefox certificate warning (self-signed cert finding)"
+          },
+          {
+            "number": "22",
+            "description": "curl header comparison (HTTP vs HTTPS)"
+          },
+          {
+            "number": "23",
+            "description": "nginx server configuration"
+          },
+          {
+            "number": "24",
+            "description": "Protocol Hierarchy verification"
+          },
+          {
+            "number": "25",
+            "description": "Protocol Distribution analysis"
+          },
+          {
+            "number": "26",
+            "description": "Endpoint Statistics"
+          },
+          {
+            "number": "27",
+            "description": "TCP Stream reconstruction"
+          },
+          {
+            "number": "28",
+            "description": "IO Graph"
+          },
+          {
+            "number": "29",
+            "description": "Flow Graph"
+          },
+          {
+            "number": "30",
+            "description": "Notable security finding with evidence"
+          }
+        ],
+        "title": "Screenshots Required (This Unit)"
+      },
+      {
+        "type": "checklist",
+        "items": [
+          "File format: .docx only (no PDFs)",
+          "All screenshots embedded (not linked)",
+          "Minimum 10 references",
+          "Submitted before deadline"
+        ],
+        "title": "Submission Requirements"
+      }
+    ],
+    "canvasSubmission": "Submit as <code>.docx</code> in Canvas before the deadline.",
+    "finalWarning": "PDF submissions receive an automatic zero. Submit <strong>.docx only</strong>.",
+    "deadlineTip": {
+      "title": "Deadline Tip",
+      "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    }
   },
-  "whatsNext": {
-   "text": "Module 4: Threats & Attacks — Next module you'll shift focus to password security with Brazos Financial Group and Alamo Industries as clients. You'll use John the Ripper and Hashcat to crack Windows and Linux password hashes, then document findings and remediation recommendations for both clients."
+  "gradingStandards": {
+    "qualityLadder": {
+      "partI_internal": {
+        "weight": "40%",
+        "components": {
+          "timesheet": "5%",
+          "runbook": "20%",
+          "analystReflection": "15%"
+        }
+      },
+      "partII_client": {
+        "weight": "60%",
+        "components": {
+          "executiveSummary": "12%",
+          "methodology": "7%",
+          "findings": "22%",
+          "riskAnalysis": "11%",
+          "recommendations": "8%"
+        },
+        "note": "Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale."
+      }
+    },
+    "penalties": [
+      {
+        "penalty": "-5%",
+        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
+      },
+      {
+        "penalty": "-20%",
+        "condition": "Appendix missing from Part II Client Deliverable."
+      },
+      {
+        "penalty": "-10%",
+        "condition": "Executive Summary exceeds one page."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Cover Page missing."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Table of Contents missing or hand-typed (must be auto-generated from heading styles)."
+      },
+      {
+        "penalty": "-5%",
+        "condition": "Word fields not updated before submission (visible 'Error! Reference source not found' or stale figure numbers)."
+      }
+    ],
+    "penaltyCap": "Combined deductions cap at -100%.",
+    "rubricCallout": "Full grading rubric and per-section level descriptors: <a href=\"../support/Grading_Info.html\">Grading Info</a>",
+    "bonus": {
+      "title": "Bonus Opportunity (+5%)",
+      "description": "NetworkMiner Analysis: Install NetworkMiner on Windows and analyze the same PCAP. Compare and contrast its capabilities with Wireshark in an additional section."
+    },
+    "automaticZero": "No submission, AI-generated content, fabricated screenshots, shared work, wrong format (PDF), or academic integrity violation."
+  },
+  "needHelp": {
+    "channels": [
+      {
+        "detail": "#lab-help",
+        "label": "Discord"
+      },
+      {
+        "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
+        "label": "Office Hours"
+      },
+      {
+        "detail": "john.newsom@utsa.edu (private matters only)",
+        "label": "Email"
+      }
+    ],
+    "lateWorkPolicy": "Late work is not accepted. Drop policies exist for emergencies.",
+    "genAI": {
+      "permitted": [
+        "Explain command syntax and tool functionality",
+        "Troubleshoot errors and technical issues",
+        "Understand concepts from assigned readings",
+        "Proofread and grammar check",
+        "Suggest report structure improvements"
+      ],
+      "prohibited": [
+        "Write entire sections of reports",
+        "Answer quiz questions directly",
+        "Generate fake screenshots or outputs",
+        "Complete hands-on exercises on your behalf"
+      ],
+      "principle": "AI is a tutor, not a ghostwriter."
+    },
+    "whatsNext": {
+      "text": "Module 4: Threats & Attacks — Next module you'll shift focus to password security with Brazos Financial Group and Alamo Industries as clients. You'll use John the Ripper and Hashcat to crack Windows and Linux password hashes, then document findings and remediation recommendations for both clients."
+    }
   }
- }
 }
