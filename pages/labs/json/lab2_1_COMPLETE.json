@@ -768,7 +768,7 @@
         "title": "Environment Verification",
         "items": [
           {
-            "check": "VM hostname (kali-abc123) visible in all screenshots"
+            "check": "VM hostname (kali-<your abc123>) visible in all screenshots"
           },
           {
             "check": "All files created inside ~/lab2-crypto directory"

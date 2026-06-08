@@ -46,7 +46,7 @@
       {
         "type": "warning",
         "title": "Minimum Requirements",
-        "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-abc123). Use naming convention: ##-description.png."
+        "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-<your abc123>). Use naming convention: ##-description.png."
       },
       {
         "type": "warning",
@@ -495,7 +495,7 @@
             "Part II Risk Analysis: risk matrix included and color coded",
             "Part II Recommendations: roadmap with phased timelines",
             "All Lab 5.1 screenshots included as evidence",
-            "VM name visible in terminal screenshots (kali-abc123)",
+            "VM name visible in terminal screenshots (kali-<your abc123>)",
             "Minimum 10 references included",
             "Document is .docx format (not PDF)",
             "Professional formatting and grammar throughout"
@@ -630,7 +630,7 @@
     "penalties": [
       {
         "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
+        "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
       },
       {
         "penalty": "-10%",

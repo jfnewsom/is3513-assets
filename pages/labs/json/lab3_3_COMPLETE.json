@@ -780,7 +780,7 @@
     "penalties": [
       {
         "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+        "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor: 20 screenshots for Modules 1-4."
       },
       {
         "penalty": "-10%",

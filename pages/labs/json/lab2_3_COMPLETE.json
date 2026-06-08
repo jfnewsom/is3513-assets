@@ -742,7 +742,7 @@
           "title": "Common Pitfalls",
           "items": [
             "<strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero",
-            "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-abc123)",
+            "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-<your abc123>)",
             "<strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT — see the Citations page"
           ],
           "calloutType": "commonPitfalls"
@@ -842,7 +842,7 @@
     "penalties": [
       {
         "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+        "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor: 20 screenshots for Modules 1-4."
       },
       {
         "penalty": "-10%",

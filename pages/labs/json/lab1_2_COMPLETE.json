@@ -745,7 +745,7 @@
       {
         "title": "Screenshot Verification",
         "items": [
-          "Hostname (kali-abc123) visible in terminal screenshots",
+          "Hostname (kali-<your abc123>) visible in terminal screenshots",
           "All screenshots clear and readable",
           "All screenshots saved to Module1_Screenshots folder"
         ]

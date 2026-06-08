@@ -269,7 +269,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Configure the VM name using this exact format: kali-abc123",
+              "text": "Configure the VM name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
               "command": null,
               "whatThisDoes": null
             },
@@ -305,20 +305,20 @@
           "items": null,
           "type": "callout",
           "calloutType": "required",
-          "body": "Your VM name must follow the format kali-abc123. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots."
+          "body": "Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable."
         },
         {
           "title": "Screenshot",
           "items": null,
           "type": "callout",
           "calloutType": "screenshot",
-          "body": "Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as 01-vm-settings.png"
+          "body": "Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count. Save as 01-vm-settings.png"
         },
         {
           "title": "Common Pitfalls",
           "text": null,
           "items": [
-            "Wrong VM name format: Must be kali-abc123 exactly — this appears in all your screenshots",
+            "Leaving the placeholder name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
             "Too little RAM: 2GB minimum, 4GB recommended — less causes performance issues",
             "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
           ],
@@ -330,7 +330,7 @@
           "items": null,
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "body": "A VM entry in VirtualBox Manager with your name following the kali-abc123 format, with the Kali ISO attached."
+          "body": "A VM entry in VirtualBox Manager named kali-&lt;your abc123&gt; (your own ID, not the placeholder), with the Kali ISO attached."
         },
         {
           "title": "Textbook Reference",
@@ -384,7 +384,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Set hostname to match your VM name: kali-abc123",
+              "text": "Set the hostname to match your VM name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
               "command": null,
               "whatThisDoes": null
             },
@@ -601,7 +601,7 @@
               "text": "Display your hostname",
               "command": "hostname",
               "whatThisDoes": {
-                "output": "This should show kali-abc123. If it shows something else, you need to fix it before proceeding."
+                "output": "This should show your VM name in the form kali-<your abc123> (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding."
               }
             },
             {
@@ -785,7 +785,7 @@
       {
         "title": "Environment Verification",
         "items": [
-          "VM named exactly kali-abc123",
+          "VM named kali-<your abc123> (your own ID, not the placeholder)",
           "Kali Linux boots to desktop",
           "Docker installed, running, and hello-world container executes",
           "All four screenshots saved to Module1_Screenshots folder"

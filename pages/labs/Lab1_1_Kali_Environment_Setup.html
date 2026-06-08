@@ -265,7 +265,7 @@
     <ol>
       <li>In VirtualBox Manager, click New
       </li>
-      <li>Configure the VM name using this exact format: kali-abc123
+      <li>Configure the VM name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
       </li>
       <li>Set Type: Linux, Version: Debian (64-bit)
       </li>
@@ -282,14 +282,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Critical: VM Naming Convention</div>
-        <p>Your VM name must follow the format kali-abc123. This name appears in your terminal prompt and verifies that screenshots are your own work. Incorrect naming will result in unverifiable screenshots.</p>
+        <p>Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable.</p>
       </div>
     </div>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your VM settings window showing the VM name, RAM allocation, and processor count. Save as 01-vm-settings.png</p>
+        <p>Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count. Save as 01-vm-settings.png</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -297,7 +297,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Wrong VM name format: Must be kali-abc123 exactly — this appears in all your screenshots</li>
+          <li>Leaving the placeholder name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.</li>
           <li>Too little RAM: 2GB minimum, 4GB recommended — less causes performance issues</li>
           <li>ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings</li>
         </ul>
@@ -307,7 +307,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>A VM entry in VirtualBox Manager with your name following the kali-abc123 format, with the Kali ISO attached.</p>
+        <p>A VM entry in VirtualBox Manager named kali-&lt;your abc123&gt; (your own ID, not the placeholder), with the Kali ISO attached.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -355,7 +355,7 @@
       </li>
       <li>Choose your language, location, and keyboard layout
       </li>
-      <li>Set hostname to match your VM name: kali-abc123
+      <li>Set the hostname to match your VM name. Name your VM kali-<your abc123> — your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
       </li>
       <li>Leave domain name blank
       </li>
@@ -565,7 +565,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> This should show kali-abc123. If it shows something else, you need to fix it before proceeding.</p>
+            <p><strong>In your output:</strong> This should show your VM name in the form kali-<your abc123> (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding.</p>
           </div>
         </details>
       </li>
@@ -751,7 +751,7 @@
 
     <h2>Environment Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; VM named exactly kali-abc123</li>
+      <li>&#9744; VM named kali-<your abc123> (your own ID, not the placeholder)</li>
       <li>&#9744; Kali Linux boots to desktop</li>
       <li>&#9744; Docker installed, running, and hello-world container executes</li>
       <li>&#9744; All four screenshots saved to Module1_Screenshots folder</li>

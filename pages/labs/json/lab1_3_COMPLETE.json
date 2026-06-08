@@ -499,7 +499,7 @@
         "items": [
           "All Unit 1-2 screenshots included (01-04 from Lab 1.1, 07-13 from Lab 1.2)",
           "Unit 3 screenshots per the lab body (CP1 + CP2 minimum 8 from recon workflow)",
-          "Hostname (kali-abc123) visible in every terminal screenshot",
+          "Hostname (kali-<your abc123>) visible in every terminal screenshot",
           "Screenshots are clear and readable"
         ]
       },
@@ -544,7 +544,7 @@
     "penalties": [
       {
         "penalty": "-5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-abc123) not visible. Floor: 20 screenshots for Modules 1-4."
+        "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor: 20 screenshots for Modules 1-4."
       },
       {
         "penalty": "-10%",

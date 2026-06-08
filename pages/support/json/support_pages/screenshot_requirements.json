@@ -16,7 +16,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing screenshot below the 20 required (Modules 1&#8211;4). Module 5 is compressed to two labs; its required screenshot count is published in the Module 5 lab body. A screenshot without the VM name (<code>kali-abc123</code>) visible counts as missing. Combined with other documentation deductions, the cap is &#8722;100%.",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;5%</strong> per missing screenshot below the 20 required (Modules 1&#8211;4). Module 5 is compressed to two labs; its required screenshot count is published in the Module 5 lab body. A screenshot without your VM name (<code>kali-&lt;your abc123&gt;</code>) visible counts as missing. Combined with other documentation deductions, the cap is &#8722;100%.",
       "icon": "error"
     },
     {
@@ -28,7 +28,7 @@
         "items": [
           {
             "title": "VM name in terminal prompt",
-            "desc": "kali-abc123 visible"
+            "desc": "kali-&lt;your abc123&gt; visible"
           },
           {
             "title": "VM name in window title bar",
@@ -64,7 +64,7 @@
       "color": "#FF9F1C",
       "label": "Critical: VM Name Visibility",
       "paragraphs": [
-        "Your VM must be named <code style=\"background:#1a1f2e;padding:3px 8px;border-radius:4px;font-family:'Roboto Mono',monospace;font-size:13px;color:#FF9F1C;\">kali-abc123</code> and this name must be visible in every screenshot.",
+        "Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot.",
         "Without your VM name, there&#8217;s no way to verify <em>you</em> ran the commands. Screenshots without identification could be copied from anywhere &#8212; and occasionally are."
       ]
     },
