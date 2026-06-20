@@ -353,41 +353,48 @@
           "columns": [
             "Protocol",
             "Display Filter",
-            "Port(s)"
+            "Port(s)",
+            "How to Generate It"
           ],
           "rows": [
             [
               "TCP",
               "<code>tcp</code>",
-              "Various"
+              "Various",
+              "Visit <code>http://neverssl.com</code> and watch the three-way handshake"
             ],
             [
               "UDP",
               "<code>udp</code>",
-              "Various"
+              "Various",
+              "Run <code>nslookup example.com</code> (DNS queries ride UDP/53)"
             ],
             [
               "HTTP",
               "<code>http</code>",
-              "80"
+              "80",
+              "Visit <code>http://neverssl.com</code> (stays plain HTTP, no redirect)"
             ],
             [
               "HTTPS/TLS",
               "<code>tls</code>",
-              "443"
+              "443",
+              "Visit <code>https://example.com</code> and watch the TLS handshake"
             ],
             [
               "DNS",
               "<code>dns</code>",
-              "53"
+              "53",
+              "Run <code>nslookup example.com</code> from a terminal"
             ],
             [
               "ICMP",
               "<code>icmp</code>",
-              "N/A (Layer 3)"
+              "N/A (Layer 3)",
+              "Run <code>ping google.com</code> from a terminal"
             ]
           ],
-          "note": "ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.",
+          "note": "Most of this traffic appears as you browse normally; the <strong>How to Generate It</strong> column gives a reliable way to produce each one on demand while Wireshark is capturing.",
           "type": "table"
         },
         {

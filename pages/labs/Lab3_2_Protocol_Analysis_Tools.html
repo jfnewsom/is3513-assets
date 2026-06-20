@@ -343,41 +343,48 @@
         <th>Protocol</th>
         <th>Display Filter</th>
         <th>Port(s)</th>
+        <th>How to Generate It</th>
       </tr></thead>
       <tbody>
         <tr>
           <td class="nx-time-label">TCP</td>
           <td><code>tcp</code></td>
           <td>Various</td>
+          <td>Visit <code>http://neverssl.com</code> and watch the three-way handshake</td>
         </tr>
         <tr>
           <td class="nx-time-label">UDP</td>
           <td><code>udp</code></td>
           <td>Various</td>
+          <td>Run <code>nslookup example.com</code> (DNS queries ride UDP/53)</td>
         </tr>
         <tr>
           <td class="nx-time-label">HTTP</td>
           <td><code>http</code></td>
           <td>80</td>
+          <td>Visit <code>http://neverssl.com</code> (stays plain HTTP, no redirect)</td>
         </tr>
         <tr>
           <td class="nx-time-label">HTTPS/TLS</td>
           <td><code>tls</code></td>
           <td>443</td>
+          <td>Visit <code>https://example.com</code> and watch the TLS handshake</td>
         </tr>
         <tr>
           <td class="nx-time-label">DNS</td>
           <td><code>dns</code></td>
           <td>53</td>
+          <td>Run <code>nslookup example.com</code> from a terminal</td>
         </tr>
         <tr>
           <td class="nx-time-label">ICMP</td>
           <td><code>icmp</code></td>
           <td>N/A (Layer 3)</td>
+          <td>Run <code>ping google.com</code> from a terminal</td>
         </tr>
       </tbody>
     </table>
-    <p><em>ICMP won&#8217;t appear in normal browsing. To capture ICMP traffic, run <code>ping google.com</code> from a terminal while Wireshark is capturing.</em></p>
+    <p><em>Most of this traffic appears as you browse normally; the <strong>How to Generate It</strong> column gives a reliable way to produce each one on demand while Wireshark is capturing.</em></p>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
