@@ -161,15 +161,15 @@
             },
             {
               "text": "Resolve the server&#8217;s IP address from a terminal on your host:",
-              "command": "nslookup gulfcoast-portal.southcentralus.azurecontainer.io",
+              "command": "nslookup gulfcoast-portal.southcentralus.cloudapp.azure.com",
               "whatThisDoes": {
                 "concept": "nslookup queries the Domain Name System (DNS) to translate a hostname into an IP address &#8212; the same process your browser performs behind the scenes every time you visit a website.",
-                "output": "Look for a line showing <code>Address:</code> followed by an IP (e.g., 52.248.39.180). This is the IP you&#8217;ll use in your Wireshark capture filter.",
+                "output": "Look for a line showing <code>Address:</code> followed by an IP (e.g., 104.215.116.139). This is the IP you&#8217;ll use in your Wireshark capture filter.",
                 "flags": null
               }
             },
             {
-              "text": "Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 52.248.39.180</code><br><em>(replace with the IP nslookup returned)</em>",
+              "text": "Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 104.215.116.139</code><br><em>(replace with the IP nslookup returned)</em>",
               "command": null,
               "whatThisDoes": null
             },
@@ -196,7 +196,7 @@
             },
             {
               "text": "SSH to the Gulf Coast portal:",
-              "command": "ssh student@gulfcoast-portal.southcentralus.azurecontainer.io",
+              "command": "ssh student@gulfcoast-portal.southcentralus.cloudapp.azure.com",
               "whatThisDoes": {
                 "concept": "SSH (Secure Shell) creates an encrypted tunnel between your Kali VM and the remote server. All traffic within the tunnel is encrypted, which is why Wireshark will show SSH packets but cannot read their contents.",
                 "output": "You&#8217;ll be asked to accept the host key fingerprint (type <code>yes</code>), then prompted for a password. After successful login, you&#8217;ll see a welcome banner identifying the Gulf Coast Healthcare Partners portal server.",
@@ -210,7 +210,7 @@
                     "description": "Separates the username from the hostname"
                   },
                   {
-                    "flag": "gulfcoast-portal...azurecontainer.io",
+                    "flag": "gulfcoast-portal...cloudapp.azure.com",
                     "description": "The FQDN (Fully Qualified Domain Name) of the Azure-hosted server"
                   }
                 ]
@@ -236,7 +236,7 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
+              "text": "Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>",
               "command": null,
               "whatThisDoes": null
             },
@@ -265,7 +265,7 @@
           "type": "steps",
           "steps": [
             {
-              "text": "In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.azurecontainer.io</code>",
+              "text": "In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>",
               "command": null,
               "whatThisDoes": null
             },
@@ -283,7 +283,7 @@
           "steps": [
             {
               "text": "In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:",
-              "command": "curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io",
+              "command": "curl -I http://gulfcoast-portal.southcentralus.cloudapp.azure.com",
               "whatThisDoes": {
                 "concept": "curl is a command-line tool for making HTTP requests. In security assessments, it&#8217;s preferred over a browser because it shows the raw server response without client-side rendering or caching. Examining response headers is one of the first steps in web application reconnaissance.",
                 "output": "You&#8217;ll see headers like <code>Server:</code>, <code>Content-Type:</code>, and others. Pay close attention &#8212; what information is the server revealing about itself that an attacker could use?",
@@ -297,7 +297,7 @@
             },
             {
               "text": "Now request the HTTPS headers for comparison:",
-              "command": "curl -k -I https://gulfcoast-portal.southcentralus.azurecontainer.io",
+              "command": "curl -k -I https://gulfcoast-portal.southcentralus.cloudapp.azure.com",
               "whatThisDoes": {
                 "concept": "The same request but over HTTPS (encrypted). Comparing HTTP and HTTPS responses side-by-side can reveal configuration differences &#8212; servers sometimes expose different headers depending on the protocol.",
                 "output": "Compare this response carefully to the HTTP version. Do you see any headers here that were not present in the HTTP response? Any differences are potential security findings.",

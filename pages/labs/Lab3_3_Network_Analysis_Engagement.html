@@ -193,16 +193,16 @@
       <li>Identify your active network interface (Wi-Fi or Ethernet).
       </li>
       <li>Resolve the server&#8217;s IP address from a terminal on your host:
-        <div class="nx-cmd">nslookup gulfcoast-portal.southcentralus.azurecontainer.io</div>
+        <div class="nx-cmd">nslookup gulfcoast-portal.southcentralus.cloudapp.azure.com</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> nslookup queries the Domain Name System (DNS) to translate a hostname into an IP address &#8212; the same process your browser performs behind the scenes every time you visit a website.</p>
-            <p><strong>In your output:</strong> Look for a line showing <code>Address:</code> followed by an IP (e.g., 52.248.39.180). This is the IP you&#8217;ll use in your Wireshark capture filter.</p>
+            <p><strong>In your output:</strong> Look for a line showing <code>Address:</code> followed by an IP (e.g., 104.215.116.139). This is the IP you&#8217;ll use in your Wireshark capture filter.</p>
           </div>
         </details>
       </li>
-      <li>Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 52.248.39.180</code><br><em>(replace with the IP nslookup returned)</em>
+      <li>Start a Wireshark capture on your active interface with a capture filter using the IP from nslookup:<br><code>host 104.215.116.139</code><br><em>(replace with the IP nslookup returned)</em>
       </li>
     </ol>
         <details>
@@ -218,7 +218,7 @@
       <li>Open a terminal in your Kali VM.
       </li>
       <li>SSH to the Gulf Coast portal:
-        <div class="nx-cmd">ssh student@gulfcoast-portal.southcentralus.azurecontainer.io</div>
+        <div class="nx-cmd">ssh student@gulfcoast-portal.southcentralus.cloudapp.azure.com</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
@@ -228,7 +228,7 @@
             <ul>
               <li><code>student</code> &#8212; The username to authenticate as on the remote server</li>
               <li><code>@</code> &#8212; Separates the username from the hostname</li>
-              <li><code>gulfcoast-portal...azurecontainer.io</code> &#8212; The FQDN (Fully Qualified Domain Name) of the Azure-hosted server</li>
+              <li><code>gulfcoast-portal...cloudapp.azure.com</code> &#8212; The FQDN (Fully Qualified Domain Name) of the Azure-hosted server</li>
             </ul>
           </div>
         </details>
@@ -245,7 +245,7 @@
     </div>
     <h3>Step 3 &#8212; Activity A: Browse via HTTPS</h3>
     <ol>
-      <li>Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.azurecontainer.io</code>
+      <li>Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>
       </li>
       <li>Accept the certificate warning when prompted &#8212; this is a <strong>finding you will document</strong>.
       </li>
@@ -261,7 +261,7 @@
     </div>
     <h3>Step 3 &#8212; Activity B: Browse via HTTP</h3>
     <ol>
-      <li>In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.azurecontainer.io</code>
+      <li>In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>
       </li>
       <li>Notice anything different about how the site responds? Document your observation.
       </li>
@@ -269,7 +269,7 @@
     <h3>Step 3 &#8212; Activity C: Reconnaissance from Kali</h3>
     <ol>
       <li>In your Kali VM (a separate terminal from your SSH session), request the HTTP headers:
-        <div class="nx-cmd">curl -I http://gulfcoast-portal.southcentralus.azurecontainer.io</div>
+        <div class="nx-cmd">curl -I http://gulfcoast-portal.southcentralus.cloudapp.azure.com</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
@@ -283,7 +283,7 @@
         </details>
       </li>
       <li>Now request the HTTPS headers for comparison:
-        <div class="nx-cmd">curl -k -I https://gulfcoast-portal.southcentralus.azurecontainer.io</div>
+        <div class="nx-cmd">curl -k -I https://gulfcoast-portal.southcentralus.cloudapp.azure.com</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
