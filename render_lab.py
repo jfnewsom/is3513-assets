@@ -9,6 +9,11 @@ import json
 import sys
 from pathlib import Path
 
+# Add repo root to path so this works regardless of CWD, then import the
+# single-source deadline callout (wording lives in exactly one place).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from nx_deadline import render_deadline_callout
+
 ASSETS = "https://jfnewsom.github.io/is3513-assets"
 
 # ── Callout type → (css_class, icon, default_title) ──────────────────────────
@@ -771,6 +776,9 @@ def render_final_checklist(data):
     warn = fc.get("finalWarning")
     if warn:
         inner += callout_p("nx-red", "error", "Final Reminder", warn)
+
+    # Deadline / time-zone reminder — single-sourced, renders on every lab & EP.
+    inner += render_deadline_callout()
 
     hdr  = header("final", "checklist", "Verify all requirements before submitting", accent)
     body = card(inner, accent)

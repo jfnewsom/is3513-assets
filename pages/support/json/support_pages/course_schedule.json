@@ -45,6 +45,14 @@
       ]
     },
     {
+      "type": "callout_bar",
+      "color": "#4169E1",
+      "colorRgb": "65, 105, 225",
+      "icon": "schedule",
+      "label": "All Due Times Are 11:59 p.m. US Central Time",
+      "html": "Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe."
+    },
+    {
       "type": "named_section",
       "color": "#7B68EE",
       "label": "How Module 5 Differs",
@@ -61,7 +69,7 @@
         "<strong style=\"color:#ffffff;\">First Day:</strong> Tue May 26 &nbsp;&bull;&nbsp; <strong style=\"color:#ffffff;\">Last Day:</strong> Tue Aug 4 &nbsp;&bull;&nbsp; <strong style=\"color:#ffffff;\">Final Grades Due:</strong> Fri Aug 7",
         "<strong style=\"color:#ffffff;\">University holidays:</strong> Mon May 25 (Memorial Day) · Fri Jun 19 (Emancipation Day) · Sat Jul 4 (Independence Day). Summer is compressed; no holiday accommodations — work ahead if a holiday will affect you.",
         "<strong style=\"color:#ffffff;\">Registrar deadlines:</strong> Census Wed Jun 10 · Drop Deadline Wed Jul 8 · Withdrawal Deadline Fri Jul 31",
-        "Foundation Lab deadlines are <strong style=\"color:#ffffff;\">Fri/Wed 11:59 PM CT</strong>. Engagement Packets are due <strong style=\"color:#ffffff;\">Sun 11:59 PM CT</strong>. Module exams are open Sun – Tue. <strong style=\"color:#ffffff;\">No late work accepted</strong> — use drop policies for emergencies."
+        "Foundation Lab deadlines are <strong style=\"color:#ffffff;\">Friday and Wednesday at 11:59 p.m. US Central Time</strong>. Engagement Packets are due <strong style=\"color:#ffffff;\">Sunday at 11:59 p.m. US Central Time</strong>. Module exams open Sunday and close the following Tuesday. <strong style=\"color:#ffffff;\">No late work accepted.</strong> Use drop policies for emergencies."
       ]
     },
     {

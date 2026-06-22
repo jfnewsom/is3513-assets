@@ -13,7 +13,9 @@ Source filename convention: module_N_overview.json
 Output filename convention: Module_N.html
 """
 import json, sys, os, glob
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from render_recordings import render_module_recordings_block
+from nx_deadline import render_deadline_callout  # single-source deadline callout
 
 CSS_PATH = "../../site.css"   # relative from pages/support/ to repo root
 
@@ -309,7 +311,10 @@ def render(data):
     # Recordings (after Skills, before footer)
     recordings_section = render_module_recordings_block(n, accent)
 
-    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, recordings_section, footer]))
+    # Deadline / time-zone reminder — single-sourced across all surfaces.
+    deadline_section = render_deadline_callout()
+
+    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, recordings_section, deadline_section, footer]))
     return shell(n, title, accent, body)
 
 

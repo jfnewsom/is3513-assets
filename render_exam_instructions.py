@@ -11,6 +11,10 @@ Usage:
 """
 import json, sys, os, glob
 
+# Single-source deadline callout (wording lives in exactly one place).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from nx_deadline import render_deadline_callout
+
 CSS_PATH = "../../site.css"
 ASSETS   = "https://jfnewsom.github.io/is3513-assets"
 ACCENT   = "#E63946"
@@ -138,10 +142,13 @@ def render(data):
       <span class="nx-client-ctx__body"> This is an individual assessment. All work must be your own. Violations result in a zero and referral to Student Conduct.</span>
     </div>"""
 
+    # Deadline / time-zone reminder — single-sourced across all surfaces.
+    deadline = render_deadline_callout()
+
     # Footer
     footer = f'    <div class="nx-page-footer">{data["readyMessage"]} <strong>Good luck, analyst!</strong></div>'
 
-    body = "\n\n".join([stat_blocks, two_col, integrity, footer])
+    body = "\n\n".join([stat_blocks, two_col, integrity, deadline, footer])
     return shell(module_num, module_title, body)
 
 
