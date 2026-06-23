@@ -629,11 +629,11 @@
     },
     "penalties": [
       {
-        "penalty": "-5%",
+        "penalty": "-2.5%",
         "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor for Module 5 is set by the compressed lab structure — see the lab body."
       },
       {
-        "penalty": "-10%",
+        "penalty": "-5%",
         "condition": "Per reference missing below the 10-reference minimum. References must meet the source quality standard."
       },
       {
