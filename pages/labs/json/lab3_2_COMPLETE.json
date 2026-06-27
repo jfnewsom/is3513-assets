@@ -678,7 +678,7 @@
           "type": "callout",
           "calloutType": "characterQuote",
           "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
-          "quote": "I hand-picked these training captures to teach you what matters. The credential leak PCAP shows exactly why we push clients to use HTTPS everywhere. When you find the issue, you&#8217;ll understand viscerally why encryption matters."
+          "quote": "I hand-picked these training captures to teach you what matters. The credential leak PCAP shows exactly why we push clients off plaintext protocols like FTP and onto encrypted ones. When you find the issue, you&#8217;ll understand viscerally why encryption matters."
         },
         {
           "type": "callout",
@@ -698,7 +698,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Apply filters to identify HTTP traffic.",
+              "text": "Apply the <code>ftp</code> filter to isolate the FTP control traffic.",
               "command": null,
               "whatThisDoes": null
             },
@@ -708,7 +708,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Find the security issue (hint: look for form submissions).",
+              "text": "Find the security issue (hint: look for the FTP login exchange).",
               "command": null,
               "whatThisDoes": null
             },
@@ -731,8 +731,8 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "<strong>Skipping the basics:</strong> Start with <code>http</code> filter before diving deeper",
-            "<strong>Missing POST requests:</strong> The interesting data is often in POST requests. Filter: <code>http.request.method == POST</code>",
+            "<strong>Skipping the basics:</strong> Start with the <code>ftp</code> filter before diving deeper",
+            "<strong>Missing the credentials:</strong> The login is sent in cleartext. Filter: <code>ftp.request.command == USER || ftp.request.command == PASS</code>",
             "<strong>Not documenting the finding:</strong> Don&#8217;t just find it &#8212; explain what you found, why it&#8217;s bad, and what should be done about it"
           ],
           "calloutType": "commonPitfalls"
