@@ -109,22 +109,22 @@
           "labTitle": "Windows Password Cracking",
           "type": "foundation",
           "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
-          "lab_walkthrough_url": null
+          "chapter_notes_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ce85a186-6c09-4394-b648-b47c0161abdf",
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b371d6f1-9d97-4f95-a7aa-b47c0161abde"
         },
         {
           "labLabel": "Lab 4.2",
           "labTitle": "Linux Password Cracking",
           "type": "foundation",
           "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
-          "lab_walkthrough_url": null
+          "chapter_notes_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f78e34c1-bb2d-4c49-b08f-b47c0161b437",
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d37d72c7-6f53-44ce-950d-b47c0161abdf"
         },
         {
           "labLabel": "Lab 4.3",
           "labTitle": "Password Security Assessment",
           "type": "engagement",
-          "lab_walkthrough_url": null
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=05240cba-856b-4514-8f3f-b47c0161abe0"
         }
       ]
     },
