@@ -1,13 +1,11 @@
 {
   "_meta": {
     "purpose": "Single source of truth for Panopto recording links across IS3513. Drives the Recordings section on Home.html (aggregated, all 5 modules) and on each Module_N.html (just that module's rows). Set chapter_notes_url and lab_walkthrough_url to the Panopto Viewer URL when a recording is posted; leave null for placeholders.",
-    "lastEdited": "2026-05-28",
-    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column at all — the final lab in each module is compilation/client-facing, not new chapter content. Only foundation labs (X.1, X.2, and 5.1) get a chapter overview slot. Each module has a themeColor that tints its header and engagement row for at-a-glance differentiation in the aggregated Home view."
+    "lastEdited": "2026-07-05",
+    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column at all — the final lab in each module is compilation/client-facing, not new chapter content. Only foundation labs carry chapter slots. A foundation row normally uses the single-slot keys (chapter_notes_label / chapter_notes_url); when one lab covers multiple chapters (Module 5's compressed Lab 5.1 covers Chapters 10 & 20), use a `chapter_notes` LIST of {label, url} objects instead — buttons render in list order, before Lab Walkthrough. Set url to the Panopto Viewer URL when posted; leave null for a placeholder."
   },
-
   "homeIntro_html": "<p>Recordings are posted here as they&rsquo;re produced. Same buttons live on each module overview page.</p>",
   "moduleIntro_html": "<p>Recordings for this module are posted here as they&rsquo;re produced.</p>",
-
   "modules": [
     {
       "num": 1,
@@ -38,7 +36,6 @@
         }
       ]
     },
-
     {
       "num": 2,
       "title": "Cryptography &amp; Authentication",
@@ -68,7 +65,6 @@
         }
       ]
     },
-
     {
       "num": 3,
       "title": "Network Security",
@@ -98,7 +94,6 @@
         }
       ]
     },
-
     {
       "num": 4,
       "title": "Threats &amp; Attacks",
@@ -109,26 +104,25 @@
           "labTitle": "Windows Password Cracking",
           "type": "foundation",
           "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
-          "lab_walkthrough_url": null
+          "chapter_notes_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ce85a186-6c09-4394-b648-b47c0161abdf",
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b371d6f1-9d97-4f95-a7aa-b47c0161abde"
         },
         {
           "labLabel": "Lab 4.2",
           "labTitle": "Linux Password Cracking",
           "type": "foundation",
           "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
-          "lab_walkthrough_url": null
+          "chapter_notes_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f78e34c1-bb2d-4c49-b08f-b47c0161b437",
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d37d72c7-6f53-44ce-950d-b47c0161abdf"
         },
         {
           "labLabel": "Lab 4.3",
           "labTitle": "Password Security Assessment",
           "type": "engagement",
-          "lab_walkthrough_url": null
+          "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=05240cba-856b-4514-8f3f-b47c0161abe0"
         }
       ]
     },
-
     {
       "num": 5,
       "title": "Infrastructure, Risk &amp; Resilience",
@@ -138,8 +132,16 @@
           "labLabel": "Lab 5.1",
           "labTitle": "Vulnerability &amp; Risk Analysis",
           "type": "foundation",
-          "chapter_notes_label": "Chapter Notes",
-          "chapter_notes_url": null,
+          "chapter_notes": [
+            {
+              "label": "Chapter 10 Notes",
+              "url": null
+            },
+            {
+              "label": "Chapter 20 Notes",
+              "url": null
+            }
+          ],
           "lab_walkthrough_url": null
         },
         {

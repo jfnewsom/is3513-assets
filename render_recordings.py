@@ -104,12 +104,24 @@ def _render_row(row, theme_color="#FF9F1C"):
             f'      </div>'
         )
 
-    chapter_label = row.get("chapter_notes_label", "Chapter Notes")
-    chapter_btn = _render_button(row.get("chapter_notes_url"), chapter_label)
+    # Multi-chapter support: a foundation row may carry a `chapter_notes`
+    # LIST of {label, url} objects when one lab covers more than one chapter
+    # (Module 5's compressed Lab 5.1 covers Chapters 10 & 20). Buttons render
+    # in list order, before the Lab Walkthrough button. Rows without the list
+    # fall back to the legacy single-slot keys unchanged.
+    notes_list = row.get("chapter_notes")
+    if notes_list:
+        chapter_btns = "\n        ".join(
+            _render_button(n.get("url"), n.get("label", "Chapter Notes"))
+            for n in notes_list
+        )
+    else:
+        chapter_label = row.get("chapter_notes_label", "Chapter Notes")
+        chapter_btns = _render_button(row.get("chapter_notes_url"), chapter_label)
     return (
         f'      <div class="nx-rec-row">\n'
         f'        <div class="nx-rec-lab-label">{row["labLabel"]}{sub_html}</div>\n'
-        f'        {chapter_btn}\n'
+        f'        {chapter_btns}\n'
         f'        {walkthrough_btn}\n'
         f'      </div>'
     )
