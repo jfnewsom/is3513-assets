@@ -10,7 +10,7 @@
     ]
   },
   "intro": {
-    "overview": "This is your Unit 3 Engagement Packet for Module 4. You’ve spent the last two units conducting internal training on password cracking techniques — now it’s time to compile your findings into a professional deliverable for two clients: Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512). Your report will compare platform security architectures and provide prioritized remediation recommendations.",
+    "overview": "This is your Unit 3 Engagement Packet for Module 4, and it works differently from the others: it&#8217;s an <strong>internal comparative engagement</strong>. NEXUS has password assessments running for two clients &#8212; Brazos Financial Group (Windows/NTLM) and Alamo Industries (Linux/SHA-512) &#8212; and you&#8217;re the analyst on both. You&#8217;ll compile one internal packet comparing the two platforms. It comes to your senior analyst, who repackages the relevant pieces into each client&#8217;s own deliverable. You are not addressing this report to a client.",
     "objectives": [
       "Compile a professional security assessment report using work from Labs 4.1 and 4.2",
       "Compare Windows NTLM and Linux SHA-512 password security architectures",
@@ -27,7 +27,7 @@
     ],
     "clientContext": {
       "client": "Brazos Financial Group & Alamo Industries",
-      "description": "This engagement packet spans two NEXUS clients: Brazos Financial Group (Dallas wealth management, SEC examination pending) and Alamo Industries (San Antonio aerospace/defense, CMMC Level 2 in progress). You'll deliver an authentication and access-control assessment that addresses both regulatory contexts.",
+      "description": "This engagement spans two NEXUS clients: Brazos Financial Group (Dallas wealth management, SEC examination pending) and Alamo Industries (San Antonio aerospace/defense, CMMC Level 2 in progress). You assess both platforms in one <strong>internal</strong> packet. Your senior analyst (Maya Rodriguez) pulls from your work to build each client&#8217;s separate, confidential deliverable &#8212; the two clients never see each other&#8217;s results.",
       "contacts": [
         {
           "name": "Ray Jimenez",
@@ -46,14 +46,14 @@
         "type": "required",
         "title": "Required: Use the Engagement Packet Template",
         "icon": "error",
-        "text": "Don&#8217;t build this from a blank page. This module is an internal contribution &#8212; your findings get folded into the larger client deliverable. Download the pre-formatted NEXUS template (cover, section headings, and auto-generating Table of Contents already set up): <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx\">EP_M4_Password_Audit.docx</a>. Full instructions are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
+        "text": "Don&#8217;t build this from a blank page. Your packet is internal source material &#8212; your senior analyst repackages it into each client&#8217;s report. Download the pre-formatted NEXUS template (cover, section headings, and auto-generating Table of Contents already set up): <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx\">EP_M4_Password_Audit.docx</a>. Full instructions are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
         "pinTop": true
       },
       {
         "type": "warning",
         "title": "Minimum Requirements",
         "icon": "warning",
-        "body": "Your Engagement Packet must include: all 12 required sections in order, 12+ screenshots embedded (6 from each Foundation Lab), VM hostname visible in every terminal screenshot, and a minimum of 10 references. RFCs, NIST documents, CVE entries, and man pages all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page."
+        "body": "Your Engagement Packet must include: Part I (Timesheet, Runbook, Analyst Reflection) and Part II (Cover, Executive Summary, Methodology, Findings, Risk Analysis, Recommendations, Appendix), 20+ screenshots embedded across your Foundation Labs, VM hostname (kali-&lt;your abc123&gt;) visible in every terminal screenshot, and a minimum of 10 references. RFCs, NIST documents, CVE entries, and man pages all count. Your textbook does NOT count &#8212; use it to find primary sources, then cite those. See the Citations page."
       },
       {
         "type": "warning",
@@ -140,9 +140,17 @@
       "title": "Report Setup & Unit 1-2 Compilation",
       "content": [
         {
+          "type": "callout",
+          "character": "Maya Rodriguez",
+          "headshot": "maya-rodriguez.png",
+          "calloutType": "characterQuote",
+          "title": "Senior Penetration Tester, NEXUS Security",
+          "quote": "We&#8217;ve got password assessments running for both Brazos and Alamo, and I&#8217;m putting you on both. Do the assessment the way you always do &#8212; full write-up, both platforms. This one stays internal, though: it comes to me, not the clients. I&#8217;ll pull what each client needs out of your report and repackage it into their own deliverable. So don&#8217;t burn time polishing a client-perfect executive summary &#8212; give me plenty to work with and let me do the trimming. Just don&#8217;t pad it: everything you hand me should be worth handing over."
+        },
+        {
           "type": "narrative",
-          "whatYoureDoing": "The foundation of your Engagement Packet — creating the document structure and importing all your existing work from Labs 4.1 and 4.2.",
-          "whyItMatters": "Professional security reports follow consistent structures. The 12-section format we use mirrors real engagement deliverables. Starting with proper organization makes the analysis sections flow naturally."
+          "whatYoureDoing": "The foundation of your Engagement Packet &#8212; setting up the document and importing your work from Labs 4.1 and 4.2. This is an internal comparative engagement: you assess both clients&#8217; platforms in one packet, and it comes to your senior analyst, not to the clients.",
+          "whyItMatters": "Professional security reports follow consistent structures. This packet stays internal &#8212; Maya pulls from it to build each client&#8217;s separate deliverable &#8212; so your job is a complete, well-organized assessment of both platforms, cleanly labeled by client."
         },
         {
           "type": "includeList",
@@ -157,7 +165,7 @@
           "type": "includeList",
           "title": "Include in Part II (Client Deliverable)",
           "items": [
-            "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences (cover both Brazos and Alamo)</li><li>Count of cracked credentials by platform (e.g., &#8220;Windows: 47% of hashes cracked &#8212; Linux: 12%&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing for each client</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Ray Jimenez and Bobby Alamo III &#8212; every line should tie to credential risk and business impact</li></ul>",
+            "<strong>Executive Summary (12%)</strong><ul><li><strong>An internal handoff to your senior analyst, not a client-facing letter.</strong> Maya pulls from it to build each client&#8217;s separate report, so completeness beats polish &#8212; it&#8217;s fine to include more than any one client&#8217;s report would use.</li><li>Overall risk posture for each client, one line each (Brazos, Alamo)</li><li>Cracked-credential counts by platform (e.g., &#8220;Windows/NTLM: 47% &#8212; Linux/SHA-512: 12%&#8221;)</li><li>Key findings and recommendations, labeled by client so Maya can split them easily</li><li>Bullets are fine &#8212; no salutation, no &#8220;Dear client,&#8221; no first person</li><li><strong>Err toward too much rather than too little &#8212; but no padding.</strong> Every item you include should be worthy of inclusion. Volume for its own sake helps no one; a senior analyst still has to read it.</li><li>No strict one-page limit this time &#8212; curation happens downstream. Make it dense and useful, not padded.</li></ul>",
             "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach across both platforms</li><li>Phases of the engagement (e.g., hash extraction &#8594; identification &#8594; attack mode selection &#8594; cracking &#8594; cross-platform analysis)</li><li>Scope and limitations: what was in scope, what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
             "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Domain Administrators Using Easily-Cracked Passwords&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected platform (Windows NTLM / Linux SHA-512) and client (Brazos / Alamo)</li><li>Description, including hash type, crack time, and attack method that succeeded</li><li>Evidence: reference to your screenshot(s) or session output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (lateral movement risk, credential reuse, regulatory exposure)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
             "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context per client: Brazos (financial services, regulatory exposure) vs. Alamo (manufacturing, IP and operational continuity)</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to each business</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-63B Digital Identity Guidelines, CIS Controls)</li></ul>",
@@ -173,127 +181,6 @@
           "type": "callout",
           "calloutType": "thatsAReference",
           "text": "NIST SP 800-61 Rev. 2 - Computer Security Incident Handling Guide. Available at: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final"
-        },
-        {
-          "type": "steps",
-          "role": null,
-          "steps": [
-            {
-              "text": "Create a new Word document.",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create your Title Page with the following information:",
-              "whatThisDoes": null,
-              "substeps": [
-                "Report title: \"Password Security Assessment: Platform Comparison Report\"",
-                "Clients: Brazos Financial Group & Alamo Industries",
-                "Your name, course info, and date"
-              ]
-            },
-            {
-              "text": "Set up section headers for all 12 required sections (see table below)",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Environment Specifications from Lab 4.1",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Tool Documentation (John & Hashcat) from Labs 4.1 and 4.2",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import your Assessment Results (cracking outputs) from both labs",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Import all 12 screenshots into appropriate sections",
-              "whatThisDoes": null,
-              "substeps": null
-            },
-            {
-              "text": "Create placeholder Table of Contents (Word will auto-generate from headings)",
-              "whatThisDoes": null,
-              "substeps": null
-            }
-          ]
-        },
-        {
-          "type": "table",
-          "title": "Required Report Sections",
-          "rows": [
-            [
-              "1",
-              "Title Page",
-              "NEW"
-            ],
-            [
-              "2",
-              "Executive Summary",
-              "NEW (Checkpoint 4)"
-            ],
-            [
-              "3",
-              "Table of Contents",
-              "NEW"
-            ],
-            [
-              "4",
-              "Environment Specifications",
-              "Lab 4.1"
-            ],
-            [
-              "5",
-              "Tool Documentation",
-              "Labs 4.1 & 4.2"
-            ],
-            [
-              "6",
-              "Assessment Results",
-              "Labs 4.1 & 4.2"
-            ],
-            [
-              "7",
-              "Platform Comparison",
-              "NEW (Checkpoint 2)"
-            ],
-            [
-              "8",
-              "Risk Analysis",
-              "NEW (Checkpoint 3)"
-            ],
-            [
-              "9",
-              "Recommendations",
-              "NEW (Checkpoint 3)"
-            ],
-            [
-              "10",
-              "Professional Reflection",
-              "NEW (Checkpoint 4)"
-            ],
-            [
-              "11",
-              "References",
-              "NEW (10 minimum)"
-            ],
-            [
-              "12",
-              "Appendix",
-              "Raw outputs from labs"
-            ]
-          ],
-          "columns": [
-            "#",
-            "Section",
-            "Source"
-          ]
         },
         {
           "type": "callout",
@@ -515,8 +402,8 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "The executive-facing components of your report: a 1-page summary for non-technical readers, your professional reflection, and final quality checks.",
-          "whyItMatters": "Executives don’t read 20-page technical reports — they read the executive summary. If your summary doesn’t communicate the key findings and recommendations clearly, the entire report fails. This is where technical work becomes business communication."
+          "whatYoureDoing": "The internal summary your senior analyst hands off from, plus your professional reflection and final quality checks.",
+          "whyItMatters": "Maya builds each client&#8217;s report from your Executive Summary, so it needs to surface the key findings and recommendations clearly and completely &#8212; labeled by client. Give her plenty to work with; just make sure every point earns its place."
         },
         {
           "type": "callout",
@@ -533,14 +420,14 @@
           "role": null,
           "steps": [
             {
-              "text": "Write Executive Summary (1 page max):",
+              "text": "Write the Executive Summary (internal handoff &#8212; bullets are fine):",
               "whatThisDoes": null,
               "substeps": [
-                "Engagement overview (who, what, why)",
-                "Key finding: Platform architecture dramatically affects password security",
-                "Top 3 risks (one sentence each)",
-                "Top 3 recommendations (one sentence each)",
-                "No jargon — a business executive should understand every word"
+                "Engagement overview (who, what, why) &#8212; both clients",
+                "Key finding: platform architecture dramatically affects password security",
+                "Top risks per client, labeled Brazos / Alamo",
+                "Top recommendations per client, labeled Brazos / Alamo",
+                "No strict one-page limit &#8212; completeness over polish, but no padding: every point should be worth handing to Maya"
               ]
             },
             {
@@ -649,29 +536,28 @@
     "screenshotTable": null,
     "sections": [
       {
-        "title": "Report Sections (All 12 Required)",
+        "title": "Report Sections (Part I + Part II)",
         "type": "checklist",
         "items": [
-          "Title Page with report title, clients, your name, date",
-          "Executive Summary (1 page, non-technical language)",
-          "Table of Contents (auto-generated, updated)",
-          "Environment Specifications (from Lab 4.1)",
-          "Tool Documentation (John & Hashcat from Labs 4.1–4.2)",
-          "Assessment Results (cracking outputs from both clients)",
-          "Platform Comparison (NTLM vs SHA-512 with YOUR data)",
-          "Risk Analysis (business impact for each client)",
-          "Recommendations (prioritized, client-specific)",
-          "Professional Reflection",
-          "References (minimum 10)",
-          "Appendix (raw outputs)"
+          "Part I &#8212; Timesheet (hours by unit, internal vs. billable split)",
+          "Part I &#8212; Runbook (one entry per tool, reproducible)",
+          "Part I &#8212; Analyst Reflection (self-audit, professional, AI methodology)",
+          "Part II &#8212; Cover Page (title, clients, your name, date)",
+          "Part II &#8212; Executive Summary (internal handoff, labeled by client)",
+          "Part II &#8212; Methodology",
+          "Part II &#8212; Findings (labeled by client + platform, ordered by severity)",
+          "Part II &#8212; Risk Analysis (business impact per client)",
+          "Part II &#8212; Recommendations (prioritized, client-specific)",
+          "Part II &#8212; Appendix (raw outputs)",
+          "References (minimum 10)"
         ]
       },
       {
         "title": "Documentation Verification",
         "type": "checklist",
         "items": [
-          "12+ screenshots embedded (6 from each Foundation Lab)",
-          "VM name visible in all terminal screenshots",
+          "20+ screenshots embedded across your Foundation Labs",
+          "VM hostname (kali-&lt;your abc123&gt;) visible in all terminal screenshots",
           "All screenshots captioned appropriately",
           "10+ valid references listed"
         ]
@@ -727,10 +613,6 @@
       {
         "penalty": "-20%",
         "condition": "Appendix missing from Part II Client Deliverable."
-      },
-      {
-        "penalty": "-10%",
-        "condition": "Executive Summary exceeds one page."
       },
       {
         "penalty": "-5%",
