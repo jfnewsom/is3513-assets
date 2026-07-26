@@ -44,6 +44,13 @@
         "pinTop": true
       },
       {
+        "type": "tip",
+        "icon": "calculate",
+        "title": "Start Here: How to Score Your Findings",
+        "text": "The hardest part of this packet is turning your Lab 5.1 vulnerabilities into defensible scores. The <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Scoring_Guide.html\">Scoring Your Findings</a> guide walks through CVSS 3.1 severity, the 5&#215;5 likelihood&#215;impact risk matrix, and why the highest CVSS isn&#8217;t always the top business priority &#8212; the exact reasoning your Findings and Risk Analysis sections are graded on. Read it before you score.",
+        "pinTop": true
+      },
+      {
         "type": "warning",
         "title": "Minimum Requirements",
         "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-<your abc123>). Use naming convention: ##-description.png."
