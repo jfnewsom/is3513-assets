@@ -312,6 +312,7 @@
         ${link('How to Get Help',         S + '/How_To_Get_Help.html',        'dd-yellow')}
         <div class="drop-label">Reference</div>
         ${link('Engagement Packet Guide', S + '/Engagement_Packet_Guide.html','dd-cyan')}
+        ${link('Scoring Your Findings',   S + '/Scoring_Guide.html',           'dd-cyan')}
         ${link('Screenshot Requirements', S + '/Screenshot_Requirements.html','dd-cyan')}
         ${link('Citations',               S + '/Citations.html',              'dd-cyan')}
       </div>

@@ -805,6 +805,7 @@ SUPPORT_FILENAME_MAP = {
     "meet_the_team":          "Meet_The_Team.html",
     "nexus_security":         "NEXUS_Security.html",
     "our_clients":            "Our_Clients.html",
+    "scoring_guide":          "Scoring_Guide.html",
     "screenshot_requirements":"Screenshot_Requirements.html",
     "start_here":             "StartHere.html",
     "textbook":               "Textbook.html",

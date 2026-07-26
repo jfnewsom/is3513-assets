@@ -1,0 +1,176 @@
+{
+  "type": "support_page",
+  "title": "Scoring Guide &#8211; IS3513",
+  "htmlTitle": "Scoring Your Findings &#8211; IS3513",
+  "accentColor": "#7B68EE",
+  "headerKeyword": "scoring",
+  "headerSecondary": "your findings",
+  "headerSubtitle": "CVSS, the Risk Matrix, and Why the Two Don&#8217;t Always Agree",
+  "sections": [
+    {
+      "type": "intro",
+      "html": "You&#8217;ve finished Lab 5.1. You have your top 10 vulnerabilities on LoneStar DevOps &#8212; now you&#8217;re staring at the <strong style=\"color:#ffffff;\">Findings</strong> and <strong style=\"color:#ffffff;\">Risk Analysis</strong> sections wondering how to turn &#8220;I found a thing&#8221; into a defensible score. Here&#8217;s the one idea to hold onto: <strong style=\"color:#ffffff;\">every finding gets two different numbers, and they answer two different questions.</strong> Most of the confusion comes from treating them as the same number. They&#8217;re not."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "The Two Scores You&#8217;re Producing",
+      "paragraphs": [
+        "CVSS doesn&#8217;t know anything about LoneStar. It doesn&#8217;t know they&#8217;re prepping a Series B, doesn&#8217;t know the MySQL box holds every customer&#8217;s credentials, doesn&#8217;t know the portal can&#8217;t go offline during business hours. That context-free consistency is its strength &#8212; an analyst in San Antonio and a vendor in Berlin score the same bug the same way. The risk score is the opposite: it exists <em>entirely</em> to bring LoneStar&#8217;s context back in. A scanner can hand you CVSS. Only you can tell Amanda what it means for her.",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Score</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">What it measures</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Where it lives</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">CVSS base score</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">How dangerous the vulnerability is <em>in the abstract</em> &#8212; regardless of who owns the system. A standardized, client-independent number.</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Severity rating on each Finding</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">Risk score (Likelihood &#215; Impact)</td><td style=\"color:#B0B8C4;padding:8px 12px;\">How much the vulnerability actually threatens <em>LoneStar specifically</em>, given their business, assets, and exposure.</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">Risk Analysis section &amp; 5&#215;5 matrix</td></tr></tbody></table>"
+      ]
+    },
+    {
+      "type": "callout_bar",
+      "color": "#7B68EE",
+      "colorRgb": "123, 104, 238",
+      "label": "The whole point:",
+      "icon": "lightbulb",
+      "html": "When these two scores <strong style=\"color:#ffffff;\">disagree</strong>, that disagreement is the most valuable thing in your report. A high-CVSS bug on a throwaway asset and a mid-CVSS bug on the crown jewels is exactly the judgment a client pays a consultant for. Part 3 is where that pays off."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Part 1 &#183; CVSS 3.1 &#8212; Scoring the Vulnerability Itself",
+      "paragraphs": [
+        "Score every finding with the official FIRST CVSS 3.1 calculator: <a href=\"https://www.first.org/cvss/calculator/3.1\" target=\"_blank\" style=\"color:#7B68EE;\">first.org/cvss/calculator/3.1</a>. There are two ways to get a score. <strong style=\"color:#ffffff;\">If the CVE already has one</strong> &#8212; most of your WordPress, Apache, PHP, and dependency findings will &#8212; look it up on the <a href=\"https://nvd.nist.gov\" target=\"_blank\" style=\"color:#7B68EE\">NVD</a> and read its published 3.1 vector, but still understand why each metric was set that way, because you&#8217;ll defend it to the client. {w('If there is no single CVE')} &#8212; default credentials, a former employee&#8217;s account left active, a misconfiguration &#8212; you walk the calculator yourself from the vulnerability&#8217;s real characteristics."
+      ],
+      "tip": "Pitfall: a lot of older CVE entries show a CVSS <strong>2.0</strong> score, which doesn&#8217;t line up with 3.1. Always score on the 3.1 calculator so the whole class is comparable."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "The Eight Base Metrics, in Plain Language",
+      "paragraphs": [
+        "You&#8217;re answering eight small, concrete questions. Don&#8217;t overthink them."
+      ],
+      "items": [
+        "<strong style=\"color:#ffffff;\">Attack Vector (AV)</strong> &#8212; <em>where</em> must the attacker be? Network &#8594; Adjacent &#8594; Local &#8594; Physical. Closer required = lower score.",
+        "<strong style=\"color:#ffffff;\">Attack Complexity (AC)</strong> &#8212; <em>how hard</em> is the exploit, beyond the attacker&#8217;s control? Low = fire it off reliably; High = needs a race condition or special setup.",
+        "<strong style=\"color:#ffffff;\">Privileges Required (PR)</strong> &#8212; what access do they need <em>first</em>? None / Low / High. Default credentials are the classic PR:None &#8212; the door&#8217;s already unlocked.",
+        "<strong style=\"color:#ffffff;\">User Interaction (UI)</strong> &#8212; does a victim have to do something (click a link)? None, or Required. Required lowers the score.",
+        "<strong style=\"color:#ffffff;\">Scope (S)</strong> &#8212; can the blast escape its own security boundary? Unchanged, or Changed. Scope:Changed is the single biggest score multiplier &#8212; use it carefully.",
+        "<strong style=\"color:#ffffff;\">Confidentiality / Integrity / Availability (C / I / A)</strong> &#8212; what does a successful attack cost? None / Low / High each. Read data = C, alter data = I, take it down = A."
+      ],
+      "tip": "The classic mix-up: Attack Vector is <em>where the attacker stands</em>; Attack Complexity is <em>how hard the exploit is once they&#8217;re there</em>. Different axes."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "From Score to Severity",
+      "paragraphs": [
+        "The calculator returns a number from 0.0 to 10.0, which maps to the severity label you write on the Finding. These are the official FIRST CVSS 3.1 bands:",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">CVSS base score</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Severity</th></tr></thead><tbody><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">9.0 &#8211; 10.0</td><td style=\"color:#E63946;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Critical</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">7.0 &#8211; 8.9</td><td style=\"color:#FF9F1C;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">High</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">4.0 &#8211; 6.9</td><td style=\"color:#FEC618;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Medium</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">0.1 &#8211; 3.9</td><td style=\"color:#00D26A;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Low</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;\">0.0</td><td style=\"color:#B0B8C4;padding:8px 12px;font-weight:600;\">None / Informational</td></tr></tbody></table>",
+        "Carry <strong style=\"color:#ffffff;\">two things</strong> into the report for every finding. First, the <strong style=\"color:#ffffff;\">vector string</strong> the calculator produces &#8212; it&#8217;s the receipt that lets anyone reconstruct your number. Second, <strong style=\"color:#ffffff;\">one sentence of rationale</strong> for why you set the metrics that way. A score with no explanation is just a number, and a number nobody can defend is worth nothing to a client."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Worked Example &#8212; the Mechanics",
+      "paragraphs": [
+        "Say you found an <strong style=\"color:#ffffff;\">unauthenticated remote code execution</strong> on a service reachable over the network, no special conditions, no victim action, that fully compromises the box. Walk the metrics: AV Network, AC Low, PR None, UI None, Scope Unchanged, C/I/A High/High/High."
+      ],
+      "code_block": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H  →  9.8, Critical",
+      "tip": "That&#8217;s the textbook worst case. Every one of your findings is a step down from it &#8212; an attacker who needs local access first (AV:L), a bug that only leaks data (I:N), a flaw that needs a click (UI:R). Move the metrics to match reality and let the calculator do the arithmetic."
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Part 2 &#183; The 5&#215;5 Risk Matrix &#8212; Scoring the Risk to LoneStar",
+      "paragraphs": [
+        "Now switch hats &#8212; CVSS is done. You&#8217;re building a <strong style=\"color:#ffffff;\">5&#215;5 grid</strong>: every finding gets a Likelihood (1&#8211;5) and an Impact (1&#8211;5), and <strong style=\"color:#ffffff;\">Risk = Likelihood &#215; Impact</strong>. This is where LoneStar&#8217;s world comes back into the picture.",
+        "<strong style=\"color:#ffffff;\">Likelihood &#8212; how probable is exploitation, here?</strong>",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">1</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">2</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">3</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">4</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">5</th></tr></thead><tbody><tr><td style=\"color:#B0B8C4;padding:8px 12px;\">Rare</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Unlikely</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Possible</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Likely</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Almost Certain</td></tr></tbody></table>",
+        "Reason it out: Is the thing exposed to the internet or buried on an internal segment? Does working exploit code already exist? Does the attacker need credentials or local access <em>first</em> (which lowers likelihood)? Is it something bots scan for around the clock &#8212; default creds, exposed admin panels are Likely-to-Almost-Certain.",
+        "<strong style=\"color:#ffffff;\">Impact &#8212; what does it cost LoneStar if it happens?</strong>",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">1</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">2</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">3</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">4</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">5</th></tr></thead><tbody><tr><td style=\"color:#B0B8C4;padding:8px 12px;\">Negligible</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Minor</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Moderate</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Major</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Catastrophic</td></tr></tbody></table>",
+        "Here you <em>must</em> think in LoneStar&#8217;s specifics, not generic severity."
+      ],
+      "items": [
+        "<strong style=\"color:#ffffff;\">$12M ARR, 200+ customers, Series B in due diligence.</strong> A breach that surfaces during investor due diligence doesn&#8217;t just cost data &#8212; it can cost the round.",
+        "<strong style=\"color:#ffffff;\">Customer credentials and API keys live in the database.</strong> Anything touching that asset is a candidate for Major or Catastrophic &#8212; the blast radius is every customer.",
+        "<strong style=\"color:#ffffff;\">The customer portal is the business.</strong> Availability hits there are far worse than the same downtime on an internal dev box."
+      ],
+      "tip": "Two findings with identical CVSS can land on completely different Impact rows purely because of <em>which asset</em> they touch. That&#8217;s correct &#8212; that&#8217;s the point of the section."
+    },
+    {
+      "type": "named_section",
+      "color": "#00BCD4",
+      "label": "Risk Score and Bands",
+      "paragraphs": [
+        "Multiply Likelihood by Impact, then color-code onto the grid:",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Risk = Likelihood &#215; Impact</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Band</th></tr></thead><tbody><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">15 &#8211; 25</td><td style=\"color:#E63946;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Critical</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">10 &#8211; 14</td><td style=\"color:#FF9F1C;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">High</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">5 &#8211; 9</td><td style=\"color:#FEC618;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Medium</td></tr><tr><td style=\"color:#B0B8C4;padding:8px 12px;\">1 &#8211; 4</td><td style=\"color:#00D26A;padding:8px 12px;font-weight:600;\">Low</td></tr></tbody></table>",
+        "Plot all 10 findings on the 5&#215;5 grid. That visual is what Amanda actually reads &#8212; executives grasp &#8220;top-right red quadrant&#8221; far faster than &#8220;CVSS 9.8.&#8221; Translating the technical into the visual-and-business is the whole job of this section."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#E63946",
+      "label": "Part 3 &#183; CVSS &#8800; Business Priority",
+      "paragraphs": [
+        "Here&#8217;s the payoff of producing two scores instead of one. They will sometimes disagree, and when they do, <strong style=\"color:#ffffff;\">business risk wins &#8212; as long as you explain why.</strong> The CVSS numbers below are <em>illustrative</em> (yours come from your own calculator runs), but the reasoning is exactly what your report has to show:",
+        "<table style=\"width:100%;border-collapse:collapse;font-size:14px;\"><thead><tr><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Finding</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">CVSS (illustrative)</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Real priority</th><th style=\"color:#7B68EE;text-align:left;padding:8px 12px;border-bottom:2px solid #7B68EE;\">Why they diverge</th></tr></thead><tbody><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">MySQL default root credentials</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">~7.3 (High)</td><td style=\"color:#E63946;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Highest</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Lower CVSS, but it exposes <strong style=\"color:#ffffff;\">every customer&#8217;s data</strong> &#8212; the crown-jewel asset for a company in Series B due diligence.</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">WordPress SQL injection</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">9.8 (Critical)</td><td style=\"color:#FF9F1C;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">High, not top</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Huge CVSS, but it sits on the public marketing / WordPress surface, not the customer data store.</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Apache privilege-escalation CVE</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">~7.8 (High)</td><td style=\"color:#FEC618;padding:8px 12px;border-bottom:1px solid #1e2535;font-weight:600;\">Medium</td><td style=\"color:#B0B8C4;padding:8px 12px;border-bottom:1px solid #1e2535;\">Dangerous <em>once you are already on the box</em> &#8212; needs local access first, so real-world likelihood is lower.</td></tr><tr><td style=\"color:#ffffff;padding:8px 12px;font-weight:600;\">SSH weak passwords</td><td style=\"color:#B0B8C4;padding:8px 12px;\">~8.8 (High)</td><td style=\"color:#FF9F1C;padding:8px 12px;font-weight:600;\">High</td><td style=\"color:#B0B8C4;padding:8px 12px;\">Administrative-access risk &#8212; crackable credentials on accounts that can touch production.</td></tr></tbody></table>",
+        "Look at the top two rows: the vulnerability with the <strong style=\"color:#ffffff;\">lower</strong> CVSS is the <strong style=\"color:#ffffff;\">higher</strong> business priority. Rank purely by CVSS and you&#8217;d hand Amanda a report that puts the marketing-site bug above the one that leaks her entire customer base &#8212; and she&#8217;d be right to fire NEXUS over it."
+      ],
+      "items": [
+        "A <strong style=\"color:#ffffff;\">high CVSS on a low-value or isolated asset</strong> is <em>lower</em> business risk than the raw number suggests (public WordPress SQLi).",
+        "A <strong style=\"color:#ffffff;\">moderate CVSS on the crown-jewel asset</strong> is <em>higher</em> business risk than the raw number suggests (MySQL default creds on the customer database).",
+        "What&#8217;s reachable from the internet, what data an asset holds, and what breaks if it&#8217;s compromised all move business risk up or down independently of CVSS."
+      ],
+      "tip": "Priority isn&#8217;t only about risk &#8212; it&#8217;s about what LoneStar can <em>do</em>. When you sequence remediation, weigh remediation complexity and their real constraints: a 2-person DevOps team (Sarah and Miguel), no staging environment, a zero-downtime customer portal, and a 4-week window before the enterprise review. Lead with quick wins (disable the former-employee account, change the default MySQL password, rotate exposed API keys) so Sarah has something to show Amanda next unit."
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "Before You Export &#8212; Make Your Scores Agree With Themselves",
+      "paragraphs": [
+        "Your two scores are <em>allowed</em> to point different directions &#8212; that&#8217;s Part 3 &#8212; but they have to be internally consistent and explained. This is the easiest way to throw away points you already earned:"
+      ],
+      "items": [
+        "The <strong style=\"color:#ffffff;\">severity label</strong> on a Finding must match the <strong style=\"color:#ffffff;\">CVSS score</strong> you gave it. Don&#8217;t call something &#8220;Critical&#8221; in Findings and score it 6.4.",
+        "Your <strong style=\"color:#ffffff;\">Risk Analysis rating may differ from raw CVSS</strong> &#8212; but only if you <em>say why</em>, in LoneStar&#8217;s terms. That &#8220;why&#8221; is the entire section.",
+        "The single most common way to lose Risk Analysis points is a uniform &#8220;high risk&#8221; on all ten findings with no reasoning. Differentiate them &#8212; each finding gets its own &#8220;so what?&#8221; for Amanda.",
+        "A given finding must carry the <strong style=\"color:#ffffff;\">same severity everywhere it appears</strong> &#8212; Findings, Risk Analysis, and Executive Summary. Ratings that drift between sections read as carelessness."
+      ]
+    },
+    {
+      "type": "callout_bar",
+      "color": "#00D26A",
+      "colorRgb": "0, 210, 106",
+      "label": "The bar:",
+      "icon": "verified",
+      "html": "A report where every finding has a defensible CVSS vector, a differentiated likelihood-and-impact reasoned through LoneStar&#8217;s business, and a priority order that reflects business risk rather than raw CVSS &#8212; that&#8217;s the actual job of a security consultant. That&#8217;s what Lab 5.2 is testing."
+    },
+    {
+      "type": "named_section",
+      "color": "#7B68EE",
+      "label": "Quick Reference",
+      "items": [
+        "<strong style=\"color:#ffffff;\">CVSS 3.1 bands:</strong> 9.0&#8211;10.0 Critical &#183; 7.0&#8211;8.9 High &#183; 4.0&#8211;6.9 Medium &#183; 0.1&#8211;3.9 Low &#183; 0.0 None/Informational",
+        "<strong style=\"color:#ffffff;\">Likelihood (1&#8211;5):</strong> Rare &#183; Unlikely &#183; Possible &#183; Likely &#183; Almost Certain",
+        "<strong style=\"color:#ffffff;\">Impact (1&#8211;5):</strong> Negligible &#183; Minor &#183; Moderate &#183; Major &#183; Catastrophic",
+        "<strong style=\"color:#ffffff;\">Risk = Likelihood &#215; Impact:</strong> 15&#8211;25 Critical &#183; 10&#8211;14 High &#183; 5&#8211;9 Medium &#183; 1&#8211;4 Low"
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#4169E1",
+      "label": "Sources Worth Citing",
+      "paragraphs": [
+        "All of these meet the source-quality standard &#8212; use them in-text where they support a score or a rating:"
+      ],
+      "items": [
+        "FIRST &#8212; CVSS v3.1 Specification &amp; Calculator: <a href=\"https://www.first.org/cvss/specification-document\" target=\"_blank\" style=\"color:#4169E1;\">first.org/cvss/specification-document</a>",
+        "NIST National Vulnerability Database (NVD): <a href=\"https://nvd.nist.gov\" target=\"_blank\" style=\"color:#4169E1;\">nvd.nist.gov</a>",
+        "NIST SP 800-30 &#8212; Guide for Conducting Risk Assessments (the likelihood &#215; impact methodology)",
+        "NIST SP 800-115 &#8212; Technical Guide to Information Security Testing and Assessment",
+        "OWASP Risk Rating Methodology"
+      ]
+    },
+    {
+      "type": "footer",
+      "html": "Still stuck on a specific finding? Bring it to the <strong>Tuesday drop-in Zoom (6:00 p.m. CT)</strong> or post it in <strong>#module-5-help</strong> &#8212; paste your metric selections and your reasoning, and we&#8217;ll work it live."
+    }
+  ]
+}
