@@ -18,7 +18,7 @@ PATTERN
         course_id='IS3513',
         course_name='Information Assurance and Security',
         subtitle='Module 1, Chapter 1: Security Trends',
-        attribution='PROF. JOHN NEWSOM   ·   SUMMER 2026   ·   SECTION 0XX',
+        attribution='PROF. JOHN NEWSOM',
         notes=format_title_notes('M1-C1', 'Security Trends', ...),
     )
 
@@ -118,7 +118,7 @@ PH = {
         'course_id':    'IS3513',
         'course_name':  'Information Assurance and Security',
         'subtitle':     'Welcome \u2014 NEXUS Security Operations',
-        'attribution':  'PROF. JOHN NEWSOM   \u00b7   SUMMER 2026   \u00b7   SECTION 0XX',
+        'attribution':  'PROF. JOHN NEWSOM',
     },
     'concept': {
         'kicker':         'topic',

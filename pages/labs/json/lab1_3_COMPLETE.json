@@ -544,7 +544,7 @@
     "penalties": [
       {
         "penalty": "-2.5%",
-        "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor: 20 screenshots for Modules 1-4."
+        "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 1 is individually required (20 total). A documented failure you captured and explained is not docked."
       },
       {
         "penalty": "-5%",

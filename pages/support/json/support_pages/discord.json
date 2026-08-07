@@ -38,8 +38,8 @@
       "color": "#FF9F1C",
       "label": "⚠️ Platform Disclaimer",
       "paragraphs": [
-        "This Discord server is <strong style=\"color:#ffffff;\">not operated, managed, or monitored by The University of Texas at San Antonio</strong>. It is a third-party platform subject to Discord’s own Terms of Service and Privacy Policy, not UTSA’s data protection policies.",
-        "UTSA cannot guarantee the security, privacy, or availability of any content shared on this server. Your participation is entirely voluntary and at your own discretion."
+        "This Discord server is <strong style=\"color:#ffffff;\">not operated, managed, or monitored by The University of Texas at San Antonio</strong>. It is a third-party platform subject to Discord’s own Terms of Service and Privacy Policy, not UT San Antonio’s data protection policies.",
+        "UT San Antonio cannot guarantee the security, privacy, or availability of any content shared on this server. Your participation is entirely voluntary and at your own discretion."
       ]
     },
     {
@@ -91,7 +91,7 @@
       "items": [
         "You have read and understand the terms on this page",
         "Participation is voluntary and not required for any grade",
-        "The server is not a UTSA system and is not subject to university data protections",
+        "The server is not a UT San Antonio system and is not subject to university data protections",
         "You are responsible for protecting your own privacy"
       ],
       "warningItems": [

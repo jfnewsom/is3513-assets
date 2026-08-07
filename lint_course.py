@@ -8,7 +8,6 @@ Goal: zero ERRORs. WARNINGs are advisory.
 Checks (per project standards):
   E  Invalid JSON (won't parse)
   E  Canvas referenced as a FILE SOURCE ("download from Canvas", etc.)
-  E  Raw numeric point values in student-facing content (NO-POINTS rule)
   E  Lab JSON with no corresponding rendered HTML (stale / never rendered)
   E  Textbook listed as a valid/counting reference (contradicts Citations policy)
   W  File reference without an accompanying GitHub Pages link
@@ -87,10 +86,10 @@ CANVAS_FILE_RE = re.compile(
     re.IGNORECASE,
 )
 
-# A bare point value in student-facing prose: "40 points", "worth 12 pts", "(5 pts)".
-# We allow %  (e.g. "40%") and deliberately do NOT flag "10 references", "Chapter 2",
-# screenshot counts, etc. Only the literal point/pt(s) unit triggers it.
-POINTS_RE = re.compile(r"\b\d{1,3}\s*(?:points?|pts?)\b", re.IGNORECASE)
+# RETIRED 2026-08-07. The NO-POINTS rule was killed by John's 2026-07-20 ruling:
+# raw point values in student-facing material are ALLOWED and expected, because
+# students need to see how they performed in each rubric category and why.
+# See DECISIONS_LOCKED.md. Do not reinstate this check.
 
 # A string that directs students to retrieve a NEXUS COURSE ASSET (something that
 # must come from GitHub Pages). Deliberately excludes external-tool downloads
@@ -117,14 +116,6 @@ TEXTBOOK_COUNTS_RE = re.compile(
     r"|textbook\s+chapters\s+cited\s+correctly",
     re.IGNORECASE,
 )
-
-
-def check_no_points(path, data):
-    for s in iter_strings(data):
-        for m in POINTS_RE.finditer(s):
-            # skip if it's clearly a percentage context already handled
-            err(path, f'raw point value "{m.group(0).strip()}" — use % weights '
-                      f'(…{s[max(0,m.start()-25):m.end()+15].strip()}…)')
 
 
 def check_canvas_files(path, data):
@@ -244,7 +235,6 @@ def lint():
             continue
 
         # universal content checks
-        check_no_points(rel, data)
         check_canvas_files(rel, data)
         check_textbook_reference(rel, data)
         check_file_links(rel, data)

@@ -39,8 +39,8 @@
         "color": "#E63946",
         "label": "Documentation Deductions (Tier 2)",
         "items": [
-          "<strong style=\"color:#E63946;\">&#8722;10%</strong> per missing citation (10 required)",
-          "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing or unverifiable screenshot (20 required for Modules 1&#8211;4; Module 5 floor in the lab body)",
+          "<strong style=\"color:#E63946;\">&#8722;5%</strong> per missing reference (10 required, each cited in-text)",
+          "<strong style=\"color:#E63946;\">&#8722;2.5%</strong> per silently-absent required capture &#8212; every numbered screenshot callout in your module&#8217;s labs is individually required",
           "<strong style=\"color:#E63946;\">&#8722;20%</strong> if the Appendix is missing",
           "<strong style=\"color:#E63946;\">&#8722;10%</strong> if the Executive Summary exceeds one page",
           "<strong style=\"color:#E63946;\">&#8722;5%</strong> if the Cover Page is missing",
@@ -53,7 +53,7 @@
         "color": "#00D26A",
         "label": "Drop Policies",
         "items": [
-          "<strong style=\"color:#ffffff;\">1</strong> Foundation Lab grade dropped (lowest of 9)",
+          "<strong style=\"color:#ffffff;\">1</strong> Foundation Lab grade dropped (lowest of 10)",
           "<em style=\"color:#B0B8C4;\">Lab 1.1 is technically droppable, but in practice it isn’t — every lab after it needs your Kali VM running. Save your drop for a lab that doesn’t gate everything that follows it.</em>",
           "<strong style=\"color:#ffffff;\">1</strong> Engagement Packet grade dropped (lowest of 5)",
           "<strong style=\"color:#ffffff;\">1</strong> Module Exam grade dropped (lowest of 5)"

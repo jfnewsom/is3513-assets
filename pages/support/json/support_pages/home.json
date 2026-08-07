@@ -1,12 +1,12 @@
 {
   "_notes_for_john": {
     "verify_before_publishing": [
-      "Phone number is confirmed correct as of May 2026"
+      "Phone number verified against the vendor at build time"
     ]
   },
   "title": "Information Assurance &amp; Security",
   "courseCode": "IS3513",
-  "term": "UT San Antonio &mdash; Summer 2026 &mdash; John Newsom",
+  "term": "UT San Antonio &mdash; Fall 2026 &mdash; John Newsom",
   "accent": "#4169E1",
   "cta": {
     "text": "New to the course? Complete Start Here first &rarr;",
@@ -25,13 +25,13 @@
     "headline": "Welcome to NEXUS Security. You&rsquo;re the new analyst.",
     "dek": "A 15-slide tour of how the course works, who you&rsquo;ll be working with, and what&rsquo;s due in your first 72 hours.",
     "embed": "<iframe class=\"nx-video-embed__iframe\" src=\"https://utsa.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=df5f67b7-89de-43c8-b5f6-b455014dce86&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all\" allowfullscreen allow=\"autoplay\" aria-label=\"Panopto Embedded Video Player\" aria-description=\"Summer Welcome\"></iframe>",
-    "caption": "I&rsquo;m John Newsom. This is the Summer 2026 section of Information Assurance and Security. Watch this before you touch a lab &mdash; it covers the two questions that drive every assignment in this course, the four Texas clients you&rsquo;ll work with, how a module is structured, and where to get help."
+    "caption": "I&rsquo;m John Newsom. This is Information Assurance and Security. Watch this before you touch a lab &mdash; it covers the two questions that drive every assignment in this course, the four Texas clients you&rsquo;ll work with, how a module is structured, and where to get help."
   },
   "narrativeIntro": {
     "logo": "branding/nexus-security-dark.svg",
     "logoAlt": "NEXUS Security Consulting logo",
     "tagline": "This course is structured as a year-long consulting engagement.",
-    "body": "<p>You&rsquo;re a Junior Analyst at <strong>NEXUS Security</strong>, a fictional Texas-based cybersecurity consulting firm. Over five modules you&rsquo;ll work four real-world client engagements &mdash; Brazos Financial, Gulf Coast Healthcare, Alamo Industries, and LoneStar DevOps &mdash; spanning the full breadth of analyst work: reconnaissance, cryptography, network analysis, threat assessment, and risk management.</p><p>Every module produces an <strong>Engagement Packet</strong> &mdash; the same kind of deliverable a real consulting firm bills a client for. You&rsquo;ll track your hours, document your methodology, and write client-facing reports backed by primary sources. The work is graded on the standard professional deliverables are held to, not on busywork.</p><p>This is a <strong>purple team</strong> course. You&rsquo;ll learn offensive techniques (how attackers find weaknesses) and defensive thinking (how organizations close them) in parallel. The tools, frameworks, and reporting practices you build here are the same ones used in the field &mdash; and the same ones evaluated by UTSA&rsquo;s cybersecurity competition teams. Learn more about <a href=\"NEXUS_Security.html\" class=\"nx-link--purple\">NEXUS Security</a> and <a href=\"Meet_The_Team.html\" class=\"nx-link--purple\">meet the team</a> you&rsquo;ll work with.</p>"
+    "body": "<p>You&rsquo;re a Junior Analyst at <strong>NEXUS Security</strong>, a fictional Texas-based cybersecurity consulting firm. Over five modules you&rsquo;ll work four real-world client engagements &mdash; Brazos Financial, Gulf Coast Healthcare, Alamo Industries, and LoneStar DevOps &mdash; spanning the full breadth of analyst work: reconnaissance, cryptography, network analysis, threat assessment, and risk management.</p><p>Every module produces an <strong>Engagement Packet</strong> &mdash; the same kind of deliverable a real consulting firm bills a client for. You&rsquo;ll track your hours, document your methodology, and write client-facing reports backed by primary sources. The work is graded on the standard professional deliverables are held to, not on busywork.</p><p>This is a <strong>purple team</strong> course. You&rsquo;ll learn offensive techniques (how attackers find weaknesses) and defensive thinking (how organizations close them) in parallel. The tools, frameworks, and reporting practices you build here are the same ones used in the field &mdash; and the same ones evaluated by UT San Antonio&rsquo;s cybersecurity competition teams. Learn more about <a href=\"NEXUS_Security.html\" class=\"nx-link--purple\">NEXUS Security</a> and <a href=\"Meet_The_Team.html\" class=\"nx-link--purple\">meet the team</a> you&rsquo;ll work with.</p>"
   },
   "clientShowcase": {
     "heading": "Your Clients",
@@ -74,7 +74,7 @@
     "photo": "https://jfnewsom.github.io/is2053-assets/photos/john-newsom-headshot.jpg",
     "name": "John Newsom",
     "title": "Assistant Professor of Practice",
-    "note": "San Antonio native &bull; UTSA alum &bull; Air Force veteran &bull; Former radio DJ"
+    "note": "San Antonio native &bull; UT San Antonio alum &bull; Air Force veteran &bull; Former radio DJ"
   },
   "quickLinks": [
     {
