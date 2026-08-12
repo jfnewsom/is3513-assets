@@ -309,8 +309,8 @@
               "command": "wpscan --url http://localhost:8080 --enumerate vp,vt,u"
             },
             {
-              "text": "Test MySQL authentication with default and weak credentials:",
-              "command": "mysql -h localhost -P 3306 -u root -p"
+              "text": "Test MySQL authentication with default and weak credentials. The <code>--ssl=0</code> flag is required against this container: without it the client tries an SSL handshake the service is not configured for and you get <code>ERROR 2026 (HY000): TLS/SSL error</code>, which is a connection problem, not a credential result.",
+              "command": "mysql -h localhost -P 3306 -u root -p --ssl=0"
             },
             {
               "text": "Check for former employee account on SSH:",
@@ -324,7 +324,7 @@
         {
           "type": "callout",
           "calloutType": "exampleCommands",
-          "code": "# WordPress vulnerability scan\nwpscan --url http://localhost:8080 --enumerate vp,vt,u\n\n# MySQL credential test (try: root/root, root/password, root/[blank])\nmysql -h localhost -P 3306 -u root -p\n\n# Former employee account check\nssh -p 2222 jdavis@localhost"
+          "code": "# WordPress vulnerability scan\nwpscan --url http://localhost:8080 --enumerate vp,vt,u\n\n# MySQL credential test (try: root/root, root/password, root/[blank])\nmysql -h localhost -P 3306 -u root -p --ssl=0\n\n# Former employee account check\nssh -p 2222 jdavis@localhost"
         },
         {
           "type": "callout",

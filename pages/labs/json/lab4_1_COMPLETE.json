@@ -106,7 +106,7 @@
               "command": "cat brazos-hashes.txt",
               "whatThisDoes": {
                 "concept": "<code>cat</code> displays the full contents of a file. Here you&#8217;re examining the hash file to understand its format before attacking it.",
-                "output": "You should see 8 lines in <code>username:hash</code> format. Each hash is a 32-character hexadecimal string &#8212; this is the NTLM hash format that Windows uses to store passwords. No salt, no algorithm identifier &#8212; just the raw hash.",
+                "output": "You should see 8 lines in <code>pwdump</code> format: <code>username:UID:LM_hash:NTLM_hash:::</code>. The NTLM hash is the FOURTH field, a 32-character hexadecimal string &#8212; no salt, no algorithm identifier, just the raw hash. Look at the third field: it is <code>aad3b435b51404eeaad3b435b51404ee</code> on every account, the well-known value for an empty LM hash. That tells you Brazos has legacy LM password storage disabled, which is worth recording as a positive finding.",
                 "flags": null
               }
             },
@@ -170,14 +170,14 @@
             },
             {
               "label": "Hash file format",
-              "text": "Verify the format is username:hash (no extra characters)"
+              "text": "Verify the format is pwdump: username:UID:LM:NTLM::: (seven colon-separated fields)"
             }
           ],
           "calloutType": "commonPitfalls"
         },
         {
           "type": "callout",
-          "text": "Hash file in ~/lab4 with 8 entries in username:hash format. rockyou.txt extracted and ready at <code>/usr/share/wordlists/rockyou.txt</code>.",
+          "text": "Hash file in ~/lab4 with 8 entries in pwdump format (username:UID:LM:NTLM:::). rockyou.txt extracted and ready at <code>/usr/share/wordlists/rockyou.txt</code>.",
           "calloutType": "whatYouShouldHave"
         },
         {
@@ -331,10 +331,10 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Extract raw hashes for Hashcat (it needs raw hashes, not username:hash format):",
-              "command": "cut -d':' -f2 brazos-hashes.txt > brazos-hashes-only.txt",
+              "text": "Extract raw NTLM hashes for Hashcat (it needs the hash alone, not the full pwdump line):",
+              "command": "cut -d':' -f4 brazos-hashes.txt > brazos-hashes-only.txt",
               "whatThisDoes": {
-                "concept": "<code>cut</code> splits each line on a delimiter and extracts specific fields. Here, <code>-d':'</code> sets the colon as the delimiter and <code>-f2</code> grabs the second field (the hash). Unlike John, Hashcat expects raw hashes without the <code>username:</code> prefix.",
+                "concept": "<code>cut</code> splits each line on a delimiter and extracts specific fields. Here, <code>-d':'</code> sets the colon as the delimiter and <code>-f4</code> grabs the fourth field. Always check the layout before you cut: this file is pwdump format, <code>username:UID:LM_hash:NTLM_hash:::</code>, so field 2 is the numeric UID and field 3 is the LM hash. The NTLM hash you want is field 4. Unlike John, which reads the whole pwdump line, Hashcat expects the hash alone with nothing else on it.",
                 "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat brazos-hashes-only.txt</code> &#8212; you should see only 32-character hex strings, one per line, with no usernames.",
                 "flags": null
               }
@@ -436,7 +436,7 @@
             },
             {
               "label": "Wrong input format",
-              "text": "Hashcat wants raw hashes only. Use <code>cut -d':' -f2</code> to extract hashes from username:hash format."
+              "text": "Hashcat wants raw hashes only. This file is pwdump format (<code>username:UID:LM:NTLM:::</code>), so use <code>cut -d':' -f4</code> to pull the NTLM hash. Inspect a line before you cut &#8212; <code>-f2</code> returns the numeric UID, not a hash."
             },
             {
               "label": "Potfile already has results",
@@ -631,7 +631,7 @@
     "screenshotTable": [
       {
         "file": "01-hash-file-contents.png",
-        "description": "Hash file showing all 8 NTLM entries (username:hash format)"
+        "description": "Hash file showing all 8 entries in pwdump format"
       },
       {
         "file": "02-rockyou-wordlist-count.png",

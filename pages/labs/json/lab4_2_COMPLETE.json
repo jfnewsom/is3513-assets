@@ -336,7 +336,7 @@
         },
         {
           "type": "callout",
-          "text": "The crypt(5) man page describes supported hash algorithms. Run <code>man 5 crypt</code> in your terminal.",
+          "text": "The crypt(5) man page describes supported hash algorithms. Run <code>man 5 crypt</code> in your terminal. If it reports <code>No manual entry for crypt in section 5</code>, that page is not installed by default on current Kali. Install it first with <code>sudo apt install libcrypt-dev</code>, then run the command again.",
           "calloutType": "thatsAReference"
         },
         {
@@ -350,9 +350,9 @@
           "steps": [
             {
               "text": "Run Hashcat against the SHA-512 hashes:",
-              "command": "hashcat -m 1800 -a 0 -D 1 ~/lab4/alamo-hashes.txt /usr/share/wordlists/rockyou.txt",
+              "command": "hashcat -m 1800 -a 0 -D 1 --username ~/lab4/alamo-hashes.txt /usr/share/wordlists/rockyou.txt",
               "whatThisDoes": {
-                "concept": "<code>-m 1800</code> sets Hashcat to sha512crypt mode (compare to <code>-m 1000</code> for NTLM in Lab 4.1). <code>-a 0</code> runs a straight dictionary attack. <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough. Unlike Lab 4.1, Hashcat accepts the full shadow-format hashes &#8212; no need to extract hashes with <code>cut</code> first.",
+                "concept": "<code>-m 1800</code> sets Hashcat to sha512crypt mode (compare to <code>-m 1000</code> for NTLM in Lab 4.1). <code>-a 0</code> runs a straight dictionary attack. <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough. <code>--username</code> tells Hashcat the file has a username field to skip; without it the line does not parse and you get a token length exception. Unlike Lab 4.1, no need to extract hashes with <code>cut</code> first.",
                 "output": "Watch the <code>Speed.#1</code> line. Compare it to Lab 4.1&#8217;s NTLM speed &#8212; the difference will be orders of magnitude. GPU acceleration provides minimal benefit for SHA-512 because the algorithm is designed to be memory-hard, not just compute-hard.",
                 "flags": null
               }
@@ -370,7 +370,7 @@
           "steps": [
             {
               "text": "Display cracked results:",
-              "command": "hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
+              "command": "hashcat -m 1800 --username ~/lab4/alamo-hashes.txt --show",
               "whatThisDoes": {
                 "concept": "The <code>--show</code> flag displays cracked hashes from Hashcat&#8217;s potfile. Compare the number of cracked accounts to John&#8217;s results &#8212; they should be similar since both used the same wordlist against the same hashes. Any differences indicate where one tool continued running longer or used different cracking strategies.",
                 "output": null,
@@ -397,7 +397,7 @@
             },
             {
               "label": "Trying to strip usernames",
-              "text": "Unlike Lab 4.1, Hashcat accepts full shadow-format hashes directly — no need to use <code>cut</code> to remove usernames. Provide the full <code>alamo-hashes.txt</code>."
+              "text": "Unlike Lab 4.1, Hashcat accepts full shadow-format hashes directly — no need to use <code>cut</code> to remove usernames. Pass <code>--username</code> so Hashcat skips the username field; without it you get a token length exception. Provide the full <code>alamo-hashes.txt</code>."
             },
             {
               "label": "Not comparing speed to Lab 4.1",
@@ -472,7 +472,7 @@
           "steps": [
             {
               "text": "Retrieve your final cracked results from both tools:",
-              "command": "john --show ~/lab4/alamo-hashes.txt && echo '---' && hashcat -m 1800 ~/lab4/alamo-hashes.txt --show",
+              "command": "john --show ~/lab4/alamo-hashes.txt && echo '---' && hashcat -m 1800 --username ~/lab4/alamo-hashes.txt --show",
               "whatThisDoes": {
                 "concept": "Running both <code>--show</code> commands back-to-back gives you a single terminal view of all cracked credentials from both tools. The results should largely overlap since both used rockyou.txt against the same hashes. Any differences indicate one tool ran longer or the potfiles diverged.",
                 "output": "You should see <code>username:password</code> pairs for each cracked account. Note which of the 8 Alamo accounts remain uncracked &#8212; these are accounts where the password was not in rockyou.txt within your session&#8217;s time window.",
