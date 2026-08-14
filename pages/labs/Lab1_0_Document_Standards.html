@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 1.0 &#8212; Document Standards</title>
+  <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
+  <link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+<h1 class="nx-sr-only">Lab 1.0 &#8212; Document Standards</h1>
+
+
+<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">lab</div>
+      <div class="nx-sec">1.0</div>
+    </div>
+    <div class="nx-sub">Document Standards</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <p class="nx-module-label">Module 1: Threat Intelligence &amp; Reconnaissance</p>
+
+    <h2>Overview</h2>
+    <p>Welcome to NEXUS Security Consulting. Before you touch a client engagement, you need to be able to produce a document that holds together. Every Engagement Packet you submit this term is graded partly on mechanics &#8212; whether your Table of Contents is accurate, whether your figures are numbered and referenced, whether your sources are cited. Those points were the single largest avoidable loss last term, and none of them had anything to do with security knowledge. This lab teaches the mechanics once, on a sandbox document you cannot break in any way that matters, and then tests them on a quiz you can take as many times as you like.</p>
+
+    <div class="nx-quote">
+      <div class="nx-quote-main">
+        <div class="nx-quote-avatar">
+          <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez">
+        </div>
+        <div class="nx-quote-bubble">
+          <p>&#8220;Nobody outside this building sees your terminal. They see the report. I have watched excellent technical work get dismissed because the Table of Contents was full of screenshot filenames and half the figures were numbered by hand. Learn the tools once and you never think about it again.&#8221;</p>
+        </div>
+      </div>
+      <div class="nx-quote-attribution">
+        <div class="nx-quote-name">Maya Rodriguez</div>
+        <div class="nx-quote-title">Senior Penetration Tester, NEXUS Security</div>
+      </div>
+    </div>
+
+    <h2>Assignment Objectives</h2>
+    <ul>
+      <li>Confirm your computer can host the Kali VM that every later lab depends on</li>
+      <li>Diagnose the document faults that cost the most points on Engagement Packets</li>
+      <li>Repair each fault with Word&#8217;s built-in tools instead of manual formatting</li>
+      <li>Verify a packet is clean before you submit it, using the Navigation Pane and a full field update</li>
+    </ul>
+
+    <h2>Key Concepts</h2>
+    <ul>
+      <li>Heading styles, and what the Table of Contents actually collects</li>
+      <li>Automatic figure captions and cross-references</li>
+      <li>Word&#8217;s citation manager and the reference list it builds for you</li>
+      <li>Document properties as your identity on a file</li>
+    </ul>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">This Lab Stands On Its Own</div>
+        <p>Nothing you do in Lab 1.0 is submitted, graded by hand, or folded into anything later. The practice document is yours to keep or throw away, and your grade comes entirely from the Canvas quiz. You are learning the tools here so that they are already familiar when the graded work starts &#8212; that is the whole purpose of this lab, and it ends when the quiz does.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Easiest 100 You Will Get &#8212; Take It</div>
+        <p>Lab 1.0 is one of ten Foundation Labs and you do get one drop. Do not spend it here. The quiz allows unlimited attempts and every wrong answer returns an explanation, so there is no version of this where you cannot reach 100. Everything on it reappears on five Engagement Packets, where the points are not free.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Desktop Word Only &#8212; and Do Not Pay for It</div>
+        <p>Use desktop Microsoft Word, Windows or Mac. Word for the web cannot create the captions, cross-references and citation fields this lab is about, and neither can Google Docs. <strong>Do not buy Word, and do not pay for a Microsoft 365 subscription.</strong> Office Professional Plus is free for all UTSA students and installs on up to five personal devices. Go to <a href="https://portal.office.com">portal.office.com</a>, sign in with your first.last@my.utsa.edu address, click the waffle icon in the top-left, choose Office 365, then <em>Install Office &gt; Office 365 apps</em>. Activate with your abc123@utsa.edu credentials and your UTSA passphrase. Full details: <a href="https://www.utsa.edu/techsolutions/gateway/office-pro-plus-for-students.html">UTSA Tech Solutions &#8212; Office Professional Plus for Students</a>. If you are stuck getting it installed, post in #module-1-help before you spend a cent.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #FF9F1C;">
+    <div class="nx-header-top">
+      <div class="nx-kw">time</div>
+      <div class="nx-sec">guide</div>
+    </div>
+    <div class="nx-sub">Estimated completion times per checkpoint</div>
+  </div>
+  <div class="nx-card" style="--accent: #FF9F1C;">
+    <table class="nx-time-table">
+      <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
+      <tbody>
+        <tr><td>Checkpoint 1: Pre-flight hardware check</td><td>5 min</td></tr>
+        <tr><td>Checkpoint 2: Open the sandbox and turn on the Navigation Pane</td><td>5-10 min</td></tr>
+        <tr><td>Checkpoint 3: Read the four right/wrong pairs</td><td>10-15 min</td></tr>
+        <tr><td>Checkpoint 4: Repair the five planted faults</td><td>15-25 min</td></tr>
+        <tr><td>Checkpoint 5: Update every field and verify</td><td>5-10 min</td></tr>
+        <tr><td>Checkpoint 6: Set your document identity</td><td>5 min</td></tr>
+        <tr><td>Checkpoint 7: Take the Lab 1.0 quiz</td><td>10-15 min</td></tr>
+        <tr class="nx-total"><td>Total Estimated Time</td><td>55-85 min</td></tr>
+      </tbody>
+    </table>
+
+    <p>These times are a guide, not a requirement. There is nothing to log and nothing to report &#8212; take as long as you need.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">Pre-Flight &#8212; Can Your Machine Run This Course?</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Checking four things about the computer you intend to use this term: how much memory it has, how much free disk it has, what kind of processor it has, and whether virtualization is switched on.</p>
+    <h3>Why It Matters</h3>
+    <p>Lab 1.1 asks you to build a Kali Linux virtual machine, and every lab after it runs inside that VM. If your machine cannot host one, you need to know in week 1 while there is still time to do something about it &#8212; not the night Lab 1.1 is due. This takes five minutes and it is the only part of this lab that is about hardware.</p>
+    <ol>
+      <li>Check your memory. Windows: Task Manager &gt; Performance &gt; Memory. Mac: Apple menu &gt; About This Mac.
+      </li>
+      <li>Check your free disk space. Windows: Settings &gt; System &gt; Storage. Mac: Apple menu &gt; System Settings &gt; General &gt; Storage.
+      </li>
+      <li>Check your processor type. Windows: Task Manager &gt; Performance &gt; CPU, or Settings &gt; System &gt; About. Mac: About This Mac &#8212; look for &#8216;Chip: Apple M1/M2/M3/M4&#8217; versus &#8216;Processor: Intel&#8217;. This determines which Kali image you download, so do not skip it.
+      </li>
+      <li>Windows only: confirm virtualization is enabled. Task Manager &gt; Performance &gt; CPU. Look for &#8216;Virtualization: Enabled&#8217; on the right. If it says Disabled, it has to be turned on in your BIOS/UEFI before VirtualBox can run a VM at all. <strong>Search the web for &#8220;enable virtualization&#8221; plus your computer&#8217;s make and model</strong> &#8212; the key you press at boot (often F2, F10, Del or Esc) and the name of the setting (VT-x, AMD-V, SVM Mode, Intel Virtualization Technology) both differ by manufacturer, so there is no single instruction that covers everyone.
+      </li>
+      <li>Write the four answers down. If any of them fall short, act on it today &#8212; see below.
+      </li>
+    </ol>
+    <h3>What Lab 1.1 Will Ask For</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Item</th>
+        <th>What Lab 1.1 needs</th>
+        <th>If you fall short</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">Memory</td>
+          <td>The Kali VM is allocated 4096 MB minimum, 8192 MB recommended. Your machine has to run that <em>and</em> your normal desktop at the same time.</td>
+          <td>8 GB total is workable at the 4096 MB setting. Below that, talk to me in week 1.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Free disk</td>
+          <td>An 80 GB virtual disk (dynamically allocated, so it grows as you use it) plus a ~4 GB Kali ISO download.</td>
+          <td>Dynamic allocation means it will not claim 80 GB on day one, but it grows all term. If you are tight on space, clear room now rather than mid-engagement.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Processor</td>
+          <td>The Kali image has to match your processor: amd64 for Intel/AMD, arm64 for Apple Silicon (M1/M2/M3/M4). This is true whichever hypervisor you use.</td>
+          <td>Get the architecture right before you download anything &#8212; the image is roughly 4 GB and the wrong one will not boot.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Virtualization</td>
+          <td>Enabled in BIOS/UEFI. Windows machines frequently ship with it off.</td>
+          <td>It is a BIOS setting, not a Windows setting. Search for &#8220;enable virtualization&#8221; plus your make and model &#8212; the boot key and the setting&#8217;s name vary by manufacturer. If you are not comfortable changing BIOS settings, post in #module-1-help and we will walk through it.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Apple Silicon Users &#8212; Check Before You Download</div>
+        <p>If About This Mac says Chip: Apple M1, M2, M3 or M4, you are on ARM and you need the <strong>arm64</strong> Kali image, not the amd64 one. That is about the processor, not the hypervisor &#8212; it holds no matter what you run the VM in. The download is roughly 4 GB, so it is a slow mistake to make twice.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">If Your Machine Does Not Clear This Bar, Tell Me in Week 1</div>
+        <p>Post in #module-1-help now. Not in week three. There are options &#8212; adjusting the VM allocation, campus lab machines, other arrangements &#8212; but every one of them takes time to sort out, and none of them work well the night before a deadline. A machine that cannot run the VM is a solvable problem in week 1 and a serious one in week 4.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>Four known numbers: your memory, your free disk, your processor type, and &#8212; on Windows &#8212; whether virtualization is enabled. And if any of them are short, a message already posted in #module-1-help.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Use What You Want &#8212; the Instructions Are VirtualBox</div>
+        <p>Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option &#8212; Parallels is better on a Mac and VMware Workstation is better on Windows &#8212; but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome &#8212; a working Kali VM named kali-&lt;your abc123&gt; and the evidence you are asked to capture &#8212; not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">Open the Sandbox and Turn On the Navigation Pane</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Downloading the Lab 1.0 sandbox document, opening it in desktop Word, and turning on the one panel that tells you whether your document is healthy.</p>
+    <h3>Why It Matters</h3>
+    <p>The Navigation Pane and the Table of Contents read from the same source: heading styles. Anything wrong in the Pane will be wrong in the Table of Contents. Keeping it open while you work is the difference between catching a problem in ten seconds and hunting it for an hour.</p>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Download the Sandbox</div>
+        <p><a href="https://jfnewsom.github.io/is3513-assets/templates/IS3513_Lab1.0_Sandbox.docx">IS3513_Lab1.0_Sandbox.docx</a> &#8212; open it in desktop Word. Nothing you do to this file is submitted or graded. Break it on purpose.</p>
+      </div>
+    </div>
+    <ol>
+      <li>Download the sandbox document: IS3513_Lab1.0_Sandbox.docx. Save it somewhere you can find it again.
+      </li>
+      <li>Open it in desktop Microsoft Word. Not a browser, not Google Docs, not Preview.
+      </li>
+      <li>Maximise the Word window. In a narrow window Word collapses the ribbon to unlabelled icons and every instruction below becomes a scavenger hunt.
+      </li>
+      <li>Turn on the Navigation Pane. Windows: View &gt; Navigation Pane (tick the checkbox). Mac: View &gt; Sidebar &gt; Navigation.
+      </li>
+      <li>Leave it open for the whole lab.
+      </li>
+    </ol>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>The sandbox open in desktop Word with a panel down the left side listing the document&#8217;s sections. You should be able to click an entry and jump to it.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>If the sandbox opens in Protected View, click Enable Editing &#8212; you cannot change styles until you do.</li>
+          <li>Mac users: the Navigation Pane is called the Sidebar, and it has several modes. You want Navigation, not Thumbnails or Find.</li>
+          <li>If you do not have desktop Word, get it now through your UTSA account. Do not start Lab 1.1 without it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">Read the Four Pairs</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Reading through the sandbox&#8217;s demonstration section, where each of the four mechanics appears twice &#8212; once done correctly and once done the way that costs points.</p>
+    <h3>Why It Matters</h3>
+    <p>You are not being asked to memorise rules in the abstract. Each pair puts the right way and the wrong way next to each other so you can see the difference in the document itself, and in the Navigation Pane, rather than being told about it.</p>
+    <ol>
+      <li>Scroll to Appendix B &#8212; Additional Screenshots. The four pairs live there.
+      </li>
+      <li>Pair 1, Captions. Compare the correct caption against the one styled as Heading 2. Watch the Navigation Pane as you scroll past them &#8212; only one of them shows up as a section.
+      </li>
+      <li>Pair 2, The blank heading. Find the blank entry in the Navigation Pane. There is an empty paragraph carrying a heading style, and it is invisible in the document body.
+      </li>
+      <li>Pair 3, Cross-references. One says Figure 1 because Word computed it. The other says Figure 1 because somebody typed it. They look identical right now.
+      </li>
+      <li>Pair 4, Citations. Same story &#8212; one is a field, one is text. Click each one. The real citation highlights grey when you click it; typed text does not.
+      </li>
+    </ol>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Pro Tip</div>
+        <p>Clicking is the fastest way to tell a field from typed text. Fields shade grey when the cursor enters them. If you are ever unsure whether something in your own packet is real, click it.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-yellow">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Dig Deeper</div>
+        <p>Press Alt+F9 on Windows, or Option+F9 on Mac, to toggle field codes on and off. The document will suddenly show you the machinery behind every caption, cross-reference and citation. Press it again to go back.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">4</div>
+    </div>
+    <div class="nx-sub">Repair the Five Planted Faults</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Fixing every fault in the sandbox, using Word&#8217;s built-in tools rather than formatting things by hand.</p>
+    <h3>Why It Matters</h3>
+    <p>This is the whole lab. Every one of these five faults appeared in real Engagement Packets last term, and every one of them cost points that had nothing to do with the quality of the security work.</p>
+    <ol>
+      <li>Fix the blank heading. Click in the empty paragraph flagged in Pair 2, then apply Home &gt; Styles &gt; Normal. The blank entry disappears from the Navigation Pane.
+      </li>
+      <li>Fix the heading-styled caption. Click in the caption line in Pair 1 that is styled Heading 2. Apply Home &gt; Styles &gt; Normal, then References &gt; Insert Caption to make it a real caption.
+      </li>
+      <li>Caption the uncaptioned figure. Click the third placeholder in Pair 1, then References &gt; Insert Caption. Accept the Figure label and add a short description after the number.
+      </li>
+      <li>Replace the typed cross-reference. Delete the hand-typed &#8216;Figure 1&#8217; in Pair 3 and use References &gt; Cross-reference. Set Reference type to Figure, Insert reference to &#8216;Only label and number&#8217;, pick the figure, and Insert.
+      </li>
+      <li>Replace the typed citation. Delete the hand-typed citation in Pair 4. Use References &gt; Insert Citation &gt; Add New Source, fill in the source, and insert it.
+      </li>
+    </ol>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Common Pitfalls</div>
+        <ul>
+          <li>Do not drag-select a heading line. Click in it. If you highlight the heading plus the blank line under it, Word styles both paragraphs and you have created a new blank entry while fixing the old one.</li>
+          <li>In the Create Source dialog, the URL box is hidden until you tick &#8216;Show All Bibliography Fields&#8217;. Tick it first or you will not be able to enter a web source properly.</li>
+          <li>Insert Caption places the caption where your cursor is. Put the cursor on its own line below the figure before you run it.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A Navigation Pane with no blank entries and no figure captions in it. Only real sections should be listed.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">5</div>
+    </div>
+    <div class="nx-sub">Update Every Field and Verify</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Refreshing every field in the document, then checking your work the way you should check every packet before you submit it.</p>
+    <h3>Why It Matters</h3>
+    <p>Fields do not update themselves. A Table of Contents built before you finished writing is a Table of Contents that describes a document you no longer have. This step takes five seconds and is the most commonly skipped step in the entire course.</p>
+    <ol>
+      <li>Select the whole document and update every field. Windows: Ctrl+A then F9. Mac: Command+A then F9.
+      </li>
+      <li>If nothing happens, your keyboard&#8217;s function keys are set to media controls. Hold Fn as well, or use the Fn Lock key. This is common on laptops, Windows and Mac alike.
+      </li>
+      <li>Right-click the Table of Contents and choose Update Field, then Update entire table. Not &#8216;page numbers only&#8217; &#8212; that will not pick up sections you added or removed.
+      </li>
+      <li>Read the Navigation Pane top to bottom. No blank entries. No captions. No dates or hour counts.
+      </li>
+      <li>Read the Table of Contents. It should match the Navigation Pane exactly.
+      </li>
+      <li>Add a figure above your first captioned figure and update fields again. Watch the caption numbers and the cross-reference renumber themselves. That is what you bought by doing it properly.
+      </li>
+    </ol>
+    <div class="nx-callout nx-green">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What You Should Have</div>
+        <p>A Table of Contents and a Navigation Pane that agree with each other and contain only real sections. Figure numbering that survives you inserting a figure in the middle.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Pro Tip</div>
+        <p>Make Ctrl+A then F9 the last thing you do before saving any packet, every time, forever. It costs five seconds and it is the single highest-value habit in this course.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 6 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">6</div>
+    </div>
+    <div class="nx-sub">Set Your Document Identity</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Setting the two document properties that identify a Word file as yours, and practising it here where it does not count.</p>
+    <h3>Why It Matters</h3>
+    <p>Your work in this course is identified by your abc123, not by your filename. Later on it also has to match the kali-abc123 hostname visible in your screenshots &#8212; together they are how a document is tied to the machine that produced its evidence. Set it here once so the habit is already in place.</p>
+    <ol>
+      <li>Open document properties. Windows: File &gt; Info. Mac: File &gt; Properties.
+      </li>
+      <li>Add your abc123 to the Author field. Windows: the Author box on the right of the Info pane. Mac: the Summary tab.
+      </li>
+      <li>Word appends your abc123 to the existing author rather than replacing it. That is expected. Leave it.
+      </li>
+      <li>Set the abc123 custom property. Windows: File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. Mac: File &gt; Properties &gt; Custom.
+      </li>
+      <li>Save the file.
+      </li>
+    </ol>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Your abc123, Not the Placeholder</div>
+        <p>Use your own abc123 everywhere it appears &#8212; in document properties and, from Lab 1.1 onward, in your VM hostname. Students who left the literal text &#8216;abc123&#8217; in place last term had packets that could not be matched to them.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ CHECKPOINT 7 -->
+<div class="nx-section">
+  <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">checkpoint</div>
+      <div class="nx-sec">7</div>
+    </div>
+    <div class="nx-sub">Take the Lab 1.0 Quiz</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h3>What You&#8217;re Doing</h3>
+    <p>Taking the Lab 1.0 quiz in Canvas, as many times as you need.</p>
+    <h3>Why It Matters</h3>
+    <p>The quiz is the graded part of this lab. Nothing you did to the sandbox is submitted or looked at &#8212; it is yours to keep, break, or throw away.</p>
+    <ol>
+      <li>Open the Lab 1.0 quiz in Canvas.
+      </li>
+      <li>Take it. Attempts are unlimited and your highest score counts.
+      </li>
+      <li>Anything you miss returns an explanation of the rule rather than the answer. Read it, go back to the sandbox, and try the thing it describes.
+      </li>
+      <li>Retake until you have 100.
+      </li>
+    </ol>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Why This Lab Alone Gets Unlimited Attempts</div>
+        <p>This is mechanics, and mechanics have one published right answer. Every other assessment in this course judges work you performed, which is why this is the only unlimited-attempt quiz you will see. Take advantage of it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #7B68EE;">
+    <div class="nx-header-top">
+      <div class="nx-kw">purple</div>
+      <div class="nx-sec">team</div>
+    </div>
+    <div class="nx-sub">Both Sides of the Shield</div>
+  </div>
+  <div class="nx-card" style="--accent: #7B68EE;">
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Red Team Learns</div>
+        <ul>
+          <li><strong>The Report Is the Deliverable:</strong> A client never watches you work. The engagement is judged entirely on the document that lands on their desk, which makes document control an operational skill, not an administrative one.</li>
+          <li><strong>Evidence Has to Point Somewhere:</strong> A finding that references &#8216;the screenshot below&#8217; instead of a numbered figure falls apart the moment anything is reordered. Cross-references keep claims attached to their proof.</li>
+          <li><strong>Credibility Is Cheap to Lose:</strong> A figure number that does not match the figure tells a client that nobody checked the document. They will wonder what else nobody checked.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">security</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Blue Team Learns</div>
+        <ul>
+          <li><strong>Reproducibility:</strong> A runbook whose screenshots are not paired with the commands that produced them cannot be followed by the next analyst. Documentation that only makes sense to its author is not documentation.</li>
+          <li><strong>Chain of Custody:</strong> Tying a document to the host that produced its evidence &#8212; abc123 in the properties, kali-abc123 in the screenshots &#8212; is the same discipline that makes incident evidence defensible.</li>
+          <li><strong>Auditable Sourcing:</strong> A reference list generated from real citations can be verified. One typed by hand cannot be distinguished from one invented.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">The Purple Team Connection</div>
+        <p>Offence and defence produce the same artifact: a document somebody else has to act on. The mechanics in this lab are what make that document trustworthy, and they are identical whether you are reporting an attack path or an incident.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00D26A;">
+    <div class="nx-header-top">
+      <div class="nx-kw">final</div>
+      <div class="nx-sec">checklist</div>
+    </div>
+    <div class="nx-sub">Verify all requirements before submitting</div>
+  </div>
+  <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Pre-Flight</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Memory, free disk, processor type and (Windows) virtualization status all checked</li>
+      <li>&#9744; Apple Silicon users know they need the arm64 Kali image, not amd64</li>
+      <li>&#9744; If anything fell short, posted in #module-1-help &#8212; in week 1, not week 3</li>
+    </ul>
+
+    <h2>Sandbox Verification (not submitted &#8212; check it for yourself)</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Navigation Pane shows no blank entries</li>
+      <li>&#9744; Navigation Pane shows no figure captions &#8212; only real sections</li>
+      <li>&#9744; Table of Contents matches the Navigation Pane exactly</li>
+      <li>&#9744; Every figure has a caption inserted with References &gt; Insert Caption</li>
+      <li>&#9744; The cross-reference renumbers when you add a figure above it and update fields</li>
+      <li>&#9744; The citation shades grey when you click it</li>
+      <li>&#9744; Your abc123 appears in the Author field and the abc123 custom property</li>
+    </ul>
+
+    <h2>Canvas Quiz</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; Take the Lab 1.0 Quiz in Canvas</li>
+      <li>&#9744; Unlimited attempts, highest score counts &#8212; retake until you have 100</li>
+      <li>&#9744; Keep the sandbox open while you take it</li>
+    </ul>
+
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">quiz</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Take the Quiz in Canvas</div>
+        <p>Take the Lab 1.0 Quiz in Canvas. The quiz is the entire grade for this lab &#8212; the sandbox document is never submitted. Attempts are unlimited and your highest score counts.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">schedule</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">All Due Times Are 11:59 p.m. US Central Time</div>
+        <p>Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ NEED HELP -->
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #4169E1;">
+    <div class="nx-header-top">
+      <div class="nx-kw">need</div>
+      <div class="nx-sec">help?</div>
+    </div>
+    <div class="nx-sub">Support resources and course policies</div>
+  </div>
+  <div class="nx-card" style="--accent: #4169E1;">
+    <h2>Getting Help</h2>
+    <ul>
+      <li><strong>Discord:</strong> #module-1-help</li>
+      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa/student-meeting</li>
+      <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
+    </ul>
+
+    <h2>Late Work Policy</h2>
+    <p>Late work is not accepted. Drop policies exist for emergencies.</p>
+
+    <h2>GenAI Policy</h2>
+    <p><strong>You may use AI tools</strong> to:</p>
+    <ul>
+      <li>Explain command syntax and tool functionality</li>
+      <li>Troubleshoot errors and technical issues</li>
+      <li>Understand concepts from assigned readings</li>
+      <li>Proofread and grammar check</li>
+      <li>Suggest report structure improvements</li>
+    </ul>
+    <p><strong>You may NOT use AI tools</strong> to:</p>
+    <ul>
+      <li>Write entire sections of reports</li>
+      <li>Answer quiz questions directly</li>
+      <li>Generate fake screenshots or outputs</li>
+      <li>Complete hands-on exercises on your behalf</li>
+    </ul>
+    <p><em>AI is a tutor, not a ghostwriter.</em></p>
+
+    <h2>Academic Integrity</h2>
+    <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
+
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>Take the Lab 1.0 Quiz in Canvas, then proceed to Lab 1.1: Kali Environment Setup. Keep the practice document if you like &#8212; it is a handy reference later &#8212; but nothing from this lab carries forward on its own.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
+</body>
+</html>
