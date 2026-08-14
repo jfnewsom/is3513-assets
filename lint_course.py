@@ -21,6 +21,7 @@ Usage:
 Exit code is the number of ERRORs (0 = clean), so it can gate a push.
 """
 
+import html as html_mod
 import json
 import os
 import re
@@ -116,6 +117,138 @@ TEXTBOOK_COUNTS_RE = re.compile(
     r"|textbook\s+chapters\s+cited\s+correctly",
     re.IGNORECASE,
 )
+
+
+# ── RETIRED-VALUE DENYLIST ───────────────────────────────────────────────────
+#
+# THE ONE PLACE TO ADD A RETIRED VALUE.
+#
+# When a number, phrase, or URL is superseded, add it here. The linter then
+# refuses to let it back into the repo — in JSON *or* in rendered HTML — so a
+# stale copy-paste, an old document, or an AI session working from a superseded
+# source cannot quietly reintroduce it. This is the mechanism that turns "purge
+# it again" into "it cannot come back."
+#
+# severity: "error" gates the push (exit code). "warn" is advisory — use it for
+# values that are still legitimately present somewhere you haven't cleaned yet,
+# then promote to "error" once the repo is clear.
+#
+# Each pattern is matched against tag-stripped, entity-decoded text, so a value
+# split across table cells (<td>Reference missing</td><td>−10</td>) still hits.
+
+DASH = r"[-−–]"          # hyphen, minus sign, en dash
+NUM_END = r"(?![\d.])"   # don't let -5 match inside -50 or -2.5
+
+DENYLIST = [
+    {
+        "id": "REF-RATE",
+        "severity": "error",
+        "why": "retired Spring 2026 reference rate. Canonical: −5 per missing reference.",
+        "patterns": [
+            rf"{DASH}\s*10\s*(?:%|\s*points?)?\s*(?:each|per)\b[^.;:\n]{{0,30}}\b(?:reference|citation)s?\b",
+            rf"\b(?:missing|per|each)\s+(?:reference|citation)s?\b[^.;:\n]{{0,30}}{DASH}\s*10{NUM_END}",
+            rf"\b(?:reference|citation)s?\s+(?:missing|absent)\b[^.;:\n]{{0,30}}{DASH}\s*10{NUM_END}",
+            rf"\|\s*(?:reference|citation)[^|\n]{{0,40}}\|\s*{DASH}\s*10{NUM_END}",
+        ],
+    },
+    {
+        "id": "SHOT-RATE",
+        "severity": "error",
+        "why": "retired Spring 2026 screenshot rate. Canonical: −2.5 per silently-absent capture.",
+        "patterns": [
+            rf"{DASH}\s*5\s*(?:%|\s*points?)?\s*(?:each|per)\b[^.;:\n]{{0,30}}\b(?:screenshot|capture)s?\b",
+            rf"\b(?:missing|per|each|unverifiable)\s+(?:screenshot|capture)s?\b[^.;:\n]{{0,30}}{DASH}\s*5{NUM_END}",
+            rf"\b(?:screenshot|capture)s?\s+(?:missing|absent)\b[^.;:\n]{{0,40}}{DASH}\s*5{NUM_END}",
+            rf"\|\s*screenshot[^|\n]{{0,60}}\|\s*{DASH}\s*5{NUM_END}",
+        ],
+    },
+    {
+        "id": "SHOT-QUOTA",
+        "severity": "error",
+        "why": ("screenshot QUOTA language — there is no screenshot count in this course, for "
+                "any module. The rule is coverage: take the captures the labs ask for, where "
+                "they ask for them; −2.5 for each callout silently unmet. Publishing a total "
+                "(a floor, a minimum, or a per-module count) re-creates the count model that "
+                "was retired in July, because readers treat the total as the requirement. "
+                "State the rule, never a number."),
+        "patterns": [
+            r"\b(?:at\s+least|minimum(?:\s+of|\s*:)?|floor(?:\s+of|\s*:)?|need|require[sd]?)"
+            r"\s*:?\s*\d{1,3}\s+(?:\w+\s+){0,2}(?:screenshot|capture)s?\b",
+            r"\b\d{1,3}\s+(?:\w+\s+){0,2}(?:screenshot|capture)s?\s+"
+            r"(?:minimum|floor|required|total|in\s+total)\b",
+            r"(?:screenshot|capture)s?\s*[—–-]\s*\d{1,3}\s+(?:minimum|required|total)",
+            # noun form, but only when asserted — "there is no screenshot quota" is the
+            # correct sentence and must not trip the rule.
+            r"\b(?:screenshot|capture)\s+(?:floor|quota)\s+(?:is|of|for|remains|stays)\b",
+        ],
+    },
+    {
+        "id": "TERM-LENGTH",
+        "severity": "error",
+        "why": 'the NEXUS engagement is SEMESTER-long, not year-long.',
+        "patterns": [r"year[-\s]?long"],
+    },
+    {
+        "id": "TEXTBOOK-YEAR",
+        "severity": "error",
+        "why": "course textbook is Conklin & White (2022), verified against the copyright page.",
+        "patterns": [r"White,?\s*G\.?[^)\n]{0,20}\(\s*2021"],
+    },
+    {
+        "id": "STALE-SYLLABUS-URL",
+        "severity": "error",
+        "why": "links the Summer 2026 Simple Syllabus. Point at the Fall doc.",
+        "patterns": [r"Summer-2026-IS-3513"],
+    },
+    # ── advisory: real but not yet cleaned up ────────────────────────────────
+    {
+        "id": "PLACEHOLDER-10",
+        "severity": "warn",
+        "why": ("the −10 placeholder-text deduction was pulled for Fall 2026 (Fall runs the "
+                "Summer rubric). Still live in the EP Guide and the five EP lab Clean Up "
+                "callouts — purge those, then promote this rule to severity 'error'."),
+        "patterns": [
+            rf"(?:placeholder|demo\s+content|template\s+text)[^.;:\n]{{0,60}}{DASH}\s*10{NUM_END}",
+            rf"{DASH}\s*10{NUM_END}[^.;:\n]{{0,60}}(?:placeholder|demo\s+content)",
+        ],
+    },
+    {
+        "id": "LAB-COUNT",
+        "severity": "warn",
+        "why": ("Lab 1.0 is a graded Foundation Lab as of 2026-08-14 — there are 10, and the "
+                "drop is 1 of 10. Promote to 'error' once every page is updated."),
+        "patterns": [
+            r"\b9\s+Foundation\s+Labs\b",
+            r"\b1\s+of\s+9\b",
+        ],
+    },
+]
+
+for _rule in DENYLIST:
+    _rule["compiled"] = [re.compile(p, re.IGNORECASE) for p in _rule["patterns"]]
+
+
+def _flatten_markup(text):
+    """Entity-decode and strip tags so a value split across HTML elements or
+    table cells still matches as one string."""
+    text = html_mod.unescape(text)
+    text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", text, flags=re.S | re.I)
+    text = re.sub(r"<[^>]+>", " ", text)
+    return re.sub(r"[ \t ]+", " ", text)
+
+
+def check_retired_values(path, text):
+    """Run the denylist over one blob of already-flattened text."""
+    for rule in DENYLIST:
+        for rx in rule["compiled"]:
+            m = rx.search(text)
+            if not m:
+                continue
+            start = max(0, m.start() - 30)
+            snippet = text[start:m.end() + 30].strip().replace("\n", " ")
+            msg = f'[{rule["id"]}] {rule["why"]} (…{snippet}…)'
+            (err if rule["severity"] == "error" else warn)(path, msg)
+            break  # one hit per rule per file is enough to act on
 
 
 def check_canvas_files(path, data):
@@ -239,6 +372,7 @@ def lint():
         check_textbook_reference(rel, data)
         check_file_links(rel, data)
         check_double_subheading(jp, data)
+        check_retired_values(rel, _flatten_markup(" \n".join(iter_strings(data))))
 
         # lab-specific checks
         if "/labs/json/" in rel and jp.name.startswith("lab"):
@@ -246,8 +380,17 @@ def lint():
             check_lab_rendered(rel, data)
             check_client_present(rel, data, lab_id)
 
-    # Cross-cutting: at least one GH Pages link should exist somewhere in support pages
-    # (file distribution policy). Soft check.
+    # Rendered HTML gets the denylist too. JSON is the source, but a stale render
+    # is what students actually read — and the retired rates have historically
+    # survived in exactly that gap.
+    for hp in sorted((REPO / "pages").rglob("*.html")):
+        rel = str(hp.relative_to(REPO))
+        try:
+            raw = hp.read_text(errors="replace")
+        except Exception:  # noqa: BLE001
+            continue
+        check_retired_values(rel, _flatten_markup(raw))
+
     return
 
 
