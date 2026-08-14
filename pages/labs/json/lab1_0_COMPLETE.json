@@ -50,8 +50,8 @@
  "timeGuide": {
   "rows": [
    {
-    "task": "Checkpoint 1: Pre-flight hardware check",
-    "time": "5 min"
+    "task": "Checkpoint 1: Pre-flight hardware check and captures",
+    "time": "10 min"
    },
    {
     "task": "Checkpoint 2: Open the sandbox and turn on the Navigation Pane",
@@ -119,6 +119,21 @@
        "whatThisDoes": null
       },
       {
+       "text": "<strong>Take a screenshot of each check.</strong> <strong>Windows:</strong> press Windows&nbsp;+&nbsp;Shift&nbsp;+&nbsp;S and drag a box around the panel. The snip goes to your clipboard, and a notification appears in the bottom-right &#8212; click it, then press Ctrl&nbsp;+&nbsp;S to save the file. If that feels fiddly, press Windows&nbsp;+&nbsp;PrtScn instead: it grabs the whole screen and writes a .png straight into Pictures &gt; Screenshots with nothing further to do.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "<strong>Mac:</strong> press Command&nbsp;+&nbsp;Shift&nbsp;+&nbsp;4, then drag a box around the panel. The .png lands on your Desktop by itself. Command&nbsp;+&nbsp;Shift&nbsp;+&nbsp;3 grabs the whole screen if you would rather not aim.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "<strong>Confirm you have four saved files, not four clipboard copies.</strong> This is the step people skip. A snip sitting on the clipboard disappears the moment you copy anything else, and Insert &gt; Pictures needs a file on disk. Give them names you will recognise &#8212; memory, disk, processor, virtualization.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
        "text": "Write the four answers down. If any of them fall short, act on it today &#8212; see below.",
        "command": null,
        "whatThisDoes": null
@@ -173,7 +188,7 @@
     {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "Four known numbers: your memory, your free disk, your processor type, and &#8212; on Windows &#8212; whether virtualization is enabled. And if any of them are short, a message already posted in #module-1-help."
+     "body": "Four known numbers &#8212; your memory, your free disk, your processor type, and &#8212; on Windows &#8212; whether virtualization is enabled &#8212; plus a screenshot of each one saved where you can find it again. And if any of them are short, a message already posted in #module-1-help."
     },
     {
      "type": "callout",
@@ -321,7 +336,12 @@
        "whatThisDoes": null
       },
       {
-       "text": "Caption the uncaptioned figure. Click the third placeholder in Pair 1, then References &gt; Insert Caption. Accept the Figure label and add a short description after the number.",
+       "text": "<strong>Insert one of your hardware screenshots.</strong> Put the cursor on the empty line under the third placeholder in Pair 1, then <strong>Windows:</strong> Insert &gt; Pictures &gt; This Device. <strong>Mac:</strong> Insert &gt; Pictures &gt; Picture from File. Pick any of the four you captured in Checkpoint 1 &#8212; the memory one is a good choice. This is the same move you will make on every Engagement Packet for the rest of the term.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
+       "text": "Caption the image you just inserted. Click on the line <em>below</em> it &#8212; on its own line, not at the end of the image&#8217;s paragraph &#8212; then References &gt; Insert Caption. Accept the <strong>Figure</strong> label and type a short description after the number. Do not type the word &#8216;Figure&#8217; yourself; the dialog supplies it, and that is the whole point &#8212; Word owns the number, so it renumbers when things move.",
        "command": null,
        "whatThisDoes": null
       },
@@ -547,6 +567,7 @@
     "title": "Pre-Flight",
     "items": [
      "Memory, free disk, processor type and (Windows) virtualization status all checked",
+     "A screenshot saved for each of the four checks",
      "Apple Silicon users know they need the arm64 Kali image, not amd64",
      "If anything fell short, posted in #module-1-help &#8212; in week 1, not week 3"
     ]
@@ -581,7 +602,7 @@
     "label": "Discord"
    },
    {
-    "detail": "Calendly \u2014 calendly.com/john-newsom-utsa/student-meeting",
+    "detail": "Calendly — calendly.com/john-newsom-utsa/student-meeting",
     "label": "Office Hours"
    },
    {
