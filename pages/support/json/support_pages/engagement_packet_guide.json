@@ -316,7 +316,8 @@
     "<strong style=\"color:#ffffff;\">&#8722;10% if the Executive Summary exceeds one page.</strong> The one-page limit is a hard limit, not a guideline.",
     "<strong style=\"color:#ffffff;\">&#8722;5% if the Cover Page is missing.</strong>",
     "<strong style=\"color:#ffffff;\">&#8722;5% if the Table of Contents is missing or hand-typed</strong> (not generated from heading styles).",
-    "<strong style=\"color:#ffffff;\">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting."
+    "<strong style=\"color:#ffffff;\">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting.",
+    "<strong style=\"color:#ffffff;\">&minus;10% if any demo content or placeholder text remains.</strong> This is a flat deduction, triggered once by any occurrence &#8212; a single surviving <strong>[bracketed]</strong> slot, prompt, or template instruction anywhere in the packet. It is not per-item and it does not scale with how many you missed. Search the document for <strong>[</strong> before you submit and confirm zero results; the check takes ten seconds and this deduction is entirely preventable."
    ],
    "tip": "<strong style=\"color:#ffffff;\">These penalties are pre-curve and transparent.</strong> If three of your module&#8217;s required captures are silently absent, that&#8217;s &#8722;7.5%. If you turn in 6 quality references, that&#8217;s &#8722;20%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them."
   },
