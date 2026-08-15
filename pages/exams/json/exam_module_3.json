@@ -2,8 +2,8 @@
   "module": 3,
   "moduleTitle": "Network Security",
   "stats": {
-    "questions": "30",
-    "timeLimit": "45 min",
+    "questions": "25",
+    "timeLimit": "40 min",
     "attempts": "1"
   },
   "chapters": [
@@ -18,6 +18,6 @@
     "Know CIDR, subnetting, and how to read Wireshark filters",
     "Understand IDS detection models (signature vs. anomaly) and what each catches"
   ],
-  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
-  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+  "timeManagement": "Budget ~95 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 40 uninterrupted minutes."
 }

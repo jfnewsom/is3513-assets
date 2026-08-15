@@ -2,8 +2,8 @@
   "module": 2,
   "moduleTitle": "Cryptography &amp; Authentication",
   "stats": {
-    "questions": "30",
-    "timeLimit": "45 min",
+    "questions": "25",
+    "timeLimit": "40 min",
     "attempts": "1"
   },
   "chapters": [
@@ -17,6 +17,6 @@
     "Know symmetric vs. asymmetric crypto, key exchange, and hashing",
     "Understand the chain of trust and how PKI authenticates parties"
   ],
-  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
-  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+  "timeManagement": "Budget ~95 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 40 uninterrupted minutes."
 }

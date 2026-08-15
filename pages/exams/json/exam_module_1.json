@@ -2,8 +2,8 @@
   "module": 1,
   "moduleTitle": "Threat Intelligence &amp; Reconnaissance",
   "stats": {
-    "questions": "30",
-    "timeLimit": "45 min",
+    "questions": "25",
+    "timeLimit": "40 min",
     "attempts": "1"
   },
   "chapters": [
@@ -17,6 +17,6 @@
     "Know the CIA triad and how it applies to security decisions",
     "Understand threat actor types and their motivations"
   ],
-  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
-  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+  "timeManagement": "Budget ~95 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 40 uninterrupted minutes."
 }

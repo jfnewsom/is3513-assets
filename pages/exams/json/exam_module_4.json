@@ -2,8 +2,8 @@
   "module": 4,
   "moduleTitle": "Threats &amp; Attacks",
   "stats": {
-    "questions": "30",
-    "timeLimit": "45 min",
+    "questions": "25",
+    "timeLimit": "40 min",
     "attempts": "1"
   },
   "chapters": [
@@ -17,6 +17,6 @@
     "Know the difference between NTLM and salted Linux hashes &#8212; and why it matters",
     "Understand the major social-engineering attack types and how OSINT enables them"
   ],
-  "timeManagement": "Budget ~90 seconds per question. Timer starts on click and cannot be paused.",
-  "readyMessage": "Make sure you have a stable connection and 45 uninterrupted minutes."
+  "timeManagement": "Budget ~95 seconds per question. Timer starts on click and cannot be paused.",
+  "readyMessage": "Make sure you have a stable connection and 40 uninterrupted minutes."
 }

@@ -183,6 +183,18 @@ DENYLIST = [
         ],
     },
     {
+        "id": "QUIZ-POINTS",
+        "severity": "error",
+        "why": ("retired quiz scoring. Every quiz in this course totals exactly 100: "
+                "Foundation Labs 20 questions x 5, Module Exams 25 questions x 4. "
+                "99.9 / 6.66 are the old 15-question Foundation Lab values and drew "
+                "student complaints; they must never reappear."),
+        "patterns": [
+            r"\b99\.9\b",
+            r"\b6\.66\b",
+        ],
+    },
+    {
         "id": "TERM-LENGTH",
         "severity": "error",
         "why": 'the NEXUS engagement is SEMESTER-long, not year-long.',
