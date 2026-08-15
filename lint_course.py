@@ -195,6 +195,26 @@ DENYLIST = [
         ],
     },
     {
+        "id": "BRITISH-SPELLING",
+        "severity": "error",
+        "why": ("British spelling in a US course. Use the American form. Found and purged "
+                "2026-08-15 (offence/defence, recognise, maximise, memorise, grey). "
+                "Add new pairs to this pattern list as they turn up."),
+        "patterns": [
+            r"\b(?:colour|behaviour|favour|honour|labour|neighbour|humour|armour|flavour|vapour|vigour|endeavour)s?\b",
+            r"\b(?:organis|recognis|realis|apologis|authoris|categoris|characteris|criticis|customis|emphasis"
+            r"|familiaris|finalis|generalis|initialis|minimis|maximis|normalis|optimis|prioritis|randomis"
+            r"|specialis|standardis|summaris|synthesis|utilis|visualis|digitis|memoris|sanitis|virtualis)"
+            r"(?:e|es|ed|ing|ation|ations)\b",
+            r"\banalys(?:e|es|ed|ing|er)\b",
+            r"\b(?:centre|metre|litre|theatre|fibre|calibre|spectre|lustre)s?\b",
+            r"\b(?:defence|offence|licence|pretence|practise)s?\b",
+            r"\b(?:travelled|travelling|labelled|labelling|modelling|signalling|fuelled|marvellous|counsellor)\b",
+            r"\b(?:whilst|amongst|learnt|spelt|dreamt|aluminium|sulphur|storey|kerb|plough|draught|cheque|aeroplane|programme|manoeuvre|ageing)\b",
+            r"\bgrey\b",
+        ],
+    },
+    {
         "id": "TERM-LENGTH",
         "severity": "error",
         "why": 'the NEXUS engagement is SEMESTER-long, not year-long.',

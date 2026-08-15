@@ -164,7 +164,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Open it in <strong>desktop</strong> Microsoft Word &#8212; not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximise the window so the ribbon shows labels instead of bare icons.",
+       "text": "Open it in <strong>desktop</strong> Microsoft Word &#8212; not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximize the window so the ribbon shows labels instead of bare icons.",
        "command": null,
        "whatThisDoes": null
       },
@@ -597,7 +597,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Verify as you go: click it.</strong> A field shades grey when your cursor enters it. Typed text does nothing. Click a caption number, a cross-reference, a citation. Anything that does not shade grey is a lie waiting to happen.",
+       "text": "<strong>Verify as you go: click it.</strong> A field shades gray when your cursor enters it. Typed text does nothing. Click a caption number, a cross-reference, a citation. Anything that does not shade gray is a lie waiting to happen.",
        "command": null,
        "whatThisDoes": null
       },
@@ -626,7 +626,7 @@
     {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "Every figure captioned with Insert Caption, every mention of a figure inserted as a cross-reference, every source entered through Insert Citation and cited in the body, and a reference list Word built for you. All of it shading grey when you click it."
+     "body": "Every figure captioned with Insert Caption, every mention of a figure inserted as a cross-reference, every source entered through Insert Citation and cited in the body, and a reference list Word built for you. All of it shading gray when you click it."
     }
    ]
   },
@@ -664,7 +664,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Click every figure number and every reference to a figure.</strong> A real field shades grey when your cursor enters it; typed text does nothing. Anything that does not shade grey was typed by hand and will be wrong the moment something moves. Replace it with References &gt; Insert Caption or References &gt; Cross-reference.",
+       "text": "<strong>Click every figure number and every reference to a figure.</strong> A real field shades gray when your cursor enters it; typed text does nothing. Anything that does not shade gray was typed by hand and will be wrong the moment something moves. Replace it with References &gt; Insert Caption or References &gt; Cross-reference.",
        "command": null,
        "whatThisDoes": null
       },

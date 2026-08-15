@@ -129,7 +129,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Confirm you have four saved files, not four clipboard copies.</strong> This is the step people skip. A snip sitting on the clipboard disappears the moment you copy anything else, and Insert &gt; Pictures needs a file on disk. Give them names you will recognise &#8212; memory, disk, processor, virtualization.",
+       "text": "<strong>Confirm you have four saved files, not four clipboard copies.</strong> This is the step people skip. A snip sitting on the clipboard disappears the moment you copy anything else, and Insert &gt; Pictures needs a file on disk. Give them names you will recognize &#8212; memory, disk, processor, virtualization.",
        "command": null,
        "whatThisDoes": null
       },
@@ -228,7 +228,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Maximise the Word window. In a narrow window Word collapses the ribbon to unlabelled icons and every instruction below becomes a scavenger hunt.",
+       "text": "Maximize the Word window. In a narrow window Word collapses the ribbon to unlabelled icons and every instruction below becomes a scavenger hunt.",
        "command": null,
        "whatThisDoes": null
       },
@@ -267,7 +267,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Reading through the sandbox&#8217;s demonstration section, where each of the four mechanics appears twice &#8212; once done correctly and once done the way that costs points.",
-     "whyItMatters": "You are not being asked to memorise rules in the abstract. Each pair puts the right way and the wrong way next to each other so you can see the difference in the document itself, and in the Navigation Pane, rather than being told about it."
+     "whyItMatters": "You are not being asked to memorize rules in the abstract. Each pair puts the right way and the wrong way next to each other so you can see the difference in the document itself, and in the Navigation Pane, rather than being told about it."
     },
     {
      "type": "steps",
@@ -294,7 +294,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Pair 4, Citations. Same story &#8212; one is a field, one is text. Click each one. The real citation highlights grey when you click it; typed text does not.",
+       "text": "Pair 4, Citations. Same story &#8212; one is a field, one is text. Click each one. The real citation highlights gray when you click it; typed text does not.",
        "command": null,
        "whatThisDoes": null
       }
@@ -303,7 +303,7 @@
     {
      "type": "callout",
      "calloutType": "proTip",
-     "body": "Clicking is the fastest way to tell a field from typed text. Fields shade grey when the cursor enters them. If you are ever unsure whether something in your own packet is real, click it."
+     "body": "Clicking is the fastest way to tell a field from typed text. Fields shade gray when the cursor enters them. If you are ever unsure whether something in your own packet is real, click it."
     },
     {
      "type": "callout",
@@ -559,7 +559,7 @@
     }
    ]
   },
-  "connection": "Offence and defence produce the same artifact: a document somebody else has to act on. The mechanics in this lab are what make that document trustworthy, and they are identical whether you are reporting an attack path or an incident."
+  "connection": "Offense and defense produce the same artifact: a document somebody else has to act on. The mechanics in this lab are what make that document trustworthy, and they are identical whether you are reporting an attack path or an incident."
  },
  "finalChecklist": {
   "sections": [
@@ -580,7 +580,7 @@
      "Table of Contents matches the Navigation Pane exactly",
      "Every figure has a caption inserted with References &gt; Insert Caption",
      "The cross-reference renumbers when you add a figure above it and update fields",
-     "The citation shades grey when you click it",
+     "The citation shades gray when you click it",
      "Your abc123 appears in the Author field and the abc123 custom property"
     ]
    },
