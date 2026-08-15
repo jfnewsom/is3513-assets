@@ -940,7 +940,33 @@
   "connection": "You&#8217;re fixing an expired cert (blue) while hunting for additional findings (red). Jennifer Walsh hired NEXUS for someone who sees the whole picture."
  },
  "finalChecklist": {
-  "screenshotTable": null,
+  "screenshotTable": [
+     {"filename": "01-hash-sha256.png", "description": "Capture the file creation and SHA-256 hash output"},
+     {"filename": "02-hash-comparison.png", "description": "Capture both hashes side-by-side showing completely different outputs despite minimal input change"},
+     {"filename": "03-symmetric-encrypt.png", "description": "Capture the encryption command and the hex dump showing unreadable encrypted content"},
+     {"filename": "04-symmetric-decrypt.png", "description": "Capture the decryption and verification showing the original content restored"},
+     {"filename": "05-rsa-keypair.png", "description": "Capture the keypair generation, file listing, and public key contents"},
+     {"filename": "06-rsa-encrypt.png", "description": "Capture the encryption command and verify the encrypted file exists"},
+     {"filename": "07-rsa-decrypt.png", "description": "Capture the decryption showing the original secret message restored"},
+     {"filename": "08-signature-create.png", "description": "Capture the signing command and file listing showing both the order and signature files"},
+     {"filename": "09-signature-verify.png", "description": "Capture the verification showing “Verified OK” message"},
+     {"filename": "10-keygen-rsa.png", "description": "Capture the RSA key generation showing the randomart and file listing"},
+     {"filename": "11-keygen-ed25519.png", "description": "Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes"},
+     {"filename": "12-permission-error.png", "description": "Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible"},
+     {"filename": "13-permission-fixed.png", "description": "Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure"},
+     {"filename": "14-authorized-keys.png", "description": "Capture the .ssh directory listing and authorized_keys content"},
+     {"filename": "15-ssh-keyauth.png", "description": "Capture the successful SSH connection using key-based authentication"},
+     {"filename": "16-ssh-config.png", "description": "Capture the SSH config file contents and successful connection using the alias"},
+     {"filename": "17-mfa-login.png", "description": "Capture your successful MFA login showing both prompts and the whoami output"},
+     {"filename": "gulfcoast-01-initial-error.png", "description": "Capture the browser certificate error"},
+     {"filename": "gulfcoast-02-cert-expired.png", "description": "Capture the openssl output showing the expired certificate dates"},
+     {"filename": "gulfcoast-03-csr-generation.png", "description": "Capture the CSR generation command and output"},
+     {"filename": "gulfcoast-04-cert-signing.png", "description": "Capture the CA signing command and “self-signature ok” output"},
+     {"filename": "gulfcoast-05-cert-installation.png", "description": "Capture the certificate installation command"},
+     {"filename": "gulfcoast-06-apache-restart.png", "description": "Capture the Apache restart and container restart"},
+     {"filename": "gulfcoast-07-cert-valid.png", "description": "Capture the new certificate dates showing future expiration"},
+     {"filename": "gulfcoast-08-browser-success.png", "description": "Capture the browser showing the portal without an expired certificate warning"}
+    ],
   "sections": [
    {
     "items": [

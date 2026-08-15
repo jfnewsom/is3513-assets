@@ -721,7 +721,18 @@
   "connection": "Both perspectives inform the complete risk picture. Discovery serves both attack planning AND asset inventory. Risk assessment considers exploitability AND business impact. The roadmap addresses offensive findings AND defensive priorities. Your report should help Amanda (business view) AND Sarah (technical view) &#8212; that&#8217;s purple team thinking in action."
  },
  "finalChecklist": {
-  "screenshotTable": null,
+  "screenshotTable": [
+     {"filename": "01-docker-containers.png", "description": "docker ps + supervisorctl status showing the lonestar container and its four internal services"},
+     {"filename": "02-service-connectivity.png", "description": "Connectivity test to at least one service"},
+     {"filename": "03-host-discovery.png", "description": "Host discovery showing all container IPs"},
+     {"filename": "04-combined-scan.png", "description": "Combined -sV -sC scan results showing services, versions, and NSE findings"},
+     {"filename": "05-wpscan-results.png", "description": "WPScan output showing WordPress vulnerabilities"},
+     {"filename": "06-credential-finding.png", "description": "MySQL credential test result OR SSH former employee finding"},
+     {"filename": "07-cvss-calculator.png", "description": "CVSS 3.1 calculator with at least one vulnerability scored"},
+     {"filename": "08-vulnerability-scores.png", "description": "Complete top-10 vulnerability table with CVSS scores"},
+     {"filename": "09-risk-matrix.png", "description": "Completed 5×5 risk matrix with findings plotted"},
+     {"filename": "10-remediation-roadmap.png", "description": "Prioritized remediation roadmap"}
+    ],
   "sections": [
    {
     "title": "Report Sections",

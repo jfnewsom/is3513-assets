@@ -839,6 +839,35 @@
     <div class="nx-sub">Verify all requirements before submitting</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>01-hash-sha256.png</code> &#8212; Capture the file creation and SHA-256 hash output</li>
+      <li>&#9744; <code>02-hash-comparison.png</code> &#8212; Capture both hashes side-by-side showing completely different outputs despite minimal input change</li>
+      <li>&#9744; <code>03-symmetric-encrypt.png</code> &#8212; Capture the encryption command and the hex dump showing unreadable encrypted content</li>
+      <li>&#9744; <code>04-symmetric-decrypt.png</code> &#8212; Capture the decryption and verification showing the original content restored</li>
+      <li>&#9744; <code>05-rsa-keypair.png</code> &#8212; Capture the keypair generation, file listing, and public key contents</li>
+      <li>&#9744; <code>06-rsa-encrypt.png</code> &#8212; Capture the encryption command and verify the encrypted file exists</li>
+      <li>&#9744; <code>07-rsa-decrypt.png</code> &#8212; Capture the decryption showing the original secret message restored</li>
+      <li>&#9744; <code>08-signature-create.png</code> &#8212; Capture the signing command and file listing showing both the order and signature files</li>
+      <li>&#9744; <code>09-signature-verify.png</code> &#8212; Capture the verification showing “Verified OK” message</li>
+      <li>&#9744; <code>10-keygen-rsa.png</code> &#8212; Capture the RSA key generation showing the randomart and file listing</li>
+      <li>&#9744; <code>11-keygen-ed25519.png</code> &#8212; Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes</li>
+      <li>&#9744; <code>12-permission-error.png</code> &#8212; Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible</li>
+      <li>&#9744; <code>13-permission-fixed.png</code> &#8212; Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure</li>
+      <li>&#9744; <code>14-authorized-keys.png</code> &#8212; Capture the .ssh directory listing and authorized_keys content</li>
+      <li>&#9744; <code>15-ssh-keyauth.png</code> &#8212; Capture the successful SSH connection using key-based authentication</li>
+      <li>&#9744; <code>16-ssh-config.png</code> &#8212; Capture the SSH config file contents and successful connection using the alias</li>
+      <li>&#9744; <code>17-mfa-login.png</code> &#8212; Capture your successful MFA login showing both prompts and the whoami output</li>
+      <li>&#9744; <code>gulfcoast-01-initial-error.png</code> &#8212; Capture the browser certificate error</li>
+      <li>&#9744; <code>gulfcoast-02-cert-expired.png</code> &#8212; Capture the openssl output showing the expired certificate dates</li>
+      <li>&#9744; <code>gulfcoast-03-csr-generation.png</code> &#8212; Capture the CSR generation command and output</li>
+      <li>&#9744; <code>gulfcoast-04-cert-signing.png</code> &#8212; Capture the CA signing command and “self-signature ok” output</li>
+      <li>&#9744; <code>gulfcoast-05-cert-installation.png</code> &#8212; Capture the certificate installation command</li>
+      <li>&#9744; <code>gulfcoast-06-apache-restart.png</code> &#8212; Capture the Apache restart and container restart</li>
+      <li>&#9744; <code>gulfcoast-07-cert-valid.png</code> &#8212; Capture the new certificate dates showing future expiration</li>
+      <li>&#9744; <code>gulfcoast-08-browser-success.png</code> &#8212; Capture the browser showing the portal without an expired certificate warning</li>
+    </ul>
+
     <h2>Document Requirements</h2>
     <ul class="nx-checklist">
       <li>&#9744; All 12 required sections in correct order</li>

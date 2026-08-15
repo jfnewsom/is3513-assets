@@ -215,10 +215,10 @@ DENYLIST = [
     # ── advisory: real but not yet cleaned up ────────────────────────────────
     {
         "id": "PLACEHOLDER-10",
-        "severity": "warn",
+        "severity": "error",
         "why": ("the −10 placeholder-text deduction was pulled for Fall 2026 (Fall runs the "
-                "Summer rubric). Still live in the EP Guide and the five EP lab Clean Up "
-                "callouts — purge those, then promote this rule to severity 'error'."),
+                "Summer rubric). Purged from the EP Guide 2026-08-14. Do not reintroduce it "
+                "in student-facing copy."),
         "patterns": [
             rf"(?:placeholder|demo\s+content|template\s+text)[^.;:\n]{{0,60}}{DASH}\s*10{NUM_END}",
             rf"{DASH}\s*10{NUM_END}[^.;:\n]{{0,60}}(?:placeholder|demo\s+content)",
@@ -226,9 +226,9 @@ DENYLIST = [
     },
     {
         "id": "LAB-COUNT",
-        "severity": "warn",
-        "why": ("Lab 1.0 is a graded Foundation Lab as of 2026-08-14 — there are 10, and the "
-                "drop is 1 of 10. Promote to 'error' once every page is updated."),
+        "severity": "error",
+        "why": ("Lab 1.0 is a graded Foundation Lab as of 2026-08-14. There are 10 Foundation "
+                "Labs and the drop is 1 of 10."),
         "patterns": [
             r"\b9\s+Foundation\s+Labs\b",
             r"\b1\s+of\s+9\b",

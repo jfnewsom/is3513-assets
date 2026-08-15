@@ -352,9 +352,44 @@
     {
      "type": "callout",
      "icon": "photo_camera",
-     "title": "Screenshots",
-     "text": "Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.",
-     "calloutType": "screenshotRange"
+     "title": "Screenshot",
+     "text": "Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings. Save as 15-brazos-nmap-full.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line. Save as 16-brazos-netcat-banner.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results. Save as 17-brazos-dirb.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags. Save as 18-brazos-nikto.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup. Save as 19-brazos-enum4linux.png",
+     "calloutType": "screenshot"
+    },
+    {
+     "type": "callout",
+     "icon": "photo_camera",
+     "title": "Screenshot",
+     "text": "Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible. Save as 20-brazos-searchsploit.png",
+     "calloutType": "screenshot"
     },
     {
      "type": "callout",
@@ -706,7 +741,26 @@
   "connection": "Brazos Financial&#8217;s legacy systems and poor configuration hygiene are blue team failures that created every finding in your report. You discovered the attack surface as a red teamer &#8212; now your recommendations make you the blue teamer. Ray Jimenez hired NEXUS for someone who sees both sides."
  },
  "finalChecklist": {
-  "screenshotTable": null,
+  "screenshotTable": [
+     {"filename": "01-vm-settings.png", "description": "Capture your VM settings window showing the VM name (kali-<your abc123>), RAM allocation, and processor count"},
+     {"filename": "02-kali-desktop.png", "description": "Capture the Kali desktop after login, with the terminal open showing your hostname"},
+     {"filename": "03-docker-version.png", "description": "Capture docker --version and the hello-world output"},
+     {"filename": "04-system-verification.png", "description": "Capture a terminal showing output from the verification commands. Your hostname must be visible"},
+     {"filename": "07-nmap-version.png", "description": "Capture nmap -sV results"},
+     {"filename": "08-nmap-scripts.png", "description": "Capture nmap -sC results"},
+     {"filename": "09-netcat-banner.png", "description": "Capture netcat connection showing SSH banner"},
+     {"filename": "10-dirb-results.png", "description": "Capture dirb output showing discovered directories"},
+     {"filename": "11-nikto-results.png", "description": "Capture nikto output showing findings"},
+     {"filename": "12-enum4linux-help.png", "description": "Capture enum4linux help output"},
+     {"filename": "13-searchsploit-apache.png", "description": "Capture searchsploit results for Apache"},
+     {"filename": "14-brazos-container.png", "description": "Capture docker ps showing Brazos container running"},
+     {"filename": "15-brazos-nmap-full.png", "description": "Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings"},
+     {"filename": "16-brazos-netcat-banner.png", "description": "Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line"},
+     {"filename": "17-brazos-dirb.png", "description": "Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results"},
+     {"filename": "18-brazos-nikto.png", "description": "Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags"},
+     {"filename": "19-brazos-enum4linux.png", "description": "Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup"},
+     {"filename": "20-brazos-searchsploit.png", "description": "Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible"}
+    ],
   "sections": [
    {
     "title": "Document Requirements",
@@ -737,8 +791,8 @@
    {
     "title": "Screenshots",
     "items": [
-     "All Unit 1-2 screenshots included (01-04 from Lab 1.1, 07-13 from Lab 1.2)",
-     "Unit 3 screenshots per the lab body (CP1 + CP2 minimum 8 from recon workflow)",
+     "Captures from Labs 1.1 and 1.2 are carried into this packet, not just the Unit 3 ones",
+     "Every capture in the list above is present, and any extra captures you took are in the Appendix",
      "Hostname (kali-<your abc123>) visible in every terminal screenshot",
      "Screenshots are clear and readable"
     ]

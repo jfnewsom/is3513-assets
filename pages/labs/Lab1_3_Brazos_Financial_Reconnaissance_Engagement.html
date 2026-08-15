@@ -360,8 +360,43 @@
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshots</div>
-        <p>Capture all tool outputs and findings. Minimum 8 screenshots documenting your reconnaissance workflow.</p>
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings. Save as 15-brazos-nmap-full.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line. Save as 16-brazos-netcat-banner.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results. Save as 17-brazos-dirb.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags. Save as 18-brazos-nikto.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup. Save as 19-brazos-enum4linux.png</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible. Save as 20-brazos-searchsploit.png</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -695,6 +730,28 @@
     <div class="nx-sub">Verify all requirements before submitting</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
+    <h2>Screenshots</h2>
+    <ul class="nx-checklist">
+      <li>&#9744; <code>01-vm-settings.png</code> &#8212; Capture your VM settings window showing the VM name (kali-<your abc123>), RAM allocation, and processor count</li>
+      <li>&#9744; <code>02-kali-desktop.png</code> &#8212; Capture the Kali desktop after login, with the terminal open showing your hostname</li>
+      <li>&#9744; <code>03-docker-version.png</code> &#8212; Capture docker --version and the hello-world output</li>
+      <li>&#9744; <code>04-system-verification.png</code> &#8212; Capture a terminal showing output from the verification commands. Your hostname must be visible</li>
+      <li>&#9744; <code>07-nmap-version.png</code> &#8212; Capture nmap -sV results</li>
+      <li>&#9744; <code>08-nmap-scripts.png</code> &#8212; Capture nmap -sC results</li>
+      <li>&#9744; <code>09-netcat-banner.png</code> &#8212; Capture netcat connection showing SSH banner</li>
+      <li>&#9744; <code>10-dirb-results.png</code> &#8212; Capture dirb output showing discovered directories</li>
+      <li>&#9744; <code>11-nikto-results.png</code> &#8212; Capture nikto output showing findings</li>
+      <li>&#9744; <code>12-enum4linux-help.png</code> &#8212; Capture enum4linux help output</li>
+      <li>&#9744; <code>13-searchsploit-apache.png</code> &#8212; Capture searchsploit results for Apache</li>
+      <li>&#9744; <code>14-brazos-container.png</code> &#8212; Capture docker ps showing Brazos container running</li>
+      <li>&#9744; <code>15-brazos-nmap-full.png</code> &#8212; Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings</li>
+      <li>&#9744; <code>16-brazos-netcat-banner.png</code> &#8212; Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line</li>
+      <li>&#9744; <code>17-brazos-dirb.png</code> &#8212; Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results</li>
+      <li>&#9744; <code>18-brazos-nikto.png</code> &#8212; Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags</li>
+      <li>&#9744; <code>19-brazos-enum4linux.png</code> &#8212; Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup</li>
+      <li>&#9744; <code>20-brazos-searchsploit.png</code> &#8212; Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible</li>
+    </ul>
+
     <h2>Document Requirements</h2>
     <ul class="nx-checklist">
       <li>&#9744; Submitted as .docx (not PDF)</li>
@@ -720,8 +777,8 @@
 
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; All Unit 1-2 screenshots included (01-04 from Lab 1.1, 07-13 from Lab 1.2)</li>
-      <li>&#9744; Unit 3 screenshots per the lab body (CP1 + CP2 minimum 8 from recon workflow)</li>
+      <li>&#9744; Captures from Labs 1.1 and 1.2 are carried into this packet, not just the Unit 3 ones</li>
+      <li>&#9744; Every capture in the list above is present, and any extra captures you took are in the Appendix</li>
       <li>&#9744; Hostname (kali-<your abc123>) visible in every terminal screenshot</li>
       <li>&#9744; Screenshots are clear and readable</li>
     </ul>

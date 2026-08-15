@@ -687,7 +687,28 @@
   "connection": "This module bridges attack and defense perspectives. You’ve used offensive tools (John the Ripper, Hashcat) to generate defensive intelligence (platform comparison, risk recommendations). This is purple team thinking: use attacker methodology to inform defender priorities."
  },
  "finalChecklist": {
-  "screenshotTable": null,
+  "screenshotTable": [
+     {"filename": "01-hash-file-contents.png", "description": "Capture your terminal showing cat brazos-hashes.txt output with all 8 hashes visible"},
+     {"filename": "02-rockyou-wordlist-count.png", "description": "Capture your terminal showing the wc -l output with the rockyou.txt line count visible"},
+     {"filename": "03-john-attack.png", "description": "Capture John the Ripper running and cracking passwords (showing the wordlist attack in progress or completed)"},
+     {"filename": "04-john-results.png", "description": "Capture john --show output showing all cracked passwords"},
+     {"filename": "05-john-potfile.png", "description": "Capture the contents of John’s potfile showing stored hash:password pairs"},
+     {"filename": "06-hashes-only-format.png", "description": "Capture cat brazos-hashes-only.txt showing the extracted hash-only format (no usernames). This proves you understand the input format difference between John and Hashcat"},
+     {"filename": "07-hashcat-attack.png", "description": "Capture Hashcat running showing cracking speed (look for “Speed” or “H/s” in output)"},
+     {"filename": "08-hashcat-results.png", "description": "Capture hashcat --show output displaying cracked hashes"},
+     {"filename": "09-hashcat-potfile.png", "description": "Capture the contents of Hashcat’s potfile. Compare the storage location and format to John’s potfile from Screenshot #5"},
+     {"filename": "10-results-table.png", "description": "Capture your filled-in results table (can be terminal notes, text file, or spreadsheet)"},
+     {"filename": "11-alamo-hash-format.png", "description": "Display the hash file showing the $6$ format with visible salt"},
+     {"filename": "12-sha512-format-closeup.png", "description": "Capture the head -1 output showing a single SHA-512 hash entry. Annotate or note the three components: algorithm identifier ($6$), salt, and hash"},
+     {"filename": "13-john-linux-autodetect.png", "description": "Capture John’s initial load message showing Loaded N password hashes with N different salts (sha512crypt). This proves auto-detection worked and shows the salt count"},
+     {"filename": "14-john-linux-attack.png", "description": "Capture John running showing the H/s speed rate"},
+     {"filename": "15-john-linux-results.png", "description": "Capture john --show output with cracked passwords"},
+     {"filename": "16-man-shadow-format.png", "description": "Capture your terminal showing the man 5 shadow output. Scroll to show the format description section"},
+     {"filename": "17-man-crypt-algorithms.png", "description": "Capture your terminal showing the man 5 crypt output. Show the section listing supported hash algorithm identifiers ($1$, $5$, $6$, etc.)"},
+     {"filename": "18-hashcat-linux-attack.png", "description": "Capture Hashcat running showing the H/s speed"},
+     {"filename": "19-hashcat-linux-results.png", "description": "Capture hashcat --show output with cracked passwords"},
+     {"filename": "20-alamo-results-table.png", "description": "Capture your completed results table showing all 8 Alamo accounts with usernames, cracked passwords (or not cracked), and account types. The full table must be visible"}
+    ],
   "sections": [
    {
     "title": "Report Sections (Part I + Part II)",
