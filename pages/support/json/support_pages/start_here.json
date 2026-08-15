@@ -5,7 +5,7 @@
   "accentColor": "#00D26A",
   "headerKeyword": "start",
   "headerSecondary": "here",
-  "headerSubtitle": "Complete these 4 checkpoints before starting any labs",
+  "headerSubtitle": "Complete these 5 checkpoints before starting any labs",
   "sections": [
     {
       "type": "video_story",
@@ -17,7 +17,7 @@
     },
     {
       "type": "intro",
-      "html": "Complete these 4 checkpoints <strong style=\"color:#ffffff;\">in order</strong> before diving into assignments. Each step ensures you&#8217;re set up for success."
+      "html": "Complete these 5 checkpoints <strong style=\"color:#ffffff;\">in order</strong> before diving into assignments. Each step ensures you&#8217;re set up for success."
     },
     {
       "type": "named_section",
@@ -65,10 +65,19 @@
     },
     {
       "type": "named_section",
-      "color": "#FF9F1C",
-      "label": "✓ 4. Start Lab 1.1",
+      "color": "#FEC618",
+      "label": "✓ 4. Complete Lab 1.0: Document Standards",
       "paragraphs": [
-        "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong> &#8212; don’t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Find Lab 1.1 in your Canvas course modules.",
+        "Lab 1.0 is your first graded Foundation Lab and the first deadline in this course: <strong style=\"color:#ffffff;\">Sunday August 23</strong> at 11:59 p.m. Central. It looks like a Word tutorial and it is not. Automatic tables of contents, captions and cross-references, and managed citations are the mechanics every Engagement Packet you write this term depends on.",
+        "It is technically droppable and you should not drop it. Students who skip past this lab spend the rest of the semester hand-typing things Word will build for them, and losing points for it. Do it first, before you touch the VM. You will find it in Canvas under <strong style=\"color:#ffffff;\">Modules &#8594; Module 0: Getting Started</strong>."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#FF9F1C",
+      "label": "✓ 5. Start Lab 1.1",
+      "paragraphs": [
+        "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong> &#8212; don’t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Lab 1.1 is due Sunday August 30. Find it in your Canvas course modules.",
         "<strong style=\"color:#ffffff;\">VM naming convention:</strong> Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. Lab 1.1 explains why."
       ]
     },
