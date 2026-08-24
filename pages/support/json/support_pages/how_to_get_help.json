@@ -100,12 +100,12 @@
       "color": "#00D26A",
       "label": "3. Book an Appointment (One-on-One Help)",
       "paragraphs": [
-        "Need dedicated one-on-one time? Book a 15-minute Zoom appointment through Calendly. Great for complex debugging, career questions, or anything that needs focused attention.",
-        "<strong style=\"color:#ffffff;\">Format:</strong> Zoom only. This is an asynchronous course — no fixed office hours, but Calendly is open for scheduled appointments throughout the term."
+        "Need dedicated one-on-one time? Book an appointment through Calendly. You pick the format, in person or online, and the length: 15, 30, 45, or 60 minutes. Great for complex debugging, career questions, or anything that needs focused attention.",
+        "<strong style=\"color:#ffffff;\">Format:</strong> In person or online, your choice when you book. This is an asynchronous course, so there are no fixed office hours, but Calendly is open for scheduled appointments throughout the term."
       ],
       "button": {
         "label": "Book Appointment →",
-        "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+        "href": "https://calendly.com/john-newsom-utsa",
         "color": "#00D26A",
         "textColor": "#0A0E17"
       }

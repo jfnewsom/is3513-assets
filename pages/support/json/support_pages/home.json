@@ -123,13 +123,13 @@
     {
       "label": "Office Hours",
       "value": "By appointment via Calendly",
-      "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+      "href": "https://calendly.com/john-newsom-utsa",
       "external": true
     },
     {
       "label": "Schedule",
       "value": "calendly.com/john-newsom-utsa",
-      "href": "https://calendly.com/john-newsom-utsa/student-meeting",
+      "href": "https://calendly.com/john-newsom-utsa",
       "external": true,
       "linkColor": "cyan"
     }
@@ -279,5 +279,5 @@
       "href": "Module_5.html"
     }
   ],
-  "footer": "Questions? Ask in <a href=\"Discord.html\" class=\"nx-link--discord\">Discord</a> or <a href=\"https://calendly.com/john-newsom-utsa/student-meeting\" target=\"_blank\" class=\"nx-link--cyan\">schedule office hours</a>."
+  "footer": "Questions? Ask in <a href=\"Discord.html\" class=\"nx-link--discord\">Discord</a> or <a href=\"https://calendly.com/john-newsom-utsa\" target=\"_blank\" class=\"nx-link--cyan\">schedule office hours</a>."
 }
