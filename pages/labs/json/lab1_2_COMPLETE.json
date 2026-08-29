@@ -312,6 +312,13 @@
       "title": "dirb Directory Discovery",
       "content": [
         {
+          "type": "callout",
+          "icon": "warning",
+          "calloutType": "warning",
+          "title": "If the Target Is Down, Use the NEXUS Range",
+          "text": "<code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>."
+        },
+        {
           "type": "narrative",
           "whatYoureDoing": "Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn&#8217;t linked from the main site.",
           "whyItMatters": "Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit."
@@ -374,7 +381,7 @@
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
-          "text": "Output showing discovered directories like /admin/, /images/, /cgi-bin/ with HTTP response codes.",
+          "text": "Output showing discovered directories like /admin/, /images/, /cgi-bin/ with HTTP response codes. If you used the NEXUS range instead, expect a mix of accessible and forbidden paths: several directories returning CODE:200, several returning CODE:403, and a <code>robots.txt</code> worth reading. A 403 is a finding, not a failure. It confirms the path is really there, which is exactly what a 404 does not tell you.",
           "calloutType": "whatYouShouldHave"
         },
         {
@@ -404,6 +411,13 @@
       "number": 4,
       "title": "nikto Vulnerability Scanning",
       "content": [
+        {
+          "type": "callout",
+          "icon": "warning",
+          "calloutType": "warning",
+          "title": "If the Target Is Down, Use the NEXUS Range",
+          "text": "<code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>."
+        },
         {
           "type": "narrative",
           "whatYoureDoing": "Using nikto to scan web servers for known vulnerabilities, misconfigurations, and dangerous files.",
@@ -460,7 +474,7 @@
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
-          "text": "Output showing server information, potential vulnerabilities, and interesting files discovered.",
+          "text": "Output showing server information, potential vulnerabilities, and interesting files discovered. If you used the NEXUS range instead, expect findings in the same categories: a disclosed server version, a missing security header, a directory with indexing left enabled, and entries in <code>robots.txt</code> flagged for manual review.",
           "calloutType": "whatYouShouldHave"
         },
         {
