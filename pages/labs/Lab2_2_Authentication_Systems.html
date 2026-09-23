@@ -292,7 +292,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> Your home directory (<code>/home/kali</code>) has permissions <code>700</code> &#8212; other users can&#8217;t enter it. <code>/tmp</code> is world-readable and world-writable, which is realistic: in enterprise environments, files often end up in shared directories like <code>/tmp</code> or <code>/var/www</code>. In those locations, <strong>file permissions are your only line of defense</strong>.</p>
+            <p><strong>Concept:</strong> Your home directory (<code>/home/</code> followed by your username) has permissions <code>700</code> &#8212; other users can&#8217;t enter it. <code>/tmp</code> is world-readable and world-writable, which is realistic: in enterprise environments, files often end up in shared directories like <code>/tmp</code> or <code>/var/www</code>. In those locations, <strong>file permissions are your only line of defense</strong>.</p>
           </div>
         </details>
       </li>
@@ -501,16 +501,16 @@
           </div>
         </details>
       </li>
-      <li>Type or paste the following contents exactly (use spaces, not tabs for indentation):
+      <li>Type or paste the following contents, replacing <code>YOUR-USERNAME</code> with your own Kali username (run <code>whoami</code> if you&#8217;re not sure). Use spaces, not tabs, for indentation:
         <div class="nx-cmd">Host labserver
     HostName localhost
-    User kali
+    User YOUR-USERNAME
     IdentityFile ~/lab2-auth/id_ed25519_lab
     IdentitiesOnly yes</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> <strong>Host labserver</strong> &#8212; the alias you&#8217;ll type. <strong>HostName localhost</strong> &#8212; the actual server address. <strong>User kali</strong> &#8212; the username. <strong>IdentityFile</strong> &#8212; which private key to use. <strong>IdentitiesOnly yes</strong> &#8212; only try the specified key, preventing SSH from cycling through all keys in <code>~/.ssh/</code>.</p>
+            <p><strong>Concept:</strong> <strong>Host labserver</strong> &#8212; the alias you&#8217;ll type. <strong>HostName localhost</strong> &#8212; the actual server address. <strong>User YOUR-USERNAME</strong> &#8212; the account to log in as. It must match your Kali username exactly; if it doesn&#8217;t, SSH tries to log in as a user that doesn&#8217;t exist on your VM. <strong>IdentityFile</strong> &#8212; which private key to use. <strong>IdentitiesOnly yes</strong> &#8212; only try the specified key, preventing SSH from cycling through all keys in <code>~/.ssh/</code>.</p>
           </div>
         </details>
       </li>
@@ -553,6 +553,7 @@
           <li><strong>Wrong key in authorized_keys:</strong> Make sure you&#8217;re adding the <code>.pub</code> file, not the private key</li>
           <li><strong>Line breaks in key:</strong> The public key must be all on one line</li>
           <li><strong>Config indentation:</strong> Use spaces, not tabs; indent options under <code>Host</code></li>
+          <li><strong>Wrong username in config:</strong> The <code>User</code> line must match your own Kali username, not <code>kali</code> unless that&#8217;s the name you chose at setup. If <code>ssh labserver whoami</code> fails or unexpectedly asks for a password, run <code>whoami</code> and compare it to your config</li>
         </ul>
       </div>
     </div>
@@ -653,7 +654,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> You should see two prompts in sequence: (1) <code>Enter passphrase for key '...id_ed25519_lab':</code> &#8212; unlocks your key file locally; (2) <code>kali@localhost's password:</code> &#8212; the server verifies your identity. Enter your key passphrase (<code>nexus2026</code>) at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username from <code>whoami</code>.</p>
+            <p><strong>In your output:</strong> You should see two prompts in sequence: (1) <code>Enter passphrase for key '...id_ed25519_lab':</code> &#8212; unlocks your key file locally; (2) <code>YOUR-USERNAME@localhost's password:</code> (with your own username) &#8212; the server verifies your identity. Enter your key passphrase (<code>nexus2026</code>) at the first prompt, then your account password at the second. If both succeed, you&#8217;ll see your username from <code>whoami</code>.</p>
           </div>
         </details>
       </li>
