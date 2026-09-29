@@ -24,7 +24,7 @@
     <p class="nx-module-label">Module 1: Threat Intelligence &amp; Reconnaissance</p>
 
     <h2>Overview</h2>
-    <p>This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology &#8212; next unit, you'll apply these skills against a real client engagement.</p>
+    <p>This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology. Next unit, you'll apply these skills against a real client engagement.</p>
 
     <div class="nx-quote">
       <div class="nx-quote-main">
@@ -32,7 +32,7 @@
           <img src="https://jfnewsom.github.io/is3513-assets/headshots/maya-rodriguez.png" alt="Maya Rodriguez">
         </div>
         <div class="nx-quote-bubble">
-          <p>&#8220;Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next unit. Document everything &#8212; your runbook should be detailed enough that another analyst could reproduce your methodology.&#8221;</p>
+          <p>&#8220;Reconnaissance is where every engagement begins. Before you touch a target, you need to understand what you're dealing with. These six tools are your foundation. Master them here on authorized targets so you're confident when you face a real client network next unit. Document everything. Your runbook should be detailed enough that another analyst could reproduce your methodology.&#8221;</p>
         </div>
       </div>
       <div class="nx-quote-attribution">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <h2>Chapters Covered</h2>
-    <p>Chapter 1 &#8212; Introduction to Security | Chapter 2 &#8212; General Security Concepts</p>
+    <p>Chapter 1: Introduction to Security | Chapter 2: General Security Concepts</p>
 
     <h2>Client Context</h2>
     <p><strong>Brazos Financial Group</strong> &#8212; Dallas-based wealth management firm preparing for an SEC cybersecurity examination. This unit is internal training on reconnaissance and OSINT techniques; in Unit 3 you'll apply these techniques against Brazos's publicly available footprint as the first phase of their assessment.</p>
@@ -69,7 +69,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Your Authorized Targets</div>
-        <p>Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and <strong>testphp.vulnweb.com</strong> (Acunetix's intentionally vulnerable demo site). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first — the cost of asking is five minutes.</p>
+        <p>Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and <strong>testphp.vulnweb.com</strong> (Acunetix's intentionally vulnerable demo site). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first. The cost of asking is five minutes.</p>
       </div>
     </div>
     <div class="nx-callout nx-cyan">
@@ -107,7 +107,7 @@
       </tbody>
     </table>
 
-    <p>This is Unit 2 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Continue saving screenshots to your Module1_Screenshots folder &#8212; screenshots 07&#8211;13 go directly into your Engagement Packet next unit.</p>
+    <p>This is Unit 2 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Continue saving screenshots to your Module1_Screenshots folder. Screenshots 07 through 13 go directly into your Engagement Packet next unit.</p>
   </div>
 </div>
 
@@ -134,7 +134,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open &#8212; with it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
+            <p><strong>Concept:</strong> The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open. With it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).</p>
             <p><strong>In your output:</strong> Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible.</p>
           </div>
         </details>
@@ -151,7 +151,7 @@
           </div>
         </details>
       </li>
-      <li>Compare the output &#8212; what additional information did scripts reveal?
+      <li>Compare the output. What additional information did scripts reveal?
       </li>
     </ol>
     <div class="nx-callout nx-purple">
@@ -159,9 +159,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Key Flags</div>
         <ul>
-          <li>-sV &#8212; Version detection</li>
-          <li>-sC &#8212; Default scripts</li>
-          <li>-A &#8212; Aggressive (combines -sV, -sC, OS detection, traceroute)</li>
+          <li>-sV: Version detection</li>
+          <li>-sC: Default scripts</li>
+          <li>-A: Aggressive (combines -sV, -sC, OS detection, traceroute)</li>
         </ul>
       </div>
     </div>
@@ -232,7 +232,7 @@
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
     <h3>What You&#8217;re Doing</h3>
-    <p>Using netcat to manually connect to network services and capture their identification banners &#8212; the text services display when you connect.</p>
+    <p>Using netcat to manually connect to network services and capture their identification banners: the text services display when you connect.</p>
     <h3>Why It Matters</h3>
     <p>Service banners reveal software versions, hostnames, and configuration details. This low-level technique helps verify nmap results and often reveals information automated scanners miss. Netcat is the &#8220;Swiss Army knife&#8221; of networking.</p>
     <ol>
@@ -242,7 +242,7 @@
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> nc (netcat) opens a raw TCP connection to a host and port. The -v flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.</p>
-            <p><strong>In your output:</strong> You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version &#8212; valuable intel for an attacker.</p>
+            <p><strong>In your output:</strong> You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version. That is valuable intel for an attacker.</p>
           </div>
         </details>
       </li>
@@ -255,7 +255,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically &#8212; you need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
+            <p><strong>Concept:</strong> Port 80 is the standard HTTP port. Unlike SSH, web servers don&#8217;t send a banner automatically. You need to send an HTTP request first. This teaches you that different protocols behave differently during reconnaissance.</p>
             <p><strong>In your output:</strong> You&#8217;ll see a connection confirmation, but no banner yet. You need to type the HTTP request in the next step to get a response.</p>
           </div>
         </details>
@@ -264,7 +264,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> HEAD / HTTP/1.0 is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP &#8212; exactly what automated tools do behind the scenes.</p>
+            <p><strong>Concept:</strong> HEAD / HTTP/1.0 is a raw HTTP request asking the server for headers only (no page content). The response reveals the web server software, version, and sometimes OS details. This is manual banner grabbing for HTTP, exactly what automated tools do behind the scenes.</p>
           </div>
         </details>
       </li>
@@ -288,7 +288,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Connection refused: Port may be filtered or service down &#8212; try a different port</li>
+          <li>Connection refused: Port may be filtered or service down; try a different port</li>
           <li>Timeout: Add -w 5 for 5-second timeout</li>
           <li>No banner: Some services don&#8217;t display banners until you send data</li>
         </ul>
@@ -343,7 +343,7 @@
       </div>
     </div>
     <h3>What You&#8217;re Doing</h3>
-    <p>Using dirb to brute-force discover hidden directories and files on web servers &#8212; finding content that isn&#8217;t linked from the main site.</p>
+    <p>Using dirb to brute-force discover hidden directories and files on web servers, finding content that isn&#8217;t linked from the main site.</p>
     <h3>Why It Matters</h3>
     <p>Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit.</p>
     <ol>
@@ -352,7 +352,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery &#8212; finding pages the site doesn&#8217;t link to publicly.</p>
+            <p><strong>Concept:</strong> dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery: finding pages the site doesn&#8217;t link to publicly.</p>
             <p><strong>In your output:</strong> Watch for lines showing CODE:200 (the page exists) versus CODE:403 (forbidden but exists) and CODE:301 (redirect). Each discovered path is a potential attack surface.</p>
           </div>
         </details>
@@ -383,9 +383,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Forgetting http://: URL must include the protocol &#8212; dirb http://target not just dirb target</li>
-          <li>Slow scan: Dirb tests thousands of paths &#8212; use Ctrl+C after seeing results for training purposes</li>
-          <li>Connection errors: Target site must be reachable &#8212; test with curl first if dirb fails</li>
+          <li>Forgetting http://: URL must include the protocol (dirb http://target, not just dirb target)</li>
+          <li>Slow scan: Dirb tests thousands of paths; use Ctrl+C after seeing results for training purposes</li>
+          <li>Connection errors: Target site must be reachable; test with curl first if dirb fails</li>
         </ul>
       </div>
     </div>
@@ -452,7 +452,7 @@
           </div>
         </details>
       </li>
-      <li>Watch the output &#8212; nikto reports findings as it scans
+      <li>Watch the output: nikto reports findings as it scans
       </li>
       <li>Note types of findings: server info, outdated software, dangerous files
       </li>
@@ -471,9 +471,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Wrong port: Use -p 443 for HTTPS targets &#8212; nikto defaults to port 80</li>
-          <li>Loud scanning: Nikto is NOT stealthy &#8212; every request is logged and easily detected</li>
-          <li>False positives: Verify findings manually &#8212; nikto reports potential issues, not confirmed vulnerabilities</li>
+          <li>Wrong port: Use -p 443 for HTTPS targets; nikto defaults to port 80</li>
+          <li>Loud scanning: Nikto is NOT stealthy; every request is logged and easily detected</li>
+          <li>False positives: Verify findings manually; nikto reports potential issues, not confirmed vulnerabilities</li>
         </ul>
       </div>
     </div>
@@ -521,7 +521,7 @@
     <h3>What You&#8217;re Doing</h3>
     <p>Exploring enum4linux capabilities for SMB/Windows enumeration. Since we don&#8217;t have a live SMB target, you&#8217;ll review the tool&#8217;s help output and understand its purpose.</p>
     <h3>Why It Matters</h3>
-    <p>SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies &#8212; critical information for both attackers and security assessments. You&#8217;ll use this tool against the Brazos Financial container next unit.</p>
+    <p>SMB (Server Message Block) is ubiquitous in Windows networks. Enum4linux extracts usernames, shares, group memberships, and password policies. That is critical information for both attackers and security assessments. You&#8217;ll use this tool against the Brazos Financial container next unit.</p>
     <ol>
       <li>Review enum4linux help:
         <div class="nx-cmd">enum4linux -h</div>
@@ -529,7 +529,7 @@
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.</p>
-            <p><strong>In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems &#8212; usernames, file shares, password policies, and group memberships.</p>
+            <p><strong>In your output:</strong> Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems: usernames, file shares, password policies, and group memberships.</p>
           </div>
         </details>
       </li>
@@ -543,10 +543,10 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Key Flags</div>
         <ul>
-          <li>-U &#8212; Get user list</li>
-          <li>-S &#8212; Get share list</li>
-          <li>-P &#8212; Get password policy</li>
-          <li>-a &#8212; Do all simple enumeration</li>
+          <li>-U: Get user list</li>
+          <li>-S: Get share list</li>
+          <li>-P: Get password policy</li>
+          <li>-a: Do all simple enumeration</li>
         </ul>
       </div>
     </div>
@@ -562,7 +562,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>No SMB target: This checkpoint is documentation only &#8212; you&#8217;ll use enum4linux against real targets in Lab 1.3</li>
+          <li>No SMB target: This checkpoint is documentation only; you&#8217;ll use enum4linux against real targets in Lab 1.3</li>
           <li>Requires SMB access: Target must have ports 139/445 open for enum4linux to work</li>
         </ul>
       </div>
@@ -618,7 +618,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror &#8212; updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
+            <p><strong>Concept:</strong> The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror, so updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.</p>
           </div>
         </details>
       </li>
@@ -656,9 +656,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Too broad: &#8220;apache&#8221; returns thousands &#8212; add version numbers to narrow results</li>
+          <li>Too broad: &#8220;apache&#8221; returns thousands; add version numbers to narrow results</li>
           <li>Outdated database: Run searchsploit -u periodically to update</li>
-          <li>Not all exploits work: Many require specific conditions &#8212; read the exploit code before attempting</li>
+          <li>Not all exploits work: Many require specific conditions; read the exploit code before attempting</li>
         </ul>
       </div>
     </div>
@@ -710,7 +710,7 @@
         <div class="nx-callout-title">What Red Team Learns</div>
         <ul>
           <li><strong>Reconnaissance is the Foundation:</strong> Every engagement starts with information gathering. nmap gives you open ports and versions; netcat confirms banners manually; dirb finds hidden paths; nikto flags known misconfigurations. Together, these six tools build a complete picture of a target&#8217;s attack surface.</li>
-          <li><strong>Version Intelligence Drives Exploitation:</strong> A version string from nmap or netcat banner grabbing feeds directly into searchsploit. &#8220;Apache 2.4.7&#8221; becomes a CVE list. This chain &#8212; discover, identify, research &#8212; is the core offensive workflow.</li>
+          <li><strong>Version Intelligence Drives Exploitation:</strong> A version string from nmap or netcat banner grabbing feeds directly into searchsploit. &#8220;Apache 2.4.7&#8221; becomes a CVE list. This chain (discover, identify, research) is the core offensive workflow.</li>
           <li><strong>SMB Is a Username Factory:</strong> enum4linux null session enumeration extracts usernames, shares, and password policies without authenticating. That user list becomes your credential attack target.</li>
         </ul>
       </div>
@@ -720,7 +720,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Blue Team Learns</div>
         <ul>
-          <li><strong>Your Logs Record This Reconnaissance:</strong> Every nmap scan, dirb request, and nikto probe leaves traces in access logs. Defenders who run these tools against their own infrastructure know exactly what a scan looks like &#8212; and can build detection rules accordingly.</li>
+          <li><strong>Your Logs Record This Reconnaissance:</strong> Every nmap scan, dirb request, and nikto probe leaves traces in access logs. Defenders who run these tools against their own infrastructure know exactly what a scan looks like and can build detection rules accordingly.</li>
           <li><strong>Version Banners Are Information Leaks:</strong> Service banners reveal software versions to anyone who connects. Suppressing banners and obscuring version strings reduces the reconnaissance value an attacker gains from a scan.</li>
           <li><strong>Authorized Scanning Is Blue Team Work:</strong> Running these tools on your own infrastructure before an attacker does is called attack surface management. Everything you discover today, a defender should already know about their own environment.</li>
         </ul>
@@ -730,7 +730,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">The Purple Team Connection</div>
-        <p>The six tools in this lab are used identically by both sides. Red team runs them offensively to map targets. Blue team runs them defensively to audit their own exposure. The difference is authorization and intent &#8212; not the tools themselves.</p>
+        <p>The six tools in this lab are used identically by both sides. Red team runs them offensively to map targets. Blue team runs them defensively to audit their own exposure. The difference is authorization and intent, not the tools themselves.</p>
       </div>
     </div>
   </div>
@@ -768,7 +768,7 @@
     <h2>Canvas Quiz</h2>
     <ul class="nx-checklist">
       <li>&#9744; Take the Lab 1.2 Quiz in Canvas</li>
-      <li>&#9744; Keep your VM running while taking the quiz &#8212; questions reference specific tool outputs</li>
+      <li>&#9744; Keep your VM running while taking the quiz; questions reference specific tool outputs</li>
     </ul>
 
     <div class="nx-callout nx-cyan">
@@ -802,7 +802,7 @@
     <h2>Getting Help</h2>
     <ul>
       <li><strong>Discord:</strong> #module-1-help</li>
-      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa</li>
+      <li><strong>Office Hours:</strong> Calendly: calendly.com/john-newsom-utsa</li>
       <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
     </ul>
 
@@ -845,7 +845,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>Take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3: Brazos Financial Reconnaissance Engagement &#8212; where you apply all six tools against a real client target.</p>
+        <p>Take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3: Brazos Financial Reconnaissance Engagement, where you apply all six tools against a real client target.</p>
       </div>
     </div>
   </div>
