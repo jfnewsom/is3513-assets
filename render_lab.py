@@ -165,7 +165,7 @@ def render_callout_block(block):
     if items:
         if items and isinstance(items[0], dict):
             lis = "".join(
-                f'          <li><strong>{h(i.get("label",""))}</strong> — {h(i.get("text",""))}</li>\n'
+                f'          <li><strong>{h(i.get("label",""))}</strong>: {h(i.get("text",""))}</li>\n'
                 for i in items
             )
         else:
@@ -234,7 +234,7 @@ def render_what_this_does(wtd):
     flags = wtd.get("flags")
     if flags:
         flag_items = "".join(
-            f'              <li><code>{h(f["flag"])}</code> &#8212; {h(f["description"])}</li>\n'
+            f'              <li><code>{h(f["flag"])}</code>: {h(f["description"])}</li>\n'
             for f in flags
         )
         inner += f'            <p><strong>Flags:</strong></p>\n            <ul>\n{flag_items}            </ul>\n'
@@ -311,7 +311,7 @@ def render_steps_block(block):
                 code  = si.get("code", "")
                 label = h(si.get("label", ""))
                 if code and label:
-                    out += f'          <li><code>{code}</code> &#8212; {label}</li>\n'
+                    out += f'          <li><code>{code}</code>: {label}</li>\n'
                 elif code:
                     out += f'          <li><code>{code}</code></li>\n'
                 else:
@@ -366,7 +366,7 @@ def render_conversion_table(block):
         return f'      <table class="nx-conv-table">\n{hdr}{body}        </tbody>\n      </table>\n'
 
     return (
-        f'    <p class="nx-cidr-vis-intro">Memorize these 16 values (0&#8211;15) and you can convert anything:</p>\n'
+        f'    <p class="nx-cidr-vis-intro">Memorize these 16 values (0 through 15) and you can convert anything:</p>\n'
         f'    <div class="nx-conv-wrap">\n'
         f'{table_html(range(8))}'
         f'{table_html(range(8, 16))}'
@@ -537,7 +537,7 @@ def render_intro(data):
         desc = ctx.get("description", "")
         inner += f'    <h2>Client Context</h2>\n'
         if desc:
-            inner += f'    <p><strong>{h(ctx["client"])}</strong> &#8212; {h(desc)}</p>\n'
+            inner += f'    <p><strong>{h(ctx["client"])}</strong>: {h(desc)}</p>\n'
         else:
             inner += f'    <p><strong>{h(ctx["client"])}</strong></p>\n'
         # contacts array or single contact via contactName/contactTitle
@@ -722,7 +722,7 @@ def render_final_checklist(data):
         inner += f'    <h2>Screenshots</h2>\n    <ul class="nx-checklist">\n'
         for row in ss_table:
             fname = row.get("filename", row.get("file", ""))
-            inner += f'      <li>&#9744; <code>{h(fname)}</code> &#8212; {h(row["description"])}</li>\n'
+            inner += f'      <li>&#9744; <code>{h(fname)}</code>: {h(row["description"])}</li>\n'
         inner += '    </ul>\n\n'
 
     # Checklist sections
@@ -741,7 +741,7 @@ def render_final_checklist(data):
                 elif "filename" in item and "description" in item:
                     fname = h(item.get("filename", ""))
                     desc  = h(item.get("description", ""))
-                    inner += f'      <li>&#9744; <code>{fname}</code> &#8212; {desc}</li>\n'
+                    inner += f'      <li>&#9744; <code>{fname}</code>: {desc}</li>\n'
                 elif "check" in item:
                     inner += f'      <li>&#9744; {h(item["check"])}</li>\n'
                 else:
@@ -986,12 +986,12 @@ def render(data):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab {lab_num} &#8212; {title}</title>
+  <title>Lab {lab_num}: {title}</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<h1 class="nx-sr-only">Lab {lab_num} &#8212; {title}</h1>
+<h1 class="nx-sr-only">Lab {lab_num}: {title}</h1>
 
 {body}
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>

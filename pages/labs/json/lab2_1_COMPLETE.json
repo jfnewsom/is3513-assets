@@ -5,8 +5,8 @@
     "labType": "foundation",
     "module": "Module 2: Cryptography &amp; Authentication",
     "chapters": [
-      "Chapter 6 &#8212; Applied Cryptography",
-      "Chapter 11 &#8212; Authentication and Remote Access"
+      "Chapter 6: Applied Cryptography",
+      "Chapter 11: Authentication and Remote Access"
     ]
   },
   "intro": {
@@ -21,23 +21,23 @@
     "focusAreas": [
       {
         "title": "Cryptographic Hashing",
-        "description": "SHA-256 and the avalanche effect — how small input changes produce completely different outputs, forming the foundation of data integrity verification."
+        "description": "SHA-256 and the avalanche effect: how small input changes produce completely different outputs, forming the foundation of data integrity verification."
       },
       {
         "title": "Symmetric Encryption",
-        "description": "AES-256-CBC encryption and decryption — the HIPAA-required standard for protecting PHI at rest."
+        "description": "AES-256-CBC encryption and decryption, the HIPAA-required standard for protecting PHI at rest."
       },
       {
         "title": "Asymmetric Encryption",
-        "description": "RSA keypair generation and public-key encryption — solving the key distribution problem that symmetric encryption cannot."
+        "description": "RSA keypair generation and public-key encryption, solving the key distribution problem that symmetric encryption cannot."
       },
       {
         "title": "Digital Signatures",
-        "description": "Creating and verifying signatures using RSA — providing non-repudiation, the cryptographic proof that a specific party signed a specific document."
+        "description": "Creating and verifying signatures using RSA, providing non-repudiation, the cryptographic proof that a specific party signed a specific document."
       },
       {
         "title": "Algorithm Deprecation",
-        "description": "Why MD5 and SHA-1 are no longer acceptable — understanding collision resistance and NIST recommendations for current practice."
+        "description": "Why MD5 and SHA-1 are no longer acceptable: understanding collision resistance and NIST recommendations for current practice."
       },
       {
         "title": "Documentation for Auditors",
@@ -67,7 +67,7 @@
       "character": "Maria Delgado, PhD",
       "title": "Security Compliance Specialist, NEXUS Security",
       "headshot": "maria-delgado.png",
-      "quote": "Cryptography isn&#8217;t magic &#8212; it&#8217;s math. And math done wrong is worse than no math at all because it gives false confidence. <strong>Every healthcare organization I&#8217;ve audited had encryption somewhere.</strong> Most had it implemented incorrectly. This unit, you&#8217;ll learn to do it right."
+      "quote": "Cryptography isn&#8217;t magic. It&#8217;s math. And math done wrong is worse than no math at all because it gives false confidence. <strong>Every healthcare organization I&#8217;ve audited had encryption somewhere.</strong> Most had it implemented incorrectly. This unit, you&#8217;ll learn to do it right."
     }
   },
   "timeGuide": {
@@ -97,7 +97,7 @@
       "label": "Total Estimated Time",
       "time": "2-3 hours"
     },
-    "timesheetNote": "This is Unit 1 of a 3-unit module. Time here is internal NEXUS training — not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save all 9 screenshots there. You will compile everything into a single Engagement Packet in Lab 2.3."
+    "timesheetNote": "This is Unit 1 of a 3-unit module. Time here is internal NEXUS training, not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save all 9 screenshots there. You will compile everything into a single Engagement Packet in Lab 2.3."
   },
   "checkpoints": [
     {
@@ -106,8 +106,8 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect &#8212; how small input changes produce completely different outputs.",
-          "whyItMatters": "Hashes are the foundation of data integrity. Every time you verify a software download, check file integrity, or validate a digital signature, you&#8217;re using hashes. In healthcare, hash verification proves that patient records haven&#8217;t been tampered with &#8212; critical for audit trails and legal compliance."
+          "whatYoureDoing": "Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect: how small input changes produce completely different outputs.",
+          "whyItMatters": "Hashes are the foundation of data integrity. Every time you verify a software download, check file integrity, or validate a digital signature, you&#8217;re using hashes. In healthcare, hash verification proves that patient records haven&#8217;t been tampered with, which is critical for audit trails and legal compliance."
         },
         {
           "character": "Maria Delgado, PhD",
@@ -141,8 +141,8 @@
               "text": "Generate the SHA-256 hash:",
               "command": "sha256sum patient.txt",
               "whatThisDoes": {
-                "concept": "<code>sha256sum</code> computes a SHA-256 cryptographic hash &#8212; a fixed-length, 64-character hexadecimal fingerprint of a file. The same input always produces the same hash, but even a one-bit change produces a completely different output. This is how you prove a file has not been tampered with.",
-                "output": "You should see a 64-character hex string followed by the filename. This hash is unique to your file&#8217;s exact contents. Copy it somewhere &#8212; you&#8217;ll compare it in the next step.",
+                "concept": "<code>sha256sum</code> computes a SHA-256 cryptographic hash: a fixed-length, 64-character hexadecimal fingerprint of a file. The same input always produces the same hash, but even a one-bit change produces a completely different output. This is how you prove a file has not been tampered with.",
+                "output": "You should see a 64-character hex string followed by the filename. This hash is unique to your file&#8217;s exact contents. Copy it somewhere. You&#8217;ll compare it in the next step.",
                 "flags": null
               }
             }
@@ -170,7 +170,7 @@
               "command": "sha256sum patient.txt patient2.txt",
               "whatThisDoes": {
                 "concept": null,
-                "output": "Compare the two hashes carefully. Despite changing only one character, the hashes are completely different. This is the <strong>avalanche effect</strong> &#8212; a critical property of cryptographic hash functions. If small changes produced similar hashes, attackers could predict modifications. The avalanche effect makes that impossible.",
+                "output": "Compare the two hashes carefully. Despite changing only one character, the hashes are completely different. This is the <strong>avalanche effect</strong>, a critical property of cryptographic hash functions. If small changes produced similar hashes, attackers could predict modifications. The avalanche effect makes that impossible.",
                 "flags": null
               }
             }
@@ -188,7 +188,7 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "<strong>Using MD5 or SHA-1:</strong> These are deprecated for security purposes &#8212; always use SHA-256 or stronger",
+            "<strong>Using MD5 or SHA-1:</strong> These are deprecated for security purposes; always use SHA-256 or stronger",
             "<strong>Confusing hashing with encryption:</strong> Hashes are one-way; you cannot reverse them to get original data"
           ],
           "calloutType": "commonPitfalls"
@@ -230,7 +230,7 @@
         {
           "type": "narrative",
           "whatYoureDoing": "Encrypting and decrypting files using AES-256, the symmetric encryption standard required by HIPAA for protecting patient health information (PHI) at rest.",
-          "whyItMatters": "Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard &#8212; it&#8217;s approved for classified government information and required by most healthcare compliance frameworks."
+          "whyItMatters": "Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard. It&#8217;s approved for classified government information and required by most healthcare compliance frameworks."
         },
         {
           "character": "Maria Delgado, PhD",
@@ -249,8 +249,8 @@
               "text": "Encrypt your patient file (use password <code>nexus2026</code> when prompted):",
               "command": "openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc",
               "whatThisDoes": {
-                "concept": "This encrypts a file using AES-256 in CBC mode &#8212; the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.",
-                "output": "OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success &#8212; OpenSSL is silent on success.",
+                "concept": "This encrypts a file using AES-256 in CBC mode, the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.",
+                "output": "OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success. OpenSSL is silent on success.",
                 "flags": [
                   {
                     "flag": "enc",
@@ -266,7 +266,7 @@
                   },
                   {
                     "flag": "-pbkdf2",
-                    "description": "Uses PBKDF2 key derivation &#8212; makes brute-force password attacks much slower"
+                    "description": "Uses PBKDF2 key derivation, which makes brute-force password attacks much slower"
                   },
                   {
                     "flag": "-in / -out",
@@ -284,8 +284,8 @@
               "text": "View the encrypted contents as a hex dump:",
               "command": "xxd patient.txt.enc | head",
               "whatThisDoes": {
-                "concept": "<code>xxd</code> is a hex dump utility that shows raw file bytes in hexadecimal format. Piping to <code>head</code> limits output to the first 10 lines. This lets you visually confirm the file is encrypted &#8212; you should see random-looking hex values, not readable text.",
-                "output": "The hex dump should show no recognizable text &#8212; just seemingly random bytes. The first 16 bytes contain the <code>Salted__</code> header followed by the salt value. If you can read any of the original patient data, encryption failed.",
+                "concept": "<code>xxd</code> is a hex dump utility that shows raw file bytes in hexadecimal format. Piping to <code>head</code> limits output to the first 10 lines. This lets you visually confirm the file is encrypted. You should see random-looking hex values, not readable text.",
+                "output": "The hex dump should show no recognizable text, just seemingly random bytes. The first 16 bytes contain the <code>Salted__</code> header followed by the salt value. If you can read any of the original patient data, encryption failed.",
                 "flags": null
               }
             }
@@ -307,7 +307,7 @@
               "text": "Decrypt using the same password:",
               "command": "openssl enc -aes-256-cbc -d -pbkdf2 -in patient.txt.enc -out patient_decrypted.txt",
               "whatThisDoes": {
-                "concept": "The <code>-d</code> flag switches OpenSSL to decrypt mode &#8212; this single flag reverses the encryption operation. Everything else stays the same: same algorithm, same key derivation. This demonstrates that symmetric encryption is reversible with the correct password.",
+                "concept": "The <code>-d</code> flag switches OpenSSL to decrypt mode. This single flag reverses the encryption operation. Everything else stays the same: same algorithm, same key derivation. This demonstrates that symmetric encryption is reversible with the correct password.",
                 "output": null,
                 "flags": null
               }
@@ -378,7 +378,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys &#8212; a public key anyone can use to encrypt, and a private key only you possess to decrypt.",
+          "whatYoureDoing": "Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys: a public key anyone can use to encrypt, and a private key only you possess to decrypt.",
           "whyItMatters": "Asymmetric encryption solves the key distribution problem. How do you securely share a symmetric key with someone you&#8217;ve never met? You use their public key. This is how TLS/HTTPS works, how secure email works, and how certificates establish trust."
         },
         {
@@ -387,7 +387,7 @@
           "type": "callout",
           "calloutType": "characterQuote",
           "title": "Security Compliance Specialist, NEXUS Security",
-          "quote": "Encryption is not magic. It&#8217;s math. And math done wrong is worse than no math at all &#8212; it gives false confidence."
+          "quote": "Encryption is not magic. It&#8217;s math. And math done wrong is worse than no math at all. It gives false confidence."
         },
         {
           "part": "Part A: Generate an RSA keypair",
@@ -398,7 +398,7 @@
               "text": "Generate a 2048-bit RSA private key:",
               "command": "openssl genrsa -out private.pem 2048",
               "whatThisDoes": {
-                "concept": "This generates an RSA private key &#8212; the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.",
+                "concept": "This generates an RSA private key, the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.",
                 "output": null,
                 "flags": [
                   {
@@ -411,7 +411,7 @@
                   },
                   {
                     "flag": "2048",
-                    "description": "Key size in bits &#8212; NIST minimum for RSA. 4096 is more future-proof but slower."
+                    "description": "Key size in bits. NIST minimum for RSA. 4096 is more future-proof but slower."
                   }
                 ]
               }
@@ -420,7 +420,7 @@
               "text": "Extract the public key:",
               "command": "openssl rsa -in private.pem -pubout -out public.pem",
               "whatThisDoes": {
-                "concept": "The public key is mathematically derived from the private key &#8212; but the reverse is computationally infeasible. This one-way relationship is what makes asymmetric crypto work: you can freely distribute your public key without exposing your private key. Anyone with your public key can encrypt messages that only your private key can decrypt.",
+                "concept": "The public key is mathematically derived from the private key, but the reverse is computationally infeasible. This one-way relationship is what makes asymmetric crypto work: you can freely distribute your public key without exposing your private key. Anyone with your public key can encrypt messages that only your private key can decrypt.",
                 "output": null,
                 "flags": null
               }
@@ -458,7 +458,7 @@
               "text": "Encrypt with the public key:",
               "command": "openssl pkeyutl -encrypt -pubin -inkey public.pem -in secret.txt -out secret.enc",
               "whatThisDoes": {
-                "concept": "Public key encryption &#8212; anyone with your public key can encrypt a message, but only the private key holder can decrypt it. This solves the key distribution problem: you never need to share a secret password over an insecure channel.",
+                "concept": "Public key encryption: anyone with your public key can encrypt a message, but only the private key holder can decrypt it. This solves the key distribution problem: you never need to share a secret password over an insecure channel.",
                 "output": null,
                 "flags": [
                   {
@@ -561,7 +561,7 @@
         {
           "type": "narrative",
           "whatYoureDoing": "Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). This is the inverse of encryption.",
-          "whyItMatters": "Digital signatures provide non-repudiation &#8212; proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable."
+          "whyItMatters": "Digital signatures provide non-repudiation: proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable."
         },
         {
           "character": "Maria Delgado, PhD",
@@ -585,7 +585,7 @@
               "text": "Sign with your private key:",
               "command": "openssl dgst -sha256 -sign private.pem -out order.sig order.txt",
               "whatThisDoes": {
-                "concept": "Digital signing is encryption in reverse &#8212; you sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.",
+                "concept": "Digital signing is encryption in reverse. You sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.",
                 "output": null,
                 "flags": [
                   {
@@ -598,7 +598,7 @@
                   },
                   {
                     "flag": "-sign private.pem",
-                    "description": "Sign using your private key &#8212; only you can create this signature"
+                    "description": "Sign using your private key; only you can create this signature"
                   },
                   {
                     "flag": "-out order.sig",
@@ -631,7 +631,7 @@
               "command": "openssl dgst -sha256 -verify public.pem -signature order.sig order.txt",
               "whatThisDoes": {
                 "concept": null,
-                "output": "You should see <code>Verified OK</code> &#8212; this confirms three things simultaneously: (1) the document has not been modified since signing, (2) the signature was created by the holder of the matching private key, and (3) the signer cannot deny having signed it (non-repudiation). If even one byte of order.txt changed, verification would fail.",
+                "output": "You should see <code>Verified OK</code>. This confirms three things simultaneously: (1) the document has not been modified since signing, (2) the signature was created by the holder of the matching private key, and (3) the signer cannot deny having signed it (non-repudiation). If even one byte of order.txt changed, verification would fail.",
                 "flags": null
               }
             }
@@ -641,7 +641,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code> &#8212; this is your last screenshot for Lab 2.1!",
+          "text": "Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code>. This is your last screenshot for Lab 2.1!",
           "calloutType": "screenshot"
         },
         {
@@ -692,7 +692,7 @@
       "items": [
         {
           "label": "Hash Collision Exploitation",
-          "text": "Hash collisions expose weak integrity checks — attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use."
+          "text": "Hash collisions expose weak integrity checks: attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use."
         },
         {
           "label": "Symmetric Key Theft",
@@ -714,15 +714,15 @@
         },
         {
           "label": "Key Management Controls",
-          "text": "Enforce key management policies — keys stored at rest must be encrypted, and private keys must never leave the system that generated them."
+          "text": "Enforce key management policies: keys stored at rest must be encrypted, and private keys must never leave the system that generated them."
         },
         {
           "label": "Signature Verification",
-          "text": "Verify digital signatures as part of software deployment pipelines — unsigned or unverified binaries are a malware delivery vector."
+          "text": "Verify digital signatures as part of software deployment pipelines. Unsigned or unverified binaries are a malware delivery vector."
         }
       ]
     },
-    "connection": "You generated keys and signed documents as a builder this unit. In Module 4 you will reverse that perspective — analyzing how attackers exploit weak key management and deprecated algorithms to compromise the same systems you are securing here."
+    "connection": "You generated keys and signed documents as a builder this unit. In Module 4 you will reverse that perspective, analyzing how attackers exploit weak key management and deprecated algorithms to compromise the same systems you are securing here."
   },
   "finalChecklist": {
     "screenshotTable": [
@@ -796,7 +796,7 @@
         "label": "Discord"
       },
       {
-        "detail": "Calendly — calendly.com/john-newsom-utsa",
+        "detail": "Calendly: calendly.com/john-newsom-utsa",
         "label": "Office Hours"
       },
       {
@@ -822,7 +822,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication — skills you'll apply directly when you SSH into the Gulf Coast portal container in Lab 2.3."
+      "text": "After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication, skills you'll apply directly when you SSH into the Gulf Coast portal container in Lab 2.3."
     }
   }
 }

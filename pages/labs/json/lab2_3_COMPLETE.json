@@ -5,8 +5,8 @@
   "labType": "engagement",
   "module": "Module 2: Cryptography &amp; Authentication",
   "chapters": [
-   "Chapter 6 &#8212; Applied Cryptography",
-   "Chapter 7 &#8212; Public Key Infrastructure"
+   "Chapter 6: Applied Cryptography",
+   "Chapter 7: Public Key Infrastructure"
   ]
  },
  "intro": {
@@ -15,28 +15,28 @@
    "character": "Maria Delgado, PhD",
    "title": "Security Compliance Specialist, NEXUS Security",
    "headshot": "maria-delgado.png",
-   "quote": "Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story &#8212; the story of due diligence, proper procedures, and professional remediation."
+   "quote": "Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story: the story of due diligence, proper procedures, and professional remediation."
   },
   "focusAreas": [
    {
     "title": "Certificate Lifecycle",
-    "description": "X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure — not just a browser warning."
+    "description": "X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure, not just a browser warning."
    },
    {
     "title": "Certificate Signing Requests",
-    "description": "Generating a CSR from an existing private key — the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain."
+    "description": "Generating a CSR from an existing private key: the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain."
    },
    {
     "title": "CA Signing Operations",
-    "description": "Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window — the chain of trust in practice."
+    "description": "Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window, the chain of trust in practice."
    },
    {
     "title": "Before/After Evidence",
-    "description": "Documenting the broken state before making changes — auditors require proof of the problem, not just proof of the fix."
+    "description": "Documenting the broken state before making changes. Auditors require proof of the problem, not just proof of the fix."
    },
    {
     "title": "Engagement Packet Compilation",
-    "description": "Assembling three units of work into a single professional deliverable — the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements."
+    "description": "Assembling three units of work into a single professional deliverable: the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements."
    }
   ],
   "objectives": [
@@ -50,19 +50,19 @@
     "type": "required",
     "title": "Required: Use the Engagement Packet Template",
     "icon": "error",
-    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx\">EP_M2_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
+    "text": "Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template. The cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href=\"https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx\">EP_M2_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Engagement Packet Guide</a>.<br><br><strong style=\"color:#ffffff;\">Submit as .docx (Microsoft Word) only</strong>. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.",
     "pinTop": true
    },
    {
     "type": "warning",
     "title": "Minimum Requirements",
     "icon": "warning",
-    "body": "Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page."
+    "body": "Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page."
    },
    {
     "type": "warning",
     "title": "Deadline Tip",
-    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+    "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
    }
   ],
   "clientContext": {
@@ -91,7 +91,7 @@
   "intro": "This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.",
   "sections": [
    {
-    "title": "From Unit 1 — Lab 2.1: Cryptographic Foundations",
+    "title": "From Unit 1: Lab 2.1: Cryptographic Foundations",
     "items": [
      "Hash function demonstrations (SHA-256 comparison showing avalanche effect)",
      "Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)",
@@ -101,9 +101,9 @@
     ]
    },
    {
-    "title": "From Unit 2 — Lab 2.2: Authentication Systems",
+    "title": "From Unit 2: Lab 2.2: Authentication Systems",
     "items": [
-     "SSH key generation — RSA and ED25519 comparison",
+     "SSH key generation: RSA and ED25519 comparison",
      "File permission security demonstration (break/fix cycle)",
      "SSH authorized_keys and config file setup",
      "Multi-factor authentication configuration and verification",
@@ -111,7 +111,7 @@
     ]
    },
    {
-    "title": "New This Unit — Lab 2.3",
+    "title": "New This Unit: Lab 2.3",
     "items": [
      "Title Page, Table of Contents, Executive Summary",
      "Certificate diagnosis and remediation documentation",
@@ -125,14 +125,14 @@
    {
     "type": "callout",
     "calloutType": "tip",
-    "title": "You're Already 60–70% Done",
-    "body": "If you followed the Unit 1–2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+    "title": "You're Already 60 to 70% Done",
+    "body": "If you followed the Unit 1 and 2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
    },
    {
     "type": "tip",
     "icon": "check_circle",
-    "title": "You&#8217;re Already 60&#8211;70% Done",
-    "text": "If you followed the Unit 1&#8211;2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
+    "title": "You&#8217;re Already 60 to 70% Done",
+    "text": "If you followed the Unit 1 and 2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
    }
   ]
  },
@@ -167,7 +167,7 @@
    "label": "Total Estimated Time",
    "time": "4-5 hours"
   },
-  "timesheetNote": "Unit 3 is your first client-billable unit. Checkpoint 2–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 5 (Engagement Packet compilation) is billable time as well — document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable."
+  "timesheetNote": "Unit 3 is your first client-billable unit. Checkpoint 2 and 3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 5 (Engagement Packet compilation) is billable time as well. Document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable."
  },
  "checkpoints": [
   {
@@ -189,12 +189,12 @@
        "whatThisDoes": null
       },
       {
-       "text": "Open it in <strong>desktop</strong> Microsoft Word &#8212; not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximize the window so the ribbon shows labels instead of bare icons.",
+       "text": "Open it in <strong>desktop</strong> Microsoft Word, not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximize the window so the ribbon shows labels instead of bare icons.",
        "command": null,
        "whatThisDoes": null
       },
       {
-       "text": "Turn on the Navigation Pane. <strong>Windows:</strong> View &gt; Navigation Pane. <strong>Mac:</strong> View &gt; Sidebar &gt; Navigation. Leave it open for the whole engagement &#8212; it is how you catch a broken heading before it reaches the Table of Contents.",
+       "text": "Turn on the Navigation Pane. <strong>Windows:</strong> View &gt; Navigation Pane. <strong>Mac:</strong> View &gt; Sidebar &gt; Navigation. Leave it open for the whole engagement. It is how you catch a broken heading before it reaches the Table of Contents.",
        "command": null,
        "whatThisDoes": null
       },
@@ -204,7 +204,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots &#8212; together they are how this packet is tied to the machine that produced its evidence.",
+       "text": "Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.",
        "command": null,
        "whatThisDoes": null
       },
@@ -219,7 +219,7 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "Four Mechanics, Every Time",
-     "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source &#8212; tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">Lab 1.3, Checkpoint 5</a> walks all four of them step by step."
+     "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">Lab 1.3, Checkpoint 5</a> walks all four of them step by step."
     },
     {
      "type": "callout",
@@ -256,7 +256,7 @@
        "text": "Pull and start the Gulf Coast patient portal container:",
        "command": "sudo docker run -d -p 443:443 -p 2222:22 --name gulfcoast-portal jfnewsom/gulfcoast-portal",
        "whatThisDoes": {
-        "concept": "This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal &#8212; an Apache web server with a deliberately expired SSL certificate.",
+        "concept": "This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal: an Apache web server with a deliberately expired SSL certificate.",
         "output": null,
         "flags": [
          {
@@ -290,7 +290,7 @@
      "type": "steps",
      "steps": [
       {
-       "text": "Open Firefox and navigate to <code>https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.",
+       "text": "Open Firefox and navigate to <code>https://localhost</code>. You should see a certificate warning. This is your &#8220;before&#8221; evidence.",
        "command": null,
        "whatThisDoes": null
       }
@@ -363,7 +363,7 @@
      "title": "Textbook Reference",
      "text": null,
      "calloutType": "textbookReference",
-     "body": "Chapter 6 covers Secure Protocols and cipher suites, including how TLS certificates authenticate servers and establish encrypted connections. The expired certificate warning you&#8217;re documenting is what happens when certificate management fails &#8212; a gap between cryptographic intent and operational reality that Chapter 6&#8217;s coverage of secure protocol use cases makes concrete."
+     "body": "Chapter 6 covers Secure Protocols and cipher suites, including how TLS certificates authenticate servers and establish encrypted connections. The expired certificate warning you&#8217;re documenting is what happens when certificate management fails: a gap between cryptographic intent and operational reality that Chapter 6&#8217;s coverage of secure protocol use cases makes concrete."
     },
     {
      "type": "callout",
@@ -388,7 +388,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.",
-     "whyItMatters": "Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow &#8212; using the existing private key to generate a new request, then signing with the CA &#8212; ensures continuity without regenerating keys."
+     "whyItMatters": "Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow (using the existing private key to generate a new request, then signing with the CA) ensures continuity without regenerating keys."
     },
     {
      "character": "Maria Delgado, PhD",
@@ -396,7 +396,7 @@
      "type": "callout",
      "calloutType": "characterQuote",
      "title": "Security Compliance Specialist, NEXUS Security",
-     "quote": "The README in the PKI directory is your roadmap. Real infrastructure always has documentation &#8212; sometimes outdated, sometimes incomplete &#8212; but always your starting point. Read it before you touch anything."
+     "quote": "The README in the PKI directory is your roadmap. Real infrastructure always has documentation (sometimes outdated, sometimes incomplete) but always your starting point. Read it before you touch anything."
     },
     {
      "part": "Part A: SSH into the container and explore the PKI structure",
@@ -423,7 +423,7 @@
        "command": "ls -la CA/ certs/ csr/",
        "whatThisDoes": {
         "concept": "You&#8217;re mapping the PKI infrastructure before making changes. The <code>CA/</code> directory holds the root Certificate Authority (<code>ca.crt</code> and <code>ca.key</code>). The <code>certs/</code> directory holds the server certificates including the expired <code>portal.crt</code>. The <code>csr/</code> directory is your working space for new certificate signing requests.",
-        "output": "Note the file permissions &#8212; the CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.",
+        "output": "Note the file permissions. The CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.",
         "flags": null
        }
       }
@@ -538,7 +538,7 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "<strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code> &#8212; confirm with <code>ls -la</code>",
+      "<strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code>; confirm with <code>ls -la</code>",
       "<strong>Permission denied on CA key:</strong> The CA private key is root-owned. You need <code>sudo</code> for the signing step",
       "<strong>Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate"
      ],
@@ -557,7 +557,7 @@
      "title": "Textbook Reference",
      "text": null,
      "calloutType": "textbookReference",
-     "body": "Chapter 6 covers applied cryptography in practice, including asymmetric key pairs and how they underpin the certificate signing workflow. The CSR you generate reuses the existing private key while the public component travels through the signing process &#8212; exactly the asymmetric key management pattern Chapter 6 describes."
+     "body": "Chapter 6 covers applied cryptography in practice, including asymmetric key pairs and how they underpin the certificate signing workflow. The CSR you generate reuses the existing private key while the public component travels through the signing process, exactly the asymmetric key management pattern Chapter 6 describes."
     }
    ]
   },
@@ -608,7 +608,7 @@
        "command": "openssl s_client -connect localhost:443 2>/dev/null | openssl x509 -noout -dates",
        "whatThisDoes": {
         "concept": null,
-        "output": "The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.",
+        "output": "The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot. The dates should be completely different.",
         "flags": null
        }
       }
@@ -627,7 +627,7 @@
      "type": "steps",
      "steps": [
       {
-       "text": "Refresh <code>https://localhost</code> in Firefox &#8212; the expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).",
+       "text": "Refresh <code>https://localhost</code> in Firefox. The expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).",
        "command": null,
        "whatThisDoes": null
       }
@@ -641,7 +641,7 @@
      "calloutType": "screenshot"
     },
     {
-     "part": "Part B: Bonus &#8212; Hunt for additional findings",
+     "part": "Part B: Bonus: Hunt for additional findings",
      "role": "optional",
      "start": 1,
      "type": "steps",
@@ -686,10 +686,10 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "SSH session disconnects on Apache restart — this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal",
-      "Certificate change not reflected — if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.",
-      "Self-signed trust warning persists in browser — this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.",
-      "Missing 'before' screenshots — you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report."
+      "SSH session disconnects on Apache restart; this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal",
+      "Certificate change not reflected; if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.",
+      "Self-signed trust warning persists in browser; this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.",
+      "Missing 'before' screenshots; you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report."
      ]
     },
     {
@@ -705,7 +705,7 @@
      "title": "Textbook Reference",
      "text": null,
      "calloutType": "textbookReference",
-     "body": "Chapter 6 covers cryptographic attacks and cipher suite weaknesses, including how obsolete algorithms remain negotiable on misconfigured servers. Beyond the expired certificate, any weak cipher findings represent the attack surface Chapter 6&#8217;s &#8220;Cryptographic Attacks&#8221; section describes &#8212; exploitable not through the algorithm itself but through how it&#8217;s deployed."
+     "body": "Chapter 6 covers cryptographic attacks and cipher suite weaknesses, including how obsolete algorithms remain negotiable on misconfigured servers. Beyond the expired certificate, any weak cipher findings represent the attack surface Chapter 6&#8217;s &#8220;Cryptographic Attacks&#8221; section describes: exploitable not through the algorithm itself but through how it&#8217;s deployed."
     }
    ]
   },
@@ -716,7 +716,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Compiling all three units of Module 2 work into a professional Engagement Packet.",
-     "whyItMatters": "This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
+     "whyItMatters": "This isn&#8217;t just an academic assignment. It&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence."
     },
     {
      "type": "callout",
@@ -729,11 +729,11 @@
      "sections": [
       {
        "label": "Part I: Internal Packet (40% of grade)",
-       "description": "Timesheet (5%) &#8212; hours across all 3 units, split Internal Training vs. Client Billable. Units 1&#8211;2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%) &#8212; man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work. Analyst Reflection (15%) &#8212; honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A."
+       "description": "Timesheet (5%): hours across all 3 units, split Internal Training vs. Client Billable. Units 1 and 2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%): man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs: enough that another analyst could reproduce your work. Analyst Reflection (15%): honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A."
       },
       {
        "label": "Part II: Client Deliverable (60% of grade)",
-       "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) &#8212; one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%) &#8212; client-facing narrative of your approach. Findings (22%) &#8212; certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) &#8212; HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%) &#8212; prioritized (immediate fixes vs. longer-term hardening)."
+       "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%): one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%): client-facing narrative of your approach. Findings (22%): certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%): HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%): prioritized (immediate fixes vs. longer-term hardening)."
       }
      ],
      "type": "callout",
@@ -745,18 +745,18 @@
      "items": [
       "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
       "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul>",
-      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
+      "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific: &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true, but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
      ]
     },
     {
      "type": "includeList",
      "title": "Include in Part II (Client Deliverable)",
      "items": [
-      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
-      "<strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul>",
-      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
-      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul>",
-      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul>"
+      "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1 or 2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2 or 3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh: every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
+      "<strong>Methodology (7%)</strong><ul><li>3 to 4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers; this is client-facing</li></ul>",
+      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+      "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding: why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul>",
+      "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints: Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul>"
      ]
     },
     {
@@ -792,7 +792,7 @@
      "type": "callout",
      "icon": "psychology",
      "title": "Analyst Reflection: Honest, Not Performative",
-     "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit &#8212; even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
+     "body": "Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit. Even short, honest reflection. Answer:<ul style=\"margin:8px 0 0 20px;\"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.",
      "calloutType": "tip"
     },
     {
@@ -807,9 +807,9 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "<strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero",
+      "<strong>PDF submission:</strong> Must be .docx; PDF submissions receive automatic zero",
       "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-<your abc123>)",
-      "<strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT — see the Citations page"
+      "<strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT; see the Citations page"
      ],
      "calloutType": "commonPitfalls"
     },
@@ -824,9 +824,9 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Textbook Reference",
-     "text": "Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.",
+     "text": "Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence, exactly what HIPAA auditors expect.",
      "calloutType": "textbookReference",
-     "body": "Chapter 11&#8217;s &#8220;Cloud vs. On-premises Requirements&#8221; section is directly relevant here: Gulf Coast&#8217;s patient portal runs in a container now, but the authentication and compliance controls you&#8217;re documenting must account for where systems will live. Chapter 11 explains how authentication requirements shift between on-premises and cloud environments &#8212; a distinction that belongs in your professional recommendations for a healthcare client with a cloud migration ahead."
+     "body": "Chapter 11&#8217;s &#8220;Cloud vs. On-premises Requirements&#8221; section is directly relevant here: Gulf Coast&#8217;s patient portal runs in a container now, but the authentication and compliance controls you&#8217;re documenting must account for where systems will live. Chapter 11 explains how authentication requirements shift between on-premises and cloud environments, a distinction that belongs in your professional recommendations for a healthcare client with a cloud migration ahead."
     }
    ]
   },
@@ -844,17 +844,17 @@
      "start": 1,
      "steps": [
       {
-       "text": "<strong>Refresh every field.</strong> <strong>Windows:</strong> Ctrl+A then F9. <strong>Mac:</strong> &#8984;A then F9. If nothing happens, your function keys are set to media controls &#8212; hold Fn as well, or use the Fn Lock key.",
+       "text": "<strong>Refresh every field.</strong> <strong>Windows:</strong> Ctrl+A then F9. <strong>Mac:</strong> &#8984;A then F9. If nothing happens, your function keys are set to media controls; hold Fn as well, or use the Fn Lock key.",
        "command": null,
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Rebuild the Table of Contents.</strong> Right-click it and choose Update Field &gt; <strong>Update entire table</strong>. Not &#8216;page numbers only&#8217; &#8212; that will not pick up sections you added or removed.",
+       "text": "<strong>Rebuild the Table of Contents.</strong> Right-click it and choose Update Field &gt; <strong>Update entire table</strong>. Not &#8216;page numbers only&#8217;. That will not pick up sections you added or removed.",
        "command": null,
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Read the Navigation Pane top to bottom.</strong> No blank entries. No figure captions. Only real sections. A blank entry means an empty paragraph is carrying a heading style &#8212; click in it and apply Home &gt; Styles &gt; Normal. A caption in the list means it was formatted by hand instead of with Insert Caption.",
+       "text": "<strong>Read the Navigation Pane top to bottom.</strong> No blank entries. No figure captions. Only real sections. A blank entry means an empty paragraph is carrying a heading style. Click in it and apply Home &gt; Styles &gt; Normal. A caption in the list means it was formatted by hand instead of with Insert Caption.",
        "command": null,
        "whatThisDoes": null
       },
@@ -874,7 +874,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Replace or delete EVERY item in square brackets.</strong> Not most of them &#8212; all of them. The template ships with roughly <strong>84</strong> bracketed slots: some are places your content goes, some are prompts telling you what belongs there, and <strong>both are scaffolding that must be gone before you submit</strong>. Search for the bracket character itself &#8212; <strong>Windows:</strong> Ctrl+F. <strong>Mac:</strong> &#8984;F &#8212; type a single <strong>[</strong> and step through every hit. Replace it with your own work, or delete the line entirely if that section does not apply. Then search again and confirm you get zero results. The runbook skeleton and the finding card are where they hide.",
+       "text": "<strong>Replace or delete EVERY item in square brackets.</strong> Not most of them: all of them. The template ships with roughly <strong>84</strong> bracketed slots: some are places your content goes, some are prompts telling you what belongs there, and <strong>both are scaffolding that must be gone before you submit</strong>. Search for the bracket character itself. <strong>Windows:</strong> Ctrl+F. <strong>Mac:</strong> &#8984;F. Type a single <strong>[</strong> and step through every hit. Replace it with your own work, or delete the line entirely if that section does not apply. Then search again and confirm you get zero results. The runbook skeleton and the finding card are where they hide.",
        "command": null,
        "whatThisDoes": null
       },
@@ -889,7 +889,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Save as .docx and submit that.</strong> Word format only &#8212; not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.",
+       "text": "<strong>Save as .docx and submit that.</strong> Word format only, not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.",
        "command": null,
        "whatThisDoes": null
       }
@@ -899,7 +899,7 @@
      "type": "callout",
      "calloutType": "warning",
      "title": "Leftover Brackets Cost You 10%",
-     "body": "<strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item &#8212; one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong>"
+     "body": "<strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item: one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong>"
     },
     {
      "type": "callout",
@@ -941,32 +941,107 @@
  },
  "finalChecklist": {
   "screenshotTable": [
-     {"filename": "01-hash-sha256.png", "description": "Capture the file creation and SHA-256 hash output"},
-     {"filename": "02-hash-comparison.png", "description": "Capture both hashes side-by-side showing completely different outputs despite minimal input change"},
-     {"filename": "03-symmetric-encrypt.png", "description": "Capture the encryption command and the hex dump showing unreadable encrypted content"},
-     {"filename": "04-symmetric-decrypt.png", "description": "Capture the decryption and verification showing the original content restored"},
-     {"filename": "05-rsa-keypair.png", "description": "Capture the keypair generation, file listing, and public key contents"},
-     {"filename": "06-rsa-encrypt.png", "description": "Capture the encryption command and verify the encrypted file exists"},
-     {"filename": "07-rsa-decrypt.png", "description": "Capture the decryption showing the original secret message restored"},
-     {"filename": "08-signature-create.png", "description": "Capture the signing command and file listing showing both the order and signature files"},
-     {"filename": "09-signature-verify.png", "description": "Capture the verification showing “Verified OK” message"},
-     {"filename": "10-keygen-rsa.png", "description": "Capture the RSA key generation showing the randomart and file listing"},
-     {"filename": "11-keygen-ed25519.png", "description": "Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes"},
-     {"filename": "12-permission-error.png", "description": "Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible"},
-     {"filename": "13-permission-fixed.png", "description": "Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure"},
-     {"filename": "14-authorized-keys.png", "description": "Capture the .ssh directory listing and authorized_keys content"},
-     {"filename": "15-ssh-keyauth.png", "description": "Capture the successful SSH connection using key-based authentication"},
-     {"filename": "16-ssh-config.png", "description": "Capture the SSH config file contents and successful connection using the alias"},
-     {"filename": "17-mfa-login.png", "description": "Capture your successful MFA login showing both prompts and the whoami output"},
-     {"filename": "gulfcoast-01-initial-error.png", "description": "Capture the browser certificate error"},
-     {"filename": "gulfcoast-02-cert-expired.png", "description": "Capture the openssl output showing the expired certificate dates"},
-     {"filename": "gulfcoast-03-csr-generation.png", "description": "Capture the CSR generation command and output"},
-     {"filename": "gulfcoast-04-cert-signing.png", "description": "Capture the CA signing command and “self-signature ok” output"},
-     {"filename": "gulfcoast-05-cert-installation.png", "description": "Capture the certificate installation command"},
-     {"filename": "gulfcoast-06-apache-restart.png", "description": "Capture the Apache restart and container restart"},
-     {"filename": "gulfcoast-07-cert-valid.png", "description": "Capture the new certificate dates showing future expiration"},
-     {"filename": "gulfcoast-08-browser-success.png", "description": "Capture the browser showing the portal without an expired certificate warning"}
-    ],
+   {
+    "filename": "01-hash-sha256.png",
+    "description": "Capture the file creation and SHA-256 hash output"
+   },
+   {
+    "filename": "02-hash-comparison.png",
+    "description": "Capture both hashes side-by-side showing completely different outputs despite minimal input change"
+   },
+   {
+    "filename": "03-symmetric-encrypt.png",
+    "description": "Capture the encryption command and the hex dump showing unreadable encrypted content"
+   },
+   {
+    "filename": "04-symmetric-decrypt.png",
+    "description": "Capture the decryption and verification showing the original content restored"
+   },
+   {
+    "filename": "05-rsa-keypair.png",
+    "description": "Capture the keypair generation, file listing, and public key contents"
+   },
+   {
+    "filename": "06-rsa-encrypt.png",
+    "description": "Capture the encryption command and verify the encrypted file exists"
+   },
+   {
+    "filename": "07-rsa-decrypt.png",
+    "description": "Capture the decryption showing the original secret message restored"
+   },
+   {
+    "filename": "08-signature-create.png",
+    "description": "Capture the signing command and file listing showing both the order and signature files"
+   },
+   {
+    "filename": "09-signature-verify.png",
+    "description": "Capture the verification showing “Verified OK” message"
+   },
+   {
+    "filename": "10-keygen-rsa.png",
+    "description": "Capture the RSA key generation showing the randomart and file listing"
+   },
+   {
+    "filename": "11-keygen-ed25519.png",
+    "description": "Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes"
+   },
+   {
+    "filename": "12-permission-error.png",
+    "description": "Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible"
+   },
+   {
+    "filename": "13-permission-fixed.png",
+    "description": "Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure"
+   },
+   {
+    "filename": "14-authorized-keys.png",
+    "description": "Capture the .ssh directory listing and authorized_keys content"
+   },
+   {
+    "filename": "15-ssh-keyauth.png",
+    "description": "Capture the successful SSH connection using key-based authentication"
+   },
+   {
+    "filename": "16-ssh-config.png",
+    "description": "Capture the SSH config file contents and successful connection using the alias"
+   },
+   {
+    "filename": "17-mfa-login.png",
+    "description": "Capture your successful MFA login showing both prompts and the whoami output"
+   },
+   {
+    "filename": "gulfcoast-01-initial-error.png",
+    "description": "Capture the browser certificate error"
+   },
+   {
+    "filename": "gulfcoast-02-cert-expired.png",
+    "description": "Capture the openssl output showing the expired certificate dates"
+   },
+   {
+    "filename": "gulfcoast-03-csr-generation.png",
+    "description": "Capture the CSR generation command and output"
+   },
+   {
+    "filename": "gulfcoast-04-cert-signing.png",
+    "description": "Capture the CA signing command and “self-signature ok” output"
+   },
+   {
+    "filename": "gulfcoast-05-cert-installation.png",
+    "description": "Capture the certificate installation command"
+   },
+   {
+    "filename": "gulfcoast-06-apache-restart.png",
+    "description": "Capture the Apache restart and container restart"
+   },
+   {
+    "filename": "gulfcoast-07-cert-valid.png",
+    "description": "Capture the new certificate dates showing future expiration"
+   },
+   {
+    "filename": "gulfcoast-08-browser-success.png",
+    "description": "Capture the browser showing the portal without an expired certificate warning"
+   }
+  ],
   "sections": [
    {
     "items": [
@@ -994,7 +1069,7 @@
   "finalWarning": "PDF submissions receive an <strong>automatic zero</strong>. Double-check your file extension before submitting.",
   "deadlineTip": {
    "title": "Deadline Tip",
-   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
+   "text": "Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time."
   }
  },
  "gradingStandards": {
@@ -1069,7 +1144,7 @@
     "label": "Discord"
    },
    {
-    "detail": "Calendly — calendly.com/john-newsom-utsa",
+    "detail": "Calendly: calendly.com/john-newsom-utsa",
     "label": "Office Hours"
    },
    {
@@ -1095,7 +1170,7 @@
    "principle": "AI is a tutor, not a ghostwriter."
   },
   "whatsNext": {
-   "text": "Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data."
+   "text": "Module 3: Network Traffic Analysis: You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions, demonstrating the before/after in network data."
   }
  }
 }

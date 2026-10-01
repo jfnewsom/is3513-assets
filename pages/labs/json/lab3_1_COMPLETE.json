@@ -5,23 +5,23 @@
   "labType": "foundation",
   "module": "Module 3: Networks, Cloud &amp; Defense",
   "chapters": [
-   "Chapter 9 &#8212; Network Fundamentals",
-   "Chapter 18 &#8212; Cloud Computing (introduction)"
+   "Chapter 9: Network Fundamentals",
+   "Chapter 18: Cloud Computing (introduction)"
   ]
  },
  "intro": {
-  "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation &#8212; the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.",
+  "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation: the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.",
   "mentorQuote": {
    "character": "Derek Mitchell",
    "title": "Senior Security Engineer (Blue Team Lead), NEXUS Security",
    "headshot": "derek-mitchell.png",
-   "quote": "CIDR isn&#8217;t just math &#8212; it&#8217;s how you define your attack surface. When I&#8217;m hunting threats in a network, the first thing I need to know is what address space I&#8217;m protecting. Every capture filter, every firewall rule, every ACL &#8212; they all start with understanding addresses. Get this right, and Wireshark becomes a precision instrument."
+   "quote": "CIDR isn&#8217;t just math. It&#8217;s how you define your attack surface. When I&#8217;m hunting threats in a network, the first thing I need to know is what address space I&#8217;m protecting. Every capture filter, every firewall rule, every ACL: they all start with understanding addresses. Get this right, and Wireshark becomes a precision instrument."
   },
   "focusAreas": [
    "Binary, decimal, and hexadecimal number system conversions",
    "CIDR notation and the visual count-out method",
    "Calculating network addresses, broadcast addresses, and usable host ranges",
-   "Subnetting — borrowing bits and enumerating all resulting subnets",
+   "Subnetting: borrowing bits and enumerating all resulting subnets",
    "Documenting host and Kali VM network configurations",
    "Creating a network topology diagram for the Gulf Coast engagement"
   ],
@@ -77,7 +77,7 @@
    "label": "Total Estimated Time",
    "time": "120-170 min"
   },
-  "timesheetNote": "This is Unit 1 of a 3-unit module. Log as <em>Internal Training: 2–3 hours — Network addressing fundamentals</em>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet."
+  "timesheetNote": "This is Unit 1 of a 3-unit module. Log as <em>Internal Training: 2 to 3 hours, Network addressing fundamentals</em>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet."
  },
  "checkpoints": [
   {
@@ -86,8 +86,8 @@
    "content": [
     {
      "type": "narrative",
-     "whatYoureDoing": "Building fluency converting between decimal, binary, and hexadecimal number systems &#8212; the foundation for understanding network addresses.",
-     "whyItMatters": "IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools."
+     "whatYoureDoing": "Building fluency converting between decimal, binary, and hexadecimal number systems: the foundation for understanding network addresses.",
+     "whyItMatters": "IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations. With it, they become precise tools."
     },
     {
      "type": "conversionTable"
@@ -131,7 +131,7 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "<strong>Calculator shortcuts:</strong> Using online converters without understanding the math &#8212; you need this skill for quizzes",
+      "<strong>Calculator shortcuts:</strong> Using online converters without understanding the math; you need this skill for quizzes",
       "<strong>Place value errors:</strong> Forgetting that binary positions are powers of 2 (128, 64, 32, 16, 8, 4, 2, 1)",
       "<strong>Skipping verification:</strong> Always convert back to check your work"
      ],
@@ -162,7 +162,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "That&#8217;s a Reference!",
-     "text": "You just read Chapter 9. The textbook does not count toward your ten references &#8212; use its endnotes to find the primary sources it draws on, and cite those. Conklin, W. A., &amp; White, G. (2022). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.",
+     "text": "You just read Chapter 9. The textbook does not count toward your ten references. Use its endnotes to find the primary sources it draws on, and cite those. Conklin, W. A., &amp; White, G. (2022). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.",
      "calloutType": "thatsAReference"
     }
    ]
@@ -218,7 +218,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Then repeat for <code>10.0.0.0/8</code> &#8212; a much larger network.",
+       "text": "Then repeat for <code>10.0.0.0/8</code>, a much larger network.",
        "command": null,
        "whatThisDoes": null
       }
@@ -267,7 +267,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "That&#8217;s a Reference!",
-     "text": "RFC 4632 &#8212; Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632",
+     "text": "RFC 4632: Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632",
      "calloutType": "thatsAReference"
     }
    ]
@@ -300,22 +300,22 @@
      "rows": [
       [
        "192.168.0.0/24",
-       "192.168.0.1 &#8212; 192.168.0.254",
+       "192.168.0.1 to 192.168.0.254",
        "192.168.0.255"
       ],
       [
        "192.168.1.0/24",
-       "192.168.1.1 &#8212; 192.168.1.254",
+       "192.168.1.1 to 192.168.1.254",
        "192.168.1.255"
       ],
       [
        "192.168.2.0/24",
-       "192.168.2.1 &#8212; 192.168.2.254",
+       "192.168.2.1 to 192.168.2.254",
        "192.168.2.255"
       ],
       [
        "192.168.3.0/24",
-       "192.168.3.1 &#8212; 192.168.3.254",
+       "192.168.3.1 to 192.168.3.254",
        "192.168.3.255"
       ]
      ],
@@ -375,7 +375,7 @@
      "items": [
       "<strong>Forgetting the formula:</strong> 2<sup>n</sup> subnets when borrowing n bits",
       "<strong>Host count confusion:</strong> Usable hosts = 2<sup>h</sup> &#8722; 2 (subtract network and broadcast)",
-      "<strong>Subnet boundary errors:</strong> Each subnet starts where the previous one ends &#8212; watch the increment pattern"
+      "<strong>Subnet boundary errors:</strong> Each subnet starts where the previous one ends; watch the increment pattern"
      ],
      "calloutType": "commonPitfalls"
     },
@@ -383,14 +383,14 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Textbook Reference",
-     "text": "Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries &#8212; the same technique you use here enables network architects to separate sensitive systems.",
+     "text": "Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries. The same technique you use here enables network architects to separate sensitive systems.",
      "calloutType": "textbookReference"
     },
     {
      "type": "callout",
      "icon": "search",
      "title": "Dig Deeper",
-     "text": "Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x &#8212; why these specific ranges? Look up RFC 1918 to understand private address space.",
+     "text": "Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x. Why these specific ranges? Look up RFC 1918 to understand private address space.",
      "calloutType": "digDeeper"
     },
     {
@@ -450,7 +450,7 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "<strong>Skipping verification:</strong> Don&#8217;t assume your math is right &#8212; always check",
+      "<strong>Skipping verification:</strong> Don&#8217;t assume your math is right; always check",
       "<strong>Not correcting errors:</strong> If the tool shows different results, trace back to find your mistake"
      ],
      "calloutType": "commonPitfalls"
@@ -466,14 +466,14 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Textbook Reference",
-     "text": "Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work &#8212; MX Toolbox represents the external verification used in production environments.",
+     "text": "Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work. MX Toolbox represents the external verification used in production environments.",
      "calloutType": "textbookReference"
     },
     {
      "type": "callout",
      "icon": "search",
      "title": "Dig Deeper",
-     "text": "MX Toolbox offers more than just subnet calculations &#8212; explore their other network diagnostic tools. What else can you check about a domain or IP address?",
+     "text": "MX Toolbox offers more than just subnet calculations. Explore their other network diagnostic tools. What else can you check about a domain or IP address?",
      "calloutType": "digDeeper"
     },
     {
@@ -491,7 +491,7 @@
    "content": [
     {
      "type": "narrative",
-     "whatYoureDoing": "Documenting your actual network configuration &#8212; both your host machine and your Kali VM.",
+     "whatYoureDoing": "Documenting your actual network configuration: both your host machine and your Kali VM.",
      "whyItMatters": "Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what &#8220;normal&#8221; looks like for your environment. This baseline documentation is exactly what you&#8217;d create at the start of any client engagement or incident response."
     },
     {
@@ -577,7 +577,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Textbook Reference",
-     "text": "Chapter 9 emphasizes the importance of network documentation. Security teams can&#8217;t protect what they don&#8217;t know exists &#8212; your documentation creates the asset inventory that informs security controls.",
+     "text": "Chapter 9 emphasizes the importance of network documentation. Security teams can&#8217;t protect what they don&#8217;t know exists. Your documentation creates the asset inventory that informs security controls.",
      "calloutType": "textbookReference"
     },
     {
@@ -591,7 +591,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "That&#8217;s a Reference!",
-     "text": "You used Linux networking commands: ip(8) &#8212; Linux manual page. Retrieved from <code>man ip</code>",
+     "text": "You used Linux networking commands: ip(8): Linux manual page. Retrieved from <code>man ip</code>",
      "calloutType": "thatsAReference"
     }
    ]
@@ -651,14 +651,14 @@
      "type": "callout",
      "icon": "lightbulb",
      "title": "Recommended Tools",
-     "text": "<a href=\"https://app.diagrams.net\">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too &#8212; we care about the content, not the polish.",
+     "text": "<a href=\"https://app.diagrams.net\">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too. We care about the content, not the polish.",
      "calloutType": "tip"
     },
     {
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Export your completed topology diagram. Save as <code>06-topology-diagram.png</code> &#8212; this is your last screenshot for Lab 3.1!",
+     "text": "Export your completed topology diagram. Save as <code>06-topology-diagram.png</code>. This is your last screenshot for Lab 3.1!",
      "calloutType": "screenshot"
     },
     {
@@ -668,7 +668,7 @@
      "items": [
       "<strong>Missing labels:</strong> Every device and connection needs an IP address or network range labeled",
       "<strong>Incomplete path:</strong> Show the entire chain from Kali VM through NAT, host, router, internet, to target",
-      "<strong>Low resolution export:</strong> Export as PNG at high resolution &#8212; blurry diagrams are unprofessional"
+      "<strong>Low resolution export:</strong> Export as PNG at high resolution; blurry diagrams are unprofessional"
      ],
      "calloutType": "commonPitfalls"
     },
@@ -683,7 +683,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Textbook Reference",
-     "text": "Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders &#8212; a skill you&#8217;ll use in Lab 3.3&#8217;s client deliverable.",
+     "text": "Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders, a skill you&#8217;ll use in Lab 3.3&#8217;s client deliverable.",
      "calloutType": "textbookReference"
     },
     {
@@ -697,7 +697,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "That&#8217;s a Reference!",
-     "text": "RFC 8200 &#8212; Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final",
+     "text": "RFC 8200: Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final",
      "calloutType": "thatsAReference"
     }
    ]
@@ -718,11 +718,11 @@
    "label": "Blue Team Perspective",
    "items": [
     "Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans",
-    "Proper subnetting creates security boundaries &#8212; an attacker who compromises one subnet shouldn&#8217;t automatically access others",
+    "Proper subnetting creates security boundaries: an attacker who compromises one subnet shouldn&#8217;t automatically access others",
     "Understanding addressing lets you spot anomalous traffic crossing boundaries"
    ]
   },
-  "connection": "CIDR notation is the shared language between attackers and defenders. A red-team analyst uses subnet boundaries to scope a scan — knowing exactly which hosts to target and which to exclude. A blue-team analyst uses the same boundaries to write firewall rules, segment sensitive systems, and detect traffic crossing zone boundaries. When you calculate a subnet by hand, you're internalizing the same mental model both sides use."
+  "connection": "CIDR notation is the shared language between attackers and defenders. A red-team analyst uses subnet boundaries to scope a scan, knowing exactly which hosts to target and which to exclude. A blue-team analyst uses the same boundaries to write firewall rules, segment sensitive systems, and detect traffic crossing zone boundaries. When you calculate a subnet by hand, you're internalizing the same mental model both sides use."
  },
  "finalChecklist": {
   "screenshotTable": [
@@ -764,7 +764,7 @@
     "title": "Exercises Completed"
    }
   ],
-  "canvasQuiz": "Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration."
+  "canvasQuiz": "Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy. You may be asked to perform CIDR calculations or reference your network configuration."
  },
  "needHelp": {
   "channels": [
@@ -773,7 +773,7 @@
     "label": "Discord"
    },
    {
-    "detail": "Calendly — calendly.com/john-newsom-utsa",
+    "detail": "Calendly: calendly.com/john-newsom-utsa",
     "label": "Office Hours"
    },
    {
@@ -799,7 +799,7 @@
    "principle": "AI is a tutor, not a ghostwriter."
   },
   "whatsNext": {
-   "text": "Lab 3.2: Protocol Analysis Tools — Next unit you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible."
+   "text": "Lab 3.2: Protocol Analysis Tools: Next unit you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible."
   }
  }
 }

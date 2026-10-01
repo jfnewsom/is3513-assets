@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 3.1 &#8212; Network Addressing Fundamentals</title>
+  <title>Lab 3.1: Network Addressing Fundamentals</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<h1 class="nx-sr-only">Lab 3.1 &#8212; Network Addressing Fundamentals</h1>
+<h1 class="nx-sr-only">Lab 3.1: Network Addressing Fundamentals</h1>
 
 
 <!-- ══════════════════════════════════════════════════ LAB HEADER -->
@@ -24,7 +24,7 @@
     <p class="nx-module-label">Module 3: Networks, Cloud &amp; Defense</p>
 
     <h2>Overview</h2>
-    <p>Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation &#8212; the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.</p>
+    <p>Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation: the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.</p>
 
     <div class="nx-quote">
       <div class="nx-quote-main">
@@ -32,7 +32,7 @@
           <img src="https://jfnewsom.github.io/is3513-assets/headshots/derek-mitchell.png" alt="Derek Mitchell">
         </div>
         <div class="nx-quote-bubble">
-          <p>&#8220;CIDR isn&#8217;t just math &#8212; it&#8217;s how you define your attack surface. When I&#8217;m hunting threats in a network, the first thing I need to know is what address space I&#8217;m protecting. Every capture filter, every firewall rule, every ACL &#8212; they all start with understanding addresses. Get this right, and Wireshark becomes a precision instrument.&#8221;</p>
+          <p>&#8220;CIDR isn&#8217;t just math. It&#8217;s how you define your attack surface. When I&#8217;m hunting threats in a network, the first thing I need to know is what address space I&#8217;m protecting. Every capture filter, every firewall rule, every ACL: they all start with understanding addresses. Get this right, and Wireshark becomes a precision instrument.&#8221;</p>
         </div>
       </div>
       <div class="nx-quote-attribution">
@@ -41,10 +41,10 @@
       </div>
     </div>
     <h2>Chapters Covered</h2>
-    <p>Chapter 9 &#8212; Network Fundamentals | Chapter 18 &#8212; Cloud Computing (introduction)</p>
+    <p>Chapter 9: Network Fundamentals | Chapter 18: Cloud Computing (introduction)</p>
 
     <h2>Client Context</h2>
-    <p><strong>Gulf Coast Healthcare Partners</strong> &#8212; Continuing their engagement with NEXUS after the cryptographic assessment in Module 2. Jennifer Walsh (CISO) has requested a network traffic analysis of their Azure-hosted patient portal. This unit is internal training; next unit you&#8217;ll dive into Wireshark; Unit 3 you&#8217;ll capture live Azure traffic.</p>
+    <p><strong>Gulf Coast Healthcare Partners</strong>: Continuing their engagement with NEXUS after the cryptographic assessment in Module 2. Jennifer Walsh (CISO) has requested a network traffic analysis of their Azure-hosted patient portal. This unit is internal training; next unit you&#8217;ll dive into Wireshark; Unit 3 you&#8217;ll capture live Azure traffic.</p>
 
     <h2>Assignment Objectives</h2>
     <ul>
@@ -60,7 +60,7 @@
       <li>Binary, decimal, and hexadecimal number system conversions</li>
       <li>CIDR notation and the visual count-out method</li>
       <li>Calculating network addresses, broadcast addresses, and usable host ranges</li>
-      <li>Subnetting — borrowing bits and enumerating all resulting subnets</li>
+      <li>Subnetting: borrowing bits and enumerating all resulting subnets</li>
       <li>Documenting host and Kali VM network configurations</li>
       <li>Creating a network topology diagram for the Gulf Coast engagement</li>
     </ul>
@@ -98,7 +98,7 @@
       </tbody>
     </table>
 
-    <p>This is Unit 1 of a 3-unit module. Log as <em>Internal Training: 2–3 hours — Network addressing fundamentals</em>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet.</p>
+    <p>This is Unit 1 of a 3-unit module. Log as <em>Internal Training: 2 to 3 hours, Network addressing fundamentals</em>. Create a folder called <code>Module3_Screenshots</code> and save EVERY screenshot there. You'll compile these into your Lab 3.3 Engagement Packet.</p>
   </div>
 </div>
 
@@ -114,10 +114,10 @@
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
     <h3>What You&#8217;re Doing</h3>
-    <p>Building fluency converting between decimal, binary, and hexadecimal number systems &#8212; the foundation for understanding network addresses.</p>
+    <p>Building fluency converting between decimal, binary, and hexadecimal number systems: the foundation for understanding network addresses.</p>
     <h3>Why It Matters</h3>
-    <p>IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations &#8212; with it, they become precise tools.</p>
-    <p class="nx-cidr-vis-intro">Memorize these 16 values (0&#8211;15) and you can convert anything:</p>
+    <p>IP addresses are stored and processed as binary. MAC addresses use hexadecimal. Subnet masks make sense only when you see them in binary. Without number system fluency, CIDR notation and Wireshark capture filters are just magic incantations. With it, they become precise tools.</p>
+    <p class="nx-cidr-vis-intro">Memorize these 16 values (0 through 15) and you can convert anything:</p>
     <div class="nx-conv-wrap">
       <table class="nx-conv-table">
         <thead><tr>
@@ -184,7 +184,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Calculator shortcuts:</strong> Using online converters without understanding the math &#8212; you need this skill for quizzes</li>
+          <li><strong>Calculator shortcuts:</strong> Using online converters without understanding the math; you need this skill for quizzes</li>
           <li><strong>Place value errors:</strong> Forgetting that binary positions are powers of 2 (128, 64, 32, 16, 8, 4, 2, 1)</li>
           <li><strong>Skipping verification:</strong> Always convert back to check your work</li>
         </ul>
@@ -215,7 +215,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>You just read Chapter 9. The textbook does not count toward your ten references &#8212; use its endnotes to find the primary sources it draws on, and cite those. Conklin, W. A., &amp; White, G. (2022). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.</p>
+        <p>You just read Chapter 9. The textbook does not count toward your ten references. Use its endnotes to find the primary sources it draws on, and cite those. Conklin, W. A., &amp; White, G. (2022). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.</p>
       </div>
     </div>
   </div>
@@ -297,7 +297,7 @@
       </li>
       <li>First usable host: ? &nbsp; Last usable host: ?
       </li>
-      <li>Then repeat for <code>10.0.0.0/8</code> &#8212; a much larger network.
+      <li>Then repeat for <code>10.0.0.0/8</code>, a much larger network.
       </li>
     </ol>
     <div class="nx-callout nx-blue">
@@ -343,7 +343,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>RFC 4632 &#8212; Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632</p>
+        <p>RFC 4632: Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632</p>
       </div>
     </div>
   </div>
@@ -422,22 +422,22 @@
       <tbody>
         <tr>
           <td class="nx-time-label">192.168.0.0/24</td>
-          <td>192.168.0.1 &#8212; 192.168.0.254</td>
+          <td>192.168.0.1 to 192.168.0.254</td>
           <td>192.168.0.255</td>
         </tr>
         <tr>
           <td class="nx-time-label">192.168.1.0/24</td>
-          <td>192.168.1.1 &#8212; 192.168.1.254</td>
+          <td>192.168.1.1 to 192.168.1.254</td>
           <td>192.168.1.255</td>
         </tr>
         <tr>
           <td class="nx-time-label">192.168.2.0/24</td>
-          <td>192.168.2.1 &#8212; 192.168.2.254</td>
+          <td>192.168.2.1 to 192.168.2.254</td>
           <td>192.168.2.255</td>
         </tr>
         <tr>
           <td class="nx-time-label">192.168.3.0/24</td>
-          <td>192.168.3.1 &#8212; 192.168.3.254</td>
+          <td>192.168.3.1 to 192.168.3.254</td>
           <td>192.168.3.255</td>
         </tr>
       </tbody>
@@ -476,7 +476,7 @@
         <ul>
           <li><strong>Forgetting the formula:</strong> 2<sup>n</sup> subnets when borrowing n bits</li>
           <li><strong>Host count confusion:</strong> Usable hosts = 2<sup>h</sup> &#8722; 2 (subtract network and broadcast)</li>
-          <li><strong>Subnet boundary errors:</strong> Each subnet starts where the previous one ends &#8212; watch the increment pattern</li>
+          <li><strong>Subnet boundary errors:</strong> Each subnet starts where the previous one ends; watch the increment pattern</li>
         </ul>
       </div>
     </div>
@@ -484,14 +484,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries &#8212; the same technique you use here enables network architects to separate sensitive systems.</p>
+        <p>Chapter 9 discusses segregation, segmentation, and isolation. Subnetting creates security boundaries. The same technique you use here enables network architects to separate sensitive systems.</p>
       </div>
     </div>
     <div class="nx-callout nx-yellow">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Dig Deeper</div>
-        <p>Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x &#8212; why these specific ranges? Look up RFC 1918 to understand private address space.</p>
+        <p>Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x. Why these specific ranges? Look up RFC 1918 to understand private address space.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -540,7 +540,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Skipping verification:</strong> Don&#8217;t assume your math is right &#8212; always check</li>
+          <li><strong>Skipping verification:</strong> Don&#8217;t assume your math is right; always check</li>
           <li><strong>Not correcting errors:</strong> If the tool shows different results, trace back to find your mistake</li>
         </ul>
       </div>
@@ -556,14 +556,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work &#8212; MX Toolbox represents the external verification used in production environments.</p>
+        <p>Chapter 9 covers network troubleshooting and verification. Professional network engineers validate their work. MX Toolbox represents the external verification used in production environments.</p>
       </div>
     </div>
     <div class="nx-callout nx-yellow">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Dig Deeper</div>
-        <p>MX Toolbox offers more than just subnet calculations &#8212; explore their other network diagnostic tools. What else can you check about a domain or IP address?</p>
+        <p>MX Toolbox offers more than just subnet calculations. Explore their other network diagnostic tools. What else can you check about a domain or IP address?</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -587,7 +587,7 @@
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
     <h3>What You&#8217;re Doing</h3>
-    <p>Documenting your actual network configuration &#8212; both your host machine and your Kali VM.</p>
+    <p>Documenting your actual network configuration: both your host machine and your Kali VM.</p>
     <h3>Why It Matters</h3>
     <p>Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what &#8220;normal&#8221; looks like for your environment. This baseline documentation is exactly what you&#8217;d create at the start of any client engagement or incident response.</p>
     <h3>On Your Host Machine</h3>
@@ -646,7 +646,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 9 emphasizes the importance of network documentation. Security teams can&#8217;t protect what they don&#8217;t know exists &#8212; your documentation creates the asset inventory that informs security controls.</p>
+        <p>Chapter 9 emphasizes the importance of network documentation. Security teams can&#8217;t protect what they don&#8217;t know exists. Your documentation creates the asset inventory that informs security controls.</p>
       </div>
     </div>
     <div class="nx-callout nx-yellow">
@@ -660,7 +660,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>You used Linux networking commands: ip(8) &#8212; Linux manual page. Retrieved from <code>man ip</code></p>
+        <p>You used Linux networking commands: ip(8): Linux manual page. Retrieved from <code>man ip</code></p>
       </div>
     </div>
   </div>
@@ -701,14 +701,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Recommended Tools</div>
-        <p><a href="https://app.diagrams.net">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too &#8212; we care about the content, not the polish.</p>
+        <p><a href="https://app.diagrams.net">app.diagrams.net</a> (draw.io) is free and has network diagram shapes. PowerPoint, Visio, or even hand-drawn works too. We care about the content, not the polish.</p>
       </div>
     </div>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Export your completed topology diagram. Save as <code>06-topology-diagram.png</code> &#8212; this is your last screenshot for Lab 3.1!</p>
+        <p>Export your completed topology diagram. Save as <code>06-topology-diagram.png</code>. This is your last screenshot for Lab 3.1!</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -718,7 +718,7 @@
         <ul>
           <li><strong>Missing labels:</strong> Every device and connection needs an IP address or network range labeled</li>
           <li><strong>Incomplete path:</strong> Show the entire chain from Kali VM through NAT, host, router, internet, to target</li>
-          <li><strong>Low resolution export:</strong> Export as PNG at high resolution &#8212; blurry diagrams are unprofessional</li>
+          <li><strong>Low resolution export:</strong> Export as PNG at high resolution; blurry diagrams are unprofessional</li>
         </ul>
       </div>
     </div>
@@ -733,7 +733,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders &#8212; a skill you&#8217;ll use in Lab 3.3&#8217;s client deliverable.</p>
+        <p>Chapter 9 discusses network topology and architecture visualization. Topology diagrams communicate network structure to stakeholders, a skill you&#8217;ll use in Lab 3.3&#8217;s client deliverable.</p>
       </div>
     </div>
     <div class="nx-callout nx-yellow">
@@ -747,7 +747,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>RFC 8200 &#8212; Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final</p>
+        <p>RFC 8200: Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final</p>
       </div>
     </div>
   </div>
@@ -781,7 +781,7 @@
         <div class="nx-callout-title">Blue Team Perspective</div>
         <ul>
           <li>Defenders use CIDR to define firewall rules, segment sensitive systems, and scope vulnerability scans</li>
-          <li>Proper subnetting creates security boundaries &#8212; an attacker who compromises one subnet shouldn&#8217;t automatically access others</li>
+          <li>Proper subnetting creates security boundaries: an attacker who compromises one subnet shouldn&#8217;t automatically access others</li>
           <li>Understanding addressing lets you spot anomalous traffic crossing boundaries</li>
         </ul>
       </div>
@@ -790,7 +790,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">sync_alt</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">The Purple Team Connection</div>
-        <p>CIDR notation is the shared language between attackers and defenders. A red-team analyst uses subnet boundaries to scope a scan — knowing exactly which hosts to target and which to exclude. A blue-team analyst uses the same boundaries to write firewall rules, segment sensitive systems, and detect traffic crossing zone boundaries. When you calculate a subnet by hand, you're internalizing the same mental model both sides use.</p>
+        <p>CIDR notation is the shared language between attackers and defenders. A red-team analyst uses subnet boundaries to scope a scan, knowing exactly which hosts to target and which to exclude. A blue-team analyst uses the same boundaries to write firewall rules, segment sensitive systems, and detect traffic crossing zone boundaries. When you calculate a subnet by hand, you're internalizing the same mental model both sides use.</p>
       </div>
     </div>
   </div>
@@ -809,12 +809,12 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <code>01-number-conversions.png</code> &#8212; Completed decimal/binary/hex conversion practice</li>
-      <li>&#9744; <code>02-flat-network-analysis.png</code> &#8212; CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8</li>
-      <li>&#9744; <code>03-subnet-table.png</code> &#8212; Complete subnet table for 172.16.0.0/16 with 4 bits borrowed</li>
-      <li>&#9744; <code>04-mxtoolbox-verification.png</code> &#8212; MX Toolbox results confirming hand calculations</li>
-      <li>&#9744; <code>05-host-kali-config.png</code> &#8212; Host and Kali VM network configurations (VM name visible)</li>
-      <li>&#9744; <code>06-topology-diagram.png</code> &#8212; Network topology diagram from Kali VM to Azure</li>
+      <li>&#9744; <code>01-number-conversions.png</code>: Completed decimal/binary/hex conversion practice</li>
+      <li>&#9744; <code>02-flat-network-analysis.png</code>: CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8</li>
+      <li>&#9744; <code>03-subnet-table.png</code>: Complete subnet table for 172.16.0.0/16 with 4 bits borrowed</li>
+      <li>&#9744; <code>04-mxtoolbox-verification.png</code>: MX Toolbox results confirming hand calculations</li>
+      <li>&#9744; <code>05-host-kali-config.png</code>: Host and Kali VM network configurations (VM name visible)</li>
+      <li>&#9744; <code>06-topology-diagram.png</code>: Network topology diagram from Kali VM to Azure</li>
     </ul>
 
     <h2>Exercises Completed</h2>
@@ -831,7 +831,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">quiz</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Take the Quiz in Canvas</div>
-        <p>Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy &#8212; you may be asked to perform CIDR calculations or reference your network configuration.</p>
+        <p>Take the <strong>Lab 3.1 Quiz</strong> in Canvas. Keep your notes handy. You may be asked to perform CIDR calculations or reference your network configuration.</p>
       </div>
     </div>
     <div class="nx-callout nx-blue">
@@ -858,7 +858,7 @@
     <h2>Getting Help</h2>
     <ul>
       <li><strong>Discord:</strong> #lab-help</li>
-      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa</li>
+      <li><strong>Office Hours:</strong> Calendly: calendly.com/john-newsom-utsa</li>
       <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
     </ul>
 
@@ -890,7 +890,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>Lab 3.2: Protocol Analysis Tools — Next unit you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible.</p>
+        <p>Lab 3.2: Protocol Analysis Tools: Next unit you'll install Wireshark and dive deep into packet capture analysis using training PCAPs. You'll learn capture filters (using the CIDR skills you practiced today!), display filters, and traffic visualization. The network fundamentals from this lab make all of that possible.</p>
       </div>
     </div>
   </div>

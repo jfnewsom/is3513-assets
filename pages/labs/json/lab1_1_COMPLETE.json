@@ -5,8 +5,8 @@
   "labType": "foundation",
   "module": "Module 1: Threat Intelligence &amp; Reconnaissance",
   "chapters": [
-   "Chapter 1 \u2014 Introduction to Security",
-   "Chapter 2 \u2014 General Security Concepts"
+   "Chapter 1: Introduction to Security",
+   "Chapter 2: General Security Concepts"
   ]
  },
  "intro": {
@@ -24,21 +24,21 @@
   ],
   "clientContext": {
    "client": "Brazos Financial Group",
-   "description": "Dallas-based wealth management firm ($2.8B AUM, 450 employees) facing an SEC cybersecurity examination in six months. Your Module 1 engagement begins with internal training \u2014 you'll build the analyst workstation and toolkit you'll use for the Brazos network reconnaissance assessment in Unit 3.",
+   "description": "Dallas-based wealth management firm ($2.8B AUM, 450 employees) facing an SEC cybersecurity examination in six months. Your Module 1 engagement begins with internal training: you'll build the analyst workstation and toolkit you'll use for the Brazos network reconnaissance assessment in Unit 3.",
    "contacts": []
   },
   "callouts": [
    {
     "type": "tip",
     "icon": "lightbulb",
-    "title": "Use What You Want &#8212; the Instructions Are VirtualBox",
-    "text": "Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option &#8212; Parallels is better on a Mac and VMware Workstation is better on Windows &#8212; but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome &#8212; a working Kali VM named kali-&lt;your abc123&gt; and the evidence you are asked to capture &#8212; not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup."
+    "title": "Use What You Want: the Instructions Are VirtualBox",
+    "text": "Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named kali-&lt;your abc123&gt; and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup."
    },
    {
     "type": "warning",
     "title": "Technically Droppable, Actually Required",
     "icon": "warning",
-    "text": "Lab 1.1 is one of ten Foundation Labs, and you do get one drop. So administratively, yes \u2014 you could skip this one and have it not count against your grade. But practically, you can\u2019t skip it. Lab 1.2 needs your Kali VM running. So do Labs 1.3, 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you\u2019ll have to come back and do it anyway before Lab 1.2 is due</strong> &#8212; except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn\u2019t gate everything that follows it."
+    "text": "Lab 1.1 is one of ten Foundation Labs, and you do get one drop. So administratively, yes, you could skip this one and have it not count against your grade. But practically, you can’t skip it. Lab 1.2 needs your Kali VM running. So do Labs 1.3, 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you’ll have to come back and do it anyway before Lab 1.2 is due</strong>, except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn’t gate everything that follows it."
    },
    {
     "type": "tip",
@@ -51,7 +51,7 @@
    "character": "Maya Rodriguez",
    "title": "Senior Penetration Tester, NEXUS Security",
    "headshot": "maya-rodriguez.png",
-   "quote": "Every analyst at NEXUS starts here \u2014 building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything \u2014 your future self will thank you when you're writing runbooks at 2 AM."
+   "quote": "Every analyst at NEXUS starts here: building their own lab environment. This isn't just homework; it's your personal security workstation. Treat it like your toolkit. You'll use this setup for every client engagement this semester. Document everything. Your future self will thank you when you're writing runbooks at 2 AM."
   }
  },
  "timeGuide": {
@@ -85,7 +85,7 @@
    "label": "Total Estimated Time",
    "time": "85-140 min"
   },
-  "timesheetNote": "This is Unit 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder &#8212; you&#8217;ll need them all in Unit 3."
+  "timesheetNote": "This is Unit 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder. You&#8217;ll need them all in Unit 3."
  },
  "checkpoints": [
   {
@@ -150,7 +150,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "textbookReference",
-     "body": "Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation \u2014 a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your Lab 1.3 report."
+     "body": "Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation, a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your Lab 1.3 report."
     },
     {
      "title": "Dig Deeper",
@@ -192,7 +192,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Choose the correct architecture: 64-bit (amd64) for Intel/AMD processors, arm64 for Apple Silicon Macs (M1/M2/M3/M4). The hypervisor is VirtualBox either way &#8212; only the image changes.",
+       "text": "Choose the correct architecture: 64-bit (amd64) for Intel/AMD processors, arm64 for Apple Silicon Macs (M1/M2/M3/M4). The hypervisor is VirtualBox either way. Only the image changes.",
        "command": null,
        "whatThisDoes": null
       },
@@ -202,7 +202,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Note the download location \u2014 you'll need this for the next checkpoint",
+       "text": "Note the download location; you'll need this for the next checkpoint",
        "command": null,
        "whatThisDoes": null
       }
@@ -220,8 +220,8 @@
      "text": null,
      "items": [
       "Wrong architecture: Download the amd64 (64-bit) version unless you have Apple Silicon",
-      "Unofficial sources: Only download from kali.org \u2014 third-party ISOs may contain malware",
-      "Interrupted download: If download fails, delete partial file and restart \u2014 don't resume corrupted downloads"
+      "Unofficial sources: Only download from kali.org; third-party ISOs may contain malware",
+      "Interrupted download: If download fails, delete partial file and restart; don't resume corrupted downloads"
      ],
      "type": "callout",
      "calloutType": "commonPitfalls"
@@ -263,7 +263,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.",
-     "whyItMatters": "Proper VM configuration affects performance, stability, and functionality. The VM name is especially important \u2014 it appears in your terminal prompt and must be visible in screenshots for assignment verification."
+     "whyItMatters": "Proper VM configuration affects performance, stability, and functionality. The VM name is especially important. It appears in your terminal prompt and must be visible in screenshots for assignment verification."
     },
     {
      "start": 1,
@@ -275,7 +275,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Configure the VM name. Name your VM kali-<your abc123> \u2014 your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Configure the VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
        "command": null,
        "whatThisDoes": null
       },
@@ -311,7 +311,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "required",
-     "body": "Name your VM <strong>kali-&lt;your abc123&gt;</strong> \u2014 your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable."
+     "body": "Name your VM <strong>kali-&lt;your abc123&gt;</strong>, where your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable."
     },
     {
      "title": "Screenshot",
@@ -324,8 +324,8 @@
      "title": "Common Pitfalls",
      "text": null,
      "items": [
-      "Leaving the placeholder name. Name your VM kali-<your abc123> \u2014 your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
-      "Too little RAM: 2GB minimum, 4GB recommended \u2014 less causes performance issues",
+      "Leaving the placeholder name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+      "Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues",
       "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
      ],
      "type": "callout",
@@ -390,7 +390,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Set the hostname to match your VM name. Name your VM kali-<your abc123> \u2014 your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Set the hostname to match your VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
        "command": null,
        "whatThisDoes": null
       },
@@ -442,7 +442,7 @@
      "title": "Common Pitfalls",
      "text": null,
      "items": [
-      "Forgetting credentials: Write down your username and password \u2014 you'll need them all semester",
+      "Forgetting credentials: Write down your username and password; you'll need them all semester",
       "Wrong hostname: The hostname should match your VM name format",
       "Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS"
      ],
@@ -472,7 +472,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Installing Docker, the containerization platform we'll use to deploy vulnerable lab targets throughout the course.",
-     "whyItMatters": "Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers \u2014 without it, you can't complete the labs."
+     "whyItMatters": "Docker lets us spin up isolated, vulnerable systems safely. Each module's client engagement uses Docker containers. Without it, you can't complete the labs."
     },
     {
      "start": 1,
@@ -482,14 +482,14 @@
        "text": "Update your package lists",
        "command": "sudo apt update",
        "whatThisDoes": {
-        "concept": "apt update refreshes the list of available packages from the repositories. It does not install anything \u2014 it just checks what's available. Always run this before installing new software so you get the latest versions."
+        "concept": "apt update refreshes the list of available packages from the repositories. It does not install anything. It just checks what's available. Always run this before installing new software so you get the latest versions."
        }
       },
       {
        "text": "Upgrade all installed packages to current versions",
        "command": "sudo apt full-upgrade -y",
        "whatThisDoes": {
-        "concept": "full-upgrade installs the newest versions of everything already on the system. Kali is a rolling release, so your ISO is a snapshot frozen at build time \u2014 this step brings your tools up to current. Use full-upgrade rather than plain upgrade: full-upgrade is allowed to add or remove packages to resolve dependency changes, so nothing gets held back. This is why your tool versions will match what the labs and quizzes expect."
+        "concept": "full-upgrade installs the newest versions of everything already on the system. Kali is a rolling release, so your ISO is a snapshot frozen at build time. This step brings your tools up to current. Use full-upgrade rather than plain upgrade: full-upgrade is allowed to add or remove packages to resolve dependency changes, so nothing gets held back. This is why your tool versions will match what the labs and quizzes expect."
        }
       },
       {
@@ -537,7 +537,7 @@
        "text": "Run the Docker test container",
        "command": "docker run hello-world",
        "whatThisDoes": {
-        "concept": "docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see \"Hello from Docker!\" \u2014 Docker is fully working."
+        "concept": "docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see \"Hello from Docker!\", Docker is fully working."
        }
       }
      ]
@@ -554,8 +554,8 @@
      "text": null,
      "items": [
       "Permission denied: You didn't log out after adding yourself to the docker group",
-      "Cannot connect to daemon: Docker service isn't running \u2014 check with sudo systemctl status docker",
-      "Network errors: VM needs internet access \u2014 check VirtualBox network settings"
+      "Cannot connect to daemon: Docker service isn't running; check with sudo systemctl status docker",
+      "Network errors: VM needs internet access; check VirtualBox network settings"
      ],
      "type": "callout",
      "calloutType": "commonPitfalls"
@@ -585,7 +585,7 @@
      "type": "callout",
      "calloutType": "textbookReference",
      "title": "Textbook Reference",
-     "body": "Chapter 2 covers defense in depth and isolation as a security control. Docker uses Linux kernel features &#8212; namespaces and cgroups &#8212; to create lightweight isolation without a full hypervisor. Containers and VMs represent two different points on the isolation spectrum that security professionals choose between based on their threat model."
+     "body": "Chapter 2 covers defense in depth and isolation as a security control. Docker uses Linux kernel features (namespaces and cgroups) to create lightweight isolation without a full hypervisor. Containers and VMs represent two different points on the isolation spectrum that security professionals choose between based on their threat model."
     }
    ]
   },
@@ -628,7 +628,7 @@
        "text": "Display your network interfaces and IP addresses",
        "command": "ip addr",
        "whatThisDoes": {
-        "concept": "ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface \u2014 it should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x)."
+        "concept": "ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface. It should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x)."
        }
       },
       {
@@ -663,7 +663,7 @@
        "text": "Verify John the Ripper is installed",
        "command": "john --help | head -5",
        "whatThisDoes": {
-        "concept": "John the Ripper is a password cracking tool you'll use in Module 4. The | head -5 pipe takes the first 5 lines of output \u2014 enough to confirm it's installed without flooding your terminal."
+        "concept": "John the Ripper is a password cracking tool you'll use in Module 4. The | head -5 pipe takes the first 5 lines of output, enough to confirm it's installed without flooding your terminal."
        }
       }
      ]
@@ -699,7 +699,7 @@
      "text": null,
      "items": [
       "No network: Check VirtualBox network adapter settings (NAT should work)",
-      "Tool not found: Some tools may need installation \u2014 use sudo apt install <tool-name>",
+      "Tool not found: Some tools may need installation; use sudo apt install <tool-name>",
       "Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding"
      ],
      "type": "callout",
@@ -736,7 +736,7 @@
    "items": [
     {
      "label": "Isolated Attack Platforms",
-     "text": "Virtual machines let attackers operate from a clean, disposable environment. After an engagement, the VM can be rolled back or deleted &#8212; leaving no artifacts on the analyst&#8217;s host."
+     "text": "Virtual machines let attackers operate from a clean, disposable environment. After an engagement, the VM can be rolled back or deleted, leaving no artifacts on the analyst&#8217;s host."
     },
     {
      "label": "Container Recon Targets",
@@ -744,7 +744,7 @@
     },
     {
      "label": "Tool Availability",
-     "text": "Kali Linux pre-loads every tool you&#8217;ll use this semester. Attackers maintain their own customized distributions &#8212; having a ready toolkit is a force multiplier."
+     "text": "Kali Linux pre-loads every tool you&#8217;ll use this semester. Attackers maintain their own customized distributions. Having a ready toolkit is a force multiplier."
     }
    ]
   },
@@ -754,7 +754,7 @@
    "items": [
     {
      "label": "Environment Hygiene",
-     "text": "Defenders use virtualization the same way &#8212; isolated sandboxes for malware analysis, forensics, and safe tool testing. Understanding the tech from both sides makes you a better analyst."
+     "text": "Defenders use virtualization the same way: isolated sandboxes for malware analysis, forensics, and safe tool testing. Understanding the tech from both sides makes you a better analyst."
     },
     {
      "label": "Container Security Posture",
@@ -766,7 +766,7 @@
     }
    ]
   },
-  "connection": "Your lab environment is both your attack platform and your first blue team lesson. Every security professional &#8212; red or blue &#8212; maintains an isolated, documented, reproducible workspace. This setup is that workspace."
+  "connection": "Your lab environment is both your attack platform and your first blue team lesson. Every security professional (red or blue) maintains an isolated, documented, reproducible workspace. This setup is that workspace."
  },
  "finalChecklist": {
   "screenshotTable": [
@@ -801,7 +801,7 @@
     "title": "Canvas Quiz",
     "items": [
      "Take the Lab 1.1 Quiz in Canvas",
-     "Keep your VM running while taking the quiz &#8212; questions reference specific outputs"
+     "Keep your VM running while taking the quiz; questions reference specific outputs"
     ]
    }
   ],
@@ -814,7 +814,7 @@
     "label": "Discord"
    },
    {
-    "detail": "Calendly \u2014 calendly.com/john-newsom-utsa",
+    "detail": "Calendly: calendly.com/john-newsom-utsa",
     "label": "Office Hours"
    },
    {

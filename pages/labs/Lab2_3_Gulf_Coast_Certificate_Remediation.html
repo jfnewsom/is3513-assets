@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 2.3 &#8212; Gulf Coast Certificate Remediation</title>
+  <title>Lab 2.3: Gulf Coast Certificate Remediation</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<h1 class="nx-sr-only">Lab 2.3 &#8212; Gulf Coast Certificate Remediation</h1>
+<h1 class="nx-sr-only">Lab 2.3: Gulf Coast Certificate Remediation</h1>
 
 
 <!-- ══════════════════════════════════════════════════ LAB HEADER -->
@@ -27,7 +27,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Required: Use the Engagement Packet Template</div>
-        <p>Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template &#8212; cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx">EP_M2_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href="https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html">Engagement Packet Guide</a>.<br><br><strong style="color:#ffffff;">Submit as .docx (Microsoft Word) only</strong> &#8212; PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.</p>
+        <p>Don&#8217;t build this from a blank page. Download the pre-formatted NEXUS template. The cover page, both parts, all section headings, and the auto-generating Table of Contents are already set up: <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx">EP_M2_GulfCoast.docx</a>. Full instructions for filling it out are on the <a href="https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html">Engagement Packet Guide</a>.<br><br><strong style="color:#ffffff;">Submit as .docx (Microsoft Word) only</strong>. PDF submissions will not be accepted. Use Word&#8217;s built-in features for Table of Contents, page numbers, and citations.</p>
       </div>
     </div>
     <h2>Overview</h2>
@@ -39,7 +39,7 @@
           <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado">
         </div>
         <div class="nx-quote-bubble">
-          <p>&#8220;Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story &#8212; the story of due diligence, proper procedures, and professional remediation.&#8221;</p>
+          <p>&#8220;Before you touch anything, document the current state. Auditors want before-and-after evidence. Every screenshot tells a story: the story of due diligence, proper procedures, and professional remediation.&#8221;</p>
         </div>
       </div>
       <div class="nx-quote-attribution">
@@ -48,10 +48,10 @@
       </div>
     </div>
     <h2>Chapters Covered</h2>
-    <p>Chapter 6 &#8212; Applied Cryptography | Chapter 7 &#8212; Public Key Infrastructure</p>
+    <p>Chapter 6: Applied Cryptography | Chapter 7: Public Key Infrastructure</p>
 
     <h2>Client Context</h2>
-    <p><strong>Gulf Coast Healthcare Partners</strong> &#8212; A regional healthcare network headquartered in Houston, Texas. Two years ago, they suffered a ransomware attack that forced a complete infrastructure rebuild.</p>
+    <p><strong>Gulf Coast Healthcare Partners</strong>: A regional healthcare network headquartered in Houston, Texas. Two years ago, they suffered a ransomware attack that forced a complete infrastructure rebuild.</p>
     <ul>
       <li><strong>Jennifer Walsh, CISO:</strong> &#8220;The OCR audit is in 6 weeks. I need this portal working and documented before they arrive.&#8221;</li>
       <li><strong>Thomas Kowalski, VP Infrastructure:</strong> &#8220;I set this up five years ago when we were half this size. I know it needs updating.&#8221;</li>
@@ -68,24 +68,24 @@
 
     <h2>Key Concepts</h2>
     <ul>
-      <li><strong>Certificate Lifecycle:</strong> X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure — not just a browser warning.</li>
-      <li><strong>Certificate Signing Requests:</strong> Generating a CSR from an existing private key — the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain.</li>
-      <li><strong>CA Signing Operations:</strong> Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window — the chain of trust in practice.</li>
-      <li><strong>Before/After Evidence:</strong> Documenting the broken state before making changes — auditors require proof of the problem, not just proof of the fix.</li>
-      <li><strong>Engagement Packet Compilation:</strong> Assembling three units of work into a single professional deliverable — the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements.</li>
+      <li><strong>Certificate Lifecycle:</strong> X.509 certificate validity windows, expiration detection, and why expired certificates are a HIPAA compliance failure, not just a browser warning.</li>
+      <li><strong>Certificate Signing Requests:</strong> Generating a CSR from an existing private key: the standard PKI workflow for renewal without regenerating keys or disrupting the trust chain.</li>
+      <li><strong>CA Signing Operations:</strong> Using the Certificate Authority to sign a CSR and issue a new certificate with a 365-day validity window, the chain of trust in practice.</li>
+      <li><strong>Before/After Evidence:</strong> Documenting the broken state before making changes. Auditors require proof of the problem, not just proof of the fix.</li>
+      <li><strong>Engagement Packet Compilation:</strong> Assembling three units of work into a single professional deliverable: the Part I (Internal Packet) and Part II (Client Deliverable) structure used by NEXUS Security for all client engagements.</li>
     </ul>
     <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Minimum Requirements</div>
-        <p>Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count — use it to find primary sources, then cite those. See the Citations page.</p>
+        <p>Your Engagement Packet must include: all 12 required sections in order, 25+ screenshots (9 from Lab 2.1, 8 from Lab 2.2, 8+ from Lab 2.3), VM hostname visible in every screenshot, and a minimum of 10 references. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page.</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Deadline Tip</div>
-        <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
+        <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
   <div class="nx-card" style="--accent: #00BCD4;">
     <p><strong>This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.</strong></p>
 
-    <h2>From Unit 1 — Lab 2.1: Cryptographic Foundations</h2>
+    <h2>From Unit 1: Lab 2.1: Cryptographic Foundations</h2>
     <ul class="nx-checklist">
       <li><span class="nx-check">&#10004;</span> Hash function demonstrations (SHA-256 comparison showing avalanche effect)</li>
       <li><span class="nx-check">&#10004;</span> Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)</li>
@@ -113,16 +113,16 @@
       <li><span class="nx-check">&#10004;</span> 9 screenshots (01-hash-sha256.png through 09-signature-verify.png)</li>
     </ul>
 
-    <h2>From Unit 2 — Lab 2.2: Authentication Systems</h2>
+    <h2>From Unit 2: Lab 2.2: Authentication Systems</h2>
     <ul class="nx-checklist">
-      <li><span class="nx-check">&#10004;</span> SSH key generation — RSA and ED25519 comparison</li>
+      <li><span class="nx-check">&#10004;</span> SSH key generation: RSA and ED25519 comparison</li>
       <li><span class="nx-check">&#10004;</span> File permission security demonstration (break/fix cycle)</li>
       <li><span class="nx-check">&#10004;</span> SSH authorized_keys and config file setup</li>
       <li><span class="nx-check">&#10004;</span> Multi-factor authentication configuration and verification</li>
       <li><span class="nx-check">&#10004;</span> 8 screenshots (10-keygen-rsa.png through 17-mfa-login.png)</li>
     </ul>
 
-    <h2>New This Unit — Lab 2.3 <span class="nx-badge-new">NEW</span></h2>
+    <h2>New This Unit: Lab 2.3 <span class="nx-badge-new">NEW</span></h2>
     <ul class="nx-checklist">
       <li><span class="nx-badge-new">NEW</span> Title Page, Table of Contents, Executive Summary</li>
       <li><span class="nx-badge-new">NEW</span> Certificate diagnosis and remediation documentation</li>
@@ -133,15 +133,15 @@
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">You're Already 60–70% Done</div>
-        <p>If you followed the Unit 1–2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
+        <div class="nx-callout-title">You're Already 60 to 70% Done</div>
+        <p>If you followed the Unit 1 and 2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
       </div>
     </div>
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">You&#8217;re Already 60&#8211;70% Done</div>
-        <p>If you followed the Unit 1&#8211;2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
+        <div class="nx-callout-title">You&#8217;re Already 60 to 70% Done</div>
+        <p>If you followed the Unit 1 and 2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@
       </tbody>
     </table>
 
-    <p>Unit 3 is your first client-billable unit. Checkpoint 2–3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 5 (Engagement Packet compilation) is billable time as well — document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable.</p>
+    <p>Unit 3 is your first client-billable unit. Checkpoint 2 and 3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 5 (Engagement Packet compilation) is billable time as well. Document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable.</p>
   </div>
 </div>
 
@@ -193,13 +193,13 @@
     <ol>
       <li>Download the template: <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M2_GulfCoast.docx">EP_M2_GulfCoast.docx</a>. Save it somewhere you will find it again.
       </li>
-      <li>Open it in <strong>desktop</strong> Microsoft Word &#8212; not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximize the window so the ribbon shows labels instead of bare icons.
+      <li>Open it in <strong>desktop</strong> Microsoft Word, not Word for the web, not Google Docs, not Preview. Those cannot create the captions, cross-references and citation fields this packet is graded on. Maximize the window so the ribbon shows labels instead of bare icons.
       </li>
-      <li>Turn on the Navigation Pane. <strong>Windows:</strong> View &gt; Navigation Pane. <strong>Mac:</strong> View &gt; Sidebar &gt; Navigation. Leave it open for the whole engagement &#8212; it is how you catch a broken heading before it reaches the Table of Contents.
+      <li>Turn on the Navigation Pane. <strong>Windows:</strong> View &gt; Navigation Pane. <strong>Mac:</strong> View &gt; Sidebar &gt; Navigation. Leave it open for the whole engagement. It is how you catch a broken heading before it reaches the Table of Contents.
       </li>
       <li>Set the Author property. <strong>Windows:</strong> File &gt; Info, the Author box on the right. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Summary. Word appends your abc123 to the existing author rather than replacing it. That is expected. Leave it.
       </li>
-      <li>Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots &#8212; together they are how this packet is tied to the machine that produced its evidence.
+      <li>Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.
       </li>
       <li>Save the file now, and keep saving as you go.
       </li>
@@ -208,7 +208,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Four Mechanics, Every Time</div>
-        <p>Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source &#8212; tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href="https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html">Lab 1.3, Checkpoint 5</a> walks all four of them step by step.</p>
+        <p>Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href="https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html">Lab 1.3, Checkpoint 5</a> walks all four of them step by step.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -248,14 +248,14 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal &#8212; an Apache web server with a deliberately expired SSL certificate.</p>
+            <p><strong>Concept:</strong> This downloads and starts a Docker container simulating Gulf Coast&#8217;s patient portal: an Apache web server with a deliberately expired SSL certificate.</p>
             <p><strong>Flags:</strong></p>
             <ul>
-              <li><code>-d</code> &#8212; Run in background (detached mode)</li>
-              <li><code>-p 443:443</code> &#8212; Map HTTPS port from container to host</li>
-              <li><code>-p 2222:22</code> &#8212; Map SSH to port 2222 so it doesn&#8217;t conflict with your Kali SSH service</li>
-              <li><code>--name gulfcoast-portal</code> &#8212; Assign a friendly name for later docker commands</li>
-              <li><code>jfnewsom/gulfcoast-portal</code> &#8212; The Docker Hub image to pull</li>
+              <li><code>-d</code>: Run in background (detached mode)</li>
+              <li><code>-p 443:443</code>: Map HTTPS port from container to host</li>
+              <li><code>-p 2222:22</code>: Map SSH to port 2222 so it doesn&#8217;t conflict with your Kali SSH service</li>
+              <li><code>--name gulfcoast-portal</code>: Assign a friendly name for later docker commands</li>
+              <li><code>jfnewsom/gulfcoast-portal</code>: The Docker Hub image to pull</li>
             </ul>
           </div>
         </details>
@@ -263,7 +263,7 @@
     </ol>
     <h3>Part B: Document the broken state</h3>
     <ol>
-      <li>Open Firefox and navigate to <code>https://localhost</code> &#8212; you should see a certificate warning. This is your &#8220;before&#8221; evidence.
+      <li>Open Firefox and navigate to <code>https://localhost</code>. You should see a certificate warning. This is your &#8220;before&#8221; evidence.
       </li>
     </ol>
     <div class="nx-callout nx-blue">
@@ -283,9 +283,9 @@
             <p><strong>In your output:</strong> The <code>notAfter</code> date should be in the past, confirming the certificate has expired.</p>
             <p><strong>Flags:</strong></p>
             <ul>
-              <li><code>2>/dev/null</code> &#8212; Suppresses noisy connection info</li>
-              <li><code>-noout</code> &#8212; Prevents printing the raw certificate</li>
-              <li><code>-dates</code> &#8212; Shows only the validity period</li>
+              <li><code>2>/dev/null</code>: Suppresses noisy connection info</li>
+              <li><code>-noout</code>: Prevents printing the raw certificate</li>
+              <li><code>-dates</code>: Shows only the validity period</li>
             </ul>
           </div>
         </details>
@@ -352,14 +352,14 @@
     <h3>What You&#8217;re Doing</h3>
     <p>Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.</p>
     <h3>Why It Matters</h3>
-    <p>Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow &#8212; using the existing private key to generate a new request, then signing with the CA &#8212; ensures continuity without regenerating keys.</p>
+    <p>Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow (using the existing private key to generate a new request, then signing with the CA) ensures continuity without regenerating keys.</p>
     <div class="nx-quote">
       <div class="nx-quote-main">
         <div class="nx-quote-avatar">
           <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado">
         </div>
         <div class="nx-quote-bubble">
-          <p>&#8220;The README in the PKI directory is your roadmap. Real infrastructure always has documentation &#8212; sometimes outdated, sometimes incomplete &#8212; but always your starting point. Read it before you touch anything.&#8221;</p>
+          <p>&#8220;The README in the PKI directory is your roadmap. Real infrastructure always has documentation (sometimes outdated, sometimes incomplete) but always your starting point. Read it before you touch anything.&#8221;</p>
         </div>
       </div>
       <div class="nx-quote-attribution">
@@ -384,7 +384,7 @@
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> You&#8217;re mapping the PKI infrastructure before making changes. The <code>CA/</code> directory holds the root Certificate Authority (<code>ca.crt</code> and <code>ca.key</code>). The <code>certs/</code> directory holds the server certificates including the expired <code>portal.crt</code>. The <code>csr/</code> directory is your working space for new certificate signing requests.</p>
-            <p><strong>In your output:</strong> Note the file permissions &#8212; the CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.</p>
+            <p><strong>In your output:</strong> Note the file permissions. The CA key (<code>ca.key</code>) is root-owned for security, while the <code>certs/</code> directory is student-owned so you can write new files there.</p>
           </div>
         </details>
       </li>
@@ -399,10 +399,10 @@
             <p><strong>Concept:</strong> A Certificate Signing Request (CSR) is a formal application for a new certificate. It contains your public key and identity information, signed with your private key to prove ownership. The CA uses this to issue a new certificate without ever needing your private key.</p>
             <p><strong>Flags:</strong></p>
             <ul>
-              <li><code>req -new</code> &#8212; Create a new CSR</li>
-              <li><code>-key certs/portal.key</code> &#8212; Use the existing private key (no need to regenerate)</li>
-              <li><code>-out csr/portal-new.csr</code> &#8212; Output file for the CSR</li>
-              <li><code>-subj</code> &#8212; Provides identity fields inline (C=country, ST=state, L=locality, O=organization, CN=common name)</li>
+              <li><code>req -new</code>: Create a new CSR</li>
+              <li><code>-key certs/portal.key</code>: Use the existing private key (no need to regenerate)</li>
+              <li><code>-out csr/portal-new.csr</code>: Output file for the CSR</li>
+              <li><code>-subj</code>: Provides identity fields inline (C=country, ST=state, L=locality, O=organization, CN=common name)</li>
             </ul>
           </div>
         </details>
@@ -426,11 +426,11 @@
             <p><strong>In your output:</strong> You&#8217;ll see &#8220;Certificate request self-signature ok&#8221; followed by the subject line. The sudo password is <code>nexus2026</code>.</p>
             <p><strong>Flags:</strong></p>
             <ul>
-              <li><code>x509 -req</code> &#8212; Process a CSR into a signed certificate</li>
-              <li><code>-CA / -CAkey</code> &#8212; Specify the signing Certificate Authority and its key</li>
-              <li><code>-CAcreateserial</code> &#8212; Generate a unique serial number for this certificate</li>
-              <li><code>-days 365</code> &#8212; Set one-year validity period</li>
-              <li><code>-sha256</code> &#8212; Use modern hashing algorithm for the signature</li>
+              <li><code>x509 -req</code>: Process a CSR into a signed certificate</li>
+              <li><code>-CA / -CAkey</code>: Specify the signing Certificate Authority and its key</li>
+              <li><code>-CAcreateserial</code>: Generate a unique serial number for this certificate</li>
+              <li><code>-days 365</code>: Set one-year validity period</li>
+              <li><code>-sha256</code>: Use modern hashing algorithm for the signature</li>
             </ul>
           </div>
         </details>
@@ -461,7 +461,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code> &#8212; confirm with <code>ls -la</code></li>
+          <li><strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code>; confirm with <code>ls -la</code></li>
           <li><strong>Permission denied on CA key:</strong> The CA private key is root-owned. You need <code>sudo</code> for the signing step</li>
           <li><strong>Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate</li>
         </ul>
@@ -525,7 +525,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot &#8212; the dates should be completely different.</p>
+            <p><strong>In your output:</strong> The <code>notAfter</code> date should now be approximately one year in the future. Compare this with your &#8220;before&#8221; screenshot. The dates should be completely different.</p>
           </div>
         </details>
       </li>
@@ -538,7 +538,7 @@
       </div>
     </div>
     <ol>
-      <li>Refresh <code>https://localhost</code> in Firefox &#8212; the expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).
+      <li>Refresh <code>https://localhost</code> in Firefox. The expired certificate warning should be gone (you may still see a self-signed trust warning, which is a separate issue from expiration).
       </li>
     </ol>
     <div class="nx-callout nx-blue">
@@ -548,7 +548,7 @@
         <p>Capture the browser showing the portal without an expired certificate warning. Save as <code>gulfcoast-08-browser-success.png</code></p>
       </div>
     </div>
-    <h3>Part B: Bonus &#8212; Hunt for additional findings</h3>
+    <h3>Part B: Bonus: Hunt for additional findings</h3>
     <ol>
       <li>SSH back into the container and investigate the following areas. Document anything concerning in your report:
         <div class="nx-cmd">ssh -p 2222 student@localhost</div>
@@ -574,10 +574,10 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>SSH session disconnects on Apache restart — this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal</li>
-          <li>Certificate change not reflected — if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.</li>
-          <li>Self-signed trust warning persists in browser — this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.</li>
-          <li>Missing 'before' screenshots — you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report.</li>
+          <li>SSH session disconnects on Apache restart; this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal</li>
+          <li>Certificate change not reflected; if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.</li>
+          <li>Self-signed trust warning persists in browser; this is separate from expiration. Your openssl verification is the authoritative check. The browser warning about self-signed CAs is expected and does not mean your fix failed.</li>
+          <li>Missing 'before' screenshots; you cannot recreate the broken state after fixing the certificate. If you missed them, note this limitation in your report.</li>
         </ul>
       </div>
     </div>
@@ -610,7 +610,7 @@
     <h3>What You&#8217;re Doing</h3>
     <p>Compiling all three units of Module 2 work into a professional Engagement Packet.</p>
     <h3>Why It Matters</h3>
-    <p>This isn&#8217;t just an academic assignment &#8212; it&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence.</p>
+    <p>This isn&#8217;t just an academic assignment. It&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence.</p>
     <div class="nx-callout nx-red">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
@@ -622,8 +622,8 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">description</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Report Sections</div>
-        <p><strong>Part I: Internal Packet (40% of grade):</strong> Timesheet (5%) &#8212; hours across all 3 units, split Internal Training vs. Client Billable. Units 1&#8211;2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%) &#8212; man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs &#8212; enough that another analyst could reproduce your work. Analyst Reflection (15%) &#8212; honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A.</p>
-        <p><strong>Part II: Client Deliverable (60% of grade):</strong> Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%) &#8212; one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%) &#8212; client-facing narrative of your approach. Findings (22%) &#8212; certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%) &#8212; HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%) &#8212; prioritized (immediate fixes vs. longer-term hardening).</p>
+        <p><strong>Part I: Internal Packet (40% of grade):</strong> Timesheet (5%): hours across all 3 units, split Internal Training vs. Client Billable. Units 1 and 2 (Lab 2.1 and 2.2 work) = internal training. Unit 3 (certificate remediation for Gulf Coast) = client billable. Runbook (20%): man-page style entries for cryptographic operations (from Lab 2.1), authentication systems and SSH configuration (from Lab 2.2), and certificate remediation workflow (this unit). Commands, flags, expected outputs: enough that another analyst could reproduce your work. Analyst Reflection (15%): honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A.</p>
+        <p><strong>Part II: Client Deliverable (60% of grade):</strong> Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%): one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing. Methodology (7%): client-facing narrative of your approach. Findings (22%): certificate issues, expired/misconfigured chain, missing controls. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%): HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%): prioritized (immediate fixes vs. longer-term hardening).</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -633,7 +633,7 @@
         <ul>
           <li><strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), Lab 2.3 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul></li>
           <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Labs 2.1, 2.2, and 2.3 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul></li>
-          <li><strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific &#8212; &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true &#8212; but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul></li>
+          <li><strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific: &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true, but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul></li>
         </ul>
       </div>
     </div>
@@ -642,11 +642,11 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Include in Part II (Client Deliverable)</div>
         <ul>
-          <li><strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit &#8212; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1&#8211;2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2&#8211;3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh &#8212; every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul></li>
-          <li><strong>Methodology (7%)</strong><ul><li>3&#8211;4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers &#8212; this is client-facing</li></ul></li>
-          <li><strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line &#8212; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul></li>
-          <li><strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding &#8212; why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul></li>
-          <li><strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints &#8212; Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul></li>
+          <li><strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1 or 2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2 or 3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh: every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul></li>
+          <li><strong>Methodology (7%)</strong><ul><li>3 to 4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers; this is client-facing</li></ul></li>
+          <li><strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul></li>
+          <li><strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding: why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul></li>
+          <li><strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints: Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul></li>
         </ul>
       </div>
     </div>
@@ -683,7 +683,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Analyst Reflection: Honest, Not Performative</div>
-        <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit &#8212; even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
+        <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit. Even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
       </div>
     </div>
     <div class="nx-callout nx-cyan">
@@ -698,9 +698,9 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>PDF submission:</strong> Must be .docx &#8212; PDF submissions receive automatic zero</li>
+          <li><strong>PDF submission:</strong> Must be .docx; PDF submissions receive automatic zero</li>
           <li><strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-<your abc123>)</li>
-          <li><strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT — see the Citations page</li>
+          <li><strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT; see the Citations page</li>
         </ul>
       </div>
     </div>
@@ -715,7 +715,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence &#8212; exactly what HIPAA auditors expect.</p>
+        <p>Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence, exactly what HIPAA auditors expect.</p>
       </div>
     </div>
   </div>
@@ -736,11 +736,11 @@
     <h3>Why It Matters</h3>
     <p>Every deduction in this category is avoidable and none of it is about security. A packet that goes out with placeholder text still in it, a Table of Contents that describes an earlier draft, or a figure number that points at the wrong picture tells the client nobody read the document before sending it. They will wonder what else nobody checked.</p>
     <ol>
-      <li><strong>Refresh every field.</strong> <strong>Windows:</strong> Ctrl+A then F9. <strong>Mac:</strong> &#8984;A then F9. If nothing happens, your function keys are set to media controls &#8212; hold Fn as well, or use the Fn Lock key.
+      <li><strong>Refresh every field.</strong> <strong>Windows:</strong> Ctrl+A then F9. <strong>Mac:</strong> &#8984;A then F9. If nothing happens, your function keys are set to media controls; hold Fn as well, or use the Fn Lock key.
       </li>
-      <li><strong>Rebuild the Table of Contents.</strong> Right-click it and choose Update Field &gt; <strong>Update entire table</strong>. Not &#8216;page numbers only&#8217; &#8212; that will not pick up sections you added or removed.
+      <li><strong>Rebuild the Table of Contents.</strong> Right-click it and choose Update Field &gt; <strong>Update entire table</strong>. Not &#8216;page numbers only&#8217;. That will not pick up sections you added or removed.
       </li>
-      <li><strong>Read the Navigation Pane top to bottom.</strong> No blank entries. No figure captions. Only real sections. A blank entry means an empty paragraph is carrying a heading style &#8212; click in it and apply Home &gt; Styles &gt; Normal. A caption in the list means it was formatted by hand instead of with Insert Caption.
+      <li><strong>Read the Navigation Pane top to bottom.</strong> No blank entries. No figure captions. Only real sections. A blank entry means an empty paragraph is carrying a heading style. Click in it and apply Home &gt; Styles &gt; Normal. A caption in the list means it was formatted by hand instead of with Insert Caption.
       </li>
       <li><strong>Compare the Table of Contents against the Navigation Pane.</strong> They read from the same source, so they should match exactly. If they disagree, you did not update the entire table.
       </li>
@@ -748,20 +748,20 @@
       </li>
       <li><strong>Rebuild the reference list.</strong> Click it and press F9, or run References &gt; Bibliography again. Count the entries: you need ten besides the textbook, and every one of them has to appear at least once in the body of the packet. A source that sits in the list and is never cited does not count.
       </li>
-      <li><strong>Replace or delete EVERY item in square brackets.</strong> Not most of them &#8212; all of them. The template ships with roughly <strong>84</strong> bracketed slots: some are places your content goes, some are prompts telling you what belongs there, and <strong>both are scaffolding that must be gone before you submit</strong>. Search for the bracket character itself &#8212; <strong>Windows:</strong> Ctrl+F. <strong>Mac:</strong> &#8984;F &#8212; type a single <strong>[</strong> and step through every hit. Replace it with your own work, or delete the line entirely if that section does not apply. Then search again and confirm you get zero results. The runbook skeleton and the finding card are where they hide.
+      <li><strong>Replace or delete EVERY item in square brackets.</strong> Not most of them: all of them. The template ships with roughly <strong>84</strong> bracketed slots: some are places your content goes, some are prompts telling you what belongs there, and <strong>both are scaffolding that must be gone before you submit</strong>. Search for the bracket character itself. <strong>Windows:</strong> Ctrl+F. <strong>Mac:</strong> &#8984;F. Type a single <strong>[</strong> and step through every hit. Replace it with your own work, or delete the line entirely if that section does not apply. Then search again and confirm you get zero results. The runbook skeleton and the finding card are where they hide.
       </li>
       <li><strong>Check your document properties survived.</strong> <strong>Windows:</strong> File &gt; Info. <strong>Mac:</strong> File &gt; Properties&#8230;. Your abc123 in the Author field and in the abc123 custom property, matching the kali-abc123 hostname visible in your screenshots.
       </li>
       <li><strong>Look at every screenshot at full size.</strong> Legible, cropped to what matters, kali-abc123 visible in the prompt. A screenshot nobody can read is evidence of nothing.
       </li>
-      <li><strong>Save as .docx and submit that.</strong> Word format only &#8212; not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.
+      <li><strong>Save as .docx and submit that.</strong> Word format only, not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.
       </li>
     </ol>
     <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Leftover Brackets Cost You 10%</div>
-        <p><strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item &#8212; one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong></p>
+        <p><strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item: one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong></p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -841,31 +841,31 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <code>01-hash-sha256.png</code> &#8212; Capture the file creation and SHA-256 hash output</li>
-      <li>&#9744; <code>02-hash-comparison.png</code> &#8212; Capture both hashes side-by-side showing completely different outputs despite minimal input change</li>
-      <li>&#9744; <code>03-symmetric-encrypt.png</code> &#8212; Capture the encryption command and the hex dump showing unreadable encrypted content</li>
-      <li>&#9744; <code>04-symmetric-decrypt.png</code> &#8212; Capture the decryption and verification showing the original content restored</li>
-      <li>&#9744; <code>05-rsa-keypair.png</code> &#8212; Capture the keypair generation, file listing, and public key contents</li>
-      <li>&#9744; <code>06-rsa-encrypt.png</code> &#8212; Capture the encryption command and verify the encrypted file exists</li>
-      <li>&#9744; <code>07-rsa-decrypt.png</code> &#8212; Capture the decryption showing the original secret message restored</li>
-      <li>&#9744; <code>08-signature-create.png</code> &#8212; Capture the signing command and file listing showing both the order and signature files</li>
-      <li>&#9744; <code>09-signature-verify.png</code> &#8212; Capture the verification showing “Verified OK” message</li>
-      <li>&#9744; <code>10-keygen-rsa.png</code> &#8212; Capture the RSA key generation showing the randomart and file listing</li>
-      <li>&#9744; <code>11-keygen-ed25519.png</code> &#8212; Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes</li>
-      <li>&#9744; <code>12-permission-error.png</code> &#8212; Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible</li>
-      <li>&#9744; <code>13-permission-fixed.png</code> &#8212; Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure</li>
-      <li>&#9744; <code>14-authorized-keys.png</code> &#8212; Capture the .ssh directory listing and authorized_keys content</li>
-      <li>&#9744; <code>15-ssh-keyauth.png</code> &#8212; Capture the successful SSH connection using key-based authentication</li>
-      <li>&#9744; <code>16-ssh-config.png</code> &#8212; Capture the SSH config file contents and successful connection using the alias</li>
-      <li>&#9744; <code>17-mfa-login.png</code> &#8212; Capture your successful MFA login showing both prompts and the whoami output</li>
-      <li>&#9744; <code>gulfcoast-01-initial-error.png</code> &#8212; Capture the browser certificate error</li>
-      <li>&#9744; <code>gulfcoast-02-cert-expired.png</code> &#8212; Capture the openssl output showing the expired certificate dates</li>
-      <li>&#9744; <code>gulfcoast-03-csr-generation.png</code> &#8212; Capture the CSR generation command and output</li>
-      <li>&#9744; <code>gulfcoast-04-cert-signing.png</code> &#8212; Capture the CA signing command and “self-signature ok” output</li>
-      <li>&#9744; <code>gulfcoast-05-cert-installation.png</code> &#8212; Capture the certificate installation command</li>
-      <li>&#9744; <code>gulfcoast-06-apache-restart.png</code> &#8212; Capture the Apache restart and container restart</li>
-      <li>&#9744; <code>gulfcoast-07-cert-valid.png</code> &#8212; Capture the new certificate dates showing future expiration</li>
-      <li>&#9744; <code>gulfcoast-08-browser-success.png</code> &#8212; Capture the browser showing the portal without an expired certificate warning</li>
+      <li>&#9744; <code>01-hash-sha256.png</code>: Capture the file creation and SHA-256 hash output</li>
+      <li>&#9744; <code>02-hash-comparison.png</code>: Capture both hashes side-by-side showing completely different outputs despite minimal input change</li>
+      <li>&#9744; <code>03-symmetric-encrypt.png</code>: Capture the encryption command and the hex dump showing unreadable encrypted content</li>
+      <li>&#9744; <code>04-symmetric-decrypt.png</code>: Capture the decryption and verification showing the original content restored</li>
+      <li>&#9744; <code>05-rsa-keypair.png</code>: Capture the keypair generation, file listing, and public key contents</li>
+      <li>&#9744; <code>06-rsa-encrypt.png</code>: Capture the encryption command and verify the encrypted file exists</li>
+      <li>&#9744; <code>07-rsa-decrypt.png</code>: Capture the decryption showing the original secret message restored</li>
+      <li>&#9744; <code>08-signature-create.png</code>: Capture the signing command and file listing showing both the order and signature files</li>
+      <li>&#9744; <code>09-signature-verify.png</code>: Capture the verification showing “Verified OK” message</li>
+      <li>&#9744; <code>10-keygen-rsa.png</code>: Capture the RSA key generation showing the randomart and file listing</li>
+      <li>&#9744; <code>11-keygen-ed25519.png</code>: Capture the ED25519 generation and size comparison. Notice the ED25519 public key is about 100 bytes while RSA is about 750 bytes</li>
+      <li>&#9744; <code>12-permission-error.png</code>: Capture the output showing the nobody user successfully reading your private key. The -----BEGIN OPENSSH PRIVATE KEY----- header should be visible</li>
+      <li>&#9744; <code>13-permission-fixed.png</code>: Capture the Permission denied output from the nobody user, along with the stat output confirming your original keys are still secure</li>
+      <li>&#9744; <code>14-authorized-keys.png</code>: Capture the .ssh directory listing and authorized_keys content</li>
+      <li>&#9744; <code>15-ssh-keyauth.png</code>: Capture the successful SSH connection using key-based authentication</li>
+      <li>&#9744; <code>16-ssh-config.png</code>: Capture the SSH config file contents and successful connection using the alias</li>
+      <li>&#9744; <code>17-mfa-login.png</code>: Capture your successful MFA login showing both prompts and the whoami output</li>
+      <li>&#9744; <code>gulfcoast-01-initial-error.png</code>: Capture the browser certificate error</li>
+      <li>&#9744; <code>gulfcoast-02-cert-expired.png</code>: Capture the openssl output showing the expired certificate dates</li>
+      <li>&#9744; <code>gulfcoast-03-csr-generation.png</code>: Capture the CSR generation command and output</li>
+      <li>&#9744; <code>gulfcoast-04-cert-signing.png</code>: Capture the CA signing command and “self-signature ok” output</li>
+      <li>&#9744; <code>gulfcoast-05-cert-installation.png</code>: Capture the certificate installation command</li>
+      <li>&#9744; <code>gulfcoast-06-apache-restart.png</code>: Capture the Apache restart and container restart</li>
+      <li>&#9744; <code>gulfcoast-07-cert-valid.png</code>: Capture the new certificate dates showing future expiration</li>
+      <li>&#9744; <code>gulfcoast-08-browser-success.png</code>: Capture the browser showing the portal without an expired certificate warning</li>
     </ul>
 
     <h2>Document Requirements</h2>
@@ -897,7 +897,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Deadline Tip</div>
-        <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited &#8212; you can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
+        <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
       </div>
     </div>
     <div class="nx-callout nx-red">
@@ -984,7 +984,7 @@
     <h2>Getting Help</h2>
     <ul>
       <li><strong>Discord:</strong> #module-2-help</li>
-      <li><strong>Office Hours:</strong> Calendly — calendly.com/john-newsom-utsa</li>
+      <li><strong>Office Hours:</strong> Calendly: calendly.com/john-newsom-utsa</li>
       <li><strong>Email:</strong> john.newsom@utsa.edu (private matters only)</li>
     </ul>
 
@@ -1023,7 +1023,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>Module 3: Network Traffic Analysis — You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions — demonstrating the before/after in network data.</p>
+        <p>Module 3: Network Traffic Analysis: You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions, demonstrating the before/after in network data.</p>
       </div>
     </div>
   </div>

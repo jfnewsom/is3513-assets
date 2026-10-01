@@ -5,12 +5,12 @@
   "labType": "foundation",
   "module": "Module 4: Threats &#38; Attacks",
   "chapters": [
-   "Chapter 15 &#8212; Types of Attacks",
-   "Chapter 16 &#8212; Security Tools"
+   "Chapter 15: Types of Attacks",
+   "Chapter 16: Security Tools"
   ]
  },
  "intro": {
-  "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them &#8212; and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat &#8212; two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
+  "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them, and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat: two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
   "objectives": [
    "Identify and analyze NTLM hash format characteristics",
    "Execute wordlist attacks using John the Ripper",
@@ -41,35 +41,35 @@
    "character": "Carmen Vega",
    "title": "Junior Analyst (OSINT), NEXUS Security",
    "headshot": "carmen-vega.png",
-   "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others &#8212; executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
+   "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others. Executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
   }
  },
  "timeGuide": {
   "rows": [
    {
     "task": "Checkpoint 1: Hash file setup and format identification",
-    "time": "30&#8211;45 min"
+    "time": "30 to 45 min"
    },
    {
     "task": "Checkpoint 2: John the Ripper attack",
-    "time": "45&#8211;60 min"
+    "time": "45 to 60 min"
    },
    {
     "task": "Checkpoint 3: Hashcat attack",
-    "time": "45&#8211;60 min"
+    "time": "45 to 60 min"
    },
    {
     "task": "Checkpoint 4: Results analysis and documentation",
-    "time": "30&#8211;45 min"
+    "time": "30 to 45 min"
    },
    {
     "task": "Quiz preparation and completion",
-    "time": "15&#8211;20 min"
+    "time": "15 to 20 min"
    }
   ],
   "totalRow": {
    "label": "TOTAL",
-   "time": "2.5&#8211;4 hours"
+   "time": "2.5 to 4 hours"
   },
   "timesheetNote": "Cracking time varies based on your hardware. NTLM hashes crack quickly even without a GPU, but Hashcat will demonstrate the speed difference when GPU acceleration is available. If rockyou.txt is still compressed, you&#8217;ll need to extract it first."
  },
@@ -80,14 +80,14 @@
    "content": [
     {
      "type": "narrative",
-     "whatYoureDoing": "Downloading the Brazos Financial hash file and understanding the NTLM format &#8212; why it&#8217;s weak and why attackers love finding Windows credential stores.",
-     "whyItMatters": "Understanding hash formats is fundamental to password security assessment. NTLM is a legacy Windows authentication protocol that stores passwords as unsalted MD4 hashes. &#8220;Unsalted&#8221; means identical passwords produce identical hashes &#8212; making rainbow table attacks trivially effective. This is why penetration testers celebrate when they find NTLM in an environment."
+     "whatYoureDoing": "Downloading the Brazos Financial hash file and understanding the NTLM format: why it&#8217;s weak and why attackers love finding Windows credential stores.",
+     "whyItMatters": "Understanding hash formats is fundamental to password security assessment. NTLM is a legacy Windows authentication protocol that stores passwords as unsalted MD4 hashes. &#8220;Unsalted&#8221; means identical passwords produce identical hashes, making rainbow table attacks trivially effective. This is why penetration testers celebrate when they find NTLM in an environment."
     },
     {
      "type": "steps",
      "steps": [
       {
-       "text": "Download <code>brazos-hashes.txt</code> &mdash; <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-hashes.txt\" target=\"_blank\" download>click here to download</a>",
+       "text": "Download <code>brazos-hashes.txt</code>: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-hashes.txt\" target=\"_blank\" download>click here to download</a>",
        "command": null,
        "whatThisDoes": null
       },
@@ -106,7 +106,7 @@
        "command": "cat brazos-hashes.txt",
        "whatThisDoes": {
         "concept": "<code>cat</code> displays the full contents of a file. Here you&#8217;re examining the hash file to understand its format before attacking it.",
-        "output": "You should see 8 lines in <code>pwdump</code> format: <code>username:UID:LM_hash:NTLM_hash:::</code>. The NTLM hash is the FOURTH field, a 32-character hexadecimal string &#8212; no salt, no algorithm identifier, just the raw hash. Look at the third field: it is <code>aad3b435b51404eeaad3b435b51404ee</code> on every account, the well-known value for an empty LM hash. That tells you Brazos has legacy LM password storage disabled, which is worth recording as a positive finding.",
+        "output": "You should see 8 lines in <code>pwdump</code> format: <code>username:UID:LM_hash:NTLM_hash:::</code>. The NTLM hash is the FOURTH field, a 32-character hexadecimal string: no salt, no algorithm identifier, just the raw hash. Look at the third field: it is <code>aad3b435b51404eeaad3b435b51404ee</code> on every account, the well-known value for an empty LM hash. That tells you Brazos has legacy LM password storage disabled, which is worth recording as a positive finding.",
         "flags": null
        }
       },
@@ -114,7 +114,7 @@
        "text": "Count the total hashes:",
        "command": "wc -l brazos-hashes.txt",
        "whatThisDoes": {
-        "concept": "<code>wc -l</code> counts the number of lines in a file. In a real engagement, you&#8217;d use this to scope the attack &#8212; knowing how many accounts you&#8217;re targeting helps estimate the time and resources needed to crack them all.",
+        "concept": "<code>wc -l</code> counts the number of lines in a file. In a real engagement, you&#8217;d use this to scope the attack: knowing how many accounts you&#8217;re targeting helps estimate the time and resources needed to crack them all.",
         "output": null,
         "flags": null
        }
@@ -134,7 +134,7 @@
        "text": "Verify the rockyou.txt wordlist is available and check its size:",
        "command": "wc -l /usr/share/wordlists/rockyou.txt",
        "whatThisDoes": {
-        "concept": "<code>wc -l</code> counts lines in a file. The rockyou.txt wordlist contains over 14 million leaked passwords from a real 2009 data breach &#8212; it&#8217;s the most commonly used wordlist in password auditing because it represents actual human password choices.",
+        "concept": "<code>wc -l</code> counts lines in a file. The rockyou.txt wordlist contains over 14 million leaked passwords from a real 2009 data breach. It&#8217;s the most commonly used wordlist in password auditing because it represents actual human password choices.",
         "output": "You should see approximately 14,344,391 lines. If you get a &#8220;No such file&#8221; error, the wordlist is still compressed. Run <code>sudo gunzip /usr/share/wordlists/rockyou.txt.gz</code> first.",
         "flags": null
        }
@@ -154,7 +154,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15 covers password attacks in detail. The textbook does not count toward your ten references &#8212; read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 15: Types of Attacks.</em>",
+     "text": "Chapter 15 covers password attacks in detail. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 15: Types of Attacks.</em>",
      "calloutType": "thatsAReference"
     },
     {
@@ -182,7 +182,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness &#8212; understanding format differences helps you assess password storage security. <em>This chapter is essential reading &#8212; add it to your Lab 4.3 references.</em>",
+     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness. Understanding format differences helps you assess password storage security. <em>This chapter is essential reading. Add it to your Lab 4.3 references.</em>",
      "calloutType": "textbookReference"
     }
    ]
@@ -194,7 +194,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Using John the Ripper to crack NTLM hashes with the rockyou.txt wordlist. John is a versatile, CPU-based password cracker that automatically detects hash formats.",
-     "whyItMatters": "John the Ripper has been the industry standard for password auditing since 1996. It&#8217;s preinstalled on every security distribution and supports hundreds of hash formats. Understanding John&#8217;s workflow &#8212; format detection, wordlist selection, and result retrieval &#8212; is fundamental pentesting knowledge."
+     "whyItMatters": "John the Ripper has been the industry standard for password auditing since 1996. It&#8217;s preinstalled on every security distribution and supports hundreds of hash formats. Understanding John&#8217;s workflow (format detection, wordlist selection, and result retrieval) is fundamental pentesting knowledge."
     },
     {
      "type": "callout",
@@ -202,7 +202,7 @@
      "headshot": "maya-rodriguez.png",
      "calloutType": "characterQuote",
      "title": "Senior Penetration Tester, NEXUS Security",
-     "quote": "Start with the wordlist. If that fails, OSINT is your friend. Don&#8217;t brute force &#8212; think like the user. People are predictable. Sports teams, kids&#8217; names, graduation years. The password is usually simpler than you expect."
+     "quote": "Start with the wordlist. If that fails, OSINT is your friend. Don&#8217;t brute force. Think like the user. People are predictable. Sports teams, kids&#8217; names, graduation years. The password is usually simpler than you expect."
     },
     {
      "type": "steps",
@@ -217,7 +217,7 @@
        "command": "john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT brazos-hashes.txt",
        "whatThisDoes": {
         "concept": "<code>john</code> is John the Ripper, one of the most widely used password cracking tools. The <code>--wordlist</code> flag tells it to try every password in the rockyou.txt dictionary (14 million+ real leaked passwords). The <code>--format=NT</code> flag specifies that these are NTLM hashes.",
-        "output": "Watch for lines showing cracked passwords as they&#8217;re found. John will display the username and plaintext password for each successful crack. Note the speed &#8212; NTLM hashes crack extremely fast because the algorithm was never designed to resist offline attacks.",
+        "output": "Watch for lines showing cracked passwords as they&#8217;re found. John will display the username and plaintext password for each successful crack. Note the speed. NTLM hashes crack extremely fast because the algorithm was never designed to resist offline attacks.",
         "flags": null
        }
       },
@@ -225,7 +225,7 @@
        "text": "Check status if John is still running:",
        "command": "john --status",
        "whatThisDoes": {
-        "concept": "The <code>--status</code> flag queries a running John session and reports progress &#8212; how many passwords have been tested, the current speed (candidates per second), and estimated time remaining. This is useful when an attack takes longer than expected.",
+        "concept": "The <code>--status</code> flag queries a running John session and reports progress: how many passwords have been tested, the current speed (candidates per second), and estimated time remaining. This is useful when an attack takes longer than expected.",
         "output": null,
         "flags": null
        }
@@ -246,7 +246,7 @@
        "command": "john --show --format=NT brazos-hashes.txt",
        "whatThisDoes": {
         "concept": "The <code>--show</code> flag tells John to display all previously cracked passwords from its potfile (<code>~/.john/john.pot</code>). John stores results persistently so you can retrieve them later without re-running the attack.",
-        "output": "You should see each cracked account listed as <code>username:password</code> followed by a summary line showing how many were cracked out of the total. Record these &#8212; you&#8217;ll need them for your results table.",
+        "output": "You should see each cracked account listed as <code>username:password</code> followed by a summary line showing how many were cracked out of the total. Record these; you&#8217;ll need them for your results table.",
         "flags": null
        }
       }
@@ -265,8 +265,8 @@
        "text": "Examine John&#8217;s potfile to see how cracked passwords are stored:",
        "command": "cat ~/.john/john.pot",
        "whatThisDoes": {
-        "concept": "John stores every cracked password in a plain-text potfile at <code>~/.john/john.pot</code>. This is why <code>--show</code> works after an attack completes &#8212; it reads from this file. On a real engagement, the potfile is a sensitive artifact that must be secured.",
-        "output": "You should see lines in <code>hash:password</code> format. Compare this to the <code>--show</code> output &#8212; <code>--show</code> maps hashes back to usernames, while the potfile stores raw hash-to-password pairs.",
+        "concept": "John stores every cracked password in a plain-text potfile at <code>~/.john/john.pot</code>. This is why <code>--show</code> works after an attack completes. It reads from this file. On a real engagement, the potfile is a sensitive artifact that must be secured.",
+        "output": "You should see lines in <code>hash:password</code> format. Compare this to the <code>--show</code> output: <code>--show</code> maps hashes back to usernames, while the potfile stores raw hash-to-password pairs.",
         "flags": null
        }
       }
@@ -285,7 +285,7 @@
     },
     {
      "type": "callout",
-     "text": "You just used a man page! Run <code>man john</code> and add to your references: <em>john(8) &#8212; John the Ripper password cracker. Linux manual page.</em>",
+     "text": "You just used a man page! Run <code>man john</code> and add to your references: <em>john(8): John the Ripper password cracker. Linux manual page.</em>",
      "calloutType": "thatsAReference"
     },
     {
@@ -308,12 +308,12 @@
     },
     {
      "type": "callout",
-     "text": "At least 2 passwords cracked from the Brazos hash file. Record the usernames, cracked passwords, and approximate time to crack. Not all 8 will crack &#8212; that&#8217;s by design.",
+     "text": "At least 2 passwords cracked from the Brazos hash file. Record the usernames, cracked passwords, and approximate time to crack. Not all 8 will crack; that&#8217;s by design.",
      "calloutType": "whatYouShouldHave"
     },
     {
      "type": "callout",
-     "text": "Chapter 16 covers security tools and penetration testing techniques. John the Ripper represents decades of password cracking evolution &#8212; its attack modes mirror how real adversaries approach credential theft.",
+     "text": "Chapter 16 covers security tools and penetration testing techniques. John the Ripper represents decades of password cracking evolution. Its attack modes mirror how real adversaries approach credential theft.",
      "calloutType": "textbookReference"
     }
    ]
@@ -325,7 +325,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Using Hashcat to crack the same NTLM hashes with GPU acceleration (or CPU fallback). Hashcat is the modern standard for high-speed password recovery.",
-     "whyItMatters": "Hashcat leverages GPU parallel processing for dramatically faster cracking speeds. On modern hardware, Hashcat can test billions of NTLM hashes per second &#8212; compared to millions with CPU-only tools. Understanding both John and Hashcat gives you flexibility for different assessment scenarios."
+     "whyItMatters": "Hashcat leverages GPU parallel processing for dramatically faster cracking speeds. On modern hardware, Hashcat can test billions of NTLM hashes per second, compared to millions with CPU-only tools. Understanding both John and Hashcat gives you flexibility for different assessment scenarios."
     },
     {
      "type": "steps",
@@ -335,7 +335,7 @@
        "command": "cut -d':' -f4 brazos-hashes.txt > brazos-hashes-only.txt",
        "whatThisDoes": {
         "concept": "<code>cut</code> splits each line on a delimiter and extracts specific fields. Here, <code>-d':'</code> sets the colon as the delimiter and <code>-f4</code> grabs the fourth field. Always check the layout before you cut: this file is pwdump format, <code>username:UID:LM_hash:NTLM_hash:::</code>, so field 2 is the numeric UID and field 3 is the LM hash. The NTLM hash you want is field 4. Unlike John, which reads the whole pwdump line, Hashcat expects the hash alone with nothing else on it.",
-        "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat brazos-hashes-only.txt</code> &#8212; you should see only 32-character hex strings, one per line, with no usernames.",
+        "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat brazos-hashes-only.txt</code>. You should see only 32-character hex strings, one per line, with no usernames.",
         "flags": null
        }
       }
@@ -355,7 +355,7 @@
        "command": "hashcat -m 1000 -a 0 brazos-hashes-only.txt /usr/share/wordlists/rockyou.txt -D 1",
        "whatThisDoes": {
         "concept": "Hashcat is a GPU-accelerated password cracker. <code>-m 1000</code> sets the hash mode to NTLM. <code>-a 0</code> selects a straight dictionary attack (try each word as-is). <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough.",
-        "output": "Watch for the <code>Speed.#1</code> line showing hashes per second (H/s). Even in CPU mode, NTLM speeds are remarkably high. Compare this number to John&#8217;s speed from Checkpoint 2 &#8212; this comparison is critical for your engagement report.",
+        "output": "Watch for the <code>Speed.#1</code> line showing hashes per second (H/s). Even in CPU mode, NTLM speeds are remarkably high. Compare this number to John&#8217;s speed from Checkpoint 2. This comparison is critical for your engagement report.",
         "flags": null
        }
       }
@@ -374,7 +374,7 @@
        "text": "Display all cracked results:",
        "command": "hashcat -m 1000 brazos-hashes-only.txt --show",
        "whatThisDoes": {
-        "concept": "Like John, Hashcat stores cracked results in a potfile (<code>~/.local/share/hashcat/hashcat.potfile</code>). The <code>--show</code> flag displays all previously cracked hashes matched against your input file. The output format is <code>hash:password</code> &#8212; note this is reversed from John&#8217;s <code>username:password</code> format. Record these results for your comparison table.",
+        "concept": "Like John, Hashcat stores cracked results in a potfile (<code>~/.local/share/hashcat/hashcat.potfile</code>). The <code>--show</code> flag displays all previously cracked hashes matched against your input file. The output format is <code>hash:password</code>. Note this is reversed from John&#8217;s <code>username:password</code> format. Record these results for your comparison table.",
         "output": null,
         "flags": null
        }
@@ -395,7 +395,7 @@
        "command": "cat ~/.local/share/hashcat/hashcat.potfile",
        "whatThisDoes": {
         "concept": "Hashcat stores cracked passwords in its own potfile at <code>~/.local/share/hashcat/hashcat.potfile</code>. Both John and Hashcat use potfiles, but they store them in different locations with slightly different formats. Knowing where each tool keeps its results is essential for engagement documentation.",
-        "output": "You should see <code>hash:password</code> pairs. Compare this to John&#8217;s potfile &#8212; both store the same data but in different directory locations. This is why deleting potfiles is sometimes necessary when re-running attacks.",
+        "output": "You should see <code>hash:password</code> pairs. Compare this to John&#8217;s potfile. Both store the same data but in different directory locations. This is why deleting potfiles is sometimes necessary when re-running attacks.",
         "flags": null
        }
       }
@@ -414,7 +414,7 @@
     },
     {
      "type": "callout",
-     "text": "The Hashcat wiki documents all attack modes and hash types. The textbook does not count toward your ten references &#8212; read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat Wiki. (n.d.). Example hashes. https://hashcat.net/wiki/doku.php?id=example_hashes</em>",
+     "text": "The Hashcat wiki documents all attack modes and hash types. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat Wiki. (n.d.). Example hashes. https://hashcat.net/wiki/doku.php?id=example_hashes</em>",
      "calloutType": "thatsAReference"
     },
     {
@@ -424,7 +424,7 @@
     },
     {
      "type": "callout",
-     "text": "The Hashcat documentation explains GPU performance. The textbook does not count toward your ten references &#8212; read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat. (n.d.). Hashcat FAQ &#8212; Performance. https://hashcat.net/wiki/doku.php?id=frequently_asked_questions</em>",
+     "text": "The Hashcat documentation explains GPU performance. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat. (n.d.). Hashcat FAQ, Performance. https://hashcat.net/wiki/doku.php?id=frequently_asked_questions</em>",
      "calloutType": "thatsAReference"
     },
     {
@@ -436,7 +436,7 @@
       },
       {
        "label": "Wrong input format",
-       "text": "Hashcat wants raw hashes only. This file is pwdump format (<code>username:UID:LM:NTLM:::</code>), so use <code>cut -d':' -f4</code> to pull the NTLM hash. Inspect a line before you cut &#8212; <code>-f2</code> returns the numeric UID, not a hash."
+       "text": "Hashcat wants raw hashes only. This file is pwdump format (<code>username:UID:LM:NTLM:::</code>), so use <code>cut -d':' -f4</code> to pull the NTLM hash. Inspect a line before you cut: <code>-f2</code> returns the numeric UID, not a hash."
       },
       {
        "label": "Potfile already has results",
@@ -452,7 +452,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 16 discusses tool selection and performance considerations. Hashcat&#8217;s GPU acceleration demonstrates why password complexity matters &#8212; weak passwords fall in seconds regardless of the algorithm.",
+     "text": "Chapter 16 discusses tool selection and performance considerations. Hashcat&#8217;s GPU acceleration demonstrates why password complexity matters: weak passwords fall in seconds regardless of the algorithm.",
      "calloutType": "textbookReference"
     }
    ]
@@ -495,7 +495,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Save all notes &#8212; you&#8217;ll need them for Lab 4.3",
+       "text": "Save all notes; you&#8217;ll need them for Lab 4.3",
        "command": null,
        "whatThisDoes": null
       }
@@ -544,7 +544,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 16 covers security tools and best practices. The textbook does not count toward your ten references &#8212; read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 16: Security Tools.</em>",
+     "text": "Chapter 16 covers security tools and best practices. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 16: Security Tools.</em>",
      "calloutType": "thatsAReference"
     },
     {
@@ -564,15 +564,15 @@
      "items": [
       {
        "label": "Incomplete documentation",
-       "text": "Record ALL accounts, not just the ones that cracked &#8212; survived passwords matter too"
+       "text": "Record ALL accounts, not just the ones that cracked; survived passwords matter too"
       },
       {
        "label": "Missing analysis",
-       "text": "&#8220;Password cracked&#8221; isn&#8217;t enough &#8212; explain WHY it was weak (dictionary word, short, predictable)"
+       "text": "&#8220;Password cracked&#8221; isn&#8217;t enough; explain WHY it was weak (dictionary word, short, predictable)"
       },
       {
        "label": "No tool comparison",
-       "text": "Document speed differences between John and Hashcat &#8212; this is valuable real-world knowledge"
+       "text": "Document speed differences between John and Hashcat; this is valuable real-world knowledge"
       }
      ],
      "calloutType": "commonPitfalls"
@@ -584,7 +584,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact &#8212; the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for Lab 4.3.</em>",
+     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact: the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for Lab 4.3.</em>",
      "calloutType": "textbookReference"
     }
    ]
@@ -596,7 +596,7 @@
    "items": [
     {
      "label": "Credential Access",
-     "text": "NTLM hashes are a penetration tester&#8217;s goldmine &#8212; fast to crack and often lead to lateral movement"
+     "text": "NTLM hashes are a penetration tester&#8217;s goldmine: fast to crack and often lead to lateral movement"
     },
     {
      "label": "OSINT Enhancement",
@@ -604,7 +604,7 @@
     },
     {
      "label": "Tool Efficiency",
-     "text": "Knowing when to use John vs. Hashcat depends on the scenario &#8212; both belong in your toolkit"
+     "text": "Knowing when to use John vs. Hashcat depends on the scenario; both belong in your toolkit"
     }
    ]
   },
@@ -625,7 +625,7 @@
     }
    ]
   },
-  "connection": "Password cracking bridges offense and defense perfectly. Attackers use these tools to exploit weak credentials &#8212; the same tools defenders use to audit password strength proactively. Understanding cracking speeds informs both attack timelines and defensive response windows. A password that cracks in seconds requires different defensive controls than one that takes hours. This is why both red and blue teams need hands-on cracking experience."
+  "connection": "Password cracking bridges offense and defense perfectly. Attackers use these tools to exploit weak credentials: the same tools defenders use to audit password strength proactively. Understanding cracking speeds informs both attack timelines and defensive response windows. A password that cracks in seconds requires different defensive controls than one that takes hours. This is why both red and blue teams need hands-on cracking experience."
  },
  "finalChecklist": {
   "screenshotTable": [
@@ -729,7 +729,7 @@
     "title": "Screenshot Verification"
    }
   ],
-  "canvasQuiz": "Take the <strong>Lab 4.1 Quiz</strong> in Canvas. The quiz asks about specific outputs from your cracking session &#8212; passwords you cracked, timing results, and tool behavior. <strong>Keep your VM running so you can reference your results.</strong>"
+  "canvasQuiz": "Take the <strong>Lab 4.1 Quiz</strong> in Canvas. The quiz asks about specific outputs from your cracking session: passwords you cracked, timing results, and tool behavior. <strong>Keep your VM running so you can reference your results.</strong>"
  },
  "needHelp": {
   "channels": [
@@ -738,7 +738,7 @@
     "label": "Discord"
    },
    {
-    "detail": "Calendly — calendly.com/john-newsom-utsa",
+    "detail": "Calendly: calendly.com/john-newsom-utsa",
     "label": "Office Hours"
    },
    {
@@ -764,7 +764,7 @@
    "principle": "AI is a tutor, not a ghostwriter."
   },
   "whatsNext": {
-   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format &#8212; and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
+   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format, and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
   }
  }
 }
