@@ -226,9 +226,9 @@
       },
       {
        "text": "Run the container with all required ports:",
-       "command": "docker run -d -p 80:80 -p 443:443 -p 22:22 -p 445:445 -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest",
+       "command": "docker run -d -p 80:80 -p 443:443 -p 22:22 -p 139:139 -p 445:445 -p 137:137/udp -p 8443:8443 --name brazos jfnewsom/brazos-financial:latest",
        "whatThisDoes": {
-        "concept": "docker run creates and starts a container. The -d flag runs it in the background (detached). Each -p flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 445 (SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan: Brazos Financial&#8217;s exposed attack surface.",
+        "concept": "docker run creates and starts a container. The -d flag runs it in the background (detached). Each -p flag maps a container port to your host: 80 (HTTP), 443 (HTTPS), 22 (SSH), 139 and 445 (SMB file sharing), 137/udp (the NetBIOS name service that goes with SMB), and 8443 (alternate HTTPS). These are the services you&#8217;ll scan: Brazos Financial&#8217;s exposed attack surface.",
         "output": null
        }
       },
@@ -237,7 +237,7 @@
        "command": "docker ps",
        "whatThisDoes": {
         "concept": null,
-        "output": "You should see a table with the brazos container listed as &#8220;Up.&#8221; Verify all five port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed. Check the Common Pitfalls below."
+        "output": "You should see a table with the brazos container listed as &#8220;Up.&#8221; Verify all seven port mappings appear in the PORTS column. If the STATUS shows &#8220;Exited,&#8221; the container crashed. Check the Common Pitfalls below."
        }
       },
       {
@@ -744,7 +744,7 @@
   "screenshotTable": [
    {
     "filename": "01-vm-settings.png",
-    "description": "Capture your VM settings window showing the VM name (kali-<your abc123>), RAM allocation, and processor count"
+    "description": "Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count"
    },
    {
     "filename": "02-kali-desktop.png",
@@ -847,7 +847,7 @@
     "items": [
      "Captures from Labs 1.1 and 1.2 are carried into this packet, not just the Unit 3 ones",
      "Every capture in the list above is present, and any extra captures you took are in the Appendix",
-     "Hostname (kali-<your abc123>) visible in every terminal screenshot",
+     "Hostname (kali-&lt;your abc123&gt;) visible in every terminal screenshot",
      "Screenshots are clear and readable"
     ]
    },
@@ -892,7 +892,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 1 is individually required (20 total). A documented failure you captured and explained is not docked."
+    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 1 is individually required. A documented failure you captured and explained is not docked."
    },
    {
     "penalty": "-5%",

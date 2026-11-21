@@ -114,7 +114,7 @@
               "command": "nmap -sV scanme.nmap.org",
               "whatThisDoes": {
                 "concept": "The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open. With it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).",
-                "output": "Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible."
+                "output": "Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible. Check the first line of the report too. The address in parentheses after scanme.nmap.org should not start with 127. If it does, your network&#8217;s DNS is sending you back to your own machine and you are scanning your own VM, which is why every port shows closed. Look up the real address with <code>dig +short scanme.nmap.org @8.8.8.8</code> and scan that address instead."
               }
             },
             {
@@ -607,9 +607,9 @@
           "steps": [
             {
               "text": "Update the database:",
-              "command": "sudo searchsploit -u",
+              "command": "sudo apt update && sudo apt install --only-upgrade exploitdb",
               "whatThisDoes": {
-                "concept": "The -u flag updates your local copy of the Exploit Database. Searchsploit works offline by searching a local mirror, so updating ensures you have the latest exploits. New vulnerabilities are published daily, so keeping this current matters.",
+                "concept": "Searchsploit works offline by searching a local copy of the Exploit Database, which Kali installs as the exploitdb package. Upgrading that package pulls in the latest exploits. New vulnerabilities are published daily, so keeping this current matters. You may see sudo searchsploit -u used for this elsewhere. It updates the same database, but on a fresh Kali install it can also download a separate 2.5 GB archive of papers that this lab does not use.",
                 "output": null
               }
             },
@@ -649,7 +649,7 @@
           "title": "Common Pitfalls",
           "items": [
             "Too broad: &#8220;apache&#8221; returns thousands; add version numbers to narrow results",
-            "Outdated database: Run searchsploit -u periodically to update",
+            "Outdated database: Run sudo apt install --only-upgrade exploitdb periodically to update",
             "Not all exploits work: Many require specific conditions; read the exploit code before attempting"
           ],
           "calloutType": "commonPitfalls"
@@ -759,7 +759,7 @@
       {
         "title": "Screenshot Verification",
         "items": [
-          "Hostname (kali-<your abc123>) visible in terminal screenshots",
+          "Hostname (kali-&lt;your abc123&gt;) visible in terminal screenshots",
           "All screenshots clear and readable",
           "All screenshots saved to Module1_Screenshots folder"
         ]

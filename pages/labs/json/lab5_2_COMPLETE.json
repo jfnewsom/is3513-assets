@@ -53,7 +53,7 @@
    {
     "type": "warning",
     "title": "Minimum Requirements",
-    "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-<your abc123>). Use naming convention: ##-description.png."
+    "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-&lt;your abc123&gt;). Use naming convention: ##-description.png."
    },
    {
     "type": "warning",
@@ -83,7 +83,7 @@
      "CVSS 3.1 scores and severity ratings for all 10 findings",
      "5&#215;5 risk matrix with findings plotted and color coded",
      "Prioritized remediation roadmap draft",
-     "10 screenshots documenting your full methodology"
+     "Your Lab 5.1 screenshots documenting your full methodology"
     ]
    },
    {
@@ -568,7 +568,7 @@
       "Part II Risk Analysis: risk matrix included and color coded",
       "Part II Recommendations: roadmap with phased timelines",
       "All Lab 5.1 screenshots included as evidence",
-      "VM name visible in terminal screenshots (kali-<your abc123>)",
+      "VM name visible in terminal screenshots (kali-&lt;your abc123&gt;)",
       "Minimum 10 references included",
       "Document is .docx format (not PDF)",
       "Professional formatting and grammar throughout"
@@ -832,7 +832,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per screenshot missing or with VM hostname (kali-<your abc123>) not visible. Floor for Module 5 is set by the compressed lab structure; see the lab body."
+    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 5 is individually required. A documented failure you captured and explained is not docked."
    },
    {
     "penalty": "-5%",

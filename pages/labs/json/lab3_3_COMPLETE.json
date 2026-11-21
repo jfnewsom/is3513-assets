@@ -46,7 +46,7 @@
     "type": "warning",
     "title": "Minimum Requirements",
     "icon": "warning",
-    "body": "Your Engagement Packet must include: all required sections in order, 11 screenshots from this unit (20 through 30) plus screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page."
+    "body": "Your Engagement Packet must include: all required sections in order, screenshots 20 through 30 from this unit plus your screenshots from Labs 3.1 and 3.2, VM hostname visible in every screenshot, and a minimum of 10 references. RFCs, man pages, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page."
    },
    {
     "type": "warning",
@@ -1055,7 +1055,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 3 is individually required (30 total). A documented failure you captured and explained is not docked."
+    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 3 is individually required. A documented failure you captured and explained is not docked."
    },
    {
     "penalty": "-5%",

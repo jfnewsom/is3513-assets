@@ -136,7 +136,7 @@
    "label": "TOTAL",
    "time": "3 to 4.5 hours"
   },
-  "timesheetNote": "This is Unit 3 of a 3-unit module: your first Engagement Packet with <em>two</em> clients. All time this unit is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3 to 4.5 hours (Password Security Assessment)</em>. You should already have 20 screenshots from Labs 4.1 and 4.2 in your <code>Module4_Screenshots</code> folder. Verify the count before you begin.",
+  "timesheetNote": "This is Unit 3 of a 3-unit module: your first Engagement Packet with <em>two</em> clients. All time this unit is billable: split between Brazos Financial Group and Alamo Industries. Log as <em>Client Billable: 3 to 4.5 hours (Password Security Assessment)</em>. Your <code>Module4_Screenshots</code> folder should already hold every capture from Labs 4.1 and 4.2. Check it against the capture callouts in both labs before you begin.",
   "tipCallout": {
    "title": "You’re Already 60 to 70% Done",
    "text": "If you followed the Unit 1-2 instructions, most of your report is already written. This unit is about compilation and analysis, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission."
@@ -276,7 +276,7 @@
     {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "text": "A Word document with all 12 section headers, imported content from Units 1-2, all 12 screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
+     "text": "A Word document with all 12 section headers, imported content from Units 1-2, your screenshots placed in appropriate sections, and placeholder text for the NEW sections you’ll complete in Checkpoints 2-4."
     }
    ]
   },
@@ -839,7 +839,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 4 is individually required (20 total). A documented failure you captured and explained is not docked."
+    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 4 is individually required. A documented failure you captured and explained is not docked."
    },
    {
     "penalty": "-5%",

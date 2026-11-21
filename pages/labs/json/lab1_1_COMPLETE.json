@@ -275,7 +275,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Configure the VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Configure the VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
        "command": null,
        "whatThisDoes": null
       },
@@ -324,7 +324,7 @@
      "title": "Common Pitfalls",
      "text": null,
      "items": [
-      "Leaving the placeholder name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+      "Leaving the placeholder name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
       "Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues",
       "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
      ],
@@ -390,7 +390,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Set the hostname to match your VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Set the hostname to match your VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
        "command": null,
        "whatThisDoes": null
       },
@@ -423,6 +423,13 @@
        "text": "Wait for installation to complete (15-25 minutes)",
        "command": null,
        "whatThisDoes": null
+      },
+      {
+       "text": "When the installer asks whether to install the GRUB boot loader, choose Yes. On the next screen, select your virtual hard disk (usually /dev/sda) as the boot loader device",
+       "command": null,
+       "whatThisDoes": {
+        "concept": "GRUB is the boot loader: the small program that starts Kali when the VM powers on. There are two questions, and both matter. Answer No, or skip choosing the disk, and the installer finishes but the VM cannot boot."
+       }
       },
       {
        "text": "Reboot when prompted",
@@ -512,6 +519,13 @@
        "whatThisDoes": {
         "concept": "usermod -aG appends your user to a group. By default, Docker commands require root access. Adding yourself to the docker group lets you run Docker without sudo every time."
        }
+      },
+      {
+       "text": "Log out of Kali and log back in (or reboot the VM) so the group change takes effect",
+       "command": null,
+       "whatThisDoes": {
+        "concept": "Your group memberships are read when you log in, so the terminal you already have open does not know you joined the docker group. Until you log out and back in, Docker commands without sudo fail with a permission error."
+       }
       }
      ]
     },
@@ -523,21 +537,22 @@
      "body": "After adding yourself to the docker group, you must log out and back in (or reboot) for the group membership to take effect. Until then, you'll need sudo for docker commands."
     },
     {
-     "start": 5,
+     "start": 7,
      "type": "steps",
      "steps": [
       {
        "text": "Check the Docker version",
        "command": "docker --version",
        "whatThisDoes": {
-        "output": "You should see the installed Docker version number. If you get \"command not found\" or a permission error, the installation didn't complete correctly or you haven't logged out and back in yet."
+        "output": "You should see the installed Docker version number. If you get \"command not found\", the installation didn't complete correctly."
        }
       },
       {
        "text": "Run the Docker test container",
        "command": "docker run hello-world",
        "whatThisDoes": {
-        "concept": "docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see \"Hello from Docker!\", Docker is fully working."
+        "concept": "docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see \"Hello from Docker!\", Docker is fully working.",
+        "output": "You should see \"Hello from Docker!\" followed by a short explanation of what Docker just did. If you get \"permission denied while trying to connect to the Docker daemon socket\", you haven't logged out and back in since adding yourself to the docker group. Do that, then run this command again."
        }
       }
      ]
@@ -607,7 +622,7 @@
        "text": "Display your hostname",
        "command": "hostname",
        "whatThisDoes": {
-        "output": "This should show your VM name in the form kali-<your abc123> (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding."
+        "output": "This should show your VM name in the form kali-&lt;your abc123&gt; (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding."
        }
       },
       {
@@ -699,7 +714,7 @@
      "text": null,
      "items": [
       "No network: Check VirtualBox network adapter settings (NAT should work)",
-      "Tool not found: Some tools may need installation; use sudo apt install <tool-name>",
+      "Tool not found: Some tools may need installation; use sudo apt install &lt;tool-name&gt;",
       "Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding"
      ],
      "type": "callout",
@@ -791,7 +806,7 @@
    {
     "title": "Environment Verification",
     "items": [
-     "VM named kali-<your abc123> (your own ID, not the placeholder)",
+     "VM named kali-&lt;your abc123&gt; (your own ID, not the placeholder)",
      "Kali Linux boots to desktop",
      "Docker installed, running, and hello-world container executes",
      "All four screenshots saved to Module1_Screenshots folder"

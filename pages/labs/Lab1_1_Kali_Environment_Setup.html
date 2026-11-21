@@ -272,7 +272,7 @@
     <ol>
       <li>In VirtualBox Manager, click New
       </li>
-      <li>Configure the VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
+      <li>Configure the VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
       </li>
       <li>Set Type: Linux, Version: Debian (64-bit)
       </li>
@@ -304,7 +304,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Leaving the placeholder name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.</li>
+          <li>Leaving the placeholder name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.</li>
           <li>Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues</li>
           <li>ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings</li>
         </ul>
@@ -362,7 +362,7 @@
       </li>
       <li>Choose your language, location, and keyboard layout
       </li>
-      <li>Set the hostname to match your VM name. Name your VM kali-<your abc123>, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
+      <li>Set the hostname to match your VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
       </li>
       <li>Leave domain name blank
       </li>
@@ -375,6 +375,14 @@
       <li>Confirm and write changes to disk
       </li>
       <li>Wait for installation to complete (15-25 minutes)
+      </li>
+      <li>When the installer asks whether to install the GRUB boot loader, choose Yes. On the next screen, select your virtual hard disk (usually /dev/sda) as the boot loader device
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> GRUB is the boot loader: the small program that starts Kali when the VM powers on. There are two questions, and both matter. Answer No, or skip choosing the disk, and the installer finishes but the VM cannot boot.</p>
+          </div>
+        </details>
       </li>
       <li>Reboot when prompted
       </li>
@@ -474,6 +482,14 @@
           </div>
         </details>
       </li>
+      <li>Log out of Kali and log back in (or reboot the VM) so the group change takes effect
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Your group memberships are read when you log in, so the terminal you already have open does not know you joined the docker group. Until you log out and back in, Docker commands without sudo fail with a permission error.</p>
+          </div>
+        </details>
+      </li>
     </ol>
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
@@ -482,13 +498,13 @@
         <p>After adding yourself to the docker group, you must log out and back in (or reboot) for the group membership to take effect. Until then, you'll need sudo for docker commands.</p>
       </div>
     </div>
-    <ol start="5">
+    <ol start="7">
       <li>Check the Docker version
         <div class="nx-cmd">docker --version</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> You should see the installed Docker version number. If you get "command not found" or a permission error, the installation didn't complete correctly or you haven't logged out and back in yet.</p>
+            <p><strong>In your output:</strong> You should see the installed Docker version number. If you get "command not found", the installation didn't complete correctly.</p>
           </div>
         </details>
       </li>
@@ -498,6 +514,7 @@
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> docker run pulls an image from Docker Hub and runs it as a container. The hello-world image is a tiny test container that prints a success message. If you see "Hello from Docker!", Docker is fully working.</p>
+            <p><strong>In your output:</strong> You should see "Hello from Docker!" followed by a short explanation of what Docker just did. If you get "permission denied while trying to connect to the Docker daemon socket", you haven't logged out and back in since adding yourself to the docker group. Do that, then run this command again.</p>
           </div>
         </details>
       </li>
@@ -572,7 +589,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> This should show your VM name in the form kali-<your abc123> (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding.</p>
+            <p><strong>In your output:</strong> This should show your VM name in the form kali-&lt;your abc123&gt; (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding.</p>
           </div>
         </details>
       </li>
@@ -665,7 +682,7 @@
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>No network: Check VirtualBox network adapter settings (NAT should work)</li>
-          <li>Tool not found: Some tools may need installation; use sudo apt install <tool-name></li>
+          <li>Tool not found: Some tools may need installation; use sudo apt install &lt;tool-name&gt;</li>
           <li>Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding</li>
         </ul>
       </div>
@@ -758,7 +775,7 @@
 
     <h2>Environment Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; VM named kali-<your abc123> (your own ID, not the placeholder)</li>
+      <li>&#9744; VM named kali-&lt;your abc123&gt; (your own ID, not the placeholder)</li>
       <li>&#9744; Kali Linux boots to desktop</li>
       <li>&#9744; Docker installed, running, and hello-world container executes</li>
       <li>&#9744; All four screenshots saved to Module1_Screenshots folder</li>

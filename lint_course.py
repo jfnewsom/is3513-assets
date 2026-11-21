@@ -180,6 +180,21 @@ DENYLIST = [
             # noun form, but only when asserted — "there is no screenshot quota" is the
             # correct sentence and must not trip the rule.
             r"\b(?:screenshot|capture)\s+(?:floor|quota)\s+(?:is|of|for|remains|stays)\b",
+            # Added 2026-11-21. The three patterns above missed every published total in
+            # the course: "individually required (20 total)" in four EP penalty lines, and
+            # bare counts like "save all 9 screenshots" / "You should have 10 screenshots"
+            # in the foundation labs. Any number in front of screenshots/captures is a
+            # count. Lookbehind skips lab numbers ("Lab 5.1 screenshots") and callout
+            # numbers ("#11 screenshots"). Filename ranges are fine and do not match.
+            r"(?<![\d.#])\b\d{1,3}\s+(?:[\w-]+\s+){0,2}(?:screenshot|capture)s\b",
+            r"(?:screenshot|capture)[^.]{0,80}\(\s*\d{1,3}\s+total\s*\)",
+            r"\(\s*\d{1,3}\s+(?:screenshot|capture)s?\s*\)",
+            # "Floor for Module 5 is set by the compressed lab structure" (Lab 5.2 penalty).
+            r"\bfloor\s+for\s+module\s+\d",
+            # "Required captures by module: 20 (M1), 25 (M2), ..." (EP Guide and Screenshot
+            # Requirements, found 2026-11-21 because a student quoted it on Discord).
+            r"\b(?:screenshot|capture)s?\s+by\s+module\b",
+            r"\b\d{1,3}\s*\(M\d\)",
         ],
     },
     {
@@ -422,8 +437,37 @@ def lint():
         except Exception:  # noqa: BLE001
             continue
         check_retired_values(rel, _flatten_markup(raw))
+        check_swallowed_placeholders(rel, raw)
 
     return
+
+
+# Added 2026-11-21. A placeholder written as <your abc123> or <tool-name> in a JSON
+# string is emitted raw by the renderers, and the browser parses it as an unknown
+# tag and shows nothing. Students read "Name your VM kali-, where your abc123 is...".
+# Found in 18 places across 8 labs and the EP Guide, all on the naming rule. Write
+# placeholders as &lt;your abc123&gt; in the JSON.
+_HTML_TAGS = set("""a abbr address area article aside audio b base bdi bdo blockquote
+body br button canvas caption cite code col colgroup data datalist dd del details dfn
+dialog div dl dt em embed fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 head
+header hgroup hr html i iframe img input ins kbd label legend li link main map mark menu
+meta meter nav noscript object ol optgroup option output p param picture pre progress q
+rp rt ruby s samp script section select slot small source span strong style sub summary
+sup table tbody td template textarea tfoot th thead time title tr track u ul var video
+wbr svg path g circle rect line polyline polygon text tspan defs use symbol
+lineargradient radialgradient stop clippath mask pattern filter ellipse foreignobject
+marker""".split())
+
+
+def check_swallowed_placeholders(path, raw):
+    body = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", raw, flags=re.S | re.I)
+    body = re.sub(r"<!--.*?-->", "", body, flags=re.S)
+    for m in re.finditer(r"<\s*/?\s*([A-Za-z][\w\-]*)[^>]*>", body):
+        if m.group(1).lower() not in _HTML_TAGS:
+            snippet = body[max(0, m.start() - 30):m.end() + 10].replace("\n", " ")
+            err(path, f"[PLACEHOLDER-TAG] text in angle brackets is not an HTML tag, so the "
+                      f"browser hides it. Write it as &lt;...&gt; in the source JSON. (…{snippet}…)")
+            return
 
 
 def report():

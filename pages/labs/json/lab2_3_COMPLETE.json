@@ -97,7 +97,7 @@
      "Symmetric encryption with AES-256-CBC (encrypt and decrypt cycle)",
      "Asymmetric encryption with RSA keypairs",
      "Digital signature creation and verification",
-     "9 screenshots (01-hash-sha256.png through 09-signature-verify.png)"
+     "Screenshots 01-hash-sha256.png through 09-signature-verify.png"
     ]
    },
    {
@@ -107,7 +107,7 @@
      "File permission security demonstration (break/fix cycle)",
      "SSH authorized_keys and config file setup",
      "Multi-factor authentication configuration and verification",
-     "8 screenshots (10-keygen-rsa.png through 17-mfa-login.png)"
+     "Screenshots 10-keygen-rsa.png through 17-mfa-login.png"
     ]
    },
    {
@@ -808,7 +808,7 @@
      "title": "Common Pitfalls",
      "items": [
       "<strong>PDF submission:</strong> Must be .docx; PDF submissions receive automatic zero",
-      "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-<your abc123>)",
+      "<strong>Missing VM name:</strong> Every screenshot must show your hostname (kali-&lt;your abc123&gt;)",
       "<strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT; see the Citations page"
      ],
      "calloutType": "commonPitfalls"
@@ -1097,7 +1097,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 2 is individually required (25 total). A documented failure you captured and explained is not docked."
+    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 2 is individually required. A documented failure you captured and explained is not docked."
    },
    {
     "penalty": "-5%",
