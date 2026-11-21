@@ -126,6 +126,7 @@ body {
 
 /* ── Command blocks ───────────────────────────────────────── */
 .nx-cmd {
+  white-space: pre-wrap; /* keep line breaks in multi-line blocks (Lab 2.2 SSH config) */
   background: #1a1f2e;
   padding: 15px 48px 15px 20px;
   border-radius: 6px;

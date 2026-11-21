@@ -183,7 +183,7 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Generate an ED25519 key (modern, faster, smaller):",
+              "text": "Generate an ED25519 key (modern, faster, smaller; use passphrase nexus2026 again):",
               "command": "ssh-keygen -t ed25519 -f ./id_ed25519_lab -C \"lab-ed25519-key\"",
               "whatThisDoes": {
                 "concept": "ED25519 is a modern elliptic curve algorithm that provides equivalent security to RSA-4096 with much smaller keys and faster operations. Most security professionals now recommend ED25519 for new deployments: shorter keys, faster math, no known weaknesses. You&#8217;ll still encounter RSA on legacy systems, which is why you learned both.",
@@ -479,6 +479,14 @@
           "type": "steps",
           "steps": [
             {
+              "text": "Stop the Brazos container from Lab 1.3 if it is still running. It holds port 22, and SSH to localhost would reach Brazos instead of your VM:",
+              "command": "docker stop brazos",
+              "whatThisDoes": {
+                "concept": "Brazos published its SSH port as 22, the same port your Kali SSH server needs. If you rebooted since Lab 1.3, Brazos is already stopped and this just prints its name. If you see <em>No such container</em>, there is nothing to stop.",
+                "output": null
+              }
+            },
+            {
               "text": "Start the SSH service if not running:",
               "command": "sudo systemctl start ssh",
               "whatThisDoes": null
@@ -493,7 +501,7 @@
               "command": "ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami",
               "whatThisDoes": {
                 "concept": "Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.",
-                "output": null,
+                "output": "The first time, SSH asks <em>Are you sure you want to continue connecting (yes/no/[fingerprint])?</em> Type <code>yes</code>; it is your own machine. Then it asks for your key passphrase (nexus2026). That unlocks the key on your machine; it is not a password. You should see your username and no prompt for your account password.",
                 "flags": [
                   {
                     "flag": "-o PasswordAuthentication=no",
@@ -562,7 +570,7 @@
               "command": "ssh labserver whoami",
               "whatThisDoes": {
                 "concept": null,
-                "output": "Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. You should see your username with no password prompt.",
+                "output": "Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. SSH asks for your key passphrase again, then shows your username. You should not be asked for your account password.",
                 "flags": null
               }
             }
@@ -591,7 +599,7 @@
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
-          "text": "Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.",
+          "text": "Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect with only your key passphrase, never your account password.",
           "calloutType": "whatYouShouldHave"
         },
         {

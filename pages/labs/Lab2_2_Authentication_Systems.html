@@ -178,7 +178,7 @@
     </div>
     <h3>Part B: Generate an ED25519 keypair</h3>
     <ol>
-      <li>Generate an ED25519 key (modern, faster, smaller):
+      <li>Generate an ED25519 key (modern, faster, smaller; use passphrase nexus2026 again):
         <div class="nx-cmd">ssh-keygen -t ed25519 -f ./id_ed25519_lab -C "lab-ed25519-key"</div>
         <details>
           <summary>What this does</summary>
@@ -462,6 +462,15 @@
     </div>
     <h3>Part B: Test key-based authentication</h3>
     <ol>
+      <li>Stop the Brazos container from Lab 1.3 if it is still running. It holds port 22, and SSH to localhost would reach Brazos instead of your VM:
+        <div class="nx-cmd">docker stop brazos</div>
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Brazos published its SSH port as 22, the same port your Kali SSH server needs. If you rebooted since Lab 1.3, Brazos is already stopped and this just prints its name. If you see <em>No such container</em>, there is nothing to stop.</p>
+          </div>
+        </details>
+      </li>
       <li>Start the SSH service if not running:
         <div class="nx-cmd">sudo systemctl start ssh</div>
       </li>
@@ -474,6 +483,7 @@
           <summary>What this does</summary>
           <div class="nx-details-body">
             <p><strong>Concept:</strong> Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.</p>
+            <p><strong>In your output:</strong> The first time, SSH asks <em>Are you sure you want to continue connecting (yes/no/[fingerprint])?</em> Type <code>yes</code>; it is your own machine. Then it asks for your key passphrase (nexus2026). That unlocks the key on your machine; it is not a password. You should see your username and no prompt for your account password.</p>
             <p><strong>Flags:</strong></p>
             <ul>
               <li><code>-o PasswordAuthentication=no</code>: Disables password fallback so the connection only succeeds with the key</li>
@@ -533,7 +543,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. You should see your username with no password prompt.</p>
+            <p><strong>In your output:</strong> Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. SSH asks for your key passphrase again, then shows your username. You should not be asked for your account password.</p>
           </div>
         </details>
       </li>
@@ -561,7 +571,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect without any password prompt.</p>
+        <p>Three screenshots showing authorized_keys setup, successful key-based SSH connection, and SSH config file usage. You should be able to connect with only your key passphrase, never your account password.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
