@@ -454,6 +454,15 @@
           </div>
         </details>
       </li>
+      <li>Verify the encrypted file exists:
+        <div class="nx-cmd">ls -la secret.enc</div>
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> pkeyutl prints nothing when it succeeds, so list the file to confirm it was written. RSA output is always the size of the key, so a 2048-bit key produces a 256-byte file no matter how short the message was.</p>
+          </div>
+        </details>
+      </li>
     </ol>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
