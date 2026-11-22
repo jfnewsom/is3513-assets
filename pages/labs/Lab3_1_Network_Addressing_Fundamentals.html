@@ -176,7 +176,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your completed conversions (can be handwritten on paper). Save as <code>01-number-conversions.png</code></p>
+        <p>Capture your completed conversions (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>01-number-conversions.png</code></p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -304,7 +304,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your flat network analysis calculations. Save as <code>02-flat-network-analysis.png</code></p>
+        <p>Capture your flat network analysis calculations (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>02-flat-network-analysis.png</code></p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -459,7 +459,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your 172.16.0.0/16 subnet analysis with the table. Save as <code>03-subnet-table.png</code></p>
+        <p>Capture your 172.16.0.0/16 subnet analysis with the table (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>03-subnet-table.png</code></p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -519,7 +519,7 @@
     <h3>Why It Matters</h3>
     <p>In production environments, network configuration errors can cause outages or security gaps. Professionals always verify their calculations with trusted tools before implementing changes.</p>
     <ol>
-      <li>Navigate to <a href="https://mxtoolbox.com/subnetcalculator.aspx">https://mxtoolbox.com/subnetcalculator.aspx</a>
+      <li>In Firefox inside your Kali VM, navigate to <a href="https://mxtoolbox.com/subnetcalculator.aspx">https://mxtoolbox.com/subnetcalculator.aspx</a>
       </li>
       <li>Enter <code>192.168.0.0/22</code> and verify your Checkpoint 2 answers.
       </li>
@@ -532,7 +532,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture MX Toolbox results for one of your CIDR blocks. Save as <code>04-mxtoolbox-verification.png</code></p>
+        <p>Capture MX Toolbox results for one of your CIDR blocks. Take this one with your computer&#8217;s own screenshot tool, not Kali&#8217;s, so the VM window&#8217;s title bar (<code>kali-abc123</code>) is in the picture. Windows: Snipping Tool (Win+Shift+S) in window mode. Mac: Cmd+Shift+4, then Space, then click the VM window. Save as <code>04-mxtoolbox-verification.png</code></p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -592,21 +592,24 @@
     <p>Every security engagement starts with understanding your own network position. Before you can analyze traffic or identify anomalies, you need to know what &#8220;normal&#8221; looks like for your environment. This baseline documentation is exactly what you&#8217;d create at the start of any client engagement or incident response.</p>
     <h3>On Your Host Machine</h3>
     <ol>
-      <li>Windows: <code>ipconfig /all</code> &nbsp;|&nbsp; macOS: <code>ifconfig</code> and <code>netstat -rn</code>
+      <li>Windows: <code>ipconfig /all</code> &nbsp;|&nbsp; macOS: <code>ifconfig</code>, <code>netstat -rn</code>, and <code>scutil --dns | grep nameserver</code> (for DNS servers)
       </li>
-      <li>Document: IP Address, Subnet Mask (convert to CIDR), Default Gateway, DNS Server(s), Connection Type (WiFi or Ethernet).
+      <li>Document: IP Address, Subnet Mask (convert to CIDR), Default Gateway, DNS Server(s), Connection Type (WiFi or Ethernet). On macOS, <code>ifconfig</code> shows the mask in hex (for example <code>netmask 0xffffff00</code>); convert it the way you did in Checkpoint 1. System Settings &gt; Network shows whether you&#8217;re on Wi-Fi or Ethernet.
       </li>
     </ol>
     <h3>In Your Kali VM</h3>
     <ol>
       <li>Show interfaces and addresses:
         <div class="nx-cmd">ip addr</div>
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>In your output:</strong> Your network interface is usually <code>eth0</code>. You&#8217;ll also see <code>lo</code> (loopback, 127.0.0.1) and <code>docker0</code> (the bridge Docker created in Lab 1.1, shown as DOWN when no containers are running). Neither of those is your network connection.</p>
+          </div>
+        </details>
       </li>
       <li>Show routing table:
         <div class="nx-cmd">ip route</div>
-      </li>
-      <li>Show ARP cache (IP to MAC mappings):
-        <div class="nx-cmd">arp -a</div>
       </li>
       <li>Show DNS configuration:
         <div class="nx-cmd">cat /etc/resolv.conf</div>
@@ -614,7 +617,10 @@
       <li>Test internet connectivity:
         <div class="nx-cmd">ping -c 3 8.8.8.8</div>
       </li>
-      <li>Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, VirtualBox Network Mode (NAT, Bridged, etc.).
+      <li>Show ARP cache (IP to MAC mappings). The ping you just ran made Kali look up your gateway&#8217;s MAC address, so the gateway should be listed:
+        <div class="nx-cmd">arp -a</div>
+      </li>
+      <li>Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, hypervisor network mode (VirtualBox: NAT, Bridged, etc.; Parallels: Shared Network, Bridged, etc.).
       </li>
     </ol>
     <div class="nx-callout nx-blue">
@@ -629,7 +635,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Wrong adapter:</strong> Look for your active network adapter, not VirtualBox&#8217;s virtual adapters</li>
+          <li><strong>Wrong adapter:</strong> Look for your active network adapter, not the virtual adapters VirtualBox or Parallels adds to your host</li>
           <li><strong>VPN active:</strong> If using a VPN, your IP might show the VPN&#8217;s address</li>
           <li><strong>VM not running:</strong> Make sure Kali is booted and has network connectivity</li>
         </ul>
@@ -639,7 +645,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and VirtualBox network mode.</p>
+        <p>Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and your hypervisor&#8217;s network mode (VirtualBox or Parallels).</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -682,9 +688,9 @@
     <p>Network topology diagrams are essential for security assessments and incident response. They help teams understand traffic flows, identify chokepoints, and plan defensive controls. The diagram you create here is exactly what you&#8217;d include in a professional security report.</p>
     <h3>Include These Elements</h3>
     <ol>
-      <li>Kali VM (with your IP from Checkpoint 5)
+      <li>Kali VM (labeled with its name, <code>kali-abc123</code>, and your IP from Checkpoint 5)
       </li>
-      <li>VirtualBox NAT (label the network mode)
+      <li>Hypervisor network mode (label it: VirtualBox NAT or Parallels Shared Network)
       </li>
       <li>Host Machine (with your IP from Checkpoint 5)
       </li>
@@ -809,12 +815,12 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <code>01-number-conversions.png</code>: Completed decimal/binary/hex conversion practice</li>
-      <li>&#9744; <code>02-flat-network-analysis.png</code>: CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8</li>
-      <li>&#9744; <code>03-subnet-table.png</code>: Complete subnet table for 172.16.0.0/16 with 4 bits borrowed</li>
-      <li>&#9744; <code>04-mxtoolbox-verification.png</code>: MX Toolbox results confirming hand calculations</li>
+      <li>&#9744; <code>01-number-conversions.png</code>: Completed decimal/binary/hex conversion practice (kali-abc123 written on the page)</li>
+      <li>&#9744; <code>02-flat-network-analysis.png</code>: CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8 (kali-abc123 written on the page)</li>
+      <li>&#9744; <code>03-subnet-table.png</code>: Complete subnet table for 172.16.0.0/16 with 4 bits borrowed (kali-abc123 written on the page)</li>
+      <li>&#9744; <code>04-mxtoolbox-verification.png</code>: MX Toolbox results confirming hand calculations, taken with your host's screenshot tool so the VM window title shows</li>
       <li>&#9744; <code>05-host-kali-config.png</code>: Host and Kali VM network configurations (VM name visible)</li>
-      <li>&#9744; <code>06-topology-diagram.png</code>: Network topology diagram from Kali VM to Azure</li>
+      <li>&#9744; <code>06-topology-diagram.png</code>: Network topology diagram from Kali VM to Azure (Kali box labeled kali-abc123)</li>
     </ul>
 
     <h2>Exercises Completed</h2>
