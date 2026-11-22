@@ -36,7 +36,7 @@
         "type": "warning",
         "icon": "warning",
         "title": "Critical: Install on Host OS",
-        "text": "Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized, so capturing from the host gives you the complete picture."
+        "text": "Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized, so capturing from the host gives you the complete picture. Because these captures come from Wireshark on your host, they don&#8217;t need your VM name in them."
       },
       {
         "type": "characterQuote",
@@ -249,7 +249,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Let it run for 30 seconds while browsing a website.",
+              "text": "Let it run for 30 seconds while browsing a website. Also run <code>curl http://example.com</code> in a terminal (Windows: <code>curl.exe http://example.com</code>), so there is plain HTTP for the <code>http</code> filter to find. Almost every website is HTTPS now.",
               "command": null,
               "whatThisDoes": null
             },
@@ -361,7 +361,7 @@
               "TCP",
               "<code>tcp</code>",
               "Various",
-              "Visit <code>http://neverssl.com</code> and watch the three-way handshake"
+              "Run <code>curl http://example.com</code> in a terminal (Windows: <code>curl.exe http://example.com</code>) and watch the three-way handshake"
             ],
             [
               "UDP",
@@ -373,7 +373,7 @@
               "HTTP",
               "<code>http</code>",
               "80",
-              "Visit <code>http://neverssl.com</code> (stays plain HTTP, no redirect)"
+              "Run <code>curl http://example.com</code> in a terminal (Windows: <code>curl.exe http://example.com</code>). Unlike a browser, <code>curl</code> never quietly upgrades to HTTPS, so this stays plain HTTP"
             ],
             [
               "HTTPS/TLS",
@@ -391,7 +391,7 @@
               "ICMP",
               "<code>icmp</code>",
               "N/A (Layer 3)",
-              "Run <code>ping google.com</code> from a terminal"
+              "Run <code>ping -c 4 google.com</code> (Mac) or <code>ping -4 google.com</code> (Windows) from a terminal"
             ]
           ],
           "note": "Most of this traffic appears as you browse normally; the <strong>How to Generate It</strong> column gives a reliable way to produce each one on demand while Wireshark is capturing.",
@@ -429,7 +429,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Apply the <code>dns</code> filter and capture the filtered traffic. Save as <code>13-dns.png</code>",
+          "text": "For the DNS row, use your <code>08-dns-filter.png</code> from Checkpoint 2. It is the same view (the <code>dns</code> filter applied), so there is no new capture to take.",
           "calloutType": "screenshot"
         },
         {
@@ -446,7 +446,7 @@
           "icon": "warning",
           "items": [
             "<strong>Mixing filter syntax:</strong> BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.",
-            "<strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing; you need to generate it. Run <code>ping google.com</code> in a terminal while Wireshark is capturing.",
+            "<strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing; you need to generate it. While Wireshark is capturing, run <code>ping -c 4 google.com</code> on a Mac (without <code>-c 4</code> it never stops; press Ctrl+C) or <code>ping -4 google.com</code> on Windows (<code>-4</code> forces IPv4; plain <code>ping</code> may use IPv6, which shows under <code>icmpv6</code>, not <code>icmp</code>).",
             "<strong>Missing protocol documentation:</strong> Don't just capture. Document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section.",
             "<strong>Case sensitivity in display filters:</strong> Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
           ]
@@ -600,7 +600,7 @@
               "whatThisDoes": null
             },
             {
-              "text": "Select &#8220;Displayed packets&#8221; to use your current filter.",
+              "text": "Check <strong>Limit to display filter</strong> to use your current filter.",
               "command": null,
               "whatThisDoes": null
             },
@@ -619,7 +619,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture the Flow Graph showing TCP packet sequences between hosts. Use &#8220;Displayed packets&#8221; with a filter applied to keep it readable. Save as <code>18-flow-graph.png</code>",
+          "text": "Capture the Flow Graph showing TCP packet sequences between hosts. Check &#8220;Limit to display filter&#8221; with a filter applied to keep it readable. Save as <code>18-flow-graph.png</code>",
           "calloutType": "screenshot"
         },
         {
@@ -684,7 +684,7 @@
           "type": "callout",
           "icon": "download",
           "title": "Training PCAP",
-          "text": "Download the training PCAP to your host machine: <a href=\"https://raw.githubusercontent.com/jfnewsom/is3513-assets/main/pcaps/credential-leak.pcap\"><strong>credential-leak.pcap</strong></a>",
+          "text": "Download the training PCAP to your host machine: <a href=\"https://jfnewsom.github.io/is3513-assets/pcaps/credential-leak.pcap\"><strong>credential-leak.pcap</strong></a>",
           "calloutType": "tip"
         },
         {
@@ -817,7 +817,7 @@
       },
       {
         "file": "13-dns.png",
-        "description": "DNS display filter applied (full protocol catalog screenshot)"
+        "description": "Same as 08-dns-filter.png (no new capture)"
       },
       {
         "file": "14-icmp.png",
