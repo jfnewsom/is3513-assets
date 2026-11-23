@@ -10,7 +10,7 @@
   ]
  },
  "intro": {
-  "overview": "Brazos Financial Group is a Dallas-based wealth management firm with 450 employees and an SEC exam in 6 months. Last month, NEXUS ran a phishing simulation for them, and the results were ugly. Multiple employees, including senior executives, clicked malicious links and entered credentials on fake login pages. The board was not pleased.\n\nNow Victoria Caldwell (CCO) wants to know: how bad are our passwords, really? CTO Ray Jimenez extracted a sample of 8 Active Directory password hashes for NEXUS to audit. This unit you&#8217;ll crack those Windows NTLM hashes using John the Ripper and Hashcat: two industry-standard password recovery tools. Document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>.",
+  "overview": "Alamo Industries is a San Antonio aerospace and defense manufacturer, 2,500 employees, chasing CMMC Level 2 certification to keep its Department of Defense contracts. The company runs two very different environments: a Windows corporate office and a Linux plant floor. This unit you work the corporate side. Marisol Reyes, Alamo&#8217;s Director of IT and Security, pulled a sample of 8 Active Directory password hashes from the corporate domain and handed them to NEXUS to audit ahead of the CMMC assessment. You&#8217;ll crack those Windows NTLM hashes with John the Ripper and Hashcat, two industry-standard password recovery tools, and document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers on the corporate staff if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>.",
   "objectives": [
    "Identify and analyze NTLM hash format characteristics",
    "Execute wordlist attacks using John the Ripper",
@@ -41,7 +41,7 @@
    "character": "Carmen Vega",
    "title": "Junior Analyst (OSINT), NEXUS Security",
    "headshot": "carmen-vega.png",
-   "quote": "I spent about 2 hours researching each Brazos employee. Some were easier than others. Executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
+   "quote": "I spent about 2 hours researching each Alamo corporate employee. Some were easier than others. Executives have more public presence. Use my dossiers to build targeted wordlists. You&#8217;d be surprised what people leak on LinkedIn and Instagram. Even the &#8216;careful&#8217; ones leave breadcrumbs."
   }
  },
  "timeGuide": {
@@ -80,14 +80,14 @@
    "content": [
     {
      "type": "narrative",
-     "whatYoureDoing": "Downloading the Brazos Financial hash file and understanding the NTLM format: why it&#8217;s weak and why attackers love finding Windows credential stores.",
+     "whatYoureDoing": "Downloading the Alamo corporate hash file and understanding the NTLM format: why it&#8217;s weak and why attackers love finding Windows credential stores.",
      "whyItMatters": "Understanding hash formats is fundamental to password security assessment. NTLM is a legacy Windows authentication protocol that stores passwords as unsalted MD4 hashes. &#8220;Unsalted&#8221; means identical passwords produce identical hashes, making rainbow table attacks trivially effective. This is why penetration testers celebrate when they find NTLM in an environment."
     },
     {
      "type": "steps",
      "steps": [
       {
-       "text": "Download <code>brazos-hashes.txt</code>: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-hashes.txt\" target=\"_blank\" download>click here to download</a>",
+       "text": "Download <code>alamo-corp-hashes.txt</code>: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-hashes.txt\" target=\"_blank\" download>click here to download</a>",
        "command": null,
        "whatThisDoes": null
       },
@@ -103,16 +103,16 @@
       },
       {
        "text": "Examine the file contents:",
-       "command": "cat brazos-hashes.txt",
+       "command": "cat alamo-corp-hashes.txt",
        "whatThisDoes": {
         "concept": "<code>cat</code> displays the full contents of a file. Here you&#8217;re examining the hash file to understand its format before attacking it.",
-        "output": "You should see 8 lines in <code>pwdump</code> format: <code>username:UID:LM_hash:NTLM_hash:::</code>. The NTLM hash is the FOURTH field, a 32-character hexadecimal string: no salt, no algorithm identifier, just the raw hash. Look at the third field: it is <code>aad3b435b51404eeaad3b435b51404ee</code> on every account, the well-known value for an empty LM hash. That tells you Brazos has legacy LM password storage disabled, which is worth recording as a positive finding.",
+        "output": "You should see 8 lines in <code>pwdump</code> format: <code>username:UID:LM_hash:NTLM_hash:::</code>. The NTLM hash is the FOURTH field, a 32-character hexadecimal string: no salt, no algorithm identifier, just the raw hash. Look at the third field: it is <code>aad3b435b51404eeaad3b435b51404ee</code> on every account, the well-known value for an empty LM hash. That tells you Alamo has legacy LM password storage disabled, which is worth recording as a positive finding.",
         "flags": null
        }
       },
       {
        "text": "Count the total hashes:",
-       "command": "wc -l brazos-hashes.txt",
+       "command": "wc -l alamo-corp-hashes.txt",
        "whatThisDoes": {
         "concept": "<code>wc -l</code> counts the number of lines in a file. In a real engagement, you&#8217;d use this to scope the attack: knowing how many accounts you&#8217;re targeting helps estimate the time and resources needed to crack them all.",
         "output": null,
@@ -124,7 +124,7 @@
     {
      "type": "callout",
      "number": 1,
-     "text": "Capture your terminal showing <code>cat brazos-hashes.txt</code> output with all 8 hashes visible. Save as <code>01-hash-file-contents.png</code>. VM name must be visible.",
+     "text": "Capture your terminal showing <code>cat alamo-corp-hashes.txt</code> output with all 8 hashes visible. Save as <code>01-hash-file-contents.png</code>. VM name must be visible.",
      "calloutType": "screenshot"
     },
     {
@@ -214,7 +214,7 @@
       },
       {
        "text": "Run John the Ripper with the rockyou wordlist against the NTLM hashes:",
-       "command": "john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT brazos-hashes.txt",
+       "command": "john --wordlist=/usr/share/wordlists/rockyou.txt --format=NT alamo-corp-hashes.txt",
        "whatThisDoes": {
         "concept": "<code>john</code> is John the Ripper, one of the most widely used password cracking tools. The <code>--wordlist</code> flag tells it to try every password in the rockyou.txt dictionary (14 million+ real leaked passwords). The <code>--format=NT</code> flag specifies that these are NTLM hashes.",
         "output": "Watch for lines showing cracked passwords as they&#8217;re found. John will display the username and plaintext password for each successful crack. Note the speed. NTLM hashes crack extremely fast because the algorithm was never designed to resist offline attacks.",
@@ -243,7 +243,7 @@
      "steps": [
       {
        "text": "Display all cracked passwords:",
-       "command": "john --show --format=NT brazos-hashes.txt",
+       "command": "john --show --format=NT alamo-corp-hashes.txt",
        "whatThisDoes": {
         "concept": "The <code>--show</code> flag tells John to display all previously cracked passwords from its potfile (<code>~/.john/john.pot</code>). John stores results persistently so you can retrieve them later without re-running the attack.",
         "output": "You should see each cracked account listed as <code>username:password</code> followed by a summary line showing how many were cracked out of the total. Record these; you&#8217;ll need them for your results table.",
@@ -308,7 +308,7 @@
     },
     {
      "type": "callout",
-     "text": "At least 2 passwords cracked from the Brazos hash file. Record the usernames, cracked passwords, and approximate time to crack. Not all 8 will crack; that&#8217;s by design.",
+     "text": "At least 2 passwords cracked from the Alamo hash file. Record the usernames, cracked passwords, and approximate time to crack. Not all 8 will crack; that&#8217;s by design.",
      "calloutType": "whatYouShouldHave"
     },
     {
@@ -332,10 +332,10 @@
      "steps": [
       {
        "text": "Extract raw NTLM hashes for Hashcat (it needs the hash alone, not the full pwdump line):",
-       "command": "cut -d':' -f4 brazos-hashes.txt > brazos-hashes-only.txt",
+       "command": "cut -d':' -f4 alamo-corp-hashes.txt > alamo-corp-hashes-only.txt",
        "whatThisDoes": {
         "concept": "<code>cut</code> splits each line on a delimiter and extracts specific fields. Here, <code>-d':'</code> sets the colon as the delimiter and <code>-f4</code> grabs the fourth field. Always check the layout before you cut: this file is pwdump format, <code>username:UID:LM_hash:NTLM_hash:::</code>, so field 2 is the numeric UID and field 3 is the LM hash. The NTLM hash you want is field 4. Unlike John, which reads the whole pwdump line, Hashcat expects the hash alone with nothing else on it.",
-        "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat brazos-hashes-only.txt</code>. You should see only 32-character hex strings, one per line, with no usernames.",
+        "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat alamo-corp-hashes-only.txt</code>. You should see only 32-character hex strings, one per line, with no usernames.",
         "flags": null
        }
       }
@@ -344,7 +344,7 @@
     {
      "type": "callout",
      "number": 6,
-     "text": "Capture <code>cat brazos-hashes-only.txt</code> showing the extracted hash-only format (no usernames). This proves you understand the input format difference between John and Hashcat. Save as <code>06-hashes-only-format.png</code>. VM name must be visible.",
+     "text": "Capture <code>cat alamo-corp-hashes-only.txt</code> showing the extracted hash-only format (no usernames). This proves you understand the input format difference between John and Hashcat. Save as <code>06-hashes-only-format.png</code>. VM name must be visible.",
      "calloutType": "screenshot"
     },
     {
@@ -352,7 +352,7 @@
      "steps": [
       {
        "text": "Run Hashcat with a dictionary attack against the NTLM hashes:",
-       "command": "hashcat -m 1000 -a 0 brazos-hashes-only.txt /usr/share/wordlists/rockyou.txt -D 1",
+       "command": "hashcat -m 1000 -a 0 alamo-corp-hashes-only.txt /usr/share/wordlists/rockyou.txt -D 1",
        "whatThisDoes": {
         "concept": "Hashcat is a GPU-accelerated password cracker. <code>-m 1000</code> sets the hash mode to NTLM. <code>-a 0</code> selects a straight dictionary attack (try each word as-is). <code>-D 1</code> forces CPU mode since VMs typically lack GPU passthrough.",
         "output": "Watch for the <code>Speed.#1</code> line showing hashes per second (H/s). Even in CPU mode, NTLM speeds are remarkably high. Compare this number to John&#8217;s speed from Checkpoint 2. This comparison is critical for your engagement report.",
@@ -372,7 +372,7 @@
      "steps": [
       {
        "text": "Display all cracked results:",
-       "command": "hashcat -m 1000 brazos-hashes-only.txt --show",
+       "command": "hashcat -m 1000 alamo-corp-hashes-only.txt --show",
        "whatThisDoes": {
         "concept": "Like John, Hashcat stores cracked results in a potfile (<code>~/.local/share/hashcat/hashcat.potfile</code>). The <code>--show</code> flag displays all previously cracked hashes matched against your input file. The output format is <code>hash:password</code>. Note this is reversed from John&#8217;s <code>username:password</code> format. Record these results for your comparison table.",
         "output": null,
@@ -513,14 +513,14 @@
      ],
      "rows": [
       [
-       "vcaldwell",
+       "balamo",
        "CCO",
        "CRACKED / Not Cracked",
        "________",
        "Why weak/strong?"
       ],
       [
-       "rjimenez",
+       "bcastillo",
        "CTO",
        "CRACKED / Not Cracked",
        "________",
@@ -556,7 +556,7 @@
     {
      "type": "callout",
      "title": "Optional Bonus: OSINT Wordlists",
-     "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are available here: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/brazos-dossiers.pdf\" target=\"_blank\">Brazos Financial Employee Dossiers (PDF)</a>. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
+     "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are available here: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
      "calloutType": "goBeyond"
     },
     {
@@ -667,7 +667,7 @@
    },
    {
     "file": "10-results-table.png",
-    "description": "Completed results table for all 8 Brazos accounts"
+    "description": "Completed results table for all 8 Alamo corporate accounts"
    }
   ],
   "sections": [
@@ -764,7 +764,7 @@
    "principle": "AI is a tutor, not a ghostwriter."
   },
   "whatsNext": {
-   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo Industries. Same tools, different hash format, and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
+   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo&#8217;s plant floor. Same company, same tools, different hash format, and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
   }
  }
 }
