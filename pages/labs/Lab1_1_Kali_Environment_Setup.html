@@ -64,7 +64,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Use What You Want: the Instructions Are VirtualBox</div>
-        <p>Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named kali-&lt;your abc123&gt; and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup.</p>
+        <p>Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named with your abc123 and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup.</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -272,7 +272,7 @@
     <ol>
       <li>In VirtualBox Manager, click New
       </li>
-      <li>Configure the VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
+      <li>Configure the VM name. Name your VM with your abc123, the ID you use to log into Canvas (for example, aaa000), not your Banner ID number. Just the ID: no prefix, no spaces.
       </li>
       <li>Set Type: Linux, Version: Debian (64-bit)
       </li>
@@ -289,14 +289,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Critical: VM Naming Convention</div>
-        <p>Name your VM <strong>kali-&lt;your abc123&gt;</strong>, where your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable.</p>
+        <p>Name your VM <strong>&lt;your abc123&gt;</strong>, the ID you use to log into Canvas (for example, <strong>aaa000</strong>), not your Banner ID number. During the install you give Kali the same name as its hostname, so your abc123 shows in your terminal prompt (<code>kali&#12927;aaa000</code>) and in the VM window&#8217;s title bar. That is what verifies the screenshots are your own work; a VM named anything other than your ID makes your screenshots unverifiable.</p>
       </div>
     </div>
     <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count. Save as 01-vm-settings.png</p>
+        <p>Capture your VM settings window showing the VM name (your abc123), RAM allocation, and processor count. Save as 01-vm-settings.png</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -304,7 +304,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Leaving the placeholder name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.</li>
+          <li>Leaving the placeholder name. Name your VM with your own abc123 (for example, aaa000), not the word abc123 and not your Banner ID number. This name must be visible in every screenshot.</li>
           <li>Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues</li>
           <li>ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings</li>
         </ul>
@@ -314,7 +314,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>A VM entry in VirtualBox Manager named kali-&lt;your abc123&gt; (your own ID, not the placeholder), with the Kali ISO attached.</p>
+        <p>A VM entry in VirtualBox Manager named with your own abc123 (not the placeholder), with the Kali ISO attached.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -362,11 +362,17 @@
       </li>
       <li>Choose your language, location, and keyboard layout
       </li>
-      <li>Set the hostname to match your VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.
+      <li>Set the hostname to your abc123, exactly the same as your VM name (for example, aaa000). No prefix.
       </li>
       <li>Leave domain name blank
       </li>
-      <li>Create your user account (remember these credentials!)
+      <li>Create the user account. Full name: <code>kali</code>. Username: <code>kali</code>. Password: <code>kali</code> (you type it twice).
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> Yes, on purpose. We are building this for training, not production. Throw-away credentials are appropriate in a throw-away environment, and a VM you cannot log into is worth nothing to you. Every semester someone forgets the password they invented and has to rebuild the VM. Whether a security control applies depends on what the system is for, and recognizing that is the same judgment your Engagement Packets will ask you to make.</p>
+          </div>
+        </details>
       </li>
       <li>Use Guided - use entire disk for partitioning
       </li>
@@ -399,8 +405,8 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>Forgetting credentials: Write down your username and password; you'll need them all semester</li>
-          <li>Wrong hostname: The hostname should match your VM name format</li>
+          <li>Inventing your own username or password: use kali for both. A forgotten password means rebuilding the VM</li>
+          <li>Wrong hostname: the hostname is your abc123, exactly the same as your VM name</li>
           <li>Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS</li>
         </ul>
       </div>
@@ -409,7 +415,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password.</p>
+        <p>A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in as kali with the password kali.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -589,7 +595,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>In your output:</strong> This should show your VM name in the form kali-&lt;your abc123&gt; (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding.</p>
+            <p><strong>In your output:</strong> This should show your abc123 (for example, aaa000). If it shows kali, the word abc123, or any name that isn&#8217;t your ID, fix it before proceeding.</p>
           </div>
         </details>
       </li>
@@ -603,6 +609,13 @@
         </details>
       </li>
     </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the Part A output: <code>hostname</code> and <code>uname -a</code>, with your hostname visible in the prompt. Save as 04-system-verification.png</p>
+      </div>
+    </div>
     <h3>Part B: Network Connectivity</h3>
     <ol start="3">
       <li>Display your network interfaces and IP addresses
@@ -624,6 +637,13 @@
         </details>
       </li>
     </ol>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture the Part B output: <code>ip addr</code> and the <code>ping</code> results showing all 3 packets received. Your hostname must be visible. Save as 05-network-connectivity.png</p>
+      </div>
+    </div>
     <h3>Part C: Security Tools</h3>
     <ol start="5">
       <li>Verify Nmap is installed
@@ -673,7 +693,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as 04-system-verification.png</p>
+        <p>Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, <code>docker --version</code>, and the empty <code>docker ps</code> table. Your hostname must be visible. Save as 06-tool-verification.png</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -770,12 +790,14 @@
       <li>&#9744; <code>01-vm-settings.png</code>: VM configuration with correct name</li>
       <li>&#9744; <code>02-kali-desktop.png</code>: Kali desktop after login</li>
       <li>&#9744; <code>03-docker-version.png</code>: Docker version output</li>
-      <li>&#9744; <code>04-system-verification.png</code>: All verification commands</li>
+      <li>&#9744; <code>04-system-verification.png</code>: Hostname and uname -a output</li>
+      <li>&#9744; <code>05-network-connectivity.png</code>: ip addr and ping output</li>
+      <li>&#9744; <code>06-tool-verification.png</code>: Tool version checks and docker ps</li>
     </ul>
 
     <h2>Environment Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; VM named kali-&lt;your abc123&gt; (your own ID, not the placeholder)</li>
+      <li>&#9744; VM named with your own abc123 (not the placeholder), and the hostname set to the same</li>
       <li>&#9744; Kali Linux boots to desktop</li>
       <li>&#9744; Docker installed, running, and hello-world container executes</li>
       <li>&#9744; All four screenshots saved to Module1_Screenshots folder</li>

@@ -32,7 +32,7 @@
     "type": "tip",
     "icon": "lightbulb",
     "title": "Use What You Want: the Instructions Are VirtualBox",
-    "text": "Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named kali-&lt;your abc123&gt; and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup."
+    "text": "Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named with your abc123 and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup."
    },
    {
     "type": "warning",
@@ -275,7 +275,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Configure the VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Configure the VM name. Name your VM with your abc123, the ID you use to log into Canvas (for example, aaa000), not your Banner ID number. Just the ID: no prefix, no spaces.",
        "command": null,
        "whatThisDoes": null
       },
@@ -311,20 +311,20 @@
      "items": null,
      "type": "callout",
      "calloutType": "required",
-     "body": "Name your VM <strong>kali-&lt;your abc123&gt;</strong>, where your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. It appears in your terminal prompt and is what verifies the screenshots are your own work; a VM still named kali-abc123, or any name that isn't your ID, makes your screenshots unverifiable."
+     "body": "Name your VM <strong>&lt;your abc123&gt;</strong>, the ID you use to log into Canvas (for example, <strong>aaa000</strong>), not your Banner ID number. During the install you give Kali the same name as its hostname, so your abc123 shows in your terminal prompt (<code>kali&#12927;aaa000</code>) and in the VM window&#8217;s title bar. That is what verifies the screenshots are your own work; a VM named anything other than your ID makes your screenshots unverifiable."
     },
     {
      "title": "Screenshot",
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count. Save as 01-vm-settings.png"
+     "body": "Capture your VM settings window showing the VM name (your abc123), RAM allocation, and processor count. Save as 01-vm-settings.png"
     },
     {
      "title": "Common Pitfalls",
      "text": null,
      "items": [
-      "Leaving the placeholder name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+      "Leaving the placeholder name. Name your VM with your own abc123 (for example, aaa000), not the word abc123 and not your Banner ID number. This name must be visible in every screenshot.",
       "Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues",
       "ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings"
      ],
@@ -336,7 +336,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "A VM entry in VirtualBox Manager named kali-&lt;your abc123&gt; (your own ID, not the placeholder), with the Kali ISO attached."
+     "body": "A VM entry in VirtualBox Manager named with your own abc123 (not the placeholder), with the Kali ISO attached."
     },
     {
      "title": "Textbook Reference",
@@ -390,7 +390,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Set the hostname to match your VM name. Name your VM kali-&lt;your abc123&gt;, where your abc123 is the ID you use to log into Canvas (for example, aaa000 would be kali-aaa000), not your Banner ID number. This name must be visible in every screenshot.",
+       "text": "Set the hostname to your abc123, exactly the same as your VM name (for example, aaa000). No prefix.",
        "command": null,
        "whatThisDoes": null
       },
@@ -400,9 +400,13 @@
        "whatThisDoes": null
       },
       {
-       "text": "Create your user account (remember these credentials!)",
+       "text": "Create the user account. Full name: <code>kali</code>. Username: <code>kali</code>. Password: <code>kali</code> (you type it twice).",
        "command": null,
-       "whatThisDoes": null
+       "whatThisDoes": {
+        "concept": "Yes, on purpose. We are building this for training, not production. Throw-away credentials are appropriate in a throw-away environment, and a VM you cannot log into is worth nothing to you. Every semester someone forgets the password they invented and has to rebuild the VM. Whether a security control applies depends on what the system is for, and recognizing that is the same judgment your Engagement Packets will ask you to make.",
+        "output": null,
+        "flags": null
+       }
       },
       {
        "text": "Use Guided - use entire disk for partitioning",
@@ -449,8 +453,8 @@
      "title": "Common Pitfalls",
      "text": null,
      "items": [
-      "Forgetting credentials: Write down your username and password; you'll need them all semester",
-      "Wrong hostname: The hostname should match your VM name format",
+      "Inventing your own username or password: use kali for both. A forgotten password means rebuilding the VM",
+      "Wrong hostname: the hostname is your abc123, exactly the same as your VM name",
       "Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS"
      ],
      "type": "callout",
@@ -461,7 +465,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in with your username and password."
+     "body": "A fully installed Kali Linux system that boots to a graphical desktop. You should be able to log in as kali with the password kali."
     },
     {
      "title": "Textbook Reference",
@@ -622,7 +626,7 @@
        "text": "Display your hostname",
        "command": "hostname",
        "whatThisDoes": {
-        "output": "This should show your VM name in the form kali-&lt;your abc123&gt; (for example, kali-aaa000). If it still shows the literal kali-abc123 or any name that isn't your ID, fix it before proceeding."
+        "output": "This should show your abc123 (for example, aaa000). If it shows kali, the word abc123, or any name that isn&#8217;t your ID, fix it before proceeding."
        }
       },
       {
@@ -633,6 +637,13 @@
        }
       }
      ]
+    },
+    {
+     "title": "Screenshot",
+     "items": null,
+     "type": "callout",
+     "calloutType": "screenshot",
+     "body": "Capture the Part A output: <code>hostname</code> and <code>uname -a</code>, with your hostname visible in the prompt. Save as 04-system-verification.png"
     },
     {
      "part": "Part B: Network Connectivity",
@@ -654,6 +665,13 @@
        }
       }
      ]
+    },
+    {
+     "title": "Screenshot",
+     "items": null,
+     "type": "callout",
+     "calloutType": "screenshot",
+     "body": "Capture the Part B output: <code>ip addr</code> and the <code>ping</code> results showing all 3 packets received. Your hostname must be visible. Save as 05-network-connectivity.png"
     },
     {
      "part": "Part C: Security Tools",
@@ -707,7 +725,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture a terminal showing output from the verification commands. Your hostname must be visible. Save as 04-system-verification.png"
+     "body": "Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, <code>docker --version</code>, and the empty <code>docker ps</code> table. Your hostname must be visible. Save as 06-tool-verification.png"
     },
     {
      "title": "Common Pitfalls",
@@ -799,14 +817,22 @@
    },
    {
     "file": "04-system-verification.png",
-    "description": "All verification commands"
+    "description": "Hostname and uname -a output"
+   },
+   {
+    "file": "05-network-connectivity.png",
+    "description": "ip addr and ping output"
+   },
+   {
+    "file": "06-tool-verification.png",
+    "description": "Tool version checks and docker ps"
    }
   ],
   "sections": [
    {
     "title": "Environment Verification",
     "items": [
-     "VM named kali-&lt;your abc123&gt; (your own ID, not the placeholder)",
+     "VM named with your own abc123 (not the placeholder), and the hostname set to the same",
      "Kali Linux boots to desktop",
      "Docker installed, running, and hello-world container executes",
      "All four screenshots saved to Module1_Screenshots folder"

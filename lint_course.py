@@ -154,7 +154,7 @@ DENYLIST = [
     {
         "id": "SHOT-RATE",
         "severity": "error",
-        "why": "retired Spring 2026 screenshot rate. Canonical: −2.5 per silently-absent capture.",
+        "why": "retired Spring 2026 screenshot rate. Canonical: −2.5 per qualifying screenshot short of 20.",
         "patterns": [
             rf"{DASH}\s*5\s*(?:%|\s*points?)?\s*(?:each|per)\b[^.;:\n]{{0,30}}\b(?:screenshot|capture)s?\b",
             rf"\b(?:missing|per|each|unverifiable)\s+(?:screenshot|capture)s?\b[^.;:\n]{{0,30}}{DASH}\s*5{NUM_END}",
@@ -163,38 +163,32 @@ DENYLIST = [
         ],
     },
     {
-        "id": "SHOT-QUOTA",
+        "id": "SHOT-FLOOR",
         "severity": "error",
-        "why": ("screenshot QUOTA language — there is no screenshot count in this course, for "
-                "any module. The rule is coverage: take the captures the labs ask for, where "
-                "they ask for them; −2.5 for each callout silently unmet. Publishing a total "
-                "(a floor, a minimum, or a per-module count) re-creates the count model that "
-                "was retired in July, because readers treat the total as the requirement. "
-                "State the rule, never a number."),
+        "why": ("screenshot count other than the 20 floor, or the retired coverage wording. "
+                "Ruled 2026-11-25 (what Fall 2026 was graded against): every module's floor is "
+                "20. Twenty qualifying screenshots earns full credit, -2.5 for each one short of "
+                "20, and extras earn nothing unless they evidence a stretch goal. Any other "
+                "published count (25+, 30, per-lab splits, per-module tables) contradicts the "
+                "floor, and so does the coverage model it replaced ('individually required', "
+                "'silently absent', 'coverage, not count')."),
         "patterns": [
-            r"\b(?:at\s+least|minimum(?:\s+of|\s*:)?|floor(?:\s+of|\s*:)?|need|require[sd]?)"
-            r"\s*:?\s*\d{1,3}\s+(?:\w+\s+){0,2}(?:screenshot|capture)s?\b",
-            r"\b\d{1,3}\s+(?:\w+\s+){0,2}(?:screenshot|capture)s?\s+"
-            r"(?:minimum|floor|required|total|in\s+total)\b",
-            r"(?:screenshot|capture)s?\s*[—–-]\s*\d{1,3}\s+(?:minimum|required|total)",
-            # noun form, but only when asserted — "there is no screenshot quota" is the
-            # correct sentence and must not trip the rule.
-            r"\b(?:screenshot|capture)\s+(?:floor|quota)\s+(?:is|of|for|remains|stays)\b",
-            # Added 2026-11-21. The three patterns above missed every published total in
-            # the course: "individually required (20 total)" in four EP penalty lines, and
-            # bare counts like "save all 9 screenshots" / "You should have 10 screenshots"
-            # in the foundation labs. Any number in front of screenshots/captures is a
-            # count. Lookbehind skips lab numbers ("Lab 5.1 screenshots") and callout
-            # numbers ("#11 screenshots"). Filename ranges are fine and do not match.
-            r"(?<![\d.#])\b\d{1,3}\s+(?:[\w-]+\s+){0,2}(?:screenshot|capture)s\b",
-            r"(?:screenshot|capture)[^.]{0,80}\(\s*\d{1,3}\s+total\s*\)",
-            r"\(\s*\d{1,3}\s+(?:screenshot|capture)s?\s*\)",
-            # "Floor for Module 5 is set by the compressed lab structure" (Lab 5.2 penalty).
-            r"\bfloor\s+for\s+module\s+\d",
-            # "Required captures by module: 20 (M1), 25 (M2), ..." (EP Guide and Screenshot
-            # Requirements, found 2026-11-21 because a student quoted it on Discord).
+            # Any number other than 20 in front of screenshots/captures, with or without a
+            # "+" ("25+ screenshots" slipped past the old rule in Labs 2.3 and 4.3 and the EP
+            # Guide). Lookbehind skips lab numbers ("Lab 5.1 screenshots") and callout
+            # numbers ("#11 screenshots").
+            r"(?<![\d.#])\b(?!20\b)\d{1,3}\+?\s+(?:[\w-]+\s+){0,2}(?:screenshot|capture)s\b",
+            r"\(\s*(?!20\b)\d{1,3}\s+(?:screenshot|capture)s?\s*\)",
+            r"(?:screenshot|capture)[^.]{0,80}\(\s*(?!20\b)\d{1,3}\s+total\s*\)",
+            # Per-module tables: "Required captures by module: 20 (M1), 25 (M2), ..."
             r"\b(?:screenshot|capture)s?\s+by\s+module\b",
             r"\b\d{1,3}\s*\(M\d\)",
+            r"\bfloor\s+for\s+module\s+\d",
+            # The retired coverage model.
+            r"\bindividually\s+required\b",
+            r"\bsilently[\s-]+absent\b",
+            r"\bcoverage,?\s+not\s+(?:a\s+)?(?:raw\s+)?count\b",
+            r"\bevery\s+numbered\s+(?:screenshot\s+)?capture",
         ],
     },
     {

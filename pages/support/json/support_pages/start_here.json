@@ -78,7 +78,7 @@
       "label": "✓ 5. Start Lab 1.1",
       "paragraphs": [
         "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong> &#8212; don’t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Lab 1.1 is due Sunday August 30. Find it in your Canvas course modules.",
-        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot. Lab 1.1 explains why."
+        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> Name your VM <strong>&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong>), and give Kali the same hostname, not your Banner ID number. This name must be visible in every screenshot. Lab 1.1 explains why."
       ]
     },
     {

@@ -851,7 +851,7 @@
         "title": "Environment Verification",
         "items": [
           {
-            "check": "VM hostname (kali-&lt;your abc123&gt;) visible in all screenshots"
+            "check": "VM hostname (&lt;your abc123&gt;) visible in all screenshots"
           },
           {
             "check": "All key files created inside ~/lab2-auth directory"

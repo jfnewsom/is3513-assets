@@ -214,7 +214,7 @@
               "command": "john --wordlist=/usr/share/wordlists/rockyou.txt ~/lab4/alamo-plant-hashes.txt",
               "whatThisDoes": {
                 "concept": "Same tool, same wordlist as Lab 4.1, but a completely different experience. John auto-detects the <code>$6$</code> prefix as sha512crypt format. No <code>--format</code> flag needed because the hash format is self-identifying (unlike NTLM&#8217;s raw hex).",
-                "output": "The speed difference will be dramatic. Where NTLM showed millions or billions of H/s, expect only thousands of H/s here. This is SHA-512 working as designed: the algorithm is deliberately slow to make brute-force attacks computationally expensive. Record the H/s rate carefully for your Lab 4.1 vs 4.2 comparison.",
+                "output": "The speed difference will be dramatic. Where NTLM showed millions or billions of H/s, expect only thousands of H/s here. This is SHA-512 working as designed: the algorithm is deliberately slow to make brute-force attacks computationally expensive. Record John&#8217;s c/s rate carefully for your Lab 4.1 vs 4.2 comparison.",
                 "flags": null
               }
             }
@@ -233,7 +233,7 @@
               "text": "Check progress while John is running:",
               "command": "john --status",
               "whatThisDoes": {
-                "concept": "SHA-512 attacks take much longer than NTLM. The <code>--status</code> flag shows progress: candidates tested, current speed, and estimated time remaining. You can also press any key during a running session to get a live status update. If it&#8217;s taking too long, you may need to let it run for a few minutes. This is the defensive value of strong hash algorithms in action.",
+                "concept": "SHA-512 attacks take much longer than NTLM. The <code>--status</code> flag shows progress: candidates tested, current speed, and estimated time remaining. You can also press any key during a running session to get a live status update. If nothing has cracked quickly, don&#8217;t wait it out: something is probably misconfigured. This is the defensive value of strong hash algorithms in action. John doesn&#8217;t print H/s. Press any key while it runs (or run <code>john --status</code>) and its status line shows four rates: <code>g/s</code> (passwords cracked per second), <code>p/s</code> (candidate passwords tried per second), <code>c/s</code> (hashes computed per second) and <code>C/s</code> (candidate and hash combinations per second). Record <strong>c/s</strong>: hashes computed per second is John&#8217;s equivalent of Hashcat&#8217;s H/s.",
                 "output": null,
                 "flags": null
               }
@@ -243,7 +243,7 @@
         {
           "type": "callout",
           "number": 14,
-          "text": "Capture John running showing the H/s speed rate. Save as <code>14-john-linux-attack.png</code>. VM name must be visible.",
+          "text": "Capture John running with its status line showing the c/s rate (John&#8217;s hashes-per-second figure). Save as <code>14-john-linux-attack.png</code>. VM name must be visible.",
           "calloutType": "screenshot"
         },
         {
@@ -278,15 +278,15 @@
             },
             {
               "label": "Expecting NTLM-speed results",
-              "text": "SHA-512 is deliberately slow. Thousands of H/s instead of millions is the algorithm working as designed, not a problem with your setup. Record the exact H/s for your comparison table."
+              "text": "SHA-512 is deliberately slow. Thousands of hashes per second instead of millions is the algorithm working as designed, not a problem with your setup. Record the rate for your comparison table (c/s for John, H/s for Hashcat)."
             },
             {
-              "label": "Stopping too early",
-              "text": "Let John run for several minutes before checking results. SHA-512's computational cost means some passwords need time to appear; check <code>john --status</code> for progress."
+              "label": "Waiting hours for the rest",
+              "text": "The passwords this lab needs are the easy ones, and they crack fast even against SHA-512. If you haven&#8217;t cracked any quickly, something is probably misconfigured: check the file path and that rockyou.txt is unzipped, then run it again. You are not expected to crack every password; the rest are stretch work, so let it keep running in the background only if you want to."
             },
             {
-              "label": "Not recording the H/s rate",
-              "text": "The speed comparison between Lab 4.1 and Lab 4.2 is the core insight of your engagement report. Capture or note the exact H/s value from John's output; you'll need it in Checkpoint 4."
+              "label": "Not recording the speed",
+              "text": "The speed comparison between Lab 4.1 and Lab 4.2 is the core insight of your engagement report. Note the exact c/s value from John&#8217;s status line; you&#8217;ll need it in Checkpoint 4."
             }
           ]
         },
@@ -295,7 +295,7 @@
           "calloutType": "whatYouShouldHave",
           "title": "What You Should Have",
           "icon": "check",
-          "text": "John attack completed against Alamo SHA-512 hashes. You've noted the H/s speed, dramatically lower than Lab 4.1's NTLM attack. You have your <code>john --show</code> results, and you've documented which accounts cracked and which resisted. The difference in crack rates compared to Lab 4.1 is the core of your platform comparison."
+          "text": "John attack completed against Alamo SHA-512 hashes. You've noted John&#8217;s c/s rate, dramatically lower than Lab 4.1's NTLM attack. You have your <code>john --show</code> results, and you've documented which accounts cracked and which resisted. The difference in crack rates compared to Lab 4.1 is the core of your platform comparison."
         },
         {
           "type": "callout",
@@ -532,7 +532,7 @@
             },
             {
               "label": "Forgetting the speed comparison",
-              "text": "Your Lab 4.3 report requires H/s data from all four cracking sessions: John against NTLM (Lab 4.1), Hashcat against NTLM (Lab 4.1), John against SHA-512 (this lab), and Hashcat against SHA-512 (this lab). If you didn&#8217;t record Lab 4.1 speeds, go back and check your Lab 4.1 screenshots now, not during Lab 4.3."
+              "text": "Your Lab 4.3 report requires speed data from all four cracking sessions (c/s for John, H/s for Hashcat): John against NTLM (Lab 4.1), Hashcat against NTLM (Lab 4.1), John against SHA-512 (this lab), and Hashcat against SHA-512 (this lab). If you didn&#8217;t record Lab 4.1 speeds, go back and check your Lab 4.1 screenshots now, not during Lab 4.3."
             },
             {
               "label": "Mixing up account types",
@@ -545,7 +545,7 @@
           "calloutType": "whatYouShouldHave",
           "title": "What You Should Have",
           "icon": "check",
-          "text": "A completed 8-account results table for the Alamo plant floor (username, cracked password or <em>not cracked</em>, account type) captured as Screenshot 20. You should also have four H/s speed data points recorded from your notes or screenshots: John and Hashcat speeds from both Lab 4.1 (NTLM) and this lab (SHA-512). That&#8217;s everything you need for the platform comparison section of Lab 4.3."
+          "text": "A completed 8-account results table for the Alamo plant floor (username, cracked password or <em>not cracked</em>, account type) captured as Screenshot 20. You should also have four speed data points recorded from your notes or screenshots: John and Hashcat speeds from both Lab 4.1 (NTLM) and this lab (SHA-512). That&#8217;s everything you need for the platform comparison section of Lab 4.3."
         },
         {
           "type": "callout",
@@ -610,7 +610,7 @@
       },
       {
         "file": "14-john-linux-attack.png",
-        "description": "John attack running with H/s speed visible"
+        "description": "John attack running with its c/s rate visible"
       },
       {
         "file": "15-john-linux-results.png",
@@ -645,7 +645,7 @@
           "Identified SHA-512 format ($6$) and salt component",
           "Ran John the Ripper attack with rockyou.txt",
           "Ran Hashcat attack (mode 1800 for sha512crypt)",
-          "Documented H/s speed differences from Lab 4.1",
+          "Documented speed differences from Lab 4.1",
           "Created results table with all 8 Alamo accounts",
           "Noted shared account and service account findings"
         ],
@@ -656,8 +656,8 @@
         "items": [
           "New screenshots #11 through #20 in Module4_Screenshots folder",
           "All follow naming convention: ##-description.png",
-          "VM name visible in screenshots (kali-&lt;your abc123&gt;)",
-          "Speed/H/s rates visible in attack screenshots (#14, #18)"
+          "VM name visible in screenshots (&lt;your abc123&gt;)",
+          "Speed rates visible in attack screenshots (#14 John c/s, #18 Hashcat H/s)"
         ],
         "title": "Screenshot Verification"
       }
@@ -697,7 +697,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Lab 4.3: Password Security Assessment Report. Next unit you&#8217;ll combine your Alamo corporate (Windows/NTLM) and plant-floor (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both clients."
+      "text": "Lab 4.3: Password Security Assessment Report. Next unit you&#8217;ll combine your Alamo corporate (Windows/NTLM) and plant-floor (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both Alamo environments."
     }
   }
 }

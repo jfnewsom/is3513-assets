@@ -53,7 +53,7 @@
    {
     "type": "warning",
     "title": "Minimum Requirements",
-    "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (kali-&lt;your abc123&gt;). Use naming convention: ##-description.png."
+    "body": "10+ references required. Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. Your textbook does NOT count. Use it to find primary sources, then cite those. See the Citations page. All screenshots from Lab 5.1 must be included. VM name must be visible in all terminal screenshots (&lt;your abc123&gt;). Use naming convention: ##-description.png."
    },
    {
     "type": "warning",
@@ -189,7 +189,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.",
+       "text": "Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.",
        "command": null,
        "whatThisDoes": null
       },
@@ -305,7 +305,7 @@
       },
       {
        "label": "No screenshots",
-       "text": "Your Lab 5.1 screenshots belong in the runbook as evidence that the steps produce the expected output"
+       "text": "Your Lab 5.1 screenshots belong in the runbook, under the entry for the tool that produced each one. Adding entries: follow <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Adding a Runbook Entry</a> in the Engagement Packet Guide"
       }
      ]
     },
@@ -567,8 +567,8 @@
       "Part II Findings: Top 10 vulnerabilities documented with CVSS scores",
       "Part II Risk Analysis: risk matrix included and color coded",
       "Part II Recommendations: roadmap with phased timelines",
-      "All Lab 5.1 screenshots included as evidence",
-      "VM name visible in terminal screenshots (kali-&lt;your abc123&gt;)",
+      "At least 20 qualifying screenshots, each inline next to the text that references it",
+      "VM name visible in terminal screenshots (&lt;your abc123&gt;)",
       "Minimum 10 references included",
       "Document is .docx format (not PDF)",
       "Professional formatting and grammar throughout"
@@ -659,12 +659,12 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Check your document properties survived.</strong> <strong>Windows:</strong> File &gt; Info. <strong>Mac:</strong> File &gt; Properties&#8230;. Your abc123 in the Author field and in the abc123 custom property, matching the kali-abc123 hostname visible in your screenshots.",
+       "text": "<strong>Check your document properties survived.</strong> <strong>Windows:</strong> File &gt; Info. <strong>Mac:</strong> File &gt; Properties&#8230;. Your abc123 in the Author field and in the abc123 custom property, matching the abc123 hostname visible in your screenshots.",
        "command": null,
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Look at every screenshot at full size.</strong> Legible, cropped to what matters, kali-abc123 visible in the prompt. A screenshot nobody can read is evidence of nothing.",
+       "text": "<strong>Look at every screenshot at full size.</strong> Legible, cropped to what matters, abc123 visible in the prompt. A screenshot nobody can read is evidence of nothing.",
        "command": null,
        "whatThisDoes": null
       },
@@ -786,7 +786,7 @@
    {
     "title": "Documentation Verification",
     "items": [
-     "All Lab 5.1 screenshots embedded as evidence",
+     "At least 20 qualifying screenshots from Labs 5.1 and 5.2, embedded as evidence",
      "VM name visible in all terminal screenshots",
      "Captions present on all screenshots",
      "10+ valid references included"
@@ -832,7 +832,7 @@
   "penalties": [
    {
     "penalty": "-2.5%",
-    "condition": "Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 5 is individually required. A documented failure you captured and explained is not docked."
+    "condition": "Per qualifying screenshot short of 20. A qualifying screenshot is readable, comes from this module&#8217;s labs, shows your abc123 (in the terminal prompt, or in the title bar of the full Kali VM window), and sits inline in the .docx next to the text that references it. Twenty qualifying screenshots earns full screenshot credit. More than 20 earns nothing extra unless a screenshot is your evidence for a stretch goal. Duplicates count once. A documented failure you captured and explained counts."
    },
    {
     "penalty": "-5%",

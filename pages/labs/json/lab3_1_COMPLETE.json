@@ -123,7 +123,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture your completed conversions (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>01-number-conversions.png</code>",
+     "text": "Capture your completed conversions (handwritten on paper is fine). Write your <code>abc123</code> at the top of the page so the capture is tied to you. Save as <code>01-number-conversions.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -228,7 +228,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture your flat network analysis calculations (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>02-flat-network-analysis.png</code>",
+     "text": "Capture your flat network analysis calculations (handwritten on paper is fine). Write your <code>abc123</code> at the top of the page so the capture is tied to you. Save as <code>02-flat-network-analysis.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -358,7 +358,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture your 172.16.0.0/16 subnet analysis with the table (handwritten on paper is fine). Write your <code>kali-abc123</code> at the top of the page so the capture is tied to you. Save as <code>03-subnet-table.png</code>",
+     "text": "Capture your 172.16.0.0/16 subnet analysis with the table (handwritten on paper is fine). Write your <code>abc123</code> at the top of the page so the capture is tied to you. Save as <code>03-subnet-table.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -442,7 +442,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture MX Toolbox results for one of your CIDR blocks. Take this one with your computer&#8217;s own screenshot tool, not Kali&#8217;s, so the VM window&#8217;s title bar (<code>kali-abc123</code>) is in the picture. Windows: Snipping Tool (Win+Shift+S) in window mode. Mac: Cmd+Shift+4, then Space, then click the VM window. Save as <code>04-mxtoolbox-verification.png</code>",
+     "text": "Capture MX Toolbox results for one of your CIDR blocks. Take this one with your computer&#8217;s own screenshot tool, not Kali&#8217;s, so the VM window&#8217;s title bar (<code>abc123</code>) is in the picture. Windows: Snipping Tool (Win+Shift+S) in window mode. Mac: Cmd+Shift+4, then Space, then click the VM window. Save as <code>04-mxtoolbox-verification.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -615,7 +615,7 @@
      "type": "steps",
      "steps": [
       {
-       "text": "Kali VM (labeled with its name, <code>kali-abc123</code>, and your IP from Checkpoint 5)",
+       "text": "Kali VM (labeled with its name, <code>abc123</code>, and your IP from Checkpoint 5)",
        "command": null,
        "whatThisDoes": null
       },
@@ -732,15 +732,15 @@
   "screenshotTable": [
    {
     "file": "01-number-conversions.png",
-    "description": "Completed decimal/binary/hex conversion practice (kali-abc123 written on the page)"
+    "description": "Completed decimal/binary/hex conversion practice (abc123 written on the page)"
    },
    {
     "file": "02-flat-network-analysis.png",
-    "description": "CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8 (kali-abc123 written on the page)"
+    "description": "CIDR count-out for 192.168.0.0/22 and 10.0.0.0/8 (abc123 written on the page)"
    },
    {
     "file": "03-subnet-table.png",
-    "description": "Complete subnet table for 172.16.0.0/16 with 4 bits borrowed (kali-abc123 written on the page)"
+    "description": "Complete subnet table for 172.16.0.0/16 with 4 bits borrowed (abc123 written on the page)"
    },
    {
     "file": "04-mxtoolbox-verification.png",
@@ -752,7 +752,7 @@
    },
    {
     "file": "06-topology-diagram.png",
-    "description": "Network topology diagram from Kali VM to Azure (Kali box labeled kali-abc123)"
+    "description": "Network topology diagram from Kali VM to Azure (Kali box labeled abc123)"
    }
   ],
   "sections": [

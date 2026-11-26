@@ -16,7 +16,7 @@
       "color": "#E63946",
       "colorRgb": "230, 57, 70",
       "label": "Deduction:",
-      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per silently-absent required capture. Every numbered screenshot callout in your module&#8217;s labs is individually required &#8212; this is coverage of that checklist, not a raw count. A documented failure you captured and explained is not docked; duplicates never count twice. A screenshot without your VM name (<code>kali-&lt;your abc123&gt;</code>) visible counts as missing. Combined with other documentation deductions, the cap is &#8722;100%.",
+      "html": "<strong style=\"color:#ffffff;\">&#8722;2.5%</strong> per qualifying screenshot short of 20. Twenty qualifying screenshots from a module&#8217;s labs earns full screenshot credit; more than 20 earns nothing extra unless a screenshot is your evidence for a stretch goal. A qualifying screenshot is readable, comes from this module&#8217;s labs, shows your abc123 (in the terminal prompt, or in the title bar of the full Kali VM window), and sits inline in the .docx next to the text that references it. Duplicates count once. A documented failure you captured and explained counts. Combined with other documentation deductions, the cap is &#8722;100%.",
       "icon": "error"
     },
     {
@@ -27,12 +27,12 @@
         "label": "✓ Verifiable Screenshot",
         "items": [
           {
-            "title": "VM name in terminal prompt",
-            "desc": "kali-&lt;your abc123&gt; visible"
+            "title": "abc123 in terminal prompt",
+            "desc": "kali&#12927;&lt;your abc123&gt; visible"
           },
           {
-            "title": "VM name in window title bar",
-            "desc": "hostname visible at top"
+            "title": "abc123 in window title bar",
+            "desc": "the full Kali VM window, title bar included"
           },
           {
             "title": "Hostname visible in command output",
@@ -45,8 +45,8 @@
         "label": "✗ Unverifiable Screenshot",
         "items": [
           {
-            "title": "Generic \"kali@kali\" prompt",
-            "desc": "default name, not yours"
+            "title": "Default \"kali@kali\" prompt",
+            "desc": "hostname never changed to your abc123"
           },
           {
             "title": "Cropped to hide hostname",
@@ -64,8 +64,17 @@
       "color": "#FF9F1C",
       "label": "Critical: VM Name Visibility",
       "paragraphs": [
-        "Name your VM <strong>kali-&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong> would be <strong>kali-aaa000</strong>), not your Banner ID number. This name must be visible in every screenshot.",
+        "Name your VM <strong>&lt;your abc123&gt;</strong> and give Kali the same hostname. Your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong>), not your Banner ID number. It then shows in your terminal prompt (<code>kali&#12927;aaa000</code>) and in the VM window&#8217;s title bar.",
+        "When the prompt can&#8217;t show it (inside a container&#8217;s SSH session, a browser window, a GUI tool), capture the entire Kali VM window so your abc123 is visible in its title bar.",
         "Without your VM name, there&#8217;s no way to verify <em>you</em> ran the commands. Screenshots without identification could be copied from anywhere &#8212; and occasionally are."
+      ]
+    },
+    {
+      "type": "named_section",
+      "color": "#00D26A",
+      "label": "Where Each Screenshot Goes",
+      "paragraphs": [
+        "Screenshots go inline, inside the .docx, next to the text that references them. Foundation Lab work (X.1 and X.2) goes in the Runbook, under the entry for the tool that produced it. Client work (X.3) goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count."
       ]
     },
     {

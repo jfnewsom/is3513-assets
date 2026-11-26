@@ -77,7 +77,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Minimum Requirements</div>
-        <p>Every capture this module’s labs call for is required. Take them where the lab asks for them, not as a batch at the end. Each one missing costs 2.5 points. Minimum 10 references in APA format, each cited at least once in the body. All three report sections (A, B, C) must be present.</p>
+        <p>Include at least 20 qualifying screenshots from this module&#8217;s labs: readable, your abc123 visible, each one inline next to the text that references it. Twenty earns full screenshot credit; each one short of 20 costs 2.5 points. Take them as you work, where the lab asks for them, not as a batch at the end. Minimum 10 references in APA format, each cited at least once in the body. All three report sections (A, B, C) must be present.</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -190,7 +190,7 @@
       </li>
       <li>Set the Author property. <strong>Windows:</strong> File &gt; Info, the Author box on the right. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Summary. Word appends your abc123 to the existing author rather than replacing it. That is expected. Leave it.
       </li>
-      <li>Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the kali-abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.
+      <li>Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.
       </li>
       <li>Save the file now, and keep saving as you go.
       </li>
@@ -509,6 +509,30 @@
         <p>Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you’d reach for it). <strong>Switches used</strong> (each flag you used on Brazos with a one-line explanation). <strong>Switches for future use</strong> (flags you didn’t use this time but should know). <strong>How you used it</strong> (your actual command against Brazos). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.</p>
       </div>
     </div>
+    <h3>Adding a Runbook Entry</h3>
+    <ol>
+      <li><strong>Find the entry box.</strong> In Part I, under <em>B. Internal Runbook</em>, the template has one runbook entry: a box (a one-cell table) that starts with <code>[TOOL OR STEP NAME]</code> and holds Purpose, Options / flags used, Exact command as run, Sample output excerpt, Next steps / interpretation, and Pitfalls observed. Under the box is a line that says <code>[Screenshot here ...]</code>. One box is one entry. You do not add rows to it; you repeat the whole box.
+      </li>
+      <li><strong>Fill in your first entry.</strong> Replace <code>[TOOL OR STEP NAME]</code> with the tool (for example, nmap). Replace every bracketed prompt in the box with your own text. Paste the exact command and the lines of output that matter straight from your terminal, not from the lab page.
+      </li>
+      <li><strong>Put its screenshot under it.</strong> Click the <code>[Screenshot here ...]</code> line, delete the placeholder text, and use Insert &gt; Pictures to add the capture of that command and its output. Click the line below the picture and caption it with References &gt; Insert Caption.
+      </li>
+      <li><strong>Copy the whole box.</strong> Click anywhere inside the box, then select the entire table. Windows: Table Layout tab (labeled Layout) &gt; Select &gt; Select Table. Mac: Table menu &gt; Select &gt; Table. On either, you can also hover over the box and click the small four-arrow handle at its top-left corner. Then copy (Ctrl+C on Windows, &#8984;C on Mac).
+      </li>
+      <li><strong>Paste it below the last entry.</strong> Click the empty line under the caption you just added and paste (Ctrl+V or &#8984;V). Keep at least one ordinary line between two boxes: if two boxes touch, Word joins them into one table. Paste the screenshot placeholder line too, or just insert the next picture under the new box.
+      </li>
+      <li><strong>Repeat for every tool.</strong> One entry per tool you used across the module&#8217;s labs. If one tool did genuinely different jobs (host discovery, then version detection), you may split it into one entry per step, each with its own box and screenshot.
+      </li>
+      <li><strong>Clean up.</strong> Every copied box carries its bracketed prompts with it. Before you submit, make sure none of them is left in any entry.
+      </li>
+    </ol>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Where Each Screenshot Goes</div>
+        <p>Screenshots go inline, inside the .docx, next to the text that references them. Lab 1.1 and 1.2 work goes in the Runbook, under the entry for the tool that produced it. Lab 1.3 Brazos work goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count.</p>
+      </div>
+    </div>
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
       <div class="nx-callout-body">
@@ -644,9 +668,9 @@
       </li>
       <li><strong>Replace or delete EVERY item in square brackets.</strong> Not most of them: all of them. The template ships with roughly <strong>84</strong> bracketed slots: some are places your content goes, some are prompts telling you what belongs there, and <strong>both are scaffolding that must be gone before you submit</strong>. Search for the bracket character itself. <strong>Windows:</strong> Ctrl+F. <strong>Mac:</strong> &#8984;F. Type a single <strong>[</strong> and step through every hit. Replace it with your own work, or delete the line entirely if that section does not apply. Then search again and confirm you get zero results. The runbook skeleton and the finding card are where they hide.
       </li>
-      <li><strong>Check your document properties survived.</strong> <strong>Windows:</strong> File &gt; Info. <strong>Mac:</strong> File &gt; Properties&#8230;. Your abc123 in the Author field and in the abc123 custom property, matching the kali-abc123 hostname visible in your screenshots.
+      <li><strong>Check your document properties survived.</strong> <strong>Windows:</strong> File &gt; Info. <strong>Mac:</strong> File &gt; Properties&#8230;. Your abc123 in the Author field and in the abc123 custom property, matching the abc123 hostname visible in your screenshots.
       </li>
-      <li><strong>Look at every screenshot at full size.</strong> Legible, cropped to what matters, kali-abc123 visible in the prompt. A screenshot nobody can read is evidence of nothing.
+      <li><strong>Look at every screenshot at full size.</strong> Legible, cropped to what matters, abc123 visible in the prompt. A screenshot nobody can read is evidence of nothing.
       </li>
       <li><strong>Save as .docx and submit that.</strong> Word format only, not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.
       </li>
@@ -732,10 +756,12 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <code>01-vm-settings.png</code>: Capture your VM settings window showing the VM name (kali-&lt;your abc123&gt;), RAM allocation, and processor count</li>
+      <li>&#9744; <code>01-vm-settings.png</code>: Capture your VM settings window showing the VM name (&lt;your abc123&gt;), RAM allocation, and processor count</li>
       <li>&#9744; <code>02-kali-desktop.png</code>: Capture the Kali desktop after login, with the terminal open showing your hostname</li>
       <li>&#9744; <code>03-docker-version.png</code>: Capture docker --version and the hello-world output</li>
-      <li>&#9744; <code>04-system-verification.png</code>: Capture a terminal showing output from the verification commands. Your hostname must be visible</li>
+      <li>&#9744; <code>04-system-verification.png</code>: Capture the Part A output: hostname and uname -a, with your hostname visible in the prompt</li>
+      <li>&#9744; <code>05-network-connectivity.png</code>: Capture the Part B output: ip addr and the ping results showing all 3 packets received</li>
+      <li>&#9744; <code>06-tool-verification.png</code>: Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, docker --version, and the empty docker ps table</li>
       <li>&#9744; <code>07-nmap-version.png</code>: Capture nmap -sV results</li>
       <li>&#9744; <code>08-nmap-scripts.png</code>: Capture nmap -sC results</li>
       <li>&#9744; <code>09-netcat-banner.png</code>: Capture netcat connection showing SSH banner</li>
@@ -777,9 +803,9 @@
 
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
-      <li>&#9744; Captures from Labs 1.1 and 1.2 are carried into this packet, not just the Unit 3 ones</li>
-      <li>&#9744; Every capture in the list above is present, and any extra captures you took are in the Appendix</li>
-      <li>&#9744; Hostname (kali-&lt;your abc123&gt;) visible in every terminal screenshot</li>
+      <li>&#9744; Captures from Labs 1.1 and 1.2 are in the Runbook, next to the entries for the tools that produced them</li>
+      <li>&#9744; At least 20 qualifying screenshots, each inline next to the text that references it, none uploaded separately in Canvas</li>
+      <li>&#9744; Your abc123 visible in every screenshot (terminal prompt, or the full Kali VM window&#8217;s title bar)</li>
       <li>&#9744; Screenshots are clear and readable</li>
     </ul>
 
@@ -845,7 +871,7 @@
 
     <h2 class="nx-accent">Penalties</h2>
     <ul>
-      <li><strong>-2.5%</strong> Per silently-absent required capture: missing, illegible, duplicated, or with VM hostname (kali-&lt;your abc123&gt;) not visible. Every numbered capture callout in Module 1 is individually required. A documented failure you captured and explained is not docked.</li>
+      <li><strong>-2.5%</strong> Per qualifying screenshot short of 20. A qualifying screenshot is readable, comes from this module&#8217;s labs, shows your abc123 (in the terminal prompt, or in the title bar of the full Kali VM window), and sits inline in the .docx next to the text that references it. Twenty qualifying screenshots earns full screenshot credit. More than 20 earns nothing extra unless a screenshot is your evidence for a stretch goal. Duplicates count once. A documented failure you captured and explained counts.</li>
       <li><strong>-5%</strong> Per reference missing below the 10-reference minimum. References must meet the source quality standard.</li>
       <li><strong>-20%</strong> Appendix missing from Part II Client Deliverable.</li>
       <li><strong>-10%</strong> Executive Summary exceeds one page.</li>

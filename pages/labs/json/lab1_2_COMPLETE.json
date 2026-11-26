@@ -37,7 +37,7 @@
         "type": "warning",
         "title": "Your Authorized Targets",
         "icon": "warning",
-        "text": "Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and <strong>testphp.vulnweb.com</strong> (Acunetix's intentionally vulnerable demo site). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first. The cost of asking is five minutes."
+        "text": "Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and the <strong>NEXUS training range</strong>, a practice web server you run on your own VM at <code>http://127.0.0.1:8080</code> (Checkpoints 3 and 4). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first. The cost of asking is five minutes."
       },
       {
         "type": "tip",
@@ -313,10 +313,9 @@
       "content": [
         {
           "type": "callout",
-          "icon": "warning",
-          "calloutType": "warning",
-          "title": "If the Target Is Down, Use the NEXUS Range",
-          "text": "<code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>."
+          "calloutType": "tip",
+          "title": "Your Target: the NEXUS Training Range",
+          "body": "Checkpoints 3 and 4 scan the NEXUS training range, a practice web server that runs on your own VM using the Docker you installed in Lab 1.1. Start it with the first step below. It keeps running until you stop it, so Checkpoint 4 uses the same one. The range hands back a real mix of response codes: some paths return 200, some 403, and missing ones 404. Read its <code>robots.txt</code> too."
         },
         {
           "type": "narrative",
@@ -328,8 +327,17 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Run dirb against the test target:",
-              "command": "dirb http://testphp.vulnweb.com",
+              "text": "Start the NEXUS training range on your VM:",
+              "command": "docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest",
+              "whatThisDoes": {
+                "concept": "<code>-d</code> runs the container in the background, <code>-p 8080:80</code> makes its web server answer on port 8080 of your VM, and <code>--name</code> gives it a name you can stop it by. Run <code>docker ps</code> and confirm <code>nexus-range</code> shows as Up before you scan.",
+                "output": null,
+                "flags": null
+              }
+            },
+            {
+              "text": "Run dirb against the range:",
+              "command": "dirb http://127.0.0.1:8080",
               "whatThisDoes": {
                 "concept": "dirb sends HTTP requests for thousands of common directory and file names (from a wordlist) and reports which ones exist. It&#8217;s a brute-force approach to content discovery: finding pages the site doesn&#8217;t link to publicly.",
                 "output": "Watch for lines showing CODE:200 (the page exists) versus CODE:403 (forbidden but exists) and CODE:301 (redirect). Each discovered path is a potential attack surface."
@@ -413,10 +421,9 @@
       "content": [
         {
           "type": "callout",
-          "icon": "warning",
-          "calloutType": "warning",
-          "title": "If the Target Is Down, Use the NEXUS Range",
-          "text": "<code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>."
+          "calloutType": "tip",
+          "title": "Same Target as Checkpoint 3",
+          "body": "nikto scans the NEXUS training range you started in Checkpoint 3. If you rebooted or stopped it since, start it again with <code>docker start nexus-range</code> and confirm with <code>docker ps</code>. When nikto finishes, stop and remove the range: <code>docker stop nexus-range</code>, then <code>docker rm nexus-range</code>."
         },
         {
           "type": "narrative",
@@ -428,8 +435,8 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Run nikto against the test target:",
-              "command": "nikto -h http://testphp.vulnweb.com",
+              "text": "Run nikto against the range:",
+              "command": "nikto -h http://127.0.0.1:8080",
               "whatThisDoes": {
                 "concept": "nikto is a web server vulnerability scanner that checks for thousands of known issues: outdated software, dangerous default files, misconfigurations, and insecure headers. The -h flag specifies the target host.",
                 "output": "Each line prefixed with + is a finding. Look for server version disclosures, missing security headers, and OSVDB reference numbers. These findings would go into a real vulnerability assessment report."
@@ -759,7 +766,7 @@
       {
         "title": "Screenshot Verification",
         "items": [
-          "Hostname (kali-&lt;your abc123&gt;) visible in terminal screenshots",
+          "Hostname (&lt;your abc123&gt;) visible in terminal screenshots",
           "All screenshots clear and readable",
           "All screenshots saved to Module1_Screenshots folder"
         ]
@@ -781,8 +788,8 @@
         "purpose": "Official nmap test server (network scanning)"
       },
       {
-        "host": "testphp.vulnweb.com",
-        "purpose": "Acunetix test site (web scanning)"
+        "host": "127.0.0.1:8080 (NEXUS training range)",
+        "purpose": "Practice web server on your own VM (web scanning)"
       },
       {
         "host": "Your own Kali VM",

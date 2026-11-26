@@ -58,7 +58,7 @@
     <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">task_alt</span></div>
     <div class="nx-callout-body">
       <div class="nx-callout-title">Required for every Engagement Packet</div>
-      <p><strong>Submitted as .docx</strong> from <strong>desktop Microsoft Word (Windows or Mac)</strong> — no PDFs, no Google Docs, and <strong>not Word for the web</strong>, which cannot produce the fields this packet requires. <strong>Every numbered screenshot capture called out in your module's labs</strong>, each with your VM hostname (<code>kali-&lt;your abc123&gt;</code>) visible in the terminal prompt. <strong>10+ references</strong> meeting the source quality standard — see the <a href="Citations.html" style="color:#ffffff;text-decoration:underline;">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part.</p>
+      <p><strong>Submitted as .docx</strong> from <strong>desktop Microsoft Word (Windows or Mac)</strong> — no PDFs, no Google Docs, and <strong>not Word for the web</strong>, which cannot produce the fields this packet requires. <strong>At least 20 qualifying screenshots from your module's labs</strong>, each inline next to the text that references it, with your abc123 visible in the terminal prompt or in the title bar of the full Kali VM window. <strong>10+ references</strong> meeting the source quality standard — see the <a href="Citations.html" style="color:#ffffff;text-decoration:underline;">Citations</a> page. <strong>Both Part I and Part II must be present</strong> — a missing part is graded zero for that part.</p>
     </div>
   </div>
 
@@ -87,7 +87,7 @@
      • Author      → your name
      • abc123      → your VM identifier (the custom property near the
                      bottom of the properties list)
-3. Your abc123 is your own UTSA ID (e.g. xqz947). It MUST match the kali-&lt;your abc123&gt; hostname shown in your
+3. Your abc123 is your own UTSA ID (e.g. xqz947). It MUST match the &lt;your abc123&gt; hostname shown in your
    screenshots. It is the key we use to tie this packet to your VM.
 4. Select all, then RIGHT-CLICK inside the selection and choose
    "Update all fields". This works the same on Windows and Mac.
@@ -124,7 +124,7 @@
       <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M4_Password_Audit.docx" target="_blank" class="nx-info-stat nx-tpl-card" style="border-top: 4px solid #454F5E; text-decoration: none; display: block;">
         <div class="nx-info-stat__label" style="color: #454F5E;">Module 4</div>
         <div class="nx-info-stat__value" style="font-size: 15px; margin-top: 6px;">Password Security</div>
-        <div class="nx-tpl-card__client" style="color: #B0B8C4; font-size: 12px; margin-top: 4px;">Internal contribution (Brazos / Alamo)</div>
+        <div class="nx-tpl-card__client" style="color: #B0B8C4; font-size: 12px; margin-top: 4px;">Alamo Industries</div>
         <div class="nx-tpl-card__file" style="color: #7B68EE; font-size: 12px; font-weight: 600; margin-top: 10px;">&#11015; EP_M4_Password_Audit.docx</div>
       </a>
       <a href="https://jfnewsom.github.io/is3513-assets/templates/EP_M5_LoneStar.docx" target="_blank" class="nx-info-stat nx-tpl-card" style="border-top: 4px solid #0F172A; text-decoration: none; display: block;">
@@ -156,7 +156,8 @@
     <div class="nx-section-label" style="--accent: #2E75B6; color: #2E75B6; border-bottom-color: #2E75B6;">Screenshots &amp; References</div>
     <ul class="nx-exam-tips">
       <li><strong style="color:#ffffff;">Screenshot naming:</strong> Use the ##-description.png convention (e.g. 07-nmap-service-scan.png) so they sort in order and are easy to reference.</li>
-      <li><strong style="color:#ffffff;">VM hostname visible:</strong> kali-&lt;your abc123&gt; must be visible in every screenshot. A screenshot missing it counts as missing (&minus;2.5% each). Screenshots are graded on <strong>coverage, not raw count</strong> &#8212; every numbered capture callout in your module&#8217;s labs is individually required.</li>
+      <li><strong style="color:#ffffff;">Screenshots:</strong> at least 20 qualifying screenshots per module earns full screenshot credit, and each one short of 20 is &minus;2.5%. Your abc123 must be visible in every one: in the terminal prompt, or in the title bar of the full Kali VM window. More than 20 earns nothing on its own, but a screenshot that evidences a stretch goal is how that work gets credited.</li>
+      <li><strong style="color:#ffffff;">Where they go:</strong> Screenshots go inline, inside the .docx, next to the text that references them. Foundation Lab work (X.1 and X.2) goes in the Runbook, under the entry for the tool that produced it. Client work (X.3) goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count.</li>
       <li><strong style="color:#ffffff;">Reference minimum:</strong> At least 10 properly-formatted references (&minus;5% for each one below 10), and each one must be cited at least once in the body of the packet &#8212; bibliography-only entries do not count. CVE entries, vendor advisories, NIST publications, and tool documentation all count. <strong>The course textbook does not count toward the ten</strong> &#8212; it ships in the template as a formatting example, and you do not have to delete it. Use Word&#8217;s References tab &rarr; Insert Citation, then generate the bibliography &#8212; don&#8217;t hand-type it.</li>
     </ul>
   </div>
@@ -177,7 +178,7 @@
     <summary><span aria-hidden="true">✓</span> Good Example — Module 1 Timesheet</summary>
     <div class="nx-expand-body"><p>A Module 1 (Brazos Financial) timesheet that gives leadership exactly what they need to bill the client and assess the engagement:</p>
 <pre>WEEK 1 — Internal Training (4.0 hours)
-• Kali VM installation, hostname configured to kali-&lt;your abc123&gt; ............... 1.5 hr
+• Kali VM installation, hostname configured to &lt;your abc123&gt; ............... 1.5 hr
 • VirtualBox network configuration (host-only adapter for engagement) .... 0.5 hr
 • Lab 1.1 environment verification (uname -a, ip a, screenshot capture) .. 1.0 hr
 • Documentation setup (screenshot folder structure, runbook scaffolding) . 1.0 hr
@@ -312,6 +313,21 @@ Then I looked up the versions on Google and found some vulnerabilities.</pre>
   </details>
 
   <div class="nx-named-section">
+    <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">Adding a Runbook Entry</div>
+    <p class="nx-exam-body">Every template ships with one runbook entry box. You fill it in once per tool and repeat the box for the next one. Lab 1.3 walks through this the first time; these are the same steps.</p>
+    <ul class="nx-exam-tips">
+      <li><strong style="color:#ffffff;">1.</strong> <strong style="color:#ffffff;">Find the entry box.</strong> In Part I, under <em>B. Internal Runbook</em>, the template has one runbook entry: a box (a one-cell table) that starts with <code>[TOOL OR STEP NAME]</code> and holds Purpose, Options / flags used, Exact command as run, Sample output excerpt, Next steps / interpretation, and Pitfalls observed. Under the box is a line that says <code>[Screenshot here ...]</code>. One box is one entry. You do not add rows to it; you repeat the whole box.</li>
+      <li><strong style="color:#ffffff;">2.</strong> <strong style="color:#ffffff;">Fill in your first entry.</strong> Replace <code>[TOOL OR STEP NAME]</code> with the tool (for example, nmap). Replace every bracketed prompt in the box with your own text. Paste the exact command and the lines of output that matter straight from your terminal, not from the lab page.</li>
+      <li><strong style="color:#ffffff;">3.</strong> <strong style="color:#ffffff;">Put its screenshot under it.</strong> Click the <code>[Screenshot here ...]</code> line, delete the placeholder text, and use Insert &gt; Pictures to add the capture of that command and its output. Click the line below the picture and caption it with References &gt; Insert Caption.</li>
+      <li><strong style="color:#ffffff;">4.</strong> <strong style="color:#ffffff;">Copy the whole box.</strong> Click anywhere inside the box, then select the entire table. Windows: Table Layout tab (labeled Layout) &gt; Select &gt; Select Table. Mac: Table menu &gt; Select &gt; Table. On either, you can also hover over the box and click the small four-arrow handle at its top-left corner. Then copy (Ctrl+C on Windows, &#8984;C on Mac).</li>
+      <li><strong style="color:#ffffff;">5.</strong> <strong style="color:#ffffff;">Paste it below the last entry.</strong> Click the empty line under the caption you just added and paste (Ctrl+V or &#8984;V). Keep at least one ordinary line between two boxes: if two boxes touch, Word joins them into one table. Paste the screenshot placeholder line too, or just insert the next picture under the new box.</li>
+      <li><strong style="color:#ffffff;">6.</strong> <strong style="color:#ffffff;">Repeat for every tool.</strong> One entry per tool you used across the module&#8217;s labs. If one tool did genuinely different jobs (host discovery, then version detection), you may split it into one entry per step, each with its own box and screenshot.</li>
+      <li><strong style="color:#ffffff;">7.</strong> <strong style="color:#ffffff;">Clean up.</strong> Every copied box carries its bracketed prompts with it. Before you submit, make sure none of them is left in any entry.</li>
+    </ul>
+    <p class="nx-named-tip"><strong style="color:#ffffff;">Where the screenshot goes:</strong> Screenshots go inline, inside the .docx, next to the text that references them. Foundation Lab work (X.1 and X.2) goes in the Runbook, under the entry for the tool that produced it. Client work (X.3) goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count.</p>
+  </div>
+
+  <div class="nx-named-section">
     <div class="nx-section-label" style="--accent: #FF9F1C; color: #FF9F1C; border-bottom-color: #FF9F1C;">C. Analyst Reflection</div>
     <p class="nx-exam-body"><strong style="color:#ffffff;">Audience:</strong> You + your instructor. This is the section where the learning lives.</p>
     <p class="nx-exam-body">Three prompts to answer:</p>
@@ -440,7 +456,7 @@ I recommend updating it.</pre>
     <div class="nx-section-label" style="--accent: #E63946; color: #E63946; border-bottom-color: #E63946;">What Gets Penalized</div>
     <p class="nx-exam-body">Documentation deductions are calibrated to the severity of each failure in a real engagement. Combined deductions cap at &#8722;100%.</p>
     <ul class="nx-exam-tips">
-      <li><strong style="color:#ffffff;">&#8722;2.5% per silently-absent required capture</strong>. Every numbered screenshot callout in your module&#8217;s labs is individually required &#8212; coverage of that checklist, not a raw count. A capture is silently absent if it is missing, illegible, duplicated, or lacks its identity anchor (normally your VM hostname, <code>kali-&lt;your abc123&gt;</code>) with no explanation. A documented failure you captured and explained is not docked.</li>
+      <li><strong style="color:#ffffff;">&#8722;2.5% per qualifying screenshot short of 20</strong>. A qualifying screenshot is readable, comes from this module&#8217;s labs, shows your abc123 (in the terminal prompt, or in the title bar of the full Kali VM window), and sits inline in the .docx next to the text that references it. Duplicates count once. A documented failure you captured and explained counts.</li>
       <li><strong style="color:#ffffff;">&#8722;5% per missing reference</strong> below the 10-reference minimum. Each reference must be cited at least once in the packet body; bibliography-only entries do not count. References must meet the source quality standard &#8212; see the <a href="Citations.html" style="color:#7B68EE;">Citations</a> page. Wikipedia, the textbook, and tutorial sites do not count.</li>
       <li><strong style="color:#ffffff;">&#8722;20% if the Appendix is missing.</strong> The appendix is the audit trail &#8212; without it, your findings can&#8217;t be verified.</li>
       <li><strong style="color:#ffffff;">&#8722;10% if the Executive Summary exceeds one page.</strong> The one-page limit is a hard limit, not a guideline.</li>
@@ -448,7 +464,7 @@ I recommend updating it.</pre>
       <li><strong style="color:#ffffff;">&#8722;5% if the Table of Contents is missing or hand-typed</strong> (not generated from heading styles).</li>
       <li><strong style="color:#ffffff;">&#8722;5% if Word fields are not updated</strong> &#8212; visible &#8220;Error! Reference source not found&#8221; placeholders or stale figure numbers. Run Ctrl+A &#8594; F9 before submitting.</li>
     </ul>
-    <p class="nx-named-tip"><strong style="color:#ffffff;">These penalties are pre-curve and transparent.</strong> If three of your module&#8217;s required captures are silently absent, that&#8217;s &#8722;7.5%. If you turn in 6 quality references, that&#8217;s &#8722;20%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them.</p>
+    <p class="nx-named-tip"><strong style="color:#ffffff;">These penalties are pre-curve and transparent.</strong> If you turn in three fewer than 20 qualifying screenshots, that&#8217;s &#8722;7.5%. If you turn in 6 quality references, that&#8217;s &#8722;20%. No subjectivity, no negotiation, no surprises. The deductions exist as a deterrent &#8212; if you&#8217;re doing the engagement work in good faith, you&#8217;ll rarely interact with them.</p>
   </div>
 
   <div class="nx-named-section">
@@ -479,7 +495,7 @@ I recommend updating it.</pre>
       <li>Professional Reflection answered honestly (specific, not generic)</li>
       <li>AI Methodology Reflection answered honestly (or N/A if true)</li>
     </ul>
-    <p class="nx-named-tip"><strong style="color:#ffffff;">Part II (Client Deliverable):</strong><ul style="margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;"><li>Cover page complete (client name, engagement title, date)</li><li>Executive Summary is one page or less, board-readable</li><li>Findings ordered by severity, each with finding number / title / description / evidence / impact</li><li>Recommendations prioritized (Monday vs. next quarter)</li><li>20+ screenshots embedded inline, every one with <code style="color:#00BCD4;">kali-&lt;your abc123&gt;</code> visible</li><li>Screenshot filenames: <code style="color:#00BCD4;">##-description.png</code></li><li>10+ quality references in Appendix; auto-generated bibliography</li><li>Figure captions auto-numbered; cross-references live</li></ul><strong style="color:#ffffff;">Both parts:</strong><ul style="margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;"><li>Submitted as <code style="color:#00BCD4;">.docx</code> (no PDFs)</li><li>Filename: <code style="color:#00BCD4;">LastName_LabX.3_EngagementPacket.docx</code></li><li>Ctrl+A → F9 to update all fields (TOC, captions, cross-references, bibliography)</li></ul></p>
+    <p class="nx-named-tip"><strong style="color:#ffffff;">Part II (Client Deliverable):</strong><ul style="margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;"><li>Cover page complete (client name, engagement title, date)</li><li>Executive Summary is one page or less, board-readable</li><li>Findings ordered by severity, each with finding number / title / description / evidence / impact</li><li>Recommendations prioritized (Monday vs. next quarter)</li><li>At least 20 qualifying screenshots, each inline next to the text that references it, every one with <code style="color:#00BCD4;">&lt;your abc123&gt;</code> visible</li><li>Screenshot filenames: <code style="color:#00BCD4;">##-description.png</code></li><li>10+ quality references in Appendix; auto-generated bibliography</li><li>Figure captions auto-numbered; cross-references live</li></ul><strong style="color:#ffffff;">Both parts:</strong><ul style="margin:8px 0;padding-left:20px;line-height:1.8;color:#B0B8C4;"><li>Submitted as <code style="color:#00BCD4;">.docx</code> (no PDFs)</li><li>Filename: <code style="color:#00BCD4;">LastName_LabX.3_EngagementPacket.docx</code></li><li>Ctrl+A → F9 to update all fields (TOC, captions, cross-references, bibliography)</li></ul></p>
   </div>
 
   <div class="nx-page-footer">Questions about what belongs in Part I vs. Part II? Ask in <strong>#course-questions</strong> on Discord. Questions about your specific grade? Email.</div>

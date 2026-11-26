@@ -69,7 +69,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Your Authorized Targets</div>
-        <p>Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and <strong>testphp.vulnweb.com</strong> (Acunetix's intentionally vulnerable demo site). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first. The cost of asking is five minutes.</p>
+        <p>Your authorized targets for this lab are <strong>scanme.nmap.org</strong> (Nmap project's official learning target) and the <strong>NEXUS training range</strong>, a practice web server you run on your own VM at <code>http://127.0.0.1:8080</code> (Checkpoints 3 and 4). Nothing else. Do not scan your roommate's laptop, your employer's network, a random IP you found, or any other site that 'looked interesting.' The Computer Fraud and Abuse Act doesn't care that you were learning. If you want to test something not on this list, ask first. The cost of asking is five minutes.</p>
       </div>
     </div>
     <div class="nx-callout nx-cyan">
@@ -335,11 +335,11 @@
     <div class="nx-sub">dirb Directory Discovery</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <div class="nx-callout nx-orange">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">If the Target Is Down, Use the NEXUS Range</div>
-        <p><code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>.</p>
+        <div class="nx-callout-title">Your Target: the NEXUS Training Range</div>
+        <p>Checkpoints 3 and 4 scan the NEXUS training range, a practice web server that runs on your own VM using the Docker you installed in Lab 1.1. Start it with the first step below. It keeps running until you stop it, so Checkpoint 4 uses the same one. The range hands back a real mix of response codes: some paths return 200, some 403, and missing ones 404. Read its <code>robots.txt</code> too.</p>
       </div>
     </div>
     <h3>What You&#8217;re Doing</h3>
@@ -347,8 +347,17 @@
     <h3>Why It Matters</h3>
     <p>Web apps often have hidden admin panels, backup files, or development directories. Directory brute-forcing finds these resources that attackers commonly exploit.</p>
     <ol>
-      <li>Run dirb against the test target:
-        <div class="nx-cmd">dirb http://testphp.vulnweb.com</div>
+      <li>Start the NEXUS training range on your VM:
+        <div class="nx-cmd">docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</div>
+        <details>
+          <summary>What this does</summary>
+          <div class="nx-details-body">
+            <p><strong>Concept:</strong> <code>-d</code> runs the container in the background, <code>-p 8080:80</code> makes its web server answer on port 8080 of your VM, and <code>--name</code> gives it a name you can stop it by. Run <code>docker ps</code> and confirm <code>nexus-range</code> shows as Up before you scan.</p>
+          </div>
+        </details>
+      </li>
+      <li>Run dirb against the range:
+        <div class="nx-cmd">dirb http://127.0.0.1:8080</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
@@ -430,11 +439,11 @@
     <div class="nx-sub">nikto Vulnerability Scanning</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <div class="nx-callout nx-orange">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">If the Target Is Down, Use the NEXUS Range</div>
-        <p><code>testphp.vulnweb.com</code> is a third-party site, not ours, and it has been unreliable this term. Check it before you start: <code>curl -I http://testphp.vulnweb.com</code>. If it does not answer, you are not stuck and you are not skipping this checkpoint. Start the NEXUS training range on your own VM instead:<br><br><code>docker run -d -p 8080:80 --name nexus-range jfnewsom/nexus-range:latest</code><br><br>Then run every command in this checkpoint against <code>http://127.0.0.1:8080</code> in place of the vulnweb address. Same tool, same lesson, same screenshot, same filename. Note in your packet which target you scanned. When you are finished: <code>docker stop nexus-range</code> and <code>docker rm nexus-range</code>.</p>
+        <div class="nx-callout-title">Same Target as Checkpoint 3</div>
+        <p>nikto scans the NEXUS training range you started in Checkpoint 3. If you rebooted or stopped it since, start it again with <code>docker start nexus-range</code> and confirm with <code>docker ps</code>. When nikto finishes, stop and remove the range: <code>docker stop nexus-range</code>, then <code>docker rm nexus-range</code>.</p>
       </div>
     </div>
     <h3>What You&#8217;re Doing</h3>
@@ -442,8 +451,8 @@
     <h3>Why It Matters</h3>
     <p>Nikto checks for 6,700+ dangerous files and 1,250+ outdated server versions. It quickly identifies low-hanging fruit that attackers commonly exploit.</p>
     <ol>
-      <li>Run nikto against the test target:
-        <div class="nx-cmd">nikto -h http://testphp.vulnweb.com</div>
+      <li>Run nikto against the range:
+        <div class="nx-cmd">nikto -h http://127.0.0.1:8080</div>
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
@@ -760,7 +769,7 @@
 
     <h2>Screenshot Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; Hostname (kali-&lt;your abc123&gt;) visible in terminal screenshots</li>
+      <li>&#9744; Hostname (&lt;your abc123&gt;) visible in terminal screenshots</li>
       <li>&#9744; All screenshots clear and readable</li>
       <li>&#9744; All screenshots saved to Module1_Screenshots folder</li>
     </ul>
@@ -836,7 +845,7 @@
         <div class="nx-callout-title">Authorized Targets Only</div>
         <ul>
           <li><strong>scanme.nmap.org:</strong> Official nmap test server (network scanning)</li>
-          <li><strong>testphp.vulnweb.com:</strong> Acunetix test site (web scanning)</li>
+          <li><strong>127.0.0.1:8080 (NEXUS training range):</strong> Practice web server on your own VM (web scanning)</li>
           <li><strong>Your own Kali VM:</strong> localhost (all tools)</li>
         </ul>
       </div>

@@ -5,27 +5,22 @@
   "accentColor": "#7B68EE",
   "units": "3 Labs",
   "chapters": "15 & 16",
-  "client": "Brazos Financial + Alamo Industries",
-  "clientColor": "#FF9F1C",
+  "client": "Alamo Industries",
+  "clientColor": "#E63946",
   "logo": [
-    {
-      "src": "branding/brazos-financial-dark.svg",
-      "alt": "Brazos Financial Group logo",
-      "cssClass": "nx-logo-glow"
-    },
     {
       "src": "branding/alamo-industries-dark.svg",
       "alt": "Alamo Industries logo",
       "cssClass": "nx-logo-glow"
     }
   ],
-  "overview": "Module 4 is where you go on offense &#8212; carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Lab 4.1 focuses on Windows (NTLM) hashes from Brazos. Lab 4.2 moves to Linux (SHA-512) hashes from Alamo. Lab 4.3 you deliver a professional password security assessment to both clients.",
+  "overview": "Module 4 is where you go on offense, carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Your client is Alamo Industries, assessed across two very different environments. Lab 4.1 cracks Windows (NTLM) hashes from Alamo's corporate office. Lab 4.2 moves to Linux (SHA-512) hashes from the plant floor. In Lab 4.3 you deliver one password security assessment to Alamo comparing the two.",
   "units_breakdown": [
     {
       "unitLabel": "LAB 4.1",
       "type": "foundation",
       "labTitle": "Lab 4.1: Windows Password Cracking",
-      "labDesc": "Crack NTLM hashes from Brazos Financial using John the Ripper and Hashcat. Learn why unsalted hashes are a structural weakness.",
+      "labDesc": "Crack NTLM hashes from Alamo Industries' Windows corporate office using John the Ripper and Hashcat. Learn why unsalted hashes are a structural weakness.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
@@ -33,7 +28,7 @@
       "unitLabel": "LAB 4.2",
       "type": "foundation",
       "labTitle": "Lab 4.2: Linux Password Cracking",
-      "labDesc": "Crack SHA-512 hashes from Alamo Industries. Compare salted Linux hashes to NTLM &#8212; the difference is dramatic.",
+      "labDesc": "Crack SHA-512 hashes from Alamo's Linux plant floor. Compare salted Linux hashes to NTLM: the difference is dramatic.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },
@@ -41,21 +36,21 @@
       "unitLabel": "LAB 4.3",
       "type": "engagement",
       "labTitle": "Lab 4.3: Password Security Assessment",
-      "labDesc": "Client engagement. Compile your findings into a professional password security report for both clients.",
+      "labDesc": "Client engagement. Compile your findings into one password security report for Alamo, comparing its two environments and recommending what to fix first.",
       "badgeLabel": "Client Billable",
       "badgeColor": "#FF9F1C"
     }
   ],
   "clientContext": {
-    "label": "Client Context: Brazos Financial + Alamo Industries",
-    "body": "Ray Jimenez (CTO, Brazos) needs ammunition for a budget conversation about credential security. Bobby Alamo III (CEO, Alamo Industries) is preparing for CMMC certification and has shared accounts on the production floor that haven't been audited in years. Your cracking results tell both clients exactly where they stand."
+    "label": "Client Context: Alamo Industries",
+    "body": "Alamo Industries, a San Antonio aerospace and defense manufacturer pursuing CMMC Level 2, runs two very different environments: a Windows corporate office and a Linux plant floor. Elena Vasquez, the IT Manager, owns both and already knows they are not in the same shape. Bobby Alamo III, the CEO, is the executive sponsor. Your cracking results show them exactly where each environment stands and what to fix first."
   },
   "stakeholders": [
     {
-      "name": "Ray Jimenez",
-      "title": "CTO, Brazos Financial Group",
-      "portrait": "headshots/ray-jimenez.png",
-      "concern": "Two phishing clicks last month. I need to know how bad it would have been if those credentials had been weak &#8212; and which accounts to harden first."
+      "name": "Elena Vasquez",
+      "title": "IT Manager, Alamo Industries",
+      "portrait": "headshots/elena-vasquez.png",
+      "concern": "I own both the corporate domain and the plant-floor systems, and I already know they are not in the same shape. Show me the gap and tell me what to fix first for CMMC."
     },
     {
       "name": "Bobby Alamo III",
