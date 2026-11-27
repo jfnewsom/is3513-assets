@@ -8,7 +8,8 @@
       "Chapter 1: Introduction to Security",
       "Chapter 2: General Security Concepts"
     ],
-    "layout": "tabs"
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology. Next unit, you'll apply these skills against a real client engagement.",

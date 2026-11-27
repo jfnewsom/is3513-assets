@@ -74,5 +74,9 @@
   "readings": [
     6,
     11
-  ]
+  ],
+  "engagementFraming": {
+    "label": "One Engagement, Three Graded Parts",
+    "body": "Module 2 is a single engagement for Gulf Coast Healthcare, delivered in three parts that are each graded on their own: Lab 2.1, Lab 2.2, and EP 2. Lab 2.1 and Lab 2.2 are your Training Labs, where you do the hands-on work and capture your screenshots. EP 2 is your Engagement Packet, where you compile that same evidence into one client report. Your lab screenshots are not only for the lab grade. They are what your EP is built from, so capture them carefully as you go."
+  }
 }

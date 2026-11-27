@@ -8,7 +8,8 @@
       "Chapter 6: Applied Cryptography",
       "Chapter 11: Authentication and Remote Access"
     ],
-    "layout": "tabs"
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "This unit continues your security training at NEXUS with a deep dive into authentication systems. You&#8217;ll master SSH key generation, understand why key permissions matter, configure SSH for secure connections, and explore multi-factor authentication concepts. These skills are essential for the Gulf Coast Healthcare engagement next unit, where you&#8217;ll SSH into their patient portal server to repair its expired certificate.",

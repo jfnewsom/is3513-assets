@@ -7,10 +7,12 @@
   "chapters": [
    "Chapter 15: Types of Attacks",
    "Chapter 16: Security Tools"
-  ]
+  ],
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
-  "overview": "Alamo Industries is a San Antonio aerospace and defense manufacturer, 2,500 employees, chasing CMMC Level 2 certification to keep its Department of Defense contracts. The company runs two very different environments: a Windows corporate office and a Linux plant floor. This unit you work the corporate side. Elena Vasquez, Alamo&#8217;s IT Manager, pulled a sample of 8 Active Directory password hashes from the corporate domain and handed them to NEXUS to audit ahead of the CMMC assessment. You&#8217;ll crack those Windows NTLM hashes with John the Ripper and Hashcat, two industry-standard password recovery tools, and document everything for your Unit 3 engagement report. Carmen compiled OSINT dossiers on the corporate staff if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>.",
+  "overview": "Alamo Industries is a San Antonio aerospace and defense manufacturer, 2,500 employees, chasing CMMC Level 2 certification to keep its Department of Defense contracts. The company runs two very different environments: a Windows corporate office and a Linux plant floor. This unit you work the corporate side. Elena Vasquez, Alamo&#8217;s IT Manager, pulled a sample of 8 Active Directory password hashes from the corporate domain and handed them to NEXUS to audit ahead of the CMMC assessment. You&#8217;ll crack those Windows NTLM hashes with John the Ripper and Hashcat, two industry-standard password recovery tools, and document everything for EP 4. Carmen compiled OSINT dossiers on the corporate staff if you want to go deeper: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>.",
   "objectives": [
    "Identify and analyze NTLM hash format characteristics",
    "Execute wordlist attacks using John the Ripper",
@@ -139,7 +141,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 6
     },
     {
      "type": "callout",
@@ -151,11 +154,6 @@
      "type": "callout",
      "text": "Why is NTLM considered weak? Research the differences between MD4, MD5, SHA-1, and SHA-256. What does &#8220;salting&#8221; do to protect hashes?",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "text": "Chapter 15 covers password attacks in detail. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 15: Types of Attacks.</em>",
-     "calloutType": "thatsAReference"
     },
     {
      "type": "callout",
@@ -182,7 +180,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness. Understanding format differences helps you assess password storage security. <em>This chapter is essential reading. Add it to your EP 4 references.</em>",
+     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness. Understanding format differences helps you assess password storage security.",
      "calloutType": "textbookReference"
     }
    ]
@@ -250,7 +248,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 4
     },
     {
      "type": "callout",
@@ -270,7 +269,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 5
     },
     {
      "type": "callout",
@@ -282,11 +282,6 @@
      "type": "callout",
      "text": "What do the different John the Ripper modes do? Research the difference between <code>--wordlist</code>, <code>--rules</code>, and <code>--incremental</code> modes.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "text": "You just used a man page! Run <code>man john</code> and add to your references: <em>john(8): John the Ripper password cracker. Linux manual page.</em>",
-     "calloutType": "thatsAReference"
     },
     {
      "type": "callout",
@@ -342,6 +337,15 @@
         "output": "The <code>></code> redirects the output to a new file. Verify with <code>cat alamo-corp-hashes-only.txt</code>. You should see only 32-character hex strings, one per line, with no usernames.",
         "flags": null
        }
+      },
+      {
+       "text": "Verify the extraction:",
+       "command": "cat alamo-corp-hashes-only.txt",
+       "whatThisDoes": {
+        "concept": "<code>cat</code> prints the file you just created. This is the capture Hashcat&#8217;s input format screenshot is taken from.",
+        "output": "You should see only 32-character hex strings, one per line, with no usernames, UIDs, or colons. That confirms the NTLM hashes were extracted cleanly for Hashcat.",
+        "flags": null
+       }
       }
      ]
     },
@@ -363,7 +367,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 3
     },
     {
      "type": "callout",
@@ -383,7 +388,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 4
     },
     {
      "type": "callout",
@@ -403,7 +409,8 @@
         "flags": null
        }
       }
-     ]
+     ],
+     "start": 5
     },
     {
      "type": "callout",
@@ -418,18 +425,8 @@
     },
     {
      "type": "callout",
-     "text": "The Hashcat wiki documents all attack modes and hash types. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat Wiki. (n.d.). Example hashes. https://hashcat.net/wiki/doku.php?id=example_hashes</em>",
-     "calloutType": "thatsAReference"
-    },
-    {
-     "type": "callout",
      "text": "Why is GPU-accelerated cracking so much faster than CPU? Research how parallelization works for password cracking and why modern GPUs can test billions of hashes per second.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "text": "The Hashcat documentation explains GPU performance. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Hashcat. (n.d.). Hashcat FAQ, Performance. https://hashcat.net/wiki/doku.php?id=frequently_asked_questions</em>",
-     "calloutType": "thatsAReference"
     },
     {
      "type": "callout",
@@ -548,11 +545,6 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 16 covers security tools and best practices. The textbook does not count toward your ten references. Read its endnotes, find the primary sources it cites, and cite those. <em>Conklin, W.A. &#38; White, G. (2022). Principles of Computer Security (6th ed.), Chapter 16: Security Tools.</em>",
-     "calloutType": "thatsAReference"
-    },
-    {
-     "type": "callout",
      "number": 10,
      "text": "Capture your filled-in results table (can be terminal notes, text file, or spreadsheet). Save as <code>10-results-table.png</code>",
      "calloutType": "screenshot"
@@ -588,7 +580,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact: the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for EP 4.</em>",
+     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact: the same skill used in professional penetration test reports.",
      "calloutType": "textbookReference"
     }
    ]

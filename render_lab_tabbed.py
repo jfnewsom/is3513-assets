@@ -34,6 +34,25 @@ SHOT_RE = re.compile(r"[\w.-]+\.png")
 REF_TABS = {"shots", "grading", "help"}   # reference tabs: after the path, no Back/Next
 
 
+def module_banner(meta, col):
+    """Optional banner at the top of the Overview tab linking to the module
+    overview page. Gated on meta.showModuleBanner so it pilots per module.
+    Wording assumes the standard 2-TrainingLabs + 1-EP module; Module 5 is
+    compressed (one training lab + EP) and needs different text at rollout."""
+    if not meta.get("showModuleBanner"):
+        return ""
+    mod = str(meta.get("labId", "")).split("_")[0]
+    if not mod:
+        return ""
+    rgb = {"#4169E1": "65, 105, 225", "#7B68EE": "123, 104, 238"}.get(col, "123, 104, 238")
+    return (
+        f'    <div class="nx-client-ctx nx-module-banner" style="--client-color: {col}; --client-rgb: {rgb};">\n'
+        f'      <div class="nx-client-ctx__label">Module {mod}: one engagement, three graded parts</div>\n'
+        f'      <div class="nx-client-ctx__body">Lab {mod}.1 and Lab {mod}.2 are graded Training Labs where you do the hands-on work and capture your evidence. EP {mod} is the graded Engagement Packet where you compile that same evidence into one client report. Your lab screenshots are what the EP is built from, so capture them carefully as you go. <a href="../support/Module_{mod}.html">See how the three parts fit together.</a></div>\n'
+        f'    </div>\n'
+    )
+
+
 def card_inner(section_html):
     """Contents of a section's nx-card, dropping the header and wrappers."""
     start = section_html.index('<div class="nx-card"')
@@ -140,7 +159,7 @@ def build(data):
     # Overview: the intro card, What You Already Have (engagement labs), and
     # the Time Guide behind a card.
     _, intro_sec = R.render_intro(data)
-    ov = card_inner(intro_sec)
+    ov = module_banner(meta, lab_col) + card_inner(intro_sec)
     if is_eng:
         yah = R.render_you_already_have(data)
         if yah:

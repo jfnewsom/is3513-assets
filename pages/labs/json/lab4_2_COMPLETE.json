@@ -7,7 +7,9 @@
     "chapters": [
       "Chapter 15: Types of Attacks",
       "Chapter 16: Security Tools"
-    ]
+    ],
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "After auditing Alamo&#8217;s corporate Windows accounts last unit, NEXUS turns to the same company&#8217;s plant floor, where the manufacturing and OT systems run Linux. You&#8217;ll use the same tools (John the Ripper and Hashcat) but experience dramatically different results. Linux&#8217;s SHA-512 algorithm with salting creates significantly higher computational barriers. This lab demonstrates how defensive architecture choices directly impact attacker timelines.",
@@ -100,11 +102,6 @@
           "calloutType": "digDeeper"
         },
         {
-          "type": "callout",
-          "text": "NIST SP 800-63B: Digital Identity Guidelines: Authentication. Specifically section 5.1.1 on Memorized Secrets: https://pages.nist.gov/800-63-3/sp800-63b.html",
-          "calloutType": "thatsAReference"
-        },
-        {
           "type": "steps",
           "steps": [
             {
@@ -141,7 +138,8 @@
                 "flags": null
               }
             }
-          ]
+          ],
+          "start": 3
         },
         {
           "type": "callout",
@@ -153,11 +151,6 @@
           "type": "callout",
           "text": "Why does salting defeat rainbow table attacks? Research how pre-computed hash tables work and why unique salts per password render them useless.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "text": "Chapter 15 covers password attack types including rainbow tables. Add to your references: <em>Conklin &#38; White, Chapter 15: Types of Attacks</em>",
-          "calloutType": "thatsAReference"
         },
         {
           "type": "callout",
@@ -184,7 +177,7 @@
         },
         {
           "type": "callout",
-          "text": "Chapter 15 explains password storage mechanisms across platforms. Linux&#8217;s SHA-512 with per-user salts represents modern password hashing. Compare this to NTLM&#8217;s weaknesses from Lab 4.1. <em>Same chapter, different platform, still counts as a reference.</em>",
+          "text": "Chapter 15 explains password storage mechanisms across platforms. Linux&#8217;s SHA-512 with per-user salts represents modern password hashing. Compare this to NTLM&#8217;s weaknesses from Lab 4.1.",
           "calloutType": "textbookReference"
         }
       ]
@@ -238,7 +231,8 @@
                 "flags": null
               }
             }
-          ]
+          ],
+          "start": 2
         },
         {
           "type": "callout",
@@ -258,7 +252,8 @@
                 "flags": null
               }
             }
-          ]
+          ],
+          "start": 3
         },
         {
           "type": "callout",
@@ -309,11 +304,6 @@
         },
         {
           "type": "callout",
-          "text": "The shadow(5) man page explains the file format. Run <code>man 5 shadow</code> in your Kali terminal.",
-          "calloutType": "thatsAReference"
-        },
-        {
-          "type": "callout",
           "number": 16,
           "text": "Capture your terminal showing the <code>man 5 shadow</code> output. Scroll to show the format description section. Save as <code>16-man-shadow-format.png</code>. VM name must be visible.",
           "calloutType": "screenshot"
@@ -333,11 +323,6 @@
           "type": "callout",
           "text": "How do modern Linux systems protect password hashes? Research the yescrypt algorithm used in current distributions.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "text": "The crypt(5) man page describes supported hash algorithms. Run <code>man 5 crypt</code> in your terminal. If it reports <code>No manual entry for crypt in section 5</code>, that page is not installed by default on current Kali. Install it first with <code>sudo apt install libcrypt-dev</code>, then run the command again.",
-          "calloutType": "thatsAReference"
         },
         {
           "type": "callout",
@@ -377,7 +362,8 @@
                 "flags": null
               }
             }
-          ]
+          ],
+          "start": 2
         },
         {
           "type": "callout",
@@ -402,6 +388,10 @@
             {
               "label": "Not comparing speed to Lab 4.1",
               "text": "The H/s comparison between NTLM (Lab 4.1) and SHA-512 (this lab) is required for your engagement report. Capture the Speed.#1 line from Hashcat's output and note the difference."
+            },
+            {
+              "label": "man 5 crypt not found",
+              "text": "If <code>man 5 crypt</code> reports <code>No manual entry for crypt in section 5</code>, that page is not installed by default on current Kali. Install it with <code>sudo apt install libcrypt-dev</code>, then run the command again."
             }
           ]
         },
@@ -417,7 +407,7 @@
           "calloutType": "textbookReference",
           "title": "Textbook Reference",
           "icon": "book",
-          "text": "Chapter 16 covers security tool selection and assessment methodology. The speed difference you observed between Hashcat's NTLM and SHA-512 modes illustrates why algorithm choice is a security control, not just an implementation detail. Add both Chapters 15 and 16 to your EP 4 reference list."
+          "text": "Chapter 16 covers security tool selection and assessment methodology. The speed difference you observed between Hashcat's NTLM and SHA-512 modes illustrates why algorithm choice is a security control, not just an implementation detail."
         },
         {
           "type": "callout",
@@ -514,11 +504,6 @@
           "type": "callout",
           "text": "How do cracking speed differences translate into real-world attacker timelines? Research how security researchers estimate &#8220;time to crack&#8221; for different password lengths and hash algorithms. What does the NTLM vs. SHA-512 gap mean for an attacker with a GPU cluster vs. a commodity laptop?",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "text": "NIST SP 800-63B Section 5.1.1.2 addresses offline attack resistance and the role of memory-hard functions. This directly supports your speed comparison analysis: https://pages.nist.gov/800-63-3/sp800-63b.html",
-          "calloutType": "thatsAReference"
         },
         {
           "type": "callout",

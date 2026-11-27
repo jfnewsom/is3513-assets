@@ -8,7 +8,8 @@
    "Chapter 6: Applied Cryptography",
    "Chapter 7: Public Key Infrastructure"
   ],
-  "layout": "tabs"
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
   "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. An expired certificate means browsers can no longer confirm patients are talking to the real portal, it teaches them to click through security warnings, and it tells auditors nobody was watching the expiration dates. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
@@ -1092,7 +1093,7 @@
    },
    {
     "filename": "09-signature-verify.png",
-    "description": "Capture the verification showing “Verified OK” message"
+    "description": "Capture the verification showing \u201cVerified OK\u201d message"
    },
    {
     "filename": "10-keygen-rsa.png",
@@ -1140,7 +1141,7 @@
    },
    {
     "filename": "21-gulfcoast-cert-signing.png",
-    "description": "Capture the CA signing command and “self-signature ok” output"
+    "description": "Capture the CA signing command and \u201cself-signature ok\u201d output"
    },
    {
     "filename": "22-gulfcoast-cert-installation.png",

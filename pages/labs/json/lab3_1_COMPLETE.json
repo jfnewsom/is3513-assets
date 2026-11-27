@@ -8,7 +8,8 @@
    "Chapter 9: Network Fundamentals",
    "Chapter 18: Cloud Computing (introduction)"
   ],
-  "layout": "tabs"
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
   "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation: the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.",

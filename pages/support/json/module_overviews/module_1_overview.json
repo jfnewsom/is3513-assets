@@ -68,5 +68,9 @@
   "readings": [
     1,
     2
-  ]
+  ],
+  "engagementFraming": {
+    "label": "One Engagement, Three Graded Parts",
+    "body": "Module 1 is a single engagement for Brazos Financial, delivered in three parts that are each graded on their own: Lab 1.1, Lab 1.2, and EP 1. Lab 1.1 and Lab 1.2 are your Training Labs, where you do the hands-on work and capture your screenshots. EP 1 is your Engagement Packet, where you compile that same evidence into one client report. Your lab screenshots are not only for the lab grade. They are what your EP is built from, so capture them carefully as you go."
+  }
 }

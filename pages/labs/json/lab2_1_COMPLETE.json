@@ -8,7 +8,8 @@
       "Chapter 6: Applied Cryptography",
       "Chapter 11: Authentication and Remote Access"
     ],
-    "layout": "tabs"
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "This unit begins your cryptography training at NEXUS Security. You&#8217;ll master the fundamental cryptographic operations that underpin modern security: hashing for integrity verification, symmetric encryption for data protection, asymmetric encryption for secure key exchange, and digital signatures for non-repudiation. These skills prepare you for the Gulf Coast Healthcare engagement in Unit 3, where you&#8217;ll remediate certificate issues on their patient portal.",

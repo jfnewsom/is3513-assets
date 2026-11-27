@@ -71,5 +71,9 @@
   "readings": [
     10,
     20
-  ]
+  ],
+  "engagementFraming": {
+    "label": "One Engagement, Two Graded Parts",
+    "body": "Module 5 is a single engagement for LoneStar DevOps, delivered in two parts that are each graded on their own: Lab 5.1 and EP 5. Lab 5.1 is your Training Lab, where you do the hands-on work and capture your screenshots. EP 5 is your Engagement Packet, where you compile that evidence into one client report. Your lab screenshots are not only for the lab grade. They are what your EP is built from, so capture them carefully as you go."
+  }
 }

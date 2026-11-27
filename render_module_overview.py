@@ -270,6 +270,17 @@ def render(data):
 {chr(10).join(week_rows)}
     </div>"""
 
+    # Engagement framing (optional): "one engagement, N graded parts". Rendered
+    # only when present, so it can be piloted on one module before rollout.
+    framing_html = ""
+    if data.get("engagementFraming"):
+        ef = data["engagementFraming"]
+        accent_rgb = CLIENT_RGB.get(accent, client_rgb)
+        framing_html = f"""    <div class="nx-client-ctx nx-engagement-framing" style="--client-color: {accent}; --client-rgb: {accent_rgb};">
+      <div class="nx-client-ctx__label">{ef['label']}</div>
+      <div class="nx-client-ctx__body">{ef['body']}</div>
+    </div>"""
+
     # Client context (prose) + optional stakeholder bubbles below
     ctx = data["clientContext"]
     client_ctx_prose = f"""    <div class="nx-client-ctx" style="--client-color: {client_color}; --client-rgb: {client_rgb};">
@@ -314,7 +325,7 @@ def render(data):
     # Deadline / time-zone reminder — single-sourced across all surfaces.
     deadline_section = render_deadline_callout()
 
-    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, week_section, client_ctx, readings_section, skills_section, recordings_section, deadline_section, footer]))
+    body = "\n\n".join(filter(None, [info_bar, overview, notice_html, framing_html, week_section, client_ctx, readings_section, skills_section, recordings_section, deadline_section, footer]))
     return shell(n, title, accent, body)
 
 

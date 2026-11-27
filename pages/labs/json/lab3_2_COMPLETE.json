@@ -9,7 +9,8 @@
       "Chapter 13: IDS and Network Security (partial)",
       "Chapter 18: Cloud Computing"
     ],
-    "layout": "tabs"
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "This unit is your Wireshark deep dive. You&#8217;ll master protocol analysis techniques using NEXUS internal training captures: exercises designed by Derek Mitchell to prepare analysts for real-world network investigations. By the end of this lab, you&#8217;ll know how to capture, filter, dissect, and visualize network traffic like a seasoned SOC analyst.",

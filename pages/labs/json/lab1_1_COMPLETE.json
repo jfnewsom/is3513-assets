@@ -8,7 +8,8 @@
    "Chapter 1: Introduction to Security",
    "Chapter 2: General Security Concepts"
   ],
-  "layout": "tabs"
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
   "overview": "Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.",
@@ -39,7 +40,7 @@
     "type": "warning",
     "title": "Technically Droppable, Actually Required",
     "icon": "warning",
-    "text": "Lab 1.1 is one of ten Training Labs, and you do get one drop. So administratively, yes, you could skip this one and have it not count against your grade. But practically, you can’t skip it. Lab 1.2 needs your Kali VM running. So do EP 1, Labs 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you’ll have to come back and do it anyway before Lab 1.2 is due</strong>, except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn’t gate everything that follows it."
+    "text": "Lab 1.1 is one of ten Training Labs, and you do get one drop. So administratively, yes, you could skip this one and have it not count against your grade. But practically, you can\u2019t skip it. Lab 1.2 needs your Kali VM running. So do EP 1, Labs 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you\u2019ll have to come back and do it anyway before Lab 1.2 is due</strong>, except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn\u2019t gate everything that follows it."
    },
    {
     "type": "tip",

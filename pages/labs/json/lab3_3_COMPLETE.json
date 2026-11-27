@@ -9,7 +9,8 @@
    "Chapter 13: IDS and Network Security (partial)",
    "Chapter 18: Cloud Computing"
   ],
-  "layout": "tabs"
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
   "overview": "This is it: your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1 and 2 to deliver a professional Engagement Packet.",
@@ -645,7 +646,7 @@
      "icon": "warning",
      "items": [
       "<strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali. Wireshark on the host captures all of it.",
-      "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
+      "<strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics \u2192 Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.",
       "<strong>Skipping server exploration:</strong> The nginx configuration and /var/www/ listing are findings, not optional steps. These outputs become evidence in your client report, so document them carefully."
      ]
     },
@@ -928,7 +929,7 @@
    },
    {
     "filename": "05-host-kali-config.png",
-    "description": "Capture both your host network config and Kali’s ip addr output (VM name must be visible)"
+    "description": "Capture both your host network config and Kali\u2019s ip addr output (VM name must be visible)"
    },
    {
     "filename": "06-topology-diagram.png",
@@ -936,7 +937,7 @@
    },
    {
     "filename": "07-wireshark-interfaces.png",
-    "description": "Capture Wireshark’s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface"
+    "description": "Capture Wireshark\u2019s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface"
    },
    {
     "filename": "08-dns-filter.png",
@@ -976,11 +977,11 @@
    },
    {
     "filename": "17-io-graph.png",
-    "description": "Capture the IO Graph showing at least two lines: the default “All Packets” and your custom DNS filter"
+    "description": "Capture the IO Graph showing at least two lines: the default \u201cAll Packets\u201d and your custom DNS filter"
    },
    {
     "filename": "18-flow-graph.png",
-    "description": "Capture the Flow Graph showing TCP packet sequences between hosts. Use “Displayed packets” with a filter applied to keep it readable"
+    "description": "Capture the Flow Graph showing TCP packet sequences between hosts. Use \u201cDisplayed packets\u201d with a filter applied to keep it readable"
    },
    {
     "filename": "19-credential-finding.png",
@@ -1004,27 +1005,27 @@
    },
    {
     "filename": "24-protocol-hierarchy-verification.png",
-    "description": "Capture the Protocol Hierarchy window (Statistics → Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present"
+    "description": "Capture the Protocol Hierarchy window (Statistics \u2192 Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present"
    },
    {
     "filename": "25-protocol-distribution.png",
-    "description": "Statistics → Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here"
+    "description": "Statistics \u2192 Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here"
    },
    {
     "filename": "26-endpoint-statistics.png",
-    "description": "Statistics → Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints"
+    "description": "Statistics \u2192 Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints"
    },
    {
     "filename": "27-tcp-stream.png",
-    "description": "Right-click an HTTP packet → Follow → TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text"
+    "description": "Right-click an HTTP packet \u2192 Follow \u2192 TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text"
    },
    {
     "filename": "28-io-graph.png",
-    "description": "Statistics → IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity"
+    "description": "Statistics \u2192 IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity"
    },
    {
     "filename": "29-flow-graph.png",
-    "description": "Statistics → Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing"
+    "description": "Statistics \u2192 Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing"
    },
    {
     "filename": "30-notable-finding.png",
