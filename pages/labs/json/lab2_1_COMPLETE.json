@@ -7,7 +7,8 @@
     "chapters": [
       "Chapter 6: Applied Cryptography",
       "Chapter 11: Authentication and Remote Access"
-    ]
+    ],
+    "layout": "tabs"
   },
   "intro": {
     "overview": "This unit begins your cryptography training at NEXUS Security. You&#8217;ll master the fundamental cryptographic operations that underpin modern security: hashing for integrity verification, symmetric encryption for data protection, asymmetric encryption for secure key exchange, and digital signatures for non-repudiation. These skills prepare you for the Gulf Coast Healthcare engagement in Unit 3, where you&#8217;ll remediate certificate issues on their patient portal.",
@@ -25,7 +26,7 @@
       },
       {
         "title": "Symmetric Encryption",
-        "description": "AES-256-CBC encryption and decryption, the HIPAA-required standard for protecting PHI at rest."
+        "description": "AES-256-CBC encryption and decryption, the standard healthcare organizations use to protect PHI at rest."
       },
       {
         "title": "Asymmetric Encryption",
@@ -194,6 +195,19 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain what a cryptographic hash function is, why it only works one way, what the avalanche effect is, and how hashing is different from encryption. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain how attackers have taken advantage of weak hash functions such as MD5 and SHA-1 in the real world, and how defenders use hashes to detect that a file has been tampered with. If you suggest something to try, keep it to practice files on my own VM."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -211,15 +225,8 @@
           "type": "callout",
           "icon": "search",
           "title": "Dig Deeper",
-          "text": "What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology.",
+          "text": "What makes a hash algorithm &#8216;cryptographically secure&#8217;? Research why MD5 and SHA-1 are considered deprecated for security purposes.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "NIST SP 800-57 - Recommendation for Key Management. Available at: https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -229,8 +236,8 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Encrypting and decrypting files using AES-256, the symmetric encryption standard required by HIPAA for protecting patient health information (PHI) at rest.",
-          "whyItMatters": "Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard. It&#8217;s approved for classified government information and required by most healthcare compliance frameworks."
+          "whatYoureDoing": "Encrypting and decrypting files using AES-256, the symmetric encryption standard healthcare organizations use to protect patient health information (PHI) at rest.",
+          "whyItMatters": "Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard. It&#8217;s approved for classified government information and the algorithm healthcare auditors expect to see."
         },
         {
           "character": "Maria Delgado, PhD",
@@ -238,7 +245,7 @@
           "type": "callout",
           "calloutType": "characterQuote",
           "title": "Security Compliance Specialist, NEXUS Security",
-          "quote": "HIPAA requires encryption of PHI at rest. AES-256 is the standard. Know it cold."
+          "quote": "Under HIPAA, you encrypt PHI at rest or you document why you didn&#8217;t. Auditors will ask. AES-256 is the standard. Know it cold."
         },
         {
           "part": "Part A: Encrypt a file with AES-256",
@@ -249,7 +256,7 @@
               "text": "Encrypt your patient file (use password <code>nexus2026</code> when prompted):",
               "command": "openssl enc -aes-256-cbc -salt -pbkdf2 -in patient.txt -out patient.txt.enc",
               "whatThisDoes": {
-                "concept": "This encrypts a file using AES-256 in CBC mode, the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.",
+                "concept": "This encrypts a file using AES-256 in CBC mode, the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA doesn&#8217;t name an algorithm, but AES-256 is what auditors expect to see protecting patient health information (PHI) at rest.",
                 "output": "OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success. OpenSSL is silent on success.",
                 "flags": [
                   {
@@ -338,9 +345,26 @@
           "items": [
             "<strong>Forgetting the password:</strong> Symmetric encryption requires the same password for decryption",
             "<strong>Using weak algorithms:</strong> DES is obsolete; always use AES-256",
-            "<strong>Missing -pbkdf2 flag:</strong> Modern OpenSSL requires this for key derivation"
+            "<strong>Missing -pbkdf2 flag:</strong> without it, OpenSSL falls back to an old, weak way of turning your password into a key and prints a deprecation warning. Decrypt with the same flags you encrypted with, or you get a bad decrypt error"
           ],
           "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain what symmetric encryption is, what the 256 and the CBC in AES-256-CBC mean, and what a salt and PBKDF2 add when a password is turned into an encryption key. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. The algorithm is rarely the weak point of symmetric encryption; the key is. Explain why key management is the hard part, how organizations store, share and rotate encryption keys, and what an attacker does when they find a key. If you suggest something to try, keep it to practice files on my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Here is an error message I got from OpenSSL when I tried to decrypt my file:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -360,15 +384,8 @@
           "type": "callout",
           "icon": "search",
           "title": "Dig Deeper",
-          "text": "What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.",
+          "text": "AES is a block cipher, and this lab ran it in CBC mode. Research the difference between block ciphers and stream ciphers, and what a mode like CBC adds.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Your textbook Chapter 4 covers PKI and certificate authorities. RFC 5280 defines the X.509 certificate format: https://tools.ietf.org/html/rfc5280",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -398,7 +415,7 @@
               "text": "Generate a 2048-bit RSA private key:",
               "command": "openssl genrsa -out private.pem 2048",
               "whatThisDoes": {
-                "concept": "This generates an RSA private key, the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.",
+                "concept": "This generates an RSA private key, the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from how hard it is to factor a very large number back into the two prime numbers that were multiplied to make it.",
                 "output": null,
                 "flags": [
                   {
@@ -533,6 +550,23 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain how a public key and a private key work together, why RSA can only encrypt a small amount of data directly, and how real systems combine RSA with a symmetric cipher to protect larger data. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain how a website's HTTPS connection uses asymmetric encryption to agree on a symmetric key, and what an attacker can do if a server's private key is stolen. If you suggest something to try, keep it to practice files on my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Here is an error message I got from OpenSSL when I tried to encrypt a file with my public key:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -550,15 +584,8 @@
           "type": "callout",
           "icon": "search",
           "title": "Dig Deeper",
-          "text": "How does OpenSSL implement encryption algorithms? Research the difference between block ciphers and stream ciphers.",
+          "text": "What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology. Then compare: why does an RSA key need 2048 bits when an AES key is only 256?",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "OpenSSL Documentation - Cryptographic Algorithms. Available at: https://www.openssl.org/docs/",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -568,7 +595,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). This is the inverse of encryption.",
+          "whatYoureDoing": "Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). It uses the keys the opposite way from encryption.",
           "whyItMatters": "Digital signatures provide non-repudiation: proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable."
         },
         {
@@ -593,7 +620,7 @@
               "text": "Sign with your private key:",
               "command": "openssl dgst -sha256 -sign private.pem -out order.sig order.txt",
               "whatThisDoes": {
-                "concept": "Digital signing is encryption in reverse. You sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.",
+                "concept": "Signing uses the keys the opposite way from encryption. You sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.",
                 "output": null,
                 "flags": [
                   {
@@ -663,6 +690,23 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain how a digital signature works: what gets hashed, which key signs and which key verifies, and how a signature gives integrity, authenticity and non-repudiation. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Explain how software publishers use code signing, how certificate authorities use signatures to vouch for a public key, and what attackers have done with stolen signing keys. If you suggest something to try, keep it to practice files on my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I'm learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I'm new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps for me. Here is an error message I got from OpenSSL when I verified my signature:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -680,15 +724,8 @@
           "type": "callout",
           "icon": "search",
           "title": "Dig Deeper",
-          "text": "What makes a hash algorithm &#8216;cryptographically secure&#8217;? Research why MD5 and SHA-1 are considered deprecated for security purposes.",
+          "text": "What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "NIST Policy on Hash Functions. Available at: https://csrc.nist.gov/projects/hash-functions",
-          "calloutType": "thatsAReference"
         }
       ]
     }
@@ -700,7 +737,7 @@
       "items": [
         {
           "label": "Hash Collision Exploitation",
-          "text": "Hash collisions expose weak integrity checks: attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use."
+          "text": "Hash collisions expose weak integrity checks: with MD5 or SHA-1, an attacker can craft two different files that share one hash, such as a harmless document and a malicious one, and swap one for the other without the hash check noticing."
         },
         {
           "label": "Symmetric Key Theft",

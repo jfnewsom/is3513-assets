@@ -7,11 +7,22 @@
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
-<body>
+<body class="nx-tabbed">
 <h1 class="nx-sr-only">Module 2 Engagement Packet: Gulf Coast Certificate Remediation</h1>
-
-
-<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-tb-bar">
+  <div class="nx-tb-title">Module 2 Engagement Packet: Gulf Coast Certificate Remediation</div>
+  <div class="nx-tb-scroller">
+    <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
+    <nav class="nx-tb-tabs" role="tablist" aria-label="Lab sections"><a class="nx-tb-tab" role="tab" href="#overview" data-tab="overview" style="--tab:#7B68EE">Overview</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp1" data-tab="cp1" style="--tab:#00D26A" title="Set Up Your Document">CP1</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp2" data-tab="cp2" style="--tab:#00D26A" title="Deploy Container and Diagnose">CP2</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp3" data-tab="cp3" style="--tab:#00D26A" title="Certificate Remediation">CP3</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp4" data-tab="cp4" style="--tab:#00D26A" title="Verification and Bonus Findings">CP4</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp5" data-tab="cp5" style="--tab:#00D26A" title="Compile Engagement Packet">CP5</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp6" data-tab="cp6" style="--tab:#00D26A" title="Clean Up and Submit">CP6</a><a class="nx-tb-tab" role="tab" href="#purple" data-tab="purple" style="--tab:#7B68EE">Purple</a><a class="nx-tb-tab" role="tab" href="#wrapup" data-tab="wrapup" style="--tab:#7B68EE">Wrap-up</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#shots" data-tab="shots" style="--tab:#00BCD4">Screenshots</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#grading" data-tab="grading" style="--tab:#FF9F1C">Grading</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#help" data-tab="help" style="--tab:#4169E1">Help</a></nav>
+    <button type="button" class="nx-tb-fade r" aria-label="More tabs to the right">&rsaquo;</button>
+  </div>
+  <div class="nx-tb-tools">
+    <button type="button" class="nx-tb-all" aria-pressed="false" title="Show every tab and card on one page, for searching (Ctrl+F) and printing">Show all</button>
+    <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  </div>
+</div>
+<main class="nx-tb-main">
+<section class="nx-tb-panel" id="p-overview" data-tab="overview" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 <div class="nx-section">
   <div class="nx-header" style="--accent: #7B68EE;">
     <div class="nx-header-top">
@@ -21,6 +32,7 @@
     <div class="nx-sub">Gulf Coast Certificate Remediation</div>
   </div>
   <div class="nx-card" style="--accent: #7B68EE;">
+
     <p class="nx-module-label">Module 2: Cryptography &amp; Authentication</p>
 
     <div class="nx-callout nx-red">
@@ -31,7 +43,7 @@
       </div>
     </div>
     <h2>Overview</h2>
-    <p>Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.</p>
+    <p>Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. An expired certificate means browsers can no longer confirm patients are talking to the real portal, it teaches them to click through security warnings, and it tells auditors nobody was watching the expiration dates. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.</p>
 
     <div class="nx-quote">
       <div class="nx-quote-main">
@@ -88,20 +100,8 @@
         <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
       </div>
     </div>
-  </div>
-</div>
+      <h2>What You Already Have</h2>
 
-
-<!-- ══════════════════════════════════════════════════ YOU ALREADY HAVE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #00BCD4;">
-    <div class="nx-header-top">
-      <div class="nx-kw">you already</div>
-      <div class="nx-sec">have</div>
-    </div>
-    <div class="nx-sub">Three-Week Engagement Model</div>
-  </div>
-  <div class="nx-card" style="--accent: #00BCD4;">
     <p><strong>This is NOT starting from scratch. You&#8217;ve been building this report for 3 units.</strong></p>
 
     <h2>From Unit 1: Lab 2.1: Cryptographic Foundations</h2>
@@ -144,20 +144,8 @@
         <p>If you followed the Unit 1 and 2 instructions, most of your report is already written. This unit is about <strong>compilation and analysis</strong>, not starting over. Import your existing documentation, add the new analysis sections, and polish for submission.</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #FF9F1C;">
-    <div class="nx-header-top">
-      <div class="nx-kw">time</div>
-      <div class="nx-sec">guide</div>
-    </div>
-    <div class="nx-sub">Estimated completion times per checkpoint</div>
-  </div>
-  <div class="nx-card" style="--accent: #FF9F1C;">
+  
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">schedule</span><span>Time Guide</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>
     <table class="nx-time-table">
       <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
@@ -172,11 +160,12 @@
     </table>
 
     <p>Unit 3 is your first client-billable unit. Checkpoint 2 and 3 time is billable to Gulf Coast Healthcare Partners. Checkpoint 5 (Engagement Packet compilation) is billable time as well. Document it in your Part I Timesheet. Units 1 and 2 were internal training and are NOT client billable.</p>
+  </div></div>
   </div>
 </div>
-
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-tb-botnav"><a class="nx-tb-next" href="#cp1" data-tab="cp1">Next: CP1 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp1" data-tab="cp1" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -186,8 +175,7 @@
     <div class="nx-sub">Set Up Your Document</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
+    <p class="nx-tb-lead">Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
     <h3>Why It Matters</h3>
     <p>Document mechanics were the single largest avoidable point loss last term, and none of it had anything to do with security knowledge. Nearly all of it traces back to a document set up wrong on day one and never recovered. Do this first and it stays done.</p>
     <ol>
@@ -204,24 +192,35 @@
       <li>Save the file now, and keep saving as you go.
       </li>
     </ol>
-    <div class="nx-callout nx-cyan">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Four Mechanics, Every Time</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Four Mechanics, Every Time</div>
         <p>Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href="https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html">EP 1, Checkpoint 5</a> walks all four of them step by step.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain how Microsoft Word&#x27;s citation tools work (adding a source, inserting a citation, and the bibliography field), and why they beat typing references by hand. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#overview" data-tab="overview">&larr; Back: Overview</a><a class="nx-tb-next" href="#cp2" data-tab="cp2">Next: CP2 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp2" data-tab="cp2" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -231,8 +230,7 @@
     <div class="nx-sub">Deploy Container and Diagnose</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Deploying the Gulf Coast patient portal container and documenting the broken state before making any changes.</p>
+    <p class="nx-tb-lead">Deploying the Gulf Coast patient portal container and documenting the broken state before making any changes.</p>
     <h3>Why It Matters</h3>
     <p>HIPAA requires documentation of security incidents and remediation. &#8220;Before&#8221; evidence proves due diligence for auditors. If you fix it first and document after, you have no proof of what the original problem was.</p>
     <h3>Part A: Deploy the Gulf Coast portal container</h3>
@@ -267,14 +265,7 @@
       <li>Open Firefox and navigate to <code>https://localhost</code>. You should see <strong>Warning: Potential Security Risk Ahead</strong>. Click <strong>Advanced</strong>. The error code is <code>SEC_ERROR_UNKNOWN_ISSUER</code>: Firefox doesn&#8217;t trust Gulf Coast&#8217;s internal CA, and it reports that problem first. The expiration is there too, but Firefox only shows it on the certificate itself. Click <strong>View Certificate</strong> and find the <strong>Validity</strong> section. The <strong>Not After</strong> date is in the past. This is your &#8220;before&#8221; evidence.
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past. Save as <code>gulfcoast-01-initial-error.png</code></p>
-      </div>
-    </div>
-    <ol>
+    <ol start="2">
       <li>Check the certificate dates from your Kali terminal:
         <div class="nx-cmd">openssl s_client -connect localhost:443 &lt;/dev/null 2>/dev/null | openssl x509 -noout -dates</div>
         <details>
@@ -293,17 +284,20 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the openssl output showing the expired certificate dates. Save as <code>gulfcoast-02-cert-expired.png</code></p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>18-gulfcoast-initial-error.png</code> Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past. Save as <code>18-gulfcoast-initial-error.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>19-gulfcoast-cert-expired.png</code> Capture the openssl output showing the expired certificate dates. Save as <code>19-gulfcoast-cert-expired.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Gulf Coast portal container running and accessible. Screenshots documenting the initial broken state: browser warning and expired certificate dates from openssl. These &#8220;before&#8221; screenshots are critical audit evidence.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">search</span><span>Dig Deeper</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Port conflict:</strong> <code>port is already allocated</code> means another container holds port 443 or 2222, usually Brazos from EP 1. Run <code>docker stop brazos</code> and <code>docker rm gulfcoast-portal</code>, then run the line again</li>
           <li><strong>Docker not running:</strong> If you get a &#8220;permission denied&#8221; error, make sure Docker is running and try adding <code>sudo</code></li>
@@ -311,37 +305,47 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Gulf Coast portal container running and accessible. Screenshots documenting the initial broken state: browser warning and expired certificate dates from openssl. These &#8220;before&#8221; screenshots are critical audit evidence.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what a TLS certificate is, what its notBefore and notAfter dates mean, and what a browser checks before it trusts a certificate. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain why organizations still let certificates expire, what kinds of outages that has caused, and how automated renewal (such as ACME) and a certificate inventory prevent it.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got when I started the Gulf Coast portal container:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
       </div>
     </div>
-    <div class="nx-callout nx-yellow">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Dig Deeper</div>
         <p>What is a self-signed certificate and when is it appropriate to use one? Research the trust implications of self-signed vs. CA-signed certificates.</p>
       </div>
-    </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>Chapter 7 discusses certificate types and PKI hierarchy. Let&#8217;s Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/</p>
-      </div>
-    </div>
+            <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>
+</div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp1" data-tab="cp1">&larr; Back: CP1</a><a class="nx-tb-next" href="#cp3" data-tab="cp3">Next: CP3 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp3" data-tab="cp3" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -351,8 +355,7 @@
     <div class="nx-sub">Certificate Remediation</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.</p>
+    <p class="nx-tb-lead">Generating a new CSR using the existing private key, signing it with the CA, and installing the new certificate.</p>
     <h3>Why It Matters</h3>
     <p>Certificate renewal is one of the most common PKI operations you&#8217;ll perform. Understanding the CSR workflow (using the existing private key to generate a new request, then signing with the CA) ensures continuity without regenerating keys.</p>
     <div class="nx-quote">
@@ -391,13 +394,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Your abc123 Inside the Container</div>
-        <p>Once you SSH in, the prompt belongs to the container (<code>student@...</code>), not your VM, so your abc123 is not in it. For screenshots taken in this session, either keep the Kali prompt line where you typed the <code>ssh</code> command in frame, or capture the entire Kali VM window so your abc123 shows in its title bar.</p>
-      </div>
-    </div>
     <h3>Part B: Generate a new Certificate Signing Request (CSR)</h3>
     <ol>
       <li>Generate a new CSR using the existing private key:
@@ -417,13 +413,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the CSR generation command and output. Save as <code>gulfcoast-03-csr-generation.png</code></p>
-      </div>
-    </div>
     <h3>Part C: Sign the CSR with the Certificate Authority</h3>
     <ol>
       <li>Sign the CSR using the CA certificate and key (requires sudo because the CA key is root-owned). The paths are relative, so run this from <code>/opt/gulfcoast-pki</code>. If you reconnected since Part A, <code>cd /opt/gulfcoast-pki</code> first, or you&#8217;ll get <code>Could not open file or uri for loading CA certificate from CA/ca.crt</code>:
@@ -445,30 +434,33 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>gulfcoast-04-cert-signing.png</code></p>
-      </div>
-    </div>
     <h3>Part D: Install the new certificate</h3>
     <ol>
       <li>Copy the new certificate into Apache&#8217;s SSL directory:
         <div class="nx-cmd">sudo cp /opt/gulfcoast-pki/certs/portal-new.crt /etc/ssl/certs/portal.crt</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-gulfcoast-csr-generation.png</code> Capture the CSR generation command and output. Save as <code>20-gulfcoast-csr-generation.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-gulfcoast-cert-signing.png</code> Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>21-gulfcoast-cert-signing.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>22-gulfcoast-cert-installation.png</code> Capture the certificate installation command. Save as <code>22-gulfcoast-cert-installation.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A new signed certificate installed in place of the expired one. Screenshots documenting the CSR generation, CA signing process, and certificate installation.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Your abc123 Inside the Container</span></button><button type="button" class="nx-tb-card nx-orange" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the certificate installation command. Save as <code>gulfcoast-05-cert-installation.png</code></p>
+        <p>Once you SSH in, the prompt belongs to the container (<code>student@...</code>), not your VM, so your abc123 is not in it. For screenshots taken in this session, either keep the Kali prompt line where you typed the <code>ssh</code> command in frame, or capture the entire Kali VM window so your abc123 shows in its title bar.</p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Wrong key path:</strong> The portal key is at <code>certs/portal.key</code>; confirm with <code>ls -la</code></li>
           <li><strong>Permission denied on CA key:</strong> The CA private key is root-owned. You need <code>sudo</code> for the signing step</li>
@@ -476,23 +468,40 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A new signed certificate installed in place of the expired one. Screenshots documenting the CSR generation, CA signing process, and certificate installation.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what a certificate signing request is, what is inside it, how a certificate authority turns it into a signed certificate, and why a certificate can be renewed with the same private key. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what an attacker could do with a stolen certificate authority private key compared with a stolen server private key, and how organizations protect CA keys. If you suggest something to try, keep it to the Gulf Coast container on my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got from OpenSSL when I tried to sign the certificate request with the CA:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp2" data-tab="cp2">&larr; Back: CP2</a><a class="nx-tb-next" href="#cp4" data-tab="cp4">Next: CP4 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp4" data-tab="cp4" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -502,8 +511,7 @@
     <div class="nx-sub">Verification and Bonus Findings</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.</p>
+    <p class="nx-tb-lead">Restarting Apache to load the new certificate, verifying it works, and hunting for additional security findings.</p>
     <h3>Why It Matters</h3>
     <p>Verification proves the fix worked. Combined with your &#8220;before&#8221; screenshots, this creates a complete audit trail showing you diagnosed the problem, implemented a solution, and confirmed success.</p>
     <h3>Part A: Restart Apache and verify the fix</h3>
@@ -521,14 +529,7 @@
         <div class="nx-cmd">sudo docker start gulfcoast-portal</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the Apache restart and container restart. Save as <code>gulfcoast-06-apache-restart.png</code></p>
-      </div>
-    </div>
-    <ol>
+    <ol start="3">
       <li>From your Kali terminal (not inside the container), verify the new certificate dates:
         <div class="nx-cmd">openssl s_client -connect localhost:443 &lt;/dev/null 2>/dev/null | openssl x509 -noout -dates</div>
         <details>
@@ -543,24 +544,10 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the new certificate dates showing future expiration. Save as <code>gulfcoast-07-cert-valid.png</code></p>
-      </div>
-    </div>
-    <ol>
+    <ol start="4">
       <li>Refresh <code>https://localhost</code> in Firefox. You will still see <strong>Warning: Potential Security Risk Ahead</strong>, with the same error code, <code>SEC_ERROR_UNKNOWN_ISSUER</code>. That is expected. Your new certificate is signed by Gulf Coast&#8217;s internal CA, which Firefox doesn&#8217;t trust, and that is a separate issue from expiration. Click <strong>Advanced</strong>, then <strong>View Certificate</strong>. The <strong>Validity</strong> dates are now the new ones.
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates. Save as <code>gulfcoast-08-browser-success.png</code></p>
-      </div>
-    </div>
     <h3>Part B: Bonus: Hunt for additional findings</h3>
     <ol>
       <li>SSH back into the container and investigate the following areas. Document anything concerning in your report:
@@ -575,17 +562,21 @@
       <li>What TLS protocol versions does the Apache configuration allow?
       </li>
     </ol>
-    <div class="nx-callout nx-yellow">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Bonus Discovery</div>
-        <p>SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client.</p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>23-gulfcoast-apache-restart.png</code> Capture the Apache restart and container restart. Save as <code>23-gulfcoast-apache-restart.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>24-gulfcoast-cert-valid.png</code> Capture the new certificate dates showing future expiration. Save as <code>24-gulfcoast-cert-valid.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>25-gulfcoast-browser-success.png</code> Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates. Save as <code>25-gulfcoast-browser-success.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The &#8220;after&#8221; evidence combined with your &#8220;before&#8221; screenshots creates a complete remediation audit trail.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">rocket_launch</span><span>Bonus Discovery</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>SSH session disconnects on Apache restart; this is expected behavior inside Docker. Restart the container from your Kali terminal: sudo docker start gulfcoast-portal</li>
           <li>Certificate change not reflected; if openssl still shows the old expiration date, run docker restart gulfcoast-portal and wait 10 seconds before checking again.</li>
@@ -594,23 +585,38 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A verified, working HTTPS connection with valid certificate dates. Screenshots showing Apache restart and successful verification via openssl. The &#8220;after&#8221; evidence combined with your &#8220;before&#8221; screenshots creates a complete remediation audit trail.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain why a browser can still warn about a renewed certificate when it was signed by a company&#x27;s own internal certificate authority, and how an organization gets its internal CA trusted on its own computers. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain why SHA-1 certificate signatures and old TLS versions such as 1.0 and 1.1 are considered weak, and how an analyst checks which ones a server allows. If you suggest something to try, keep it to the Gulf Coast container on my own VM.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
       </div>
     </div>
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <p>SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client.</p>
+      </div>
+    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp3" data-tab="cp3">&larr; Back: CP3</a><a class="nx-tb-next" href="#cp5" data-tab="cp5">Next: CP5 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp5" data-tab="cp5" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -620,8 +626,7 @@
     <div class="nx-sub">Compile Engagement Packet</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Compiling all three units of Module 2 work into a professional Engagement Packet.</p>
+    <p class="nx-tb-lead">Compiling all three units of Module 2 work into a professional Engagement Packet.</p>
     <h3>Why It Matters</h3>
     <p>This isn&#8217;t just an academic assignment. It&#8217;s a professional deliverable. In six units, Jennifer Walsh presents this documentation to OCR auditors as evidence of due diligence.</p>
     <div class="nx-callout nx-red">
@@ -645,7 +650,7 @@
         <div class="nx-callout-title">Include in Part I (Internal Packet)</div>
         <ul>
           <li><strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), EP 2 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul></li>
-          <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 2.1, Lab 2.2 and EP 2 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li><li>Adding entries and placing screenshots: follow <a href="https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html">Adding a Runbook Entry</a> in the Engagement Packet Guide, the same steps you used in EP 1</li></ul></li>
+          <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 2.1, Lab 2.2 and EP 2 (for example sha256sum, openssl, ssh-keygen, ssh, chmod and docker)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li><li>Adding entries and placing screenshots: follow <a href="https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html">Adding a Runbook Entry</a> in the Engagement Packet Guide, the same steps you used in EP 1</li></ul></li>
           <li><strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific: &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true, but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul></li>
         </ul>
       </div>
@@ -657,7 +662,7 @@
         <ul>
           <li><strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1 or 2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2 or 3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh: every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul></li>
           <li><strong>Methodology (7%)</strong><ul><li>3 to 4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers; this is client-facing</li></ul></li>
-          <li><strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul></li>
+          <li><strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Patient Portal TLS Certificate Expired&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul></li>
           <li><strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding: why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul></li>
           <li><strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints: Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul></li>
         </ul>
@@ -685,31 +690,33 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-cyan">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A complete Engagement Packet in .docx format containing all 12 required sections, at least 20 qualifying screenshots, and minimum 10 references.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Runbook Format: Like a Man Page</span></button><button type="button" class="nx-tb-card nx-cyan" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Analyst Reflection: Honest, Not Performative</span></button><button type="button" class="nx-tb-card nx-cyan" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Executive Summary Tips</span></button><button type="button" class="nx-tb-card nx-orange" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="4" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="5" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Runbook Format: Like a Man Page</div>
         <p>Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you&#8217;d reach for it). <strong>Switches used</strong> (each flag you used on Gulf Coast with a one-line explanation). <strong>Switches for future use</strong> (flags you didn&#8217;t use this time but should know). <strong>How you used it</strong> (your actual command). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.</p>
       </div>
     </div>
-    <div class="nx-callout nx-cyan">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Analyst Reflection: Honest, Not Performative</div>
         <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit. Even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about cryptography, authentication, or compliance work?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
       </div>
     </div>
-    <div class="nx-callout nx-cyan">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Executive Summary Tips</div>
         <p>Write for Jennifer Walsh (CISO), not technical staff. Lead with finding and fix, not methodology.</p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>PDF submission:</strong> Must be .docx; PDF submissions receive automatic zero</li>
           <li><strong>Missing VM name:</strong> Every screenshot must show your hostname (&lt;your abc123&gt;)</li>
@@ -717,24 +724,53 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="4" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A complete Engagement Packet in .docx format containing all 12 required sections, at least 20 qualifying screenshots, and minimum 10 references.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain how to judge the severity of a finding like an expired certificate on a healthcare patient portal: what likelihood and impact mean here, and what would make it more or less severe. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: Executive Summary</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of the Executive Summary for my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: one page at most; the overall risk posture in one or two sentences; a count of findings by severity; the top two or three recommendations, framed in business terms; readable by a non-technical executive, with no first person, no command output and no jargon an executive wouldn&#x27;t know; every line tied to patient trust, HIPAA exposure or operational continuity. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: one finding</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of one finding from my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: numbered; a descriptive title; a severity rating (Critical, High, Medium, Low or Informational); the affected host, service or certificate; a description, with the specific vulnerability identifier where one applies; evidence, pointing to a screenshot or OpenSSL output; the impact in business terms; and a one-line recommendation. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: runbook entry</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of one runbook entry from my internal packet:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: the tool&#x27;s name and purpose; the switches I used, each with a one-line explanation; switches I didn&#x27;t use but should know; the exact command I ran; what output came back, with a screenshot reference; what I did with the result; and whether a colleague could reproduce my work from it three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="5" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 11 covers compliance requirements for healthcare systems. Your remediation documentation demonstrates due diligence, exactly what HIPAA auditors expect.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 6 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp4" data-tab="cp4">&larr; Back: CP4</a><a class="nx-tb-next" href="#cp6" data-tab="cp6">Next: CP6 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp6" data-tab="cp6" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -744,8 +780,7 @@
     <div class="nx-sub">Clean Up and Submit</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
+    <p class="nx-tb-lead">Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
     <h3>Why It Matters</h3>
     <p>Every deduction in this category is avoidable and none of it is about security. A packet that goes out with placeholder text still in it, a Table of Contents that describes an earlier draft, or a figure number that points at the wrong picture tells the client nobody read the document before sending it. They will wonder what else nobody checked.</p>
     <ol>
@@ -786,10 +821,15 @@
         <p><strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item: one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong></p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Updating &#8216;page numbers only&#8217; instead of the entire table. The page numbers will be right and the section list will describe a document you no longer have.</li>
           <li>Running the field update, then editing one more paragraph, then submitting. Make Ctrl+A and F9 the last thing you do before saving, every time.</li>
@@ -798,16 +838,27 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client&#x27;s internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got in my Word document, where a cross-reference to a figure should be:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp5" data-tab="cp5">&larr; Back: CP5</a><a class="nx-tb-next" href="#purple" data-tab="purple">Next: Purple &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-purple" data-tab="purple" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
 <div class="nx-section">
@@ -849,7 +900,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp6" data-tab="cp6">&larr; Back: CP6</a><a class="nx-tb-next" href="#wrapup" data-tab="wrapup">Next: Wrap-up &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-wrapup" data-tab="wrapup" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
 <div class="nx-section">
@@ -880,14 +933,14 @@
       <li>&#9744; <code>15-ssh-keyauth.png</code>: Capture the successful SSH connection using key-based authentication</li>
       <li>&#9744; <code>16-ssh-config.png</code>: Capture the SSH config file contents and successful connection using the alias</li>
       <li>&#9744; <code>17-mfa-login.png</code>: Capture your successful MFA login showing both prompts and the whoami output</li>
-      <li>&#9744; <code>gulfcoast-01-initial-error.png</code>: Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past</li>
-      <li>&#9744; <code>gulfcoast-02-cert-expired.png</code>: Capture the openssl output showing the expired certificate dates</li>
-      <li>&#9744; <code>gulfcoast-03-csr-generation.png</code>: Capture the CSR generation command and output</li>
-      <li>&#9744; <code>gulfcoast-04-cert-signing.png</code>: Capture the CA signing command and “self-signature ok” output</li>
-      <li>&#9744; <code>gulfcoast-05-cert-installation.png</code>: Capture the certificate installation command</li>
-      <li>&#9744; <code>gulfcoast-06-apache-restart.png</code>: Capture the Apache restart and container restart</li>
-      <li>&#9744; <code>gulfcoast-07-cert-valid.png</code>: Capture the new certificate dates showing future expiration</li>
-      <li>&#9744; <code>gulfcoast-08-browser-success.png</code>: Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates</li>
+      <li>&#9744; <code>18-gulfcoast-initial-error.png</code>: Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past</li>
+      <li>&#9744; <code>19-gulfcoast-cert-expired.png</code>: Capture the openssl output showing the expired certificate dates</li>
+      <li>&#9744; <code>20-gulfcoast-csr-generation.png</code>: Capture the CSR generation command and output</li>
+      <li>&#9744; <code>21-gulfcoast-cert-signing.png</code>: Capture the CA signing command and “self-signature ok” output</li>
+      <li>&#9744; <code>22-gulfcoast-cert-installation.png</code>: Capture the certificate installation command</li>
+      <li>&#9744; <code>23-gulfcoast-apache-restart.png</code>: Capture the Apache restart and container restart</li>
+      <li>&#9744; <code>24-gulfcoast-cert-valid.png</code>: Capture the new certificate dates showing future expiration</li>
+      <li>&#9744; <code>25-gulfcoast-browser-success.png</code>: Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates</li>
     </ul>
 
     <h2>Document Requirements</h2>
@@ -936,9 +989,43 @@
         <p>Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe.</p>
       </div>
     </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>Module 3: Network Traffic Analysis: You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions, demonstrating the before/after in network data.</p>
+      </div>
+    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#purple" data-tab="purple">&larr; Back: Purple</a></div>
+</section>
+<section class="nx-tb-panel" id="p-shots" data-tab="shots" role="tabpanel" style="--tab-accent:#00BCD4" hidden>
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00BCD4;">
+    <div class="nx-header-top">
+      <div class="nx-kw">packet</div>
+      <div class="nx-sec">2</div>
+    </div>
+    <div class="nx-sub">Screenshots</div>
+  </div>
+  <div class="nx-card" style="--accent: #00BCD4;">
+    <p class="nx-tb-lead">Every capture this lab calls for, in order. Each one links to the checkpoint where you take it. The floor is at least 20 qualifying screenshots per module, across all of its labs.</p>
+    <ul class="nx-tb-shots nx-tb-shots--all">
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>18-gulfcoast-initial-error.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>19-gulfcoast-cert-expired.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-gulfcoast-csr-generation.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-gulfcoast-cert-signing.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>22-gulfcoast-cert-installation.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>23-gulfcoast-apache-restart.png</code>  <a class="nx-tb-goto" href="#cp4" data-tab="cp4">CP4 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>24-gulfcoast-cert-valid.png</code>  <a class="nx-tb-goto" href="#cp4" data-tab="cp4">CP4 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>25-gulfcoast-browser-success.png</code>  <a class="nx-tb-goto" href="#cp4" data-tab="cp4">CP4 &rarr;</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-grading" data-tab="grading" role="tabpanel" style="--tab-accent:#FF9F1C" hidden>
 
 <!-- ══════════════════════════════════════════════════ GRADING STANDARDS -->
 <div class="nx-section">
@@ -953,17 +1040,17 @@
     <h2 class="nx-accent">The Quality Ladder</h2>
     <h3>Part I: Internal Packet (40%)</h3>
     <ul>
-      <li><strong>Timesheet (5%):</strong></li>
-      <li><strong>Runbook (20%):</strong></li>
-      <li><strong>Analyst Reflection (15%):</strong></li>
+      <li><strong>Timesheet</strong> (5%)</li>
+      <li><strong>Runbook</strong> (20%)</li>
+      <li><strong>Analyst Reflection</strong> (15%)</li>
     </ul>
     <h3>Part II: Client Deliverable (60%)</h3>
     <ul>
-      <li><strong>Executive Summary (12%):</strong></li>
-      <li><strong>Methodology (7%):</strong></li>
-      <li><strong>Findings (22%):</strong></li>
-      <li><strong>Risk Analysis (11%):</strong></li>
-      <li><strong>Recommendations (8%):</strong></li>
+      <li><strong>Executive Summary</strong> (12%)</li>
+      <li><strong>Methodology</strong> (7%)</li>
+      <li><strong>Findings</strong> (22%)</li>
+      <li><strong>Risk Analysis</strong> (11%)</li>
+      <li><strong>Recommendations</strong> (8%)</li>
     </ul>
     <p><em>Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale.</em></p>
 
@@ -991,7 +1078,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-help" data-tab="help" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 
 <!-- ══════════════════════════════════════════════════ NEED HELP -->
 <div class="nx-section">
@@ -1041,16 +1130,62 @@
         <p>After submitting, clean up the Docker container:<br><code>sudo docker stop gulfcoast-portal</code><br><code>sudo docker rm gulfcoast-portal</code></p>
       </div>
     </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>Module 3: Network Traffic Analysis: You will work with Gulf Coast Healthcare again, this time analyzing packet captures for anomalous traffic patterns. The certificate infrastructure you fixed this unit will appear in those captures as properly encrypted TLS sessions, demonstrating the before/after in network data.</p>
-      </div>
-    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+</main>
+<script>
+(function(){
+const nav=document.querySelector('.nx-tb-tabs'), inIframe=window.self!==window.top, pos={}; let cur=null;
+// Hidden content stays findable: browsers that support hidden="until-found"
+// (Chrome, Edge) let Ctrl+F search every tab and card and open the match.
+const UF='onbeforematch' in document.body, HIDE=UF?'until-found':true;
+const allBtn=document.querySelector('.nx-tb-all');
+function setAll(on){document.body.classList.toggle('nx-showall',on);allBtn.setAttribute('aria-pressed',on);allBtn.textContent=on?'Show one tab':'Show all';}
+function show(id,push){
+  if(!document.getElementById('p-'+id)) id='overview';
+  if(cur) pos[cur]=scrollY;
+  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id?HIDE:false);
+  document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
+  cur=id;
+  const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({block:'nearest',inline:'center'});
+  if(a) document.body.style.setProperty('--cur',a.style.getPropertyValue('--tab'));
+  scrollTo(0,pos[id]||0);
+  if(push) history.replaceState(null,'','#'+id);
+  document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;
+  fades();
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-tab]'); if(a){e.preventDefault();show(a.dataset.tab,true);return;}
+  const c=e.target.closest('.nx-tb-card'); if(!c) return;
+  const box=c.closest('.nx-tb-cards'), open=c.getAttribute('aria-expanded')==='true';
+  box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded','false'));
+  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+  if(!open){c.setAttribute('aria-expanded','true');box.querySelector('.nx-tb-cardpanel[data-i="'+c.dataset.i+'"]').hidden=false;}
+});
+const L=document.querySelector('.nx-tb-fade.l'),Rt=document.querySelector('.nx-tb-fade.r');
+function fades(){L.classList.toggle('on',nav.scrollLeft>4);Rt.classList.toggle('on',nav.scrollLeft+nav.clientWidth<nav.scrollWidth-4);}
+nav.addEventListener('scroll',fades); addEventListener('resize',fades);
+L.onclick=()=>nav.scrollBy({left:-nav.clientWidth*.7,behavior:'smooth'});
+Rt.onclick=()=>nav.scrollBy({left:nav.clientWidth*.7,behavior:'smooth'});
+if(inIframe) document.getElementById('nx-tb-newtab').hidden=false;
+document.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+// A find-in-page match inside a hidden tab or card: switch to that tab, open that card.
+document.addEventListener('beforematch',e=>{
+  const cp=e.target.closest('.nx-tb-cardpanel');
+  if(cp){const box=cp.closest('.nx-tb-cards');box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded',b.dataset.i===cp.dataset.i));
+    box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>{if(p!==cp)p.hidden=HIDE;});}
+  const pn=e.target.closest('.nx-tb-panel'); if(pn&&pn.dataset.tab!==cur)show(pn.dataset.tab,true);
+},true);
+allBtn.addEventListener('click',()=>setAll(!document.body.classList.contains('nx-showall')));
+// Browsers without until-found: Ctrl/Cmd+F shows everything first so find works.
+addEventListener('keydown',e=>{if(!UF&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f')setAll(true);});
+addEventListener('beforeprint',()=>setAll(true));
+addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+show(location.hash.slice(1)||'overview',false);
+})();
+</script>
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>

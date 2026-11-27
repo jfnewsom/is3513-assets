@@ -484,9 +484,11 @@ AI_ASSIST_INTRO = (
     "This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet."
 )
 AI_ASSIST_CAUTION = (
-    "Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, "
-    "the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists "
-    "(AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you "
+    "<strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, "
+    "and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what "
+    "the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, "
+    "the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, "
+    "check what it told you "
     "against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be "
     "one of your references only if you read it and it supports what you wrote; the AI itself never counts. "
     "Point tools only at the targets this lab authorizes."

@@ -7,11 +7,22 @@
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
-<body>
+<body class="nx-tabbed">
 <h1 class="nx-sr-only">Module 2 Training Lab 1: Cryptographic Foundations</h1>
-
-
-<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-tb-bar">
+  <div class="nx-tb-title">Module 2 Training Lab 1: Cryptographic Foundations</div>
+  <div class="nx-tb-scroller">
+    <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
+    <nav class="nx-tb-tabs" role="tablist" aria-label="Lab sections"><a class="nx-tb-tab" role="tab" href="#overview" data-tab="overview" style="--tab:#4169E1">Overview</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp1" data-tab="cp1" style="--tab:#00D26A" title="Hash Functions">CP1</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp2" data-tab="cp2" style="--tab:#00D26A" title="Symmetric Encryption">CP2</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp3" data-tab="cp3" style="--tab:#00D26A" title="Asymmetric Encryption">CP3</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp4" data-tab="cp4" style="--tab:#00D26A" title="Digital Signatures">CP4</a><a class="nx-tb-tab" role="tab" href="#purple" data-tab="purple" style="--tab:#7B68EE">Purple</a><a class="nx-tb-tab" role="tab" href="#wrapup" data-tab="wrapup" style="--tab:#4169E1">Wrap-up</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#shots" data-tab="shots" style="--tab:#00BCD4">Screenshots</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#help" data-tab="help" style="--tab:#4169E1">Help</a></nav>
+    <button type="button" class="nx-tb-fade r" aria-label="More tabs to the right">&rsaquo;</button>
+  </div>
+  <div class="nx-tb-tools">
+    <button type="button" class="nx-tb-all" aria-pressed="false" title="Show every tab and card on one page, for searching (Ctrl+F) and printing">Show all</button>
+    <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  </div>
+</div>
+<main class="nx-tb-main">
+<section class="nx-tb-panel" id="p-overview" data-tab="overview" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 <div class="nx-section">
   <div class="nx-header" style="--accent: #4169E1;">
     <div class="nx-header-top">
@@ -21,6 +32,7 @@
     <div class="nx-sub">Cryptographic Foundations</div>
   </div>
   <div class="nx-card" style="--accent: #4169E1;">
+
     <p class="nx-module-label">Module 2: Cryptography &amp; Authentication</p>
 
     <h2>Overview</h2>
@@ -58,7 +70,7 @@
     <h2>Key Concepts</h2>
     <ul>
       <li><strong>Cryptographic Hashing:</strong> SHA-256 and the avalanche effect: how small input changes produce completely different outputs, forming the foundation of data integrity verification.</li>
-      <li><strong>Symmetric Encryption:</strong> AES-256-CBC encryption and decryption, the HIPAA-required standard for protecting PHI at rest.</li>
+      <li><strong>Symmetric Encryption:</strong> AES-256-CBC encryption and decryption, the standard healthcare organizations use to protect PHI at rest.</li>
       <li><strong>Asymmetric Encryption:</strong> RSA keypair generation and public-key encryption, solving the key distribution problem that symmetric encryption cannot.</li>
       <li><strong>Digital Signatures:</strong> Creating and verifying signatures using RSA, providing non-repudiation, the cryptographic proof that a specific party signed a specific document.</li>
       <li><strong>Algorithm Deprecation:</strong> Why MD5 and SHA-1 are no longer acceptable: understanding collision resistance and NIST recommendations for current practice.</li>
@@ -78,20 +90,8 @@
         <p>This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module2_Screenshots</code> and save all screenshots there. You&#8217;ll need them for your Engagement Packet in Unit 3.</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #FF9F1C;">
-    <div class="nx-header-top">
-      <div class="nx-kw">time</div>
-      <div class="nx-sec">guide</div>
-    </div>
-    <div class="nx-sub">Estimated completion times per checkpoint</div>
-  </div>
-  <div class="nx-card" style="--accent: #FF9F1C;">
+  
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">schedule</span><span>Time Guide</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>
     <table class="nx-time-table">
       <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
@@ -105,11 +105,12 @@
     </table>
 
     <p>This is Unit 1 of a 3-unit module. Time here is internal NEXUS training, not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save every screenshot from this lab there. You will compile everything into your Module 2 Engagement Packet.</p>
+  </div></div>
   </div>
 </div>
-
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-tb-botnav"><a class="nx-tb-next" href="#cp1" data-tab="cp1">Next: CP1 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp1" data-tab="cp1" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -119,8 +120,7 @@
     <div class="nx-sub">Hash Functions</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect: how small input changes produce completely different outputs.</p>
+    <p class="nx-tb-lead">Generating cryptographic hashes using SHA-256 and demonstrating the avalanche effect: how small input changes produce completely different outputs.</p>
     <h3>Why It Matters</h3>
     <p>Hashes are the foundation of data integrity. Every time you verify a software download, check file integrity, or validate a digital signature, you&#8217;re using hashes. In healthcare, hash verification proves that patient records haven&#8217;t been tampered with, which is critical for audit trails and legal compliance.</p>
     <div class="nx-quote">
@@ -159,13 +159,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the file creation and SHA-256 hash output. Save as <code>01-hash-sha256.png</code></p>
-      </div>
-    </div>
     <h3>Part B: Demonstrate the avalanche effect</h3>
     <ol>
       <li>Create a slightly modified file (change one character):
@@ -181,55 +174,60 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture both hashes side-by-side showing completely different outputs despite minimal input change. Save as <code>02-hash-comparison.png</code></p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>01-hash-sha256.png</code> Capture the file creation and SHA-256 hash output. Save as <code>01-hash-sha256.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>02-hash-comparison.png</code> Capture both hashes side-by-side showing completely different outputs despite minimal input change. Save as <code>02-hash-comparison.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Two screenshots showing SHA-256 hash generation and the avalanche effect. The hashes should be completely different despite only one character changing in the input.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">search</span><span>Dig Deeper</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Using MD5 or SHA-1:</strong> These are deprecated for security purposes; always use SHA-256 or stronger</li>
           <li><strong>Confusing hashing with encryption:</strong> Hashes are one-way; you cannot reverse them to get original data</li>
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Two screenshots showing SHA-256 hash generation and the avalanche effect. The hashes should be completely different despite only one character changing in the input.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain what a cryptographic hash function is, why it only works one way, what the avalanche effect is, and how hashing is different from encryption. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain how attackers have taken advantage of weak hash functions such as MD5 and SHA-1 in the real world, and how defenders use hashes to detect that a file has been tampered with. If you suggest something to try, keep it to practice files on my own VM.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 6 covers cryptographic hash functions and their security properties. Pay attention to collision resistance and why MD5/SHA-1 are deprecated.</p>
       </div>
     </div>
-    <div class="nx-callout nx-yellow">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Dig Deeper</div>
-        <p>What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology.</p>
+        <p>What makes a hash algorithm &#8216;cryptographically secure&#8217;? Research why MD5 and SHA-1 are considered deprecated for security purposes.</p>
       </div>
-    </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>NIST SP 800-57 - Recommendation for Key Management. Available at: https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final</p>
-      </div>
-    </div>
+            <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>
+</div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#overview" data-tab="overview">&larr; Back: Overview</a><a class="nx-tb-next" href="#cp2" data-tab="cp2">Next: CP2 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp2" data-tab="cp2" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -239,17 +237,16 @@
     <div class="nx-sub">Symmetric Encryption</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Encrypting and decrypting files using AES-256, the symmetric encryption standard required by HIPAA for protecting patient health information (PHI) at rest.</p>
+    <p class="nx-tb-lead">Encrypting and decrypting files using AES-256, the symmetric encryption standard healthcare organizations use to protect patient health information (PHI) at rest.</p>
     <h3>Why It Matters</h3>
-    <p>Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard. It&#8217;s approved for classified government information and required by most healthcare compliance frameworks.</p>
+    <p>Symmetric encryption is how organizations protect bulk data. Every encrypted database, every secure file transfer, every protected backup uses symmetric encryption. AES-256 specifically is the gold standard. It&#8217;s approved for classified government information and the algorithm healthcare auditors expect to see.</p>
     <div class="nx-quote">
       <div class="nx-quote-main">
         <div class="nx-quote-avatar">
           <img src="https://jfnewsom.github.io/is3513-assets/headshots/maria-delgado.png" alt="Maria Delgado">
         </div>
         <div class="nx-quote-bubble">
-          <p>&#8220;HIPAA requires encryption of PHI at rest. AES-256 is the standard. Know it cold.&#8221;</p>
+          <p>&#8220;Under HIPAA, you encrypt PHI at rest or you document why you didn&#8217;t. Auditors will ask. AES-256 is the standard. Know it cold.&#8221;</p>
         </div>
       </div>
       <div class="nx-quote-attribution">
@@ -264,7 +261,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> This encrypts a file using AES-256 in CBC mode, the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA requires AES-256 for protecting patient health information (PHI) at rest.</p>
+            <p><strong>Concept:</strong> This encrypts a file using AES-256 in CBC mode, the same algorithm the U.S. government uses for classified information. Symmetric encryption means the same password both encrypts and decrypts. HIPAA doesn&#8217;t name an algorithm, but AES-256 is what auditors expect to see protecting patient health information (PHI) at rest.</p>
             <p><strong>In your output:</strong> OpenSSL will prompt for a password twice (enter and verify). Use <code>nexus2026</code> as instructed. No output means success. OpenSSL is silent on success.</p>
             <p><strong>Flags:</strong></p>
             <ul>
@@ -291,13 +288,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the encryption command and the hex dump showing unreadable encrypted content. Save as <code>03-symmetric-encrypt.png</code></p>
-      </div>
-    </div>
     <h3>Part B: Decrypt the file</h3>
     <ol>
       <li>Decrypt using the same password:
@@ -316,56 +306,69 @@
         <div class="nx-cmd">diff patient.txt patient_decrypted.txt && echo 'Files match!' || echo 'Files differ!'</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the decryption and verification showing the original content restored. Save as <code>04-symmetric-decrypt.png</code></p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>03-symmetric-encrypt.png</code> Capture the encryption command and the hex dump showing unreadable encrypted content. Save as <code>03-symmetric-encrypt.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>04-symmetric-decrypt.png</code> Capture the decryption and verification showing the original content restored. Save as <code>04-symmetric-decrypt.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Two screenshots showing successful encryption (unreadable ciphertext) and decryption (original plaintext restored).</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">search</span><span>Dig Deeper</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Forgetting the password:</strong> Symmetric encryption requires the same password for decryption</li>
           <li><strong>Using weak algorithms:</strong> DES is obsolete; always use AES-256</li>
-          <li><strong>Missing -pbkdf2 flag:</strong> Modern OpenSSL requires this for key derivation</li>
+          <li><strong>Missing -pbkdf2 flag:</strong> without it, OpenSSL falls back to an old, weak way of turning your password into a key and prints a deprecation warning. Decrypt with the same flags you encrypted with, or you get a bad decrypt error</li>
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Two screenshots showing successful encryption (unreadable ciphertext) and decryption (original plaintext restored).</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain what symmetric encryption is, what the 256 and the CBC in AES-256-CBC mean, and what a salt and PBKDF2 add when a password is turned into an encryption key. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. The algorithm is rarely the weak point of symmetric encryption; the key is. Explain why key management is the hard part, how organizations store, share and rotate encryption keys, and what an attacker does when they find a key. If you suggest something to try, keep it to practice files on my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Here is an error message I got from OpenSSL when I tried to decrypt my file:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 6 covers symmetric encryption algorithms including AES. Understand the difference between block modes (CBC, GCM) and why key management is critical.</p>
       </div>
     </div>
-    <div class="nx-callout nx-yellow">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Dig Deeper</div>
-        <p>What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.</p>
+        <p>AES is a block cipher, and this lab ran it in CBC mode. Research the difference between block ciphers and stream ciphers, and what a mode like CBC adds.</p>
       </div>
-    </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>Your textbook Chapter 4 covers PKI and certificate authorities. RFC 5280 defines the X.509 certificate format: https://tools.ietf.org/html/rfc5280</p>
-      </div>
-    </div>
+            <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>
+</div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp1" data-tab="cp1">&larr; Back: CP1</a><a class="nx-tb-next" href="#cp3" data-tab="cp3">Next: CP3 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp3" data-tab="cp3" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -375,8 +378,7 @@
     <div class="nx-sub">Asymmetric Encryption</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys: a public key anyone can use to encrypt, and a private key only you possess to decrypt.</p>
+    <p class="nx-tb-lead">Generating an RSA keypair and using it to encrypt and decrypt data. Unlike symmetric encryption (one shared key), asymmetric uses two mathematically related keys: a public key anyone can use to encrypt, and a private key only you possess to decrypt.</p>
     <h3>Why It Matters</h3>
     <p>Asymmetric encryption solves the key distribution problem. How do you securely share a symmetric key with someone you&#8217;ve never met? You use their public key. This is how TLS/HTTPS works, how secure email works, and how certificates establish trust.</p>
     <div class="nx-quote">
@@ -400,7 +402,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> This generates an RSA private key, the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from the mathematical difficulty of factoring large prime numbers.</p>
+            <p><strong>Concept:</strong> This generates an RSA private key, the mathematical foundation for asymmetric cryptography. Unlike symmetric encryption (one shared secret), RSA uses a keypair: a private key you guard with your life, and a public key you share freely. The security comes from how hard it is to factor a very large number back into the two prime numbers that were multiplied to make it.</p>
             <p><strong>Flags:</strong></p>
             <ul>
               <li><code>genrsa</code>: Generate an RSA private key</li>
@@ -426,13 +428,6 @@
         <div class="nx-cmd">cat public.pem</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the keypair generation, file listing, and public key contents. Save as <code>05-rsa-keypair.png</code></p>
-      </div>
-    </div>
     <h3>Part B: Encrypt with public key</h3>
     <ol>
       <li>Create a small message to encrypt:
@@ -464,13 +459,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the encryption command and verify the encrypted file exists. Save as <code>06-rsa-encrypt.png</code></p>
-      </div>
-    </div>
     <h3>Part C: Decrypt with private key</h3>
     <ol>
       <li>Decrypt using the private key:
@@ -480,17 +468,21 @@
         <div class="nx-cmd">cat secret_decrypted.txt</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the decryption showing the original secret message restored. Save as <code>07-rsa-decrypt.png</code></p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>05-rsa-keypair.png</code> Capture the keypair generation, file listing, and public key contents. Save as <code>05-rsa-keypair.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>06-rsa-encrypt.png</code> Capture the encryption command and verify the encrypted file exists. Save as <code>06-rsa-encrypt.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>07-rsa-decrypt.png</code> Capture the decryption showing the original secret message restored. Save as <code>07-rsa-decrypt.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Three screenshots showing keypair generation, public key encryption, and private key decryption.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">search</span><span>Dig Deeper</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Confusing public/private:</strong> Encrypt with public, decrypt with private (for confidentiality)</li>
           <li><strong>Data size limits:</strong> RSA can only encrypt small amounts of data directly</li>
@@ -498,38 +490,48 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Three screenshots showing keypair generation, public key encryption, and private key decryption.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain how a public key and a private key work together, why RSA can only encrypt a small amount of data directly, and how real systems combine RSA with a symmetric cipher to protect larger data. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain how a website&#x27;s HTTPS connection uses asymmetric encryption to agree on a symmetric key, and what an attacker can do if a server&#x27;s private key is stolen. If you suggest something to try, keep it to practice files on my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Here is an error message I got from OpenSSL when I tried to encrypt a file with my public key:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 6 covers asymmetric cryptography including RSA. Understand why we use asymmetric crypto for key exchange but symmetric for bulk data.</p>
       </div>
     </div>
-    <div class="nx-callout nx-yellow">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Dig Deeper</div>
-        <p>How does OpenSSL implement encryption algorithms? Research the difference between block ciphers and stream ciphers.</p>
+        <p>What is key length and why does it matter? Research how long it would take to brute-force AES-128 versus AES-256 with current technology. Then compare: why does an RSA key need 2048 bits when an AES key is only 256?</p>
       </div>
-    </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>OpenSSL Documentation - Cryptographic Algorithms. Available at: https://www.openssl.org/docs/</p>
-      </div>
-    </div>
+            <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>
+</div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp2" data-tab="cp2">&larr; Back: CP2</a><a class="nx-tb-next" href="#cp4" data-tab="cp4">Next: CP4 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp4" data-tab="cp4" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -539,8 +541,7 @@
     <div class="nx-sub">Digital Signatures</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). This is the inverse of encryption.</p>
+    <p class="nx-tb-lead">Creating and verifying digital signatures using RSA. Digital signatures use the private key to sign (proving authenticity) and the public key to verify (confirming identity). It uses the keys the opposite way from encryption.</p>
     <h3>Why It Matters</h3>
     <p>Digital signatures provide non-repudiation: proof that a specific person signed a specific document. In healthcare, this is legally binding. When a physician signs an order electronically, that signature must be verifiable and undeniable.</p>
     <div class="nx-quote">
@@ -567,7 +568,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> Digital signing is encryption in reverse. You sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.</p>
+            <p><strong>Concept:</strong> Signing uses the keys the opposite way from encryption. You sign with your <em>private</em> key, and anyone can verify with your <em>public</em> key. This provides <strong>non-repudiation</strong>: proof that a specific person signed a specific document. In healthcare, this is how electronic prescriptions and medical orders are legally binding.</p>
             <p><strong>Flags:</strong></p>
             <ul>
               <li><code>dgst</code>: Message digest (hash) operations</li>
@@ -582,13 +583,6 @@
         <div class="nx-cmd">ls -la order.*</div>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the signing command and file listing showing both the order and signature files. Save as <code>08-signature-create.png</code></p>
-      </div>
-    </div>
     <h3>Part B: Verify the signature</h3>
     <ol>
       <li>Verify using the public key:
@@ -601,54 +595,68 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code>. This is your last screenshot for Lab 2.1!</p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>08-signature-create.png</code> Capture the signing command and file listing showing both the order and signature files. Save as <code>08-signature-create.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>09-signature-verify.png</code> Capture the verification showing &#8220;Verified OK&#8221; message. Save as <code>09-signature-verify.png</code>. This is your last screenshot for Lab 2.1!</div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Two screenshots showing signature creation and successful verification with &#8220;Verified OK&#8221; output.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">search</span><span>Dig Deeper</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Confusing sign/verify with encrypt/decrypt:</strong> Sign with private, verify with public</li>
           <li><strong>Modified document:</strong> Any change to the document will cause verification to fail</li>
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Two screenshots showing signature creation and successful verification with &#8220;Verified OK&#8221; output.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain how a digital signature works: what gets hashed, which key signs and which key verifies, and how a signature gives integrity, authenticity and non-repudiation. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Explain how software publishers use code signing, how certificate authorities use signatures to vouch for a public key, and what attackers have done with stolen signing keys. If you suggest something to try, keep it to practice files on my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this lab I&#x27;m learning cryptography on my Kali Linux VM with sha256sum and OpenSSL: hashing, AES symmetric encryption, RSA keypairs and digital signatures, using practice files in my own lab folder. I&#x27;m new to cryptography. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my lab steps for me. Here is an error message I got from OpenSSL when I verified my signature:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 6 covers digital signatures and non-repudiation. Understand how signatures combine hashing with asymmetric crypto to provide both integrity and authenticity.</p>
       </div>
     </div>
-    <div class="nx-callout nx-yellow">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Dig Deeper</div>
-        <p>What makes a hash algorithm &#8216;cryptographically secure&#8217;? Research why MD5 and SHA-1 are considered deprecated for security purposes.</p>
+        <p>What is a digital certificate and how does it establish trust? Research the role of Certificate Authorities in the PKI ecosystem.</p>
       </div>
-    </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">That&#8217;s a Reference!</div>
-        <p>NIST Policy on Hash Functions. Available at: https://csrc.nist.gov/projects/hash-functions</p>
-      </div>
-    </div>
+            <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>
+</div>
+</div></div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp3" data-tab="cp3">&larr; Back: CP3</a><a class="nx-tb-next" href="#purple" data-tab="purple">Next: Purple &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-purple" data-tab="purple" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
 <div class="nx-section">
@@ -665,7 +673,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">What Red Team Learns</div>
         <ul>
-          <li><strong>Hash Collision Exploitation:</strong> Hash collisions expose weak integrity checks: attackers modify files and regenerate matching hashes to cover their tracks when SHA-1 or MD5 is in use.</li>
+          <li><strong>Hash Collision Exploitation:</strong> Hash collisions expose weak integrity checks: with MD5 or SHA-1, an attacker can craft two different files that share one hash, such as a harmless document and a malicious one, and swap one for the other without the hash check noticing.</li>
           <li><strong>Symmetric Key Theft:</strong> Intercepting or stealing AES keys gives full decryption capability; key management failures are more common than algorithm breaks.</li>
           <li><strong>RSA Key Misuse:</strong> Confusing public and private key roles, or using undersized keys, allows attackers to break encryption or forge signatures on affected systems.</li>
         </ul>
@@ -691,7 +699,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp4" data-tab="cp4">&larr; Back: CP4</a><a class="nx-tb-next" href="#wrapup" data-tab="wrapup">Next: Wrap-up &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-wrapup" data-tab="wrapup" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 
 <!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
 <div class="nx-section">
@@ -737,9 +747,44 @@
         <p>Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe.</p>
       </div>
     </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication, skills you'll apply directly when you SSH into the Gulf Coast portal container in EP 2.</p>
+      </div>
+    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#purple" data-tab="purple">&larr; Back: Purple</a></div>
+</section>
+<section class="nx-tb-panel" id="p-shots" data-tab="shots" role="tabpanel" style="--tab-accent:#00BCD4" hidden>
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00BCD4;">
+    <div class="nx-header-top">
+      <div class="nx-kw">training lab</div>
+      <div class="nx-sec">2.1</div>
+    </div>
+    <div class="nx-sub">Screenshots</div>
+  </div>
+  <div class="nx-card" style="--accent: #00BCD4;">
+    <p class="nx-tb-lead">Every capture this lab calls for, in order. Each one links to the checkpoint where you take it. The floor is at least 20 qualifying screenshots per module, across all of its labs.</p>
+    <ul class="nx-tb-shots nx-tb-shots--all">
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>01-hash-sha256.png</code> SHA-256 hash generation <a class="nx-tb-goto" href="#cp1" data-tab="cp1">CP1 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>02-hash-comparison.png</code> Avalanche effect demonstration <a class="nx-tb-goto" href="#cp1" data-tab="cp1">CP1 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>03-symmetric-encrypt.png</code> AES-256 encryption <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>04-symmetric-decrypt.png</code> AES-256 decryption <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>05-rsa-keypair.png</code> RSA keypair generation <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>06-rsa-encrypt.png</code> Public key encryption <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>07-rsa-decrypt.png</code> Private key decryption <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>08-signature-create.png</code> Digital signature creation <a class="nx-tb-goto" href="#cp4" data-tab="cp4">CP4 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>09-signature-verify.png</code> Signature verification <a class="nx-tb-goto" href="#cp4" data-tab="cp4">CP4 &rarr;</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-help" data-tab="help" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 
 <!-- ══════════════════════════════════════════════════ NEED HELP -->
 <div class="nx-section">
@@ -789,16 +834,62 @@
         <p>The keys and passwords you create in this lab are <strong>for training purposes only</strong>. Never use lab-generated keys in production systems.</p>
       </div>
     </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication, skills you'll apply directly when you SSH into the Gulf Coast portal container in EP 2.</p>
-      </div>
-    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+</main>
+<script>
+(function(){
+const nav=document.querySelector('.nx-tb-tabs'), inIframe=window.self!==window.top, pos={}; let cur=null;
+// Hidden content stays findable: browsers that support hidden="until-found"
+// (Chrome, Edge) let Ctrl+F search every tab and card and open the match.
+const UF='onbeforematch' in document.body, HIDE=UF?'until-found':true;
+const allBtn=document.querySelector('.nx-tb-all');
+function setAll(on){document.body.classList.toggle('nx-showall',on);allBtn.setAttribute('aria-pressed',on);allBtn.textContent=on?'Show one tab':'Show all';}
+function show(id,push){
+  if(!document.getElementById('p-'+id)) id='overview';
+  if(cur) pos[cur]=scrollY;
+  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id?HIDE:false);
+  document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
+  cur=id;
+  const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({block:'nearest',inline:'center'});
+  if(a) document.body.style.setProperty('--cur',a.style.getPropertyValue('--tab'));
+  scrollTo(0,pos[id]||0);
+  if(push) history.replaceState(null,'','#'+id);
+  document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;
+  fades();
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-tab]'); if(a){e.preventDefault();show(a.dataset.tab,true);return;}
+  const c=e.target.closest('.nx-tb-card'); if(!c) return;
+  const box=c.closest('.nx-tb-cards'), open=c.getAttribute('aria-expanded')==='true';
+  box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded','false'));
+  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+  if(!open){c.setAttribute('aria-expanded','true');box.querySelector('.nx-tb-cardpanel[data-i="'+c.dataset.i+'"]').hidden=false;}
+});
+const L=document.querySelector('.nx-tb-fade.l'),Rt=document.querySelector('.nx-tb-fade.r');
+function fades(){L.classList.toggle('on',nav.scrollLeft>4);Rt.classList.toggle('on',nav.scrollLeft+nav.clientWidth<nav.scrollWidth-4);}
+nav.addEventListener('scroll',fades); addEventListener('resize',fades);
+L.onclick=()=>nav.scrollBy({left:-nav.clientWidth*.7,behavior:'smooth'});
+Rt.onclick=()=>nav.scrollBy({left:nav.clientWidth*.7,behavior:'smooth'});
+if(inIframe) document.getElementById('nx-tb-newtab').hidden=false;
+document.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+// A find-in-page match inside a hidden tab or card: switch to that tab, open that card.
+document.addEventListener('beforematch',e=>{
+  const cp=e.target.closest('.nx-tb-cardpanel');
+  if(cp){const box=cp.closest('.nx-tb-cards');box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded',b.dataset.i===cp.dataset.i));
+    box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>{if(p!==cp)p.hidden=HIDE;});}
+  const pn=e.target.closest('.nx-tb-panel'); if(pn&&pn.dataset.tab!==cur)show(pn.dataset.tab,true);
+},true);
+allBtn.addEventListener('click',()=>setAll(!document.body.classList.contains('nx-showall')));
+// Browsers without until-found: Ctrl/Cmd+F shows everything first so find works.
+addEventListener('keydown',e=>{if(!UF&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f')setAll(true);});
+addEventListener('beforeprint',()=>setAll(true));
+addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+show(location.hash.slice(1)||'overview',false);
+})();
+</script>
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>

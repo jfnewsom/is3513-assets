@@ -7,10 +7,11 @@
   "chapters": [
    "Chapter 6: Applied Cryptography",
    "Chapter 7: Public Key Infrastructure"
-  ]
+  ],
+  "layout": "tabs"
  },
  "intro": {
-  "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. Protected Health Information (PHI) cannot travel over an unencrypted connection without triggering a reportable breach. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
+  "overview": "Gulf Coast Healthcare Partners has a critical problem: their patient portal&#8217;s SSL certificate expired, and HIPAA auditors from the Office for Civil Rights (OCR) are arriving in six units. An expired certificate means browsers can no longer confirm patients are talking to the real portal, it teaches them to click through security warnings, and it tells auditors nobody was watching the expiration dates. Your job is to diagnose the certificate issue, remediate it properly, and document everything for the audit trail.",
   "mentorQuote": {
    "character": "Maria Delgado, PhD",
    "title": "Security Compliance Specialist, NEXUS Security",
@@ -222,6 +223,15 @@
      "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">EP 1, Checkpoint 5</a> walks all four of them step by step."
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain how Microsoft Word's citation tools work (adding a source, inserting a citation, and the bibliography field), and why they beat typing references by hand. When you're done, ask me one question to check that I understood."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
      "body": "The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property."
@@ -300,12 +310,12 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past. Save as <code>gulfcoast-01-initial-error.png</code>",
+     "text": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past. Save as <code>18-gulfcoast-initial-error.png</code>",
      "calloutType": "screenshot"
     },
     {
      "part": null,
-     "start": 1,
+     "start": 2,
      "type": "steps",
      "steps": [
       {
@@ -340,7 +350,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the openssl output showing the expired certificate dates. Save as <code>gulfcoast-02-cert-expired.png</code>",
+     "text": "Capture the openssl output showing the expired certificate dates. Save as <code>19-gulfcoast-cert-expired.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -353,6 +363,23 @@
       "<strong>Take screenshots NOW:</strong> get your &#8220;before&#8221; evidence before you change anything. If you miss one, remove the container (<code>docker rm -f gulfcoast-portal</code>) and run it again. The image always starts with the expired certificate. The new container has a new SSH host key, so run <code>ssh-keygen -R '[localhost]:2222'</code> before you SSH in again. Note the rebuild in your runbook."
      ],
      "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain what a TLS certificate is, what its notBefore and notAfter dates mean, and what a browser checks before it trusts a certificate. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain why organizations still let certificates expire, what kinds of outages that has caused, and how automated renewal (such as ACME) and a certificate inventory prevent it."
+      },
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is an error message I got when I started the Gulf Coast portal container:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
     },
     {
      "type": "callout",
@@ -375,13 +402,6 @@
      "title": "Dig Deeper",
      "text": "What is a self-signed certificate and when is it appropriate to use one? Research the trust implications of self-signed vs. CA-signed certificates.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "Chapter 7 discusses certificate types and PKI hierarchy. Let&#8217;s Encrypt documentation explains the value of CA-signed certificates: https://letsencrypt.org/docs/",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -476,7 +496,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the CSR generation command and output. Save as <code>gulfcoast-03-csr-generation.png</code>",
+     "text": "Capture the CSR generation command and output. Save as <code>20-gulfcoast-csr-generation.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -520,7 +540,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>gulfcoast-04-cert-signing.png</code>",
+     "text": "Capture the CA signing command and &#8220;self-signature ok&#8221; output. Save as <code>21-gulfcoast-cert-signing.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -540,7 +560,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the certificate installation command. Save as <code>gulfcoast-05-cert-installation.png</code>",
+     "text": "Capture the certificate installation command. Save as <code>22-gulfcoast-cert-installation.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -553,6 +573,23 @@
       "<strong>Subject mismatch:</strong> The CN (Common Name) must match the server hostname in the certificate"
      ],
      "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain what a certificate signing request is, what is inside it, how a certificate authority turns it into a signed certificate, and why a certificate can be renewed with the same private key. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain what an attacker could do with a stolen certificate authority private key compared with a stolen server private key, and how organizations protect CA keys. If you suggest something to try, keep it to the Gulf Coast container on my own VM."
+      },
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is an error message I got from OpenSSL when I tried to sign the certificate request with the CA:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
     },
     {
      "type": "callout",
@@ -605,12 +642,12 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the Apache restart and container restart. Save as <code>gulfcoast-06-apache-restart.png</code>",
+     "text": "Capture the Apache restart and container restart. Save as <code>23-gulfcoast-apache-restart.png</code>",
      "calloutType": "screenshot"
     },
     {
      "part": null,
-     "start": 1,
+     "start": 3,
      "type": "steps",
      "steps": [
       {
@@ -633,12 +670,12 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture the new certificate dates showing future expiration. Save as <code>gulfcoast-07-cert-valid.png</code>",
+     "text": "Capture the new certificate dates showing future expiration. Save as <code>24-gulfcoast-cert-valid.png</code>",
      "calloutType": "screenshot"
     },
     {
      "part": null,
-     "start": 1,
+     "start": 4,
      "type": "steps",
      "steps": [
       {
@@ -652,7 +689,7 @@
      "type": "callout",
      "icon": "photo_camera",
      "title": "Screenshot",
-     "text": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates. Save as <code>gulfcoast-08-browser-success.png</code>",
+     "text": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates. Save as <code>25-gulfcoast-browser-success.png</code>",
      "calloutType": "screenshot"
     },
     {
@@ -708,6 +745,19 @@
      ]
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain why a browser can still warn about a renewed certificate when it was signed by a company's own internal certificate authority, and how an organization gets its internal CA trusted on its own computers. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain why SHA-1 certificate signatures and old TLS versions such as 1.0 and 1.1 are considered weak, and how an analyst checks which ones a server allows. If you suggest something to try, keep it to the Gulf Coast container on my own VM."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -759,7 +809,7 @@
      "title": "Include in Part I (Internal Packet)",
      "items": [
       "<strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 2.1 (internal training), Lab 2.2 (internal training), EP 2 (client billable to Gulf Coast Healthcare Partners)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul>",
-      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 2.1, Lab 2.2 and EP 2 (openssl, ssh-keygen, certutil, curl, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li><li>Adding entries and placing screenshots: follow <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Adding a Runbook Entry</a> in the Engagement Packet Guide, the same steps you used in EP 1</li></ul>",
+      "<strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 2.1, Lab 2.2 and EP 2 (for example sha256sum, openssl, ssh-keygen, ssh, chmod and docker)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Gulf Coast engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your remediation steps or findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li><li>Adding entries and placing screenshots: follow <a href=\"https://jfnewsom.github.io/is3513-assets/pages/support/Engagement_Packet_Guide.html\">Adding a Runbook Entry</a> in the Engagement Packet Guide, the same steps you used in EP 1</li></ul>",
       "<strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, certificate chain debugging, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this certificate remediation engagement for Gulf Coast again next semester with what you know now, what would you do differently? Be specific: &#8220;I&#8217;d test the chain validation earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain an X.509 extension; I confirmed against RFC 5280 before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true, but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul>"
      ]
     },
@@ -769,7 +819,7 @@
      "items": [
       "<strong>Executive Summary (12%)</strong><ul><li><strong>One page maximum.</strong> Hard limit; exceeding it is a Tier 2 deduction (&#8722;10%)</li><li>Overall risk posture in 1 or 2 sentences</li><li>Count of findings by severity (e.g., &#8220;2 Critical, 4 High, 3 Medium&#8221;)</li><li>Top 2 or 3 recommendations with business framing</li><li>Board-readable: no first person, no command output, no jargon unfamiliar to a non-technical executive</li><li>The &#8220;money page&#8221; for Jennifer Walsh: every line should tie to patient trust, HIPAA exposure, or operational continuity</li></ul>",
       "<strong>Methodology (7%)</strong><ul><li>3 to 4 paragraph narrative of your engagement approach</li><li>Phases of the engagement (e.g., chain inspection &#8594; root cause identification &#8594; remediation planning &#8594; certificate replacement &#8594; verification)</li><li>Scope and limitations: what was in scope (Gulf Coast certificate infrastructure), what was not</li><li>Tools used at a high level (per-flag detail belongs in your Runbook, not here)</li><li>Written for the client, not for security peers; this is client-facing</li></ul>",
-      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;TLS Certificate Chain Contains Expired Intermediate CA&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
+      "<strong>Findings (22%)</strong><ul><li>Number each finding sequentially (Finding 1, Finding 2, ...)</li><li>Descriptive title (e.g., &#8220;Patient Portal TLS Certificate Expired&#8221;)</li><li>Severity rating (Critical / High / Medium / Low / Informational)</li><li>Affected host(s), service(s), or certificate chain segment</li><li>Description, including specific CVE or vulnerability identifiers where applicable</li><li>Evidence: reference to your screenshot(s) or openssl output (e.g., &#8220;See Figure 4 in Appendix&#8221;)</li><li>Impact statement in business terms (what could happen to Gulf Coast operations or HIPAA posture)</li><li>Per-finding recommendation summary (one line; full remediation lives in Recommendations)</li><li>Order findings by severity, highest first</li></ul>",
       "<strong>Risk Analysis (11%)</strong><ul><li>Per-finding likelihood &#215; impact analysis</li><li>Business context for Gulf Coast specifically: healthcare, HIPAA exposure, OCR audit risk, patient data sensitivity</li><li>Answer &#8220;so what?&#8221; for each finding: why does this matter to Jennifer&#8217;s organization</li><li>Differentiated reasoning per finding (avoid uniform &#8220;high risk&#8221; labels with no logic)</li><li>Reference an authoritative risk framework where helpful (NIST SP 800-30, HIPAA Security Rule risk analysis requirements)</li></ul>",
       "<strong>Recommendations (8%)</strong><ul><li>Prioritized: Monday-morning fixes (low effort, immediate impact) vs. next-quarter budget items (higher effort, strategic)</li><li>Each recommendation specific: what to do, what effort required, what priority window</li><li>Aligned with findings (each recommendation maps to one or more findings)</li><li>Acknowledge client constraints: Jennifer&#8217;s team has limited capacity; recommendations should be feasible</li><li>Where applicable, indicate which control framework the recommendation aligns with (NIST SP 800-52 for TLS, HIPAA Security Rule, NIST CSF)</li></ul>"
      ]
@@ -827,6 +877,27 @@
       "<strong>Fewer than 10 references:</strong> Man pages, RFCs, CVE entries, and vendor/NIST documentation all count. The textbook does NOT; see the Citations page"
      ],
      "calloutType": "commonPitfalls"
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Explain how to judge the severity of a finding like an expired certificate on a healthcare patient portal: what likelihood and impact mean here, and what would make it more or less severe. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Review my draft: Executive Summary",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is my draft of the Executive Summary for my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: one page at most; the overall risk posture in one or two sentences; a count of findings by severity; the top two or three recommendations, framed in business terms; readable by a non-technical executive, with no first person, no command output and no jargon an executive wouldn't know; every line tied to patient trust, HIPAA exposure or operational continuity. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      },
+      {
+       "label": "Review my draft: one finding",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is my draft of one finding from my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: numbered; a descriptive title; a severity rating (Critical, High, Medium, Low or Informational); the affected host, service or certificate; a description, with the specific vulnerability identifier where one applies; evidence, pointing to a screenshot or OpenSSL output; the impact in business terms; and a one-line recommendation. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      },
+      {
+       "label": "Review my draft: runbook entry",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is my draft of one runbook entry from my internal packet:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: the tool's name and purpose; the switches I used, each with a one-line explanation; switches I didn't use but should know; the exact command I ran; what output came back, with a screenshot reference; what I did with the result; and whether a colleague could reproduce my work from it three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      }
+     ]
     },
     {
      "type": "callout",
@@ -938,6 +1009,15 @@
      ]
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I diagnose the expired certificate with OpenSSL, create a certificate signing request, sign it with the client's internal certificate authority, install it and verify it, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Here is an error message I got in my Word document, where a cross-reference to a figure should be:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
      "body": "A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties."
@@ -1036,35 +1116,35 @@
     "description": "Capture your successful MFA login showing both prompts and the whoami output"
    },
    {
-    "filename": "gulfcoast-01-initial-error.png",
+    "filename": "18-gulfcoast-initial-error.png",
     "description": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the Not After date in the past"
    },
    {
-    "filename": "gulfcoast-02-cert-expired.png",
+    "filename": "19-gulfcoast-cert-expired.png",
     "description": "Capture the openssl output showing the expired certificate dates"
    },
    {
-    "filename": "gulfcoast-03-csr-generation.png",
+    "filename": "20-gulfcoast-csr-generation.png",
     "description": "Capture the CSR generation command and output"
    },
    {
-    "filename": "gulfcoast-04-cert-signing.png",
+    "filename": "21-gulfcoast-cert-signing.png",
     "description": "Capture the CA signing command and “self-signature ok” output"
    },
    {
-    "filename": "gulfcoast-05-cert-installation.png",
+    "filename": "22-gulfcoast-cert-installation.png",
     "description": "Capture the certificate installation command"
    },
    {
-    "filename": "gulfcoast-06-apache-restart.png",
+    "filename": "23-gulfcoast-apache-restart.png",
     "description": "Capture the Apache restart and container restart"
    },
    {
-    "filename": "gulfcoast-07-cert-valid.png",
+    "filename": "24-gulfcoast-cert-valid.png",
     "description": "Capture the new certificate dates showing future expiration"
    },
    {
-    "filename": "gulfcoast-08-browser-success.png",
+    "filename": "25-gulfcoast-browser-success.png",
     "description": "Capture Firefox&#8217;s certificate viewer with the Validity section showing the new dates"
    }
   ],
