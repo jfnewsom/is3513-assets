@@ -177,7 +177,8 @@ DENYLIST = [
             # "+" ("25+ screenshots" slipped past the old rule in Labs 2.3 and 4.3 and the EP
             # Guide). Lookbehind skips lab numbers ("Lab 5.1 screenshots") and callout
             # numbers ("#11 screenshots").
-            r"(?<![\d.#])\b(?!20\b)\d{1,3}\+?\s+(?:[\w-]+\s+){0,2}(?:screenshot|capture)s\b",
+            # "packet 1 Screenshots" is the EP Screenshots tab header, not a count.
+            r"(?<![\d.#])\b(?!\d{1,3}\s+Screenshots\s+Every\s+capture\b)(?!20\b)\d{1,3}\+?\s+(?:[\w-]+\s+){0,2}(?:screenshot|capture)s\b",
             r"\(\s*(?!20\b)\d{1,3}\s+(?:screenshot|capture)s?\s*\)",
             r"(?:screenshot|capture)[^.]{0,80}\(\s*(?!20\b)\d{1,3}\s+total\s*\)",
             # Per-module tables: "Required captures by module: 20 (M1), 25 (M2), ..."

@@ -32,7 +32,7 @@ CALLOUT_MAP = {
     "canvasSubmission":  ("nx-cyan",   "description",     "Canvas Submission"),
     "required":          ("nx-red",    "error",           "Required"),
     "error":             ("nx-red",    "error",           ""),
-    "goBeyond":          ("nx-yellow", "search",          "Go Beyond"),
+    "goBeyond":          ("nx-blue",   "rocket_launch",   "Go Beyond"),
     "reportSections":    ("nx-purple", "description",     "Report Sections"),
     "reportStructure":   ("nx-purple", "description",     "Report Structure"),
     "blueTeamLearns":    ("nx-blue",   "security",        "What Blue Team Learns"),
@@ -877,7 +877,7 @@ def render_grading_standards(data):
                 weight = h(part.get("weight", ""))
                 inner += f'    <h3>{part_label} ({weight})</h3>\n    <ul>\n'
                 for k, v in (part.get("components") or {}).items():
-                    inner += f'      <li><strong>{h(_camel_to_label(k))} ({h(v)}):</strong></li>\n'
+                    inner += f'      <li><strong>{h(_camel_to_label(k))}</strong> ({h(v)})</li>\n'
                 inner += '    </ul>\n'
                 if "note" in part:
                     inner += f'    <p><em>{h(part["note"])}</em></p>\n\n'

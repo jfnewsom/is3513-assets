@@ -7,11 +7,22 @@
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
-<body>
+<body class="nx-tabbed">
 <h1 class="nx-sr-only">Module 1 Engagement Packet: Brazos Financial Reconnaissance Engagement</h1>
-
-
-<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-tb-bar">
+  <div class="nx-tb-title">Module 1 Engagement Packet: Brazos Financial Reconnaissance Engagement</div>
+  <div class="nx-tb-scroller">
+    <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
+    <nav class="nx-tb-tabs" role="tablist" aria-label="Lab sections"><a class="nx-tb-tab" role="tab" href="#overview" data-tab="overview" style="--tab:#7B68EE">Overview</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp1" data-tab="cp1" style="--tab:#00D26A" title="Set Up Your Document">CP1</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp2" data-tab="cp2" style="--tab:#00D26A" title="Deploy Brazos Container">CP2</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp3" data-tab="cp3" style="--tab:#00D26A" title="Full Reconnaissance Workflow">CP3</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp4" data-tab="cp4" style="--tab:#00D26A" title="Compile Engagement Packet">CP4</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp5" data-tab="cp5" style="--tab:#00D26A" title="Document Mechanics as You Build">CP5</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp6" data-tab="cp6" style="--tab:#00D26A" title="Clean Up and Submit">CP6</a><a class="nx-tb-tab" role="tab" href="#purple" data-tab="purple" style="--tab:#7B68EE">Purple</a><a class="nx-tb-tab" role="tab" href="#wrapup" data-tab="wrapup" style="--tab:#7B68EE">Wrap-up</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#shots" data-tab="shots" style="--tab:#00BCD4">Screenshots</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#grading" data-tab="grading" style="--tab:#FF9F1C">Grading</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#help" data-tab="help" style="--tab:#4169E1">Help</a></nav>
+    <button type="button" class="nx-tb-fade r" aria-label="More tabs to the right">&rsaquo;</button>
+  </div>
+  <div class="nx-tb-tools">
+    <button type="button" class="nx-tb-all" aria-pressed="false" title="Show every tab and card on one page, for searching (Ctrl+F) and printing">Show all</button>
+    <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  </div>
+</div>
+<main class="nx-tb-main">
+<section class="nx-tb-panel" id="p-overview" data-tab="overview" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 <div class="nx-section">
   <div class="nx-header" style="--accent: #7B68EE;">
     <div class="nx-header-top">
@@ -21,6 +32,7 @@
     <div class="nx-sub">Brazos Financial Reconnaissance Engagement</div>
   </div>
   <div class="nx-card" style="--accent: #7B68EE;">
+
     <p class="nx-module-label">Module 1: Threat Intelligence &amp; Reconnaissance</p>
 
     <div class="nx-callout nx-red">
@@ -87,20 +99,8 @@
         <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
       </div>
     </div>
-  </div>
-</div>
+      <h2>What You Already Have</h2>
 
-
-<!-- ══════════════════════════════════════════════════ YOU ALREADY HAVE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #00BCD4;">
-    <div class="nx-header-top">
-      <div class="nx-kw">you already</div>
-      <div class="nx-sec">have</div>
-    </div>
-    <div class="nx-sub">Three-Week Engagement Model</div>
-  </div>
-  <div class="nx-card" style="--accent: #00BCD4;">
     <p><strong>This is NOT starting from scratch. You&#8217;ve been building this report for 3 units. If you followed the Unit 1-2 instructions, most of your report is already written.</strong></p>
 
     <h2>From Unit 1 (Lab 1.1: Kali Environment Setup)</h2>
@@ -120,7 +120,7 @@
 
     <h2>NEW This Unit <span class="nx-badge-new">NEW</span></h2>
     <ul class="nx-checklist">
-      <li><span class="nx-badge-new">NEW</span> Brazos container deployment (CP1) + reconnaissance against Brazos (CP2)</li>
+      <li><span class="nx-badge-new">NEW</span> Brazos container deployment (CP2) + reconnaissance against Brazos (CP3)</li>
       <li><span class="nx-badge-new">NEW</span> Part I (Internal): Timesheet, Runbook, Analyst Reflection</li>
       <li><span class="nx-badge-new">NEW</span> Part II (Client Deliverable): Cover, Executive Summary, Methodology, Findings, Risk, Recommendations, Appendix</li>
       <li><span class="nx-badge-new">NEW</span> CVE research for discovered versions</li>
@@ -130,23 +130,11 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">You&#8217;re Already 60-70% Done</div>
-        <p>This unit is about compilation and analysis, not starting over. Your Lab 1.1 and 1.2 work feeds directly into Part I (Runbook + Timesheet) of your Engagement Packet. The new work this unit is the Brazos engagement itself plus the Part II Client Deliverable for Ray. CP3 is packaging, not writing from scratch.</p>
+        <p>This unit is about compilation and analysis, not starting over. Your Lab 1.1 and 1.2 work feeds directly into Part I (Runbook + Timesheet) of your Engagement Packet. The new work this unit is the Brazos engagement itself plus the Part II Client Deliverable for Ray. CP4 is packaging, not writing from scratch.</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #FF9F1C;">
-    <div class="nx-header-top">
-      <div class="nx-kw">time</div>
-      <div class="nx-sec">guide</div>
-    </div>
-    <div class="nx-sub">Estimated completion times per checkpoint</div>
-  </div>
-  <div class="nx-card" style="--accent: #FF9F1C;">
+  
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">schedule</span><span>Time Guide</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>
     <table class="nx-time-table">
       <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
@@ -163,11 +151,12 @@
     </table>
 
     <p>Report compilation takes the most time. Don&#8217;t rush the Executive Summary. Ray Jimenez will read it first, and it sets the tone for your entire report.</p>
+  </div></div>
   </div>
 </div>
-
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-tb-botnav"><a class="nx-tb-next" href="#cp1" data-tab="cp1">Next: CP1 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp1" data-tab="cp1" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -177,8 +166,7 @@
     <div class="nx-sub">Set Up Your Document</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
+    <p class="nx-tb-lead">Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
     <h3>Why It Matters</h3>
     <p>Document mechanics were the single largest avoidable point loss last term, and none of it had anything to do with security knowledge. Nearly all of it traces back to a document set up wrong on day one and never recovered. Do this first and it stays done.</p>
     <ol>
@@ -195,24 +183,39 @@
       <li>Save the file now, and keep saving as you go.
       </li>
     </ol>
-    <div class="nx-callout nx-cyan">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Four Mechanics, Every Time</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Four Mechanics, Every Time</div>
         <p>Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand: it looks identical and it is wrong the moment anything moves. Lab 1.0 walks all four if you need the refresher.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what heading styles are in Microsoft Word, and how the Navigation Pane and an automatic Table of Contents both depend on them. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what document metadata is (for example the author, edit history and comments a Word file can carry), what an attacker can learn from metadata in documents a company publishes, and how a defender cleans a file before sharing it.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#overview" data-tab="overview">&larr; Back: Overview</a><a class="nx-tb-next" href="#cp2" data-tab="cp2">Next: CP2 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp2" data-tab="cp2" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -222,8 +225,7 @@
     <div class="nx-sub">Deploy Brazos Container</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.</p>
+    <p class="nx-tb-lead">Deploying the Brazos Financial Docker container that simulates their external attack surface. This is your authorized target for the engagement.</p>
     <h3>Why It Matters</h3>
     <p>Real penetration tests begin with scope definition and authorized target deployment. The Brazos container represents their actual exposed services: the same ports and configurations an external attacker would see.</p>
     <ol>
@@ -257,17 +259,19 @@
       <li>Note the container IP (usually localhost or 127.0.0.1)
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture docker ps showing Brazos container running. Save as 15-brazos-container.png</p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>15-brazos-container.png</code> Capture docker ps showing Brazos container running. Save as 15-brazos-container.png</div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Running Brazos container with all ports accessible at localhost. Test by visiting http://localhost in a browser.</p>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Port conflicts: If ports are in use, stop other containers first with docker stop</li>
           <li>Docker not running: Start Docker daemon with sudo systemctl start docker</li>
@@ -275,24 +279,41 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Running Brazos container with all ports accessible at localhost. Test by visiting http://localhost in a browser.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what the -p option in docker run does, what it means to publish a container&#x27;s port on my VM, and why a container that simulates a company&#x27;s servers would publish ports like 22, 80, 443 and 445. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what scope and rules of engagement mean in a penetration test, and what can go wrong, legally and technically, when a tester goes outside them.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got when I started the Brazos container:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 1 introduces the concept of scope in security engagements. Every authorized penetration test begins with a defined target, and the Brazos container represents exactly that. Documenting your target environment is the first step in any professional assessment.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp1" data-tab="cp1">&larr; Back: CP1</a><a class="nx-tb-next" href="#cp3" data-tab="cp3">Next: CP3 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp3" data-tab="cp3" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -302,8 +323,7 @@
     <div class="nx-sub">Full Reconnaissance Workflow</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.</p>
+    <p class="nx-tb-lead">Conducting comprehensive reconnaissance against the Brazos Financial container using all six tools from your training: nmap, netcat, dirb, nikto, enum4linux, and searchsploit.</p>
     <h3>Why It Matters</h3>
     <p>This is the core of your engagement. A thorough reconnaissance reveals everything an attacker would discover about Brazos Financial&#8217;s external attack surface. Your findings drive the entire client report.</p>
     <ol>
@@ -350,59 +370,24 @@
       <li>Document ALL findings with screenshots
       </li>
     </ol>
-    <div class="nx-callout nx-yellow">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Go Beyond the Basics</div>
-        <p>The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. The more you find, the more impressive your report.</p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>16-brazos-nmap-full.png</code> Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings. Save as 16-brazos-nmap-full.png</div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>17-brazos-netcat-banner.png</code> Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line. Save as 17-brazos-netcat-banner.png</div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>18-brazos-dirb.png</code> Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results. Save as 18-brazos-dirb.png</div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>19-brazos-nikto.png</code> Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags. Save as 19-brazos-nikto.png</div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-brazos-enum4linux.png</code> Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup. Save as 20-brazos-enum4linux.png</div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-brazos-searchsploit.png</code> Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible. Save as 21-brazos-searchsploit.png</div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.</p>
     </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings. Save as 16-brazos-nmap-full.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line. Save as 17-brazos-netcat-banner.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results. Save as 18-brazos-dirb.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags. Save as 19-brazos-nikto.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup. Save as 20-brazos-enum4linux.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible. Save as 21-brazos-searchsploit.png</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">rocket_launch</span><span>Go Beyond the Basics</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Incomplete coverage: Run ALL six tools; missing a tool means missing findings</li>
           <li>Stopping too early: Some scans take 5-10 minutes. Let them complete</li>
@@ -410,24 +395,47 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain how nmap&#x27;s -sV, -sC and -A options differ, and what each one adds to a scan. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain how a security analyst turns raw scan output into findings: how to decide whether an open port or an old version number is actually a problem, and how to judge how severe it is. If you suggest something to try, keep it to the Brazos container on my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got from my nmap scan of the Brazos container:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 2 covers reconnaissance as the foundation of security assessment. The reconnaissance workflow you&#8217;re executing (port scanning, banner grabbing, directory discovery, vulnerability scanning, SMB enumeration, and exploit research) maps directly to the information-gathering phase described in your reading. Your findings become the evidence base for your risk analysis.</p>
       </div>
     </div>
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
+      <div class="nx-callout-body">
+        <p>The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. The more you find, the more impressive your report.</p>
+      </div>
+    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp2" data-tab="cp2">&larr; Back: CP2</a><a class="nx-tb-next" href="#cp4" data-tab="cp4">Next: CP4 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp4" data-tab="cp4" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -437,8 +445,7 @@
     <div class="nx-sub">Compile Engagement Packet</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Assembling your complete Engagement Packet: combining Unit 1-2 documentation with this unit’s findings into a professional deliverable with two parts: Part I (Internal Packet) and Part II (Client Deliverable).</p>
+    <p class="nx-tb-lead">Assembling your complete Engagement Packet: combining Unit 1-2 documentation with this unit’s findings into a professional deliverable with two parts: Part I (Internal Packet) and Part II (Client Deliverable).</p>
     <h3>Why It Matters</h3>
     <p>Professional security consultants deliver organized, comprehensive reports. The Engagement Packet demonstrates your ability to document work, communicate findings, and provide actionable recommendations.</p>
     <div class="nx-callout nx-red">
@@ -462,7 +469,7 @@
         <div class="nx-callout-title">Include in Part I (Internal Packet)</div>
         <ul>
           <li><strong>A. Timesheet (5%)</strong><ul><li>Hours per unit: Lab 1.1 (internal training), Lab 1.2 (internal training), EP 1 (client billable to Brazos Financial)</li><li>Date, specific activity name, and hours per line entry (no &#8220;did lab&#8221; entries)</li><li>Internal vs. client-billable split clearly indicated</li><li>Justification narrative for any unusual entries (very high or very low hours on a task)</li><li>Total hours at the bottom</li></ul></li>
-          <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 1.1, Lab 1.2 and EP 1 (nmap, dirb, nikto, gobuster, whatweb, etc.)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Brazos engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul></li>
+          <li><strong>B. Runbook (20%)</strong><ul><li>One man-page-style entry per tool used across Lab 1.1, Lab 1.2 and EP 1 (nmap, netcat, dirb, nikto, enum4linux and searchsploit)</li><li>For each tool: name and purpose, switches used (with one-line explanations), switches not used but worth knowing</li><li>How you used the tool on the Brazos engagement (the actual command you ran)</li><li>What output came back (with screenshot reference)</li><li>What you did with the result (how it fed into your Findings)</li><li>Bar: a colleague picking this up in 3 months should be able to reproduce your engagement</li></ul></li>
           <li><strong>C. Analyst Reflection (15%)</strong><ul><li><strong>Timesheet Self-Audit.</strong> Was there a task or section that took disproportionately long? Describe what made it slow (unfamiliar tool, unclear instructions, troubleshooting an error) and what you&#8217;d do differently next time. Then total your hours: if Maya Rodriguez reviewed your timesheet alongside this deliverable, what conclusion would she draw about your efficiency?</li><li><strong>Professional Reflection.</strong> What worked on this engagement? What didn&#8217;t? If you ran this reconnaissance engagement against Brazos again next semester with what you know now, what would you do differently? Be specific: &#8220;I&#8217;d communicate findings earlier&#8221; is more useful than &#8220;I&#8217;d be more organized.&#8221;</li><li><strong>AI Methodology Reflection.</strong> Where AI helped you on this engagement, and how you validated what it told you. Strong answers describe specific moments of help and the verification step that followed (e.g., &#8220;I asked Claude to explain a service banner; I confirmed against the vendor documentation before writing my finding.&#8221;). &#8220;I didn&#8217;t use AI on this engagement (N/A)&#8221; is acceptable if true, but don&#8217;t claim N/A if your runbook is full of AI-generated explanations.</li><li>No word floor. No required structure. Honest reflection earns credit; filler doesn&#8217;t.</li></ul></li>
         </ul>
       </div>
@@ -502,13 +509,6 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Runbook Format: Like a Man Page</div>
-        <p>Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you’d reach for it). <strong>Switches used</strong> (each flag you used on Brazos with a one-line explanation). <strong>Switches for future use</strong> (flags you didn’t use this time but should know). <strong>How you used it</strong> (your actual command against Brazos). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.</p>
-      </div>
-    </div>
     <h3>Adding a Runbook Entry</h3>
     <ol>
       <li><strong>Find the entry box.</strong> In Part I, under <em>B. Internal Runbook</em>, the template has one runbook entry: a box (a one-cell table) that starts with <code>[TOOL OR STEP NAME]</code> and holds Purpose, Options / flags used, Exact command as run, Sample output excerpt, Next steps / interpretation, and Pitfalls observed. Under the box is a line that says <code>[Screenshot here ...]</code>. One box is one entry. You do not add rows to it; you repeat the whole box.
@@ -526,20 +526,6 @@
       <li><strong>Clean up.</strong> Every copied box carries its bracketed prompts with it. Before you submit, make sure none of them is left in any entry.
       </li>
     </ol>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Where Each Screenshot Goes</div>
-        <p>Screenshots go inline, inside the .docx, next to the text that references them. Lab 1.1 and 1.2 work goes in the Runbook, under the entry for the tool that produced it. EP 1 Brazos work goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count.</p>
-      </div>
-    </div>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Analyst Reflection: Honest, Not Performative</div>
-        <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit. Even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about reconnaissance, consulting, or security?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
-      </div>
-    </div>
     <div class="nx-callout nx-red">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
@@ -547,24 +533,33 @@
         <p>Man pages count! Tool documentation, CVE entries, and NIST guidelines are all valid references. Your textbook does NOT count. It points you to sources, it is not a source. See the Citations page. Use APA format.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Complete .docx file with all sections, auto-generated Table of Contents, embedded screenshots, and APA-formatted references. Professional enough to present to a client.</p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Complete .docx file with all sections, auto-generated Table of Contents, embedded screenshots, and APA-formatted references. Professional enough to present to a client.</p>
     </div>
-    <div class="nx-callout nx-purple">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Runbook Format: Like a Man Page</span></button><button type="button" class="nx-tb-card nx-cyan" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Where Each Screenshot Goes</span></button><button type="button" class="nx-tb-card nx-cyan" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Analyst Reflection: Honest, Not Performative</span></button><button type="button" class="nx-tb-card nx-orange" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="4" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="5" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
-        <p>Chapter 1 and Chapter 2 both emphasize that security work is only complete when it’s documented. Your Engagement Packet is the professional artifact that transforms raw reconnaissance data into actionable intelligence. Part I (Timesheet + Runbook + Analyst Reflection) justifies your time and enables reproducibility. Part II (the Client Deliverable) communicates risk to a non-technical audience.</p>
+        <p>Per-tool entry, structured: <strong>Name</strong> (tool and basic purpose). <strong>Description</strong> (what it does, when you’d reach for it). <strong>Switches used</strong> (each flag you used on Brazos with a one-line explanation). <strong>Switches for future use</strong> (flags you didn’t use this time but should know). <strong>How you used it</strong> (your actual command against Brazos). <strong>What came back</strong> (the output, with screenshot reference). <strong>What you did with it</strong> (how the result fed into your findings). Bar: a colleague picking this up in 3 months should be able to reproduce your engagement.</p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <p>Screenshots go inline, inside the .docx, next to the text that references them. Lab 1.1 and 1.2 work goes in the Runbook, under the entry for the tool that produced it. EP 1 Brazos work goes in Part II, with the finding, methodology step or appendix item it supports. If a runbook entry needs a client screenshot, point to it by figure number with a cross-reference instead of pasting it twice. A screenshot uploaded as a separate file, attached in Canvas or posted as a Canvas comment is not in the packet and does not count.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">psychology</span></div>
+      <div class="nx-callout-body">
+        <p>Real questions for real answers. Graders can tell when reflection is filler. Honest reflection earns credit. Even short, honest reflection. Answer:<ul style="margin:8px 0 0 20px;"><li>What did you take from this engagement specifically?</li><li>Did you have expectations going in? Verified or smashed?</li><li>Has this changed how you think about reconnaissance, consulting, or security?</li><li>Can you see how the work applies to the field outside this course?</li><li>What from this engagement will serve you in the future?</li><li>If you used AI tools: where, how, and how did you validate? If not, write N/A.</li></ul>No minimum word count. No required structure. Genuine reflection.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Starting from scratch</strong>: Your report is 60 to 70% complete from Units 1 and 2. Import your existing screenshots and documentation. Don&#8217;t rewrite what you already have.</li>
           <li><strong>PDF submission</strong>: Canvas will not accept PDF. Submit .docx only. Convert to PDF after grading if you want a personal copy.</li>
@@ -573,10 +568,57 @@
         </ul>
       </div>
     </div>
+</div><div class="nx-tb-cardpanel" data-i="4" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what likelihood and impact mean in a security risk analysis, and how they combine into a risk rating for a finding. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain why security reports separate an executive summary for business leaders from the technical findings, and what a non-technical executive needs to see to decide what to fix first when the budget only covers some of it.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: Executive Summary</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of the Executive Summary for my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: one page at most; the overall risk posture in one or two sentences; a count of findings by severity; the top two or three recommendations, framed in business terms; readable by a non-technical executive, with no first person, no command output and no jargon an executive wouldn&#x27;t know; every line tied to business risk or financial exposure. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: one finding</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of one finding from my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: numbered; a descriptive title; a severity rating (Critical, High, Medium, Low or Informational); the affected host or service; a description, with the specific CVE or vulnerability identifier where one applies; evidence, pointing to a screenshot or tool output; the impact in business terms; and a one-line recommendation. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: runbook entry</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is my draft of one runbook entry from my internal packet:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: the tool&#x27;s name and purpose; the switches I used, each with a one-line explanation; switches I didn&#x27;t use but should know; the exact command I ran; what output came back, with a screenshot reference; what I did with the result; and whether a colleague could reproduce my work from it three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="5" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
+      <div class="nx-callout-body">
+        <p>Chapter 1 and Chapter 2 both emphasize that security work is only complete when it’s documented. Your Engagement Packet is the professional artifact that transforms raw reconnaissance data into actionable intelligence. Part I (Timesheet + Runbook + Analyst Reflection) justifies your time and enables reproducibility. Part II (the Client Deliverable) communicates risk to a non-technical audience.</p>
+      </div>
+    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp3" data-tab="cp3">&larr; Back: CP3</a><a class="nx-tb-next" href="#cp5" data-tab="cp5">Next: CP5 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp5" data-tab="cp5" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -586,8 +628,7 @@
     <div class="nx-sub">Document Mechanics as You Build</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Doing the four Word mechanics for real, on your own findings, as you assemble the deliverable, not afterwards. Lab 1.0 taught them on a sandbox; this is the first time they count.</p>
+    <p class="nx-tb-lead">Doing the four Word mechanics for real, on your own findings, as you assemble the deliverable, not afterwards. Lab 1.0 taught them on a sandbox; this is the first time they count.</p>
     <h3>Why It Matters</h3>
     <p>These are worth real points on every packet for the rest of the term, and they are the easiest points in the course to keep. They are also the only way a report survives being reordered. Do them as you go and the cleanup at the end is a formality; leave them until the end and you will be retrofitting forty figures at midnight.</p>
     <ol>
@@ -610,10 +651,21 @@
       <li><strong>Prove it to yourself once.</strong> Insert any figure above one you have already captioned, then select all and press F9. Watch the caption numbers and every cross-reference to them renumber on their own. That is what you bought by doing it properly, and it is why hand-typed numbers cost points.
       </li>
     </ol>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Every figure captioned with Insert Caption, every mention of a figure inserted as a cross-reference, every source entered through Insert Citation and cited in the body, and a reference list Word built for you. All of it shading gray when you click it.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Pro Tip</span></button><button type="button" class="nx-tb-card nx-orange" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <p>Press Alt+F9 on Windows, or Option+F9 on Mac, to toggle field codes on and off. The document will show you the machinery behind every caption, cross-reference and citation at once: the fastest way to audit a whole packet. Press it again to go back.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Drag-selecting a heading and catching the empty line beneath it. Word styles both paragraphs and you get a blank entry in the Navigation Pane while fixing something else. Click in a heading, do not drag across it.</li>
           <li>Running Insert Caption with the cursor still at the end of the image&#8217;s paragraph. The caption lands inside it. Put the cursor on its own line first.</li>
@@ -622,24 +674,31 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Pro Tip</div>
-        <p>Press Alt+F9 on Windows, or Option+F9 on Mac, to toggle field codes on and off. The document will show you the machinery behind every caption, cross-reference and citation at once: the fastest way to audit a whole packet. Press it again to go back.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain what a field is in Microsoft Word (captions, cross-references, citations and the Table of Contents are all fields), and why a field keeps its number right when the document changes while a number I typed by hand doesn&#x27;t. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got in my Word document, where a cross-reference to a figure should be:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Every figure captioned with Insert Caption, every mention of a figure inserted as a cross-reference, every source entered through Insert Citation and cited in the body, and a reference list Word built for you. All of it shading gray when you click it.</p>
-      </div>
-    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 6 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp4" data-tab="cp4">&larr; Back: CP4</a><a class="nx-tb-next" href="#cp6" data-tab="cp6">Next: CP6 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp6" data-tab="cp6" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -649,8 +708,7 @@
     <div class="nx-sub">Clean Up and Submit</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
+    <p class="nx-tb-lead">Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
     <h3>Why It Matters</h3>
     <p>Every deduction in this category is avoidable and none of it is about security. A packet that goes out with placeholder text still in it, a Table of Contents that describes an earlier draft, or a figure number that points at the wrong picture tells the client nobody read the document before sending it. They will wonder what else nobody checked.</p>
     <ol>
@@ -691,10 +749,15 @@
         <p><strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item: one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong></p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Updating &#8216;page numbers only&#8217; instead of the entire table. The page numbers will be right and the section list will describe a document you no longer have.</li>
           <li>Running the field update, then editing one more paragraph, then submitting. Make Ctrl+A and F9 the last thing you do before saving, every time.</li>
@@ -703,16 +766,31 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Explain why consulting firms check a report for leftover template text, out-of-date numbering and hidden metadata before it goes to a client, and what a careless deliverable tells a client about the security work behind it.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this assignment I play a junior analyst at a fictional security consulting firm. I run an external reconnaissance engagement against a fictional client, Brazos Financial Group, whose systems are simulated by a Docker container on my own Kali Linux VM, reached at localhost. That container is my only authorized target. I use nmap, netcat, dirb, nikto, enum4linux and searchsploit, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Here is an error message I got in my Word document&#x27;s Table of Contents after I updated it:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp5" data-tab="cp5">&larr; Back: CP5</a><a class="nx-tb-next" href="#purple" data-tab="purple">Next: Purple &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-purple" data-tab="purple" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
 <div class="nx-section">
@@ -751,7 +829,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp6" data-tab="cp6">&larr; Back: CP6</a><a class="nx-tb-next" href="#wrapup" data-tab="wrapup">Next: Wrap-up &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-wrapup" data-tab="wrapup" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
 <div class="nx-section">
@@ -848,9 +928,42 @@
         <p>Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe.</p>
       </div>
     </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>After submitting this engagement, you&#8217;ll begin Module 2: Cryptography &#38; Authentication with Lab 2.1: Cryptographic Foundations.</p>
+      </div>
+    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#purple" data-tab="purple">&larr; Back: Purple</a></div>
+</section>
+<section class="nx-tb-panel" id="p-shots" data-tab="shots" role="tabpanel" style="--tab-accent:#00BCD4" hidden>
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00BCD4;">
+    <div class="nx-header-top">
+      <div class="nx-kw">packet</div>
+      <div class="nx-sec">1</div>
+    </div>
+    <div class="nx-sub">Screenshots</div>
+  </div>
+  <div class="nx-card" style="--accent: #00BCD4;">
+    <p class="nx-tb-lead">Every capture this lab calls for, in order. Each one links to the checkpoint where you take it. The floor is at least 20 qualifying screenshots per module, across all of its labs.</p>
+    <ul class="nx-tb-shots nx-tb-shots--all">
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>15-brazos-container.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>16-brazos-nmap-full.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>17-brazos-netcat-banner.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>18-brazos-dirb.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>19-brazos-nikto.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-brazos-enum4linux.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-brazos-searchsploit.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-grading" data-tab="grading" role="tabpanel" style="--tab-accent:#FF9F1C" hidden>
 
 <!-- ══════════════════════════════════════════════════ GRADING STANDARDS -->
 <div class="nx-section">
@@ -865,17 +978,17 @@
     <h2 class="nx-accent">The Quality Ladder</h2>
     <h3>Part I: Internal Packet (40%)</h3>
     <ul>
-      <li><strong>Timesheet (5%):</strong></li>
-      <li><strong>Runbook (20%):</strong></li>
-      <li><strong>Analyst Reflection (15%):</strong></li>
+      <li><strong>Timesheet</strong> (5%)</li>
+      <li><strong>Runbook</strong> (20%)</li>
+      <li><strong>Analyst Reflection</strong> (15%)</li>
     </ul>
     <h3>Part II: Client Deliverable (60%)</h3>
     <ul>
-      <li><strong>Executive Summary (12%):</strong></li>
-      <li><strong>Methodology (7%):</strong></li>
-      <li><strong>Findings (22%):</strong></li>
-      <li><strong>Risk Analysis (11%):</strong></li>
-      <li><strong>Recommendations (8%):</strong></li>
+      <li><strong>Executive Summary</strong> (12%)</li>
+      <li><strong>Methodology</strong> (7%)</li>
+      <li><strong>Findings</strong> (22%)</li>
+      <li><strong>Risk Analysis</strong> (11%)</li>
+      <li><strong>Recommendations</strong> (8%)</li>
     </ul>
     <p><em>Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale.</em></p>
 
@@ -906,7 +1019,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-help" data-tab="help" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 
 <!-- ══════════════════════════════════════════════════ NEED HELP -->
 <div class="nx-section">
@@ -949,16 +1064,62 @@
     <h2>Academic Integrity</h2>
     <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
 
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>After submitting this engagement, you&#8217;ll begin Module 2: Cryptography &#38; Authentication with Lab 2.1: Cryptographic Foundations.</p>
-      </div>
-    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+</main>
+<script>
+(function(){
+const nav=document.querySelector('.nx-tb-tabs'), inIframe=window.self!==window.top, pos={}; let cur=null;
+// Hidden content stays findable: browsers that support hidden="until-found"
+// (Chrome, Edge) let Ctrl+F search every tab and card and open the match.
+const UF='onbeforematch' in document.body, HIDE=UF?'until-found':true;
+const allBtn=document.querySelector('.nx-tb-all');
+function setAll(on){document.body.classList.toggle('nx-showall',on);allBtn.setAttribute('aria-pressed',on);allBtn.textContent=on?'Show one tab':'Show all';}
+function show(id,push){
+  if(!document.getElementById('p-'+id)) id='overview';
+  if(cur) pos[cur]=scrollY;
+  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id?HIDE:false);
+  document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
+  cur=id;
+  const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({block:'nearest',inline:'center'});
+  if(a) document.body.style.setProperty('--cur',a.style.getPropertyValue('--tab'));
+  scrollTo(0,pos[id]||0);
+  if(push) history.replaceState(null,'','#'+id);
+  document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;
+  fades();
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-tab]'); if(a){e.preventDefault();show(a.dataset.tab,true);return;}
+  const c=e.target.closest('.nx-tb-card'); if(!c) return;
+  const box=c.closest('.nx-tb-cards'), open=c.getAttribute('aria-expanded')==='true';
+  box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded','false'));
+  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+  if(!open){c.setAttribute('aria-expanded','true');box.querySelector('.nx-tb-cardpanel[data-i="'+c.dataset.i+'"]').hidden=false;}
+});
+const L=document.querySelector('.nx-tb-fade.l'),Rt=document.querySelector('.nx-tb-fade.r');
+function fades(){L.classList.toggle('on',nav.scrollLeft>4);Rt.classList.toggle('on',nav.scrollLeft+nav.clientWidth<nav.scrollWidth-4);}
+nav.addEventListener('scroll',fades); addEventListener('resize',fades);
+L.onclick=()=>nav.scrollBy({left:-nav.clientWidth*.7,behavior:'smooth'});
+Rt.onclick=()=>nav.scrollBy({left:nav.clientWidth*.7,behavior:'smooth'});
+if(inIframe) document.getElementById('nx-tb-newtab').hidden=false;
+document.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+// A find-in-page match inside a hidden tab or card: switch to that tab, open that card.
+document.addEventListener('beforematch',e=>{
+  const cp=e.target.closest('.nx-tb-cardpanel');
+  if(cp){const box=cp.closest('.nx-tb-cards');box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded',b.dataset.i===cp.dataset.i));
+    box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>{if(p!==cp)p.hidden=HIDE;});}
+  const pn=e.target.closest('.nx-tb-panel'); if(pn&&pn.dataset.tab!==cur)show(pn.dataset.tab,true);
+},true);
+allBtn.addEventListener('click',()=>setAll(!document.body.classList.contains('nx-showall')));
+// Browsers without until-found: Ctrl/Cmd+F shows everything first so find works.
+addEventListener('keydown',e=>{if(!UF&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f')setAll(true);});
+addEventListener('beforeprint',()=>setAll(true));
+addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+show(location.hash.slice(1)||'overview',false);
+})();
+</script>
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>
