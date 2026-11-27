@@ -2749,3 +2749,12 @@ summary {
     font-size: 22px;
   }
 }
+
+/* ── AI Assist card (2026-11-25, ported from IS2053) ─────────── */
+.nx-ai-prompt { margin: 12px 0; border: 1px solid rgba(123, 104, 238, 0.35); border-radius: 8px; background: rgba(123, 104, 238, 0.06); }
+.nx-ai-prompt__head { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-bottom: 1px solid rgba(123, 104, 238, 0.25); }
+.nx-ai-prompt__label { color: #ffffff; font-weight: 600; font-size: 14px; }
+.nx-ai-copy { background: #7B68EE; color: #ffffff; border: 0; border-radius: 4px; padding: 3px 12px; font-size: 13px; cursor: pointer; }
+.nx-ai-copy:hover { opacity: 0.85; }
+.nx-ai-prompt__text { margin: 0; padding: 10px 12px; white-space: pre-wrap; word-wrap: break-word; color: #B0B8C4; font-family: 'Roboto Mono', monospace; font-size: 13px; line-height: 1.6; background: transparent; }
+.nx-callout-body p.nx-ai-caution { font-style: italic; opacity: 0.85; margin-top: 10px; }

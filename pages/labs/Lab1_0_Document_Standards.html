@@ -131,7 +131,7 @@
       </li>
       <li>Check your processor type. Windows: Task Manager &gt; Performance &gt; CPU, or Settings &gt; System &gt; About. Mac: About This Mac. Look for &#8216;Chip: Apple M1/M2/M3/M4&#8217; versus &#8216;Processor: Intel&#8217;. This determines which Kali image you download, so do not skip it.
       </li>
-      <li>Windows only: confirm virtualization is enabled. Task Manager &gt; Performance &gt; CPU. Look for &#8216;Virtualization: Enabled&#8217; on the right. If it says Disabled, it has to be turned on in your BIOS/UEFI before VirtualBox can run a VM at all. <strong>Search the web for &#8220;enable virtualization&#8221; plus your computer&#8217;s make and model</strong>: the key you press at boot (often F2, F10, Del or Esc) and the name of the setting (VT-x, AMD-V, SVM Mode, Intel Virtualization Technology) both differ by manufacturer, so there is no single instruction that covers everyone.
+      <li>Windows only: confirm virtualization is enabled. Task Manager &gt; Performance &gt; CPU. Look for &#8216;Virtualization: Enabled&#8217; on the right. If it says Disabled, it has to be turned on in your BIOS/UEFI before any hypervisor can run a VM at all. <strong>Search the web for &#8220;enable virtualization&#8221; plus your computer&#8217;s make and model</strong>: the key you press at boot (often F2, F10, Del or Esc) and the name of the setting (VT-x, AMD-V, SVM Mode, Intel Virtualization Technology) both differ by manufacturer, so there is no single instruction that covers everyone.
       </li>
       <li><strong>Take a screenshot of each check.</strong> <strong>Windows:</strong> press Windows&nbsp;+&nbsp;Shift&nbsp;+&nbsp;S and drag a box around the panel. The snip goes to your clipboard, and a notification appears in the bottom-right. Click it, then press Ctrl&nbsp;+&nbsp;S to save the file. If that feels fiddly, press Windows&nbsp;+&nbsp;PrtScn instead: it grabs the whole screen and writes a .png straight into Pictures &gt; Screenshots with nothing further to do.
       </li>
@@ -196,8 +196,8 @@
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Use What You Want: the Instructions Are VirtualBox</div>
-        <p>Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named &lt;your abc123&gt; and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup.</p>
+        <div class="nx-callout-title">Use the Hypervisor That Fits Your Computer</div>
+        <p>This course doesn&#8217;t pick your hypervisor for you. In Lab 1.1 you describe your computer to the AI assistant you use, it recommends the best fit from a list of options (most are free), and then it tailors the setup steps to the one you choose. What is graded is the outcome: a working Kali VM that meets the Lab 1.1 requirements, named &lt;your abc123&gt;, and the evidence you are asked to capture.</p>
       </div>
     </div>
   </div>

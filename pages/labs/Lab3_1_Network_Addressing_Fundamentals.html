@@ -620,7 +620,7 @@
       <li>Show ARP cache (IP to MAC mappings). The ping you just ran made Kali look up your gateway&#8217;s MAC address, so the gateway should be listed:
         <div class="nx-cmd">arp -a</div>
       </li>
-      <li>Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, hypervisor network mode (VirtualBox: NAT, Bridged, etc.; Parallels: Shared Network, Bridged, etc.).
+      <li>Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, hypervisor network mode, using the name your hypervisor gives it (for example NAT, Shared Network or Bridged).
       </li>
     </ol>
     <div class="nx-callout nx-blue">
@@ -635,7 +635,7 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li><strong>Wrong adapter:</strong> Look for your active network adapter, not the virtual adapters VirtualBox or Parallels adds to your host</li>
+          <li><strong>Wrong adapter:</strong> Look for your active network adapter, not the virtual adapters your hypervisor adds to your host</li>
           <li><strong>VPN active:</strong> If using a VPN, your IP might show the VPN&#8217;s address</li>
           <li><strong>VM not running:</strong> Make sure Kali is booted and has network connectivity</li>
         </ul>
@@ -645,7 +645,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and your hypervisor&#8217;s network mode (VirtualBox or Parallels).</p>
+        <p>Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and your hypervisor&#8217;s network mode.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -690,7 +690,7 @@
     <ol>
       <li>Kali VM (labeled with its name, <code>abc123</code>, and your IP from Checkpoint 5)
       </li>
-      <li>Hypervisor network mode (label it: VirtualBox NAT or Parallels Shared Network)
+      <li>Hypervisor network mode (label it with your hypervisor and its name for the mode, for example VirtualBox NAT or Parallels Shared Network)
       </li>
       <li>Host Machine (with your IP from Checkpoint 5)
       </li>

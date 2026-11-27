@@ -68,8 +68,8 @@
       "color": "#FEC618",
       "label": "✓ 4. Complete Lab 1.0: Document Standards",
       "paragraphs": [
-        "Lab 1.0 is your first graded Foundation Lab and the first deadline in this course: <strong style=\"color:#ffffff;\">Sunday August 23</strong> at 11:59 p.m. Central. It looks like a Word tutorial and it is not. Automatic tables of contents, captions and cross-references, and managed citations are the mechanics every Engagement Packet you write this term depends on.",
-        "It is technically droppable and you should not drop it. Students who skip past this lab spend the rest of the semester hand-typing things Word will build for them, and losing points for it. Do it first, before you touch the VM. You will find it in Canvas under <strong style=\"color:#ffffff;\">Modules &#8594; Module 0: Getting Started</strong>."
+        "Lab 1.0 is your first graded Foundation Lab and the first deadline in this course: <strong style=\"color:#ffffff;\">Sunday, January 24</strong> at 11:59 p.m. Central. It looks like a Word tutorial and it is not. Automatic tables of contents, captions and cross-references, and managed citations are the mechanics every Engagement Packet you write this term depends on.",
+        "It is technically droppable and you should not drop it. Students who skip past this lab spend the rest of the semester hand-typing things Word will build for them, and losing points for it. Do it first, before you touch the VM. Open it here: <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_0_Document_Standards.html\">Lab 1.0: Document Standards</a>."
       ]
     },
     {
@@ -77,8 +77,9 @@
       "color": "#FF9F1C",
       "label": "✓ 5. Start Lab 1.1",
       "paragraphs": [
-        "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong> &#8212; don’t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Lab 1.1 is due Sunday August 30. Find it in your Canvas course modules.",
-        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> Name your VM <strong>&lt;your abc123&gt;</strong> — your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong>), and give Kali the same hostname, not your Banner ID number. This name must be visible in every screenshot. Lab 1.1 explains why."
+        "<strong style=\"color:#ffffff;\">Check your computer first.</strong> The Information Systems and Cybersecurity department requires you to own a laptop that meets its <a href=\"https://caicc.utsa.edu/information-systems-cybersecurity/student-resources/tech-requirements.html\">minimum device requirements</a>, and Lab 1.1 depends on it. If you don&#8217;t have access to one, start with the options on that page, including the one-time financial aid adjustment for technology. Then email me on day one at <a href=\"mailto:john.newsom@utsa.edu\">john.newsom@utsa.edu</a> so we can get you sorted as soon as possible. Don&#8217;t wait until Lab 1.1 is due.",
+        "Your Kali Linux VM is your security workstation for the entire semester. <strong style=\"color:#ffffff;\">Setup happens inside Lab 1.1</strong>, so don&#8217;t set it up separately. Lab 1.1 walks you through installation, the VM naming convention, and the screenshot rules you’ll need for every assignment going forward. Lab 1.1 is due <strong style=\"color:#ffffff;\">Sunday, January 31</strong> at 11:59 p.m. Central. Open it here: <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_1_Kali_Environment_Setup.html\">Lab 1.1: Kali Environment Setup</a>.",
+        "<strong style=\"color:#ffffff;\">VM naming convention:</strong> Name your VM <strong>&lt;your abc123&gt;</strong>. Your abc123 is the ID you use to log into Canvas (for example, <strong>aaa000</strong>), and give Kali the same hostname, not your Banner ID number. This name must be visible in every screenshot. Lab 1.1 explains why."
       ]
     },
     {
@@ -110,12 +111,12 @@
       "colorRgb": "0, 210, 106",
       "label": "What&#8217;s Next?",
       "headingStyle": true,
-      "html": "After completing all 4 checkpoints, head to <a href=\"Module_1.html\" style=\"color:#00D26A;text-decoration:underline;\"><strong>Module 1: Threat Intelligence &amp; Reconnaissance</strong></a> to begin your NEXUS journey.",
+      "html": "After completing all 5 checkpoints, head to <a href=\"Module_1.html\" style=\"color:#00D26A;text-decoration:underline;\"><strong>Module 1: Threat Intelligence &amp; Reconnaissance</strong></a> to begin your NEXUS journey.",
       "icon": "arrow_forward"
     },
     {
       "type": "footer",
-      "html": "Questions? Check <a href=\"How_To_Get_Help.html\">How to Get Help</a> or post in Discord. Don&#8217;t wait until you&#8217;re stuck &#8212; ask early."
+      "html": "Questions? Check <a href=\"How_To_Get_Help.html\">How to Get Help</a> or post in Discord. Don&#8217;t wait until you&#8217;re stuck. Ask early."
     }
   ]
 }

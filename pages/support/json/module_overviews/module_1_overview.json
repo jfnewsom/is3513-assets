@@ -18,7 +18,7 @@
       "unitLabel": "LAB 1.1",
       "type": "foundation",
       "labTitle": "Lab 1.1: Kali Linux Environment Setup",
-      "labDesc": "Build your security workstation. Install VirtualBox (or Parallels on Mac), Kali Linux, and verify your toolset.",
+      "labDesc": "Build your security workstation. Pick the hypervisor that fits your computer with an AI assistant&#8217;s help, install Kali Linux, and verify your toolset.",
       "badgeLabel": "Internal Training",
       "badgeColor": "#00D26A"
     },

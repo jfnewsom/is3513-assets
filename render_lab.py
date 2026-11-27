@@ -6,6 +6,7 @@ Usage: python3 render_lab.py <path/to/lab_COMPLETE.json> [output.html]
 """
 
 import json
+import html as html_lib
 import sys
 from pathlib import Path
 
@@ -456,6 +457,52 @@ def render_cidr_visualizer(block):
     )
 
 
+# AI Assist (2026-11-25, Spring 2027, ported from IS2053): ready-made prompts a
+# student pastes into the AI they use, to get more out of the checkpoint. They
+# show good AI use by example (AI as a tutor, never the author of the graded
+# work). The Copy button needs no page script. Prompts are tested against
+# several AI models by the private ai_check tool (Proton IS3513/ai_check).
+AI_ASSIST_INTRO = (
+    "Use AI on this lab. These prompts are good ways to get more out of this checkpoint: "
+    "copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in "
+    "anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: "
+    "sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. "
+    "They ask the AI to teach you, not to do the work for you. "
+    "This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet."
+)
+AI_ASSIST_CAUTION = (
+    "Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, "
+    "the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists "
+    "(AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you "
+    "against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be "
+    "one of your references only if you read it and it supports what you wrote; the AI itself never counts. "
+    "Point tools only at the targets this lab authorizes."
+)
+
+
+def render_ai_assist(block):
+    """Render the AI Assist card: intro, one row per prompt with a Copy button, caution."""
+    rows = ""
+    for pr in block.get("prompts", []):
+        label = pr.get("label", "Prompt")
+        text = html_lib.escape(pr.get("text", ""))
+        rows += (
+            '        <div class="nx-ai-prompt">\n'
+            '          <div class="nx-ai-prompt__head">'
+            f'<span class="nx-ai-prompt__label">{label}</span>'
+            '<button type="button" class="nx-ai-copy" onclick="'
+            "var b=this;navigator.clipboard.writeText("
+            "b.parentNode.nextElementSibling.innerText).then(function(){"
+            "b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})"
+            '">Copy</button></div>\n'
+            f'          <pre class="nx-ai-prompt__text">{text}</pre>\n'
+            '        </div>\n'
+        )
+    body = (f'        <p>{block.get("intro", AI_ASSIST_INTRO)}</p>\n{rows}'
+            f'        <p class="nx-ai-caution">{block.get("caution", AI_ASSIST_CAUTION)}</p>\n')
+    return callout("nx-purple", block.get("icon", "smart_toy"), block.get("title", "AI Assist"), body)
+
+
 def render_checkpoint_content(content_list):
     """Route each content block in a checkpoint to its renderer."""
     out = ""
@@ -473,6 +520,8 @@ def render_checkpoint_content(content_list):
             out += render_cidr_visualizer(block)
         elif btype == "callout":
             out += render_callout_block(block)
+        elif btype == "aiAssist":
+            out += render_ai_assist(block)
         else:
             # fallback — try callout
             out += render_callout_block(block)

@@ -63,8 +63,8 @@
     <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Use What You Want: the Instructions Are VirtualBox</div>
-        <p>Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named with your abc123 and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup.</p>
+        <div class="nx-callout-title">Use the Hypervisor That Fits Your Computer</div>
+        <p>This course doesn&#8217;t tell you which hypervisor to use. Your computer decides that. Checkpoint 1 gives you the requirements your Kali VM has to meet and the options with what they cost. You describe your computer to the AI assistant you use, it recommends the best fit, and then it tailors the setup steps to the hypervisor you choose. That is a real use of AI: turning a general spec into steps for your own machine.<br><br>What is graded is the outcome: a working Kali VM that meets the requirements, named with your abc123, and the evidence you&#8217;re asked to capture.</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -98,7 +98,7 @@
     <table class="nx-time-table">
       <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
-        <tr><td>Checkpoint 1: Download and install VirtualBox</td><td>15-20 min</td></tr>
+        <tr><td>Checkpoint 1: Choose and install your hypervisor</td><td>20-30 min</td></tr>
         <tr><td>Checkpoint 2: Download Kali Linux ISO</td><td>20-45 min</td></tr>
         <tr><td>Checkpoint 3: Create and configure VM</td><td>10-15 min</td></tr>
         <tr><td>Checkpoint 4: Install Kali Linux</td><td>20-30 min</td></tr>
@@ -120,40 +120,190 @@
       <div class="nx-kw">checkpoint</div>
       <div class="nx-sec">1</div>
     </div>
-    <div class="nx-sub">Download and Install VirtualBox</div>
+    <div class="nx-sub">Choose and Install Your Hypervisor</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
     <h3>What You&#8217;re Doing</h3>
-    <p>Installing VirtualBox, a free hypervisor that allows you to run virtual machines on your computer.</p>
+    <p>Choosing the hypervisor that fits your computer, with an AI assistant&#8217;s help, and installing it.</p>
     <h3>Why It Matters</h3>
     <p>Virtual machines allow you to run a complete operating system inside your existing OS. This is how security professionals maintain isolated environments for testing tools, malware analysis, and client engagements without risking their primary system.</p>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Your Computer Comes First</div>
+        <p>The Information Systems and Cybersecurity department requires you to own a laptop that meets its <a href="https://caicc.utsa.edu/information-systems-cybersecurity/student-resources/tech-requirements.html">minimum device requirements</a>. Every lab in this course runs on the VM you build here, so check your computer against that page before you start. If you don&#8217;t have access to a suitable machine, start with the options on that page, including the one-time financial aid adjustment for technology, and email me right away at <a href="mailto:john.newsom@utsa.edu">john.newsom@utsa.edu</a> so we can get you sorted as soon as possible. Don&#8217;t wait until the lab is due.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-red">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What Your VM Has to Be</div>
+        <p>Whichever hypervisor you use, your Kali VM has to meet every one of these. They are the same for everyone.<ul style="margin:8px 0 0 20px;"><li><strong>Kali image:</strong> the official installer for your processor: amd64 for Intel or AMD, arm64 for Apple silicon (Checkpoint 2).</li><li><strong>Memory:</strong> 4 GB minimum, 8 GB recommended if your computer can spare it.</li><li><strong>Processor cores:</strong> 2 or more.</li><li><strong>Disk:</strong> 80 GB, dynamically allocated (it grows as it fills).</li><li><strong>OS type, if your hypervisor asks:</strong> Linux, Debian 64-bit (ARM64 on Apple silicon).</li><li><strong>Networking:</strong> NAT. Parallels and UTM call it Shared Network.</li><li><strong>VM name and hostname:</strong> your abc123.</li><li><strong>Kali account:</strong> username <code>kali</code>, password <code>kali</code> (Checkpoint 4).</li></ul></p>
+      </div>
+    </div>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">No Preference? Use the Defaults</div>
+        <p>If you don&#8217;t care which tools you use, don&#8217;t spend time deciding: use <strong>Microsoft Copilot</strong> (free with your UTSA account) and <strong>VirtualBox</strong> (free). Still run the <strong>Find the right setup</strong> prompt and take Screenshot 00. If the answer says VirtualBox won&#8217;t run on your computer, go with what it recommends instead.</p>
+      </div>
+    </div>
+    <h3>Pick Your AI Assistant</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Assistant</th>
+        <th>Cost</th>
+        <th>Worth knowing</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">Microsoft Copilot (UTSA)</td>
+          <td>Free with your UTSA account</td>
+          <td>UTSA turns it on for every student 18 or older. Sign in at copilot.microsoft.com with your @my.utsa.edu address and passphrase. Signed in, it has Microsoft&#8217;s enterprise data protection, so what you type isn&#8217;t used to train the AI. Details: utsa.edu/techsolutions/FacAndStaff/AI-Literacy/copilot-chat.html</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">ChatGPT</td>
+          <td>Free tier; paid plans available</td>
+          <td>Sign up at chatgpt.com.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Claude</td>
+          <td>Free tier; paid plans available</td>
+          <td>Sign up at claude.ai.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Gemini</td>
+          <td>Free tier; paid plans available</td>
+          <td>Sign in with a Google account at gemini.google.com.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>The free tier of any of these is plenty for this course. If you don&#8217;t have a favorite, start with Copilot.</em></p>
+    <h3>Your Options</h3>
+    <table class="nx-time-table">
+      <thead><tr>
+        <th>Hypervisor</th>
+        <th>Runs on</th>
+        <th>Cost</th>
+        <th>Worth knowing</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="nx-time-label">VirtualBox</td>
+          <td>Windows, Linux, Mac</td>
+          <td>Free</td>
+          <td>Does not run Kali on a MacBook Neo.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">VMware Workstation / Fusion</td>
+          <td>Workstation: Windows, Linux. Fusion: Mac</td>
+          <td>Free for personal and educational use</td>
+          <td>The download needs a free Broadcom account, and Broadcom offers no support for the free version.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Parallels Desktop</td>
+          <td>Mac</td>
+          <td>Paid subscription, 50% off for students</td>
+          <td>Runs on every Apple silicon Mac, including the MacBook Neo. The Standard edition caps a VM at 8 GB of memory and 4 cores.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">UTM</td>
+          <td>Mac</td>
+          <td>Free from its website ($9.99 in the Mac App Store)</td>
+          <td>Built on QEMU.</td>
+        </tr>
+        <tr>
+          <td class="nx-time-label">Hyper-V</td>
+          <td>Windows Pro, Education or Enterprise</td>
+          <td>Included with Windows</td>
+          <td>Not available on Windows Home.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>Prices and support change. Check the official page before you pay for anything.</em></p>
     <ol>
-      <li>Navigate to virtualbox.org/wiki/Downloads
+      <li>Pick your AI assistant from the table above (no preference: Copilot). It&#8217;s the one you&#8217;ll paste the AI Assist prompts into, on this lab and the rest.
       </li>
-      <li>Download the installer for your host operating system (Windows, macOS, or Linux)
+      <li>Find your computer&#8217;s specs: operating system and version, processor, memory and free disk space. Windows: Settings &gt; System &gt; About, and Settings &gt; System &gt; Storage for free space. Mac: Apple menu &gt; About This Mac, and System Settings &gt; General &gt; Storage for free space.
       </li>
-      <li>Run the installer with default settings
+      <li>Copy the <strong>Find the right setup</strong> prompt from the AI Assist card below into the AI assistant you use, fill in your specs and your budget, and send it.
       </li>
-      <li>Restart your computer if prompted
+      <li>Check it against the source of truth. Open the sources the AI listed and the hypervisor&#8217;s official page, and confirm three things yourself: it runs on your processor and operating system, what it costs, and that it can meet every requirement in <strong>What Your VM Has to Be</strong>. Where the AI and the official page disagree, the official page wins.
       </li>
-      <li>Launch VirtualBox to verify installation
+      <li>Take Screenshot 00 (below) before you move on.
+      </li>
+      <li>Install the hypervisor you chose, using its official instructions. Kali keeps a guide for running Kali in each one: <a href="https://www.kali.org/docs/virtualization/">kali.org/docs/virtualization</a>.
+      </li>
+      <li>Open it to confirm it runs.
       </li>
     </ol>
+    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Trust the Source, Not the AI</div>
+        <p>An AI answer is a summary of what it has read, and it can be out of date or simply wrong while sounding completely sure. Prices change, supported chips change, menus get renamed. The <strong>source of truth</strong> is the original: the vendor&#8217;s official page, the tool&#8217;s documentation or man page, the standard itself, and in this course, the lab sheet. So use AI to get pointed in the right direction and to understand what you&#8217;re reading, then read the source and go by what it says. This is a habit analysts live by: nothing goes in a report because an AI said so, only because you checked it. In your Lab 1.3 Runbook VM setup entry, next to Screenshot 00, name the official page you checked and anything the AI got wrong. That&#8217;s also the kind of example the AI Methodology Reflection asks for.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Screenshot</div>
+        <p>Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation. Your VM doesn&#8217;t exist yet, so this one is the exception to the abc123 rule. Save as 00-hypervisor-recommendation.png. It goes in your Lab 1.3 Runbook, in the entry for your VM setup.</p>
+      </div>
+    </div>
     <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>macOS users: You may need to allow the kernel extension in System Preferences > Security & Privacy</li>
-          <li>Windows users: Enable Hyper-V/virtualization in BIOS if VirtualBox won't start VMs</li>
+          <li>Taking the AI&#8217;s word for it: if the recommendation says a hypervisor is free or supports your chip, confirm it on the official page before you install anything.</li>
+          <li>Describing your computer vaguely: an AI can only fit the recommendation to the computer you describe. &#8220;A laptop&#8221; gets you a generic answer.</li>
+          <li>Windows on ARM (Snapdragon) is the hard case: support for running Kali there is limited. Give the AI your exact processor and Windows edition, and expect it to point you to the arm64 image.</li>
+          <li>Virtualization turned off: if no hypervisor will start a VM, virtualization (Intel VT-x or AMD-V) has to be turned on in your BIOS/UEFI. Lab 1.0 shows how to check.</li>
+          <li>macOS blocking the install: allow the hypervisor in System Settings &gt; Privacy &amp; Security.</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-orange">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">Getting Unstuck</div>
+        <p>Your hypervisor, your computer, your setup. There are too many combinations of hardware, operating systems and hypervisors for anyone to support them all, so setup problems are yours to solve, and AI is your first tool for solving them. That isn&#8217;t me being difficult. You have me for one semester, and after that you&#8217;ll be handed unfamiliar systems with nobody to ask, so start the habit now: when you&#8217;re stuck, ask an AI. Use the <strong>Decode my error</strong> prompt below: paste the exact error, say what you were doing, and tell it your setup. If the first answer doesn&#8217;t fix it, tell the AI what happened when you tried it and keep going. Still stuck after a real effort? Post the error and what you&#8217;ve tried in <strong>#module-1-help</strong> on Discord. Someone with the same setup may have already solved it.</p>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Find the right setup</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. I need to run a Kali Linux virtual machine for my course. My computer: operating system and version [your operating system and version], processor [your processor], memory [your memory in GB], free disk space [your free disk space in GB]. My budget for software: [free only, or willing to pay]. The VM has to meet these requirements: Kali Linux from the official installer image for my processor (amd64 for Intel or AMD, arm64 for Apple silicon); at least 4 GB of memory for the VM (8 GB if my computer can spare it); at least 2 processor cores; an 80 GB dynamically allocated virtual disk; NAT networking (or my hypervisor&#x27;s name for it); the VM name and the Kali hostname both set to my student ID; and a Kali user account named kali with the password kali. Recommend the hypervisor that fits my computer best, and one runner-up. For each, say what it costs, whether my computer can meet every requirement, and anything about my setup that will cause trouble. If my computer can&#x27;t meet a requirement, say so plainly instead of changing the requirement. If you aren&#x27;t sure something is current, such as a price or which chips a hypervisor supports, say so and point me to the official page.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain what a hypervisor is, and the difference between a Type 1 and a Type 2 hypervisor. Use an everyday comparison, not a computer example. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Security professionals usually run tools like Kali inside a virtual machine instead of installing them directly on their own computer. Explain two or three reasons why, from both an attacker-simulation (red team) and a defender (blue team) point of view. If you suggest something to try, keep it to my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Here is an error message I got while installing or starting my hypervisor:
+
+[paste the whole error message here]
+
+Explain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>VirtualBox Manager window opens successfully, showing an empty list of virtual machines.</p>
+        <p>A hypervisor installed and opening on your computer, an AI&#8217;s recommendation for your computer saved as Screenshot 00 and checked against the official page, and your choice ready to report on the Lab 1.1 quiz.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -167,14 +317,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Dig Deeper</div>
-        <p>What's the difference between Type 1 and Type 2 hypervisors? Research where VirtualBox falls in this classification and why it matters for security testing.</p>
+        <p>What&#8217;s the difference between Type 1 and Type 2 hypervisors? Find out where the one you chose falls in this classification, and why it matters for security testing.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">That's a Reference!</div>
-        <p>VirtualBox User Manual, Chapter 1: Introduction. Oracle Corporation. Available at: https://www.virtualbox.org/manual/</p>
+        <div class="nx-callout-title">That&#8217;s a Reference!</div>
+        <p>The official documentation for the hypervisor you chose, and Kali&#8217;s own guide for running Kali in it. Kali Linux Documentation: Virtualization. OffSec. Available at: https://www.kali.org/docs/virtualization/</p>
       </div>
     </div>
   </div>
@@ -199,7 +349,7 @@
       </li>
       <li>Select Installer Images
       </li>
-      <li>Choose the correct architecture: 64-bit (amd64) for Intel/AMD processors, arm64 for Apple Silicon Macs (M1/M2/M3/M4). The hypervisor is VirtualBox either way. Only the image changes.
+      <li>Choose the correct architecture: 64-bit (amd64) for Intel/AMD processors, arm64 for Apple Silicon Macs (M1/M2/M3/M4). This depends on your processor, not your hypervisor.
       </li>
       <li>Download the ISO file (approximately 4GB)
       </li>
@@ -222,6 +372,22 @@
           <li>Unofficial sources: Only download from kali.org; third-party ISOs may contain malware</li>
           <li>Interrupted download: If download fails, delete partial file and restart; don't resume corrupted downloads</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain what an ISO file is and how a computer or virtual machine can start up (boot) from one. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain why security people check a downloaded file against a published checksum, such as a SHA-256 hash, before they use it, and what kind of attack that check protects against. Explain the idea; I don&#x27;t need the commands.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -266,23 +432,27 @@
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
     <h3>What You&#8217;re Doing</h3>
-    <p>Creating a new virtual machine in VirtualBox with settings optimized for Kali Linux.</p>
+    <p>Creating your virtual machine in the hypervisor you chose, to the requirements in Checkpoint 1.</p>
     <h3>Why It Matters</h3>
     <p>Proper VM configuration affects performance, stability, and functionality. The VM name is especially important. It appears in your terminal prompt and must be visible in screenshots for assignment verification.</p>
     <ol>
-      <li>In VirtualBox Manager, click New
+      <li>Copy the <strong>Tailor it to my setup</strong> prompt from the AI Assist card below into your AI assistant, fill in your computer and the hypervisor you chose, and send it. Keep its steps open while you work.
       </li>
-      <li>Configure the VM name. Name your VM with your abc123, the ID you use to log into Canvas (for example, aaa000), not your Banner ID number. Just the ID: no prefix, no spaces.
+      <li>Create a new VM. Name your VM with your abc123, the ID you use to log into Canvas (for example, aaa000), not your Banner ID number. Just the ID: no prefix, no spaces.
       </li>
-      <li>Set Type: Linux, Version: Debian (64-bit)
+      <li>If your hypervisor asks for the OS type: Linux, Debian 64-bit (ARM64 on Apple silicon).
       </li>
-      <li>Allocate RAM: 4096 MB minimum (8192 MB recommended if available)
+      <li>Memory: 4 GB minimum, 8 GB recommended.
       </li>
-      <li>Create a virtual hard disk: VDI format, Dynamically allocated, 80 GB
+      <li>Processor cores: 2 or more.
       </li>
-      <li>Before starting, go to Settings > System > Processor: Allocate 2+ CPUs
+      <li>Virtual disk: 80 GB, dynamically allocated.
       </li>
-      <li>Go to Settings > Storage: Click the empty disk under Controller: IDE, then click the disk icon and choose your Kali ISO
+      <li>Networking: NAT (Shared Network in Parallels and UTM).
+      </li>
+      <li>Attach the Kali ISO from Checkpoint 2 as the VM&#8217;s startup disk (its CD/DVD drive).
+      </li>
+      <li>Before you start the VM, check every setting against the requirements in Checkpoint 1. Where the AI&#8217;s steps differ from them, the requirements win.
       </li>
     </ol>
     <div class="nx-callout nx-red">
@@ -296,7 +466,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your VM settings window showing the VM name (your abc123), RAM allocation, and processor count. Save as 01-vm-settings.png</p>
+        <p>Capture your VM&#8217;s settings window showing the VM name (your abc123), memory and processor count. Save as 01-vm-settings.png</p>
       </div>
     </div>
     <div class="nx-callout nx-orange">
@@ -305,16 +475,45 @@
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Leaving the placeholder name. Name your VM with your own abc123 (for example, aaa000), not the word abc123 and not your Banner ID number. This name must be visible in every screenshot.</li>
-          <li>Too little RAM: 2GB minimum, 4GB recommended; less causes performance issues</li>
-          <li>ISO not attached: VM won't boot if the ISO isn't mounted in the optical drive settings</li>
+          <li>Too little memory: 4 GB is the minimum, 8 GB is recommended; less makes Kali slow and unstable</li>
+          <li>ISO not attached: the VM won&#8217;t boot if the Kali ISO isn&#8217;t attached as its startup disk</li>
+          <li>Taking the AI&#8217;s word over the sheet: if its steps give a different name, less memory or another image, change it to match the requirements</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Tailor it to my setup</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. I&#x27;m setting up the virtual machine for my lab. My computer: [your operating system and version], [your processor], [your memory in GB] of memory. The hypervisor I chose: [your hypervisor]. My finished VM has to meet these requirements: Kali Linux from the official installer image for my processor (amd64 for Intel or AMD, arm64 for Apple silicon); at least 4 GB of memory for the VM (8 GB if my computer can spare it); at least 2 processor cores; an 80 GB dynamically allocated virtual disk; NAT networking (or my hypervisor&#x27;s name for it); the VM name and the Kali hostname both set to my student ID; and a Kali user account named kali with the password kali. Give me numbered steps for my hypervisor to create this VM and start the Kali installer, using the menu names my hypervisor actually uses. If my computer or hypervisor can&#x27;t meet one of these requirements, say so plainly and tell me what to do instead, rather than changing the requirement. If you aren&#x27;t sure a menu name is current, say so and point me to the hypervisor&#x27;s or Kali&#x27;s official guide for that step.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain what memory (RAM), processor cores and a virtual hard disk mean for a virtual machine, and what happens when I give a VM too little or too much of each compared with what my computer has. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. My VM uses NAT networking. Explain what NAT means for a virtual machine: what my VM can reach, and what other machines can and can&#x27;t reach in return. Then explain why that matters for a VM full of security tools. If you suggest something to try, keep it to my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Here is an error message I got from my hypervisor when I tried to start my new VM:
+
+[paste the whole error message here]
+
+Explain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">What You Should Have</div>
-        <p>A VM entry in VirtualBox Manager named with your own abc123 (not the placeholder), with the Kali ISO attached.</p>
+        <p>A VM in your hypervisor named with your own abc123 (not the placeholder), set to the Checkpoint 1 requirements, with the Kali ISO attached.</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -328,14 +527,14 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Dig Deeper</div>
-        <p>What are VDI, VMDK, and VHD disk formats? Research the differences and why VDI is preferred for VirtualBox.</p>
+        <p>What are the VDI, VMDK, VHDX and qcow2 disk formats? Which one does your hypervisor use, and why do formats differ between hypervisors?</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">That's a Reference!</div>
-        <p>VirtualBox User Manual, Chapter 5: Virtual Storage. Oracle Corporation. Available at: https://www.virtualbox.org/manual/ch05.html</p>
+        <p>Your hypervisor&#8217;s documentation on creating a VM and its virtual disks, and Kali&#8217;s guide for your hypervisor. Kali Linux Documentation: Virtualization. OffSec. Available at: https://www.kali.org/docs/virtualization/</p>
       </div>
     </div>
   </div>
@@ -356,7 +555,7 @@
     <h3>Why It Matters</h3>
     <p>Kali Linux comes pre-loaded with hundreds of security tools. A proper installation ensures all tools work correctly and the system is stable for the entire semester.</p>
     <ol>
-      <li>Start the VM in VirtualBox Manager
+      <li>Start the VM in your hypervisor
       </li>
       <li>Select Graphical Install from the boot menu
       </li>
@@ -409,6 +608,30 @@
           <li>Wrong hostname: the hostname is your abc123, exactly the same as your VM name</li>
           <li>Installation hangs: If stuck, check that VT-x/AMD-V is enabled in BIOS</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain in plain words what a boot loader such as GRUB does when a computer starts, and why a system can&#x27;t start without one. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. I already know our class VM uses the username kali and password kali on purpose, because it is a throw-away training machine that never leaves my computer. Starting from there, explain when weak, shared credentials can be an acceptable risk and when they are not, and what would have to change if a machine like this were ever put on a real network.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Here is an error message I got from the Kali installer, or when my new Kali VM tried to start for the first time:
+
+[paste the whole error message here]
+
+Explain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -539,8 +762,32 @@
         <ul>
           <li>Permission denied: You didn't log out after adding yourself to the docker group</li>
           <li>Cannot connect to daemon: Docker service isn't running; check with sudo systemctl status docker</li>
-          <li>Network errors: VM needs internet access; check VirtualBox network settings</li>
+          <li>Network errors: VM needs internet access; check your hypervisor&#8217;s network settings (it should be NAT)</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain the difference between a container and a virtual machine, using an everyday comparison. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. I already know that adding my user to the docker group lets me run docker without sudo. Starting from there, explain why security people treat membership in the docker group as close to root (administrator) access, and how a defender should decide who gets it.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Here is an error message I got from a docker command on my Kali VM:
+
+[paste the whole error message here]
+
+Explain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -554,7 +801,7 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Dig Deeper</div>
-        <p>What's the difference between a container and a virtual machine? Research how Docker's architecture differs from VirtualBox and why containers are preferred for deploying applications.</p>
+        <p>What's the difference between a container and a virtual machine? Research how Docker&#8217;s architecture differs from a hypervisor and why containers are preferred for deploying applications.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -623,7 +870,7 @@
         <details>
           <summary>What this does</summary>
           <div class="nx-details-body">
-            <p><strong>Concept:</strong> ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface. It should have an IP address assigned by VirtualBox's NAT adapter (typically 10.0.2.x).</p>
+            <p><strong>Concept:</strong> ip addr lists all network interfaces and their assigned IP addresses. Look for your eth0 interface. It should have an IP address from your hypervisor&#8217;s NAT network (the range depends on the hypervisor; VirtualBox uses 10.0.2.x).</p>
           </div>
         </details>
       </li>
@@ -701,10 +948,34 @@
       <div class="nx-callout-body">
         <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
-          <li>No network: Check VirtualBox network adapter settings (NAT should work)</li>
+          <li>No network: Check your hypervisor&#8217;s network settings (NAT should work)</li>
           <li>Tool not found: Some tools may need installation; use sudo apt install &lt;tool-name&gt;</li>
           <li>Wrong hostname: If hostname doesn't match expected format, ask in Discord before proceeding</li>
         </ul>
+      </div>
+    </div>
+    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">AI Assist</div>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Explain what the main parts of the `ip addr` command&#x27;s output mean: the interface names (I see lo, eth0 and docker0), the state, and the inet address with the /number after it. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. In one or two sentences each, explain what Nmap, Wireshark and John the Ripper are used for in security work. Then explain why an attacker who has just broken into a machine often runs commands like hostname, uname -a and ip addr first, and what a defender could learn from seeing those commands in a log. If you suggest something to try, keep it to my own VM.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I&#x27;m building my own Kali Linux virtual machine in the hypervisor that fits my computer, and installing Docker on it. I&#x27;m new to Kali, Linux and Docker. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you&#x27;re sure exist. Don&#x27;t do my lab steps for me. Here is an error message I got from one of my system verification commands (hostname, uname, ip, ping, nmap, wireshark, john or docker):
+
+[paste the whole error message here]
+
+Explain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution">Like any AI, it can be wrong, even when it sounds sure. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists (AI sometimes invents a link, or cites a page that doesn&#8217;t say what it claims), check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
     <div class="nx-callout nx-green">
@@ -787,6 +1058,7 @@
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshots</h2>
     <ul class="nx-checklist">
+      <li>&#9744; <code>00-hypervisor-recommendation.png</code>: AI recommendation for your computer (prompt with your specs plus the answer)</li>
       <li>&#9744; <code>01-vm-settings.png</code>: VM configuration with correct name</li>
       <li>&#9744; <code>02-kali-desktop.png</code>: Kali desktop after login</li>
       <li>&#9744; <code>03-docker-version.png</code>: Docker version output</li>

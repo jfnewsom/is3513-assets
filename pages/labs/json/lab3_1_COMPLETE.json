@@ -546,7 +546,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, hypervisor network mode (VirtualBox: NAT, Bridged, etc.; Parallels: Shared Network, Bridged, etc.).",
+       "text": "Document: Interface name, IP Address, Subnet Mask/CIDR, Default Gateway, ARP Cache entries, hypervisor network mode, using the name your hypervisor gives it (for example NAT, Shared Network or Bridged).",
        "command": null,
        "whatThisDoes": null
       }
@@ -564,7 +564,7 @@
      "icon": "warning",
      "title": "Common Pitfalls",
      "items": [
-      "<strong>Wrong adapter:</strong> Look for your active network adapter, not the virtual adapters VirtualBox or Parallels adds to your host",
+      "<strong>Wrong adapter:</strong> Look for your active network adapter, not the virtual adapters your hypervisor adds to your host",
       "<strong>VPN active:</strong> If using a VPN, your IP might show the VPN&#8217;s address",
       "<strong>VM not running:</strong> Make sure Kali is booted and has network connectivity"
      ],
@@ -574,7 +574,7 @@
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
-     "text": "Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and your hypervisor&#8217;s network mode (VirtualBox or Parallels).",
+     "text": "Complete network documentation for both your host machine and Kali VM: IP addresses, subnet masks in CIDR notation, default gateways, DNS servers, and your hypervisor&#8217;s network mode.",
      "calloutType": "whatYouShouldHave"
     },
     {
@@ -620,7 +620,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Hypervisor network mode (label it: VirtualBox NAT or Parallels Shared Network)",
+       "text": "Hypervisor network mode (label it with your hypervisor and its name for the mode, for example VirtualBox NAT or Parallels Shared Network)",
        "command": null,
        "whatThisDoes": null
       },

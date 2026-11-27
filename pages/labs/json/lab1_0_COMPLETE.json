@@ -114,7 +114,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Windows only: confirm virtualization is enabled. Task Manager &gt; Performance &gt; CPU. Look for &#8216;Virtualization: Enabled&#8217; on the right. If it says Disabled, it has to be turned on in your BIOS/UEFI before VirtualBox can run a VM at all. <strong>Search the web for &#8220;enable virtualization&#8221; plus your computer&#8217;s make and model</strong>: the key you press at boot (often F2, F10, Del or Esc) and the name of the setting (VT-x, AMD-V, SVM Mode, Intel Virtualization Technology) both differ by manufacturer, so there is no single instruction that covers everyone.",
+       "text": "Windows only: confirm virtualization is enabled. Task Manager &gt; Performance &gt; CPU. Look for &#8216;Virtualization: Enabled&#8217; on the right. If it says Disabled, it has to be turned on in your BIOS/UEFI before any hypervisor can run a VM at all. <strong>Search the web for &#8220;enable virtualization&#8221; plus your computer&#8217;s make and model</strong>: the key you press at boot (often F2, F10, Del or Esc) and the name of the setting (VT-x, AMD-V, SVM Mode, Intel Virtualization Technology) both differ by manufacturer, so there is no single instruction that covers everyone.",
        "command": null,
        "whatThisDoes": null
       },
@@ -193,8 +193,8 @@
     {
      "type": "callout",
      "calloutType": "tip",
-     "title": "Use What You Want: the Instructions Are VirtualBox",
-     "body": "Every instruction, screenshot and troubleshooting step in this course is written for <strong>VirtualBox</strong>. It is free, it needs no account, and it works on every platform we use. It is not the prettiest option (Parallels is better on a Mac and VMware Workstation is better on Windows), but one costs money and the other wants you to sign up, and you should not have to pay for anything to take this class. VirtualBox is not elegant. It works.<br><br>If you would rather use a different hypervisor, go ahead. What is graded is the outcome (a working Kali VM named &lt;your abc123&gt; and the evidence you are asked to capture), not which software produced it. But be clear about the trade: the instructions will not match your screen, and I cannot troubleshoot it with you. It is not possible to maintain every combination of hardware, operating system and hypervisor that exists. Choose your own tool and you are supporting your own setup."
+     "title": "Use the Hypervisor That Fits Your Computer",
+     "body": "This course doesn&#8217;t pick your hypervisor for you. In Lab 1.1 you describe your computer to the AI assistant you use, it recommends the best fit from a list of options (most are free), and then it tailors the setup steps to the one you choose. What is graded is the outcome: a working Kali VM that meets the Lab 1.1 requirements, named &lt;your abc123&gt;, and the evidence you are asked to capture."
     }
    ]
   },

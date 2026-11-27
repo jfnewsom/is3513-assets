@@ -791,6 +791,10 @@
  "finalChecklist": {
   "screenshotTable": [
    {
+    "filename": "00-hypervisor-recommendation.png",
+    "description": "Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation (taken before your VM exists, so it is the exception to the abc123 rule). Place it in your Runbook, in the entry for your VM setup"
+   },
+   {
     "filename": "01-vm-settings.png",
     "description": "Capture your VM settings window showing the VM name (&lt;your abc123&gt;), RAM allocation, and processor count"
    },
