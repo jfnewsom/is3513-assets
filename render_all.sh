@@ -23,4 +23,9 @@ echo "Re-rendering home page..."
 python3 render_home.py && echo "  ✓ Home.html"
 
 echo ""
+echo ""
+echo "Rebuilding the site search index..."
+python3 build_search_index.py && echo "  ✓ search-index.json"
+
+echo ""
 echo "Done. Push via GitHub Desktop."

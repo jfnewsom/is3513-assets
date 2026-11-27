@@ -121,7 +121,7 @@ def lab_names(meta):
     mod, unit = (meta["labId"].split("_") + ["0"])[:2]
     if meta.get("labType") == "engagement":
         return "packet", mod, f"Module {mod} Engagement Packet"
-    return "lab", f"{mod}.{unit}", f"Module {mod} Training Lab {unit}"
+    return "training lab", f"{mod}.{unit}", f"Module {mod} Training Lab {unit}"
 
 
 def render_callout_block(block):

@@ -202,6 +202,20 @@
     #is3513-nav .dd-purple { background: #7B68EE; }
     #is3513-nav .dd-orange { background: #FF9F1C; }
 
+    /* Site search (2026-11-27) */
+    #is3513-nav .nav-search { position: relative; margin-left: auto; margin-right: 10px; flex-shrink: 1; min-width: 120px; }
+    #is3513-nav .nav-search__input { width: 220px; max-width: 100%; box-sizing: border-box; background: #1a1f2e; color: #F5F5F5;
+      border: 1px solid #2f3646; border-radius: 3px; padding: 5px 10px; font: 13px 'Roboto', sans-serif; }
+    #is3513-nav .nav-search__input:focus { outline: none; border-color: #4169E1; }
+    #is3513-nav .nav-search__results { position: absolute; right: 0; top: calc(100% + 6px); width: min(520px, 92vw); max-height: 70vh;
+      overflow-y: auto; background: #0d0d0d; border: 1px solid #2f3646; border-radius: 4px; box-shadow: 0 8px 24px rgba(0,0,0,.5); z-index: 10000; }
+    #is3513-nav .nav-search__item { display: block; padding: 9px 12px; border-bottom: 1px solid #1e1e1e; color: #C9CED6; }
+    #is3513-nav .nav-search__item:hover, #is3513-nav .nav-search__item.is-active { background: #1a1f2e; }
+    #is3513-nav .nav-search__title { display: block; color: #ffffff; font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+    #is3513-nav .nav-search__snip { display: block; font-size: 12px; line-height: 1.45; color: #9aa3b2; }
+    #is3513-nav .nav-search__snip mark { background: #FEC618; color: #000; padding: 0 2px; border-radius: 2px; }
+    #is3513-nav .nav-search__none { padding: 10px 12px; font-size: 12px; color: #9aa3b2; }
+
     /* Discord button */
     #is3513-nav .nav-discord {
       display: flex;
@@ -418,6 +432,7 @@
         <a href="${S}/GenAI_Policy.html?context=lab">GenAI Policy</a>
         <a href="${S}/Screenshot_Requirements.html?context=lab">Screenshot Requirements</a>
         <a href="${S}/Citations.html?context=lab">Citations</a>
+        <div class="nav-search"><input type="search" class="nav-search__input" placeholder="Search the course" aria-label="Search the course site" autocomplete="off"><div class="nav-search__results" role="listbox" hidden></div></div>
         <a class="nav-discord" href="${S}/Discord.html?context=lab">Discord</a>
       </div>`;
   } else {
@@ -435,8 +450,78 @@
           ${readingDropdown}
         </div>
 
+        <div class="nav-search"><input type="search" class="nav-search__input" placeholder="Search the course" aria-label="Search the course site" autocomplete="off"><div class="nav-search__results" role="listbox" hidden></div></div>
         <a class="nav-discord" href="${S}/Discord.html">Discord</a>
       </div>`;
+  }
+
+
+  /* ── Site search ────────────────────────────────────────────
+     search-index.json is written by build_search_index.py (render_all.sh).
+     It loads the first time someone focuses the box. Every word typed must
+     appear in a result; title matches rank first. */
+  function initSearch(nav) {
+    const box = nav.querySelector('.nav-search__input');
+    const list = nav.querySelector('.nav-search__results');
+    if (!box) return;
+    let index = null, loading = null, hits = [], active = -1;
+    const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    function load() {
+      if (!loading) loading = fetch(BASE + '/search-index.json').then(r => r.json()).then(d => {
+        index = d.map(e => ({ ...e, tl: e.t.toLowerCase(), xl: e.x.toLowerCase() }));
+      }).catch(() => { index = []; });
+      return loading;
+    }
+    function snippet(e, terms) {
+      const p = e.xl.indexOf(terms.join(' '));
+      const i = Math.max(0, p >= 0 ? p : e.xl.search(new RegExp('(^|[^a-z0-9])' + reEsc(terms[0]))));
+      const start = Math.max(0, i - 60), end = Math.min(e.x.length, i + 140);
+      let s = esc((start ? '… ' : '') + e.x.slice(start, end) + (end < e.x.length ? ' …' : ''));
+      terms.forEach(t => { s = s.replace(new RegExp('(^|[^a-z0-9])(' + reEsc(esc(t)) + ')', 'ig'), '$1<mark>$2</mark>'); });
+      return s;
+    }
+    function run() {
+      const q = box.value.trim().toLowerCase();
+      if (q.length < 2 || !index) { list.hidden = true; return; }
+      const terms = q.split(/\s+/).filter(Boolean);
+      // Words match from their start ("ps" finds "ps", not "steps"); the
+      // whole query as a phrase ranks highest.
+      const res = terms.map(t => new RegExp('(^|[^a-z0-9])' + reEsc(t), 'g'));
+      hits = index.map(e => {
+        let score = e.xl.includes(q) ? 25 : 0;
+        for (const re of res) {
+          const inT = (e.tl.match(re) || []).length, inX = (e.xl.match(re) || []).length;
+          if (!inT && !inX) return null;
+          score += (inT ? 10 : 0) + Math.min(5, inX);
+        }
+        return { e, score };
+      }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 8);
+      active = -1;
+      list.innerHTML = hits.length
+        ? hits.map((h, k) => '<a class="nav-search__item" role="option" data-k="' + k + '" href="' + BASE + '/' + h.e.u + '">' +
+            '<span class="nav-search__title">' + esc(h.e.t) + '</span>' +
+            '<span class="nav-search__snip">' + snippet(h.e, terms) + '</span></a>').join('')
+        : '<div class="nav-search__none">No matches. Try fewer or different words.</div>';
+      list.hidden = false;
+    }
+    function mark(k) {
+      const items = list.querySelectorAll('.nav-search__item');
+      items.forEach((a, i) => a.classList.toggle('is-active', i === k));
+      if (items[k]) items[k].scrollIntoView({ block: 'nearest' });
+      active = k;
+    }
+    let timer;
+    box.addEventListener('focus', () => { load().then(run); });
+    box.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => load().then(run), 120); });
+    box.addEventListener('keydown', ev => {
+      const n = hits.length;
+      if (ev.key === 'ArrowDown' && n) { ev.preventDefault(); mark((active + 1) % n); }
+      else if (ev.key === 'ArrowUp' && n) { ev.preventDefault(); mark((active - 1 + n) % n); }
+      else if (ev.key === 'Enter' && n) { ev.preventDefault(); location.href = BASE + '/' + hits[Math.max(active, 0)].e.u; }
+      else if (ev.key === 'Escape') { list.hidden = true; box.blur(); }
+    });
+    document.addEventListener('click', ev => { if (!nav.querySelector('.nav-search').contains(ev.target)) list.hidden = true; });
   }
 
   /* ── Mount nav + footer ─────────────────────────────────── */
@@ -457,6 +542,7 @@
     nav.setAttribute('aria-label', 'Course navigation');
     nav.innerHTML = navHTML;
     document.body.insertBefore(nav, document.body.firstChild);
+    initSearch(nav);
 
     // Dark pages (the tabbed lab layout) use the UT San Antonio logo made for a
     // dark background; if that file is missing, fall back to the standard logo.

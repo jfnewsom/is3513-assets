@@ -28,8 +28,9 @@ CARD_ORDER = ["tip", "proTip", "commonPitfalls", "aiAssist", "textbookReference"
               "digDeeper", "goBeyond", "thatsAReference"]
 CAPTURE_TYPES = {"screenshot", "screenshotRange", "whatYouShouldHave"}
 
-GREEN, BLUE, PURPLE = "#00D26A", "#4169E1", "#7B68EE"
+GREEN, BLUE, PURPLE, CYAN, ORANGE = "#00D26A", "#4169E1", "#7B68EE", "#00BCD4", "#FF9F1C"
 SHOT_RE = re.compile(r"[\w.-]+\.png")
+REF_TABS = {"shots", "grading", "help"}   # reference tabs: after the path, no Back/Next
 
 
 def card_inner(section_html):
@@ -145,36 +146,82 @@ def build(data):
         tabs.append((f'cp{cp["number"]}', f'CP{cp["number"]}', GREEN, hdr, body, cp["title"]))
 
     # Wrap-up: everything that used to follow the checkpoints, unchanged.
-    wrap = "".join(p for p in (R.render_final_checklist(data), R.render_purple_team(data),
-                               R.render_grading_standards(data) if is_eng else "",
-                               R.render_need_help(data)) if p)
-    tabs.append(("wrapup", "Wrap-up", lab_col,
-                 R.header(kw, num, "Before You Submit", lab_col), wrap, True))
+    # Purple Team: its own step after the last checkpoint (John, 2026-11-27).
+    pt = R.render_purple_team(data)
+    if pt:
+        tabs.append(("purple", "Purple", PURPLE, None, pt, True))
+    # Wrap-up: just the final checklist.
+    tabs.append(("wrapup", "Wrap-up", lab_col, None, R.render_final_checklist(data), True))
+
+    # Screenshots: a reference tab (like IS2053's Outline) listing every
+    # capture, each linked to the checkpoint where it is taken.
+    shots = screenshots_body(data)
+    if shots:
+        tabs.append(("shots", "Screenshots", CYAN,
+                     R.header(kw, num, "Screenshots", CYAN), R.card(shots, CYAN)))
+    if is_eng:
+        gs = R.render_grading_standards(data)
+        if gs:
+            tabs.append(("grading", "Grading", ORANGE, None, gs, True))
+    nh = R.render_need_help(data)
+    if nh:
+        tabs.append(("help", "Help", BLUE, None, nh, True))
     return tabs
+
+
+def screenshots_body(data):
+    where = {}
+    for cp in data.get("checkpoints", []):
+        for b in cp.get("content", []):
+            if b.get("type") == "callout" and b.get("calloutType") in ("screenshot", "screenshotRange"):
+                for f in SHOT_RE.findall(re.sub("<[^>]+>", "", b.get("body") or b.get("text") or "")):
+                    where.setdefault(f, cp["number"])
+    rows = []
+    for item in (data.get("finalChecklist") or {}).get("screenshotTable") or []:
+        if isinstance(item, dict) and item.get("file"):
+            rows.append((item["file"], item.get("description", "")))
+    if not rows:
+        rows = [(f, "") for f in where]
+    if not rows:
+        return ""
+    out = ('    <p class="nx-tb-lead">Every capture this lab calls for, in order. Each one links to the checkpoint '
+           'where you take it. The floor is at least 20 qualifying screenshots per module, across all of its labs.</p>\n'
+           '    <ul class="nx-tb-shots nx-tb-shots--all">\n')
+    for f, desc in rows:
+        n = where.get(f)
+        go = (f' <a class="nx-tb-goto" href="#cp{n}" data-tab="cp{n}">CP{n} &rarr;</a>' if n else "")
+        out += ('      <li><span class="material-icons" aria-hidden="true">photo_camera</span>'
+                f'<div><code>{f}</code> {desc}{go}</div></li>\n')
+    return out + '    </ul>\n'
+
 
 
 def page(data, tabs):
     meta = data["meta"]
     full = R.lab_names(meta)[2]
     order = [t[0] for t in tabs]
+    path = [t for t in tabs if t[0] not in REF_TABS]
     buttons = panels = ""
-    for i, t in enumerate(tabs):
+    for t in tabs:
         tid, name, col, hdr, body = t[:5]
         extra = t[5] if len(t) > 5 else None
         is_sections = extra is True                  # Wrap-up body is whole sections
         tip = f' title="{H.escape(re.sub("<[^>]+>", "", extra), quote=True)}"' if isinstance(extra, str) else ""
         dark = col == GREEN
-        buttons += (f'<a class="nx-tb-tab{" nx-tb-tab--dark" if dark else ""}" role="tab" href="#{tid}" '
+        ref = " nx-tb-tab--ref" if tid in REF_TABS else ""
+        buttons += (f'<a class="nx-tb-tab{" nx-tb-tab--dark" if dark else ""}{ref}" role="tab" href="#{tid}" '
                     f'data-tab="{tid}" style="--tab:{col}"{tip}>{name}</a>')
         back = nxt = ""
-        if i > 0:
-            p = tabs[i - 1]
+        i = next((k for k, pt in enumerate(path) if pt[0] == tid), None)
+        if i is not None and i > 0:
+            p = path[i - 1]
             back = f'<a class="nx-tb-back" href="#{p[0]}" data-tab="{p[0]}">&larr; Back: {p[1]}</a>'
-        if i < len(tabs) - 1:
-            n = tabs[i + 1]
+        if i is not None and i < len(path) - 1:
+            n = path[i + 1]
             nxt = f'<a class="nx-tb-next" href="#{n[0]}" data-tab="{n[0]}">Next: {n[1]} &rarr;</a>'
-        inner = R.section(hdr + body) if not is_sections else body   # Wrap-up sections carry their own headers
-        panels += (f'<section class="nx-tb-panel" id="p-{tid}" data-tab="{tid}" role="tabpanel" hidden>\n'
+        inner = R.section(hdr + body) if not is_sections else body   # whole sections carry their own headers
+        sec_cls = " nx-tb-panel--sections" if is_sections else ""
+        panels += (f'<section class="nx-tb-panel{sec_cls}" id="p-{tid}" data-tab="{tid}" role="tabpanel" style="--tab-accent:{col}" hidden>\n'
                    f'{inner}<div class="nx-tb-botnav">{back}{nxt}</div>\n</section>\n')
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -188,22 +235,31 @@ def page(data, tabs):
 <body class="nx-tabbed">
 <h1 class="nx-sr-only">{full}: {meta["title"]}</h1>
 <div class="nx-tb-bar">
+  <div class="nx-tb-title">{full}: {meta["title"]}</div>
   <div class="nx-tb-scroller">
     <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
     <nav class="nx-tb-tabs" role="tablist" aria-label="Lab sections">{buttons}</nav>
     <button type="button" class="nx-tb-fade r" aria-label="More tabs to the right">&rsaquo;</button>
   </div>
-  <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  <div class="nx-tb-tools">
+    <button type="button" class="nx-tb-all" aria-pressed="false" title="Show every tab and card on one page, for searching (Ctrl+F) and printing">Show all</button>
+    <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  </div>
 </div>
 <main class="nx-tb-main">
 {panels}</main>
 <script>
 (function(){{
 const nav=document.querySelector('.nx-tb-tabs'), inIframe=window.self!==window.top, pos={{}}; let cur=null;
+// Hidden content stays findable: browsers that support hidden="until-found"
+// (Chrome, Edge) let Ctrl+F search every tab and card and open the match.
+const UF='onbeforematch' in document.body, HIDE=UF?'until-found':true;
+const allBtn=document.querySelector('.nx-tb-all');
+function setAll(on){{document.body.classList.toggle('nx-showall',on);allBtn.setAttribute('aria-pressed',on);allBtn.textContent=on?'Show one tab':'Show all';}}
 function show(id,push){{
   if(!document.getElementById('p-'+id)) id='{order[0]}';
   if(cur) pos[cur]=scrollY;
-  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id);
+  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id?HIDE:false);
   document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
   cur=id;
   const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({{block:'nearest',inline:'center'}});
@@ -218,7 +274,7 @@ document.addEventListener('click',e=>{{
   const c=e.target.closest('.nx-tb-card'); if(!c) return;
   const box=c.closest('.nx-tb-cards'), open=c.getAttribute('aria-expanded')==='true';
   box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded','false'));
-  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=true);
+  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
   if(!open){{c.setAttribute('aria-expanded','true');box.querySelector('.nx-tb-cardpanel[data-i="'+c.dataset.i+'"]').hidden=false;}}
 }});
 const L=document.querySelector('.nx-tb-fade.l'),Rt=document.querySelector('.nx-tb-fade.r');
@@ -227,6 +283,18 @@ nav.addEventListener('scroll',fades); addEventListener('resize',fades);
 L.onclick=()=>nav.scrollBy({{left:-nav.clientWidth*.7,behavior:'smooth'}});
 Rt.onclick=()=>nav.scrollBy({{left:nav.clientWidth*.7,behavior:'smooth'}});
 if(inIframe) document.getElementById('nx-tb-newtab').hidden=false;
+document.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+// A find-in-page match inside a hidden tab or card: switch to that tab, open that card.
+document.addEventListener('beforematch',e=>{{
+  const cp=e.target.closest('.nx-tb-cardpanel');
+  if(cp){{const box=cp.closest('.nx-tb-cards');box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded',b.dataset.i===cp.dataset.i));
+    box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>{{if(p!==cp)p.hidden=HIDE;}});}}
+  const pn=e.target.closest('.nx-tb-panel'); if(pn&&pn.dataset.tab!==cur)show(pn.dataset.tab,true);
+}},true);
+allBtn.addEventListener('click',()=>setAll(!document.body.classList.contains('nx-showall')));
+// Browsers without until-found: Ctrl/Cmd+F shows everything first so find works.
+addEventListener('keydown',e=>{{if(!UF&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f')setAll(true);}});
+addEventListener('beforeprint',()=>setAll(true));
 addEventListener('hashchange',()=>show(location.hash.slice(1),false));
 show(location.hash.slice(1)||'{order[0]}',false);
 }})();
