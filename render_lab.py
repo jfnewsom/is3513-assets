@@ -772,7 +772,7 @@ def render_purple_team(data):
     return section(hdr + body, "purple team")
 
 
-def render_final_checklist(data):
+def render_final_checklist(data, whats_next=False):
     fc = data.get("finalChecklist", {})
     accent = "#00D26A"
     inner = ""
@@ -840,6 +840,10 @@ def render_final_checklist(data):
 
     # Deadline / time-zone reminder — single-sourced, renders on every lab & EP.
     inner += render_deadline_callout()
+
+    # Tabbed layout: What's Next closes the Wrap-up tab, not Help (John, 2026-11-27).
+    if whats_next:
+        inner += render_whats_next(data)
 
     hdr  = header("final", "checklist", "Verify all requirements before submitting", accent)
     body = card(inner, accent)
@@ -927,7 +931,15 @@ def render_grading_standards(data):
     return section(hdr + body, "grading standards")
 
 
-def render_need_help(data):
+def render_whats_next(data):
+    wn = (data.get("needHelp") or {}).get("whatsNext")
+    if not wn:
+        return ""
+    wn_text = wn.get("text", wn) if isinstance(wn, dict) else wn
+    return callout_p("nx-blue", "arrow_forward", "What&#8217;s Next", wn_text)
+
+
+def render_need_help(data, whats_next=True):
     nh = data.get("needHelp", {})
     accent = "#4169E1"
     inner = ""
@@ -999,10 +1011,8 @@ def render_need_help(data):
         inner += callout_p(css_cls, icon, title, text)
 
     # What's next
-    whats_next = nh.get("whatsNext")
     if whats_next:
-        wn_text = whats_next.get("text", whats_next) if isinstance(whats_next, dict) else whats_next
-        inner += callout_p("nx-blue", "arrow_forward", "What&#8217;s Next", wn_text)
+        inner += render_whats_next(data)
 
     hdr  = header("need", "help?", "Support resources and course policies", accent)
     body = card(inner, accent)

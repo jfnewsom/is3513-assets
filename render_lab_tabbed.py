@@ -155,7 +155,7 @@ def build(data):
     if pt:
         tabs.append(("purple", "Purple", PURPLE, None, pt, True))
     # Wrap-up: just the final checklist.
-    tabs.append(("wrapup", "Wrap-up", lab_col, None, R.render_final_checklist(data), True))
+    tabs.append(("wrapup", "Wrap-up", lab_col, None, R.render_final_checklist(data, whats_next=True), True))
 
     # Screenshots: a reference tab (like IS2053's Outline) listing every
     # capture, each linked to the checkpoint where it is taken.
@@ -167,7 +167,7 @@ def build(data):
         gs = R.render_grading_standards(data)
         if gs:
             tabs.append(("grading", "Grading", ORANGE, None, gs, True))
-    nh = R.render_need_help(data)
+    nh = R.render_need_help(data, whats_next=False)
     if nh:
         tabs.append(("help", "Help", BLUE, None, nh, True))
     return tabs
