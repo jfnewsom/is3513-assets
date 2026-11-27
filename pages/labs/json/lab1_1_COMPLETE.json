@@ -7,7 +7,8 @@
   "chapters": [
    "Chapter 1: Introduction to Security",
    "Chapter 2: General Security Concepts"
-  ]
+  ],
+  "layout": "tabs"
  },
  "intro": {
   "overview": "Welcome to NEXUS Security Consulting. In this foundational lab, you will deploy your personal security operations platform using Kali Linux in a virtualized environment. This setup will serve as your primary workspace for all hands-on exercises throughout the semester. You'll learn to configure virtual machines, install Docker for containerized client targets, and verify your environment is ready for purple team operations.",
@@ -113,7 +114,8 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "No Preference? Use the Defaults",
-     "body": "If you don&#8217;t care which tools you use, don&#8217;t spend time deciding: use <strong>Microsoft Copilot</strong> (free with your UTSA account) and <strong>VirtualBox</strong> (free). Still run the <strong>Find the right setup</strong> prompt and take Screenshot 00. If the answer says VirtualBox won&#8217;t run on your computer, go with what it recommends instead."
+     "body": "If you don&#8217;t care which tools you use, don&#8217;t spend time deciding: use <strong>Microsoft Copilot</strong> (free with your UTSA account) and <strong>VirtualBox</strong> (free). Still run the <strong>Find the right setup</strong> prompt and take Screenshot 00. If the answer says VirtualBox won&#8217;t run on your computer, go with what it recommends instead.",
+     "inline": true
     },
     {
      "type": "table",
@@ -235,7 +237,8 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "Trust the Source, Not the AI",
-     "body": "An AI answer is a summary of what it has read, and it can be out of date or simply wrong while sounding completely sure. Prices change, supported chips change, menus get renamed. The <strong>source of truth</strong> is the original: the vendor&#8217;s official page, the tool&#8217;s documentation or man page, the standard itself, and in this course, the lab sheet. So use AI to get pointed in the right direction and to understand what you&#8217;re reading, then read the source and go by what it says. This is a habit analysts live by: nothing goes in a report because an AI said so, only because you checked it. In your Lab 1.3 Runbook VM setup entry, next to Screenshot 00, name the official page you checked and anything the AI got wrong. That&#8217;s also the kind of example the AI Methodology Reflection asks for."
+     "body": "An AI answer is a summary of what it has read, and it can be out of date or simply wrong while sounding completely sure. Prices change, supported chips change, menus get renamed. The <strong>source of truth</strong> is the original: the vendor&#8217;s official page, the tool&#8217;s documentation or man page, the standard itself, and in this course, the lab sheet. So use AI to get pointed in the right direction and to understand what you&#8217;re reading, then read the source and go by what it says. This is a habit analysts live by: nothing goes in a report because an AI said so, only because you checked it. In your Lab 1.3 Runbook VM setup entry, next to Screenshot 00, name the official page you checked and anything the AI got wrong. That&#8217;s also the kind of example the AI Methodology Reflection asks for.",
+     "inline": true
     },
     {
      "title": "Screenshot",

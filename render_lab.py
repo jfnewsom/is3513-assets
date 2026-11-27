@@ -1000,6 +1000,10 @@ def render_need_help(data):
 # ── Document shell ────────────────────────────────────────────────────────────
 
 def render(data):
+    if data.get("meta", {}).get("layout") == "tabs":
+        # Spring 2027 tabbed layout (render_lab_tabbed.py). Same JSON.
+        from render_lab_tabbed import render_tabbed
+        return render_tabbed(data)
     meta  = data["meta"]
     title = meta["title"]
     lab_id_parts = meta["labId"].split("_")

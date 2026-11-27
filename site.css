@@ -2758,3 +2758,49 @@ summary {
 .nx-ai-copy:hover { opacity: 0.85; }
 .nx-ai-prompt__text { margin: 0; padding: 10px 12px; white-space: pre-wrap; word-wrap: break-word; color: #B0B8C4; font-family: 'Roboto Mono', monospace; font-size: 13px; line-height: 1.6; background: transparent; }
 .nx-callout-body p.nx-ai-caution { font-style: italic; opacity: 0.85; margin-top: 10px; }
+
+/* ============================================================
+   TABBED LAB LAYOUT (Spring 2027): render_lab_tabbed.py
+   Ported from IS2053. Tabs: Overview . CP1..CPn . Wrap-up.
+   Only on pages with <body class="nx-tabbed">.
+   ============================================================ */
+.nx-tabbed .nx-tb-bar { position: sticky; top: 42px; z-index: 50; background: #0d0d0d; display: flex;
+  align-items: flex-end; padding: 8px 8px 0; margin: 0 0 2px; border-radius: 6px 6px 0 0; }
+.nx-tb-scroller { position: relative; flex: 1; min-width: 0; }
+.nx-tb-tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.nx-tb-tabs::-webkit-scrollbar { display: none; }
+.nx-tb-tab { flex: 0 0 auto; padding: 9px 16px; font: 700 15px/1 'Roboto', sans-serif; color: #B0B8C4;
+  text-decoration: none; border: 2px solid #2a2a2a; border-bottom: 0; border-radius: 6px 6px 0 0; white-space: nowrap; }
+.nx-tb-tab:hover { color: #F5F5F5; border-color: var(--tab); }
+.nx-tb-tab[aria-selected=true] { background: var(--tab); border-color: var(--tab); color: #ffffff; }
+.nx-tb-tab--dark[aria-selected=true] { color: #000000; }
+.nx-tb-fade { position: absolute; top: 0; bottom: 0; width: 44px; display: none; align-items: center; border: 0;
+  cursor: pointer; color: #FEC618; font: 700 26px/1 'Roboto', sans-serif; z-index: 2; }
+.nx-tb-fade.l { left: 0; justify-content: flex-start; background: linear-gradient(90deg, #0d0d0d 60%, transparent); }
+.nx-tb-fade.r { right: 0; justify-content: flex-end; background: linear-gradient(270deg, #0d0d0d 60%, transparent); }
+.nx-tb-fade.on { display: flex; }
+.nx-tb-newtab { flex: 0 0 auto; align-self: center; margin: 0 4px 6px 10px; color: #B0B8C4; font: 13px 'Roboto', sans-serif; white-space: nowrap; }
+.nx-tabbed .nx-tb-panel .nx-section { margin-top: 0; margin-bottom: 24px; }
+.nx-tb-back { display: inline-block; margin: 14px 0 10px; font-weight: 700; color: #4169E1; text-decoration: none; }
+.nx-tb-botnav { margin: 8px 0 40px; text-align: right; min-height: 10px; }
+.nx-tb-next { display: inline-block; font: 700 18px 'Roboto', sans-serif; color: #000; background: #FEC618;
+  padding: 10px 18px; border-radius: 4px; text-decoration: none; }
+.nx-tb-lead { font-size: 1.2em; line-height: 1.5; color: #F5F5F5; }
+/* Capture section: one per checkpoint, after the steps */
+.nx-tb-capture { margin-top: 28px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.12); }
+.nx-tb-shots { list-style: none; margin: 0 0 12px; padding: 0; }
+.nx-tb-shots li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; margin: 0 0 10px; }
+.nx-tb-shots .material-icons { color: #4169E1; font-size: 26px; margin-top: 2px; }
+.nx-tb-shots code { color: #00D26A; font-weight: 500; margin-right: 6px; }
+.nx-tb-wysh { color: #B0B8C4; }
+/* Card row: help behind a click, one panel open at a time */
+.nx-tb-cards { margin-top: 26px; }
+.nx-tb-cards__row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+.nx-tb-card { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; cursor: pointer;
+  background: rgba(0,0,0,.45); color: #F5F5F5; border: 2px solid rgba(255,255,255,.18); border-radius: 6px;
+  font: 500 14px 'Roboto', sans-serif; }
+.nx-tb-card__icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--callout-color, #7B68EE); color: #fff; font-size: 20px; }
+.nx-tb-card:hover { border-color: var(--callout-color, #FEC618); }
+.nx-tb-card[aria-expanded=true] { border-color: var(--callout-color, #FEC618); color: var(--callout-color, #FEC618); }
+.nx-tb-cardpanel { margin-top: 10px; }
