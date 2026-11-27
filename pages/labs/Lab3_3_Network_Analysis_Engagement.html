@@ -7,11 +7,22 @@
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
-<body>
+<body class="nx-tabbed">
 <h1 class="nx-sr-only">Module 3 Engagement Packet: Network Analysis Engagement</h1>
-
-
-<!-- ══════════════════════════════════════════════════ LAB HEADER -->
+<div class="nx-tb-bar">
+  <div class="nx-tb-title">Module 3 Engagement Packet: Network Analysis Engagement</div>
+  <div class="nx-tb-scroller">
+    <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
+    <nav class="nx-tb-tabs" role="tablist" aria-label="Lab sections"><a class="nx-tb-tab" role="tab" href="#overview" data-tab="overview" style="--tab:#7B68EE">Overview</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp1" data-tab="cp1" style="--tab:#00D26A" title="Set Up Your Document">CP1</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp2" data-tab="cp2" style="--tab:#00D26A" title="Azure Connection &amp;amp; Live Capture">CP2</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp3" data-tab="cp3" style="--tab:#00D26A" title="Traffic Analysis &amp;amp; Finding Documentation">CP3</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp4" data-tab="cp4" style="--tab:#00D26A" title="Report Compilation &amp;amp; Delivery">CP4</a><a class="nx-tb-tab nx-tb-tab--dark" role="tab" href="#cp5" data-tab="cp5" style="--tab:#00D26A" title="Clean Up and Submit">CP5</a><a class="nx-tb-tab" role="tab" href="#purple" data-tab="purple" style="--tab:#7B68EE">Purple</a><a class="nx-tb-tab" role="tab" href="#wrapup" data-tab="wrapup" style="--tab:#7B68EE">Wrap-up</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#shots" data-tab="shots" style="--tab:#00BCD4">Screenshots</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#grading" data-tab="grading" style="--tab:#FF9F1C">Grading</a><a class="nx-tb-tab nx-tb-tab--ref" role="tab" href="#help" data-tab="help" style="--tab:#4169E1">Help</a></nav>
+    <button type="button" class="nx-tb-fade r" aria-label="More tabs to the right">&rsaquo;</button>
+  </div>
+  <div class="nx-tb-tools">
+    <button type="button" class="nx-tb-all" aria-pressed="false" title="Show every tab and card on one page, for searching (Ctrl+F) and printing">Show all</button>
+    <a class="nx-tb-newtab" id="nx-tb-newtab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+  </div>
+</div>
+<main class="nx-tb-main">
+<section class="nx-tb-panel" id="p-overview" data-tab="overview" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 <div class="nx-section">
   <div class="nx-header" style="--accent: #7B68EE;">
     <div class="nx-header-top">
@@ -21,6 +32,7 @@
     <div class="nx-sub">Network Analysis Engagement</div>
   </div>
   <div class="nx-card" style="--accent: #7B68EE;">
+
     <p class="nx-module-label">Module 3: Networks, Cloud &amp; Defense</p>
 
     <div class="nx-callout nx-red">
@@ -70,9 +82,9 @@
     <ul>
       <li>Cloud infrastructure interaction: SSH into Azure-hosted patient portal</li>
       <li>Live Wireshark capture against real cloud infrastructure</li>
-      <li>All five Lab 3.2 analysis techniques applied to live traffic</li>
+      <li>The Lab 3.2 analysis techniques, plus Protocol Hierarchy, applied to live traffic</li>
       <li>Tiered discovery classification (Critical / High / Medium / Low)</li>
-      <li>Professional Engagement Packet: three-section structure (Timesheet, Runbook, Client Report)</li>
+      <li>Professional Engagement Packet: Part I (Timesheet, Runbook, Analyst Reflection) and Part II (Client Deliverable)</li>
       <li>Executive summary writing for a non-technical client audience</li>
     </ul>
     <div class="nx-callout nx-orange">
@@ -89,20 +101,8 @@
         <p>Submit <strong>at least 10 minutes before the deadline</strong>, even if it&#8217;s not perfect. Submissions are unlimited. You can keep uploading better versions until time runs out. A <strong>70 beats a zero</strong> every time.</p>
       </div>
     </div>
-  </div>
-</div>
+      <h2>What You Already Have</h2>
 
-
-<!-- ══════════════════════════════════════════════════ YOU ALREADY HAVE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #00BCD4;">
-    <div class="nx-header-top">
-      <div class="nx-kw">you already</div>
-      <div class="nx-sec">have</div>
-    </div>
-    <div class="nx-sub">Three-Week Engagement Model</div>
-  </div>
-  <div class="nx-card" style="--accent: #00BCD4;">
     <p><strong>If you followed directions in Labs 3.1 and 3.2, you already have most of the technical foundation for this Engagement Packet.</strong></p>
 
     <h2>From Unit 1: Lab 3.1: Network Addressing Fundamentals</h2>
@@ -143,20 +143,8 @@
         <p>If you followed directions in Labs 3.1 and 3.2, you have all the technical foundation documented. This unit is about applying those skills to a live engagement and wrapping it in professional packaging. Gather your <code>Lab3-Screenshots</code> folder and your notes. The hard work is already done.</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════ TIME GUIDE -->
-<div class="nx-section">
-  <div class="nx-header" style="--accent: #FF9F1C;">
-    <div class="nx-header-top">
-      <div class="nx-kw">time</div>
-      <div class="nx-sec">guide</div>
-    </div>
-    <div class="nx-sub">Estimated completion times per checkpoint</div>
-  </div>
-  <div class="nx-card" style="--accent: #FF9F1C;">
+  
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">schedule</span><span>Time Guide</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>
     <table class="nx-time-table">
       <thead><tr><th>Task</th><th>Est. Time</th></tr></thead>
       <tbody>
@@ -170,11 +158,12 @@
     </table>
 
     <p>This is a client engagement: <strong>all time this unit is billable to the client</strong> (Gulf Coast Healthcare Partners + LoneStar DevOps). This is significantly more than Training Labs because you&#8217;re delivering a complete professional report.</p>
+  </div></div>
   </div>
 </div>
-
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 1 -->
+<div class="nx-tb-botnav"><a class="nx-tb-next" href="#cp1" data-tab="cp1">Next: CP1 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp1" data-tab="cp1" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -184,8 +173,7 @@
     <div class="nx-sub">Set Up Your Document</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
+    <p class="nx-tb-lead">Downloading the Engagement Packet template, opening it in desktop Word, and setting the two document properties that identify it as yours. Five minutes, before you write a word.</p>
     <h3>Why It Matters</h3>
     <p>Document mechanics were the single largest avoidable point loss last term, and none of it had anything to do with security knowledge. Nearly all of it traces back to a document set up wrong on day one and never recovered. Do this first and it stays done.</p>
     <ol>
@@ -202,24 +190,35 @@
       <li>Save the file now, and keep saving as you go.
       </li>
     </ol>
-    <div class="nx-callout nx-cyan">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Four Mechanics, Every Time</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Four Mechanics, Every Time</div>
         <p>Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href="https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html">EP 1, Checkpoint 5</a> walks all four of them step by step.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain how captions and cross-references work in Microsoft Word, and why a figure number Word inserts stays correct when I move figures around, while one I type by hand doesn&#x27;t. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 2 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#overview" data-tab="overview">&larr; Back: Overview</a><a class="nx-tb-next" href="#cp2" data-tab="cp2">Next: CP2 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp2" data-tab="cp2" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -229,8 +228,7 @@
     <div class="nx-sub">Azure Connection &amp; Live Capture</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.</p>
+    <p class="nx-tb-lead">Establish an SSH connection to the Azure-hosted Gulf Coast patient portal and capture the network traffic using Wireshark on your host machine.</p>
     <h3>Why It Matters</h3>
     <p>This is your first interaction with real cloud infrastructure. Unlike training PCAPs, this is live traffic to a production-like environment. The skills you practiced in Lab 3.2 now apply to actual client systems. Jennifer Walsh is counting on your analysis to determine if the anomalous traffic her team flagged represents a genuine threat.</p>
     <h3>Step 1: Prepare Your Capture Environment</h3>
@@ -283,13 +281,6 @@
       <li>Password: <code>NEXUSanalyst2026!</code> (case-sensitive). Accept the host key fingerprint when prompted.
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt. Save as <code>20-azure-ssh-connection.png</code></p>
-      </div>
-    </div>
     <h3>Step 3: Activity A: Browse via HTTPS</h3>
     <ol>
       <li>Open Firefox in your Kali VM and navigate to:<br><code>https://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>
@@ -299,13 +290,6 @@
       <li>Interact with the page (click links, explore).
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding. Save as <code>21-certificate-warning.png</code></p>
-      </div>
-    </div>
     <h3>Step 3: Activity B: Browse via HTTP</h3>
     <ol>
       <li>In the same browser, navigate to the HTTP version:<br><code>http://gulfcoast-portal.southcentralus.cloudapp.azure.com</code>
@@ -345,13 +329,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses. Save as <code>22-curl-header-comparison.png</code></p>
-      </div>
-    </div>
     <h3>Step 3: Activity D: Server Exploration via SSH</h3>
     <ol>
       <li>In your SSH session, list the web server&#8217;s document root:
@@ -385,13 +362,6 @@
         </details>
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the nginx configuration output showing the server setup. Save as <code>23-nginx-server-config.png</code></p>
-      </div>
-    </div>
     <h3>Step 4: Verify Your Capture</h3>
     <ol>
       <li>In Wireshark, go to Statistics &#8594; Protocol Hierarchy.
@@ -403,24 +373,29 @@
       <li>Once verified, stop the capture and save as <code>gulfcoast-live-capture.pcap</code>.
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the Protocol Hierarchy window (Statistics &#8594; Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present. Save as <code>24-protocol-hierarchy-verification.png</code></p>
-      </div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-azure-ssh-connection.png</code> Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt. Save as <code>20-azure-ssh-connection.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-certificate-warning.png</code> Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding. Save as <code>21-certificate-warning.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>22-curl-header-comparison.png</code> Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses. Save as <code>22-curl-header-comparison.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>23-nginx-server-config.png</code> Capture the nginx configuration output showing the server setup. Save as <code>23-nginx-server-config.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>24-protocol-hierarchy-verification.png</code> Capture the Protocol Hierarchy window (Statistics &#8594; Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present. Save as <code>24-protocol-hierarchy-verification.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Successful SSH connection to Azure-hosted patient portal. PCAP file with SSH, HTTP, and TLS traffic (verified via Protocol Hierarchy). Screenshots #20 through 24 captured inline with each activity.</p>
     </div>
-    <div class="nx-callout nx-cyan">
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>If Your Capture Comes Back Empty</span></button><button type="button" class="nx-tb-card nx-orange" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">If Your Capture Comes Back Empty</div>
         <p>An empty capture almost always means Wireshark is watching the wrong place, or nothing was sent while it was running. Even if the portal were down or your network blocked SSH, Kali&#8217;s connection attempts would still show up as packets. Work through these in order:<ol style="margin:8px 0 0 20px;"><li><strong>Filter in the right box.</strong> <code>host 104.215.116.139</code> is a capture filter. It goes in the &#8220;...using this filter&#8221; bar on the Wireshark welcome screen, above the interface list, before you start. It turns green when it&#8217;s valid. The display filter bar at the top of the capture window uses different syntax, so the same filter turns red there; the display filter version is <code>ip.addr == 104.215.116.139</code>.</li><li><strong>Right interface.</strong> Pick the interface with the moving sparkline: your real Wi-Fi or Ethernet adapter. Not loopback, a virtual machine adapter or a VPN adapter.</li><li><strong>VPN off.</strong> If a VPN is running on your host, your traffic leaves through the tunnel, and your Wi-Fi interface only sees encrypted packets going to the VPN server.</li><li><strong>Start the capture first, then generate the traffic.</strong> Wireshark only records what happens after you press start. With the capture running, do the SSH connection, the Firefox visits and the curl commands. With this filter, an idle capture stays empty.</li></ol><strong>Quick test:</strong> with the capture running, run <code>curl -I http://gulfcoast-portal.southcentralus.cloudapp.azure.com</code> from the host terminal where you ran nslookup. If packets show up, your filter and interface are good and the problem is on the Kali side. If nothing shows up, it is still one of the four above. Either way, stop and restart the capture before your real run, so the pcap holds only the lab traffic. If SSH from Kali fails right away with &#8220;could not resolve hostname,&#8221; Kali itself has no network connection, which is a different fix: post the error in Discord.</p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>VPN blocking SSH:</strong> If you can&#8217;t connect, disable any VPN on your host machine first. Some campus networks also block outbound port 22; try from a mobile hotspot.</li>
           <li><strong>Wrong interface:</strong> Wireshark runs on your HOST machine; all other activities (browsing, SSH, curl) happen inside your Kali VM</li>
@@ -429,24 +404,41 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain what Wireshark on my own computer can and can&#x27;t see when I connect to a server over SSH, HTTPS and plain HTTP, and why encrypted protocols still show up in a capture. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain the cloud shared responsibility model: what Microsoft secures and what the customer secures on a virtual machine in Azure, and how customer-side misconfigurations have led to real cloud breaches. If you suggest something to try, keep it to my own computer and the Gulf Coast server my course authorized.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Here is an error message I got when I tried to SSH to the Gulf Coast server:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 18 covers cloud security fundamentals including virtual networks, shared responsibility models, and Azure-specific considerations.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Successful SSH connection to Azure-hosted patient portal. PCAP file with SSH, HTTP, and TLS traffic (verified via Protocol Hierarchy). Screenshots #20 through 24 captured inline with each activity.</p>
-      </div>
-    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 3 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp1" data-tab="cp1">&larr; Back: CP1</a><a class="nx-tb-next" href="#cp3" data-tab="cp3">Next: CP3 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp3" data-tab="cp3" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -456,58 +448,15 @@
     <div class="nx-sub">Traffic Analysis &amp; Finding Documentation</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>A comprehensive analysis of the live traffic capture using all the Wireshark techniques you learned in Lab 3.2, with findings documented for Jennifer Walsh&#8217;s review.</p>
+    <p class="nx-tb-lead">A comprehensive analysis of the live traffic capture using all the Wireshark techniques you learned in Lab 3.2, with findings documented for Jennifer Walsh&#8217;s review.</p>
     <h3>Why It Matters</h3>
     <p>This is where your training pays off. Every technique you practiced with training PCAPs now applies to live client data. Jennifer needs to know: Is this traffic normal? Are there indicators of compromise? Should she escalate or stand down?</p>
-    <div class="nx-callout nx-cyan">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Use Your Runbook</div>
-        <p>You learned all five of these techniques in Lab 3.2. If you need a refresher on any workflow, open the runbook you built during that lab. That&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.</p>
-      </div>
-    </div>
     <ol>
       <li>Apply ALL Lab 3.2 techniques to your live capture. Take a screenshot after each technique. These will form the evidence section of your Engagement Packet.
       </li>
     </ol>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Technique 1: Protocol Distribution</div>
-        <p>Statistics &#8594; Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here. Save as <code>25-protocol-distribution.png</code></p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Technique 2: Endpoint Statistics</div>
-        <p>Statistics &#8594; Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints. Save as <code>26-endpoint-statistics.png</code></p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Technique 3: TCP Stream Reconstruction</div>
-        <p>Right-click an HTTP packet &#8594; Follow &#8594; TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text. Save as <code>27-tcp-stream.png</code></p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Technique 4: IO Graph</div>
-        <p>Statistics &#8594; IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity. Save as <code>28-io-graph.png</code></p>
-      </div>
-    </div>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">Technique 5: Flow Graph</div>
-        <p>Statistics &#8594; Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing. Save as <code>29-flow-graph.png</code></p>
-      </div>
-    </div>
     <h3>Tiered Discovery Classification</h3>
-    <table class="nx-time-table">
+    <table class="nx-time-table nx-data-table">
       <thead><tr>
         <th>Tier</th>
         <th>Classification</th>
@@ -536,17 +485,30 @@
         </tr>
       </tbody>
     </table>
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">photo_camera</span></div>
+
+    <div class="nx-tb-capture">
+      <h3>Capture</h3>
+      <ul class="nx-tb-shots">
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>25-protocol-distribution.png</code> Statistics &#8594; Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here. Save as <code>25-protocol-distribution.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>26-endpoint-statistics.png</code> Statistics &#8594; Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints. Save as <code>26-endpoint-statistics.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>27-tcp-stream.png</code> Right-click an HTTP packet &#8594; Follow &#8594; TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text. Save as <code>27-tcp-stream.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>28-io-graph.png</code> Statistics &#8594; IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity. Save as <code>28-io-graph.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>29-flow-graph.png</code> Statistics &#8594; Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing. Save as <code>29-flow-graph.png</code></div></li>
+        <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>30-notable-finding.png</code> Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding. Save as <code>30-notable-finding.png</code></div></li>
+      </ul>
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Comprehensive analysis using all 5 Wireshark techniques. Tiered classification for each finding. Screenshots #25 through 30 captured inline. A clear answer to Jennifer&#8217;s question: escalate or stand down?</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>Use Your Runbook</span></button><button type="button" class="nx-tb-card nx-orange" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Screenshot</div>
-        <p>Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding. Save as <code>30-notable-finding.png</code></p>
+        <p>You learned four of these techniques in Lab 3.2, and Protocol Hierarchy in Checkpoint 2 above. If you need a refresher on any workflow, open the runbook you built during that lab. That&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.</p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Wrong Wireshark interface:</strong> Wireshark must run on your HOST machine, not inside the Kali VM. All browsing, SSH, and curl commands happen inside Kali. Wireshark on the host captures all of it.</li>
           <li><strong>Single-protocol capture:</strong> Verify Protocol Hierarchy (Statistics → Protocol Hierarchy) before stopping. You need SSH, HTTP, and TLS all present. If you only see one protocol, complete the activities you skipped before stopping the capture.</li>
@@ -554,24 +516,33 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain how an analyst decides whether something unusual in a capture is a real security finding or just normal activity, and how to rank findings from critical to informational. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Go deeper</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain what HTTP response headers such as Server can reveal about a web server, which security headers (for example Strict-Transport-Security) a healthcare portal would normally send, and how attackers and defenders each use this information. If you suggest something to try, keep it to my own computer and the Gulf Coast server my course authorized.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this unit put Chapter 18 concepts into practice. Cite it in your client report.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Comprehensive analysis using all 5 Wireshark techniques. Tiered classification for each finding. Screenshots #25 through 30 captured inline. A clear answer to Jennifer&#8217;s question: escalate or stand down?</p>
-      </div>
-    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 4 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp2" data-tab="cp2">&larr; Back: CP2</a><a class="nx-tb-next" href="#cp4" data-tab="cp4">Next: CP4 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp4" data-tab="cp4" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -581,8 +552,7 @@
     <div class="nx-sub">Report Compilation &amp; Delivery</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Compile your three units of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.</p>
+    <p class="nx-tb-lead">Compile your three units of work into a professional Engagement Packet ready for delivery to Gulf Coast Healthcare Partners.</p>
     <h3>Why It Matters</h3>
     <p>Technical skills are only half the job. The ability to communicate findings clearly, professionally, and actionably is what separates good analysts from great ones. Jennifer Walsh doesn&#8217;t need raw data. She needs a report she can present to her board.</p>
     <div class="nx-quote">
@@ -603,15 +573,8 @@
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">description</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Report Sections</div>
-        <p><strong>Title Page:</strong> Engagement title, client name, your name, date</p>
-        <p><strong>Executive Summary:</strong> 1-page non-technical overview</p>
-        <p><strong>Table of Contents:</strong> Auto-generated with page numbers</p>
-        <p><strong>Assessment Results:</strong> Tiered findings with evidence</p>
-        <p><strong>Risk Analysis:</strong> Business impact assessment</p>
-        <p><strong>Recommendations:</strong> Prioritized actions</p>
-        <p><strong>Professional Reflection:</strong> What you learned</p>
-        <p><strong>References:</strong> Minimum 10 valid references</p>
-        <p><strong>Appendix:</strong> Raw outputs, additional screenshots</p>
+        <p><strong>Part I: Internal Packet (40% of grade):</strong> Timesheet (5%): hours across all 3 units, split Internal Training vs. Client Billable. Units 1 and 2 (Lab 3.1 and 3.2 work) = internal training. Unit 3 (live traffic analysis for Gulf Coast) = client billable. Runbook (20%): man-page style entries for network addressing and configuration commands (from Lab 3.1), Wireshark filters and analysis techniques (from Lab 3.2), and the Azure connection and live capture workflow (this unit). Commands, filters, expected outputs: enough that another analyst could reproduce your work. Analyst Reflection (15%): honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A.</p>
+        <p><strong>Part II: Client Deliverable (60% of grade):</strong> Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%): one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing, and a clear answer to Jennifer&#8217;s question: escalate or stand down? Methodology (7%): client-facing narrative of your approach. Findings (22%): what the live traffic showed, such as cleartext traffic, certificate problems and server information leakage. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%): HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%): prioritized (immediate fixes vs. longer-term hardening).</p>
       </div>
     </div>
     <div class="nx-callout nx-purple">
@@ -638,10 +601,15 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">Complete Engagement Packet with all sections. Executive summary answering Jennifer&#8217;s question. Minimum 10 references. Professional formatting ready for client delivery.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li><strong>Forgetting Units 1 and 2:</strong> Include Labs 3.1 and 3.2 work</li>
           <li><strong>Technical jargon:</strong> Executive summary must be non-technical</li>
@@ -650,24 +618,53 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
+      <div class="nx-callout-body">
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Explain it</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Explain how to judge the risk of a network finding on a healthcare patient portal: what likelihood and impact mean here, and what makes the same finding more or less serious for a hospital than for an ordinary website. When you&#x27;re done, ask me one question to check that I understood.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: Executive Summary</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Here is my draft of the Executive Summary for my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: one page at most; the overall risk posture in one or two sentences; a count of findings by severity; the top two or three recommendations, framed in business terms; a clear answer to the client&#x27;s question of whether to escalate or stand down; readable by a non-technical executive, with no first person, no command output and no jargon an executive wouldn&#x27;t know; every line tied to patient trust, HIPAA exposure or operational continuity. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: one finding</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Here is my draft of one finding from my client report:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: numbered; a descriptive title; a severity rating (Critical, High, Medium, Low or Informational); the affected host, service or network segment; a description with specific protocol details and packet evidence; evidence, pointing to a screenshot or capture excerpt; the impact in business terms; and a one-line recommendation. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Review my draft: runbook entry</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Here is my draft of one runbook entry from my internal packet:
+
+[paste your section here]
+
+Review it against this checklist from my assignment: the tool&#x27;s name and purpose; the switches or filters I used, each with a one-line explanation; ones I didn&#x27;t use but should know; the exact command or filter I ran; what output came back, with a screenshot reference; what I did with the result; and whether a colleague could reproduce my work from it three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don&#x27;t rewrite my draft or give me replacement sentences; I&#x27;ll make the changes myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">book</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Textbook Reference</div>
         <p>Chapter 9 covers network protocol fundamentals: the same protocols you cataloged in Lab 3.2 now appear in your live capture. Chapter 13 discusses IDS/IPS and anomaly detection; your protocol distribution analysis and endpoint statistics are exactly the techniques defenders use for network monitoring.</p>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>Complete Engagement Packet with all sections. Executive summary answering Jennifer&#8217;s question. Minimum 10 references. Professional formatting ready for client delivery.</p>
-      </div>
-    </div>
+</div></div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════════════════ CHECKPOINT 5 -->
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp3" data-tab="cp3">&larr; Back: CP3</a><a class="nx-tb-next" href="#cp5" data-tab="cp5">Next: CP5 &rarr;</a></div>
+</section>
+<section class="nx-tb-panel" id="p-cp5" data-tab="cp5" role="tabpanel" style="--tab-accent:#00D26A" hidden>
 <div class="nx-section">
   <div class="nx-header nx-checkpoint" style="--accent: #00D26A;">
     <div class="nx-header-top">
@@ -677,8 +674,7 @@
     <div class="nx-sub">Clean Up and Submit</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h3>What You&#8217;re Doing</h3>
-    <p>Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
+    <p class="nx-tb-lead">Walking the finished packet end to end, refreshing everything Word computes for you, and stripping out everything that was only ever scaffolding. Ten minutes.</p>
     <h3>Why It Matters</h3>
     <p>Every deduction in this category is avoidable and none of it is about security. A packet that goes out with placeholder text still in it, a Table of Contents that describes an earlier draft, or a figure number that points at the wrong picture tells the client nobody read the document before sending it. They will wonder what else nobody checked.</p>
     <ol>
@@ -719,10 +715,15 @@
         <p><strong>&minus;10%, flat, triggered by a single surviving bracket.</strong> Not per-item: one is the same as forty, because the failure is the same failure: nobody read the document before sending it. A packet that reaches the client still saying <strong>[what this tool/step accomplishes and why]</strong> or <strong>[Title of your highest-severity finding]</strong> is marked accordingly. It is also the most preventable deduction on the list. <strong>Search for [ and confirm zero results before you submit.</strong></p>
       </div>
     </div>
-    <div class="nx-callout nx-orange">
+
+    <div class="nx-tb-capture">
+      <h3>What You Should Have</h3>
+      <p class="nx-tb-wysh">A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+    </div>
+
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">Common Pitfalls</div>
         <ul>
           <li>Updating &#8216;page numbers only&#8217; instead of the entire table. The page numbers will be right and the section list will describe a document you no longer have.</li>
           <li>Running the field update, then editing one more paragraph, then submitting. Make Ctrl+A and F9 the last thing you do before saving, every time.</li>
@@ -731,16 +732,27 @@
         </ul>
       </div>
     </div>
-    <div class="nx-callout nx-green">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">check_circle</span></div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
-        <div class="nx-callout-title">What You Should Have</div>
-        <p>A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties.</p>
+        <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
+        <div class="nx-ai-prompt">
+          <div class="nx-ai-prompt__head"><span class="nx-ai-prompt__label">Decode my error</span><button type="button" class="nx-ai-copy" onclick="var b=this;navigator.clipboard.writeText(b.parentNode.nextElementSibling.innerText).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)})">Copy</button></div>
+          <pre class="nx-ai-prompt__text">I&#x27;m a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you&#x27;re sure exists and actually covers what you used it for. If you aren&#x27;t sure of a page&#x27;s exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can&#x27;t be guessed, so for those give me the article&#x27;s exact title instead of a link. Don&#x27;t do my assignment for me, and don&#x27;t write any part of my report. Answer only the question I ask below, then end with the source list: don&#x27;t walk me through the assignment&#x27;s steps or tell me what to put in my report. Here is an error message I got in my Word document&#x27;s Table of Contents after I updated it:
+
+[paste the whole error message here]
+
+Explain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I&#x27;ll fix it myself.</pre>
+        </div>
+        <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
+</div></div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp4" data-tab="cp4">&larr; Back: CP4</a><a class="nx-tb-next" href="#purple" data-tab="purple">Next: Purple &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-purple" data-tab="purple" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ PURPLE TEAM -->
 <div class="nx-section">
@@ -783,7 +795,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#cp5" data-tab="cp5">&larr; Back: CP5</a><a class="nx-tb-next" href="#wrapup" data-tab="wrapup">Next: Wrap-up &rarr;</a></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-wrapup" data-tab="wrapup" role="tabpanel" style="--tab-accent:#7B68EE" hidden>
 
 <!-- ══════════════════════════════════════════════════ FINAL CHECKLIST -->
 <div class="nx-section">
@@ -809,7 +823,7 @@
       <li>&#9744; <code>10-udp.png</code>: Apply the udp filter and capture the filtered traffic</li>
       <li>&#9744; <code>11-http.png</code>: Apply the http filter and capture the filtered traffic</li>
       <li>&#9744; <code>12-tls.png</code>: Apply the tls filter and capture the filtered traffic</li>
-      <li>&#9744; <code>13-dns.png</code>: Apply the dns filter and capture the filtered traffic</li>
+      <li>&#9744; <code>13-dns.png</code>: No new capture: the DNS row reuses 08-dns-filter.png</li>
       <li>&#9744; <code>14-icmp.png</code>: Apply the icmp filter and capture the filtered traffic</li>
       <li>&#9744; <code>15-tcp-stream.png</code>: Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue</li>
       <li>&#9744; <code>16-endpoints.png</code>: Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers</li>
@@ -880,9 +894,46 @@
         <p>Lab and Engagement Packet deadlines are <strong>11:59 p.m. US Central Time</strong> (the home time zone of UT San Antonio) on their due date, no matter where you are located. Module exams open Sunday and close the following Tuesday at the same 11:59 p.m. US Central Time. Canvas enforces this cutoff automatically, so submit early to be safe.</p>
       </div>
     </div>
+    <div class="nx-callout nx-blue">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
+      <div class="nx-callout-body">
+        <div class="nx-callout-title">What&#8217;s Next</div>
+        <p>Module 4: Threats & Attacks: Next module you'll shift focus to password security with Brazos Financial Group and Alamo Industries as clients. You'll use John the Ripper and Hashcat to crack Windows and Linux password hashes, then document findings and remediation recommendations for both clients.</p>
+      </div>
+    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"><a class="nx-tb-back" href="#purple" data-tab="purple">&larr; Back: Purple</a></div>
+</section>
+<section class="nx-tb-panel" id="p-shots" data-tab="shots" role="tabpanel" style="--tab-accent:#00BCD4" hidden>
+<div class="nx-section">
+  <div class="nx-header" style="--accent: #00BCD4;">
+    <div class="nx-header-top">
+      <div class="nx-kw">packet</div>
+      <div class="nx-sec">3</div>
+    </div>
+    <div class="nx-sub">Screenshots</div>
+  </div>
+  <div class="nx-card" style="--accent: #00BCD4;">
+    <p class="nx-tb-lead">Every capture this lab calls for, in order. Each one links to the checkpoint where you take it. The floor is at least 20 qualifying screenshots per module, across all of its labs.</p>
+    <ul class="nx-tb-shots nx-tb-shots--all">
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>20-azure-ssh-connection.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>21-certificate-warning.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>22-curl-header-comparison.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>23-nginx-server-config.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>24-protocol-hierarchy-verification.png</code>  <a class="nx-tb-goto" href="#cp2" data-tab="cp2">CP2 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>25-protocol-distribution.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>26-endpoint-statistics.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>27-tcp-stream.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>28-io-graph.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>29-flow-graph.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+      <li><span class="material-icons" aria-hidden="true">photo_camera</span><div><code>30-notable-finding.png</code>  <a class="nx-tb-goto" href="#cp3" data-tab="cp3">CP3 &rarr;</a></div></li>
+    </ul>
+  </div>
+</div>
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-grading" data-tab="grading" role="tabpanel" style="--tab-accent:#FF9F1C" hidden>
 
 <!-- ══════════════════════════════════════════════════ GRADING STANDARDS -->
 <div class="nx-section">
@@ -897,17 +948,17 @@
     <h2 class="nx-accent">The Quality Ladder</h2>
     <h3>Part I: Internal Packet (40%)</h3>
     <ul>
-      <li><strong>Timesheet (5%):</strong></li>
-      <li><strong>Runbook (20%):</strong></li>
-      <li><strong>Analyst Reflection (15%):</strong></li>
+      <li><strong>Timesheet</strong> (5%)</li>
+      <li><strong>Runbook</strong> (20%)</li>
+      <li><strong>Analyst Reflection</strong> (15%)</li>
     </ul>
     <h3>Part II: Client Deliverable (60%)</h3>
     <ul>
-      <li><strong>Executive Summary (12%):</strong></li>
-      <li><strong>Methodology (7%):</strong></li>
-      <li><strong>Findings (22%):</strong></li>
-      <li><strong>Risk Analysis (11%):</strong></li>
-      <li><strong>Recommendations (8%):</strong></li>
+      <li><strong>Executive Summary</strong> (12%)</li>
+      <li><strong>Methodology</strong> (7%)</li>
+      <li><strong>Findings</strong> (22%)</li>
+      <li><strong>Risk Analysis</strong> (11%)</li>
+      <li><strong>Recommendations</strong> (8%)</li>
     </ul>
     <p><em>Cover Page, Table of Contents, and Appendix are mechanical requirements graded via deductions, not the additive scale.</em></p>
 
@@ -938,7 +989,9 @@
     </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+<section class="nx-tb-panel nx-tb-panel--sections" id="p-help" data-tab="help" role="tabpanel" style="--tab-accent:#4169E1" hidden>
 
 <!-- ══════════════════════════════════════════════════ NEED HELP -->
 <div class="nx-section">
@@ -981,16 +1034,62 @@
     <h2>Academic Integrity</h2>
     <p>This assignment must be your own work. You may reference the textbook and other cited sources. You may NOT copy from others, use AI to complete the work, or share your work with classmates.</p>
 
-    <div class="nx-callout nx-blue">
-      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">arrow_forward</span></div>
-      <div class="nx-callout-body">
-        <div class="nx-callout-title">What&#8217;s Next</div>
-        <p>Module 4: Threats & Attacks: Next module you'll shift focus to password security with Brazos Financial Group and Alamo Industries as clients. You'll use John the Ripper and Hashcat to crack Windows and Linux password hashes, then document findings and remediation recommendations for both clients.</p>
-      </div>
-    </div>
   </div>
 </div>
-
+<div class="nx-tb-botnav"></div>
+</section>
+</main>
+<script>
+(function(){
+const nav=document.querySelector('.nx-tb-tabs'), inIframe=window.self!==window.top, pos={}; let cur=null;
+// Hidden content stays findable: browsers that support hidden="until-found"
+// (Chrome, Edge) let Ctrl+F search every tab and card and open the match.
+const UF='onbeforematch' in document.body, HIDE=UF?'until-found':true;
+const allBtn=document.querySelector('.nx-tb-all');
+function setAll(on){document.body.classList.toggle('nx-showall',on);allBtn.setAttribute('aria-pressed',on);allBtn.textContent=on?'Show one tab':'Show all';}
+function show(id,push){
+  if(!document.getElementById('p-'+id)) id='overview';
+  if(cur) pos[cur]=scrollY;
+  document.querySelectorAll('.nx-tb-panel').forEach(p=>p.hidden=p.dataset.tab!==id?HIDE:false);
+  document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
+  cur=id;
+  const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({block:'nearest',inline:'center'});
+  if(a) document.body.style.setProperty('--cur',a.style.getPropertyValue('--tab'));
+  scrollTo(0,pos[id]||0);
+  if(push) history.replaceState(null,'','#'+id);
+  document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;
+  fades();
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[data-tab]'); if(a){e.preventDefault();show(a.dataset.tab,true);return;}
+  const c=e.target.closest('.nx-tb-card'); if(!c) return;
+  const box=c.closest('.nx-tb-cards'), open=c.getAttribute('aria-expanded')==='true';
+  box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded','false'));
+  box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+  if(!open){c.setAttribute('aria-expanded','true');box.querySelector('.nx-tb-cardpanel[data-i="'+c.dataset.i+'"]').hidden=false;}
+});
+const L=document.querySelector('.nx-tb-fade.l'),Rt=document.querySelector('.nx-tb-fade.r');
+function fades(){L.classList.toggle('on',nav.scrollLeft>4);Rt.classList.toggle('on',nav.scrollLeft+nav.clientWidth<nav.scrollWidth-4);}
+nav.addEventListener('scroll',fades); addEventListener('resize',fades);
+L.onclick=()=>nav.scrollBy({left:-nav.clientWidth*.7,behavior:'smooth'});
+Rt.onclick=()=>nav.scrollBy({left:nav.clientWidth*.7,behavior:'smooth'});
+if(inIframe) document.getElementById('nx-tb-newtab').hidden=false;
+document.querySelectorAll('.nx-tb-cardpanel').forEach(p=>p.hidden=HIDE);
+// A find-in-page match inside a hidden tab or card: switch to that tab, open that card.
+document.addEventListener('beforematch',e=>{
+  const cp=e.target.closest('.nx-tb-cardpanel');
+  if(cp){const box=cp.closest('.nx-tb-cards');box.querySelectorAll('.nx-tb-card').forEach(b=>b.setAttribute('aria-expanded',b.dataset.i===cp.dataset.i));
+    box.querySelectorAll('.nx-tb-cardpanel').forEach(p=>{if(p!==cp)p.hidden=HIDE;});}
+  const pn=e.target.closest('.nx-tb-panel'); if(pn&&pn.dataset.tab!==cur)show(pn.dataset.tab,true);
+},true);
+allBtn.addEventListener('click',()=>setAll(!document.body.classList.contains('nx-showall')));
+// Browsers without until-found: Ctrl/Cmd+F shows everything first so find works.
+addEventListener('keydown',e=>{if(!UF&&(e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='f')setAll(true);});
+addEventListener('beforeprint',()=>setAll(true));
+addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+show(location.hash.slice(1)||'overview',false);
+})();
+</script>
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>
 </body>
 </html>

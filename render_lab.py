@@ -271,7 +271,7 @@ def render_generic_table(block):
     out = ""
     if title:
         out += f'    <h3>{h(title)}</h3>\n'
-    out += '    <table class="nx-time-table">\n'
+    out += '    <table class="nx-time-table nx-data-table">\n'
     out += '      <thead><tr>\n'
     for col in columns:
         # "Worth knowing" columns take about half the table so the notes run

@@ -7,7 +7,8 @@
   "chapters": [
    "Chapter 9: Network Fundamentals",
    "Chapter 18: Cloud Computing (introduction)"
-  ]
+  ],
+  "layout": "tabs"
  },
  "intro": {
   "overview": "Before you can analyze network traffic, you need to understand network addresses. This lab builds your fluency with binary, hexadecimal, and CIDR notation: the foundational math that makes packet capture meaningful. You&#8217;ll calculate subnets by hand using a visual &#8220;count out&#8221; method, then verify your work with industry tools. These skills pay off next unit when you start filtering traffic in Wireshark.",
@@ -138,6 +139,19 @@
      "calloutType": "commonPitfalls"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain how place value works in binary and in hexadecimal, and walk me through a method for converting a number from decimal to binary to hex and back. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain why MAC addresses are written in hexadecimal, what the first half of a MAC address reveals about a device, and how attackers and defenders each use that information. If you suggest something to try, keep it to my own computer and VM."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -155,15 +169,8 @@
      "type": "callout",
      "icon": "search",
      "title": "Dig Deeper",
-     "text": "Why do network addresses use binary and hexadecimal instead of just decimal? Review Chapter 9&#8217;s coverage of IP addressing and the TCP/IP protocol stack.",
+     "text": "Why do network addresses use binary and hexadecimal instead of just decimal? Chapter 9 covers IP addressing; follow its endnotes to a primary source you can cite. The textbook itself does not count toward your ten references.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "You just read Chapter 9. The textbook does not count toward your ten references. Use its endnotes to find the primary sources it draws on, and cite those. Conklin, W. A., &amp; White, G. (2022). <em>Principles of Computer Security</em> (6th ed.). McGraw-Hill. Chapter 9.",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -243,6 +250,19 @@
      "calloutType": "commonPitfalls"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain what CIDR notation means, and how to work out a network's total addresses, usable hosts, network address and broadcast address from the number after the slash. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain how an attacker uses a network's CIDR range to plan a scan, and why a network that is bigger than it needs to be gives an attacker more room to work. If you suggest something to try, keep it to my own computer and VM."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -262,13 +282,6 @@
      "title": "Dig Deeper",
      "text": "How does subnetting divide a network into smaller segments? Calculate the number of hosts in a /24 versus a /28 network.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "RFC 4632: Classless Inter-Domain Routing (CIDR): https://tools.ietf.org/html/rfc4632",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -362,6 +375,19 @@
      "calloutType": "screenshot"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain how subnetting works when you borrow host bits: how to find the new prefix, the number of subnets, the hosts per subnet, and where each subnet starts. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain why network segmentation is treated as a security control, how a flat network has helped attackers in real breaches, and what defenders put between segments. If you suggest something to try, keep it to my own computer and VM."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -392,13 +418,6 @@
      "title": "Dig Deeper",
      "text": "Notice we&#8217;ve been using 10.x.x.x, 172.16.x.x, and 192.168.x.x. Why these specific ranges? Look up RFC 1918 to understand private address space.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "RFC 1918 defines private addresses: Rekhter, Y., et al. (1996). RFC 1918: Address Allocation for Private Internets. IETF. https://www.rfc-editor.org/rfc/rfc1918",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -456,6 +475,15 @@
      "calloutType": "commonPitfalls"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Besides subnet math, public tools like MX Toolbox can look up a domain's DNS records, mail servers and blocklist status. Explain what an attacker can learn about an organization from those public lookups without touching its systems, and what a defender can do about it."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -475,13 +503,6 @@
      "title": "Dig Deeper",
      "text": "MX Toolbox offers more than just subnet calculations. Explore their other network diagnostic tools. What else can you check about a domain or IP address?",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "MX Toolbox. (n.d.). Subnet Calculator. Retrieved from https://mxtoolbox.com/subnetcalculator.aspx",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -571,6 +592,19 @@
      "calloutType": "commonPitfalls"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain what the outputs of ip addr, ip route and cat /etc/resolv.conf tell me about a Linux machine's network settings, what a default gateway and an ARP cache are, and why my VM's address is different from my computer's. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Here is an error message I got when I tested my Kali VM's internet connection:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -590,13 +624,6 @@
      "title": "Dig Deeper",
      "text": "The <code>ip</code> command replaced the older <code>ifconfig</code> command. Run <code>man ip</code> to explore what else it can show you about your network configuration.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "You used Linux networking commands: ip(8): Linux manual page. Retrieved from <code>man ip</code>",
-     "calloutType": "thatsAReference"
     }
    ]
   },
@@ -677,6 +704,19 @@
      "calloutType": "commonPitfalls"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain what a network topology diagram should show, and how traffic gets from a virtual machine through my computer, my home router and the internet to a cloud server, including where addresses get translated along the way. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapter 9 so far). In this lab I'm learning network addressing: converting between decimal, binary and hexadecimal, reading CIDR notation, subnetting by hand, documenting my computer's and my Kali Linux VM's network settings, and drawing a network diagram. I'm new to networking math. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Don't do my lab steps or solve my practice problems for me. If you show an example, use numbers that aren't in my lab. Explain why attackers value an organization's network diagrams, and how defenders use the same diagrams to find choke points and plan monitoring."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -694,15 +734,8 @@
      "type": "callout",
      "icon": "search",
      "title": "Dig Deeper",
-     "text": "What is the difference between IPv4 and IPv6 addressing? Research the security improvements built into IPv6 (IPsec) and current adoption challenges.",
+     "text": "What is the difference between IPv4 and IPv6 addressing? Research what changed for security in IPv6, including why IPsec support, once required for every IPv6 device, became optional, and why adoption is still incomplete.",
      "calloutType": "digDeeper"
-    },
-    {
-     "type": "callout",
-     "icon": "menu_book",
-     "title": "That&#8217;s a Reference!",
-     "text": "RFC 8200: Internet Protocol Version 6. NIST SP 800-119 provides IPv6 deployment guidelines: https://csrc.nist.gov/publications/detail/sp/800-119/final",
-     "calloutType": "thatsAReference"
     }
    ]
   }

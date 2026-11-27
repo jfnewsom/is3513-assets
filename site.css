@@ -2899,3 +2899,6 @@ body:not(.nx-showall) .nx-tb-panel[hidden], body:not(.nx-showall) .nx-tb-cardpan
 
 /* Dig Deeper card: reference line at the bottom (absorbs That's a Reference, 2026-11-27) */
 .nx-tabbed .nx-dig-ref{margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12)}
+
+/* Data tables reuse the time-guide look, but not its narrow centered last column (2026-11-27). */
+.nx-data-table th:last-child, .nx-data-table td:last-child { width: auto; text-align: left; }

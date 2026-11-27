@@ -8,7 +8,8 @@
    "Chapter 9: Network Fundamentals",
    "Chapter 13: IDS and Network Security (partial)",
    "Chapter 18: Cloud Computing"
-  ]
+  ],
+  "layout": "tabs"
  },
  "intro": {
   "overview": "This is it: your first live client engagement with real cloud infrastructure. Gulf Coast Healthcare Partners migrated their patient portal to Microsoft Azure after their ransomware incident 18 months ago. Jennifer Walsh (CISO) needs independent validation of network traffic patterns before her upcoming OCR audit. You&#8217;ll connect directly to the Azure-hosted portal, capture live traffic, and apply everything you learned in Units 1 and 2 to deliver a professional Engagement Packet.",
@@ -21,9 +22,9 @@
   "focusAreas": [
    "Cloud infrastructure interaction: SSH into Azure-hosted patient portal",
    "Live Wireshark capture against real cloud infrastructure",
-   "All five Lab 3.2 analysis techniques applied to live traffic",
+   "The Lab 3.2 analysis techniques, plus Protocol Hierarchy, applied to live traffic",
    "Tiered discovery classification (Critical / High / Medium / Low)",
-   "Professional Engagement Packet: three-section structure (Timesheet, Runbook, Client Report)",
+   "Professional Engagement Packet: Part I (Timesheet, Runbook, Analyst Reflection) and Part II (Client Deliverable)",
    "Executive summary writing for a non-technical client audience"
   ],
   "objectives": [
@@ -193,6 +194,15 @@
      "calloutType": "tip",
      "title": "Four Mechanics, Every Time",
      "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">EP 1, Checkpoint 5</a> walks all four of them step by step."
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how captions and cross-references work in Microsoft Word, and why a figure number Word inserts stays correct when I move figures around, while one I type by hand doesn't. When you're done, ask me one question to check that I understood."
+      }
+     ]
     },
     {
      "type": "callout",
@@ -489,6 +499,23 @@
      "calloutType": "textbookReference"
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain what Wireshark on my own computer can and can't see when I connect to a server over SSH, HTTPS and plain HTTP, and why encrypted protocols still show up in a capture. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain the cloud shared responsibility model: what Microsoft secures and what the customer secures on a virtual machine in Azure, and how customer-side misconfigurations have led to real cloud breaches. If you suggest something to try, keep it to my own computer and the Gulf Coast server my course authorized."
+      },
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is an error message I got when I tried to SSH to the Gulf Coast server:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -510,7 +537,7 @@
      "type": "callout",
      "icon": "menu_book",
      "title": "Use Your Runbook",
-     "text": "You learned all five of these techniques in Lab 3.2. If you need a refresher on any workflow, open the runbook you built during that lab. That&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.",
+     "text": "You learned four of these techniques in Lab 3.2, and Protocol Hierarchy in Checkpoint 2 above. If you need a refresher on any workflow, open the runbook you built during that lab. That&#8217;s exactly what it&#8217;s for. A good runbook means you never have to relearn a tool from scratch.",
      "calloutType": "tip"
     },
     {
@@ -619,6 +646,19 @@
      "text": "Chapter 18 covers cloud computing fundamentals including Azure's shared responsibility model, virtual networks, and cloud security considerations. Your SSH connection and live capture this unit put Chapter 18 concepts into practice. Cite it in your client report."
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how an analyst decides whether something unusual in a capture is a real security finding or just normal activity, and how to rank findings from critical to informational. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain what HTTP response headers such as Server can reveal about a web server, which security headers (for example Strict-Transport-Security) a healthcare portal would normally send, and how attackers and defenders each use this information. If you suggest something to try, keep it to my own computer and the Gulf Coast server my course authorized."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
@@ -647,40 +687,12 @@
     {
      "sections": [
       {
-       "label": "Title Page",
-       "description": "Engagement title, client name, your name, date"
+       "label": "Part I: Internal Packet (40% of grade)",
+       "description": "Timesheet (5%): hours across all 3 units, split Internal Training vs. Client Billable. Units 1 and 2 (Lab 3.1 and 3.2 work) = internal training. Unit 3 (live traffic analysis for Gulf Coast) = client billable. Runbook (20%): man-page style entries for network addressing and configuration commands (from Lab 3.1), Wireshark filters and analysis techniques (from Lab 3.2), and the Azure connection and live capture workflow (this unit). Commands, filters, expected outputs: enough that another analyst could reproduce your work. Analyst Reflection (15%): honest answers to: what you took from this engagement, expectations vs. reality, how it changed your thinking, how it applies to the field. If you used AI, describe where and how you validated; if not, write N/A."
       },
       {
-       "label": "Executive Summary",
-       "description": "1-page non-technical overview"
-      },
-      {
-       "label": "Table of Contents",
-       "description": "Auto-generated with page numbers"
-      },
-      {
-       "label": "Assessment Results",
-       "description": "Tiered findings with evidence"
-      },
-      {
-       "label": "Risk Analysis",
-       "description": "Business impact assessment"
-      },
-      {
-       "label": "Recommendations",
-       "description": "Prioritized actions"
-      },
-      {
-       "label": "Professional Reflection",
-       "description": "What you learned"
-      },
-      {
-       "label": "References",
-       "description": "Minimum 10 valid references"
-      },
-      {
-       "label": "Appendix",
-       "description": "Raw outputs, additional screenshots"
+       "label": "Part II: Client Deliverable (60% of grade)",
+       "description": "Cover Page, Table of Contents, and Appendix are mechanical requirements (graded via deductions, not additive). Executive Summary (12%): one page MAX but fleshed out: risk posture, findings by severity, top recommendations with business framing, and a clear answer to Jennifer&#8217;s question: escalate or stand down? Methodology (7%): client-facing narrative of your approach. Findings (22%): what the live traffic showed, such as cleartext traffic, certificate problems and server information leakage. Numbered, severity-ordered, with evidence and impact. Risk Analysis (11%): HIPAA implications, OCR audit exposure, patient trust impact. Recommendations (8%): prioritized (immediate fixes vs. longer-term hardening)."
       }
      ],
      "type": "callout",
@@ -724,6 +736,27 @@
      "title": "Textbook Reference",
      "icon": "book",
      "text": "Chapter 9 covers network protocol fundamentals: the same protocols you cataloged in Lab 3.2 now appear in your live capture. Chapter 13 discusses IDS/IPS and anomaly detection; your protocol distribution analysis and endpoint statistics are exactly the techniques defenders use for network monitoring."
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how to judge the risk of a network finding on a healthcare patient portal: what likelihood and impact mean here, and what makes the same finding more or less serious for a hospital than for an ordinary website. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Review my draft: Executive Summary",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of the Executive Summary for my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: one page at most; the overall risk posture in one or two sentences; a count of findings by severity; the top two or three recommendations, framed in business terms; a clear answer to the client's question of whether to escalate or stand down; readable by a non-technical executive, with no first person, no command output and no jargon an executive wouldn't know; every line tied to patient trust, HIPAA exposure or operational continuity. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      },
+      {
+       "label": "Review my draft: one finding",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of one finding from my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: numbered; a descriptive title; a severity rating (Critical, High, Medium, Low or Informational); the affected host, service or network segment; a description with specific protocol details and packet evidence; evidence, pointing to a screenshot or capture excerpt; the impact in business terms; and a one-line recommendation. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      },
+      {
+       "label": "Review my draft: runbook entry",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of one runbook entry from my internal packet:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: the tool's name and purpose; the switches or filters I used, each with a one-line explanation; ones I didn't use but should know; the exact command or filter I ran; what output came back, with a screenshot reference; what I did with the result; and whether a colleague could reproduce my work from it three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      }
+     ]
     },
     {
      "type": "callout",
@@ -827,6 +860,15 @@
      ]
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 9, 13 and 18 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, hosts a patient portal on a cloud server in Microsoft Azure, and my course gave me permission to connect to it over SSH and HTTP/HTTPS. I capture my own traffic to it with Wireshark and analyze what the capture shows, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is an error message I got in my Word document's Table of Contents after I updated it:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
      "body": "A .docx whose Table of Contents matches its Navigation Pane, whose figures are all captioned and cross-referenced with fields, whose reference list was built by Word from sources you actually cited, with no square brackets left anywhere and your abc123 in the document properties."
@@ -907,7 +949,7 @@
    },
    {
     "filename": "13-dns.png",
-    "description": "Apply the dns filter and capture the filtered traffic"
+    "description": "No new capture: the DNS row reuses 08-dns-filter.png"
    },
    {
     "filename": "14-icmp.png",
