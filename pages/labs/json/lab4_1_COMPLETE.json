@@ -15,7 +15,7 @@
    "Identify and analyze NTLM hash format characteristics",
    "Execute wordlist attacks using John the Ripper",
    "Execute GPU-accelerated attacks using Hashcat",
-   "Document your methodology and results for Lab 4.3"
+   "Document your methodology and results for EP 4"
   ],
   "focusAreas": [
    "Password attack methodologies (dictionary, brute force, hybrid)",
@@ -32,9 +32,9 @@
   "callouts": [
    {
     "type": "tip",
-    "title": "Save For Lab 4.3",
+    "title": "Save For EP 4",
     "icon": "folder",
-    "text": "This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 4.3 Engagement Packet in Unit 3."
+    "text": "This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module4_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Module 4 Engagement Packet in Unit 3."
    }
   ],
   "mentorQuote": {
@@ -182,7 +182,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness. Understanding format differences helps you assess password storage security. <em>This chapter is essential reading. Add it to your Lab 4.3 references.</em>",
+     "text": "Chapter 15&#8217;s &#8220;Password Attacks&#8221; section explains how password hashes work. NTLM&#8217;s lack of salting is a design weakness. Understanding format differences helps you assess password storage security. <em>This chapter is essential reading. Add it to your EP 4 references.</em>",
      "calloutType": "textbookReference"
     }
    ]
@@ -468,7 +468,7 @@
     {
      "type": "narrative",
      "whatYoureDoing": "Compiling your cracking results into a structured format for your Unit 3 engagement report. Documenting which passwords cracked, which survived, and why.",
-     "whyItMatters": "Professional security assessments require clear, reproducible documentation. Clients need to know which accounts are vulnerable, why they&#8217;re vulnerable, and what to do about it. The analysis you document now becomes the foundation of your Lab 4.3 engagement packet."
+     "whyItMatters": "Professional security assessments require clear, reproducible documentation. Clients need to know which accounts are vulnerable, why they&#8217;re vulnerable, and what to do about it. The analysis you document now becomes the foundation of your Module 4 Engagement Packet."
     },
     {
      "type": "steps",
@@ -499,7 +499,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Save all notes; you&#8217;ll need them for Lab 4.3",
+       "text": "Save all notes; you&#8217;ll need them for EP 4",
        "command": null,
        "whatThisDoes": null
       }
@@ -560,7 +560,7 @@
     {
      "type": "callout",
      "title": "Optional Bonus: OSINT Wordlists",
-     "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are available here: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for Lab 4.3 bonus credit.",
+     "text": "Want to crack more passwords? Carmen&#8217;s OSINT dossiers are available here: <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-corp-dossiers.pdf\" target=\"_blank\">Alamo Corporate Employee Dossiers (PDF)</a>. Build a custom wordlist from employee information (alma maters, sports teams, pet names, graduation years) and re-run your attacks. Document any additional cracks for EP 4 bonus credit.",
      "calloutType": "goBeyond"
     },
     {
@@ -588,7 +588,7 @@
     },
     {
      "type": "callout",
-     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact: the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for Lab 4.3.</em>",
+     "text": "Chapter 15 connects password attacks to organizational risk. Your analysis translates technical findings into business impact: the same skill used in professional penetration test reports. <em>Chapters 15 and 16 together give you two textbook references for EP 4.</em>",
      "calloutType": "textbookReference"
     }
    ]
@@ -768,7 +768,7 @@
    "principle": "AI is a tutor, not a ghostwriter."
   },
   "whatsNext": {
-   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo&#8217;s plant floor. Same company, same tools, different hash format, and a dramatically different experience. Document everything from both units for your Lab 4.3 Password Security Assessment engagement packet."
+   "text": "Next unit in Lab 4.2, you&#8217;ll crack Linux SHA-512 hashes from Alamo&#8217;s plant floor. Same company, same tools, different hash format, and a dramatically different experience. Document everything from both units for your Module 4 Engagement Packet."
   }
  }
 }

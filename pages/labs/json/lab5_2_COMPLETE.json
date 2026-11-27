@@ -204,7 +204,7 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "Four Mechanics, Every Time",
-     "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">Lab 1.3, Checkpoint 5</a> walks all four of them step by step."
+     "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">EP 1, Checkpoint 5</a> walks all four of them step by step."
     },
     {
      "type": "callout",
@@ -226,7 +226,7 @@
      "type": "includeList",
      "title": "Include in Part I.A (Timesheet)",
      "items": [
-      "Unit-by-unit hour breakdown (Lab 5.1 and Lab 5.2)",
+      "Unit-by-unit hour breakdown (Lab 5.1 and EP 5)",
       "Internal vs. client-billable hour split",
       "Total hours across both units",
       "Justification narrative for each line item"
@@ -606,7 +606,7 @@
     {
      "type": "callout",
      "calloutType": "canvasSubmission",
-     "body": "Upload your completed Engagement Packet (.docx) to Lab 5.2 in Canvas. This assignment is manually graded. Expect grades within one unit of the due date."
+     "body": "Upload your completed Engagement Packet (.docx) to the Module 5 Engagement Packet assignment in Canvas. This assignment is manually graded. Expect grades within one unit of the due date."
     }
    ]
   },
@@ -672,8 +672,19 @@
        "text": "<strong>Save as .docx and submit that.</strong> Word format only, not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.",
        "command": null,
        "whatThisDoes": null
+      },
+      {
+       "text": "<strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet.",
+       "command": null,
+       "whatThisDoes": null
       }
      ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "required",
+     "title": "Check the File You Submitted",
+     "body": "Open your submission in Canvas before the due date and confirm it&#8217;s the right file: your finished Engagement Packet for this lab. If you upload the wrong file (the assignment sheet, the blank template, or a previous lab&#8217;s packet), that is what gets graded. You won&#8217;t be given a chance to fix it after the due date."
     },
     {
      "type": "callout",
@@ -786,7 +797,7 @@
    {
     "title": "Documentation Verification",
     "items": [
-     "At least 20 qualifying screenshots from Labs 5.1 and 5.2, embedded as evidence",
+     "At least 20 qualifying screenshots from Lab 5.1 and EP 5, embedded as evidence",
      "VM name visible in all terminal screenshots",
      "Captions present on all screenshots",
      "10+ valid references included"

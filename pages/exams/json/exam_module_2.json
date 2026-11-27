@@ -13,7 +13,7 @@
   "allowed": "Textbook, personal notes, lab documentation, Kali VM",
   "notAllowed": "AI tools, collaboration, external websites",
   "tips": [
-    "Review Labs 2.1&#8211;2.3 and your cryptography work with OpenSSL",
+    "Review Lab 2.1, Lab 2.2, EP 2 and your cryptography work with OpenSSL",
     "Know symmetric vs. asymmetric crypto, key exchange, and hashing",
     "Understand the chain of trust and how PKI authenticates parties"
   ],

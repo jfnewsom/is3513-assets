@@ -16,7 +16,7 @@
       "Encrypt and decrypt files using AES symmetric encryption",
       "Generate RSA keypairs and perform asymmetric encryption",
       "Create and verify digital signatures",
-      "Document all operations for your Lab 2.3 Engagement Packet"
+      "Document all operations for your Module 2 Engagement Packet"
     ],
     "focusAreas": [
       {
@@ -58,7 +58,7 @@
       },
       {
         "type": "tip",
-        "title": "Save For Lab 2.3",
+        "title": "Save For EP 2",
         "icon": "folder",
         "text": "This is <strong>Unit 1 of a 3-unit module</strong>. Create a folder called <code>Module2_Screenshots</code> and save all screenshots there. You&#8217;ll need them for your Engagement Packet in Unit 3."
       }
@@ -97,7 +97,7 @@
       "label": "Total Estimated Time",
       "time": "2-3 hours"
     },
-    "timesheetNote": "This is Unit 1 of a 3-unit module. Time here is internal NEXUS training, not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save every screenshot from this lab there. You will compile everything into a single Engagement Packet in Lab 2.3."
+    "timesheetNote": "This is Unit 1 of a 3-unit module. Time here is internal NEXUS training, not yet billable to Gulf Coast Healthcare. Create a Module2_Screenshots folder now and save every screenshot from this lab there. You will compile everything into your Module 2 Engagement Packet."
   },
   "checkpoints": [
     {
@@ -830,7 +830,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication, skills you'll apply directly when you SSH into the Gulf Coast portal container in Lab 2.3."
+      "text": "After completing this lab and taking the Lab 2.1 Quiz in Canvas, proceed to Lab 2.2: Authentication Systems. You will build on this unit's asymmetric cryptography knowledge to generate SSH keypairs, configure key permissions, and implement multi-factor authentication, skills you'll apply directly when you SSH into the Gulf Coast portal container in EP 2."
     }
   }
 }

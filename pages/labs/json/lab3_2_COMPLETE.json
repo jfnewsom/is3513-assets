@@ -16,7 +16,7 @@
       "Install Wireshark on your host operating system",
       "Master capture and display filter syntax",
       "Analyze training PCAPs to identify security-relevant findings",
-      "Document your analysis methodology for Lab 3.3"
+      "Document your analysis methodology for EP 3"
     ],
     "focusAreas": [
       "Wireshark installation on host OS and network interface selection",
@@ -36,7 +36,7 @@
         "type": "warning",
         "icon": "warning",
         "title": "Critical: Install on Host OS",
-        "text": "Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for Lab 3.3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized, so capturing from the host gives you the complete picture. Because these captures come from Wireshark on your host, they don&#8217;t need your VM name in them."
+        "text": "Wireshark must be installed on your <strong>host operating system</strong> (Windows, macOS, or Linux). Kali already has Wireshark, but for EP 3 you&#8217;ll capture packets flowing between your host machine and an Azure cloud server. Your Kali VM&#8217;s network adapter is virtualized, so capturing from the host gives you the complete picture. Because these captures come from Wireshark on your host, they don&#8217;t need your VM name in them."
       },
       {
         "type": "characterQuote",
@@ -47,7 +47,7 @@
       },
       {
         "type": "tip",
-        "title": "Save For Lab 3.3",
+        "title": "Save For EP 3",
         "icon": "folder",
         "text": "This is <strong>Unit 2 of a 3-unit module</strong>. Continue saving screenshots to your <code>Module3_Screenshots</code> folder. Your Wireshark analysis screenshots will form the &#8220;Tool Documentation&#8221; section of your Unit 3 Engagement Packet."
       }
@@ -447,7 +447,7 @@
           "items": [
             "<strong>Mixing filter syntax:</strong> BPF capture filter syntax and Wireshark display filter syntax are different. Using display filter syntax in the capture filter box will fail silently.",
             "<strong>No ICMP traffic:</strong> ICMP won't appear in normal browsing; you need to generate it. While Wireshark is capturing, run <code>ping -c 4 google.com</code> on a Mac (without <code>-c 4</code> it never stops; press Ctrl+C) or <code>ping -4 google.com</code> on Windows (<code>-4</code> forces IPv4; plain <code>ping</code> may use IPv6, which shows under <code>icmpv6</code>, not <code>icmp</code>).",
-            "<strong>Missing protocol documentation:</strong> Don't just capture. Document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your Lab 3.3 Tool Documentation section.",
+            "<strong>Missing protocol documentation:</strong> Don't just capture. Document each protocol's purpose, whether it's encrypted, and its port numbers. That analysis becomes the core of your EP 3 Tool Documentation section.",
             "<strong>Case sensitivity in display filters:</strong> Protocol names in display filters are lowercase: use <code>http</code>, not <code>HTTP</code>. The filter bar turns green when valid, red when invalid."
           ]
         },
@@ -455,7 +455,7 @@
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
-          "text": "Documentation for 6 protocols including purpose, security assessment, ports, and filtered traffic screenshots. This becomes the core of your &#8220;Tool Documentation&#8221; section in Lab 3.3.",
+          "text": "Documentation for 6 protocols including purpose, security assessment, ports, and filtered traffic screenshots. This becomes the core of your &#8220;Tool Documentation&#8221; section in EP 3.",
           "calloutType": "whatYouShouldHave"
         },
         {
@@ -881,7 +881,7 @@
           "Documented purpose for each of 6 protocols",
           "Assessed security of each protocol",
           "Identified ports for each protocol",
-          "Notes saved for Lab 3.3 Engagement Packet"
+          "Notes saved for Module 3 Engagement Packet"
         ],
         "title": "Protocol Documentation"
       }
@@ -921,7 +921,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Lab 3.3: Network Analysis Engagement: Next unit you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Units 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."
+      "text": "Module 3 Engagement Packet: Network Analysis Engagement: Next unit you'll connect to Gulf Coast Healthcare's Azure-hosted patient portal, capture live traffic, and apply every Wireshark technique from this lab to a real-world scenario. You'll compile Units 1 and 2 plus new live analysis into a complete Engagement Packet for Jennifer Walsh."
     }
   }
 }

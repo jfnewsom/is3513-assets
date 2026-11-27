@@ -31,9 +31,9 @@
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "LAB 2.3",
+      "unitLabel": "EP 2",
       "type": "engagement",
-      "labTitle": "Lab 2.3: Gulf Coast Certificate Remediation",
+      "labTitle": "Module 2 Engagement Packet: Gulf Coast Certificate Remediation",
       "labDesc": "Client engagement. Diagnose and fix the expired portal certificate, then document for HIPAA evidence.",
       "badgeLabel": "Client Billable",
       "badgeColor": "#00BCD4"

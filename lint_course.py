@@ -259,8 +259,22 @@ DENYLIST = [
         "why": ("Lab 1.0 is a graded Foundation Lab as of 2026-08-14. There are 10 Foundation "
                 "Labs and the drop is 1 of 10."),
         "patterns": [
-            r"\b9\s+Foundation\s+Labs\b",
+            r"\b9\s+(?:Foundation|Training)\s+Labs\b",
             r"\b1\s+of\s+9\b",
+        ],
+    },
+    {
+        "id": "EP-NAME",
+        "severity": "error",
+        "why": ("Renamed 2026-11-27. The culminating assignment is the Module N Engagement Packet "
+                "(short form EP N), never Lab 1.3 / 2.3 / 3.3 / 4.3 / 5.2 or Lab X.3. Labs X.1 and X.2 "
+                "are Training Labs (full name Module N Training Lab M), not Foundation Labs. File URLs "
+                "and labIds (Lab1_3_..., 1_3) stay as they are."),
+        "patterns": [
+            r"\bLabs?\s+[1-4]\.3\b",
+            r"\bLab\s+5\.2\b",
+            r"\bLabs?\s+X\.3\b",
+            r"(?-i:\b[Ff]oundation\s+[Ll]abs?\b)(?!\s*\d)",
         ],
     },
 ]

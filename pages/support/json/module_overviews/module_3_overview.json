@@ -31,9 +31,9 @@
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "LAB 3.3",
+      "unitLabel": "EP 3",
       "type": "engagement",
-      "labTitle": "Lab 3.3: Network Analysis Engagement (Azure Live Capture)",
+      "labTitle": "Module 3 Engagement Packet: Network Analysis Engagement (Azure Live Capture)",
       "labDesc": "Client engagement. Connect from Kali to the Gulf Coast patient portal in Azure, capture live traffic, and document tiered findings.",
       "badgeLabel": "Client Billable",
       "badgeColor": "#00BCD4"

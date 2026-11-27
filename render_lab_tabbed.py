@@ -121,7 +121,7 @@ def checkpoint_panel(cp):
 
 def build(data):
     meta = data["meta"]
-    lab_num = ".".join(meta["labId"].split("_"))
+    kw, num, full = R.lab_names(meta)
     is_eng = meta.get("labType") == "engagement"
     lab_col = PURPLE if is_eng else BLUE
     tabs = []
@@ -138,7 +138,7 @@ def build(data):
     if tg:
         ov += cards_row([("nx-orange", "schedule", "Time Guide", card_inner(tg))])
     tabs.append(("overview", "Overview", lab_col,
-                 R.header("lab", lab_num, meta["title"], lab_col), R.card(ov, lab_col)))
+                 R.header(kw, num, meta["title"], lab_col), R.card(ov, lab_col)))
 
     for cp in data.get("checkpoints", []):
         hdr, body = checkpoint_panel(cp)
@@ -149,13 +149,13 @@ def build(data):
                                R.render_grading_standards(data) if is_eng else "",
                                R.render_need_help(data)) if p)
     tabs.append(("wrapup", "Wrap-up", lab_col,
-                 R.header("lab", lab_num, "Before You Submit", lab_col), wrap, True))
+                 R.header(kw, num, "Before You Submit", lab_col), wrap, True))
     return tabs
 
 
 def page(data, tabs):
     meta = data["meta"]
-    lab_num = ".".join(meta["labId"].split("_"))
+    full = R.lab_names(meta)[2]
     order = [t[0] for t in tabs]
     buttons = panels = ""
     for i, t in enumerate(tabs):
@@ -181,12 +181,12 @@ def page(data, tabs):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab {lab_num}: {meta["title"]}</title>
+  <title>{full}: {meta["title"]}</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body class="nx-tabbed">
-<h1 class="nx-sr-only">Lab {lab_num}: {meta["title"]}</h1>
+<h1 class="nx-sr-only">{full}: {meta["title"]}</h1>
 <div class="nx-tb-bar">
   <div class="nx-tb-scroller">
     <button type="button" class="nx-tb-fade l" aria-label="More tabs to the left">&lsaquo;</button>
@@ -207,7 +207,7 @@ function show(id,push){{
   document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
   cur=id;
   const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({{block:'nearest',inline:'center'}});
-  if(a) document.querySelector('.nx-tb-bar').style.setProperty('--cur',a.style.getPropertyValue('--tab'));
+  if(a) document.body.style.setProperty('--cur',a.style.getPropertyValue('--tab'));
   scrollTo(0,pos[id]||0);
   if(push) history.replaceState(null,'','#'+id);
   document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;

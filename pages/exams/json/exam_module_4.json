@@ -13,7 +13,7 @@
   "allowed": "Textbook, personal notes, lab documentation, Kali VM, John the Ripper, Hashcat",
   "notAllowed": "AI tools, collaboration, external websites",
   "tips": [
-    "Review Labs 4.1&#8211;4.3 including your password-cracking results from both Alamo environments",
+    "Review Lab 4.1, Lab 4.2 and EP 4, including your password-cracking results from both Alamo environments",
     "Know the difference between NTLM and salted Linux hashes &#8212; and why it matters",
     "Understand the major social-engineering attack types and how OSINT enables them"
   ],

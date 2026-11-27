@@ -14,7 +14,7 @@
   "allowed": "Textbook, personal notes, lab documentation, Kali VM, Wireshark",
   "notAllowed": "AI tools, collaboration, external websites",
   "tips": [
-    "Review Labs 3.1&#8211;3.3 including your live Azure capture findings",
+    "Review Lab 3.1, Lab 3.2 and EP 3, including your live Azure capture findings",
     "Know CIDR, subnetting, and how to read Wireshark filters",
     "Understand IDS detection models (signature vs. anomaly) and what each catches"
   ],

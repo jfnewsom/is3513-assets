@@ -361,22 +361,22 @@
         <div class="drop-sub">Module 1 &mdash; Reconnaissance</div>
         ${link('Lab 1.1 &mdash; Kali Environment Setup',        L + '/Lab1_1_Kali_Environment_Setup.html',                    'dd-cyan')}
         ${link('Lab 1.2 &mdash; Reconnaissance Tools',          L + '/Lab1_2_Reconnaissance_Tool_Exploration.html',            'dd-cyan')}
-        ${link('Lab 1.3 &mdash; Brazos Engagement',             L + '/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html', 'dd-cyan')}
+        ${link('EP 1 &mdash; Brazos Engagement',                L + '/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html', 'dd-cyan')}
         <div class="drop-sub">Module 2 &mdash; Cryptography &amp; Auth</div>
         ${link('Lab 2.1 &mdash; Cryptographic Foundations',     L + '/Lab2_1_Cryptographic_Foundations.html',                  'dd-cyan')}
         ${link('Lab 2.2 &mdash; Authentication Systems',        L + '/Lab2_2_Authentication_Systems.html',                     'dd-cyan')}
-        ${link('Lab 2.3 &mdash; Gulf Coast Engagement',         L + '/Lab2_3_Gulf_Coast_Certificate_Remediation.html',         'dd-cyan')}
+        ${link('EP 2 &mdash; Gulf Coast Engagement',            L + '/Lab2_3_Gulf_Coast_Certificate_Remediation.html',         'dd-cyan')}
         <div class="drop-sub">Module 3 &mdash; Networks &amp; Cloud</div>
         ${link('Lab 3.1 &mdash; Network Addressing',            L + '/Lab3_1_Network_Addressing_Fundamentals.html',            'dd-cyan')}
         ${link('Lab 3.2 &mdash; Protocol Analysis',             L + '/Lab3_2_Protocol_Analysis_Tools.html',                    'dd-cyan')}
-        ${link('Lab 3.3 &mdash; Network Analysis Engagement',   L + '/Lab3_3_Network_Analysis_Engagement.html',                'dd-cyan')}
+        ${link('EP 3 &mdash; Network Analysis Engagement',      L + '/Lab3_3_Network_Analysis_Engagement.html',                'dd-cyan')}
         <div class="drop-sub">Module 4 &mdash; Threats &amp; Attacks</div>
         ${link('Lab 4.1 &mdash; Windows Password Cracking',     L + '/Lab4_1_Windows_Password_Cracking.html',                  'dd-cyan')}
         ${link('Lab 4.2 &mdash; Linux Password Cracking',       L + '/Lab4_2_Linux_Password_Cracking.html',                    'dd-cyan')}
-        ${link('Lab 4.3 &mdash; Password Security Assessment',  L + '/Lab4_3_Password_Security_Assessment.html',               'dd-cyan')}
+        ${link('EP 4 &mdash; Password Security Assessment',     L + '/Lab4_3_Password_Security_Assessment.html',               'dd-cyan')}
         <div class="drop-sub">Module 5 &mdash; Risk &amp; Infrastructure</div>
         ${link('Lab 5.1 &mdash; Vulnerability Assessment &amp; Risk Analysis', L + '/Lab5_1_Vulnerability_Assessment_Risk_Analysis.html',    'dd-cyan')}
-        ${link('Lab 5.2 &mdash; LoneStar Engagement',                        L + '/Lab5_2_Risk_Vulnerability_Assessment_Report.html',      'dd-cyan')}
+        ${link('EP 5 &mdash; LoneStar Engagement',                           L + '/Lab5_2_Risk_Vulnerability_Assessment_Report.html',      'dd-cyan')}
       </div>
     </div>` : '';
 

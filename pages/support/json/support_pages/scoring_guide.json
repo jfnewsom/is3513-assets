@@ -140,7 +140,7 @@
       "colorRgb": "0, 210, 106",
       "label": "The bar:",
       "icon": "verified",
-      "html": "A report where every finding has a defensible CVSS vector, a differentiated likelihood-and-impact reasoned through LoneStar&#8217;s business, and a priority order that reflects business risk rather than raw CVSS &#8212; that&#8217;s the actual job of a security consultant. That&#8217;s what Lab 5.2 is testing."
+      "html": "A report where every finding has a defensible CVSS vector, a differentiated likelihood-and-impact reasoned through LoneStar&#8217;s business, and a priority order that reflects business risk rather than raw CVSS &#8212; that&#8217;s the actual job of a security consultant. That&#8217;s what EP 5 is testing."
     },
     {
       "type": "named_section",

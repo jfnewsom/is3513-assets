@@ -15,7 +15,7 @@
   "objectives": [
    "Deploy Kali Linux as your security operations platform",
    "Install and verify Docker for containerized client targets",
-   "Document your environment for your Lab 1.3 Engagement Packet"
+   "Document your environment for your Module 1 Engagement Packet"
   ],
   "focusAreas": [
    "Virtualization fundamentals and hypervisor architecture",
@@ -39,13 +39,13 @@
     "type": "warning",
     "title": "Technically Droppable, Actually Required",
     "icon": "warning",
-    "text": "Lab 1.1 is one of ten Foundation Labs, and you do get one drop. So administratively, yes, you could skip this one and have it not count against your grade. But practically, you can’t skip it. Lab 1.2 needs your Kali VM running. So do Labs 1.3, 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you’ll have to come back and do it anyway before Lab 1.2 is due</strong>, except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn’t gate everything that follows it."
+    "text": "Lab 1.1 is one of ten Training Labs, and you do get one drop. So administratively, yes, you could skip this one and have it not count against your grade. But practically, you can’t skip it. Lab 1.2 needs your Kali VM running. So do EP 1, Labs 2.1, 2.2, every lab through Module 5. <strong>Skip Lab 1.1 and you’ll have to come back and do it anyway before Lab 1.2 is due</strong>, except now your drop is gone and the deadline is tighter. Use your drop on a lab that doesn’t gate everything that follows it."
    },
    {
     "type": "tip",
-    "title": "Save For Lab 1.3",
+    "title": "Save For EP 1",
     "icon": "folder",
-    "text": "This is Unit 1 of a 3-unit module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Lab 1.3 Engagement Packet in Unit 3."
+    "text": "This is Unit 1 of a 3-unit module. Create a folder called Module1_Screenshots and save EVERY screenshot there. You'll compile these into your Module 1 Engagement Packet in Unit 3."
    }
   ],
   "mentorQuote": {
@@ -86,7 +86,7 @@
    "label": "Total Estimated Time",
    "time": "85-140 min"
   },
-  "timesheetNote": "This is Unit 1 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Save every screenshot to your Module1_Screenshots folder. You&#8217;ll need them all in Unit 3."
+  "timesheetNote": "This is Unit 1 of 3. Log these hours as Internal Training on your EP 1 timesheet. Save every screenshot to your Module1_Screenshots folder. You&#8217;ll need them all in Unit 3."
  },
  "checkpoints": [
   {
@@ -114,7 +114,7 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "No Preference? Use the Defaults",
-     "body": "If you don&#8217;t care which tools you use, don&#8217;t spend time deciding: use <strong>Microsoft Copilot</strong> (free with your UTSA account) and <strong>VirtualBox</strong> (free). Still run the <strong>Find the right setup</strong> prompt and take Screenshot 00. If the answer says VirtualBox won&#8217;t run on your computer, go with what it recommends instead.",
+     "body": "If you don&#8217;t care which tools you use, don&#8217;t spend time deciding: use <strong>Microsoft Copilot</strong> (free with your UTSA account) and <strong>VirtualBox</strong> (free). Still run the <strong>Find the right setup</strong> prompt and take Screenshot 01. If the answer says VirtualBox won&#8217;t run on your computer, go with what it recommends instead.",
      "inline": true
     },
     {
@@ -217,7 +217,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "Take Screenshot 00 (below) before you move on.",
+       "text": "Take Screenshot 01 (below) before you move on.",
        "command": null,
        "whatThisDoes": null
       },
@@ -237,7 +237,7 @@
      "type": "callout",
      "calloutType": "tip",
      "title": "Trust the Source, Not the AI",
-     "body": "An AI answer is a summary of what it has read, and it can be out of date or simply wrong while sounding completely sure. Prices change, supported chips change, menus get renamed. The <strong>source of truth</strong> is the original: the vendor&#8217;s official page, the tool&#8217;s documentation or man page, the standard itself, and in this course, the lab sheet. So use AI to get pointed in the right direction and to understand what you&#8217;re reading, then read the source and go by what it says. This is a habit analysts live by: nothing goes in a report because an AI said so, only because you checked it. In your Lab 1.3 Runbook VM setup entry, next to Screenshot 00, name the official page you checked and anything the AI got wrong. That&#8217;s also the kind of example the AI Methodology Reflection asks for.",
+     "body": "An AI answer is a summary of what it has read, and it can be out of date or simply wrong while sounding completely sure. Prices change, supported chips change, menus get renamed. The <strong>source of truth</strong> is the original: the vendor&#8217;s official page, the tool&#8217;s documentation or man page, the standard itself, and in this course, the lab sheet. So use AI to get pointed in the right direction and to understand what you&#8217;re reading, then read the source and go by what it says. This is a habit analysts live by: nothing goes in a report because an AI said so, only because you checked it. In your EP 1 Runbook VM setup entry, next to Screenshot 01, name the official page you checked and anything the AI got wrong. That&#8217;s also the kind of example the AI Methodology Reflection asks for.",
      "inline": true
     },
     {
@@ -245,7 +245,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation. Your VM doesn&#8217;t exist yet, so this one is the exception to the abc123 rule. Save as 00-hypervisor-recommendation.png. It goes in your Lab 1.3 Runbook, in the entry for your VM setup."
+     "body": "Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation. Your VM doesn&#8217;t exist yet, so this one is the exception to the abc123 rule. Save as 01-hypervisor-recommendation.png. It goes in your EP 1 Runbook, in the entry for your VM setup."
     },
     {
      "title": "Common Pitfalls",
@@ -292,14 +292,14 @@
      "items": null,
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "A hypervisor installed and opening on your computer, an AI&#8217;s recommendation for your computer saved as Screenshot 00 and checked against the official page, and your choice ready to report on the Lab 1.1 quiz."
+     "body": "A hypervisor installed and opening on your computer, an AI&#8217;s recommendation for your computer saved as Screenshot 01 and checked against the official page, and your choice ready to report on the Lab 1.1 quiz."
     },
     {
      "title": "Textbook Reference",
      "items": null,
      "type": "callout",
      "calloutType": "textbookReference",
-     "body": "Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation, a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your Lab 1.3 report."
+     "body": "Chapter 2 introduces defense in depth and the layered security model. Virtual machines provide isolation, a core security control that prevents testing activities from affecting production systems. Reading this chapter? That's a reference for your EP 1 report."
     },
     {
      "title": "Dig Deeper",
@@ -490,7 +490,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture your VM&#8217;s settings window showing the VM name (your abc123), memory and processor count. Save as 01-vm-settings.png"
+     "body": "Capture your VM&#8217;s settings window showing the VM name (your abc123), memory and processor count. Save as 02-vm-settings.png"
     },
     {
      "title": "Common Pitfalls",
@@ -641,7 +641,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture the Kali desktop after login, with the terminal open showing your hostname. Save as 02-kali-desktop.png"
+     "body": "Capture the Kali desktop after login, with the terminal open showing your hostname. Save as 03-kali-desktop.png"
     },
     {
      "title": "Common Pitfalls",
@@ -777,7 +777,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture docker --version and the hello-world output. Save as 03-docker-version.png"
+     "body": "Capture docker --version and the hello-world output. Save as 04-docker-version.png"
     },
     {
      "title": "Common Pitfalls",
@@ -871,7 +871,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture the Part A output: <code>hostname</code> and <code>uname -a</code>, with your hostname visible in the prompt. Save as 04-system-verification.png"
+     "body": "Capture the Part A output: <code>hostname</code> and <code>uname -a</code>, with your hostname visible in the prompt. Save as 05-system-verification.png"
     },
     {
      "part": "Part B: Network Connectivity",
@@ -899,7 +899,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture the Part B output: <code>ip addr</code> and the <code>ping</code> results showing all 3 packets received. Your hostname must be visible. Save as 05-network-connectivity.png"
+     "body": "Capture the Part B output: <code>ip addr</code> and the <code>ping</code> results showing all 3 packets received. Your hostname must be visible. Save as 06-network-connectivity.png"
     },
     {
      "part": "Part C: Security Tools",
@@ -953,7 +953,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "screenshot",
-     "body": "Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, <code>docker --version</code>, and the empty <code>docker ps</code> table. Your hostname must be visible. Save as 06-tool-verification.png"
+     "body": "Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, <code>docker --version</code>, and the empty <code>docker ps</code> table. Your hostname must be visible. Save as 07-tool-verification.png"
     },
     {
      "title": "Common Pitfalls",
@@ -1049,31 +1049,31 @@
  "finalChecklist": {
   "screenshotTable": [
    {
-    "file": "00-hypervisor-recommendation.png",
+    "file": "01-hypervisor-recommendation.png",
     "description": "AI recommendation for your computer (prompt with your specs plus the answer)"
    },
    {
-    "file": "01-vm-settings.png",
+    "file": "02-vm-settings.png",
     "description": "VM configuration with correct name"
    },
    {
-    "file": "02-kali-desktop.png",
+    "file": "03-kali-desktop.png",
     "description": "Kali desktop after login"
    },
    {
-    "file": "03-docker-version.png",
+    "file": "04-docker-version.png",
     "description": "Docker version output"
    },
    {
-    "file": "04-system-verification.png",
+    "file": "05-system-verification.png",
     "description": "Hostname and uname -a output"
    },
    {
-    "file": "05-network-connectivity.png",
+    "file": "06-network-connectivity.png",
     "description": "ip addr and ping output"
    },
    {
-    "file": "06-tool-verification.png",
+    "file": "07-tool-verification.png",
     "description": "Tool version checks and docker ps"
    }
   ],

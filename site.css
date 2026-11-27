@@ -2853,3 +2853,14 @@ body.nx-tabbed { min-height: 100vh; }
 .nx-tabbed .site-footer__citation-text { color: #B0B8C4; }
 .nx-tabbed .site-footer__copyright { color: #8a93a3; }
 .nx-tabbed .site-footer__citation-label { background: rgba(65,105,225,0.18); color: #8FA8FF; }
+/* One accent border down the whole left edge of the active tab's panel,
+   past the content and the Back/Next bar to the bottom of the window;
+   Back styled like Next (John, 2026-11-27). */
+.nx-tabbed .nx-header, .nx-tabbed .nx-card { border-left: 0; }
+.nx-tb-panel { border-left: 4px solid var(--cur, #4169E1); min-height: calc(100vh - 110px); }
+.nx-tb-back { display: inline-block; font: 700 18px 'Roboto', sans-serif; color: #000; background: #FEC618;
+  padding: 10px 18px; border-radius: 4px; text-decoration: none; }
+/* Wrap-up: every section header (Final Checklist, Purple Team, Grading
+   Standards, Need Help) takes the Wrap-up tab's accent (John, 2026-11-27).
+   !important beats the per-section --accent set inline by the renderer. */
+#p-wrapup .nx-header, #p-wrapup .nx-card { --accent: var(--cur, #4169E1) !important; }

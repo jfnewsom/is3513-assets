@@ -34,14 +34,14 @@
     "callouts": [
       {
         "type": "tip",
-        "title": "Save For Lab 5.2",
+        "title": "Save For EP 5",
         "icon": "folder",
-        "text": "This is <strong>Unit 1 of a 2-unit module</strong>. Create a folder called <code>Module5_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Lab 5.2 Engagement Packet next unit."
+        "text": "This is <strong>Unit 1 of a 2-unit module</strong>. Create a folder called <code>Module5_Screenshots</code> and save EVERY screenshot there. You&#8217;ll compile these into your Module 5 Engagement Packet next unit."
       },
       {
         "type": "warning",
         "title": "This Lab Is Longer Than Usual",
-        "text": "This Foundation Lab covers both vulnerability discovery and risk analysis in a single unit. Budget <strong>3 to 3.5 hours</strong> and don&#8217;t start it the night before it&#8217;s due. Checkpoints 1 through 3 are tool-based; Checkpoints 4 and 5 are analysis-based and can be done without your VM running."
+        "text": "This Training Lab covers both vulnerability discovery and risk analysis in a single unit. Budget <strong>3 to 3.5 hours</strong> and don&#8217;t start it the night before it&#8217;s due. Checkpoints 1 through 3 are tool-based; Checkpoints 4 and 5 are analysis-based and can be done without your VM running."
       }
     ],
     "mentorQuote": {
@@ -79,7 +79,7 @@
       "time": "3 to 3.5 hours",
       "note": "Scan times vary. Nmap NSE and WPScan can take 10 to 15 minutes each. Let them run in the background while you document earlier findings."
     },
-    "timesheetNote": "Log this unit as <em>Internal Training: 3 to 3.5 hours (Vulnerability assessment and risk analysis)</em>. This is Unit 1 of a 2-unit module. Your Engagement Packet (Lab 5.2) is due next unit."
+    "timesheetNote": "Log this unit as <em>Internal Training: 3 to 3.5 hours (Vulnerability assessment and risk analysis)</em>. This is Unit 1 of a 2-unit module. Your Engagement Packet (EP 5) is due next unit."
   },
   "checkpoints": [
     {
@@ -476,7 +476,7 @@
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A top-10 vulnerability table with CVSS 3.1 scores, severity ratings, and written rationale for your selection. This feeds directly into your Lab 5.2 Engagement Packet."
+          "text": "A top-10 vulnerability table with CVSS 3.1 scores, severity ratings, and written rationale for your selection. This feeds directly into your Module 5 Engagement Packet."
         },
         {
           "type": "callout",
@@ -575,7 +575,7 @@
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "A color-coded 5&#215;5 risk matrix with all 10 findings plotted, and a sequenced remediation roadmap with rationale that accounts for LoneStar&#8217;s constraints. These are the core deliverables of your Lab 5.2 Engagement Packet."
+          "text": "A color-coded 5&#215;5 risk matrix with all 10 findings plotted, and a sequenced remediation roadmap with rationale that accounts for LoneStar&#8217;s constraints. These are the core deliverables of your Module 5 Engagement Packet."
         },
         {
           "type": "callout",
@@ -727,7 +727,7 @@
       "principle": "Think of AI like a tutor, not a ghostwriter. It can help you understand and improve, but the work itself must be yours."
     },
     "whatsNext": {
-      "title": "Lab 5.2: Risk & Vulnerability Assessment Report",
+      "title": "Module 5 Engagement Packet: Risk & Vulnerability Assessment Report",
       "text": "Next unit you&#8217;ll compile everything from this lab into a professional Engagement Packet for LoneStar DevOps. Amanda needs a report for investors; Sarah needs a roadmap for her team. You already have the building blocks. Unit 2 is about assembling and presenting them."
     }
   }

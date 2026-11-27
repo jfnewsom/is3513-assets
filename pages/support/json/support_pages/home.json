@@ -163,7 +163,7 @@
       "color": "purple"
     },
     {
-      "label": "Foundation Labs",
+      "label": "Training Labs",
       "value": "9",
       "color": "green"
     },
@@ -180,7 +180,7 @@
   ],
   "cycleCallout": {
     "title": "Module Structure",
-    "body": "Each module is structured as three Units. <strong>Unit 1 (Training)</strong> and <strong>Unit 2 (Training+)</strong> house the Foundation Labs; <strong>Unit 3 (Engagement)</strong> is where you deliver the Engagement Packet to the client. See <a href=\"Grading_Info.html\">Grading Info</a> for details."
+    "body": "Each module is structured as three Units. <strong>Unit 1 (Training)</strong> and <strong>Unit 2 (Training+)</strong> house the Training Labs; <strong>Unit 3 (Engagement)</strong> is where you deliver the Engagement Packet to the client. See <a href=\"Grading_Info.html\">Grading Info</a> for details."
   },
   "resourceCards": [
     {

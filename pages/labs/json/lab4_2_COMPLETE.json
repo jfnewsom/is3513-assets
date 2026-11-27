@@ -32,7 +32,7 @@
     "callouts": [
       {
         "type": "tip",
-        "title": "Save For Lab 4.3",
+        "title": "Save For EP 4",
         "icon": "folder",
         "text": "This is <strong>Unit 2 of a 3-unit module</strong>. Add this unit&#8217;s screenshots to your existing <code>Module4_Screenshots</code> folder. Your Lab 4.1 screenshots should already be there. This unit adds its own."
       },
@@ -417,7 +417,7 @@
           "calloutType": "textbookReference",
           "title": "Textbook Reference",
           "icon": "book",
-          "text": "Chapter 16 covers security tool selection and assessment methodology. The speed difference you observed between Hashcat's NTLM and SHA-512 modes illustrates why algorithm choice is a security control, not just an implementation detail. Add both Chapters 15 and 16 to your Lab 4.3 reference list."
+          "text": "Chapter 16 covers security tool selection and assessment methodology. The speed difference you observed between Hashcat's NTLM and SHA-512 modes illustrates why algorithm choice is a security control, not just an implementation detail. Add both Chapters 15 and 16 to your EP 4 reference list."
         },
         {
           "type": "callout",
@@ -446,7 +446,7 @@
           "type": "callout",
           "calloutType": "tip",
           "title": "Optional Bonus: OSINT Wordlists",
-          "text": "Want to push further? Carmen compiled OSINT dossiers on Alamo&#8217;s plant-floor employees. Use them to build targeted wordlists from employee details (job titles, departments, hire years, location) and re-run your attacks. <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-plant-dossiers.pdf\" target=\"_blank\">Alamo Industries Employee Dossiers (PDF)</a>. Document any additional cracks for Lab 4.3 bonus credit."
+          "text": "Want to push further? Carmen compiled OSINT dossiers on Alamo&#8217;s plant-floor employees. Use them to build targeted wordlists from employee details (job titles, departments, hire years, location) and re-run your attacks. <a href=\"https://jfnewsom.github.io/is3513-assets/module4/alamo-plant-dossiers.pdf\" target=\"_blank\">Alamo Industries Employee Dossiers (PDF)</a>. Document any additional cracks for EP 4 bonus credit."
         }
       ]
     },
@@ -456,7 +456,7 @@
       "content": [
         {
           "type": "narrative",
-          "whatYoureDoing": "Compiling your cracking results into two structured tables: an 8-account summary for the Alamo plant floor and a 4-cell platform comparison showing NTLM vs. SHA-512 speeds across both tools. These tables are the analytical core of your Lab 4.3 engagement report.",
+          "whatYoureDoing": "Compiling your cracking results into two structured tables: an 8-account summary for the Alamo plant floor and a 4-cell platform comparison showing NTLM vs. SHA-512 speeds across both tools. These tables are the analytical core of your Module 4 Engagement Packet.",
           "whyItMatters": "Raw terminal output is not a deliverable. Organized findings are. A results table tells the client which accounts are compromised and which credentials are still protecting access. A speed comparison table gives you the concrete numbers to explain <em>why</em> algorithm choice matters, not just that it does."
         },
         {
@@ -532,7 +532,7 @@
             },
             {
               "label": "Forgetting the speed comparison",
-              "text": "Your Lab 4.3 report requires speed data from all four cracking sessions (c/s for John, H/s for Hashcat): John against NTLM (Lab 4.1), Hashcat against NTLM (Lab 4.1), John against SHA-512 (this lab), and Hashcat against SHA-512 (this lab). If you didn&#8217;t record Lab 4.1 speeds, go back and check your Lab 4.1 screenshots now, not during Lab 4.3."
+              "text": "Your EP 4 report requires speed data from all four cracking sessions (c/s for John, H/s for Hashcat): John against NTLM (Lab 4.1), Hashcat against NTLM (Lab 4.1), John against SHA-512 (this lab), and Hashcat against SHA-512 (this lab). If you didn&#8217;t record Lab 4.1 speeds, go back and check your Lab 4.1 screenshots now, not during EP 4."
             },
             {
               "label": "Mixing up account types",
@@ -545,14 +545,14 @@
           "calloutType": "whatYouShouldHave",
           "title": "What You Should Have",
           "icon": "check",
-          "text": "A completed 8-account results table for the Alamo plant floor (username, cracked password or <em>not cracked</em>, account type) captured as Screenshot 20. You should also have four speed data points recorded from your notes or screenshots: John and Hashcat speeds from both Lab 4.1 (NTLM) and this lab (SHA-512). That&#8217;s everything you need for the platform comparison section of Lab 4.3."
+          "text": "A completed 8-account results table for the Alamo plant floor (username, cracked password or <em>not cracked</em>, account type) captured as Screenshot 20. You should also have four speed data points recorded from your notes or screenshots: John and Hashcat speeds from both Lab 4.1 (NTLM) and this lab (SHA-512). That&#8217;s everything you need for the platform comparison section of EP 4."
         },
         {
           "type": "callout",
           "calloutType": "textbookReference",
           "title": "Textbook Reference",
           "icon": "menu_book",
-          "text": "Chapter 15 covers password attack methodologies and Chapter 16 covers security assessment documentation. Your results table is the output artifact of an offensive assessment: it feeds directly into the defensive recommendations you&#8217;ll write in Lab 4.3. Both chapters support this checkpoint."
+          "text": "Chapter 15 covers password attack methodologies and Chapter 16 covers security assessment documentation. Your results table is the output artifact of an offensive assessment: it feeds directly into the defensive recommendations you&#8217;ll write in EP 4. Both chapters support this checkpoint."
         }
       ]
     }
@@ -697,7 +697,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "Lab 4.3: Password Security Assessment Report. Next unit you&#8217;ll combine your Alamo corporate (Windows/NTLM) and plant-floor (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both Alamo environments."
+      "text": "Module 4 Engagement Packet: Password Security Assessment Report. Next unit you&#8217;ll combine your Alamo corporate (Windows/NTLM) and plant-floor (Linux/SHA-512) findings into a comprehensive client deliverable. You&#8217;ll analyze platform architecture differences, explain why the same wordlist produced different results, and provide actionable recommendations for both Alamo environments."
     }
   }
 }

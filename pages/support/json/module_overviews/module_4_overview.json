@@ -14,7 +14,7 @@
       "cssClass": "nx-logo-glow"
     }
   ],
-  "overview": "Module 4 is where you go on offense, carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Your client is Alamo Industries, assessed across two very different environments. Lab 4.1 cracks Windows (NTLM) hashes from Alamo's corporate office. Lab 4.2 moves to Linux (SHA-512) hashes from the plant floor. In Lab 4.3 you deliver one password security assessment to Alamo comparing the two.",
+  "overview": "Module 4 is where you go on offense, carefully. You'll learn how attackers target credentials, crack password hashes using industry-standard tools, and analyze what those results mean for an organization's security posture. Your client is Alamo Industries, assessed across two very different environments. Lab 4.1 cracks Windows (NTLM) hashes from Alamo's corporate office. Lab 4.2 moves to Linux (SHA-512) hashes from the plant floor. In EP 4 you deliver one password security assessment to Alamo comparing the two.",
   "units_breakdown": [
     {
       "unitLabel": "LAB 4.1",
@@ -33,9 +33,9 @@
       "badgeColor": "#00D26A"
     },
     {
-      "unitLabel": "LAB 4.3",
+      "unitLabel": "EP 4",
       "type": "engagement",
-      "labTitle": "Lab 4.3: Password Security Assessment",
+      "labTitle": "Module 4 Engagement Packet: Password Security Assessment",
       "labDesc": "Client engagement. Compile your findings into one password security report for Alamo, comparing its two environments and recommending what to fix first.",
       "badgeLabel": "Client Billable",
       "badgeColor": "#FF9F1C"

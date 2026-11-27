@@ -2,7 +2,7 @@
   "_meta": {
     "purpose": "Single source of truth for Panopto recording links across IS3513. Drives the Recordings section on Home.html (aggregated, all 5 modules) and on each Module_N.html (just that module's rows). Set chapter_notes_url and lab_walkthrough_url to the Panopto Viewer URL when a recording is posted; leave null for placeholders.",
     "lastEdited": "2026-07-05",
-    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column at all — the final lab in each module is compilation/client-facing, not new chapter content. Only foundation labs carry chapter slots. A foundation row normally uses the single-slot keys (chapter_notes_label / chapter_notes_url); when one lab covers multiple chapters (Module 5's compressed Lab 5.1 covers Chapters 10 & 20), use a `chapter_notes` LIST of {label, url} objects instead — buttons render in list order, before Lab Walkthrough. Set url to the Panopto Viewer URL when posted; leave null for a placeholder."
+    "schemaNotes": "Engagement labs (type: 'engagement') intentionally have no Chapter Notes column at all — the final lab in each module is compilation/client-facing, not new chapter content. Only Training Labs (type: 'foundation') carry chapter slots. A foundation row normally uses the single-slot keys (chapter_notes_label / chapter_notes_url); when one lab covers multiple chapters (Module 5's compressed Lab 5.1 covers Chapters 10 & 20), use a `chapter_notes` LIST of {label, url} objects instead — buttons render in list order, before Lab Walkthrough. Set url to the Panopto Viewer URL when posted; leave null for a placeholder."
   },
   "homeIntro_html": "<p>Recordings are posted here as they&rsquo;re produced. Same buttons live on each module overview page.</p>",
   "moduleIntro_html": "<p>Recordings for this module are posted here as they&rsquo;re produced.</p>",
@@ -29,7 +29,7 @@
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e44b9c6f-0f33-4a91-8155-b45e015ce056"
         },
         {
-          "labLabel": "Lab 1.3",
+          "labLabel": "EP 1",
           "labTitle": "Brazos Engagement",
           "type": "engagement",
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2f703442-b907-476a-9860-b46000d12387"
@@ -58,7 +58,7 @@
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=12c17578-a189-41de-bbc3-b46900fd03cd"
         },
         {
-          "labLabel": "Lab 2.3",
+          "labLabel": "EP 2",
           "labTitle": "Gulf Coast Engagement",
           "type": "engagement",
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b9f36fb0-2a6b-4f47-a5f1-b46900fd03cd"
@@ -87,7 +87,7 @@
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2efdd77b-02b3-48d5-9c8c-b47000fec66b"
         },
         {
-          "labLabel": "Lab 3.3",
+          "labLabel": "EP 3",
           "labTitle": "Azure Live Capture",
           "type": "engagement",
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=92e3df0d-f4d1-4897-9a02-b470010352d6"
@@ -116,7 +116,7 @@
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d37d72c7-6f53-44ce-950d-b47c0161abdf"
         },
         {
-          "labLabel": "Lab 4.3",
+          "labLabel": "EP 4",
           "labTitle": "Password Security Assessment",
           "type": "engagement",
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=05240cba-856b-4514-8f3f-b47c0161abe0"
@@ -145,7 +145,7 @@
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e2a0cf90-8249-4041-8748-b47e010eb235"
         },
         {
-          "labLabel": "Lab 5.2",
+          "labLabel": "EP 5",
           "labTitle": "Risk &amp; Vulnerability Report",
           "type": "engagement",
           "lab_walkthrough_url": "https://utsa.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=89443abd-6ba7-4187-875d-b47e010eb226"

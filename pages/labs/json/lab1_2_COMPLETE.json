@@ -41,9 +41,9 @@
       },
       {
         "type": "tip",
-        "title": "Save For Lab 1.3",
+        "title": "Save For EP 1",
         "icon": "folder",
-        "text": "This is Unit 2 of a 3-unit module. Continue saving screenshots to your Module1_Screenshots folder. You'll compile these into your Lab 1.3 Engagement Packet next unit."
+        "text": "This is Unit 2 of a 3-unit module. Continue saving screenshots to your Module1_Screenshots folder. You'll compile these into your Module 1 Engagement Packet next unit."
       }
     ],
     "mentorQuote": {
@@ -88,7 +88,7 @@
       "label": "Total Estimated Time",
       "time": "90-120 min"
     },
-    "timesheetNote": "This is Unit 2 of 3. Log these hours as Internal Training on your Lab 1.3 timesheet. Continue saving screenshots to your Module1_Screenshots folder. Screenshots 07 through 13 go directly into your Engagement Packet next unit."
+    "timesheetNote": "This is Unit 2 of 3. Log these hours as Internal Training on your EP 1 timesheet. Continue saving screenshots to your Module1_Screenshots folder. Screenshots 08 through 14 go directly into your Engagement Packet next unit."
   },
   "checkpoints": [
     {
@@ -152,14 +152,14 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture nmap -sV results. Save as 07-nmap-version.png",
+          "text": "Capture nmap -sV results. Save as 08-nmap-version.png",
           "calloutType": "screenshot"
         },
         {
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture nmap -sC results. Save as 08-nmap-scripts.png",
+          "text": "Capture nmap -sC results. Save as 09-nmap-scripts.png",
           "calloutType": "screenshot"
         },
         {
@@ -263,7 +263,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture netcat connection showing SSH banner. Save as 09-netcat-banner.png",
+          "text": "Capture netcat connection showing SSH banner. Save as 10-netcat-banner.png",
           "calloutType": "screenshot"
         },
         {
@@ -371,7 +371,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture dirb output showing discovered directories. Save as 10-dirb-results.png",
+          "text": "Capture dirb output showing discovered directories. Save as 11-dirb-results.png",
           "calloutType": "screenshot"
         },
         {
@@ -463,7 +463,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture nikto output showing findings. Save as 11-nikto-results.png",
+          "text": "Capture nikto output showing findings. Save as 12-nikto-results.png",
           "calloutType": "screenshot"
         },
         {
@@ -524,7 +524,7 @@
               "text": "Review enum4linux help:",
               "command": "enum4linux -h",
               "whatThisDoes": {
-                "concept": "enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in Lab 1.3.",
+                "concept": "enum4linux is a tool for enumerating information from Windows/Samba systems using the SMB protocol. The -h flag displays all available options. We&#8217;re reviewing the help now because you&#8217;ll use this tool against a live target in EP 1.",
                 "output": "Focus on the flags listed in the Key Flags callout below. Each flag extracts a different type of information from Windows systems: usernames, file shares, password policies, and group memberships."
               }
             },
@@ -556,7 +556,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture enum4linux help output. Save as 12-enum4linux-help.png",
+          "text": "Capture enum4linux help output. Save as 13-enum4linux-help.png",
           "calloutType": "screenshot"
         },
         {
@@ -564,7 +564,7 @@
           "icon": "warning",
           "title": "Common Pitfalls",
           "items": [
-            "No SMB target: This checkpoint is documentation only; you&#8217;ll use enum4linux against real targets in Lab 1.3",
+            "No SMB target: This checkpoint is documentation only; you&#8217;ll use enum4linux against real targets in EP 1",
             "Requires SMB access: Target must have ports 139/445 open for enum4linux to work"
           ],
           "calloutType": "commonPitfalls"
@@ -647,7 +647,7 @@
           "type": "callout",
           "icon": "photo_camera",
           "title": "Screenshot",
-          "text": "Capture searchsploit results for Apache. Save as 13-searchsploit-apache.png",
+          "text": "Capture searchsploit results for Apache. Save as 14-searchsploit-apache.png",
           "calloutType": "screenshot"
         },
         {
@@ -734,31 +734,31 @@
   "finalChecklist": {
     "screenshotTable": [
       {
-        "file": "07-nmap-version.png",
+        "file": "08-nmap-version.png",
         "description": "nmap -sV results"
       },
       {
-        "file": "08-nmap-scripts.png",
+        "file": "09-nmap-scripts.png",
         "description": "nmap -sC results"
       },
       {
-        "file": "09-netcat-banner.png",
+        "file": "10-netcat-banner.png",
         "description": "netcat SSH banner"
       },
       {
-        "file": "10-dirb-results.png",
+        "file": "11-dirb-results.png",
         "description": "dirb discovered directories"
       },
       {
-        "file": "11-nikto-results.png",
+        "file": "12-nikto-results.png",
         "description": "nikto scan output"
       },
       {
-        "file": "12-enum4linux-help.png",
+        "file": "13-enum4linux-help.png",
         "description": "enum4linux help"
       },
       {
-        "file": "13-searchsploit-apache.png",
+        "file": "14-searchsploit-apache.png",
         "description": "searchsploit results"
       }
     ],
@@ -829,7 +829,7 @@
     },
     "whatsNext": {
       "type": "nextLab",
-      "text": "Take the Lab 1.2 Quiz in Canvas, then proceed to Lab 1.3: Brazos Financial Reconnaissance Engagement, where you apply all six tools against a real client target."
+      "text": "Take the Lab 1.2 Quiz in Canvas, then proceed to Module 1 Engagement Packet: Brazos Financial Reconnaissance Engagement, where you apply all six tools against a real client target."
     }
   }
 }

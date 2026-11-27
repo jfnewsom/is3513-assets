@@ -4,7 +4,7 @@
   "module": "Module 5: Infrastructure, Risk &#38; Resilience",
   "assignment": "partial chapter (~35 minutes)",
   "partial": true,
-  "partialNote": "This is a <strong>partial chapter</strong> assignment. Read only the sections listed below. Risk management model comparisons and third-party risk frameworks are omitted &#8212; focus on the assessment and prioritization workflow you will apply in Lab 5.2.",
+  "partialNote": "This is a <strong>partial chapter</strong> assignment. Read only the sections listed below. Risk management model comparisons and third-party risk frameworks are omitted &#8212; focus on the assessment and prioritization workflow you will apply in EP 5.",
   "readSections": [
     "An Overview of Risk Management",
     "Risk Management Vocabulary",
@@ -27,6 +27,6 @@
     "Tools &#8212; Cost-Effectiveness Modeling",
     "Additional References"
   ],
-  "focusAreas": "Pay special attention to <strong>Qualitatively Assessing Risk</strong> and <strong>Business Impact Analysis</strong>. The Risk Matrix/Heat Map is the primary tool you will build in Lab 5.2, and the Business Risks section explains how to translate technical findings into language Amanda Nguyen can take to her investors. <strong>Risk Matrix and Probability/Threat Likelihood are Security+ exam staples.</strong>",
+  "focusAreas": "Pay special attention to <strong>Qualitatively Assessing Risk</strong> and <strong>Business Impact Analysis</strong>. The Risk Matrix/Heat Map is the primary tool you will build in EP 5, and the Business Risks section explains how to translate technical findings into language Amanda Nguyen can take to her investors. <strong>Risk Matrix and Probability/Threat Likelihood are Security+ exam staples.</strong>",
   "secplus": "Domain 5.2 (Risk Management Processes), Domain 5.3 (Risk Mitigation Strategies), Domain 3.4 (Resilience and Recovery)"
 }

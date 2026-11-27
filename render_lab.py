@@ -114,6 +114,16 @@ def callout_ul(css_class, icon, title, items):
     return callout(css_class, icon, title, body)
 
 
+def lab_names(meta):
+    """Display names (2026-11-27 rename). Returns (header keyword, header number, full name).
+    Engagement Packets: packet . N . title, full name "Module N Engagement Packet".
+    Training Labs: lab . N.M . title, full name "Module N Training Lab M" (Lab 1.0 is "Module 1 Training Lab 0")."""
+    mod, unit = (meta["labId"].split("_") + ["0"])[:2]
+    if meta.get("labType") == "engagement":
+        return "packet", mod, f"Module {mod} Engagement Packet"
+    return "lab", f"{mod}.{unit}", f"Module {mod} Training Lab {unit}"
+
+
 def render_callout_block(block):
     """Render a generic callout block from a checkpoint content array."""
     ct = block.get("calloutType", block.get("type", ""))
@@ -540,8 +550,7 @@ def render_intro(data):
     is_engagement = lab_type == "engagement"
 
     lab_id_parts = meta["labId"].split("_")
-    kw_text  = "lab"
-    sec_text = ".".join(lab_id_parts)   # e.g. "2.3"
+    kw_text, sec_text, _ = lab_names(meta)   # e.g. lab . 1.1, or packet . 2
 
     accent = "#7B68EE" if is_engagement else "#4169E1"
     nav_src = f'{ASSETS}/nav.js'
@@ -1042,12 +1051,12 @@ def render(data):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab {lab_num}: {title}</title>
+  <title>{lab_names(meta)[2]}: {title}</title>
   <link rel="icon" type="image/png" href="https://jfnewsom.github.io/is3513-assets/favicon.png">
   <link rel="stylesheet" href="../../site.css">
 </head>
 <body>
-<h1 class="nx-sr-only">Lab {lab_num}: {title}</h1>
+<h1 class="nx-sr-only">{lab_names(meta)[2]}: {title}</h1>
 
 {body}
 <script src="https://jfnewsom.github.io/is3513-assets/nav.js"></script>

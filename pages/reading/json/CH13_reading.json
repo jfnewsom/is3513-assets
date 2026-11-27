@@ -23,6 +23,6 @@
     "Tools",
     "Indicators of Compromise"
   ],
-  "focusAreas": "Pay special attention to <strong>IDS Models</strong> and <strong>False Positives/Negatives</strong>. Understanding detection methodology helps you interpret the traffic patterns you&#8217;ll analyze in Lab 3.3.",
+  "focusAreas": "Pay special attention to <strong>IDS Models</strong> and <strong>False Positives/Negatives</strong>. Understanding detection methodology helps you interpret the traffic patterns you&#8217;ll analyze in EP 3.",
   "secplus": "Domain 3.2 (Network Security Design), Domain 4.1 (Security Assessment Tools)"
 }

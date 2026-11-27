@@ -58,7 +58,7 @@
       },
       {
         "type": "tip",
-        "title": "Save For Lab 2.3",
+        "title": "Save For EP 2",
         "icon": "folder",
         "text": "This is <strong>Unit 2 of a 3-unit module</strong>. Add this unit&#8217;s screenshots to your existing <code>Module2_Screenshots</code> folder. Your Lab 2.1 screenshots should already be there. This unit adds its own."
       }
@@ -97,7 +97,7 @@
       "label": "Total Estimated Time",
       "time": "2-3 hours"
     },
-    "timesheetNote": "This is Unit 2 of a 3-unit module. Time here is still internal NEXUS training, not yet billable to Gulf Coast Healthcare. Add this unit's screenshots to your existing Module2_Screenshots folder, alongside your Lab 2.1 captures. You will use all of them in your Lab 2.3 Engagement Packet."
+    "timesheetNote": "This is Unit 2 of a 3-unit module. Time here is still internal NEXUS training, not yet billable to Gulf Coast Healthcare. Add this unit's screenshots to your existing Module2_Screenshots folder, alongside your Lab 2.1 captures. You will use all of them in your Module 2 Engagement Packet."
   },
   "checkpoints": [
     {
@@ -479,10 +479,10 @@
           "type": "steps",
           "steps": [
             {
-              "text": "Stop the Brazos container from Lab 1.3 if it is still running. It holds port 22, and SSH to localhost would reach Brazos instead of your VM:",
+              "text": "Stop the Brazos container from EP 1 if it is still running. It holds port 22, and SSH to localhost would reach Brazos instead of your VM:",
               "command": "docker stop brazos",
               "whatThisDoes": {
-                "concept": "Brazos published its SSH port as 22, the same port your Kali SSH server needs. If you rebooted since Lab 1.3, Brazos is already stopped and this just prints its name. If you see <em>No such container</em>, there is nothing to stop.",
+                "concept": "Brazos published its SSH port as 22, the same port your Kali SSH server needs. If you rebooted since EP 1, Brazos is already stopped and this just prints its name. If you see <em>No such container</em>, there is nothing to stop.",
                 "output": null
               }
             },
@@ -900,7 +900,7 @@
       "principle": "AI is a tutor, not a ghostwriter."
     },
     "whatsNext": {
-      "text": "After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Lab 2.3: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three units into a complete Engagement Packet for the Gulf Coast Healthcare client."
+      "text": "After completing this lab and taking the Lab 2.2 Quiz in Canvas, proceed to Module 2 Engagement Packet: Gulf Coast Certificate Remediation. You will SSH directly into a patient portal container using the skills from this lab, diagnose an expired TLS certificate, remediate it using the PKI workflow, and compile all three units into a complete Engagement Packet for the Gulf Coast Healthcare client."
     },
     "customCallouts": [
       {
