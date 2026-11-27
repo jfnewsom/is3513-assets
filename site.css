@@ -2804,3 +2804,7 @@ summary {
 .nx-tb-card:hover { border-color: var(--callout-color, #FEC618); }
 .nx-tb-card[aria-expanded=true] { border-color: var(--callout-color, #FEC618); color: var(--callout-color, #FEC618); }
 .nx-tb-cardpanel { margin-top: 10px; }
+/* Full window width: Canvas supplies the margins (John, 2026-11-27) */
+body.nx-tabbed { padding-left: 0; padding-right: 0; padding-bottom: 0; }
+.nx-tabbed .nx-tb-bar { border-radius: 0; }
+.nx-tb-back, .nx-tb-botnav { margin-left: 16px; margin-right: 16px; }
