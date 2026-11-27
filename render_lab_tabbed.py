@@ -169,13 +169,13 @@ def page(data, tabs):
         back = nxt = ""
         if i > 0:
             p = tabs[i - 1]
-            back = f'<a class="nx-tb-back" href="#{p[0]}" data-tab="{p[0]}">&larr; Back: {p[1]}</a>\n'
+            back = f'<a class="nx-tb-back" href="#{p[0]}" data-tab="{p[0]}">&larr; Back: {p[1]}</a>'
         if i < len(tabs) - 1:
             n = tabs[i + 1]
             nxt = f'<a class="nx-tb-next" href="#{n[0]}" data-tab="{n[0]}">Next: {n[1]} &rarr;</a>'
         inner = R.section(hdr + body) if not is_sections else body   # Wrap-up sections carry their own headers
         panels += (f'<section class="nx-tb-panel" id="p-{tid}" data-tab="{tid}" role="tabpanel" hidden>\n'
-                   f'{back}{inner}<div class="nx-tb-botnav">{nxt}</div>\n</section>\n')
+                   f'{inner}<div class="nx-tb-botnav">{back}{nxt}</div>\n</section>\n')
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,6 +207,7 @@ function show(id,push){{
   document.querySelectorAll('.nx-tb-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.tab===id));
   cur=id;
   const a=nav.querySelector('[aria-selected=true]'); if(a) a.scrollIntoView({{block:'nearest',inline:'center'}});
+  if(a) document.querySelector('.nx-tb-bar').style.setProperty('--cur',a.style.getPropertyValue('--tab'));
   scrollTo(0,pos[id]||0);
   if(push) history.replaceState(null,'','#'+id);
   document.getElementById('nx-tb-newtab').href=location.href.split('#')[0]+'#'+id;

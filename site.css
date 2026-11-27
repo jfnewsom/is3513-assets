@@ -2808,3 +2808,48 @@ summary {
 body.nx-tabbed { padding-left: 0; padding-right: 0; padding-bottom: 0; }
 .nx-tabbed .nx-tb-bar { border-radius: 0; }
 .nx-tb-back, .nx-tb-botnav { margin-left: 16px; margin-right: 16px; }
+/* One-row header directly under the tab bar: keyword . number . title
+   (redesign rulings 2026-09-29). Tabbed pages only. */
+.nx-tabbed .nx-tb-bar { margin-bottom: 0; border-bottom: 2px solid #000; }
+.nx-tabbed .nx-header { flex-direction: row; border-left: 0; }
+.nx-tabbed .nx-header-top { min-height: 0; flex: 0 0 auto; }
+.nx-tabbed .nx-sub { flex: 1; display: flex; align-items: center; font-size: 26px; padding: 12px 24px; }
+.nx-tabbed .nx-card { border-left: 0; border-bottom: 0; border-radius: 0; padding: 30px 40px; }
+.nx-tabbed .nx-tb-panel .nx-section { margin-bottom: 0; }
+.nx-tb-botnav { display: flex; justify-content: space-between; align-items: center; margin: 0; padding: 20px 16px 40px; }
+.nx-tb-back { margin: 0; }
+.nx-tb-next { margin-left: auto; }
+.nx-tabbed .nx-card { padding-left: 64px; }  /* room for the callout icons that hang off the left edge */
+/* Tab colors and edges (John, 2026-11-27): inactive tabs in their accent,
+   the active tab white with black text, a 4 px white line under the bar to
+   match the 4 px accent border down the left. */
+.nx-tabbed .nx-tb-bar { border-bottom: 4px solid #ffffff; }
+.nx-tb-tab { background: var(--tab); border-color: var(--tab); color: #ffffff; }
+.nx-tb-tab--dark { color: #000000; }
+.nx-tb-tab:hover { color: inherit; filter: brightness(1.15); }
+.nx-tb-tab[aria-selected=true], .nx-tb-tab--dark[aria-selected=true] { background: #ffffff; border-color: #ffffff; color: #000000; filter: none; }
+.nx-tabbed .nx-header { border-left: 4px solid var(--accent, #4169E1); }
+.nx-tabbed .nx-card { border-left: 4px solid var(--accent, #4169E1); }
+.nx-tabbed table th, .nx-tabbed table td { vertical-align: top; }  /* table rows top-justified (John, 2026-11-27) */
+.nx-tabbed table th, .nx-tabbed table td { text-align: left !important; }  /* every column left-justified (John, 2026-11-27) */
+.nx-tabbed th.nx-col-wide { width: 50%; }
+/* Tabs v2 (John, 2026-11-27): inactive tabs are a dark shade of their accent,
+   the active tab lights up in the full accent; no white line, just a thin
+   black gap above the header. */
+.nx-tabbed .nx-tb-bar { border-bottom: 2px solid #000000; }
+.nx-tb-tab, .nx-tb-tab--dark { background: color-mix(in srgb, var(--tab) 38%, #000000);
+  border-color: color-mix(in srgb, var(--tab) 38%, #000000); color: #C9CED6; filter: none; }
+.nx-tb-tab:hover, .nx-tb-tab--dark:hover { background: color-mix(in srgb, var(--tab) 60%, #000000); color: #ffffff; filter: none; }
+.nx-tb-tab[aria-selected=true] { background: var(--tab); border-color: var(--tab); color: #ffffff; }
+.nx-tb-tab--dark[aria-selected=true] { background: var(--tab); border-color: var(--tab); color: #000000; }
+/* The line under the tab bar takes the active tab's accent, 4 px like the left border (John, 2026-11-27) */
+.nx-tabbed .nx-tb-bar { border-bottom: 4px solid var(--cur, #4169E1); }
+/* Dark all the way down (John, 2026-11-27): no white bands between, below
+   or around the panels, and a dark footer (nav.js swaps in the dark-background
+   UT San Antonio logo on these pages). */
+html:has(body.nx-tabbed), body.nx-tabbed { background: #0A0E17; }
+body.nx-tabbed { min-height: 100vh; }
+.nx-tabbed .site-footer { background: #0A0E17; border-top: 1px solid #1e2535; }
+.nx-tabbed .site-footer__citation-text { color: #B0B8C4; }
+.nx-tabbed .site-footer__copyright { color: #8a93a3; }
+.nx-tabbed .site-footer__citation-label { background: rgba(65,105,225,0.18); color: #8FA8FF; }

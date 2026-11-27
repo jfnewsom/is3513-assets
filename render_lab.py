@@ -264,7 +264,10 @@ def render_generic_table(block):
     out += '    <table class="nx-time-table">\n'
     out += '      <thead><tr>\n'
     for col in columns:
-        out += f'        <th>{h(col)}</th>\n'
+        # "Worth knowing" columns take about half the table so the notes run
+        # wide and flat instead of tall and narrow (John, 2026-11-27).
+        wide = ' class="nx-col-wide"' if str(col).strip().lower() == "worth knowing" else ""
+        out += f'        <th{wide}>{h(col)}</th>\n'
     out += '      </tr></thead>\n'
     out += '      <tbody>\n'
     for row in rows:

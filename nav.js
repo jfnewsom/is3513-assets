@@ -458,11 +458,18 @@
     nav.innerHTML = navHTML;
     document.body.insertBefore(nav, document.body.firstChild);
 
+    // Dark pages (the tabbed lab layout) use the UT San Antonio logo made for a
+    // dark background; if that file is missing, fall back to the standard logo.
+    const LOGO_LIGHT = BASE + '/branding/UTSanAntonio_H_Logo_Dual_TM_RGB.png';
+    const LOGO_DARK  = BASE + '/branding/UTSanAntonio_Reg_Logo_Rev_TM_RGB.svg';
+    const darkPage   = document.body.classList.contains('nx-tabbed');
+
     const footer = document.createElement('footer');
     footer.className = 'site-footer';
     footer.innerHTML =
       '<img class="site-footer__logo"' +
-      ' src="https://jfnewsom.github.io/is3513-assets/branding/UTSanAntonio_H_Logo_Dual_TM_RGB.png"' +
+      ' src="' + (darkPage ? LOGO_DARK : LOGO_LIGHT) + '"' +
+      (darkPage ? ' onerror="this.onerror=null;this.src=\'' + LOGO_LIGHT + '\'"' : '') +
       ' alt="UT San Antonio">' +
       '<div class="site-footer__citation">' +
       '<span class="site-footer__citation-label">Textbook</span>' +

@@ -127,31 +127,31 @@
      ],
      "rows": [
       [
-       "Microsoft Copilot (UTSA)",
+       "<a href=\"https://copilot.microsoft.com/\" target=\"_blank\" rel=\"noopener\">Microsoft Copilot (UTSA)</a>",
        "Free with your UTSA account",
        "UTSA turns it on for every student 18 or older. Sign in at copilot.microsoft.com with your @my.utsa.edu address and passphrase. Signed in, it has Microsoft&#8217;s enterprise data protection, so what you type isn&#8217;t used to train the AI. Details: utsa.edu/techsolutions/FacAndStaff/AI-Literacy/copilot-chat.html"
       ],
       [
-       "ChatGPT",
+       "<a href=\"https://chatgpt.com/\" target=\"_blank\" rel=\"noopener\">ChatGPT</a>",
        "Free tier; paid plans available",
        "Sign up at chatgpt.com."
       ],
       [
-       "Claude",
+       "<a href=\"https://claude.ai/\" target=\"_blank\" rel=\"noopener\">Claude</a>",
        "Free tier; paid plans available",
        "Sign up at claude.ai."
       ],
       [
-       "Gemini",
+       "<a href=\"https://gemini.google.com/\" target=\"_blank\" rel=\"noopener\">Gemini</a>",
        "Free tier; paid plans available",
        "Sign in with a Google account at gemini.google.com."
       ]
      ],
-     "note": "The free tier of any of these is plenty for this course. If you don&#8217;t have a favorite, start with Copilot."
+     "note": "Each name links to the assistant&#8217;s own site. The free tier of any of these is plenty for this course. If you don&#8217;t have a favorite, start with Copilot."
     },
     {
      "type": "table",
-     "title": "Your Options",
+     "title": "Pick Your Hypervisor",
      "columns": [
       "Hypervisor",
       "Runs on",
@@ -160,37 +160,37 @@
      ],
      "rows": [
       [
-       "VirtualBox",
+       "<a href=\"https://www.virtualbox.org/wiki/Downloads\" target=\"_blank\" rel=\"noopener\">VirtualBox</a>",
        "Windows, Linux, Mac",
        "Free",
        "Does not run Kali on a MacBook Neo."
       ],
       [
-       "VMware Workstation / Fusion",
+       "<a href=\"https://knowledge.broadcom.com/external/article/368667\" target=\"_blank\" rel=\"noopener\">VMware Workstation / Fusion</a>",
        "Workstation: Windows, Linux. Fusion: Mac",
        "Free for personal and educational use",
        "The download needs a free Broadcom account, and Broadcom offers no support for the free version."
       ],
       [
-       "Parallels Desktop",
+       "<a href=\"https://www.parallels.com/landingpage/pd/education/\" target=\"_blank\" rel=\"noopener\">Parallels Desktop</a>",
        "Mac",
        "Paid subscription, 50% off for students",
        "Runs on every Apple silicon Mac, including the MacBook Neo. The Standard edition caps a VM at 8 GB of memory and 4 cores."
       ],
       [
-       "UTM",
+       "<a href=\"https://mac.getutm.app/\" target=\"_blank\" rel=\"noopener\">UTM</a>",
        "Mac",
        "Free from its website ($9.99 in the Mac App Store)",
        "Built on QEMU."
       ],
       [
-       "Hyper-V",
+       "<a href=\"https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v\" target=\"_blank\" rel=\"noopener\">Hyper-V</a>",
        "Windows Pro, Education or Enterprise",
        "Included with Windows",
        "Not available on Windows Home."
       ]
      ],
-     "note": "Prices and support change. Check the official page before you pay for anything."
+     "note": "Each name links to its official download page (Hyper-V is built into Windows, so its link shows how to turn it on). Prices and support change. Check the official page before you pay for anything."
     },
     {
      "start": 1,
