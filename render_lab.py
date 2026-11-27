@@ -25,7 +25,7 @@ CALLOUT_MAP = {
     "warning":           ("nx-orange", "warning",         "Warning"),
     "whatYouShouldHave": ("nx-green",  "check_circle",    "What You Should Have"),
     "textbookReference": ("nx-purple", "menu_book",       "Textbook Reference"),
-    "digDeeper":         ("nx-yellow", "search",          "Dig Deeper"),
+    "digDeeper":         ("nx-blue",   "search",          "Dig Deeper"),
     "thatsAReference":   ("nx-green",  "menu_book",       "That&#8217;s a Reference!"),
     "tip":               ("nx-cyan",   "lightbulb",       "Pro Tip"),
     "proTip":            ("nx-cyan",   "lightbulb",       "Pro Tip"),

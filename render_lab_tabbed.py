@@ -22,6 +22,7 @@ import re
 import render_lab as R
 
 # Help callouts that move behind a card click (unless "inline": true).
+DIG_REF = ('        <p class="nx-dig-ref"><strong>That&#8217;s a reference!</strong> What you just looked up can be cited as a reference in your work. Cite the page you actually read.</p>\n')
 CARD_TYPES = ["tip", "proTip", "commonPitfalls", "textbookReference", "digDeeper",
               "thatsAReference", "goBeyond"]
 CARD_ORDER = ["tip", "proTip", "commonPitfalls", "aiAssist", "textbookReference",
@@ -111,7 +112,12 @@ def checkpoint_panel(cp):
             (wysh if ct == "whatYouShouldHave" else shots).append(b)
         elif t == "callout" and ct in CARD_TYPES and not b.get("inline"):
             css, icon, title = card_button_icon(ct, b)
-            cards.append((ct, css, icon, title, callout_body(R.render_callout_block(b))))
+            panel = callout_body(R.render_callout_block(b))
+            if ct == "digDeeper":
+                # Dig Deeper absorbs That's a Reference (John, 2026-11-27).
+                end = panel.rstrip().rfind("</div>")
+                panel = panel[:end] + DIG_REF + panel[end:]
+            cards.append((ct, css, icon, title, panel))
         elif t == "aiAssist" and not b.get("inline"):
             css, icon, title = card_button_icon("aiAssist", b)
             cards.append(("aiAssist", css, icon, title, callout_body(R.render_ai_assist(b))))

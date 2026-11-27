@@ -211,13 +211,6 @@
           "title": "Dig Deeper",
           "text": "What&#8217;s the difference between a TCP connect scan (-sT) and a SYN scan (-sS)? Why might an attacker prefer one over the other?",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Nmap Reference Guide. Gordon Lyon. Available at: https://nmap.org/book/man.html",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -332,13 +325,6 @@
           "title": "Dig Deeper",
           "text": "How can administrators hide or modify service banners? Research banner hardening techniques for SSH and HTTP.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Ncat Users&#8217; Guide. Nmap Project. Available at: https://nmap.org/ncat/guide/",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -458,13 +444,6 @@
           "title": "Dig Deeper",
           "text": "What is CVE and how are vulnerabilities assigned identifiers? Research the lifecycle of a vulnerability from discovery to patch.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "CVE - Common Vulnerabilities and Exposures. MITRE Corporation. Available at: https://cve.mitre.org/about/",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -568,13 +547,6 @@
           "title": "Dig Deeper",
           "text": "How does Nikto identify vulnerabilities? Research the difference between vulnerability scanning and penetration testing.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Nikto Documentation. CIRT, Inc. Available at: https://cirt.net/Nikto2",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -673,13 +645,6 @@
           "title": "Dig Deeper",
           "text": "What is &#8220;null session&#8221; authentication in SMB? Why is it dangerous and how do modern Windows systems mitigate it?",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Enum4linux Manual. Portcullis Labs. Available at: https://github.com/CiscoCXSecurity/enum4linux",
-          "calloutType": "thatsAReference"
         }
       ]
     },
@@ -778,13 +743,6 @@
           "title": "Dig Deeper",
           "text": "What&#8217;s the difference between a CVE and an exploit? Research how vulnerabilities are disclosed and how long it typically takes for exploits to appear.",
           "calloutType": "digDeeper"
-        },
-        {
-          "type": "callout",
-          "icon": "menu_book",
-          "title": "That&#8217;s a Reference!",
-          "text": "Exploit Database. Offensive Security. Available at: https://www.exploit-db.com/",
-          "calloutType": "thatsAReference"
         }
       ]
     }

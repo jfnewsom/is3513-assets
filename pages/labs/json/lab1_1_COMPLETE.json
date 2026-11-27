@@ -307,13 +307,6 @@
      "type": "callout",
      "calloutType": "digDeeper",
      "body": "What&#8217;s the difference between Type 1 and Type 2 hypervisors? Find out where the one you chose falls in this classification, and why it matters for security testing."
-    },
-    {
-     "title": "That&#8217;s a Reference!",
-     "items": null,
-     "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "The official documentation for the hypervisor you chose, and Kali&#8217;s own guide for running Kali in it. Kali Linux Documentation: Virtualization. OffSec. Available at: https://www.kali.org/docs/virtualization/"
     }
    ]
   },
@@ -408,13 +401,6 @@
      "type": "callout",
      "calloutType": "digDeeper",
      "body": "Why is Kali Linux based on Debian rather than another distribution? Research the advantages of Debian's package management for security tools."
-    },
-    {
-     "title": "That's a Reference!",
-     "items": null,
-     "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "Kali Linux Documentation - What is Kali Linux? Offensive Security. Available at: https://www.kali.org/docs/introduction/what-is-kali-linux/"
     }
    ]
   },
@@ -545,13 +531,6 @@
      "type": "callout",
      "calloutType": "digDeeper",
      "body": "What are the VDI, VMDK, VHDX and qcow2 disk formats? Which one does your hypervisor use, and why do formats differ between hypervisors?"
-    },
-    {
-     "title": "That's a Reference!",
-     "items": null,
-     "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "Your hypervisor&#8217;s documentation on creating a VM and its virtual disks, and Kali&#8217;s guide for your hypervisor. Kali Linux Documentation: Virtualization. OffSec. Available at: https://www.kali.org/docs/virtualization/"
     }
    ]
   },
@@ -820,13 +799,6 @@
      "type": "callout",
      "calloutType": "digDeeper",
      "body": "What's the difference between a container and a virtual machine? Research how Docker&#8217;s architecture differs from a hypervisor and why containers are preferred for deploying applications."
-    },
-    {
-     "title": "That's a Reference!",
-     "items": null,
-     "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "Docker Documentation: Get Docker. Available at: https://docs.docker.com/get-docker/"
     },
     {
      "type": "callout",

@@ -2896,3 +2896,6 @@ body:not(.nx-showall) .nx-tb-panel[hidden], body:not(.nx-showall) .nx-tb-cardpan
 .nx-tb-goto { margin-left: 8px; font-weight: 700; color: #00BCD4 !important; text-decoration: none; white-space: nowrap; }
 .nx-tb-shots--all li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
 .nx-tb-panel { border-left-color: var(--tab-accent, var(--cur, #4169E1)); }  /* each tab keeps its own color, also in Show all */
+
+/* Dig Deeper card: reference line at the bottom (absorbs That's a Reference, 2026-11-27) */
+.nx-tabbed .nx-dig-ref{margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12)}
