@@ -94,6 +94,10 @@ def capture_section(shots, wysh):
 
 def checkpoint_panel(cp):
     content = cp.get("content", [])
+    # The lead (What You're Doing) always opens the tab, even when a callout
+    # comes first in the JSON (e.g. Lab 1.2 CP3's target box).
+    content = [b for b in content if b.get("type") == "narrative"] + \
+              [b for b in content if b.get("type") != "narrative"]
     body, shots, wysh, cards = "", [], [], []
     for b in content:
         t, ct = b.get("type"), b.get("calloutType")

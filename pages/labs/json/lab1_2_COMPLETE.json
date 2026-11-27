@@ -7,7 +7,8 @@
     "chapters": [
       "Chapter 1: Introduction to Security",
       "Chapter 2: General Security Concepts"
-    ]
+    ],
+    "layout": "tabs"
   },
   "intro": {
     "overview": "This unit you'll complete NEXUS reconnaissance training by exploring six essential security tools. Each tool serves a specific purpose in the information-gathering phase of security assessments. You'll practice on authorized targets and document your methodology. Next unit, you'll apply these skills against a real client engagement.",
@@ -113,7 +114,7 @@
               "text": "Run a version detection scan:",
               "command": "nmap -sV scanme.nmap.org",
               "whatThisDoes": {
-                "concept": "The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open. With it, you learn what software is listening (e.g., Apache 2.4.7, OpenSSH 6.6.1p1).",
+                "concept": "The -sV flag tells Nmap to probe open ports and determine what service and version is running on each one. Without it, Nmap only tells you a port is open. With it, you learn what software is listening (for example, the name and version of the web server or SSH server).",
                 "output": "Look for the VERSION column in the results table. Each open port should show specific software and version numbers. This information is what makes vulnerability research possible. Check the first line of the report too. The address in parentheses after scanme.nmap.org should not start with 127. If it does, your network&#8217;s DNS is sending you back to your own machine and you are scanning your own VM, which is why every port shows closed. Look up the real address with <code>dig +short scanme.nmap.org @8.8.8.8</code> and scan that address instead."
               }
             },
@@ -174,10 +175,27 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what a network port is, what open, closed and filtered mean in an nmap scan, and what the -sV option adds to a scan. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. From a defender's point of view, explain what an nmap version scan looks like on the network or in a server's logs, and one or two ways defenders detect or limit scanning. Then explain why attackers scan anyway. If you suggest something to try, keep it to scanme.nmap.org or my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Here is an error message I got from nmap:\n\n[paste the whole error message here]\n\nExplain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I'll fix it myself."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
-          "text": "Scan results showing open ports (typically 22/SSH, 80/HTTP) with service version information like OpenSSH 6.6.1p1 or Apache httpd 2.4.7.",
+          "text": "Scan results showing open ports (typically 22/SSH, 80/HTTP) with a version string for each open service.",
           "calloutType": "whatYouShouldHave"
         },
         {
@@ -221,7 +239,7 @@
               "command": "nc -v scanme.nmap.org 22",
               "whatThisDoes": {
                 "concept": "nc (netcat) opens a raw TCP connection to a host and port. The -v flag enables verbose output so you can see the connection status. Port 22 is the standard SSH port.",
-                "output": "You should see a connection message followed by the SSH banner (something like SSH-2.0-OpenSSH_6.6.1p1). This banner reveals the exact software version. That is valuable intel for an attacker."
+                "output": "You should see a connection message followed by the SSH banner (a line starting with SSH-2.0- followed by the server software and its version). This banner reveals the exact software version. That is valuable intel for an attacker."
               }
             },
             {
@@ -278,6 +296,23 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what a service banner is, and why connecting to a port with netcat makes the service show one. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain why the software name and version in a banner are useful to an attacker, how defenders reduce what banners give away, and why hiding a banner on its own isn't real security. If you suggest something to try, keep it to scanme.nmap.org or my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Here is an error message I got from netcat:\n\n[paste the whole error message here]\n\nExplain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I'll fix it myself."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -315,7 +350,8 @@
           "type": "callout",
           "calloutType": "tip",
           "title": "Your Target: the NEXUS Training Range",
-          "body": "Checkpoints 3 and 4 scan the NEXUS training range, a practice web server that runs on your own VM using the Docker you installed in Lab 1.1. Start it with the first step below. It keeps running until you stop it, so Checkpoint 4 uses the same one. The range hands back a real mix of response codes: some paths return 200, some 403, and missing ones 404. Read its <code>robots.txt</code> too."
+          "body": "Checkpoints 3 and 4 scan the NEXUS training range, a practice web server that runs on your own VM using the Docker you installed in Lab 1.1. Start it with the first step below. It keeps running until you stop it, so Checkpoint 4 uses the same one. The range hands back a real mix of response codes: some paths return 200, some 403, and missing ones 404. Read its <code>robots.txt</code> too.",
+          "inline": true
         },
         {
           "type": "narrative",
@@ -386,6 +422,23 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what directory brute-forcing is, what a wordlist is, and what the HTTP response codes 200, 403 and 404 tell me about a path on a web server. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what a robots.txt file is for, why attackers read it during reconnaissance, and why a website shouldn't rely on robots.txt to hide anything. If you suggest something to try, keep it to scanme.nmap.org or my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Here is an error message I got from dirb:\n\n[paste the whole error message here]\n\nExplain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I'll fix it myself."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -423,7 +476,8 @@
           "type": "callout",
           "calloutType": "tip",
           "title": "Same Target as Checkpoint 3",
-          "body": "nikto scans the NEXUS training range you started in Checkpoint 3. If you rebooted or stopped it since, start it again with <code>docker start nexus-range</code> and confirm with <code>docker ps</code>. When nikto finishes, stop and remove the range: <code>docker stop nexus-range</code>, then <code>docker rm nexus-range</code>."
+          "body": "nikto scans the NEXUS training range you started in Checkpoint 3. If you rebooted or stopped it since, start it again with <code>docker start nexus-range</code> and confirm with <code>docker ps</code>. When nikto finishes, stop and remove the range: <code>docker stop nexus-range</code>, then <code>docker rm nexus-range</code>.",
+          "inline": true
         },
         {
           "type": "narrative",
@@ -476,6 +530,23 @@
             "False positives: Verify findings manually; nikto reports potential issues, not confirmed vulnerabilities"
           ],
           "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain the difference between a directory scanner like dirb and a web vulnerability scanner like nikto, and the kinds of issues nikto reports. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain why a vulnerability scanner's findings have to be checked by a person before they go in a client report (false positives and false negatives), and how an analyst confirms a finding. If you suggest something to try, keep it to scanme.nmap.org or my own VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Here is an error message I got from docker when I tried to start the practice web server again:\n\n[paste the whole error message here]\n\nExplain in plain words what it means, which part of the message matters most, and the mistake or setting that most often causes it. Only name causes that give this exact error. Tell me what to check, and I'll fix it myself."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -570,6 +641,19 @@
           "calloutType": "commonPitfalls"
         },
         {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what SMB is, what it's used for on a network, and what kinds of information enum4linux tries to collect from it. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain why SMB has been behind some well-known large attacks, such as the WannaCry ransomware, and what defenders changed afterward. If you suggest something to try, keep it to scanme.nmap.org or my own VM."
+            }
+          ]
+        },
+        {
           "type": "callout",
           "icon": "check_circle",
           "title": "What You Should Have",
@@ -624,7 +708,7 @@
               "text": "Search for Apache vulnerabilities:",
               "command": "searchsploit apache 2.4",
               "whatThisDoes": {
-                "concept": "This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (e.g., Apache 2.4.7) and search for known exploits targeting it. This is where reconnaissance becomes actionable.",
+                "concept": "This searches the local Exploit-DB for any exploit matching &#8220;apache 2.4.&#8221; In a real engagement, you&#8217;d take the exact version from your Nmap scan (the server name and version number) and search for known exploits targeting it. This is where reconnaissance becomes actionable.",
                 "output": "You&#8217;ll see a table of matching exploits with titles, types (local, remote, webapps, DoS), and file paths. The path column tells you where the exploit code lives on your system if you need to examine it."
               }
             },
@@ -660,6 +744,19 @@
             "Not all exploits work: Many require specific conditions; read the exploit code before attempting"
           ],
           "calloutType": "commonPitfalls"
+        },
+        {
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain what Exploit-DB and searchsploit are, and the difference between a vulnerability, a CVE and an exploit. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 1 and 2 so far). In this lab I'm learning reconnaissance tools on my Kali Linux VM: nmap, netcat, dirb, nikto, enum4linux and searchsploit. My only authorized targets are scanme.nmap.org (the Nmap project allows scanning it) and a practice web server running in Docker on my own VM at 127.0.0.1:8080. I'm new to these tools. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles, and only list pages you're sure exist. Don't do my lab steps for me. Explain why finding a matching exploit in searchsploit doesn't prove a system is vulnerable, what an analyst checks before reporting it, and why running an exploit against a system you aren't authorized to test is illegal, even for practice."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -703,7 +800,7 @@
         },
         {
           "label": "Version Intelligence Drives Exploitation",
-          "text": "A version string from nmap or netcat banner grabbing feeds directly into searchsploit. &#8220;Apache 2.4.7&#8221; becomes a CVE list. This chain (discover, identify, research) is the core offensive workflow."
+          "text": "A version string from nmap or netcat banner grabbing feeds directly into searchsploit. A server name and version number becomes a CVE list. This chain (discover, identify, research) is the core offensive workflow."
         },
         {
           "label": "SMB Is a Username Factory",

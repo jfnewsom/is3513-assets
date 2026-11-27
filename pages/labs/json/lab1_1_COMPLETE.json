@@ -393,7 +393,7 @@
      "items": null,
      "type": "callout",
      "calloutType": "whatYouShouldHave",
-     "body": "A file named something like kali-linux-2024.x-installer-amd64.iso in your Downloads folder."
+     "body": "A file named something like kali-linux-&lt;version&gt;-installer-amd64.iso (arm64 on Apple silicon) in your Downloads folder."
     },
     {
      "title": "Textbook Reference",
