@@ -180,6 +180,8 @@
       </li>
       <li>Set the abc123 custom property. <strong>Windows:</strong> File &gt; Info &gt; Properties &gt; Advanced Properties &gt; Custom. <strong>Mac:</strong> File &gt; Properties&#8230; &gt; Custom. It has to match the abc123 hostname visible in your screenshots. Together they are how this packet is tied to the machine that produced its evidence.
       </li>
+      <li><strong>Fill in the cover page by hand.</strong> Type your name in the <strong>Analyst / Student</strong> cell and your abc123 in the <strong>abc123 (VM ID)</strong> cell. Nothing on the cover fills itself in from the document properties.
+      </li>
       <li>Save the file now, and keep saving as you go.
       </li>
     </ol>
@@ -385,7 +387,13 @@ Explain in plain words what it means and which part of the message matters most.
       <p class="nx-tb-wysh">Comprehensive notes on all discovered services, open ports, directories, vulnerabilities, and CVEs with supporting screenshots.</p>
     </div>
 
-    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-orange" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">rocket_launch</span><span>Go Beyond the Basics</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-orange">
+    <div class="nx-tb-cards"><div class="nx-tb-cards__row"><button type="button" class="nx-tb-card nx-cyan" data-i="0" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">lightbulb</span><span>If You Find Sensitive Data</span></button><button type="button" class="nx-tb-card nx-orange" data-i="1" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">warning</span><span>Common Pitfalls</span></button><button type="button" class="nx-tb-card nx-purple" data-i="2" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">smart_toy</span><span>AI Assist</span></button><button type="button" class="nx-tb-card nx-purple" data-i="3" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">menu_book</span><span>Textbook Reference</span></button><button type="button" class="nx-tb-card nx-blue" data-i="4" aria-expanded="false"><span class="material-icons nx-tb-card__icon" aria-hidden="true">rocket_launch</span><span>Go Beyond the Basics</span></button></div><div class="nx-tb-cardpanel" data-i="0" hidden>    <div class="nx-callout nx-cyan">
+      <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">lightbulb</span></div>
+      <div class="nx-callout-body">
+        <p>Prove you could reach it; don&#8217;t take it. Unless the client has authorized it in writing, document that the files exist, where they live, how you got to them and what they are. A directory listing (<code>ls -la</code>) showing names, sizes and timestamps is usually enough evidence. Copying sensitive data off a client&#8217;s system means NEXUS is now holding data it was never supposed to have. Exposed sensitive data is a finding, and on a real engagement it usually gets a same-day call to the client. If you show any file contents as evidence, redact the sensitive details. If you already downloaded something, say so in your Methodology and Runbook, note that you deleted your copies, and delete them.</p>
+      </div>
+    </div>
+</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-orange">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">warning</span></div>
       <div class="nx-callout-body">
         <ul>
@@ -395,7 +403,7 @@ Explain in plain words what it means and which part of the message matters most.
         </ul>
       </div>
     </div>
-</div><div class="nx-tb-cardpanel" data-i="1" hidden>    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">smart_toy</span></div>
       <div class="nx-callout-body">
         <p>Use AI on this lab. These prompts are good ways to get more out of this checkpoint: copy one into the AI you use (ChatGPT, Claude, Gemini, Copilot or another) and fill in anything in [brackets]. No favorite yet? UTSA gives every student Microsoft Copilot free: sign in at copilot.microsoft.com with your @my.utsa.edu address. The free tier of any of them is plenty. They ask the AI to teach you, not to do the work for you. This sheet is still the spec: if the AI&#8217;s commands or wording differ from it, follow the sheet.</p>
@@ -418,13 +426,13 @@ Explain in plain words what it means and which part of the message matters most.
         <p class="nx-ai-caution"><strong>Consider every answer a lie until you verify it.</strong> Every prompt on this page was tested with several AI models, and we know for a fact that some of the answers were wrong: made-up links, sources that don&#8217;t say what the AI claimed, and wrong causes for error messages, all stated with confidence. It isn&#8217;t the source of truth: this sheet, the official documentation, the tool&#8217;s man page and your textbook are. Open every source it lists, check what it told you against them, and try it on your own VM. Where the AI and the source disagree, the source wins. A source can be one of your references only if you read it and it supports what you wrote; the AI itself never counts. Point tools only at the targets this lab authorizes.</p>
       </div>
     </div>
-</div><div class="nx-tb-cardpanel" data-i="2" hidden>    <div class="nx-callout nx-purple">
+</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-purple">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">menu_book</span></div>
       <div class="nx-callout-body">
         <p>Chapter 2 covers reconnaissance as the foundation of security assessment. The reconnaissance workflow you&#8217;re executing (port scanning, banner grabbing, directory discovery, vulnerability scanning, SMB enumeration, and exploit research) maps directly to the information-gathering phase described in your reading. Your findings become the evidence base for your risk analysis.</p>
       </div>
     </div>
-</div><div class="nx-tb-cardpanel" data-i="3" hidden>    <div class="nx-callout nx-blue">
+</div><div class="nx-tb-cardpanel" data-i="4" hidden>    <div class="nx-callout nx-blue">
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">search</span></div>
       <div class="nx-callout-body">
         <p>The obvious findings are just the start. Check non-standard ports like 8443, examine page source comments, investigate every service version. The more you find, the more impressive your report.</p>
@@ -530,7 +538,7 @@ Explain in plain words what it means and which part of the message matters most.
       <div class="nx-callout-icon"><span class="material-icons" aria-hidden="true">error</span></div>
       <div class="nx-callout-body">
         <div class="nx-callout-title">Minimum 10 References</div>
-        <p>Man pages count! Tool documentation, CVE entries, and NIST guidelines are all valid references. Your textbook does NOT count. It points you to sources, it is not a source. See the Citations page. Use APA format.</p>
+        <p>Man pages count! Tool documentation, CVE entries, and NIST guidelines are all valid references. Your textbook does NOT count. It points you to sources, it is not a source. Each one has to be cited at least once in your text; a source that appears only in your reference list doesn&#8217;t count. See the Citations page. Use APA format.</p>
       </div>
     </div>
 
@@ -732,7 +740,7 @@ Explain in plain words what it means and which part of the message matters most.
       </li>
       <li><strong>Save as .docx and submit that.</strong> Word format only, not PDF, not Pages, not Google Docs. The file&#8217;s metadata is part of how submissions are verified, and exporting to another format destroys it.
       </li>
-      <li><strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet.
+      <li><strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet. Canvas&#8217;s preview sometimes shows Table of Contents page numbers that don&#8217;t match your file. That is the preview, not your document, and packets are graded in Word.
       </li>
     </ol>
     <div class="nx-callout nx-red">

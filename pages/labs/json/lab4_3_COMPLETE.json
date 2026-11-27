@@ -182,6 +182,11 @@
        "whatThisDoes": null
       },
       {
+       "text": "<strong>Fill in the cover page by hand.</strong> Type your name in the <strong>Analyst / Student</strong> cell and your abc123 in the <strong>abc123 (VM ID)</strong> cell. Nothing on the cover fills itself in from the document properties.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
        "text": "Save the file now, and keep saving as you go.",
        "command": null,
        "whatThisDoes": null
@@ -628,7 +633,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet.",
+       "text": "<strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet. Canvas&#8217;s preview sometimes shows Table of Contents page numbers that don&#8217;t match your file. That is the preview, not your document, and packets are graded in Word.",
        "command": null,
        "whatThisDoes": null
       }

@@ -524,7 +524,7 @@
               "text": "Connect to localhost using your key:",
               "command": "ssh -o PasswordAuthentication=no -i ~/lab2-auth/id_ed25519_lab localhost whoami",
               "whatThisDoes": {
-                "concept": "Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH.",
+                "concept": "Adding a command after the hostname (<code>whoami</code>) tells SSH to run that single command on the remote system and return the output, instead of opening an interactive shell. This is how automated scripts and CI/CD pipelines use SSH. SSH will ask for your key&#8217;s passphrase (nexus2026) first. That is the key file unlocking on your own machine, and it is expected. The prompt you should <em>not</em> see is your Kali account password (<code>yourname@localhost&#8217;s password:</code>).",
                 "output": "The first time, SSH asks <em>Are you sure you want to continue connecting (yes/no/[fingerprint])?</em> Type <code>yes</code>; it is your own machine. Then it asks for your key passphrase (nexus2026). That unlocks the key on your machine; it is not a password. You should see your username and no prompt for your account password.",
                 "flags": [
                   {
@@ -593,8 +593,8 @@
               "text": "Test the connection using your alias:",
               "command": "ssh labserver whoami",
               "whatThisDoes": {
-                "concept": null,
-                "output": "Instead of typing the full command from Part B, you just typed <code>ssh labserver whoami</code>. The SSH config resolved <code>labserver</code> to all the connection details automatically. SSH asks for your key passphrase again, then shows your username. You should not be asked for your account password.",
+                "concept": "The alias pulls the hostname, user and key from your config file, so this is the same login as Part B in fewer keystrokes. Expect the same key passphrase prompt as before, and no account password prompt.",
+                "output": null,
                 "flags": null
               }
             }
@@ -614,7 +614,7 @@
           "items": [
             "<strong>Wrong key in authorized_keys:</strong> Make sure you&#8217;re adding the <code>.pub</code> file, not the private key",
             "<strong>Line breaks in key:</strong> The public key must be all on one line",
-            "<strong>Config indentation:</strong> Use spaces, not tabs; indent options under <code>Host</code>",
+            "<strong>Config layout:</strong> Put each setting on its own line under <code>Host</code>, indented with spaces, not tabs. If everything is on one line, SSH never sees the <code>HostName</code> and fails with <code>Could not resolve hostname labserver</code>. Run <code>cat ~/.ssh/config</code> to check the file.",
             "<strong>Wrong username in config:</strong> The <code>User</code> line must match your own Kali username, not <code>kali</code> unless that&#8217;s the name you chose at setup. If <code>ssh labserver whoami</code> fails or unexpectedly asks for a password, run <code>whoami</code> and compare it to your config"
           ],
           "calloutType": "commonPitfalls"

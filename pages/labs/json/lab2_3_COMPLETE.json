@@ -210,6 +210,11 @@
        "whatThisDoes": null
       },
       {
+       "text": "<strong>Fill in the cover page by hand.</strong> Type your name in the <strong>Analyst / Student</strong> cell and your abc123 in the <strong>abc123 (VM ID)</strong> cell. Nothing on the cover fills itself in from the document properties.",
+       "command": null,
+       "whatThisDoes": null
+      },
+      {
        "text": "Save the file now, and keep saving as you go.",
        "command": null,
        "whatThisDoes": null
@@ -729,7 +734,7 @@
      "type": "callout",
      "icon": "search",
      "title": "Bonus Discovery",
-     "text": "SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client.",
+     "text": "SSH back in and investigate the areas listed above. Document anything concerning in your report. These bonus findings strengthen your deliverable and demonstrate thoroughness to the client. You don&#8217;t need to fix them on the container. Write each one up as a numbered finding with a severity rating, and give it a matching entry in Recommendations: what Gulf Coast should do, how much effort it takes, and when.",
      "calloutType": "goBeyond"
     },
     {
@@ -756,6 +761,12 @@
        "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 6 and 11 so far). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, Gulf Coast Healthcare Partners, has a patient portal whose TLS certificate expired. The portal is simulated by a Docker container on my own Kali Linux VM (HTTPS at localhost:443, SSH at localhost port 2222), and that container is my only authorized target. I fix the certificate, then write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, recommendations). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain why SHA-1 certificate signatures and old TLS versions such as 1.0 and 1.1 are considered weak, and how an analyst checks which ones a server allows. If you suggest something to try, keep it to the Gulf Coast container on my own VM."
       }
      ]
+    },
+    {
+     "type": "callout",
+     "calloutType": "tip",
+     "title": "If You Find Sensitive Data",
+     "text": "Prove you could reach it; don&#8217;t take it. Unless the client has authorized it in writing, document that the files exist, where they live, how you got to them and what they are. A directory listing (<code>ls -la</code>) showing names, sizes and timestamps is usually enough evidence. Copying sensitive data off a client&#8217;s system means NEXUS is now holding data it was never supposed to have. Exposed sensitive data is a finding, and on a real engagement it usually gets a same-day call to the client. If you show any file contents as evidence, redact the sensitive details. If you already downloaded something, say so in your Methodology and Runbook, note that you deleted your copies, and delete them."
     },
     {
      "type": "callout",
@@ -903,7 +914,7 @@
      "type": "callout",
      "icon": "check_circle",
      "title": "What You Should Have",
-     "text": "A complete Engagement Packet in .docx format containing all 12 required sections, at least 20 qualifying screenshots, and minimum 10 references.",
+     "text": "A complete Engagement Packet in .docx format containing all 12 required sections, at least 20 qualifying screenshots, and minimum 10 references, each cited at least once in your text.",
      "calloutType": "whatYouShouldHave"
     },
     {
@@ -980,7 +991,7 @@
        "whatThisDoes": null
       },
       {
-       "text": "<strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet.",
+       "text": "<strong>Open what you submitted.</strong> Right after you upload, open your submission in Canvas and click the file to preview it. Make sure it&#8217;s your finished Engagement Packet for this lab, not the assignment sheet, not the blank template, and not a previous lab&#8217;s packet. Canvas&#8217;s preview sometimes shows Table of Contents page numbers that don&#8217;t match your file. That is the preview, not your document, and packets are graded in Word.",
        "command": null,
        "whatThisDoes": null
       }
@@ -1166,7 +1177,7 @@
    },
    {
     "items": [
-     "Minimum 10 references (man pages count!)"
+     "Minimum 10 references (man pages count!), each cited at least once in your text"
     ],
     "title": "References"
    }
