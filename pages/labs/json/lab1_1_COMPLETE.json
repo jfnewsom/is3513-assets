@@ -124,31 +124,36 @@
      "columns": [
       "Assistant",
       "Cost",
+      "Accuracy in our testing",
       "Worth knowing"
      ],
      "rows": [
       [
        "<a href=\"https://copilot.microsoft.com/\" target=\"_blank\" rel=\"noopener\">Microsoft Copilot (UTSA)</a>",
        "Free with your UTSA account",
+       "&#9733;&#9733;&#189; (2.5 / 5)",
        "UTSA turns it on for every student 18 or older. Sign in at copilot.microsoft.com with your @my.utsa.edu address and passphrase. Signed in, it has Microsoft&#8217;s enterprise data protection, so what you type isn&#8217;t used to train the AI. Details: utsa.edu/techsolutions/FacAndStaff/AI-Literacy/copilot-chat.html"
       ],
       [
        "<a href=\"https://chatgpt.com/\" target=\"_blank\" rel=\"noopener\">ChatGPT</a>",
        "Free tier; paid plans available",
+       "&#9733;&#9733;&#189; (2.5 / 5)",
        "Sign up at chatgpt.com."
       ],
       [
        "<a href=\"https://claude.ai/\" target=\"_blank\" rel=\"noopener\">Claude</a>",
        "Free tier; paid plans available",
+       "&#9733;&#9733;&#9733;&#9733; (4 / 5)",
        "Sign up at claude.ai."
       ],
       [
        "<a href=\"https://gemini.google.com/\" target=\"_blank\" rel=\"noopener\">Gemini</a>",
        "Free tier; paid plans available",
+       "&#9733;&#9733;&#9733; (3 / 5)",
        "Sign in with a Google account at gemini.google.com."
       ]
      ],
-     "note": "Each name links to the assistant&#8217;s own site. The free tier of any of these is plenty for this course. If you don&#8217;t have a favorite, start with Copilot."
+     "note": "Each name links to the assistant&#8217;s own site. The free tier of any of these is plenty for this course. The <strong>accuracy</strong> stars come from our own testing: we ran this course&#8217;s AI Assist prompts through each assistant and had the answers graded for wrong facts and made-up sources. They reflect the specific model versions we tested in late 2026, so the app you open may score differently &#8212; treat the stars as a snapshot, not a promise. Copilot and ChatGPT were represented by the GPT model we could test. No assistant earned 5 stars: every one got some facts or sources wrong somewhere, which is exactly why you open and verify every source it hands you. The stars report what we found; they don&#8217;t tell you which assistant to pick. If you don&#8217;t have a favorite, start with Copilot."
     },
     {
      "type": "table",
