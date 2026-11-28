@@ -302,7 +302,7 @@
      "role": null,
      "steps": [
       {
-       "text": "Create a speed comparison table using your actual data:",
+       "text": "Create a speed comparison table using your actual data. This is the same comparison you built in Lab 4.2, Checkpoint 4; bring that table into your Findings here rather than starting a new one:",
        "whatThisDoes": null,
        "substeps": null
       },

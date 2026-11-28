@@ -823,36 +823,36 @@ Explain in plain words what it means and which part of the message matters most.
   <div class="nx-card" style="--accent: #00D26A;">
     <h2>Screenshot Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <strong>1.</strong> Capture your completed conversions (can be handwritten on paper)</li>
-      <li>&#9744; <strong>2.</strong> Capture your flat network analysis calculations</li>
-      <li>&#9744; <strong>3.</strong> Capture your 172.16.0.0/16 subnet analysis with the table</li>
-      <li>&#9744; <strong>4.</strong> Capture MX Toolbox results for one of your CIDR blocks</li>
-      <li>&#9744; <strong>5.</strong> Capture both your host network config and Kali’s ip addr output (VM name must be visible)</li>
-      <li>&#9744; <strong>6.</strong> Export your completed topology diagram</li>
-      <li>&#9744; <strong>7.</strong> Capture Wireshark’s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface</li>
-      <li>&#9744; <strong>8.</strong> Capture Wireshark with a dns display filter applied, showing filtered results</li>
-      <li>&#9744; <strong>9.</strong> Apply the tcp filter and capture the filtered traffic</li>
-      <li>&#9744; <strong>10.</strong> Apply the udp filter and capture the filtered traffic</li>
-      <li>&#9744; <strong>11.</strong> Apply the http filter and capture the filtered traffic</li>
-      <li>&#9744; <strong>12.</strong> Apply the tls filter and capture the filtered traffic</li>
-      <li>&#9744; <strong>13.</strong> No new capture: the DNS row reuses 08-dns-filter.png</li>
-      <li>&#9744; <strong>14.</strong> Apply the icmp filter and capture the filtered traffic</li>
-      <li>&#9744; <strong>15.</strong> Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue</li>
-      <li>&#9744; <strong>16.</strong> Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers</li>
-      <li>&#9744; <strong>17.</strong> Capture the IO Graph showing at least two lines: the default “All Packets” and your custom DNS filter</li>
-      <li>&#9744; <strong>18.</strong> Capture the Flow Graph showing TCP packet sequences between hosts. Use “Displayed packets” with a filter applied to keep it readable</li>
-      <li>&#9744; <strong>19.</strong> Capture the security issue you discovered (TCP stream or packet details showing the problem)</li>
-      <li>&#9744; <strong>20.</strong> Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt</li>
-      <li>&#9744; <strong>21.</strong> Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding</li>
-      <li>&#9744; <strong>22.</strong> Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses</li>
-      <li>&#9744; <strong>23.</strong> Capture the nginx configuration output showing the server setup</li>
-      <li>&#9744; <strong>24.</strong> Capture the Protocol Hierarchy window (Statistics → Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present</li>
-      <li>&#9744; <strong>25.</strong> Statistics → Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here</li>
-      <li>&#9744; <strong>26.</strong> Statistics → Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints</li>
-      <li>&#9744; <strong>27.</strong> Right-click an HTTP packet → Follow → TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text</li>
-      <li>&#9744; <strong>28.</strong> Statistics → IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity</li>
-      <li>&#9744; <strong>29.</strong> Statistics → Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing</li>
-      <li>&#9744; <strong>30.</strong> Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding</li>
+      <li>&#9744; <strong>1.</strong> <code>01-number-conversions.png</code> Capture your completed conversions (can be handwritten on paper)</li>
+      <li>&#9744; <strong>2.</strong> <code>02-flat-network-analysis.png</code> Capture your flat network analysis calculations</li>
+      <li>&#9744; <strong>3.</strong> <code>03-subnet-table.png</code> Capture your 172.16.0.0/16 subnet analysis with the table</li>
+      <li>&#9744; <strong>4.</strong> <code>04-mxtoolbox-verification.png</code> Capture MX Toolbox results for one of your CIDR blocks</li>
+      <li>&#9744; <strong>5.</strong> <code>05-host-kali-config.png</code> Capture both your host network config and Kali’s ip addr output (VM name must be visible)</li>
+      <li>&#9744; <strong>6.</strong> <code>06-topology-diagram.png</code> Export your completed topology diagram</li>
+      <li>&#9744; <strong>7.</strong> <code>07-wireshark-interfaces.png</code> Capture Wireshark’s welcome screen showing available interfaces with traffic indicators. Circle or annotate your active interface</li>
+      <li>&#9744; <strong>8.</strong> <code>08-dns-filter.png</code> Capture Wireshark with a dns display filter applied, showing filtered results</li>
+      <li>&#9744; <strong>9.</strong> <code>09-tcp.png</code> Apply the tcp filter and capture the filtered traffic</li>
+      <li>&#9744; <strong>10.</strong> <code>10-udp.png</code> Apply the udp filter and capture the filtered traffic</li>
+      <li>&#9744; <strong>11.</strong> <code>11-http.png</code> Apply the http filter and capture the filtered traffic</li>
+      <li>&#9744; <strong>12.</strong> <code>12-tls.png</code> Apply the tls filter and capture the filtered traffic</li>
+      <li>&#9744; <strong>13.</strong> <code>13-dns.png</code> No new capture: the DNS row reuses 08-dns-filter.png</li>
+      <li>&#9744; <strong>14.</strong> <code>14-icmp.png</code> Apply the icmp filter and capture the filtered traffic</li>
+      <li>&#9744; <strong>15.</strong> <code>15-tcp-stream.png</code> Capture the TCP Stream window showing a reconstructed conversation. Note the color coding: client requests in red, server responses in blue</li>
+      <li>&#9744; <strong>16.</strong> <code>16-endpoints.png</code> Capture the Endpoints window with the IPv4 tab selected, sorted by packet count to show the top talkers</li>
+      <li>&#9744; <strong>17.</strong> <code>17-io-graph.png</code> Capture the IO Graph showing at least two lines: the default “All Packets” and your custom DNS filter</li>
+      <li>&#9744; <strong>18.</strong> <code>18-flow-graph.png</code> Capture the Flow Graph showing TCP packet sequences between hosts. Use “Displayed packets” with a filter applied to keep it readable</li>
+      <li>&#9744; <strong>19.</strong> <code>19-credential-finding.png</code> Capture the security issue you discovered (TCP stream or packet details showing the problem)</li>
+      <li>&#9744; <strong>20.</strong> <code>20-azure-ssh-connection.png</code> Capture your successful SSH connection showing the welcome banner and your Kali VM name visible in the prompt</li>
+      <li>&#9744; <strong>21.</strong> <code>21-certificate-warning.png</code> Capture the Firefox certificate warning before you accept it. This self-signed certificate is a security finding</li>
+      <li>&#9744; <strong>22.</strong> <code>22-curl-header-comparison.png</code> Capture your terminal showing both curl outputs (HTTP and HTTPS headers) side by side or in sequence. Note the differences between the two responses</li>
+      <li>&#9744; <strong>23.</strong> <code>23-nginx-server-config.png</code> Capture the nginx configuration output showing the server setup</li>
+      <li>&#9744; <strong>24.</strong> <code>24-protocol-hierarchy-verification.png</code> Capture the Protocol Hierarchy window (Statistics → Protocol Hierarchy) showing SSH, HTTP, and TLS traffic all present</li>
+      <li>&#9744; <strong>25.</strong> <code>25-protocol-distribution.png</code> Statistics → Protocol Hierarchy: shows the breakdown of all protocols with percentage breakdowns. If you captured #24 with enough detail, you may reuse that screenshot here</li>
+      <li>&#9744; <strong>26.</strong> <code>26-endpoint-statistics.png</code> Statistics → Endpoints: shows every IP address and port that appeared in the capture. Look for unexpected endpoints</li>
+      <li>&#9744; <strong>27.</strong> <code>27-tcp-stream.png</code> Right-click an HTTP packet → Follow → TCP Stream: reconstructs the full conversation. For HTTP traffic, you can read actual request and response in plain text</li>
+      <li>&#9744; <strong>28.</strong> <code>28-io-graph.png</code> Statistics → IO Graphs: visualizes traffic volume over time. Spikes can indicate automated scanning, data exfiltration, or denial-of-service activity</li>
+      <li>&#9744; <strong>29.</strong> <code>29-flow-graph.png</code> Statistics → Flow Graph: shows the sequence of packets as a ladder diagram. Useful for understanding TCP handshakes, TLS negotiations, and communication timing</li>
+      <li>&#9744; <strong>30.</strong> <code>30-notable-finding.png</code> Capture the most significant security finding you discovered during your analysis. Annotate what makes this a finding</li>
     </ul>
 
     <h2>Submission Requirements</h2>

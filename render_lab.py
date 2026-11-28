@@ -793,7 +793,8 @@ def render_final_checklist(data, whats_next=False):
             fname = row.get("filename", row.get("file", ""))
             m = re.match(r"\s*0*(\d+)", fname)
             num = m.group(1) if m else str(i + 1)
-            inner += f'      <li>&#9744; <strong>{h(num)}.</strong> {h(row["description"])}</li>\n'
+            code = f'<code>{h(fname)}</code> ' if fname else ""
+            inner += f'      <li>&#9744; <strong>{h(num)}.</strong> {code}{h(row["description"])}</li>\n'
         inner += '    </ul>\n\n'
 
     def _is_screenshot_list(sec):
