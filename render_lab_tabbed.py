@@ -38,17 +38,33 @@ def module_banner(meta, col):
     """Optional banner at the top of the Overview tab linking to the module
     overview page. Gated on meta.showModuleBanner so it pilots per module.
     Wording assumes the standard 2-TrainingLabs + 1-EP module; Module 5 is
-    compressed (one training lab + EP) and needs different text at rollout."""
+    compressed (one training lab + EP) and gets two-part wording below."""
     if not meta.get("showModuleBanner"):
         return ""
     mod = str(meta.get("labId", "")).split("_")[0]
     if not mod:
         return ""
     rgb = {"#4169E1": "65, 105, 225", "#7B68EE": "123, 104, 238"}.get(col, "123, 104, 238")
+    if mod == "5":
+        _label = f"Module {mod}: one engagement, two graded parts"
+        _body = (
+            f"Lab {mod}.1 is a graded Training Lab where you do the hands-on work and capture your evidence. "
+            f"EP {mod} is the graded Engagement Packet where you compile that same evidence into one client report. "
+            f"Your lab screenshots are what the EP is built from, so capture them carefully as you go. "
+            f'<a href="../support/Module_{mod}.html">See how the two parts fit together.</a>'
+        )
+    else:
+        _label = f"Module {mod}: one engagement, three graded parts"
+        _body = (
+            f"Lab {mod}.1 and Lab {mod}.2 are graded Training Labs where you do the hands-on work and capture your evidence. "
+            f"EP {mod} is the graded Engagement Packet where you compile that same evidence into one client report. "
+            f"Your lab screenshots are what the EP is built from, so capture them carefully as you go. "
+            f'<a href="../support/Module_{mod}.html">See how the three parts fit together.</a>'
+        )
     return (
         f'    <div class="nx-client-ctx nx-module-banner" style="--client-color: {col}; --client-rgb: {rgb};">\n'
-        f'      <div class="nx-client-ctx__label">Module {mod}: one engagement, three graded parts</div>\n'
-        f'      <div class="nx-client-ctx__body">Lab {mod}.1 and Lab {mod}.2 are graded Training Labs where you do the hands-on work and capture your evidence. EP {mod} is the graded Engagement Packet where you compile that same evidence into one client report. Your lab screenshots are what the EP is built from, so capture them carefully as you go. <a href="../support/Module_{mod}.html">See how the three parts fit together.</a></div>\n'
+        f'      <div class="nx-client-ctx__label">{_label}</div>\n'
+        f'      <div class="nx-client-ctx__body">{_body}</div>\n'
         f'    </div>\n'
     )
 

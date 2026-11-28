@@ -7,7 +7,9 @@
   "chapters": [
    "Chapter 10: Infrastructure Security",
    "Chapter 20: Risk Management"
-  ]
+  ],
+  "layout": "tabs",
+  "showModuleBanner": true
  },
  "intro": {
   "overview": "Culmination of the two-unit LoneStar DevOps assessment. Amanda Nguyen presents to Longhorn Ventures in one unit; needs an investor-ready report. Sarah Martinez needs a technical roadmap her team can actually implement. You have everything you need from Lab 5.1. This unit is about assembling it into a professional deliverable that serves both audiences.",
@@ -212,6 +214,15 @@
      "body": "Word owns your numbering, not you. Caption every figure with References &gt; Insert Caption. Point at a figure with References &gt; Cross-reference, set to &#8216;Only label and number&#8217;. Add every source with References &gt; Insert Citation &gt; Add New Source. Tick <strong>Show All Bibliography Fields</strong> first or you cannot enter a URL. Build the reference list with References &gt; Bibliography; the style is already set to APA. Never type a figure number or a reference by hand.<br><br>If you have forgotten how any of these work, <a href=\"https://jfnewsom.github.io/is3513-assets/pages/labs/Lab1_3_Brazos_Financial_Reconnaissance_Engagement.html\">EP 1, Checkpoint 5</a> walks all four of them step by step."
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how captions and cross-references work in Microsoft Word, and why a figure number Word inserts stays correct when I move figures around, while one I type by hand doesn't. When you're done, ask me one question to check that I understood."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
      "body": "The template open in desktop Word, the Navigation Pane visible down the left, and your abc123 in both the Author field and the abc123 custom property."
@@ -259,6 +270,15 @@
       {
        "label": "Missing internal training hours",
        "text": "Your Lab 5.1 scanning and analysis work counts as internal training hours; those belong on the timesheet"
+      }
+     ]
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain the difference between an internal analyst packet and a client-facing report, and why one engagement produces both: who reads each and how the tone and level of detail differ. When you're done, ask me one question to check that I understood."
       }
      ]
     },
@@ -315,6 +335,19 @@
      ]
     },
     {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain what a runbook is in security operations and why being able to reproduce an analyst's assessment months later matters to a team. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+      },
+      {
+       "label": "Review my draft: runbook entry",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of one entry from my internal runbook:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: the target environment and architecture (the Docker setup, the services, the container); the scanning commands I ran with their exact parameters (nmap flags, WPScan options); my CVSS scoring methodology and the selection rationale for my top 10; my risk-matrix framework and scoring criteria; and lessons learned for a future assessment, written so a colleague could reproduce my work three months from now. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
+      }
+     ]
+    },
+    {
      "type": "callout",
      "calloutType": "whatYouShouldHave",
      "text": "A reproducible runbook another NEXUS analyst could follow to repeat the LoneStar DevOps vulnerability assessment from scratch."
@@ -355,11 +388,6 @@
     },
     {
      "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "NIST SP 800-30: Guide for Conducting Risk Assessments. Cite this when describing your risk communication approach."
-    },
-    {
-     "type": "callout",
      "calloutType": "textbookReference",
      "title": "Textbook Reference",
      "icon": "book",
@@ -380,6 +408,19 @@
       {
        "label": "No clear recommendation",
        "text": "Executives need to know what to do next. End with a specific action"
+      }
+     ]
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain what an executive summary is for, why it's written for a non-technical leader, and what makes one an executive would act on rather than skim past. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Review my draft: Executive Summary",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of the Executive Summary for my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: one page at most, a hard limit; the overall risk posture in one or two sentences, suitable for an investor review; a count of findings by severity in plain language with no CVE numbers; the top two or three recommendations framed to LoneStar's business and its Series B trajectory; and board-readable throughout, with no first person, no command output and no jargon a non-technical executive wouldn't know. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
       }
      ]
     },
@@ -441,14 +482,6 @@
     },
     {
      "type": "callout",
-     "calloutType": "thatsAReference",
-     "items": [
-      "PTES (Penetration Testing Execution Standard): http://www.pentest-standard.org/",
-      "NIST SP 800-115: Technical Guide to Information Security Testing and Assessment"
-     ]
-    },
-    {
-     "type": "callout",
      "calloutType": "textbookReference",
      "body": "Chapter 10 covers infrastructure security assessment methodology: how analysts document devices, services, and vulnerabilities in a structured, reproducible format. Chapter 20&#8217;s Business Risks and Qualitatively Assessing Risk sections provide the framework for your CVSS scores and risk matrix. Both should appear in your reference list."
     },
@@ -467,6 +500,19 @@
       {
        "label": "Inconsistent severity ratings",
        "text": "Your written severity labels must match your CVSS scores"
+      }
+     ]
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how to turn raw scanner output into findings written for a client audience: what belongs in a finding versus the appendix, and what makes a finding actionable rather than just a CVE number. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Review my draft: one finding",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is my draft of one finding from my client report:\n\n[paste your section here]\n\nReview it against this checklist from my assignment: numbered and ordered by severity, highest first; a descriptive title; a severity rating backed by CVSS 3.1; the affected host or service; a description with the specific CVE and the CVSS vector string; evidence referencing a Lab 5.1 screenshot by figure number; an impact statement in business terms for LoneStar; and a one-line recommendation summary. For each item, tell me whether my draft does it, and what is missing or weak. Don't rewrite my draft or give me replacement sentences; I'll make the changes myself."
       }
      ]
     },
@@ -509,11 +555,6 @@
     },
     {
      "type": "callout",
-     "calloutType": "thatsAReference",
-     "body": "NIST SP 800-40 Rev. 4: Guide to Enterprise Patch Management Planning. Directly applicable to LoneStar&#8217;s remediation strategy."
-    },
-    {
-     "type": "callout",
      "calloutType": "textbookReference",
      "body": "Chapter 20: Risk Mitigation Strategies covers change management, change control processes, and rollback procedures. These apply directly to your remediation phases."
     },
@@ -532,6 +573,19 @@
       {
        "label": "Missing quick wins",
        "text": "Phase 1 should show early progress. Disabling the jdavis account takes five minutes and eliminates a critical risk"
+      }
+     ]
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Explain it",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how to turn a list of vulnerabilities into recommendations a client can act on: how to prioritize by effort and impact, and why 'patch everything now' fails a team with two engineers and no downtime window. When you're done, ask me one question to check that I understood."
+      },
+      {
+       "label": "Go deeper",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Explain how a consultant sequences a realistic remediation roadmap under real constraints: quick wins first, then higher-effort strategic fixes, and how control frameworks like CIS Controls or NIST help justify the order. If you suggest something to try, keep it to the lab's own container on my Kali VM."
       }
      ]
     },
@@ -594,6 +648,15 @@
       {
        "label": "Weak references",
        "text": "&#8220;Google.com&#8221; is not a valid citation. Every reference needs author, title, organization, URL, and access date. The textbook does NOT count; see the Citations page"
+      }
+     ]
+    },
+    {
+     "type": "aiAssist",
+     "prompts": [
+      {
+       "label": "Decode my error",
+       "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this assignment I play a junior analyst at a fictional security consulting firm. The fictional client, LoneStar DevOps, is a SaaS startup preparing for Series B due diligence. In the training lab I ran a vulnerability assessment of their simulated infrastructure on my own Kali Linux VM with Nmap, WPScan and the MySQL client, scored the findings with CVSS 3.1, and built a risk matrix and a prioritized remediation roadmap. Now I write an Engagement Packet in Microsoft Word: an internal part (timesheet, runbook, analyst reflection) and a client report (executive summary, methodology, findings, risk analysis, remediation roadmap). Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my assignment for me, and don't write any part of my report. Answer only the question I ask below, then end with the source list: don't walk me through the assignment's steps or tell me what to put in my report. Here is an error message I got in my Word document's Table of Contents after I updated it:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
       }
      ]
     },
@@ -744,39 +807,79 @@
    },
    {
     "filename": "02-service-connectivity.png",
-    "description": "Connectivity test to at least one service"
+    "description": "Connectivity test to the WordPress portal"
    },
    {
-    "filename": "03-host-discovery.png",
-    "description": "Host discovery showing all container IPs"
+    "filename": "03-second-service.png",
+    "description": "Connectivity to a second service (dev API or SSH)"
    },
    {
-    "filename": "04-combined-scan.png",
-    "description": "Combined -sV -sC scan results showing services, versions, and NSE findings"
+    "filename": "04-host-discovery.png",
+    "description": "Host discovery showing the LoneStar container on the Docker network"
    },
    {
-    "filename": "05-wpscan-results.png",
-    "description": "WPScan output showing WordPress vulnerabilities"
+    "filename": "05-combined-scan.png",
+    "description": "Combined -sV -sC scan showing services, versions, and NSE findings"
    },
    {
-    "filename": "06-credential-finding.png",
-    "description": "MySQL credential test result OR SSH former employee finding"
+    "filename": "06-vuln-scripts.png",
+    "description": "NSE vulnerability-script scan results"
    },
    {
-    "filename": "07-cvss-calculator.png",
-    "description": "CVSS 3.1 calculator with at least one vulnerability scored"
+    "filename": "07-version-cve.png",
+    "description": "A specific outdated version and the CVE flagged for it"
    },
    {
-    "filename": "08-vulnerability-scores.png",
-    "description": "Complete top-10 vulnerability table with CVSS scores"
+    "filename": "08-wpscan-results.png",
+    "description": "WPScan output with WordPress findings"
    },
    {
-    "filename": "09-risk-matrix.png",
-    "description": "Completed 5×5 risk matrix with findings plotted"
+    "filename": "09-mysql-credential.png",
+    "description": "MySQL default-credential test result"
    },
    {
-    "filename": "10-remediation-roadmap.png",
-    "description": "Prioritized remediation roadmap"
+    "filename": "10-ssh-jdavis.png",
+    "description": "SSH former-employee (jdavis) account finding"
+   },
+   {
+    "filename": "11-npm-audit.png",
+    "description": "npm audit of the dev-api dependencies"
+   },
+   {
+    "filename": "12-cvss-calculator-high.png",
+    "description": "CVSS 3.1 calculator with a high-score finding"
+   },
+   {
+    "filename": "13-cvss-calculator-impact.png",
+    "description": "CVSS 3.1 calculator with a lower-score, high-impact finding"
+   },
+   {
+    "filename": "14-nvd-cve-lookup.png",
+    "description": "NVD record for one of your CVEs"
+   },
+   {
+    "filename": "15-vulnerability-scores.png",
+    "description": "Top-10 vulnerability table with CVSS scores and selection rationale"
+   },
+   {
+    "filename": "16-risk-scores.png",
+    "description": "Likelihood x Impact risk-score table"
+   },
+   {
+    "filename": "17-risk-matrix.png",
+    "description": "Completed 5x5 risk matrix with findings plotted and color coded"
+   },
+   {
+    "filename": "18-remediation-roadmap.png",
+    "description": "Prioritized remediation roadmap with rationale"
+   },
+   {
+    "filename": "19-quick-wins.png",
+    "description": "Quick-wins list of immediate low-effort fixes"
+   },
+   {
+    "filename": "20-top-priorities.png",
+    "description": "Top-3 priorities with business justification"
    }
   ],
   "sections": [

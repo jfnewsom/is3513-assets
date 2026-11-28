@@ -7,7 +7,9 @@
     "chapters": [
       "Chapter 10: Infrastructure Security",
       "Chapter 20: Risk Management"
-    ]
+    ],
+    "layout": "tabs",
+    "showModuleBanner": true
   },
   "intro": {
     "overview": "LoneStar DevOps has an enterprise prospect requiring a third-party security assessment. Their rapid growth has outpaced their security maturity, and with Series B funding on the horizon, they need to know exactly what vulnerabilities exist in their infrastructure, and which ones to fix first. This unit you'll deploy a local simulation of their environment, conduct comprehensive vulnerability discovery, and transform raw findings into a prioritized risk analysis that Amanda Nguyen can take to investors.",
@@ -128,17 +130,25 @@
           "type": "callout",
           "calloutType": "screenshot",
           "number": 1,
-          "description": "docker ps + supervisorctl status showing the lonestar container and its four internal services.",
+          "description": "docker ps + supervisorctl status showing the lonestar container and its four internal services",
           "filename": "01-docker-containers.png",
-          "body": "Take Screenshot 01. Capture a terminal showing both <code>docker ps</code> (the <code>lonestar</code> container running) and <code>docker exec lonestar supervisorctl status</code> (all four internal services, <code>webapp-prod</code>, <code>db-primary</code>, <code>dev-api</code>, <code>mgmt-ssh</code>, showing <code>RUNNING</code>). Your VM hostname must be visible in the terminal prompt."
+          "body": "Take Screenshot 01. Capture a terminal showing both <code>docker ps</code> (the <code>lonestar</code> container running) and <code>docker exec lonestar supervisorctl status</code> (all four internal services: <code>webapp-prod</code>, <code>db-primary</code>, <code>dev-api</code>, <code>mgmt-ssh</code>, each RUNNING). Your VM hostname must be visible in the terminal prompt."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
           "number": 2,
-          "description": "Connectivity test to at least one service.",
+          "description": "Connectivity test to the WordPress portal",
           "filename": "02-service-connectivity.png",
-          "body": "Take Screenshot 02. Capture a successful connectivity test: curl output for localhost:8080 (WordPress) or the WordPress login page in a browser with your VM hostname visible in an adjacent terminal."
+          "body": "Take Screenshot 02. Capture a successful connectivity test to the WordPress portal: <code>curl -sI http://localhost:8080/</code> output, or the WordPress page in a browser with your VM hostname visible in an adjacent terminal."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 3,
+          "description": "Connectivity to a second service (dev API or SSH)",
+          "filename": "03-second-service.png",
+          "body": "Take Screenshot 03. Capture a second service responding: <code>curl http://localhost:3000/</code> for the Node.js dev API, or the SSH prompt on port 2222 (<code>ssh -p 2222 someuser@localhost</code>). Your VM hostname must be visible in the prompt."
         },
         {
           "type": "callout",
@@ -168,14 +178,26 @@
           "text": "What is the difference between a vulnerability scanner and a penetration test? Research how automated scanning fits into a security assessment methodology."
         },
         {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add to your references: PTES: Penetration Testing Execution Standard. http://www.pentest-standard.org/"
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain what Docker is and how a container differs from a virtual machine, and why security teams deploy a disposable container to simulate a client's infrastructure instead of testing the real production systems. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain how running several services inside one container (a web app, a database, an API and SSH) changes the security picture compared with separate hosts, and what a defender watches for in a containerized setup. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Here is an error message I got from Docker:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
         },
         {
           "type": "callout",
           "calloutType": "whatYouShouldHave",
-          "text": "Four running Docker containers (webapp-prod, db-primary, dev-api, mgmt-ssh) with accessible services on ports 8080, 3306, 3000, and 2222."
+          "text": "One Docker container (<code>lonestar</code>) running four internal services (webapp-prod, db-primary, dev-api, mgmt-ssh), reachable on ports 8080, 3306, 3000, and 2222."
         },
         {
           "type": "callout",
@@ -210,12 +232,12 @@
               "command": "ip addr show docker0"
             },
             {
-              "text": "Run host discovery to identify all container IPs:",
+              "text": "Run host discovery to find the LoneStar container on the Docker network:",
               "command": "sudo nmap -sn 172.17.0.0/24"
             },
             {
-              "text": "Run a combined version detection and default script scan against all containers:",
-              "command": "sudo nmap -sV -sC -p- 172.17.0.2-5"
+              "text": "Run a combined version detection and default script scan against the LoneStar container (use the IP host discovery found above):",
+              "command": "sudo nmap -sV -sC -p- 172.17.0.2"
             },
             {
               "text": "Review output and document all services with exact version strings and any CVEs flagged by NSE scripts"
@@ -225,23 +247,39 @@
         {
           "type": "callout",
           "calloutType": "exampleCommands",
-          "code": "# Find Docker network range\nip addr show docker0\n\n# Host discovery\nsudo nmap -sn 172.17.0.0/24\n\n# Combined version detection + default NSE scripts (full port range)\nsudo nmap -sV -sC -p- 172.17.0.2-5\n\n# Targeted vulnerability scripts if you want to go deeper\nsudo nmap --script vuln -p 3306 172.17.0.3"
-        },
-        {
-          "type": "callout",
-          "calloutType": "screenshot",
-          "number": 3,
-          "description": "Host discovery showing all container IPs.",
-          "filename": "03-host-discovery.png",
-          "body": "Take Screenshot 03. Capture the nmap host discovery output showing all container IPs identified. Your VM hostname must be visible in the prompt."
+          "code": "# Find Docker network range\nip addr show docker0\n\n# Host discovery\nsudo nmap -sn 172.17.0.0/24\n\n# Combined version detection + default NSE scripts (full port range)\nsudo nmap -sV -sC -p- 172.17.0.2\n\n# Targeted vulnerability scripts if you want to go deeper\nsudo nmap --script vuln -p 3306 172.17.0.2"
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
           "number": 4,
-          "description": "Combined -sV -sC scan results showing services, versions, and NSE findings.",
-          "filename": "04-combined-scan.png",
-          "body": "Take Screenshot 04. Capture the combined scan output showing open ports, version strings (e.g., Apache 2.4.x, MySQL 5.7.x, OpenSSH 7.6p1), and any CVE identifiers flagged by NSE scripts. Output will be long; scroll to capture the most significant findings. Multiple screenshots labeled 04a, 04b are fine."
+          "description": "Host discovery showing the LoneStar container on the Docker network",
+          "filename": "04-host-discovery.png",
+          "body": "Take Screenshot 04. Capture the nmap host discovery output (<code>sudo nmap -sn 172.17.0.0/24</code>) identifying the LoneStar container on the Docker network. Your VM hostname must be visible in the prompt."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 5,
+          "description": "Combined -sV -sC scan showing services, versions, and NSE findings",
+          "filename": "05-combined-scan.png",
+          "body": "Take Screenshot 05. Capture the combined scan output (<code>sudo nmap -sV -sC -p- 172.17.0.2</code>) showing open ports, version strings (for example Apache 2.4.x, MySQL 5.7.x, OpenSSH 7.6p1), and any CVE identifiers NSE flagged. The output is long; capture the most significant findings. Multiple images labeled 05a, 05b are fine."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 6,
+          "description": "NSE vulnerability-script scan results",
+          "filename": "06-vuln-scripts.png",
+          "body": "Take Screenshot 06. Run nmap vulnerability scripts against a service (for example <code>sudo nmap --script vuln -p 3306 172.17.0.2</code>) and capture the findings. Your VM hostname must be visible in the prompt."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 7,
+          "description": "A specific outdated version and the CVE flagged for it",
+          "filename": "07-version-cve.png",
+          "body": "Take Screenshot 07. Focus on one significant finding from your scan: an exact version string (for example OpenSSH 7.6p1 or MySQL 5.7.x) together with any CVE identifier NSE flagged for it. This is one of your top-10 candidates."
         },
         {
           "type": "callout",
@@ -267,9 +305,21 @@
           "text": "What is the CVE system and who maintains it? Research how vulnerabilities are assigned CVE IDs and what CVSS scores represent."
         },
         {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add: Nmap Reference Guide. https://nmap.org/book/man.html and CVE: MITRE. https://cve.mitre.org/"
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. At a concept level, explain what service and version detection is in a port scan, and why knowing the exact version of a running service is the starting point for finding known vulnerabilities. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain what Nmap's Scripting Engine (NSE) does, how its 'vuln' script category surfaces known issues, and why a defender runs the same scans against their own systems before an attacker does. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Here is an error message I got from Nmap:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -309,7 +359,7 @@
               "command": "wpscan --url http://localhost:8080 --enumerate vp,vt,u"
             },
             {
-              "text": "Test MySQL authentication with default and weak credentials. The <code>--ssl=0</code> flag is required against this container: without it the client tries an SSL handshake the service is not configured for and you get <code>ERROR 2026 (HY000): TLS/SSL error</code>, which is a connection problem, not a credential result.",
+              "text": "Test MySQL authentication by trying common default credentials in turn: <code>root</code> with password <code>root</code>, then <code>password</code>, then blank (just press Enter). A working default IS your finding: weak database credentials. The <code>-p</code> flag makes MySQL prompt you for each password. The <code>--ssl=0</code> flag is required against this container: without it the client tries an SSL handshake the service is not configured for and you get <code>ERROR 2026 (HY000): TLS/SSL error</code>, which is a connection problem, not a credential result.",
               "command": "mysql -h localhost -P 3306 -u root -p --ssl=0"
             },
             {
@@ -335,26 +385,42 @@
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 5,
-          "description": "WPScan output showing WordPress vulnerabilities.",
-          "filename": "05-wpscan-results.png",
-          "body": "Take Screenshot 05. Capture WPScan output showing identified vulnerabilities, plugin findings, or version information. Your VM hostname must be visible in the prompt."
+          "number": 8,
+          "description": "WPScan output with WordPress findings",
+          "filename": "08-wpscan-results.png",
+          "body": "Take Screenshot 08. Capture WPScan output showing identified vulnerabilities, plugin or theme findings, version information, or enumerated users. Your VM hostname must be visible in the prompt."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 6,
-          "description": "MySQL credential test result OR SSH former employee finding.",
-          "filename": "06-credential-finding.png",
-          "body": "Take Screenshot 06. Capture either your MySQL connection attempt (success or failure with the credentials you tried) or your SSH test for the jdavis account. Document what you found."
+          "number": 9,
+          "description": "MySQL default-credential test result",
+          "filename": "09-mysql-credential.png",
+          "body": "Take Screenshot 09. Capture your MySQL credential test: the default you tried (root/root, root/password, or blank) and whether it worked. A successful login with a default IS your finding, weak database credentials."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 10,
+          "description": "SSH former-employee (jdavis) account finding",
+          "filename": "10-ssh-jdavis.png",
+          "body": "Take Screenshot 10. Capture your SSH test for the jdavis former-employee account (<code>ssh -p 2222 jdavis@localhost</code>): the prompt, the result, or the response you got. Document what it tells you."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 11,
+          "description": "npm audit of the dev-api dependencies",
+          "filename": "11-npm-audit.png",
+          "body": "Take Screenshot 11. Run <code>docker exec -it dev-api npm audit</code> and capture any high or critical dependency findings. These are fair game for your Checkpoint 4 CVSS selection."
         },
         {
           "type": "callout",
           "calloutType": "commonPitfalls",
           "items": [
             {
-              "label": "WPScan API token",
-              "text": "Some WPScan features require a free API token. If enumeration returns limited results, register at wpscan.com for a free token"
+              "label": "WPScan asks for an API token",
+              "text": "That &#8220;requesting an API token&#8221; warning is expected and fine. You don&#8217;t need a token for this lab: the enumeration (WordPress version, plugins, themes, users) runs without one. The token only unlocks the vulnerability-database lookups, which this lab doesn&#8217;t require."
             },
             {
               "label": "MySQL connection refused",
@@ -372,9 +438,21 @@
           "text": "What makes default credentials such a persistent problem in the industry? Research &#8220;credential stuffing&#8221; and how default password databases are used in real attacks."
         },
         {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add: WPScan WordPress Vulnerability Database. https://wpscan.com/wordpresses"
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain why application-specific tools like WPScan find vulnerabilities a general port scanner misses, and why default or reused credentials on a database are such a common and serious finding. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain how an attacker chains separate findings together (for example a weak database password plus a leftover former-employee account) into a larger compromise, and how defenders break those chains. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+            },
+            {
+              "label": "Decode my error",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Here is an error message I got from WPScan or the MySQL client:\n\n[paste the whole error message here]\n\nExplain in plain words what it means and which part of the message matters most. Then give the one or two causes that most often produce this exact message (not causes of errors that only look similar), and for each one, what I can check to confirm it. I'll fix it myself."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -432,18 +510,34 @@
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 7,
-          "description": "CVSS 3.1 calculator with at least one vulnerability scored.",
-          "filename": "07-cvss-calculator.png",
-          "body": "Take Screenshot 07. Capture the CVSS calculator with one of your top 10 findings fully scored. The metric selections and resulting score must be visible."
+          "number": 12,
+          "description": "CVSS 3.1 calculator with a high-score finding",
+          "filename": "12-cvss-calculator-high.png",
+          "body": "Take Screenshot 12. Capture the CVSS 3.1 calculator (first.org/cvss/calculator/3.1) with one of your higher-severity findings fully scored. The metric selections and resulting base score must be visible."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 8,
-          "description": "Complete top-10 vulnerability table with CVSS scores.",
-          "filename": "08-vulnerability-scores.png",
-          "body": "Take Screenshot 08. Capture your completed summary table showing all 10 selected findings with CVSS scores, severity ratings, and your selection rationale. A Word or spreadsheet table is fine; legibility matters."
+          "number": 13,
+          "description": "CVSS 3.1 calculator with a lower-score, high-impact finding",
+          "filename": "13-cvss-calculator-impact.png",
+          "body": "Take Screenshot 13. Score a second finding in the calculator, one with a modest base score but high business impact (for example MySQL default credentials). Capturing both shows why CVSS alone does not set priority."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 14,
+          "description": "NVD record for one of your CVEs",
+          "filename": "14-nvd-cve-lookup.png",
+          "body": "Take Screenshot 14. Look up one CVE from your scan in the NIST NVD (nvd.nist.gov) and capture its record: the published CVSS vector and score. Compare it against your own calculation."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 15,
+          "description": "Top-10 vulnerability table with CVSS scores and selection rationale",
+          "filename": "15-vulnerability-scores.png",
+          "body": "Take Screenshot 15. Capture your completed summary table: all 10 selected findings with CVSS scores, severity ratings, and your one-line selection rationale for each. A Word or spreadsheet table is fine; legibility matters."
         },
         {
           "type": "callout",
@@ -469,9 +563,17 @@
           "text": "What&#8217;s the difference between CVSS Base, Temporal, and Environmental scores? Research how organizations use each type and when Environmental scores change the remediation picture."
         },
         {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add: FIRST. CVSS v3.1 Specification Document. https://www.first.org/cvss/specification-document and NIST NVD CVSS Calculator. https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator"
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain what CVSS 3.1 is and what each base-score metric means (attack vector, attack complexity, privileges required, user interaction, scope, and the confidentiality/integrity/availability impacts), using a made-up example vulnerability. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain why the highest CVSS score is not always the top priority for a given business, and what else a consultant weighs alongside the score: asset value, how exposed the service is, and how sensitive the data behind it is. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -531,18 +633,42 @@
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 9,
-          "description": "Completed 5&#215;5 risk matrix with findings plotted.",
-          "filename": "09-risk-matrix.png",
-          "body": "Take Screenshot 09. Capture your completed risk matrix showing all 10 findings plotted with color coding. A Word table, spreadsheet, or hand-drawn grid photographed clearly are all acceptable."
+          "number": 16,
+          "description": "Likelihood x Impact risk-score table",
+          "filename": "16-risk-scores.png",
+          "body": "Take Screenshot 16. Capture your risk-score table: each of the 10 findings with its Likelihood (1 to 5), Impact (1 to 5), and Risk = Likelihood x Impact. This is the numeric basis for your matrix."
         },
         {
           "type": "callout",
           "calloutType": "screenshot",
-          "number": 10,
-          "description": "Prioritized remediation roadmap.",
-          "filename": "10-remediation-roadmap.png",
-          "body": "Take Screenshot 10. Capture your remediation roadmap showing sequenced findings with rationale. It must show at least: priority order, estimated remediation complexity (easy/medium/hard), and a brief justification for your top 3 priorities."
+          "number": 17,
+          "description": "Completed 5x5 risk matrix with findings plotted and color coded",
+          "filename": "17-risk-matrix.png",
+          "body": "Take Screenshot 17. Capture your completed 5x5 risk matrix showing all 10 findings plotted with color coding. A Word table, spreadsheet, or a clearly photographed hand-drawn grid are all acceptable."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 18,
+          "description": "Prioritized remediation roadmap with rationale",
+          "filename": "18-remediation-roadmap.png",
+          "body": "Take Screenshot 18. Capture your remediation roadmap showing sequenced findings. It must show at least priority order, estimated remediation complexity (easy/medium/hard), and brief justification for your top priorities."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 19,
+          "description": "Quick-wins list of immediate low-effort fixes",
+          "filename": "19-quick-wins.png",
+          "body": "Take Screenshot 19. Capture your short list of quick wins: the immediate, low-effort fixes (for example disable the jdavis account, change default database credentials) that Sarah can act on this week."
+        },
+        {
+          "type": "callout",
+          "calloutType": "screenshot",
+          "number": 20,
+          "description": "Top-3 priorities with business justification",
+          "filename": "20-top-priorities.png",
+          "body": "Take Screenshot 20. Capture your top-3 priorities with a one-line business justification for each, framed for Amanda to take to investors: what could actually hurt LoneStar, and the plan to fix it."
         },
         {
           "type": "callout",
@@ -568,9 +694,17 @@
           "text": "How do you communicate risk to non-technical stakeholders? Research executive risk reporting and how to frame technical findings for board-level audiences."
         },
         {
-          "type": "callout",
-          "calloutType": "thatsAReference",
-          "text": "Add: CIS Controls v8. Center for Internet Security. https://www.cisecurity.org/controls and ISACA Risk IT Framework. ISACA. https://www.isaca.org/resources/risk-it"
+          "type": "aiAssist",
+          "prompts": [
+            {
+              "label": "Explain it",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain what a likelihood-by-impact risk matrix is, how risk equals likelihood times impact, and why executives often grasp a color-coded matrix faster than a raw CVSS number. When you're done, ask me one question to check that I understood."
+            },
+            {
+              "label": "Go deeper",
+              "text": "I'm a student in an undergraduate information security course that uses Principles of Computer Security by Conklin and White (Chapters 10 and 20 for this module). In this lab I run a vulnerability assessment against a simulated client environment (a local Docker container running WordPress, MySQL, a Node.js API and SSH) on my own Kali Linux VM: I scan it with Nmap, WPScan and the MySQL client, score the findings with CVSS 3.1, and build a risk matrix and a prioritized remediation roadmap. I only scan the lab's own container on my machine. I'm new to vulnerability assessment. Keep it short and simple, and explain any term you use. At the end, list the sources your answer is based on, with a link to each and a few words on what that page covers, so I can read them myself and use them as references. Use official documentation, vendor pages, standards or published articles. Only list a page you're sure exists and actually covers what you used it for. If you aren't sure of a page's exact address, name the site and tell me what to search for there instead of guessing a link. Microsoft Support page addresses end in a long ID code that can't be guessed, so for those give me the article's exact title instead of a link. Don't do my lab steps, score my findings, or build my risk matrix for me, and don't write up my results or tell me what to put in my report. If you show an example, use a made-up vulnerability with numbers that aren't from my lab. Explain how a consultant turns a list of findings into a realistic remediation roadmap when the client has limited staff, no downtime window and a deadline: how to sequence quick wins against the harder fixes. If you suggest something to try, keep it to the lab's own container on my Kali VM."
+            }
+          ]
         },
         {
           "type": "callout",
@@ -635,43 +769,83 @@
     "screenshotTable": [
       {
         "file": "01-docker-containers.png",
-        "description": "docker ps showing all four containers running"
+        "description": "docker ps + supervisorctl status showing the lonestar container and its four internal services"
       },
       {
         "file": "02-service-connectivity.png",
-        "description": "Successful connectivity test to at least one service"
+        "description": "Connectivity test to the WordPress portal"
       },
       {
-        "file": "03-host-discovery.png",
-        "description": "Nmap host discovery with all container IPs identified"
+        "file": "03-second-service.png",
+        "description": "Connectivity to a second service (dev API or SSH)"
       },
       {
-        "file": "04-combined-scan.png",
-        "description": "Combined -sV -sC scan output showing services, versions, and NSE findings"
+        "file": "04-host-discovery.png",
+        "description": "Host discovery showing the LoneStar container on the Docker network"
       },
       {
-        "file": "05-wpscan-results.png",
+        "file": "05-combined-scan.png",
+        "description": "Combined -sV -sC scan showing services, versions, and NSE findings"
+      },
+      {
+        "file": "06-vuln-scripts.png",
+        "description": "NSE vulnerability-script scan results"
+      },
+      {
+        "file": "07-version-cve.png",
+        "description": "A specific outdated version and the CVE flagged for it"
+      },
+      {
+        "file": "08-wpscan-results.png",
         "description": "WPScan output with WordPress findings"
       },
       {
-        "file": "06-credential-finding.png",
-        "description": "MySQL credential test or SSH jdavis account finding"
+        "file": "09-mysql-credential.png",
+        "description": "MySQL default-credential test result"
       },
       {
-        "file": "07-cvss-calculator.png",
-        "description": "CVSS 3.1 calculator with one finding scored"
+        "file": "10-ssh-jdavis.png",
+        "description": "SSH former-employee (jdavis) account finding"
       },
       {
-        "file": "08-vulnerability-scores.png",
+        "file": "11-npm-audit.png",
+        "description": "npm audit of the dev-api dependencies"
+      },
+      {
+        "file": "12-cvss-calculator-high.png",
+        "description": "CVSS 3.1 calculator with a high-score finding"
+      },
+      {
+        "file": "13-cvss-calculator-impact.png",
+        "description": "CVSS 3.1 calculator with a lower-score, high-impact finding"
+      },
+      {
+        "file": "14-nvd-cve-lookup.png",
+        "description": "NVD record for one of your CVEs"
+      },
+      {
+        "file": "15-vulnerability-scores.png",
         "description": "Top-10 vulnerability table with CVSS scores and selection rationale"
       },
       {
-        "file": "09-risk-matrix.png",
-        "description": "Completed 5&#215;5 risk matrix with findings plotted and color coded"
+        "file": "16-risk-scores.png",
+        "description": "Likelihood x Impact risk-score table"
       },
       {
-        "file": "10-remediation-roadmap.png",
+        "file": "17-risk-matrix.png",
+        "description": "Completed 5x5 risk matrix with findings plotted and color coded"
+      },
+      {
+        "file": "18-remediation-roadmap.png",
         "description": "Prioritized remediation roadmap with rationale"
+      },
+      {
+        "file": "19-quick-wins.png",
+        "description": "Quick-wins list of immediate low-effort fixes"
+      },
+      {
+        "file": "20-top-priorities.png",
+        "description": "Top-3 priorities with business justification"
       }
     ],
     "sections": [
@@ -679,7 +853,7 @@
         "title": null,
         "type": "checklist",
         "items": [
-          "All four Docker containers running and services accessible",
+          "LoneStar container running with all four services accessible",
           "Host discovery scan completed with all container IPs identified",
           "Combined -sV -sC scan completed for all hosts",
           "WPScan run against WordPress portal",
