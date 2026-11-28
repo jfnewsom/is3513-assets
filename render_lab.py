@@ -7,6 +7,7 @@ Usage: python3 render_lab.py <path/to/lab_COMPLETE.json> [output.html]
 
 import json
 import html as html_lib
+import re
 import sys
 from pathlib import Path
 
@@ -779,19 +780,44 @@ def render_final_checklist(data, whats_next=False):
     accent = "#00D26A"
     inner = ""
 
-    # Screenshot table (foundation labs)
+    # Screenshot list — rendered ONCE as "Screenshot Verification" in the
+    # numbered format (John, 2026-11-27: the wrap-up had both a filename
+    # "Screenshots" list and a "Screenshot Verification" list, which is
+    # redundant). The top-level screenshotTable is always the full set of
+    # captures, so a per-screenshot sections entry (a duplicate or a this-unit
+    # subset) is skipped below rather than listed a second time.
     ss_table = fc.get("screenshotTable")
     if ss_table:
-        inner += f'    <h2>Screenshots</h2>\n    <ul class="nx-checklist">\n'
-        for row in ss_table:
+        inner += f'    <h2>Screenshot Verification</h2>\n    <ul class="nx-checklist">\n'
+        for i, row in enumerate(ss_table):
             fname = row.get("filename", row.get("file", ""))
-            inner += f'      <li>&#9744; <code>{h(fname)}</code>: {h(row["description"])}</li>\n'
+            m = re.match(r"\s*0*(\d+)", fname)
+            num = m.group(1) if m else str(i + 1)
+            inner += f'      <li>&#9744; <strong>{h(num)}.</strong> {h(row["description"])}</li>\n'
         inner += '    </ul>\n\n'
+
+    def _is_screenshot_list(sec):
+        if sec.get("type") == "screenshotTable":
+            return True
+        return any(
+            isinstance(it, dict)
+            and ("number" in it or "filename" in it or "file" in it)
+            and "description" in it
+            for it in sec.get("items", [])
+        )
 
     # Checklist sections
     for sec in fc.get("sections", []):
+        # Don't list the screenshots a second time once the table above has.
+        if ss_table and _is_screenshot_list(sec):
+            continue
         sec_title = h(sec.get("label", sec.get("title", "")))
         sec_type  = sec.get("type", "checklist")
+        # A surviving screenshot-quality checklist ("Screenshots" /
+        # "Screenshot Verification") is renamed so its heading doesn't read as a
+        # duplicate of the numbered "Screenshot Verification" list above it.
+        if ss_table and sec_title.strip().lower() in ("screenshots", "screenshot verification"):
+            sec_title = "Screenshot Checklist"
         inner += f'    <h2>{sec_title}</h2>\n    <ul class="nx-checklist">\n'
         for item in sec.get("items", []):
             if isinstance(item, dict):

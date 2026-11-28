@@ -855,29 +855,29 @@ Explain in plain words what it means and which part of the message matters most.
     <div class="nx-sub">Verify all requirements before submitting</div>
   </div>
   <div class="nx-card" style="--accent: #00D26A;">
-    <h2>Screenshots</h2>
+    <h2>Screenshot Verification</h2>
     <ul class="nx-checklist">
-      <li>&#9744; <code>01-hypervisor-recommendation.png</code>: Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation (taken before your VM exists, so it is the exception to the abc123 rule). Place it in your Runbook, in the entry for your VM setup</li>
-      <li>&#9744; <code>02-vm-settings.png</code>: Capture your VM settings window showing the VM name (&lt;your abc123&gt;), RAM allocation, and processor count</li>
-      <li>&#9744; <code>03-kali-desktop.png</code>: Capture the Kali desktop after login, with the terminal open showing your hostname</li>
-      <li>&#9744; <code>04-docker-version.png</code>: Capture docker --version and the hello-world output</li>
-      <li>&#9744; <code>05-system-verification.png</code>: Capture the Part A output: hostname and uname -a, with your hostname visible in the prompt</li>
-      <li>&#9744; <code>06-network-connectivity.png</code>: Capture the Part B output: ip addr and the ping results showing all 3 packets received</li>
-      <li>&#9744; <code>07-tool-verification.png</code>: Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, docker --version, and the empty docker ps table</li>
-      <li>&#9744; <code>08-nmap-version.png</code>: Capture nmap -sV results</li>
-      <li>&#9744; <code>09-nmap-scripts.png</code>: Capture nmap -sC results</li>
-      <li>&#9744; <code>10-netcat-banner.png</code>: Capture netcat connection showing SSH banner</li>
-      <li>&#9744; <code>11-dirb-results.png</code>: Capture dirb output showing discovered directories</li>
-      <li>&#9744; <code>12-nikto-results.png</code>: Capture nikto output showing findings</li>
-      <li>&#9744; <code>13-enum4linux-help.png</code>: Capture enum4linux help output</li>
-      <li>&#9744; <code>14-searchsploit-apache.png</code>: Capture searchsploit results for Apache</li>
-      <li>&#9744; <code>15-brazos-container.png</code>: Capture docker ps showing Brazos container running</li>
-      <li>&#9744; <code>16-brazos-nmap-full.png</code>: Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings</li>
-      <li>&#9744; <code>17-brazos-netcat-banner.png</code>: Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line</li>
-      <li>&#9744; <code>18-brazos-dirb.png</code>: Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results</li>
-      <li>&#9744; <code>19-brazos-nikto.png</code>: Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags</li>
-      <li>&#9744; <code>20-brazos-enum4linux.png</code>: Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup</li>
-      <li>&#9744; <code>21-brazos-searchsploit.png</code>: Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible</li>
+      <li>&#9744; <strong>1.</strong> Capture your AI conversation showing the prompt with your computer&#8217;s specs and the AI&#8217;s recommendation (taken before your VM exists, so it is the exception to the abc123 rule). Place it in your Runbook, in the entry for your VM setup</li>
+      <li>&#9744; <strong>2.</strong> Capture your VM settings window showing the VM name (&lt;your abc123&gt;), RAM allocation, and processor count</li>
+      <li>&#9744; <strong>3.</strong> Capture the Kali desktop after login, with the terminal open showing your hostname</li>
+      <li>&#9744; <strong>4.</strong> Capture docker --version and the hello-world output</li>
+      <li>&#9744; <strong>5.</strong> Capture the Part A output: hostname and uname -a, with your hostname visible in the prompt</li>
+      <li>&#9744; <strong>6.</strong> Capture the Part B output: ip addr and the ping results showing all 3 packets received</li>
+      <li>&#9744; <strong>7.</strong> Capture the Part C and Part D output: the Nmap, Wireshark and John the Ripper version checks, docker --version, and the empty docker ps table</li>
+      <li>&#9744; <strong>8.</strong> Capture nmap -sV results</li>
+      <li>&#9744; <strong>9.</strong> Capture nmap -sC results</li>
+      <li>&#9744; <strong>10.</strong> Capture netcat connection showing SSH banner</li>
+      <li>&#9744; <strong>11.</strong> Capture dirb output showing discovered directories</li>
+      <li>&#9744; <strong>12.</strong> Capture nikto output showing findings</li>
+      <li>&#9744; <strong>13.</strong> Capture enum4linux help output</li>
+      <li>&#9744; <strong>14.</strong> Capture searchsploit results for Apache</li>
+      <li>&#9744; <strong>15.</strong> Capture docker ps showing Brazos container running</li>
+      <li>&#9744; <strong>16.</strong> Capture your full nmap scan against the Brazos target. The command and the complete results table must both be visible, showing open ports with service names and version strings</li>
+      <li>&#9744; <strong>17.</strong> Capture a netcat connection to one of the ports nmap found. The banner the service returns must be readable in the output, not just the connection line</li>
+      <li>&#9744; <strong>18.</strong> Capture your dirb run against the web service. The discovered directories and their response codes must be visible in the results</li>
+      <li>&#9744; <strong>19.</strong> Capture your nikto scan. The findings list must be visible, including the server header and any items nikto flags</li>
+      <li>&#9744; <strong>20.</strong> Capture your enum4linux run. The SMB enumeration output must be visible, showing whatever the target discloses about shares, users, or workgroup</li>
+      <li>&#9744; <strong>21.</strong> Capture a searchsploit query for one of the service versions you identified. Both the version you searched and the results returned must be visible</li>
     </ul>
 
     <h2>Document Requirements</h2>
@@ -903,7 +903,7 @@ Explain in plain words what it means and which part of the message matters most.
       <li>&#9744; Appendix with raw outputs, additional screenshots, and minimum 10 references (APA format)</li>
     </ul>
 
-    <h2>Screenshots</h2>
+    <h2>Screenshot Checklist</h2>
     <ul class="nx-checklist">
       <li>&#9744; Captures from Labs 1.1 and 1.2 are in the Runbook, next to the entries for the tools that produced them</li>
       <li>&#9744; At least 20 qualifying screenshots, each inline next to the text that references it, none uploaded separately in Canvas</li>
